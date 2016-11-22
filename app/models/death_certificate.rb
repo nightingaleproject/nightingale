@@ -1,0 +1,2 @@
+class DeathCertificate < ApplicationRecord
+end
