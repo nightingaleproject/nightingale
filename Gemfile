@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.5'
 # Use devise for authentication
 gem 'devise'
 
+# Use doorkeeper for OAuth2
+gem 'doorkeeper'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

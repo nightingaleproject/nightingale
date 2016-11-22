@@ -57,6 +57,8 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    doorkeeper (4.2.0)
+      railties (>= 4.2)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.14)
@@ -169,6 +171,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  doorkeeper
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
