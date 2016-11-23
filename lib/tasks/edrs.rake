@@ -7,7 +7,9 @@ namespace :edrs do
 
     $ rake edrs:users:create EMAIL=### PASS=###}
     task create: :environment do
-      if User.create!(:email => ENV['EMAIL'], :password => ENV['PASS'])
+      user = User.create!(:email => ENV['EMAIL'], :password => ENV['PASS'])
+      if user
+        user.confirm!
         puts "The user was created successfully."
       else
         puts "The user was not created!"
