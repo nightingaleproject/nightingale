@@ -32,15 +32,33 @@ namespace :edrs do
       end
     end
 
-    desc %{Prints a list of users.}
+    desc %{Prints a list of users by their Email addresses and roles.}
     task list: :environment do
       users = User.all
       users.each do |user|
         user.roles.each do |role|
-          puts 'Email: ' + user.email
+          puts 'Email: ' + user.email + ', Role: ' + role.name
         end
       end
     end
 
+    desc %{Add a role to user.
+
+    You must identify an email address and role:
+
+    $ rake edrs:users:add_role EMAIL=### ROLE=###}
+    task add_role: :environment do
+      user = User.find_by(:email => ENV['EMAIL'])
+      if !user.nil?
+        user.add_role ENV['ROLE']
+        if user.has_role? ENV['ROLE']
+          puts "Role was added to User successfully"
+        else
+          puts "Role was not added to the User"
+        end
+      else
+        puts "User not found!"
+      end
+    end
   end
 end
