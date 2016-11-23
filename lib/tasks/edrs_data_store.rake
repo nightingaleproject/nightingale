@@ -1,11 +1,11 @@
-namespace :edrs_data_store do
+namespace :edrs do
   namespace :users do
 
     desc %{Creates a new user.
 
     You must identify an email address and password:
 
-    $ rake edrs_data_store:users:create EMAIL=### PASS=###}
+    $ rake edrs:users:create EMAIL=### PASS=###}
     task create: :environment do
       if User.create!(:email => ENV['EMAIL'], :password => ENV['PASS'])
         puts "The user was created successfully."
@@ -18,7 +18,7 @@ namespace :edrs_data_store do
 
     You must identify an email address:
 
-    $ rake edrs_data_store:users:delete EMAIL=###}
+    $ rake edrs:users:delete EMAIL=###}
     task delete: :environment do
       user = User.find_by(:email => ENV['EMAIL'])
       if !user.nil? && user.destroy

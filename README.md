@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Electronic Death Registration System (EDRS) app built using Ruby on Rails
 
-Things you may want to cover:
+# Rake tasks:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To create a user:
+```
+bundle exec rake edrs:users:create EMAIL=<email_address> PASS=<password>
+```
+ 
+To list all currently registered users (and their roles):
+```
+bundle exec rake edrs:users:list
+```
+ 
+To delete a user:
+```
+bundle exec rake edrs:users:delete EMAIL=<email_address>
+```
+ 
+Add a role to a user:
+```
+bundle exec rake edrs:users:add_role EMAIL=<email_address> ROLE=<role>
+```
