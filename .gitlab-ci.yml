@@ -10,7 +10,7 @@ rake:
 
 rubocop:
   script:
-    - rubocop
+    - bundle exec rubocop
 
 brakeman:
   script:
