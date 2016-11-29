@@ -10,4 +10,8 @@ rake:
 
 rubocop:
   script:
-    - bundle exec rubocop
+    - rubocop
+
+brakeman:
+  script:
+    - bundle exec rake brakeman
