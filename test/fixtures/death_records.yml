@@ -1,0 +1,95 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: 
+    id: 1
+    place_of_death_facility_name: Test Facility
+    place_of_death_street_number: 2 Fake St.
+    place_of_death_appt_number: 234
+    place_of_death_city: Medford
+    place_of_death_state: MA
+    place_of_death_country: USA
+    place_of_death_zip_code: 02014
+    time_pronounced_dead: 
+    date_pronounced_dead: 2016-10-10
+    pronouncing_medical_certifier_license_number: 123456
+    pronouncing_medical_certifier_date_of_signature: 
+    actual_or_presumed_date_of_death: 2016-10-10
+    actual_or_presumed_time_of_death: 
+    was_medical_examiner_or_coroner_contacted: true
+    was_an_autopsy_performed: true
+    were_autopsy_findings_available: true
+    did_tobacco_use_contribute_to_death: unknown
+    pregnancy_status: unknown
+    manner_of_death: hoisted on own petard
+    time_of_injury:
+    date_of_injury: 2016-10-10
+    injury_at_work: true
+    place_of_injury: Westeros
+    location_of_injury_state: MD
+    location_of_injury_city: Appleton
+    location_of_injury_street_and_number: 14 Fake St
+    location_of_injury_apartment_number: 333
+    location_of_injury_zip_code: 02021
+    description_of_injury_occurrence: bad things happened
+    transportation_injury: true
+    transportation_injury_role: unknown
+    transportation_injury_role_specified: unknown
+    certifier_type: medical examiner
+    medical_certifier_first: BillyJoe
+    medical_certifier_last: Tolliver
+    medical_certifier_state: LA
+    medical_certifier_city: New Orleans
+    medical_certifier_street_and_number: 23 Fake Boulevard
+    medical_certifier_zip_code: 34898
+    medical_certifier_title: Mr. Manager
+    medical_certifier_license_number: 9877656
+    date_certified: 2016-10-11
+
+two: 
+    id: 2
+    place_of_death_facility_name: Test Facility
+    place_of_death_street_number: 2 Fake St.
+    place_of_death_appt_number: 234
+    place_of_death_city: Medford
+    place_of_death_state: MA
+    place_of_death_country: USA
+    place_of_death_zip_code: 02014
+    time_pronounced_dead: 
+    date_pronounced_dead: 2016-10-10
+    pronouncing_medical_certifier_license_number: 123456
+    pronouncing_medical_certifier_date_of_signature: 
+    actual_or_presumed_date_of_death: 2016-10-10
+    actual_or_presumed_time_of_death: 
+    was_medical_examiner_or_coroner_contacted: true
+    was_an_autopsy_performed: true
+    were_autopsy_findings_available: true
+    did_tobacco_use_contribute_to_death: unknown
+    pregnancy_status: unknown
+    manner_of_death: hoisted on own petard
+    time_of_injury:
+    date_of_injury: 2016-10-10
+    injury_at_work: true
+    place_of_injury: Westeros
+    location_of_injury_state: MD
+    location_of_injury_city: Appleton
+    location_of_injury_street_and_number: 14 Fake St
+    location_of_injury_apartment_number: 333
+    location_of_injury_zip_code: 02021
+    description_of_injury_occurrence: bad things happened
+    transportation_injury: true
+    transportation_injury_role: unknown
+    transportation_injury_role_specified: unknown
+    certifier_type: medical examiner
+    medical_certifier_first: BillyJoe
+    medical_certifier_last: Tolliver
+    medical_certifier_state: LA
+    medical_certifier_city: New Orleans
+    medical_certifier_street_and_number: 23 Fake Boulevard
+    medical_certifier_zip_code: 34898
+    medical_certifier_title: Mr. Manager
+    medical_certifier_license_number: 9877656
+    date_certified: 2016-10-11
