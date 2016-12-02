@@ -3,6 +3,8 @@ before_script:
   - which ruby
   - gem install bundler --no-ri --no-rdoc
   - bundle install --jobs $(nproc)  "${FLAGS[@]}"
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate:reset
 
 rake:
   script:
