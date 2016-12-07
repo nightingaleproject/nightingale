@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123172729) do
+ActiveRecord::Schema.define(version: 20161130170126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cause_of_deaths", force: :cascade do |t|
+    t.string   "cause"
+    t.string   "interval_to_death"
+    t.integer  "position"
+    t.integer  "death_record_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["death_record_id"], name: "index_cause_of_deaths_on_death_record_id", using: :btree
+  end
+
+  create_table "causes_of_deaths", force: :cascade do |t|
+    t.integer  "death_record_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["death_record_id"], name: "index_causes_of_deaths_on_death_record_id", using: :btree
+  end
 
   create_table "death_certificates", force: :cascade do |t|
     t.string   "decedents_legal_name_first"
@@ -117,6 +134,97 @@ ActiveRecord::Schema.define(version: 20161123172729) do
     t.datetime "updated_at",                                   null: false
   end
 
+  create_table "death_records", force: :cascade do |t|
+    t.string   "place_of_death_facility_name"
+    t.string   "place_of_death_street_number"
+    t.string   "place_of_death_appt_number"
+    t.string   "place_of_death_city"
+    t.string   "place_of_death_state"
+    t.string   "place_of_death_country"
+    t.string   "place_of_death_zip_code"
+    t.time     "time_pronounced_dead"
+    t.date     "date_pronounced_dead"
+    t.string   "pronouncing_medical_certifier_license_number"
+    t.date     "pronouncing_medical_certifier_date_of_signature"
+    t.date     "actual_or_presumed_date_of_death"
+    t.time     "actual_or_presumed_time_of_death"
+    t.boolean  "was_medical_examiner_or_coroner_contacted"
+    t.boolean  "was_an_autopsy_performed"
+    t.boolean  "were_autopsy_findings_available"
+    t.string   "did_tobacco_use_contribute_to_death"
+    t.string   "pregnancy_status"
+    t.string   "manner_of_death"
+    t.time     "time_of_injury"
+    t.date     "date_of_injury"
+    t.boolean  "injury_at_work"
+    t.string   "place_of_injury"
+    t.string   "location_of_injury_state"
+    t.string   "location_of_injury_city"
+    t.string   "location_of_injury_street_and_number"
+    t.string   "location_of_injury_apartment_number"
+    t.string   "location_of_injury_zip_code"
+    t.string   "description_of_injury_occurrence"
+    t.boolean  "transportation_injury"
+    t.string   "transportation_injury_role"
+    t.string   "transportation_injury_role_specified"
+    t.string   "certifier_type"
+    t.string   "medical_certifier_first"
+    t.string   "medical_certifier_last"
+    t.string   "medical_certifier_state"
+    t.string   "medical_certifier_city"
+    t.string   "medical_certifier_street_and_number"
+    t.string   "medical_certifier_zip_code"
+    t.string   "medical_certifier_title"
+    t.string   "medical_certifier_license_number"
+    t.date     "date_certified"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+  end
+
+  create_table "decedents", force: :cascade do |t|
+    t.integer  "death_record_id"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "suffixes"
+    t.string   "akas"
+    t.string   "social_security_number"
+    t.string   "street_number"
+    t.string   "appt_number"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zip_code"
+    t.boolean  "inside_city_limits"
+    t.string   "spouse_first_name"
+    t.string   "spouse_last_name"
+    t.string   "spouse_middle_name"
+    t.string   "spouse_suffixes"
+    t.string   "father_first_name"
+    t.string   "father_last_name"
+    t.string   "father_middle_name"
+    t.string   "father_suffixes"
+    t.string   "mother_first_name"
+    t.string   "mother_last_name"
+    t.string   "mother_middle_name"
+    t.string   "mother_suffixes"
+    t.string   "sex"
+    t.date     "date_of_birth"
+    t.string   "birthplace_city"
+    t.string   "birthplace_state"
+    t.string   "birthplace_country"
+    t.boolean  "ever_in_us_armed_forces"
+    t.string   "marital_status_at_time_of_death"
+    t.string   "education"
+    t.string   "hispanic_origin"
+    t.string   "race"
+    t.string   "usual_occupation"
+    t.string   "kind_of_business"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["death_record_id"], name: "index_decedents_on_death_record_id", using: :btree
+  end
+
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
     t.integer  "application_id",    null: false
@@ -193,6 +301,7 @@ ActiveRecord::Schema.define(version: 20161123172729) do
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
+  add_foreign_key "cause_of_deaths", "death_records"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
 end

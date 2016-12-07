@@ -1,0 +1,3 @@
+# helper
+module DecedentsHelper
+end

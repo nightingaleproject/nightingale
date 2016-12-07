@@ -38,9 +38,12 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    acts_as_list (0.8.2)
+      activerecord (>= 3.0)
     arel (7.1.4)
     ast (2.2.0)
     bcrypt (3.1.11)
+    bcrypt (3.1.11-x86-mingw32)
     brakeman (3.4.0)
     builder (3.2.2)
     byebug (9.0.6)
@@ -64,6 +67,7 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.14)
+    ffi (1.9.14-x86-mingw32)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -91,10 +95,13 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
+    nokogiri (1.6.8.1-x86-mingw32)
+      mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
     parser (2.3.0.6)
       ast (~> 2.2)
     pg (0.18.2)
+    pg (0.18.2-x86-mingw32)
     powerpack (0.1.1)
     puma (3.6.1)
     pundit (1.1.0)
@@ -167,6 +174,8 @@ GEM
     turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2016.10)
+      tzinfo (>= 1.0.0)
     uglifier (3.0.3)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (0.3.1)
@@ -183,8 +192,10 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
+  acts_as_list
   brakeman
   byebug
   coffee-rails (~> 4.2)
@@ -208,4 +219,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
