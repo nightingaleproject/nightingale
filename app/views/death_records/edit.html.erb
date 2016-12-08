@@ -1,0 +1,5 @@
+<%= form_for @death_record, url: {action: "update"} do |dr| %> 
+  <p>place_of_death_facility_name: <%= dr.text_field :place_of_death_facility_name %></p>
+  <p>did_tobacco_use_contribute_to_death?: <%= dr.text_field :did_tobacco_use_contribute_to_death %></p>
+  <%= dr.submit %>
+<% end %>

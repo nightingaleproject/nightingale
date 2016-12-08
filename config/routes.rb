@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   resources :cause_of_deaths
   resources :decedents
   resources :death_records
+
   use_doorkeeper
-  get 'certificates/index'
 
   devise_for :users
-  get 'home/index'
 
-  root to: "home#index"
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  authenticated :user do
+    root :to => 'death_records#index', :as => :authenticated_root
+  end
+  root :to => redirect('/users/sign_in')
 end
