@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130170126) do
+ActiveRecord::Schema.define(version: 20161208205019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,13 +23,6 @@ ActiveRecord::Schema.define(version: 20161130170126) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["death_record_id"], name: "index_cause_of_deaths_on_death_record_id", using: :btree
-  end
-
-  create_table "causes_of_deaths", force: :cascade do |t|
-    t.integer  "death_record_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["death_record_id"], name: "index_causes_of_deaths_on_death_record_id", using: :btree
   end
 
   create_table "death_certificates", force: :cascade do |t|
@@ -179,6 +172,8 @@ ActiveRecord::Schema.define(version: 20161130170126) do
     t.date     "date_certified"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_death_records_on_user_id", using: :btree
   end
 
   create_table "decedents", force: :cascade do |t|
@@ -302,6 +297,7 @@ ActiveRecord::Schema.define(version: 20161130170126) do
   end
 
   add_foreign_key "cause_of_deaths", "death_records"
+  add_foreign_key "death_records", "users"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
 end

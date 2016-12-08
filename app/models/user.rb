@@ -1,7 +1,7 @@
 # User model
 class User < ApplicationRecord
   rolify
-
+  has_many :death_records
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 

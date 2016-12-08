@@ -5,7 +5,7 @@ class DeathRecordsController < ApplicationController
   # GET /death_records
   # GET /death_records.json
   def index
-    @death_records = DeathRecord.all
+    @death_records = DeathRecordsPolicy::Scope.new(current_user, DeathRecord).resolve  
   end
 
   # GET /death_records/1
@@ -16,6 +16,7 @@ class DeathRecordsController < ApplicationController
   # GET /death_records/new
   def new
     @death_record = DeathRecord.new
+    @death_record.user_id = current_user[:id]
     if @death_record.save
       redirect_to edit_death_record_path(@death_record), id: @death_record.id
     else

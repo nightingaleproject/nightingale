@@ -2,9 +2,8 @@
 
 <br>
 
-<h1>Create New Death Record</h1>
-
 <% if current_user.has_role? :funeral_director %>
+  <h1>Create New Death Record</h1>
   <%= link_to 'New Death Record', new_death_record_path %>
 <% end %>
 
