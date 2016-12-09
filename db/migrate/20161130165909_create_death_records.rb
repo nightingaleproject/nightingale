@@ -1,12 +1,56 @@
 class CreateDeathRecords < ActiveRecord::Migration[5.0]
   def change
     create_table :death_records do |t|
-      
+
       # information about the decedent's death
       # Note:  Thought about creating entities like Injury & PlaceOfDeath, but 
       # for now I have held off.  I think they would simply be 1-to-1 models and 
       # I'm not sure that gets us anything.  That may change
-      
+
+      # identity information - start
+
+      t.string :first_name, :middle_name, :last_name
+      t.string :suffixes  #is string field sufficient?
+      t.string :akas  #is string field sufficient?
+      t.string :social_security_number
+
+      #decedent's residence
+      t.string :street_number, :appt_number, :city, :state, :country, :zip_code
+      t.boolean :inside_city_limits
+
+      #TODO:  Consider some kind of "Identity" abstraction for things like spouse,
+      # father, mother
+      #decedent's spouse information
+      t.string :spouse_first_name, :spouse_last_name, :spouse_middle_name, :spouse_suffixes
+
+      #decedent's father information
+      t.string :father_first_name, :father_last_name, :father_middle_name, :father_suffixes
+
+      #decedent's mother information
+      t.string :mother_first_name, :mother_last_name, :mother_middle_name, :mother_suffixes
+
+      # identity information - end
+
+      # demographics - start
+
+      t.string :sex
+      t.date :date_of_birth
+
+      #birth place information
+      t.string :birthplace_city, :birthplace_state, :birthplace_country
+
+      t.boolean :ever_in_us_armed_forces
+
+      #series of enumerated values.  For now storing as strings, but we need to consider a better solution.  
+      # ActiveRecord has an enum type, but uses integers to store the value, which has drawbacks.  
+      t.string :marital_status_at_time_of_death 
+      t.string :education
+      t.string :hispanic_origin
+      t.string :race
+      t.string :usual_occupation
+      t.string :kind_of_business
+      #demographics - end
+
       # Place of Death (notes from standard cert):
       # PLACE OF DEATH (Check only one: see instructions)
       # IF DEATH OCCURRED IN A HOSPITAL: Inpatient / Emergency Room/Outpatient / Dead on Arrival
@@ -16,58 +60,58 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       t.string :place_of_death_facility_name
       t.string :place_of_death_street_number, :place_of_death_appt_number, :place_of_death_city, 
         :place_of_death_state, :place_of_death_country, :place_of_death_zip_code
-      
+
       # Date/time of death
       # TODO: We may want to combine date and time into a datetime field
       t.time :time_pronounced_dead
       t.date :date_pronounced_dead
-      
+
       # TODO: We may want to model this as a relationship to a separate medical_certifier
       # TODO: We need to be clear on how this is distinct from #48
       t.string :pronouncing_medical_certifier_license_number
-      
+
       t.date :pronouncing_medical_certifier_date_of_signature
-      
+
       # actual or presumed date/time of death
       # TODO: We may want to combine date and time into a datetime field
       t.date :actual_or_presumed_date_of_death
       t.time :actual_or_presumed_time_of_death
-      
+
       t.boolean :was_medical_examiner_or_coroner_contacted
       t.boolean :was_an_autopsy_performed
       t.boolean :were_autopsy_findings_available
-      
+
       # TODO: We need to enforce that this field is constrained to particular values, perhaps using postgres enumerated types
       t.string :did_tobacco_use_contribute_to_death
-      
+
       # Pregnancy status (notes from standard cert):
       # IF FEMALE: Not pregnant within past year / Pregnant at time of death / Not pregnant, but pregnant within 42 days of death /
       # Not pregnant, but pregnant 43 days to 1 year before death /  Unknown if pregnant within the past year
       # TODO: We need to enforce that this field is constrained to particular values, perhaps using postgres enumerated types
       t.string :pregnancy_status
-      
+
       # TODO: We need to enforce that this field is constrained to particular values, perhaps using postgres enumerated types
       t.string :manner_of_death
-      
+
       # Date/time of injury
       # TODO: We may want to combine date and time into a datetime field
       t.time :time_of_injury
       t.date :date_of_injury
-      
+
       # This has values of 'yes', 'no', and 'unknown'  Still modeled as a boolean
       # 'unknown' is null
       t.boolean :injury_at_work
-      
+
       #PLACE OF INJURY (e.g., Decedent’s home; construction site; restaurant; wooded area)
       t.string :place_of_injury
-      
+
       t.string :location_of_injury_state, :location_of_injury_city, :location_of_injury_street_and_number, :location_of_injury_apartment_number,
                :location_of_injury_zip_code
       t.string :description_of_injury_occurrence
       t.boolean :transportation_injury
       # TODO: We need to enforce that this field is constrained to particular values, perhaps using postgres enumerated types (allowing other)
       t.string :transportation_injury_role, :transportation_injury_role_specified
-      
+
       # 45. CERTIFIER (Check only one)
 
       # Certifying physician: To the best of my knowledge, death occurred due to the cause(s) and manner
@@ -97,9 +141,9 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       # 48. LICENSE NUMBER
       # TODO: We may want to model this as a relationship to a separate medical_certifier
       t.string :medical_certifier_license_number
-      
+
       t.date :date_certified
-      
+
       t.timestamps
     end
   end

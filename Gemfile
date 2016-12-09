@@ -41,6 +41,9 @@ gem 'rolify'
 # Authorization framework
 gem 'pundit'
 
+# Form builder
+gem 'simple_form'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
