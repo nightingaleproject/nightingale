@@ -1,0 +1,52 @@
+<%= simple_form_for(@death_record, html: { class: 'form-vertical' }) do |f| %>
+
+  <fieldset>
+    <legend>Decedent's Legal Name</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.input :first_name, label: 'First Name', error: 'First name is mandatory, please specify one' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :middle_name, label: 'Middle Name' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :last_name, label: 'Last Name', error: 'Last name is mandatory, please specify one' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :suffix, label: 'Suffix' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Social Security Number</legend>
+    
+  </fieldset>
+  
+  <fieldset>
+    <legend>Decedent's Residence</legend>
+    
+  </fieldset>
+  
+  <fieldset>
+    <legend>Surviving Spouse's Name</legend>
+    
+  </fieldset>
+  
+  <fieldset>
+    <legend>Father's Name</legend>
+    
+  </fieldset>
+  
+  <fieldset>
+    <legend>Mother's Name</legend>
+    
+  </fieldset>
+
+
+  <%= f.input :name %>
+  <%= f.button :submit %>
+  
+<% end %>

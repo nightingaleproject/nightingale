@@ -2,70 +2,23 @@
 class DeathRecordsController < ApplicationController
   before_action :authenticate_user!, :set_death_record, only: [:show, :edit, :update, :destroy]
 
-  # GET /death_records
-  # GET /death_records.json
   def index
     @death_records = DeathRecordsPolicy::Scope.new(current_user, DeathRecord).resolve  
   end
 
-  # GET /death_records/1
-  # GET /death_records/1.json
   def show
+    require 'byebug'; debugger
   end
 
-  # GET /death_records/new
-  def new
-    @death_record = DeathRecord.new
-    @death_record.user_id = current_user[:id]
-    if @death_record.save
-      redirect_to edit_death_record_path(@death_record), id: @death_record.id
-    else
-      redirect_to index_death_record_path
-    end
-  end
-
-  # GET /death_records/1/edit
-  def edit
-  end
-
-  # POST /death_records
-  # POST /death_records.json
   def create
     @death_record = DeathRecord.new(death_record_params)
-
-    respond_to do |format|
-      if @death_record.save
-        format.html { redirect_to @death_record }
-        format.json { render :show, status: :created, location: @death_record }
-      else
-        format.html { render :new }
-        format.json { render json: @death_record.errors, status: :unprocessable_entity }
-      end
-    end
+    @death_record.save
+    redirect_to @death_record
   end
 
-  # PATCH/PUT /death_records/1
-  # PATCH/PUT /death_records/1.json
   def update
-    respond_to do |format|
-      if @death_record.update(death_record_params)
-        format.html { redirect_to @death_record }
-        format.json { render :show, status: :ok, location: @death_record }
-      else
-        format.html { render :edit }
-        format.json { render json: @death_record.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /death_records/1
-  # DELETE /death_records/1.json
-  def destroy
-    @death_record.destroy
-    respond_to do |format|
-      format.html { redirect_to death_records_url }
-      format.json { head :no_content }
-    end
+    @death_record.update(death_record_params)
+    redirect_to @death_record
   end
 
   private
