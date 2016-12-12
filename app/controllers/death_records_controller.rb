@@ -1,19 +1,24 @@
 # Death Records Controller
 class DeathRecordsController < ApplicationController
-  before_action :authenticate_user!, :set_death_record, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :set_death_record, only: [:show, :update]
+
+  include Wicked::Wizard
+  steps :identity, :demographics, :disposition, :medical
 
   def index
     @death_records = DeathRecordsPolicy::Scope.new(current_user, DeathRecord).resolve  
   end
 
   def show
-    require 'byebug'; debugger
+    @death_record
+    render_wizard
   end
 
   def create
-    @death_record = DeathRecord.new(death_record_params)
+    @death_record = DeathRecord.new
+    @death_record.user_id = current_user[:id]
     @death_record.save
-    redirect_to @death_record
+    redirect_to death_record_path(:identity, death_record_id: @death_record.id)
   end
 
   def update
@@ -25,7 +30,7 @@ class DeathRecordsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_death_record
-    @death_record = DeathRecord.find(params[:id])
+    @death_record = DeathRecord.find(params[:death_record_id])
   end
 
   # Never trust parameters from the internet, only allow the white list through.
