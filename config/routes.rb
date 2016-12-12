@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :causes_of_deaths
   resources :cause_of_deaths
-  resources :death_records
+  resources :death_records do
+    resources :steps, only: [:show, :update], controller: 'death_record/steps'
+  end
 
   use_doorkeeper
 

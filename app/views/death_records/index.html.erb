@@ -1,9 +1,5 @@
 <%= javascript_include_tag 'application' %>
 
-<%= link_to 'Edit profile', edit_user_registration_path %> | <%= link_to 'Logout', destroy_user_session_path %>
-
-<br>
-
 <% if current_user.has_role? :funeral_director %>
   <h1>Create New Death Record</h1>
   <%= link_to 'New Death Record', death_records_path, method: :post %>

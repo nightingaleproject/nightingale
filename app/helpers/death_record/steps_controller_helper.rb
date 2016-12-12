@@ -1,0 +1,2 @@
+module DeathRecord::StepsControllerHelper
+end

@@ -2,54 +2,44 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
   def change
     create_table :death_records do |t|
 
-      # information about the decedent's death
-      # Note:  Thought about creating entities like Injury & PlaceOfDeath, but 
-      # for now I have held off.  I think they would simply be 1-to-1 models and 
-      # I'm not sure that gets us anything.  That may change
-
-      # identity information - start
+      ### Identity information
 
       t.string :first_name, :middle_name, :last_name
-      t.string :suffixes  #is string field sufficient?
-      t.string :akas  #is string field sufficient?
+      t.string :suffixes
+      t.string :akas
       t.string :social_security_number
 
-      #decedent's residence
-      t.string :street_number, :appt_number, :city, :state, :country, :zip_code
+      # Decedent's Residence
+      t.string :street, :appt_number, :city, :state, :county, :zip_code
       t.boolean :inside_city_limits
 
-      #TODO:  Consider some kind of "Identity" abstraction for things like spouse,
-      # father, mother
-      #decedent's spouse information
+      # Decedent's Spouse Information
       t.string :spouse_first_name, :spouse_last_name, :spouse_middle_name, :spouse_suffixes
 
-      #decedent's father information
+      # Decedent's Father Information
       t.string :father_first_name, :father_last_name, :father_middle_name, :father_suffixes
 
-      #decedent's mother information
+      # Decedent's Mother Information
       t.string :mother_first_name, :mother_last_name, :mother_middle_name, :mother_suffixes
 
-      # identity information - end
-
-      # demographics - start
+      ### Demographics
 
       t.string :sex
       t.date :date_of_birth
 
-      #birth place information
+      # Birth Place Information
       t.string :birthplace_city, :birthplace_state, :birthplace_country
 
       t.boolean :ever_in_us_armed_forces
 
-      #series of enumerated values.  For now storing as strings, but we need to consider a better solution.  
-      # ActiveRecord has an enum type, but uses integers to store the value, which has drawbacks.  
+      # MARITAL STATUS AT TIME OF DEATH Married / Married, but separated / Widowed / Divorced / Never Married / Unknown
+      # TODO: We need to enforce that this field is constrained to particular values, perhaps using postgres enumerated types
       t.string :marital_status_at_time_of_death 
       t.string :education
       t.string :hispanic_origin
       t.string :race
       t.string :usual_occupation
       t.string :kind_of_business
-      #demographics - end
 
       # Place of Death (notes from standard cert):
       # PLACE OF DEATH (Check only one: see instructions)
