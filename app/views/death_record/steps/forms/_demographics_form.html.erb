@@ -1,0 +1,177 @@
+<%= simple_form_for(@death_record, html: { class: 'form-vertical' }, method: :put, url: wizard_path) do |f| %>
+
+  <fieldset>
+    <legend>Sex</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <%= f.input :sex, label: false, as: :radio_buttons, :collection => ['Male', 'Female', 'Unknown'], error: "Can't be blank, please select one."%>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Date of Birth</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-5">
+           <%= f.input :date_of_birth, label: false,  as: :date, start_year: Date.today.year - 250,
+                    end_year: Date.today.year, order: [:month, :day, :year] %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Place of Birth</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-5">
+          <%= f.input :birthplace_city, label: 'City', error: 'City is mandatory, please specify one.' %>
+        </div>
+        <div class="col-md-2">
+          <%= f.input :birthplace_state, label: 'State', error: 'State is mandatory, please specify one.' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :birthplace_country, as: :string, label: 'Country', error: 'Country is mandatory, please specify one.' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Armed Forces Service</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <%= f.input :ever_in_us_armed_forces, label: false, as: :radio_buttons, :collection => ['Yes', 'No', 'Unknown'], error: "Can't be blank, please select one." %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Marital Status</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <%= f.input :marital_status_at_time_of_death, label: false, as: :radio_buttons, :collection => ['Married',
+                                                                                                          'Married but separated',
+                                                                                                          'Widowed (but not remarried)',
+                                                                                                          'Divorced (but not remarried)',
+                                                                                                          'Never married',
+                                                                                                          'Unknown'], error: "Can't be blank, please select one." %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Education</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <%= f.input :education, label: false, as: :radio_buttons, :collection => ['8th grade or less', 
+                                                                                    '9th - 12th grade, no diploma', 
+                                                                                    'High school graduate or GED completed', 
+                                                                                    'Some college credit, but no degree', 
+                                                                                    'Associate\'s degree', 
+                                                                                    'Bachelor\'s degree', 
+                                                                                    'Master\'s degree', 
+                                                                                    'Doctorate or Professional degree', 
+                                                                                    'Refused', 
+                                                                                    'Not Obtainable', 
+                                                                                    'Unknown', 
+                                                                                    'Not Classifiable'], error: "Can't be blank, please select one." %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Hispanic Origin</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <%= f.input :hispanic_origin, label: 'Is the decedent of hispanic origin?', as: :radio_buttons, :collection => ['Yes', 
+                                                                                                                          'No', 
+                                                                                                                          'Refused', 
+                                                                                                                          'Not Obtainable', 
+                                                                                                                          'Unknown'] %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <%= f.input :hispanic_origin_explain, label: 'If yes, please specify', as: :check_boxes, :collection => ['Mexican, Mexican American, Chicano', 
+                                                                                                           'Puerto Rican', 
+                                                                                                           'Cuban', 
+                                                                                                           'Other Spanish/Hispanic/Latino (specify)']%>
+          <%= f.input :hispanic_origin_other_specify, label: false %>                                                     
+        </div>                                                                                                     
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Race</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <%= f.input :race, label: false, as: :radio_buttons, :collection => ['Refused', 
+                                                                               'Not Obtainable', 
+                                                                               'Unknown'] %>
+                                                                                         
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <%= f.input :race_explain, label: false, as: :check_boxes, :collection => ['White', 
+                                                                             'Black or African American', 
+                                                                             'American Indian or Alaskan Native (specify tribe)', 
+                                                                             'Asian Indian', 
+                                                                             'Chinese',
+                                                                             'Filipino',
+                                                                             'Japanese',
+                                                                             'Korean',
+                                                                             'Vietnamese',
+                                                                             'Other Asian (specify)',
+                                                                             'Native Hawaiian',
+                                                                             'Guamanian or Chamorro',
+                                                                             'Samoan',
+                                                                             'Other Pacific Islander (specify)',
+                                                                             'Other (specify)'] %>
+          <%= f.input :race_other_specify, label: false %>                                                     
+        </div>                                                                                                     
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Usual Occupation</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <%= f.input :usual_occupation, label: false, as: :text, error: "Can't be blank."%>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Kind of Business</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <%= f.input :kind_of_business, label: false, as: :text, error: "Can't be blank."%>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="text-right">
+    <%= f.button :button, 'Cancel', type: :reset, class: 'btn btn-none' %>
+    <%= f.button :submit, 'Next', class: 'btn btn-primary' %>
+  </div>
+
+<% end %>

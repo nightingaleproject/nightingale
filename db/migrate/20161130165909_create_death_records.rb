@@ -30,16 +30,47 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       # Birth Place Information
       t.string :birthplace_city, :birthplace_state, :birthplace_country
 
-      t.boolean :ever_in_us_armed_forces
+      t.string :ever_in_us_armed_forces
 
       # MARITAL STATUS AT TIME OF DEATH Married / Married, but separated / Widowed / Divorced / Never Married / Unknown
       # TODO: We need to enforce that this field is constrained to particular values, perhaps using postgres enumerated types
       t.string :marital_status_at_time_of_death 
       t.string :education
+      
       t.string :hispanic_origin
+      t.string :hispanic_origin_explain
+      t.string :hispanic_origin_other_specify
+      
       t.string :race
+      t.string :race_explain
+      t.string :race_other_specify
+
       t.string :usual_occupation
       t.string :kind_of_business
+
+      # Disposition Information
+      # 18. METHOD OF DISPOSITION: Burial / Cremation / Donation / Entombment / Removal from State / Other (Specify)
+      t.string :method_of_disposition, :method_of_disposition_specified
+
+      # 19. PLACE OF DISPOSITION (Name of cemetery, crematory, other place)
+      t.string :place_of_disposition
+
+      # 20. LOCATION-CITY, TOWN, AND STATE
+      t.string :place_of_disposition_city, :place_of_disposition_state
+
+      # 21. NAME AND COMPLETE ADDRESS OF FUNERAL FACILITY
+      t.string :funeral_facility_name, :funeral_facility_street_and_number, :funeral_facility_city, :funeral_facility_state,
+               :funeral_facility_zip, :funeral_facility_county
+
+        # 23. LICENSE NUMBER (Of Licensee)
+      t.string :funeral_director_license_number
+
+      # 13a. INFORMANT’S NAME
+      t.string :informants_name_first, :informants_name_middle, :informants_name_last, :informants_suffixes
+
+      # 13c. MAILING ADDRESS (Street and Number, City, State, Zip Code)
+      t.string :informants_mailing_address_street_and_number, :informants_appt_number, :informants_mailing_address_city, :informants_mailing_address_state,
+               :informants_mailing_address_zip_code, :informants_mailing_address_county
 
       # Place of Death (notes from standard cert):
       # PLACE OF DEATH (Check only one: see instructions)

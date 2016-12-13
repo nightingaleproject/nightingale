@@ -45,7 +45,24 @@ class DeathRecord < ApplicationRecord
 
   # Disposition fields required
   with_options if: -> { required_for_step?(:disposition) } do |step|
-    # TODO
+    step.validates :method_of_disposition, presence: true
+    step.validates :place_of_disposition, presence: true
+    step.validates :place_of_disposition_city, presence: true
+    step.validates :place_of_disposition_state, presence: true
+    step.validates :funeral_facility_name, presence: true
+    step.validates :funeral_facility_street_and_number, presence: true
+    step.validates :funeral_facility_city, presence: true
+    step.validates :funeral_facility_state, presence: true
+    step.validates :funeral_facility_zip, presence: true
+    step.validates :funeral_facility_county, presence: true
+    step.validates :funeral_director_license_number, presence: true
+    step.validates :informants_name_first, presence: true
+    step.validates :informants_name_last, presence: true
+    step.validates :informants_mailing_address_street_and_number, presence: true
+    step.validates :informants_mailing_address_city, presence: true
+    step.validates :informants_mailing_address_state, presence: true
+    step.validates :informants_mailing_address_zip_code, presence: true
+    step.validates :informants_mailing_address_county, presence: true
   end
 
   # Medical fields required
