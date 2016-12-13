@@ -14,7 +14,7 @@ class DeathRecord::StepsController < ApplicationController
   end
 
   private
-  
+
   # Never trust parameters from the internet, only allow the white list through.
   # TODO
   def death_record_params(step)
