@@ -3,7 +3,7 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
     create_table :death_records do |t|
 
       ### Identity information
-
+      t.string :record_status
       t.string :first_name, :middle_name, :last_name
       t.string :suffixes
       t.string :akas

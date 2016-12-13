@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20161208205019) do
   end
 
   create_table "death_records", force: :cascade do |t|
+    t.string   "record_status"
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"

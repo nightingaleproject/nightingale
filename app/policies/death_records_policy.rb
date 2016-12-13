@@ -4,9 +4,9 @@ class DeathRecordsPolicy < ApplicationPolicy
   # Scope for determining which death records the current user can view.
   class Scope < Scope
     def resolve
-      if user.admin?
+      if !user.nil? && user.admin?
           scope.all
-      else
+      elsif !user.nil?
           scope.where(user_id: user.id)
       end
     end
