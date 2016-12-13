@@ -1,0 +1,17 @@
+fieldset {
+    border: 2px solid #BBB;
+    padding: 0 1em 1em 1em;
+    margin: 0 0 3.5em 0;
+}
+
+legend {
+    font-size: 1.8em;
+    font-weight: medium;
+    width: inherit;
+    padding: 0 10px;
+    border-bottom: none;
+}
+
+* {
+  border-radius: 0 !important;
+}

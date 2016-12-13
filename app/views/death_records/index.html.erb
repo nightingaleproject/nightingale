@@ -1,27 +1,24 @@
 <%= javascript_include_tag 'application' %>
 
 <% if current_user.has_role? :funeral_director %>
-  <h1>Create New Death Record</h1>
-  <%= link_to 'New Death Record', death_records_path, method: :post %>
+  <div class="container">
+    <%= link_to 'New Death Record', death_records_path, method: :post, :class => "btn btn-success" %>
+  </div>
 <% end %>
 
-<br>
+<div class="container">
+  <div class="list-group">
 
-<h1>Your Active Death Records</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
     <% @death_records.each do |death_record| %>
-      <tr>
-        <td><%= link_to 'Show', death_record %></td>
-        <td><%= link_to 'Edit', edit_death_record_path(death_record) %></td>
-        <td><%= link_to 'Delete', death_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <li class="list-group-item">
+        Created: <%= death_record.created_at %>
+        <div class="btn-group">
+          <%= link_to 'Show', death_record, :class => "btn btn-primary" %>
+          <%= link_to 'Edit', edit_death_record_path(death_record), :class => "btn btn-primary" %>
+          <%= link_to 'Delete', death_record, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+        </div>
+      </li>
     <% end %>
-  </tbody>
-</table>
+
+  </div>
+</div>

@@ -1,1 +1,21 @@
-<%= step %>
+<% if step == 'identity' %>
+  <b>Identity</b><br>
+  Demographics<br>
+  Disposition<br>
+  Medical<br>
+<% elsif step == 'demographics' %>
+  Identity<br>
+  <b>Demographics</b><br>
+  Disposition<br>
+  Medical<br>
+<% elsif step == 'disposition' %>
+  Identity<br>
+  Demographics<br>
+  <b>Disposition</b><br>
+  Medical<br>
+<% elsif step == 'medical' %>
+  Identity<br>
+  Demographics<br>
+  Disposition<br>
+  <b>Medical</b><br>
+<% end %>
