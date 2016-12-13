@@ -24,3 +24,27 @@ legend {
 * {
   border-radius: 0 !important;
 }
+
+.breadcrumb {
+  background: #FFFFFF;
+}
+
+a.edrs-bc-link {
+  color: #226891 !important;
+  background-color: white;
+}
+
+a.edrs-bc-link:visited {
+    color: #226891 !important;
+    background-color: white;
+}
+
+a.edrs-bc-link:hover {
+    color: #226891 !important;
+    background-color: white;
+}
+
+a.edrs-bc-link:active {
+    color: #226891 !important;
+    background-color: white;
+}
