@@ -20,7 +20,9 @@
                 <%= death_record.updated_at %>
               </td>
               <td>
-                <%= link_to '<span class="fa fa-arrow-circle-right"></span> Continue'.html_safe, death_record_step_path(death_record, id: death_record.record_status), :class => "btn btn-primary" %>
+                <% unless current_user.has_role? :registrar %>
+                  <%= link_to '<span class="fa fa-arrow-circle-right"></span> Continue'.html_safe, death_record_step_path(death_record, id: death_record.record_status), :class => "btn btn-primary" %>
+                <% end %>
                 <%= link_to '<span class="fa fa-search"></span> View'.html_safe, death_record, :class => "btn btn-primary" %>
                 <%= link_to '<span class="fa fa-trash"></span> Delete'.html_safe, death_record, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
               </td>
