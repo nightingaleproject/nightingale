@@ -1,5 +1,6 @@
 # Death Record model
 class DeathRecord < ApplicationRecord
+  audited only: :user_id
   has_many :cause_of_death, -> { order(position: :asc) }, dependent: :destroy
   accepts_nested_attributes_for :cause_of_death
   belongs_to :user
