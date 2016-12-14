@@ -46,11 +46,14 @@
                 <tr>
                     <td>Place of Death Address</td>
                     <td>
-                        <span>
-                            <%= @death_record.place_of_death_street_number %>, <%= @death_record.place_of_death_appt_number %>
-                            <%= @death_record.place_of_death_city %>, <%= @death_record.place_of_death_state %>
-                            <%= @death_record.place_of_death_zip_code %> <%= @death_record.place_of_death_country %>
-                        </span>
+                        <%= 
+                          display_address(@death_record.place_of_death_street_number,
+                                          @death_record.place_of_death_city,
+                                          @death_record.place_of_death_state,
+                                          @death_record.place_of_death_zip_code,
+                                          country: @death_record.place_of_death_country,
+                                          apartment_number: @death_record.place_of_death_appt_number)
+                        %>
                     </td>
                 </tr>
                 <tr>
@@ -92,11 +95,13 @@
                 <tr>
                     <td>Address:</td>
                     <td>
-                        <span>
-                            <%= @death_record.location_of_injury_street_and_number %>&nbsp;<%= @death_record.location_of_injury_apartment_number %>
-                            <%= @death_record.location_of_injury_city %>, <%= @death_record.location_of_injury_state %>
-                            <%= @death_record.location_of_injury_zip_code %>
-                        </span>
+                        <%= 
+                          display_address(@death_record.location_of_injury_street_and_number,
+                                          @death_record.location_of_injury_city,
+                                          @death_record.location_of_injury_state,
+                                          @death_record.location_of_injury_zip_code,
+                                          apartment_number: @death_record.location_of_injury_apartment_number)
+                        %>
                     </td>
                 </tr>
                 <tr>
@@ -138,11 +143,13 @@
                 <tr>
                     <td>Residence</td> 
                     <td>
-                        <span>
-                            <%= @death_record.street %>&nbsp;<%= @death_record.appt_number %>
-                            <%= @death_record.city %>, <%= @death_record.state %>
-                            <%= @death_record.zip_code %>
-                        </span>
+                        <%= 
+                          display_address(@death_record.street,
+                                          @death_record.city,
+                                          @death_record.state,
+                                          @death_record.zip_code, 
+                                          apartment_number: @death_record.appt_number)
+                        %>
                     </td>
                 </tr>
                 <tr>
@@ -229,10 +236,18 @@
                             Name: <%= @death_record.medical_certifier_last %>, <%= @death_record.medical_certifier_first %><br/>
                             Title: <%= @death_record.medical_certifier_title %><br/>
                             License Number: <%= @death_record.medical_certifier_license_number %><br/>
-                            Address: 
-                            <%= @death_record.medical_certifier_street_and_number %><br/>
-                            <%= @death_record.medical_certifier_city %>, <%= @death_record.medical_certifier_state %> <%= @death_record.medical_certifier_zip_code %><br/>
                         </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Certifier Address</td>
+                    <td>
+                        <%= 
+                        display_address(@death_record.medical_certifier_street_and_number,
+                          @death_record.medical_certifier_city,
+                          @death_record.medical_certifier_state,
+                          @death_record.medical_certifier_zip_code)
+                      %>
                     </td>
                 </tr>
             </table>
