@@ -1,21 +1,23 @@
-<% if step == 'identity' %>
-  <b>Identity</b><br>
-  Demographics<br>
-  Disposition<br>
-  Medical<br>
-<% elsif step == 'demographics' %>
-  Identity<br>
-  <b>Demographics</b><br>
-  Disposition<br>
-  Medical<br>
-<% elsif step == 'disposition' %>
-  Identity<br>
-  Demographics<br>
-  <b>Disposition</b><br>
-  Medical<br>
-<% elsif step == 'medical' %>
-  Identity<br>
-  Demographics<br>
-  Disposition<br>
-  <b>Medical</b><br>
-<% end %>
+<h5>
+  <% if step == 'identity' %>
+    <span class="fa fa-arrow-right"></span> <b>Identity</b><br><br>
+    <span class="fa fa-square-o"></span> Demographics<br><br>
+    <span class="fa fa-square-o"></span> Disposition<br><br>
+    <span class="fa fa-square-o"></span> Medical
+  <% elsif step == 'demographics' %>
+    <span class="fa fa-check-square-o"></span> Identity<br><br>
+    <span class="fa fa-arrow-right"></span> <b>Demographics</b><br><br>
+    <span class="fa fa-square-o"></span> Disposition<br><br>
+    <span class="fa fa-square-o"></span> Medical
+  <% elsif step == 'disposition' %>
+    <span class="fa fa-check-square-o"></span> Identity<br><br>
+    <span class="fa fa-check-square-o"></span> Demographics<br><br>
+    <span class="fa fa-arrow-right"></span> <b>Disposition</b><br><br>
+    <span class="fa fa-square-o"></span>Medical
+  <% elsif step == 'medical' %>
+    <span class="fa fa-check-square-o"></span> Identity<br><br>
+    <span class="fa fa-check-square-o"></span> Demographics<br><br>
+    <span class="fa fa-fa-check-square-o"></span> Disposition<br><br>
+    <span class="fa fa-arrow-right"></span> <b>Medical</b>
+  <% end %>
+</h5>

@@ -69,3 +69,7 @@ a.edrs-bc-link:active {
   float: none;
   margin: 0 auto;
 }
+
+[class^="icon-"].icon-fixed-width, [class*=" icon-"].icon-fixed-width {
+    text-align: center;
+}
