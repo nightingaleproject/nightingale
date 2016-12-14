@@ -6,14 +6,10 @@
       </div>
       <div class="row">
         <div class="col-md-2">
-          <%= render 'death_record/steps/progress', step: 'medical' %>
+          <%= render 'death_record/steps/progress', step: 'fd_to_me' %>
         </div> 
         <div class="col-md-10">
-          <% if current_user.has_role? :physician %>
-            <%= render 'death_record/steps/forms/medical_form' %>
-          <% elsif current_user.has_role? :medical_examiner %> %>
-            <%= render 'death_record/steps/forms/medical_form' %>
-          <% end %>
+          <%= render 'death_record/steps/forms/send_to_medical_form'%>
         </div>
       </div>
     </div>

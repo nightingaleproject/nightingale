@@ -78,9 +78,10 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       # IF DEATH OCCURRED SOMEWHERE OTHER THAN A HOSPITAL: Hospice facility / Nursing home/Long term care facility /
       # Decedent’s home / Other (Specify)
       # TODO: We need to enforce that this field is constrained to particular values, perhaps using postgres enumerated types (allowing other)
+      t.string :place_of_death_type, :place_of_death_type_specific
       t.string :place_of_death_facility_name
       t.string :place_of_death_street_number, :place_of_death_appt_number, :place_of_death_city, 
-        :place_of_death_state, :place_of_death_country, :place_of_death_zip_code
+        :place_of_death_state, :place_of_death_county, :place_of_death_zip_code
 
       # Date/time of death
       # TODO: We may want to combine date and time into a datetime field
@@ -96,9 +97,11 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       # actual or presumed date/time of death
       # TODO: We may want to combine date and time into a datetime field
       t.date :actual_or_presumed_date_of_death
+      t.string :type_of_date_of_death
       t.time :actual_or_presumed_time_of_death
+      t.string :type_of_time_of_death
 
-      t.boolean :was_medical_examiner_or_coroner_contacted
+      t.string :was_medical_examiner_or_coroner_contacted
       t.boolean :was_an_autopsy_performed
       t.boolean :were_autopsy_findings_available
 
@@ -152,8 +155,8 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
 
       # 46. NAME, ADDRESS, AND ZIP CODE OF PERSON COMPLETING CAUSE OF DEATH (Item 32)
       # TODO: We likely want to model this as a relationship to a separate medical_certifier
-      t.string :medical_certifier_first, :medical_certifier_last, :medical_certifier_state, :medical_certifier_city, :medical_certifier_street_and_number,
-               :medical_certifier_zip_code
+      t.string :medical_certifier_first, :medical_certifier_middle, :medical_certifier_last, :medical_certifier_suffix, :medical_certifier_state, :medical_certifier_city, :medical_certifier_street_and_number,
+               :medical_certifier_apt, :medical_certifier_zip_code, :medical_certifier_county
 
       # 47. TITLE OF CERTIFIER
       # TODO: We likely want to model this as a relationship to a separate medical_certifier

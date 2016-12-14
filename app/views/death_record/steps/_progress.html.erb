@@ -13,11 +13,11 @@
     <span class="fa fa-check-square-o"></span> Identity<br><br>
     <span class="fa fa-check-square-o"></span> Demographics<br><br>
     <span class="fa fa-arrow-right"></span> <b>Disposition</b><br><br>
-    <span class="fa fa-square-o"></span>Medical
-  <% elsif step == 'medical' %>
+    <span class="fa fa-square-o"></span> Medical
+  <% elsif step == 'medical' || step == 'fd_to_me'%>
     <span class="fa fa-check-square-o"></span> Identity<br><br>
     <span class="fa fa-check-square-o"></span> Demographics<br><br>
-    <span class="fa fa-fa-check-square-o"></span> Disposition<br><br>
+    <span class="fa fa-check-square-o"></span> Disposition<br><br>
     <span class="fa fa-arrow-right"></span> <b>Medical</b>
   <% end %>
 </h5>

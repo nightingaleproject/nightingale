@@ -5,16 +5,18 @@ class DeathRecord::StepsController < ApplicationController
   def show
     @death_record = DeathRecord.find(params[:death_record_id])
     @users_with_medical_roles = User.with_any_role(:physician, :medical_examiner)
+    @registrars = User.with_any_role(:registrar)
     render_wizard
   end
 
   def update
-    @death_record = DeathRecord.find(params[:death_record_id])      
-    if @death_record.update(death_record_params(step))
-      unless step == 'medical' && !(current_user.has_role? :physician)
-        @death_record.record_status = next_step
-      end
-    end
+    @death_record = DeathRecord.find(params[:death_record_id])   
+    @death_record.record_status = next_step
+    @death_record.update(death_record_params(step))
+    # Special Case when transfering ownership from Funeral director to physician or ME
+    if step == 'fd_to_me'
+      redirect_to root_path and return
+    end         
     render_wizard @death_record
   end
 
