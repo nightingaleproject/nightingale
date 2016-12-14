@@ -1,22 +1,44 @@
-<% if current_user.has_role? :funeral_director %>
-  <div class="container">
-    <%= link_to 'New Death Record', death_records_path, method: :post, :class => "btn btn-success" %>
-  </div>
-<% end %>
-
 <div class="container">
-  <div class="list-group">
-
-    <% @death_records.each do |death_record| %>
-      <li class="list-group-item">
-        Created: <%= death_record.created_at %>
-        <div class="btn-group">
-          <%= link_to 'Continue', death_record_step_path(death_record, id: death_record.record_status), :class => "btn btn-primary" %>
-          <%= link_to 'View', death_record, :class => "btn btn-primary" %>
-          <%= link_to 'Delete', death_record, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
-        </div>
-      </li>
+  <fieldset>
+    <legend>In progress Death Records</legend>
+    <% if !@death_records.nil? && !@death_records.empty? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Started</th>
+            <th>Last Modified</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @death_records.each do |death_record| %>
+            <tr>
+              <td>
+                <%= death_record.created_at %>
+              </td>
+              <td>
+                <%= death_record.updated_at %>
+              </td>
+              <td>
+                <%= link_to '<span class="fa fa-arrow-circle-right"></span> Continue'.html_safe, death_record_step_path(death_record, id: death_record.record_status), :class => "btn btn-primary" %>
+                <%= link_to '<span class="fa fa-search"></span> View'.html_safe, death_record, :class => "btn btn-primary" %>
+                <%= link_to '<span class="fa fa-trash"></span> Delete'.html_safe, death_record, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="row">
+        <div class="col-centered text-center"><p><h4>No Death Records are currently associated with your account.</h4></p></div>
+      </div>
     <% end %>
-
-  </div>
+    <% if current_user.has_role? :funeral_director %>
+      <div class="row">
+        <div class="col-centered text-center">
+          <%= link_to '<span class="fa fa-plus"></span> Start a new Death Record'.html_safe, death_records_path, method: :post, :class => "btn btn-success" %>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>
 </div>

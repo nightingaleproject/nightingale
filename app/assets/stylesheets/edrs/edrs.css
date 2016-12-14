@@ -1,7 +1,7 @@
 fieldset {
     border: 2px solid #BBB;
     padding: 0 1em 1em 1em;
-    margin: 0 0 3.5em 0;
+    margin: 1.5em 0 3.5em 0;
 }
 
 legend {
@@ -25,6 +25,10 @@ legend {
   border-radius: 0 !important;
 }
 
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+
 .breadcrumb {
   background: #FFFFFF;
 }
@@ -35,16 +39,33 @@ a.edrs-bc-link {
 }
 
 a.edrs-bc-link:visited {
-    color: #226891 !important;
-    background-color: white;
+  color: #226891 !important;
+  background-color: white;
 }
 
 a.edrs-bc-link:hover {
-    color: #226891 !important;
-    background-color: white;
+  color: #226891 !important;
+  background-color: white;
 }
 
 a.edrs-bc-link:active {
-    color: #226891 !important;
-    background-color: white;
+  color: #226891 !important;
+  background-color: white;
+}
+
+.btn-primary {
+  color: #FFFFFF !important;
+}
+
+ .btn-danger {
+   color: #FFFFFF !important;
+ }
+
+ .btn-success {
+   color: #FFFFFF !important;
+ }
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
 }
