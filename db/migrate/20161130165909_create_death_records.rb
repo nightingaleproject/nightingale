@@ -168,6 +168,11 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
 
       t.date :date_certified
 
+      # registration fields
+      t.timestamp :time_registered
+      t.integer :registered_by_id
+      t.integer :certificate_number
+      
       t.timestamps
     end
   end

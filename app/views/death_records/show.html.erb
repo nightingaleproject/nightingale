@@ -4,17 +4,36 @@
 # and open the template in the editor.
 %>
 
-
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+    
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <h3>Death Record</h3>
         </div>
+        <div class="col-md-6">
+            <% if @death_record.time_registered %>
+              <table class="table">
+                  <tr>
+                     <td><h5>Certificate Number</h5></td>
+                      <td><%= @death_record.certificate_number %>
+                  </tr>
+                  <tr>
+                      <td><h5>Registered on</h5></td>
+                      <td><%= @death_record.time_registered.strftime("%b %d, %Y %l:%M %p") %>
+                      <td><h5>Registered by</h5></td>
+                      <td><%= @death_record.registered_by_id %>
+                  </tr>
+              </table>
+            <% end %>
+        </div>
     </div>
-    <% if current_user.has_role? :funeral_director %>
+    <% if current_user.has_role? :registrar and !@death_record.certificate_number %>
     <div class="container row">
-        <%= link_to 'Register Record', death_records_path, method: :post, :class => "btn btn-success" %>
-        <%= link_to 'Deny Record', death_records_path, method: :post, :class => "btn btn-cancel" %>
+        <%= link_to '<span class="fa fa-search"></span> Register'.html_safe, @death_record, method: :put, class: 'btn btn-primary' %>
+        <%= link_to '<span class="fa fa-search"></span> Deny'.html_safe, @death_record, class: 'btn btn-warning' %>
     </div>
     <% end %>
     <div class="row">
@@ -28,11 +47,15 @@
                 </tr>
                 <tr>
                     <td>Time Pronounced</td>
-                    <td><%= @death_record.date_pronounced_dead.strftime("%b %d, %Y") %> <%= @death_record.time_pronounced_dead.strftime("%l:%M %p") %></td>
+                    <td>
+                      <%= @death_record.date_pronounced_dead ? @death_record.date_pronounced_dead.strftime("%b %d, %Y") : '' %> <%= @death_record.time_pronounced_dead ? @death_record.time_pronounced_dead.strftime("%l:%M %p") : '' %>
+                    </td>
                 </tr>
                 <tr>
                     <td>Actual or Presume Time of Death</td> 
-                    <td><%= @death_record.actual_or_presumed_date_of_death.strftime("%b %d, %Y") %> <%= @death_record.actual_or_presumed_time_of_death.strftime("%l:%M %p") %></td>
+                    <td>
+                      <%= @death_record.actual_or_presumed_date_of_death ? @death_record.actual_or_presumed_date_of_death.strftime("%b %d, %Y") : '' %> <%= @death_record.actual_or_presumed_time_of_death ? @death_record.actual_or_presumed_time_of_death.strftime("%l:%M %p") : '' %>
+                    </td>
                 </tr>
             </table>
             <table class="table table-striped" name="death_record_details">
@@ -51,7 +74,7 @@
                                           @death_record.place_of_death_city,
                                           @death_record.place_of_death_state,
                                           @death_record.place_of_death_zip_code,
-                                          country: @death_record.place_of_death_country,
+                                          county: @death_record.place_of_death_county,
                                           apartment_number: @death_record.place_of_death_appt_number)
                         %>
                     </td>
@@ -82,7 +105,9 @@
                 </tr>
                 <tr>
                     <td>Time of Injury</td>
-                    <td><%= @death_record.date_of_injury.strftime("%b %d, %Y") %> <%= @death_record.time_of_injury.strftime("%l:%M %p") %></td>
+                    <td>
+                      <%= @death_record.date_of_injury ? @death_record.date_of_injury.strftime("%b %d, %Y") : '' %> <%= @death_record.time_of_injury ? @death_record.time_of_injury.strftime("%l:%M %p") : '' %>
+                    </td>
                 </tr>
                 <tr>
                     <td>Work Injury?</td>
@@ -223,7 +248,7 @@
                 </tr>
                 <tr>
                     <td>Date Certifier</td>
-                    <td><%= @death_record.date_certified.strftime("%b %d, %Y") %></td>
+                    <td><%= @death_record.date_certified ? @death_record.date_certified.strftime("%b %d, %Y") : '' %></td>
                 </tr>
                 <tr>
                     <td>Certifier Type</td>
