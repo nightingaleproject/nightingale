@@ -3,11 +3,11 @@ class DeathRecordsController < ApplicationController
   before_action :authenticate_user!, :set_death_record, only: [:show, :destroy]
 
   def index
-    @death_records = DeathRecordsPolicy::Scope.new(current_user, DeathRecord).resolve  
+    @death_records = DeathRecordsPolicy::Scope.new(current_user, DeathRecord).resolve
   end
 
   def show
-    #TODO if not logged in, redirect to login. 
+    # TODO: if not logged in, redirect to login.
   end
 
   def destroy
@@ -31,7 +31,7 @@ class DeathRecordsController < ApplicationController
   end
 
   # Never trust parameters from the internet, only allow the white list through.
-  # TODO
+  # TODO: Add back required fields.
   def death_record_params
     params.require(:death_record).permit!
   end

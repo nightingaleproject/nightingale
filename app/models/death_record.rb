@@ -86,9 +86,9 @@ class DeathRecord < ApplicationRecord
     step.validates :was_medical_examiner_or_coroner_contacted, presence: true
     step.validates :was_an_autopsy_performed, presence: true
     step.validates :were_autopsy_findings_available, presence: true
-    # TODO Validate first cause of death field.
-    #step.validates :cause, presense: true
-    #step.validates :interval_to_death, presense: true
+    # TODO: Validate first cause of death field.
+    # step.validates :cause, presense: true
+    # step.validates :interval_to_death, presense: true
     step.validates :did_tobacco_use_contribute_to_death, presence: true
     step.validates :pregnancy_status, presence: true
     step.validates :manner_of_death, presence: true

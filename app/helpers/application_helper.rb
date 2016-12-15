@@ -1,9 +1,9 @@
 # Application Helper
 module ApplicationHelper
   # helper method for displaying an address
-  # optionally expects 'country' and 'apartment_number' arguments
+  # optionally expects 'county' and 'apartment_number' arguments
   def display_address(street, city, state, zip_code, options = {})
-    country = options[:country]
+    county = options[:county]
     apartment_number = options[:apartment_number]
 
     # the container-fluid style adds some padding that makes it display odd.
@@ -28,10 +28,10 @@ module ApplicationHelper
           concat zip_code
         end)
       end)
-      if country
+      if county
         concat(content_tag(:tr) do
           concat(content_tag(:td, style: 'padding-left:0') do
-            concat country
+            concat county
           end)
         end)
       end
