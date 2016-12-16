@@ -11,7 +11,7 @@ one:
     place_of_death_appt_number: 234
     place_of_death_city: Medford
     place_of_death_state: MA
-    place_of_death_country: USA
+    place_of_death_county: Norfolk
     place_of_death_zip_code: 02014
     time_pronounced_dead: 
     date_pronounced_dead: 2016-10-10
@@ -56,7 +56,7 @@ two:
     place_of_death_appt_number: 234
     place_of_death_city: Medford
     place_of_death_state: MA
-    place_of_death_country: USA
+    place_of_death_county: Norfolk
     place_of_death_zip_code: 02014
     time_pronounced_dead: 
     date_pronounced_dead: 2016-10-10
@@ -133,12 +133,36 @@ three:
     race: 'Unknown'
     usual_occupation: 'Musician'
     kind_of_business: 'Entertainment'
+    method_of_disposition: 'cremation'
+    method_of_disposition_specified: 'no'
+    place_of_disposition: 'Joey''s Funeral Home'
+    place_of_disposition_city: 'Nashville'
+    place_of_disposition_state: 'TN'
+    funeral_facility_name: 'Joes''s Funeral Home'
+    funeral_facility_street_and_number: '13 Music St.'
+    funeral_facility_city: 'Nashville'
+    funeral_facility_state: 'TN'
+    funeral_facility_zip: '03033'
+    funeral_facility_county: 'Nashville County'
+    funeral_director_license_number: '12345'
+    informants_name_first: 'Billy Bob'
+    informants_name_middle: 'X.'
+    informants_name_last: 'Smith'
+    informants_suffixes: 'Jr.'
+    informants_mailing_address_street_and_number: '1 fake st.'
+    informants_appt_number: 'Apt 44'
+    informants_mailing_address_city: 'Nashville'
+    informants_mailing_address_state: 'TN'
+    informants_mailing_address_zip_code: '03033'
+    informants_mailing_address_county: 'Nashville County'
+    place_of_death_type: 'funeral home'
+    place_of_death_type_specific: 'n/a'
     place_of_death_facility_name: 'Norwood Hospital'
     place_of_death_street_number: '1 Lazy St.'
     place_of_death_appt_number: 'n/a'
     place_of_death_city: 'Norwood'
     place_of_death_state: 'MA'
-    place_of_death_country: 'USA'
+    place_of_death_county: 'Norfolk'
     place_of_death_zip_code: '02043'
     time_pronounced_dead: '2103'
     date_pronounced_dead: '12-03-2016'
@@ -146,6 +170,8 @@ three:
     pronouncing_medical_certifier_date_of_signature: '12-04-2016'
     actual_or_presumed_date_of_death: '12-03-2016'
     actual_or_presumed_time_of_death: '2102'
+    type_of_date_of_death: 'n/a'
+    type_of_time_of_death: 'n/a'
     was_medical_examiner_or_coroner_contacted: false
     was_an_autopsy_performed: false
     were_autopsy_findings_available: false
@@ -172,6 +198,7 @@ three:
     medical_certifier_city: 'Boston'
     medical_certifier_street_and_number: '1 ReallyFake St.'
     medical_certifier_zip_code: '02010'
+    medical_certifier_county: 'Suffox County'
     medical_certifier_title: 'Captain Certifier'
     medical_certifier_license_number: '654321'
     date_certified: '12-06-2016'

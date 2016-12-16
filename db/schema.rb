@@ -264,6 +264,9 @@ ActiveRecord::Schema.define(version: 20161214215046) do
     t.string   "medical_certifier_title"
     t.string   "medical_certifier_license_number"
     t.date     "date_certified"
+    t.datetime "time_registered"
+    t.integer  "registered_by_id"
+    t.integer  "certificate_number"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.integer  "user_id"
