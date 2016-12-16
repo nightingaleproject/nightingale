@@ -69,7 +69,7 @@
                 <tr>
                     <td>Place of Death Address</td>
                     <td>
-                        <%= 
+                        <%=
                           display_address(@death_record.place_of_death_street_number,
                                           @death_record.place_of_death_city,
                                           @death_record.place_of_death_state,
@@ -120,7 +120,7 @@
                 <tr>
                     <td>Address:</td>
                     <td>
-                        <%= 
+                        <%=
                           display_address(@death_record.location_of_injury_street_and_number,
                                           @death_record.location_of_injury_city,
                                           @death_record.location_of_injury_state,
@@ -158,43 +158,43 @@
                     <td><%= @death_record.last_name %> <%= @death_record.suffixes %>, <%= @death_record.first_name %> <%= @death_record.middle_name %></td>
                 </tr>
                 <tr>
-                    <td>AKAs</td> 
+                    <td>AKAs</td>
                     <td><%= @death_record.akas %></td>
                 </tr>
                 <tr>
-                    <td>Social Security Number</td> 
+                    <td>Social Security Number</td>
                     <td><%= @death_record.social_security_number %></td>
                 </tr>
                 <tr>
-                    <td>Residence</td> 
+                    <td>Residence</td>
                     <td>
-                        <%= 
+                        <%=
                           display_address(@death_record.street,
                                           @death_record.city,
                                           @death_record.state,
-                                          @death_record.zip_code, 
+                                          @death_record.zip_code,
                                           apartment_number: @death_record.appt_number)
                         %>
                     </td>
                 </tr>
                 <tr>
-                    <td>Sex</td> 
+                    <td>Sex</td>
                     <td><%= @death_record.sex %></td>
                 </tr>
                 <tr>
-                    <td>Date of Birth</td> 
+                    <td>Date of Birth</td>
                     <td><%= @death_record.date_of_birth %></td>
                 </tr>
                 <tr>
-                    <td>Served in US Armed Forces?</td> 
+                    <td>Served in US Armed Forces?</td>
                     <td><%= @death_record.ever_in_us_armed_forces ? 'yes' : 'no' %></td>
                 </tr>
                 <tr>
-                    <td>Place of Birth</td> 
+                    <td>Place of Birth</td>
                     <td><%= @death_record.birthplace_city %>, <%= @death_record.birthplace_state %> <%= @death_record.birthplace_country %></td>
                 </tr>
                 <tr>
-                    <td>Spouse</td> 
+                    <td>Spouse</td>
                     <td>
                         <span>
                           <%= @death_record.spouse_last_name %> <%= @death_record.spouse_suffixes %>, <%= @death_record.spouse_first_name %> <%= @death_record.spouse_middle_name %>
@@ -202,7 +202,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Father</td> 
+                    <td>Father</td>
                     <td>
                         <span>
                           <%= @death_record.father_last_name %> <%= @death_record.father_suffixes %>, <%= @death_record.father_first_name %> <%= @death_record.father_middle_name %>
@@ -210,7 +210,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Mother</td> 
+                    <td>Mother</td>
                     <td>
                         <span>
                           <%= @death_record.mother_last_name %> <%= @death_record.mother_suffixes %>, <%= @death_record.mother_first_name %> <%= @death_record.mother_middle_name %>
@@ -218,27 +218,27 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Marital Status at Time of Death</td> 
+                    <td>Marital Status at Time of Death</td>
                     <td><%= @death_record.marital_status_at_time_of_death %></td>
                 </tr>
                 <tr>
-                    <td>Education</td> 
+                    <td>Education</td>
                     <td><%= @death_record.education %></td>
                 </tr>
                 <tr>
-                    <td>Of Hispanic Origin?</td> 
+                    <td>Of Hispanic Origin?</td>
                     <td><%= @death_record.hispanic_origin %></td>
                 </tr>
                 <tr>
-                    <td>Race</td> 
+                    <td>Race</td>
                     <td><%= @death_record.race %></td>
                 </tr>
                 <tr>
-                    <td>Usual Occupation</td> 
+                    <td>Usual Occupation</td>
                     <td><%= @death_record.usual_occupation %></td>
                 </tr>
                 <tr>
-                    <td>Kind of Business</td> 
+                    <td>Kind of Business</td>
                     <td><%= @death_record.kind_of_business %></td>
                 </tr>
             </table>
@@ -267,7 +267,7 @@
                 <tr>
                     <td>Certifier Address</td>
                     <td>
-                        <%= 
+                        <%=
                         display_address(@death_record.medical_certifier_street_and_number,
                           @death_record.medical_certifier_city,
                           @death_record.medical_certifier_state,

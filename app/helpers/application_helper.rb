@@ -9,7 +9,7 @@ module ApplicationHelper
   # City, ST 02020, Test County
   # Country
   def display_address(street, city, state, zip_code, options = {})
-    country = options[:country]
+    county = options[:county]
     apartment_number = options[:apartment_number]
     county = options[:county]
 
@@ -39,10 +39,10 @@ module ApplicationHelper
           end
         end)
       end)
-      if country
+      if county
         concat(content_tag(:tr) do
           concat(content_tag(:td, style: 'padding-left:0') do
-            concat country
+            concat county
           end)
         end)
       end

@@ -5,9 +5,9 @@ class DeathRecordsPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if !user.nil? && user.admin?
-          scope.all
+        scope.all
       elsif !user.nil?
-          scope.where(user_id: user.id)
+        scope.where(user_id: user.id)
       end
     end
   end
@@ -17,7 +17,6 @@ class DeathRecordsPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?    
+    user.admin?
   end
-
 end
