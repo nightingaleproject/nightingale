@@ -3,7 +3,7 @@ class DeathRecordsController < ApplicationController
   before_action :authenticate_user!, :set_death_record, only: [:show, :destroy, :update]
 
   def index
-    @death_records = DeathRecordsPolicy::Scope.new(current_user, DeathRecord).resolve
+    @death_records = policy_scope(DeathRecord)
   end
 
   def show
@@ -11,11 +11,13 @@ class DeathRecordsController < ApplicationController
   end
 
   def destroy
+    authorize DeathRecord
     @death_record.destroy unless @death_record.nil?
     redirect_to root_path
   end
 
   def create
+    authorize DeathRecord
     @death_record = DeathRecord.new
     @death_record.user_id = current_user[:id]
     @death_record.record_status = DeathRecord.form_steps.first
@@ -24,6 +26,7 @@ class DeathRecordsController < ApplicationController
   end
 
   def update
+    authorize DeathRecord
     time_registered = Time.now.getlocal
     registered_by_id = current_user.id
     max_cert = DeathRecord.maximum('certificate_number')

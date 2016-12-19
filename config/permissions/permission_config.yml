@@ -1,0 +1,27 @@
+defaults:  &defaults
+  death_record:
+    create:
+      - 'funeral_director'
+
+    delete:
+      - 'admin'
+      - 'funeral_director'
+      - 'physician'
+      - 'registrar'
+
+    update:
+      - 'registrar'
+
+    continue:
+      - 'funeral_director'
+      - 'physician'
+      - 'medical_examiner'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

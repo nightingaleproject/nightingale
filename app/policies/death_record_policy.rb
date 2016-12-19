@@ -1,5 +1,5 @@
 # Application Policy
-class DeathRecordsPolicy < ApplicationPolicy
+class DeathRecordPolicy < ApplicationPolicy
 
   # Scope for determining which death records the current user can view.
   class Scope < Scope
@@ -17,6 +17,14 @@ class DeathRecordsPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    APP_CONFIG['death_record']['update'].any? { |role| user.has_role?(role) }
+  end
+
+  def create?
+    APP_CONFIG['death_record']['create'].any? { |role| user.has_role?(role) }
+  end
+
+  def destroy?
+    APP_CONFIG['death_record']['delete'].any? { |role| user.has_role?(role) }
   end
 end

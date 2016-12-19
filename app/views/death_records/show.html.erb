@@ -7,7 +7,7 @@
 <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
-    
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
@@ -30,7 +30,7 @@
             <% end %>
         </div>
     </div>
-    <% if current_user.has_role? :registrar and !@death_record.certificate_number %>
+    <% if policy(DeathRecord).update? and !@death_record.certificate_number %>
     <div class="container row">
         <%= link_to '<span class="fa fa-search"></span> Register'.html_safe, @death_record, method: :put, class: 'btn btn-primary' %>
         <%= link_to '<span class="fa fa-search"></span> Deny'.html_safe, @death_record, class: 'btn btn-warning' %>
@@ -52,7 +52,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Actual or Presume Time of Death</td> 
+                    <td>Actual or Presume Time of Death</td>
                     <td>
                       <%= @death_record.actual_or_presumed_date_of_death ? @death_record.actual_or_presumed_date_of_death.strftime("%b %d, %Y") : '' %> <%= @death_record.actual_or_presumed_time_of_death ? @death_record.actual_or_presumed_time_of_death.strftime("%l:%M %p") : '' %>
                     </td>

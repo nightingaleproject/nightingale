@@ -20,7 +20,7 @@
                 <%= death_record.updated_at %>
               </td>
               <td>
-                <% unless current_user.has_role? :registrar %>
+                <% if policy(:step).show? %>
                   <%= link_to '<span class="fa fa-arrow-circle-right"></span> Continue'.html_safe, death_record_step_path(death_record, id: death_record.record_status), :class => "btn btn-primary" %>
                 <% end %>
                 <%= link_to '<span class="fa fa-search"></span> View'.html_safe, death_record, :class => "btn btn-primary" %>
@@ -35,7 +35,7 @@
         <div class="col-centered text-center"><p><h4>No Death Records are currently associated with your account.</h4></p></div>
       </div>
     <% end %>
-    <% if current_user.has_role? :funeral_director %>
+    <% if policy(DeathRecord).create? %>
       <div class="row">
         <div class="col-centered text-center">
           <%= link_to '<span class="fa fa-plus"></span> Start a new Death Record'.html_safe, death_records_path, method: :post, :class => "btn btn-success" %>

@@ -3,6 +3,7 @@ class DeathRecord::StepsController < ApplicationController
   steps *DeathRecord.form_steps
 
   def show
+    authorize :step, :show?
     @death_record = DeathRecord.find(params[:death_record_id])
     case step.to_sym
     when :fd_to_me
