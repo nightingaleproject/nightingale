@@ -16,4 +16,4 @@ rubocop:
 
 brakeman:
   script:
-    - bundle exec rake brakeman
+    - bundle exec brakeman

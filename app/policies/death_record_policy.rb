@@ -1,6 +1,5 @@
 # Application Policy
 class DeathRecordPolicy < ApplicationPolicy
-
   # Scope for determining which death records the current user can view.
   class Scope < Scope
     def resolve

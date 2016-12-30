@@ -1,13 +1,23 @@
 require 'test_helper'
 
 class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
+    bob = users(:bob)
+    # Give bob all roles
+    # rubocop:disable Style/PredicateName
+    def bob.has_role?(*)
+      true
+    end
+    # rubocop:enable Style/PredicateName
+    sign_in bob
     @death_record = death_records(:one)
     @cause_of_death_1 = cause_of_deaths(:cod_one)
   end
 
   test 'should get index' do
-    get death_records_url
+    get death_record_url @death_record
     assert_response :success
   end
 
@@ -22,7 +32,7 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
             place_of_death_appt_number: @death_record.place_of_death_appt_number,
             place_of_death_city: @death_record.place_of_death_city,
             place_of_death_state: @death_record.place_of_death_state,
-            place_of_death_country: @death_record.place_of_death_country,
+            place_of_death_county: @death_record.place_of_death_county,
             place_of_death_zip_code: @death_record.place_of_death_zip_code,
             time_pronounced_dead: @death_record.time_pronounced_dead,
             date_pronounced_dead: @death_record.date_pronounced_dead,
@@ -64,7 +74,7 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
         })
     end
 
-    assert_redirected_to death_record_url(DeathRecord.last)
+    assert_redirected_to death_record_step_path(DeathRecord.last, DeathRecord.form_steps.first)
   end
 
   test 'should update death_record' do
@@ -77,7 +87,7 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
           place_of_death_appt_number: @death_record.place_of_death_appt_number,
           place_of_death_city: @death_record.place_of_death_city,
           place_of_death_state: @death_record.place_of_death_state,
-          place_of_death_country: @death_record.place_of_death_country,
+          place_of_death_county: @death_record.place_of_death_county,
           place_of_death_zip_code: @death_record.place_of_death_zip_code,
           time_pronounced_dead: @death_record.time_pronounced_dead,
           date_pronounced_dead: @death_record.date_pronounced_dead,

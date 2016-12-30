@@ -2,7 +2,6 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   setup do
-    assert_equal 0, User.count
     @user = User.create!(email: 'test@test.com', password: 'Password123!')
   end
 

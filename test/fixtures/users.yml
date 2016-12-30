@@ -9,3 +9,7 @@
 #
 #two: {}
 # column: value
+
+bob:
+  email: bob@example.com
+  confirmed_at: 2011-01-02 08:31:23
