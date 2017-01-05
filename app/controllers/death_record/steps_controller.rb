@@ -18,7 +18,7 @@ class DeathRecord::StepsController < ApplicationController
   def update
     @death_record = DeathRecord.find(params[:death_record_id])
     @death_record.record_status = next_step
-    @death_record.update(death_record_params())
+    @death_record.update(death_record_params)
     # Special Case when transfering ownership from Funeral director to physician or ME
     if step == 'fd_to_me'
       redirect_to root_path
