@@ -21,3 +21,9 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Max: 400
   CountComments: false
+  
+Metrics/AbcSize:
+  Max: 30
+  
+Style/ClassAndModuleChildren:
+  Enabled: false

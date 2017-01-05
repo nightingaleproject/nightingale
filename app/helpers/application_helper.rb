@@ -11,7 +11,7 @@ module ApplicationHelper
   def display_address(street, city, state, zip_code, options = {})
     county = options[:county]
     apartment_number = options[:apartment_number]
-    county = options[:county]
+    country = options[:country]
 
     # the container-fluid style adds some padding that makes it display odd.
     # removed that inline for now.
@@ -39,10 +39,10 @@ module ApplicationHelper
           end
         end)
       end)
-      if county
+      if country
         concat(content_tag(:tr) do
           concat(content_tag(:td, style: 'padding-left:0') do
-            concat county
+            concat country
           end)
         end)
       end

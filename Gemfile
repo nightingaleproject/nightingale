@@ -48,11 +48,11 @@ gem 'simple_form'
 gem 'wicked'
 
 # Font awesome
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 # Use audited for tracking ownership of records
 gem 'audited', '~> 4.3'
-gem "rails-observers", git: 'http://github.com/rails/rails-observers'
+gem 'rails-observers', git: 'http://github.com/rails/rails-observers'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
