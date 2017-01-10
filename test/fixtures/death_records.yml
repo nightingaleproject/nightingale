@@ -4,7 +4,7 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: 
+one:
     id: 1
     place_of_death_facility_name: Test Facility
     place_of_death_street_number: 2 Fake St.
@@ -13,12 +13,12 @@ one:
     place_of_death_state: MA
     place_of_death_county: Norfolk
     place_of_death_zip_code: 02014
-    time_pronounced_dead: 
+    time_pronounced_dead:
     date_pronounced_dead: 2016-10-10
     pronouncing_medical_certifier_license_number: 123456
-    pronouncing_medical_certifier_date_of_signature: 
+    pronouncing_medical_certifier_date_of_signature:
     actual_or_presumed_date_of_death: 2016-10-10
-    actual_or_presumed_time_of_death: 
+    actual_or_presumed_time_of_death:
     was_medical_examiner_or_coroner_contacted: true
     was_an_autopsy_performed: true
     were_autopsy_findings_available: true
@@ -48,8 +48,9 @@ one:
     medical_certifier_title: Mr. Manager
     medical_certifier_license_number: 9877656
     date_certified: 2016-10-11
+    form_steps: ['identity', 'demographics', 'medical']
 
-two: 
+two:
     id: 2
     place_of_death_facility_name: Test Facility
     place_of_death_street_number: 2 Fake St.
@@ -58,12 +59,12 @@ two:
     place_of_death_state: MA
     place_of_death_county: Norfolk
     place_of_death_zip_code: 02014
-    time_pronounced_dead: 
+    time_pronounced_dead:
     date_pronounced_dead: 2016-10-10
     pronouncing_medical_certifier_license_number: 123456
-    pronouncing_medical_certifier_date_of_signature: 
+    pronouncing_medical_certifier_date_of_signature:
     actual_or_presumed_date_of_death: 2016-10-10
-    actual_or_presumed_time_of_death: 
+    actual_or_presumed_time_of_death:
     was_medical_examiner_or_coroner_contacted: true
     was_an_autopsy_performed: true
     were_autopsy_findings_available: true
@@ -93,8 +94,9 @@ two:
     medical_certifier_title: Mr. Manager
     medical_certifier_license_number: 9877656
     date_certified: 2016-10-11
+    form_steps: ['identity', 'demographics', 'medical']
 
-three: 
+three:
     id: 3
     first_name: 'Johnny'
     middle_name: 'X.'
@@ -202,4 +204,5 @@ three:
     medical_certifier_title: 'Captain Certifier'
     medical_certifier_license_number: '654321'
     date_certified: '12-06-2016'
+    form_steps: ['identity', 'demographics', 'medical']
     #decedent: decedent_jc
