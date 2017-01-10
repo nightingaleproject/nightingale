@@ -31,7 +31,6 @@ class DeathRecord::StepsController < ApplicationController
 
   # Never trust parameters from the internet, only allow the white list through.
   def death_record_params(step)
-    #params.require(:death_record).permit!.merge(form_step: step)
     params.require(:death_record).permit(:record_status,
                                          :first_name,
                                          :middle_name,
@@ -64,7 +63,7 @@ class DeathRecord::StepsController < ApplicationController
                                          :birthplace_state,
                                          :birthplace_country,
                                          :ever_in_us_armed_forces,
-                                         :marital_status_at_time_of_death, 
+                                         :marital_status_at_time_of_death,
                                          :education,
                                          :hispanic_origin,
                                          :hispanic_origin_explain,
@@ -101,7 +100,7 @@ class DeathRecord::StepsController < ApplicationController
                                          :place_of_death_facility_name,
                                          :place_of_death_street_number,
                                          :place_of_death_appt_number,
-                                         :place_of_death_city, 
+                                         :place_of_death_city,
                                          :place_of_death_state,
                                          :place_of_death_county,
                                          :place_of_death_zip_code,
