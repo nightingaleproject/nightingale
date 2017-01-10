@@ -5,10 +5,6 @@ class DeathRecord < ApplicationRecord
   accepts_nested_attributes_for :cause_of_death
   belongs_to :user
 
-  cattr_accessor :form_steps do
-    %w(identity demographics disposition fd_to_me medical)
-  end
-
   attr_accessor :form_step, :ssn1, :ssn2, :ssn3
 
   # Identity fields required

@@ -20,9 +20,22 @@ class DeathRecordsController < ApplicationController
     authorize DeathRecord
     @death_record = DeathRecord.new
     @death_record.user_id = current_user[:id]
-    @death_record.record_status = DeathRecord.form_steps.first
+
+    # TODO: Add steps to a config file based on role?
+    if current_user.has_role? :funeral_director
+      @death_record.form_steps = [:identity, :demographics, :disposition, :send_to_medical_professional, :medical, :reg_send]
+      @death_record.creator_role = :funeral_director
+    elsif current_user.has_role? :physician
+      @death_record.form_steps = [:medical, :send_to_funeral_director, :identity, :demographics, :disposition, :reg_send]
+      @death_record.creator_role = :physician
+    else
+      @death_record.form_steps = [:identity, :demographics, :disposition, :medical, :reg_send]
+      @death_record.creator_role = :other
+    end
+
+    @death_record.record_status = @death_record.form_steps.first
     @death_record.save(validate: false)
-    redirect_to death_record_step_path(@death_record, DeathRecord.form_steps.first)
+    redirect_to death_record_step_path(@death_record, @death_record.form_steps.first)
   end
 
   def update
@@ -246,6 +259,7 @@ class DeathRecordsController < ApplicationController
                                          :medical_certifier_county,
                                          :medical_certifier_license_number,
                                          :certifier_type,
+                                         :user_id,
                                          :date_certified).merge(form_step: step)
   end
 end

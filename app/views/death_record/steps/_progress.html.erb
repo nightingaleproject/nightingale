@@ -1,23 +1,13 @@
 <h5>
-  <% if step == 'identity' %>
-    <span class="fa fa-arrow-right"></span> <b>Identity</b><br><br>
-    <span class="fa fa-square-o"></span> Demographics<br><br>
-    <span class="fa fa-square-o"></span> Disposition<br><br>
-    <span class="fa fa-square-o"></span> Medical
-  <% elsif step == 'demographics' %>
-    <span class="fa fa-check-square-o"></span> Identity<br><br>
-    <span class="fa fa-arrow-right"></span> <b>Demographics</b><br><br>
-    <span class="fa fa-square-o"></span> Disposition<br><br>
-    <span class="fa fa-square-o"></span> Medical
-  <% elsif step == 'disposition' %>
-    <span class="fa fa-check-square-o"></span> Identity<br><br>
-    <span class="fa fa-check-square-o"></span> Demographics<br><br>
-    <span class="fa fa-arrow-right"></span> <b>Disposition</b><br><br>
-    <span class="fa fa-square-o"></span> Medical
-  <% elsif step == 'medical' || step == 'fd_to_me'%>
-    <span class="fa fa-check-square-o"></span> Identity<br><br>
-    <span class="fa fa-check-square-o"></span> Demographics<br><br>
-    <span class="fa fa-check-square-o"></span> Disposition<br><br>
-    <span class="fa fa-arrow-right"></span> <b>Medical</b>
+  <% @wizard_steps.each do |every_step| %>
+    <%if every_step.include? 'send'%>
+      <%#Do nothing, we don't want to show send as a step%>
+    <%elsif every_step == step%>
+      <span class="fa fa-arrow-right"></span> <b><%=every_step%></b><br><br>
+    <%elsif past_step?(every_step)%>
+      <span class="fa fa-check-square-o"></span> <%=every_step%><br><br>
+    <%else%>
+      <span class="fa fa-square-o"></span> <%=every_step%> <br><br>
+    <%end%>
   <% end %>
 </h5>

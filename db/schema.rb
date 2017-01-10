@@ -150,6 +150,8 @@ ActiveRecord::Schema.define(version: 20161214215046) do
   end
 
   create_table "death_records", force: :cascade do |t|
+    t.string   "form_steps",                                      default: [],              array: true
+    t.string   "creator_role"
     t.string   "record_status"
     t.string   "first_name"
     t.string   "middle_name"
@@ -267,8 +269,8 @@ ActiveRecord::Schema.define(version: 20161214215046) do
     t.datetime "time_registered"
     t.integer  "registered_by_id"
     t.integer  "certificate_number"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_death_records_on_user_id", using: :btree
   end

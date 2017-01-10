@@ -1,16 +1,23 @@
 # Step Controller
 class DeathRecord::StepsController < ApplicationController
   include Wicked::Wizard
-  steps(*DeathRecord.form_steps)
+  before_action :set_steps
+  before_action :setup_wizard
 
   def show
     authorize :step, :show?
     @death_record = DeathRecord.find(params[:death_record_id])
-    case step.to_sym
-    when :fd_to_me
-      @users_with_medical_roles = User.with_any_role(:physician, :medical_examiner)
-    when :medical
-      @registrars = User.with_any_role(:registrar)
+
+    # TODO: Should be able to move this logic or remove it.
+    if step.to_sym == :reg_send
+      @users_with_roles = User.with_any_role(:registrar)
+      @title = 'Select Registrar'
+    elsif step.to_sym == :send_to_medical_professional
+      @users_with_roles = User.with_any_role(:physician, :medical_examiner)
+      @title = 'Select Medical Professional'
+    elsif step.to_sym == :send_to_funeral_director
+      @users_with_roles = User.with_any_role(:funeral_director)
+      @title = 'Select Funeral Director'
     end
     render_wizard
   end
@@ -19,8 +26,8 @@ class DeathRecord::StepsController < ApplicationController
     @death_record = DeathRecord.find(params[:death_record_id])
     @death_record.record_status = next_step
     @death_record.update(death_record_params(step))
-    # Special Case when transfering ownership from Funeral director to physician or ME
-    if step == 'fd_to_me'
+    # Special Case when transfering ownership from Funeral director to physician or ME or Registrar
+    if step.include? 'send'
       redirect_to root_path
       return
     end
@@ -28,6 +35,11 @@ class DeathRecord::StepsController < ApplicationController
   end
 
   private
+
+  # Set the steps for the multipage form from the steps set on the death record model
+  def set_steps
+    self.steps = DeathRecord.find(params[:death_record_id]).form_steps
+  end
 
   # Never trust parameters from the internet, only allow the white list through.
   def death_record_params(step)
@@ -221,6 +233,7 @@ class DeathRecord::StepsController < ApplicationController
                                          :medical_certifier_county,
                                          :medical_certifier_license_number,
                                          :certifier_type,
+                                         :user_id,
                                          :date_certified).merge(form_step: step)
   end
 end

@@ -2,6 +2,10 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
   def change
     create_table :death_records do |t|
 
+      ### Step Order
+      t.string :form_steps, array: true, default: []
+      t.string :creator_role
+
       ### Identity information
       t.string :record_status
       t.string :first_name, :middle_name, :last_name
@@ -34,13 +38,13 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
 
       # MARITAL STATUS AT TIME OF DEATH Married / Married, but separated / Widowed / Divorced / Never Married / Unknown
       # TODO: We need to enforce that this field is constrained to particular values, perhaps using postgres enumerated types
-      t.string :marital_status_at_time_of_death 
+      t.string :marital_status_at_time_of_death
       t.string :education
-      
+
       t.string :hispanic_origin
       t.string :hispanic_origin_explain
       t.string :hispanic_origin_other_specify
-      
+
       t.string :race
       t.string :race_explain
       t.string :race_other_specify
@@ -80,7 +84,7 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       # TODO: We need to enforce that this field is constrained to particular values, perhaps using postgres enumerated types (allowing other)
       t.string :place_of_death_type, :place_of_death_type_specific
       t.string :place_of_death_facility_name
-      t.string :place_of_death_street_number, :place_of_death_appt_number, :place_of_death_city, 
+      t.string :place_of_death_street_number, :place_of_death_appt_number, :place_of_death_city,
         :place_of_death_state, :place_of_death_county, :place_of_death_zip_code
 
       # Date/time of death
@@ -172,7 +176,7 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       t.timestamp :time_registered
       t.integer :registered_by_id
       t.integer :certificate_number
-      
+
       t.timestamps
     end
   end

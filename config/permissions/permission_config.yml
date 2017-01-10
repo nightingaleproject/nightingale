@@ -2,6 +2,7 @@ defaults:  &defaults
   death_record:
     create:
       - 'funeral_director'
+      - 'physician'
 
     delete:
       - 'admin'

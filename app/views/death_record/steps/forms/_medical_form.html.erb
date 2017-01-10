@@ -299,20 +299,9 @@
     </div>
   </fieldset>
 
-  <fieldset>
-    <legend>Select Registrar</legend>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-10">
-          <%= f.input :user_id, :collection => @registrars, :label_method => :email, :value_method => :id%>
-      </div>
-    </div>
-  </fieldset>
-
   <div class="text-right">
     <%= f.button :button, 'Cancel', type: :reset, class: 'btn btn-none' %>
-    <%= f.button :button, 'Save', class: 'btn btn-success' %>
-    <%= f.button :submit, 'Send', class: 'btn btn-primary' %>
+    <%= f.button :button, 'Next', class: 'btn btn-success' %>
   </div>
 
 <% end %>
