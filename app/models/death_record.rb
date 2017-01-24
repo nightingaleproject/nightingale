@@ -1,11 +1,15 @@
 # Death Record model
 class DeathRecord < ApplicationRecord
-  audited only: :user_id
+  # TODO: Add Join table for owner_id and record_id (To track History)
+  audited only: :owner_id
   has_many :cause_of_death, -> { order(position: :asc) }, dependent: :destroy
   accepts_nested_attributes_for :cause_of_death
   belongs_to :user
 
-  attr_accessor :form_step, :ssn1, :ssn2, :ssn3
+  # TODO: Comment here.
+  # TODO: Combine form_step and record_status
+  # Looks like form_step is used as the last step completed while record_status is the next step.
+  attr_accessor :form_step
 
   # Identity fields required
   with_options if: -> { required_for_step?(:identity) } do |step|
@@ -101,7 +105,7 @@ class DeathRecord < ApplicationRecord
   end
 
   def required_for_step?(step)
-    return true if form_step.nil?
-    return true if form_steps.index(step.to_s) <= form_steps.index(form_step)
+    return true if record_status.nil?
+    return true if APP_CONFIG[creator_role].index(step.to_s) <= APP_CONFIG[creator_role].index(form_step)
   end
 end

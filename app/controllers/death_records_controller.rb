@@ -1,6 +1,6 @@
 # Death Records Controller
 class DeathRecordsController < ApplicationController
-  before_action :authenticate_user!, :set_death_record, only: [:show, :destroy, :update]
+  before_action :set_death_record, only: [:show, :destroy, :update]
 
   def index
     @death_records = policy_scope(DeathRecord)
@@ -11,40 +11,35 @@ class DeathRecordsController < ApplicationController
   end
 
   def destroy
+    # Authorization in death_record_policy.rb destroy function.
     authorize DeathRecord
     @death_record.destroy unless @death_record.nil?
     redirect_to root_path
   end
 
   def create
+    # Authorization in death_record_policy.rb create function.
     authorize DeathRecord
     @death_record = DeathRecord.new
-    @death_record.user_id = current_user[:id]
-
-    # TODO: Add steps to a config file based on role?
-    if current_user.has_role? :funeral_director
-      @death_record.form_steps = [:identity, :demographics, :disposition, :send_to_medical_professional, :medical, :reg_send]
-      @death_record.creator_role = :funeral_director
-    elsif current_user.has_role? :physician
-      @death_record.form_steps = [:medical, :send_to_funeral_director, :identity, :demographics, :disposition, :reg_send]
-      @death_record.creator_role = :physician
-    else
-      @death_record.form_steps = [:identity, :demographics, :disposition, :medical, :reg_send]
-      @death_record.creator_role = :other
-    end
-
-    @death_record.record_status = @death_record.form_steps.first
+    @death_record.owner_id = current_user[:id]
+    # A user can have multiple roles. For now we are assuming a user will have one role.
+    @death_record.creator_role = current_user.roles[0].name
+    # Grab the first step for the given record based on the user's role (Step list can be found in /config/steps/steps_config.yml)
+    @death_record.record_status = APP_CONFIG[@death_record.creator_role][0]
     @death_record.save(validate: false)
-    redirect_to death_record_step_path(@death_record, @death_record.form_steps.first)
+    redirect_to death_record_step_path(@death_record, @death_record.record_status)
   end
 
   def update
+    # Authorization in death_record_policy.rb update function.
     authorize DeathRecord
+    # TODO: Look into Time.now.getLocal
     time_registered = Time.now.getlocal
     registered_by_id = current_user.id
     max_cert = DeathRecord.maximum('certificate_number')
     # starting certificate numbers at 10000 for now
     # TODO:  Confirm starting number and/or (likely) put this in a config file somewhere
+    # TODO:  NOT ATOMIC
     certificate_number = max_cert ? max_cert + 1 : 10_000
 
     if !@death_record.update_attributes(time_registered: time_registered,
@@ -259,7 +254,7 @@ class DeathRecordsController < ApplicationController
                                          :medical_certifier_county,
                                          :medical_certifier_license_number,
                                          :certifier_type,
-                                         :user_id,
+                                         :owner_id,
                                          :date_certified).merge(form_step: step)
   end
 end

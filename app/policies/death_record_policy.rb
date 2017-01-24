@@ -6,7 +6,7 @@ class DeathRecordPolicy < ApplicationPolicy
       if !user.nil? && user.admin?
         scope.all
       elsif !user.nil?
-        scope.where(user_id: user.id)
+        scope.where(owner_id: user.id)
       end
     end
   end

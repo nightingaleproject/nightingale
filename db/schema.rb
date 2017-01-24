@@ -271,8 +271,8 @@ ActiveRecord::Schema.define(version: 20161214215046) do
     t.integer  "certificate_number"
     t.datetime "created_at",                                                   null: false
     t.datetime "updated_at",                                                   null: false
-    t.integer  "user_id"
-    t.index ["user_id"], name: "index_death_records_on_user_id", using: :btree
+    t.integer  "owner_id"
+    t.index ["owner_id"], name: "index_death_records_on_owner_id", using: :btree
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -352,7 +352,7 @@ ActiveRecord::Schema.define(version: 20161214215046) do
   end
 
   add_foreign_key "cause_of_deaths", "death_records"
-  add_foreign_key "death_records", "users"
+  add_foreign_key "death_records", "users", column: "owner_id"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
 end

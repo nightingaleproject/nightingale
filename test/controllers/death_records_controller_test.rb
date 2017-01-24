@@ -5,6 +5,8 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     bob = users(:bob)
+    # Need to assign an actual role to bob.
+    bob.add_role(:funeral_director)
     # Give bob all roles
     # rubocop:disable Style/PredicateName
     def bob.has_role?(*)

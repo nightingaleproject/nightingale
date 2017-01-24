@@ -5,11 +5,15 @@ class DeathRecord::StepsController < ApplicationController
   before_action :setup_wizard
 
   def show
+    # Authorization file in step_policy.rb show function.
+    # TODO: Documentation on which views are possible based on the possible steps.
+    # List of steps for User's Role can be found in (Step list can be found in (/config/steps/steps_config.yml)
+    # Wicked uses the current step's name to match it to a corresponding erb file in (/views/death_record/steps/)
     authorize :step, :show?
     @death_record = DeathRecord.find(params[:death_record_id])
 
     # TODO: Should be able to move this logic or remove it.
-    if step.to_sym == :reg_send
+    if step.to_sym == :send_to_registrar
       @users_with_roles = User.with_any_role(:registrar)
       @title = 'Select Registrar'
     elsif step.to_sym == :send_to_medical_professional
@@ -23,11 +27,16 @@ class DeathRecord::StepsController < ApplicationController
   end
 
   def update
+    # Policy function update in step_policy.rb
+    authorize :step, :update?
     @death_record = DeathRecord.find(params[:death_record_id])
     @death_record.record_status = next_step
     @death_record.update(death_record_params(step))
+
     # Special Case when transfering ownership from Funeral director to physician or ME or Registrar
-    if step.include? 'send'
+    # Instead of directing to the next step screen, we send the user back to the home dashboard
+    # becasue they no longer are owners of the death record
+    if step.start_with? 'send'
       redirect_to root_path
       return
     end
@@ -38,7 +47,7 @@ class DeathRecord::StepsController < ApplicationController
 
   # Set the steps for the multipage form from the steps set on the death record model
   def set_steps
-    self.steps = DeathRecord.find(params[:death_record_id]).form_steps
+    self.steps = APP_CONFIG[DeathRecord.find(params[:death_record_id]).creator_role]
   end
 
   # Never trust parameters from the internet, only allow the white list through.
@@ -233,7 +242,7 @@ class DeathRecord::StepsController < ApplicationController
                                          :medical_certifier_county,
                                          :medical_certifier_license_number,
                                          :certifier_type,
-                                         :user_id,
+                                         :owner_id,
                                          :date_certified).merge(form_step: step)
   end
 end
