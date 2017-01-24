@@ -279,3 +279,41 @@
         </div>
     </div>
 </div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Supplemental Information</h3>
+        </div>
+    </div>
+    
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Answer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @questions_answers.each do |question, answer| %>
+              <tr>
+                <td>
+                  <%= question %>
+                </td>
+                <td>
+                  <% if !answer.nil? && !answer.empty? %>
+                    <%= answer %>
+                  <% else %>
+                    Not answered.
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    
+</div>
