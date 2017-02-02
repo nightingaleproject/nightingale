@@ -3,7 +3,9 @@ class DeathRecordsController < ApplicationController
   before_action :set_death_record, only: [:show, :destroy, :update]
 
   def index
-    @death_records = policy_scope(DeathRecord)
+    # Authorization in death_record_policy.rb index function (this is only to restrict guest_users)
+    authorize DeathRecord
+    @death_records = policy_scope(DeathRecord) # Shows only the records that the user owns. Admin can see all records.
   end
 
   def show

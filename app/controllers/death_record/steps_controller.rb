@@ -37,6 +37,28 @@ class DeathRecord::StepsController < ApplicationController
     # Instead of directing to the next step screen, we send the user back to the home dashboard
     # becasue they no longer are owners of the death record
     if step.start_with? 'send'
+      # TODO: Should we allow guest users to send the record to another guest user??!
+      # Check if owner is guest user sending it to an existing user.
+      if @death_record.owner_id.nil? && params[:owner_email] != ''
+        @guest_user = generate_unregistered_user(params[:owner_email])
+        @guest_token = generate_user_token(@guest_user.id, @death_record.id)
+        @death_record.owner_id = @guest_user.id
+
+        # TODO: Send email
+        puts 'HERE IS THE LINK'
+        puts @guest_token
+        puts login_link(@guest_token, @death_record)
+      end
+
+      # Check if old owner is guest user.
+      # Invalidate token by using a table that matches record id + token id + user id.
+      # Logs guest user out.
+      if current_user.is_guest_user
+        guest_token = UserToken.where(death_record_id: @death_record.id, user_id: current_user.id).first
+        guest_token.expire_token!
+        sign_out(current_user)
+      end
+
       redirect_to root_path
       return
     end
@@ -44,6 +66,38 @@ class DeathRecord::StepsController < ApplicationController
   end
 
   private
+
+ # Generates a new user with no password but with a token.
+  def generate_unregistered_user (email)
+    # TODO: Add authorization
+    @user = User.new(email: email, password: '')
+    @user.is_guest_user = true
+    @user.skip_confirmation!
+    @user.add_role :guest_user
+    @user.save(validate: false)
+    return @user
+  end
+
+  def generate_user_token (user_id, death_record_id)
+    @guest_token = UserToken.new(user_id: user_id, death_record_id: death_record_id)
+    @guest_token.new_token!
+    @guest_token.save
+    return @guest_token
+  end
+
+  def send_login_link
+    template = 'login_link'
+    UserMailer.send(template).deliver_now
+  end
+
+  def login_link(user_token, death_record)
+    "http://localhost:3000/guest_users/#{user_token.token}"
+  end
+
+  # If token is attached, change current user to user with given token. Check if token is valid. If not delete
+  def check_user()
+
+  end
 
   # Set the steps for the multipage form from the steps set on the death record model
   def set_steps

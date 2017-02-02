@@ -15,6 +15,10 @@ class DeathRecordPolicy < ApplicationPolicy
     Pundit.policy_scope!(user, record.class)
   end
 
+  def index?
+    !APP_CONFIG['death_record']['index'].any? { |role| user.has_role?(role) }
+  end
+
   def update?
     APP_CONFIG['death_record']['update'].any? { |role| user.has_role?(role) }
   end

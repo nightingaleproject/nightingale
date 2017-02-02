@@ -1,5 +1,7 @@
 defaults:  &defaults
   death_record:
+    index:
+      - 'guest_user'
     create:
       - 'funeral_director'
       - 'physician'
@@ -17,6 +19,7 @@ defaults:  &defaults
       - 'funeral_director'
       - 'physician'
       - 'medical_examiner'
+      - 'guest_user'
 
 development:
   <<: *defaults

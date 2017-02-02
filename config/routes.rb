@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :guest_users, param: :guest_user_token, controller: 'guest_users'
+
   authenticated :user do
     root :to => 'death_records#index', :as => :authenticated_root
   end
