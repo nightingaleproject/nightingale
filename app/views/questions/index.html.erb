@@ -1,0 +1,54 @@
+<div class="container">
+  <fieldset>
+    <legend>Supplemental Questions</legend>
+    <% if !@questions.nil? && !@questions.empty? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Type</th>
+            <th>Required?</th>
+            <th>Step</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @questions.each do |question| %>
+            <tr>
+              <td>
+                <%= question.question %>
+              </td>
+              <td>
+                <%= question.question_type %>
+              </td>
+              <td>
+                <% if question.required %>
+                  Yes
+                <% else %>
+                  No
+                <% end %>
+              </td>
+              <td>
+                <%= question.step %>
+              </td>
+              <td>
+                <%= link_to '<span class="fa fa-trash"></span> Delete'.html_safe, question_path(question), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="row">
+        <div class="col-centered text-center"><p><h4>No supplemental questions currently exist.</h4></p></div>
+      </div>
+    <% end %>
+    <% if policy(Question::Question).create? %>
+      <div class="row">
+        <div class="col-centered text-center">
+          <%= link_to '<span class="fa fa-plus"></span> Create a new supplemental question'.html_safe, questions_create_path, :class => "btn btn-success" %>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>
+</div>

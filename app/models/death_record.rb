@@ -4,6 +4,8 @@ class DeathRecord < ApplicationRecord
   audited only: :owner_id
   has_many :cause_of_death, -> { order(position: :asc) }, dependent: :destroy
   accepts_nested_attributes_for :cause_of_death
+  has_many :answer, -> { order(position: :asc) }, dependent: :destroy
+  accepts_nested_attributes_for :answer
   belongs_to :user
   has_one :user_token
 
@@ -11,6 +13,9 @@ class DeathRecord < ApplicationRecord
   # TODO: Combine form_step and record_status
   # Looks like form_step is used as the last step completed while record_status is the next step.
   attr_accessor :form_step
+  
+  # Used for validating supplemental errors
+  attr_accessor :supplemental_error_flag, :supplemental_error
 
   # Identity fields required
   with_options if: -> { required_for_step?(:identity) } do |step|
@@ -105,8 +110,14 @@ class DeathRecord < ApplicationRecord
     step.validates :date_certified, presence: true
   end
 
+  # Validate for required supplemental questions
+  validate do
+    errors.add(:supplemental_error) if supplemental_error_flag == true
+  end
+
   def required_for_step?(step)
     return true if record_status.nil?
     return true if APP_CONFIG[creator_role].index(step.to_s) <= APP_CONFIG[creator_role].index(form_step)
   end
+
 end

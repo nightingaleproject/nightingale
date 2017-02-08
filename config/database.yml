@@ -6,6 +6,7 @@
 #
 default: &default
   adapter: postgresql
+  host: localhost
 
 development:
   <<: *default
