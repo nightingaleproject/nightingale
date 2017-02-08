@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   use_doorkeeper
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations", :passwords => "passwords"}
+
+  resources :guest_users, param: :guest_user_token, controller: 'guest_users'
 
   resources :questions
 

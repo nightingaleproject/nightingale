@@ -11,6 +11,15 @@
       <%= render "layouts/header" %>
       <div id="wrap">
         <div class="container">
+          <% flash.each do |key, value| %>
+            <% if key == :danger%>
+              <div class="alert alert-danger">
+            <% else %>
+              <div class="alert alert-success">
+            <%end %>
+            <%= value %>
+            </div>
+          <% end %>
           <%= yield %>
         </div>
       </div>

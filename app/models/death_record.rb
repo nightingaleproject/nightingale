@@ -7,6 +7,7 @@ class DeathRecord < ApplicationRecord
   has_many :answer, -> { order(position: :asc) }, dependent: :destroy
   accepts_nested_attributes_for :answer
   belongs_to :user
+  has_one :user_token
 
   # TODO: Comment here.
   # TODO: Combine form_step and record_status

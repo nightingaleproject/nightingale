@@ -71,6 +71,29 @@ class DeathRecord::StepsController < ApplicationController
     # Instead of directing to the next step screen, we send the user back to the home dashboard
     # becasue they no longer are owners of the death record
     if step.start_with? 'send'
+      # TODO: Should we allow guest users to send the record to another guest user??!
+      # Death record owner_id gets set in the view if they use the drop down.
+      # This check confirms that they did not select a user from the drop down list.
+      # Check if owner is guest user sending it to an existing user.
+      if @death_record.owner_id.nil? && params[:owner_email] != ''
+        @guest_user = generate_user(params[:owner_email], step)
+        @guest_token = generate_user_token(@guest_user.id, @death_record.id)
+        @death_record.owner_id = @guest_user.id
+
+        # TODO: Send email
+        login_link = generate_login_link(@guest_token)
+        send_login_link(@guest_user, login_link)
+      end
+
+      # Check if old owner is guest user.
+      # Invalidate token by using a table that matches record id + token id + user id.
+      # Logs guest user out.
+      if current_user.is_guest_user
+        guest_token = UserToken.where(death_record_id: @death_record.id, user_id: current_user.id).first
+        guest_token.expire_token!
+        sign_out(current_user)
+      end
+
       redirect_to root_path
       return
     end
@@ -78,6 +101,43 @@ class DeathRecord::StepsController < ApplicationController
   end
 
   private
+
+ # Generates a new user with no password but with a token.
+ # If a user already exists with that email, return the existing user.
+  def generate_user (email, step)
+    # TODO: What should the role be of the guest user?
+    user = User.where(email: email).first
+    if !user.present?
+      user = User.new(email: email, password: '')
+      user.is_guest_user = true
+      user.skip_confirmation!
+
+      # Assuming guest_user's role based on step.
+      if step.to_sym == :send_to_medical_professional
+        user.add_role 'physician' # :medical_examiner TODO: How do we determine if its physician or medical_examiner
+      elsif step.to_sym == :send_to_funeral_director
+        user.add_role 'funeral_director'
+      end
+      user.save(validate: false)
+    end
+
+    return user
+  end
+
+  def generate_user_token (user_id, death_record_id)
+    @guest_token = UserToken.new(user_id: user_id, death_record_id: death_record_id)
+    @guest_token.new_token!
+    @guest_token.save
+    return @guest_token
+  end
+
+  def send_login_link(guest_user, login_link)
+    GuestMailer.guest_user_email(guest_user, login_link).deliver_later
+  end
+
+  def generate_login_link(user_token)
+    root_url + "guest_users/#{user_token.token}"
+  end
 
   # Set the steps for the multipage form from the steps set on the death record model
   def set_steps
