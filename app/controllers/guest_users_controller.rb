@@ -2,6 +2,7 @@ class GuestUsersController < ApplicationController
   before_action :set_params, only: [:show]
 
   def show
+    # Redirects to correct step with the correct death record.
     redirect_to death_record_step_path(@death_record, id: @death_record.record_status, guest_user_id: @user_token.token)
   end
 

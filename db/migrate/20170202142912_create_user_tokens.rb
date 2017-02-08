@@ -5,6 +5,7 @@ class CreateUserTokens < ActiveRecord::Migration[5.0]
       ## Guest Token
       t.string :token
       t.datetime :token_generated_at
+      t.boolean :is_expired, default: false
       t.timestamps
 
     end

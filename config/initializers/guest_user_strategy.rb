@@ -1,10 +1,11 @@
+# A Warden strategy that is used by Devise to apply rules for authentication.
 Warden::Strategies.add(:guest_user) do
   def valid?
     !params[:guest_user_token].nil?
   end
 
   def authenticate!
-    # Check if token is expired and user is legitimate.
+    # Check if token is expired and user is valid.
     user_token = UserToken.where(token: params[:guest_user_token]).first
     if !user_token.present? || user_token.login_token_expired?
       fail!

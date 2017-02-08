@@ -326,8 +326,9 @@ ActiveRecord::Schema.define(version: 20170202142912) do
   create_table "user_tokens", force: :cascade do |t|
     t.string   "token"
     t.datetime "token_generated_at"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.boolean  "is_expired",         default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "user_id"
     t.integer  "death_record_id"
     t.index ["death_record_id"], name: "index_user_tokens_on_death_record_id", using: :btree

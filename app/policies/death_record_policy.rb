@@ -16,18 +16,18 @@ class DeathRecordPolicy < ApplicationPolicy
   end
 
   def index?
-    !APP_CONFIG['death_record']['index'].any? { |role| user.has_role?(role) }
+    !user.is_guest_user
   end
 
   def update?
-    APP_CONFIG['death_record']['update'].any? { |role| user.has_role?(role) }
+    APP_CONFIG['death_record']['update'].any? { |role| user.has_role?(role) } && !user.is_guest_user
   end
 
   def create?
-    APP_CONFIG['death_record']['create'].any? { |role| user.has_role?(role) }
+    APP_CONFIG['death_record']['create'].any? { |role| user.has_role?(role) } && !user.is_guest_user
   end
 
   def destroy?
-    APP_CONFIG['death_record']['delete'].any? { |role| user.has_role?(role) }
+    APP_CONFIG['death_record']['delete'].any? { |role| user.has_role?(role) } && !user.is_guest_user
   end
 end

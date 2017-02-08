@@ -12,7 +12,7 @@ class UserToken < ApplicationRecord
 
   def login_token_expired?
     # Does the token exist anymore?
-    if self.token.nil?
+    if self.is_expired
       return true
     end
     # Has the token expired?
@@ -25,7 +25,7 @@ class UserToken < ApplicationRecord
   end
 
   def expire_token!
-    self.token = nil
+    self.is_expired = true
     save!
   end
 
