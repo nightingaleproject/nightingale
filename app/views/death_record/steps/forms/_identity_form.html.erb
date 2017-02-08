@@ -20,13 +20,13 @@
       <h4>Alternate Names (AKAs)</h4>
       <div class="row">
         <div class="col-md-4">
-          <%= f.input :akas, label: 'First Name', error: 'First name is mandatory, please specify one.' %>
+          <%= f.input :akas, label: 'First Name' %>
         </div>
         <div class="col-md-3">
           <%= f.input :akas, label: 'Middle Name' %>
         </div>
         <div class="col-md-4">
-          <%= f.input :akas, label: 'Last Name', error: 'Last name is mandatory, please specify one.' %>
+          <%= f.input :akas, label: 'Last Name' %>
         </div>
         <div class="col-md-1">
           <%= f.input :akas, label: 'Suffix' %>
@@ -141,6 +141,8 @@
       </div>
     </div>
   </fieldset>
+  
+  <%= render :partial => 'death_record/steps/forms/supplemental', :locals=>{:f=>f} %>
 
   <div class="text-right">
     <%= f.button :button, 'Cancel', type: :reset, class: 'btn btn-none' %>

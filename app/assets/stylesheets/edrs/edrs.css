@@ -53,6 +53,27 @@ a.edrs-bc-link:active {
   background-color: white;
 }
 
+a.edrs-footer-link {
+  color: #226891 !important;
+  background-color: #EBEBEB;
+}
+
+a.edrs-footer-link:visited {
+  color: #226891 !important;
+  background-color: #EBEBEB;
+}
+
+a.edrs-footer-link:hover {
+  color: #226891 !important;
+  background-color: #EBEBEB;
+  text-decoration: none;
+}
+
+a.edrs-footer-link:active {
+  color: #226891 !important;
+  background-color: #EBEBEB;
+}
+
 .btn-primary {
   color: #FFFFFF !important;
 }
@@ -72,4 +93,8 @@ a.edrs-bc-link:active {
 
 [class^="icon-"].icon-fixed-width, [class*=" icon-"].icon-fixed-width {
     text-align: center;
+}
+
+.v-space {
+  height: 75px;
 }

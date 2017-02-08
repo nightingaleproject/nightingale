@@ -127,6 +127,8 @@
     </div>
   </fieldset>
 
+  <%= render :partial => 'death_record/steps/forms/supplemental', :locals=>{:f=>f} %>
+
   <div class="text-right">
     <%= f.button :button, 'Cancel', type: :reset, class: 'btn btn-none' %>
     <%= f.button :submit, 'Next', class: 'btn btn-primary' %>

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214215046) do
+ActiveRecord::Schema.define(version: 20170125144312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string   "type"
+    t.text     "answer"
+    t.integer  "death_record_id"
+    t.integer  "question_id"
+    t.text     "question"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "audits", force: :cascade do |t|
     t.integer  "auditable_id"
@@ -37,6 +47,11 @@ ActiveRecord::Schema.define(version: 20161214215046) do
     t.index ["user_id", "user_type"], name: "user_index", using: :btree
   end
 
+  create_table "boolean_questions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cause_of_deaths", force: :cascade do |t|
     t.string   "cause"
     t.string   "interval_to_death"
@@ -45,6 +60,11 @@ ActiveRecord::Schema.define(version: 20161214215046) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["death_record_id"], name: "index_cause_of_deaths_on_death_record_id", using: :btree
+  end
+
+  create_table "date_time_questions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "death_certificates", force: :cascade do |t|
@@ -275,6 +295,11 @@ ActiveRecord::Schema.define(version: 20161214215046) do
     t.index ["owner_id"], name: "index_death_records_on_owner_id", using: :btree
   end
 
+  create_table "multiple_choice_questions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
     t.integer  "application_id",    null: false
@@ -313,6 +338,17 @@ ActiveRecord::Schema.define(version: 20161214215046) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string   "type"
+    t.string   "question_type"
+    t.text     "question"
+    t.boolean  "required"
+    t.string   "step"
+    t.text     "multi_options"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.string   "resource_type"
@@ -321,6 +357,11 @@ ActiveRecord::Schema.define(version: 20161214215046) do
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
     t.index ["name"], name: "index_roles_on_name", using: :btree
+  end
+
+  create_table "string_questions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
