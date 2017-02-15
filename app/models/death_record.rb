@@ -1,6 +1,6 @@
 # Death Record model
 class DeathRecord < ApplicationRecord
-  # TODO: Add Join table for owner_id and record_id (To track History)
+  after_save :check_owner_change
   audited only: :owner_id
   has_many :cause_of_death, -> { order(position: :asc) }, dependent: :destroy
   accepts_nested_attributes_for :cause_of_death
@@ -13,7 +13,7 @@ class DeathRecord < ApplicationRecord
   # TODO: Combine form_step and record_status
   # Looks like form_step is used as the last step completed while record_status is the next step.
   attr_accessor :form_step
-  
+
   # Used for validating supplemental errors
   attr_accessor :supplemental_error_flag, :supplemental_error
 
@@ -118,6 +118,13 @@ class DeathRecord < ApplicationRecord
   def required_for_step?(step)
     return true if record_status.nil?
     return true if APP_CONFIG[creator_role].index(step.to_s) <= APP_CONFIG[creator_role].index(form_step)
+  end
+
+  # If the "owner_id" is updated on the model update Death_Record_History with the new owner_id and death_record_id.
+  def check_owner_change
+    if !changes['owner_id'].nil?
+      DeathRecordHistory.create!({death_record_id: id, user_id: changes['owner_id'][1]})
+    end
   end
 
 end
