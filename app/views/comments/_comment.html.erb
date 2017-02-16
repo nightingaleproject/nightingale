@@ -1,7 +1,7 @@
 <!-- Partial view for viewing a comment -->
 <div class="panel panel-default">
   <div class="panel-heading">
-    <strong><%=comment.user.email%></strong> <span class="text-muted"><%=time_ago_in_words(comment.updated_at)%> ago</span>
+    <strong><%=comment.user.email%></strong> <span class="text-muted">(<%=comment.user.roles.first.name.humanize%>), <%=time_ago_in_words(comment.updated_at)%> ago</span>
      <% if policy(comment).delete? %>
        <div class="pull-right">
           <%= link_to '<span class="fa fa-trash"></span> Delete'.html_safe, [comment.death_record, comment], remote: true, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn-sm btn-danger" %>
