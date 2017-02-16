@@ -286,7 +286,7 @@
             <h3>Supplemental Information</h3>
         </div>
     </div>
-    
+
       <div class="row">
         <div class="col-md-12">
           <table class="table table-striped">
@@ -315,5 +315,7 @@
           </table>
         </div>
       </div>
-    
+
 </div>
+
+<%= render partial: 'comments/comments', locals: { death_record: @death_record, comments: @comments}%>

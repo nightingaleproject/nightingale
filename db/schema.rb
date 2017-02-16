@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213141324) do
+ActiveRecord::Schema.define(version: 20170215211450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 20170213141324) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["death_record_id"], name: "index_cause_of_deaths_on_death_record_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "death_record_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["death_record_id"], name: "index_comments_on_death_record_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "date_time_questions", force: :cascade do |t|
