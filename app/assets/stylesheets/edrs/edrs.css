@@ -1,3 +1,11 @@
+html, body {
+    height: 100%;
+}
+
+abbr, accronym {
+  border-bottom: 0px !important;
+}
+
 fieldset {
     border: 2px solid #BBB;
     padding: 0 1em 1em 1em;
@@ -97,4 +105,12 @@ a.edrs-footer-link:active {
 
 .v-space {
   height: 75px;
+}
+
+.bottom-buffer {
+  margin-bottom: 10px;
+}
+
+.top-buffer {
+  margin-top: 10px;
 }

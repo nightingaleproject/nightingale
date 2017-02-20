@@ -1,13 +1,13 @@
 <h5>
   <% @wizard_steps.each do |every_step| %>
-    <%if every_step.include? 'send'%>
+    <% if every_step.include? 'send' %>
       <%#Do nothing, we don't want to show send as a step%>
-    <%elsif every_step == step%>
-      <span class="fa fa-arrow-right"></span> <b><%=every_step%></b><br><br>
-    <%elsif past_step?(every_step)%>
-      <span class="fa fa-check-square-o"></span> <%=every_step%><br><br>
-    <%else%>
-      <span class="fa fa-square-o"></span> <%=every_step%> <br><br>
-    <%end%>
+    <% elsif every_step == step %>
+      <span class="fa fa-arrow-right"></span> <b><%= every_step.humanize %></b><br><br>
+    <% elsif past_step?(every_step) %>
+      <span class="fa fa-check-square-o"></span> <%= every_step.humanize %><br><br>
+    <% else %>
+      <span class="fa fa-square-o"></span> <%= every_step.humanize %> <br><br>
+    <% end %>
   <% end %>
 </h5>

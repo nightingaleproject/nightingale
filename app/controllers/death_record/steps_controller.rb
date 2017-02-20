@@ -70,7 +70,11 @@ class DeathRecord::StepsController < ApplicationController
     end
 
     # Update the death record
-    @death_record.update(death_record_params(step))
+    unless @death_record.update(death_record_params(step))
+      flash[:danger] = 'There were error(s) with your submission, please see below.'
+    else
+      flash[:danger].clear unless flash[:danger].nil?
+    end
 
     # Special Case when transfering ownership from Funeral director to physician or ME or Registrar
     # Instead of directing to the next step screen, we send the user back to the home dashboard

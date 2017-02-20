@@ -48,9 +48,9 @@
               <td>
                 <% user.roles.as_json.each do |role| %>
                   <% if role == user.roles.as_json.last %>
-                    <%= role['name'] %>
+                    <%= role['name'].humanize %>
                   <% else %>
-                    <%= role['name'] %>,&nbsp;
+                    <%= role['name'].humanize %>,&nbsp;
                   <% end %>  
                 <% end %>
               </td>

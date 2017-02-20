@@ -5,9 +5,13 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-10">
-          <%= f.input :place_of_death_type, label: false, as: :radio_buttons, :collection => ['Inpatient', 'Outpatient/ER', 'DOA',
-                                                                                              'Decedent\'s Home', 'Hospice Facility',
-                                                                                              'Nursing Home/Long Term Care Facility', 'Other (specify)'], error: "Can't be blank, please select one."%>
+          <%= f.input :place_of_death_type, required: true, label: 'Please enter the place of death type:', as: :radio_buttons, :collection => ['Inpatient',
+                                                                                                                                                'Outpatient/ER',
+                                                                                                                                                'DOA',
+                                                                                                                                                'Decedent\'s Home',
+                                                                                                                                                'Hospice Facility',
+                                                                                                                                                'Nursing Home/Long Term Care Facility',
+                                                                                                                                                'Other (specify)'], error: "Can't be blank, please select one."%>
           <%= f.input :place_of_death_type_specific, label: false %>
         </div>
       </div>
@@ -19,26 +23,26 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-10">
-          <%= f.input :place_of_death_facility_name, label: 'Facility Name', error: 'Facility Name is mandatory, please specify one.' %>
+          <%= f.input :place_of_death_facility_name, required: true, label: 'Facility Name', error: 'Facility Name is mandatory, please specify one.' %>
         </div>
       </div>
       <div class="row">
         <div class="col-md-10">
-          <%= f.input :place_of_death_street_number, label: 'Street', error: 'Street is mandatory, please specify one.' %>
+          <%= f.input :place_of_death_street_number, required: true, label: 'Street', error: 'Street is mandatory, please specify one.' %>
         </div>
       </div>
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :place_of_death_city, label: 'City', error: 'City is mandatory, please specify one.' %>
+          <%= f.input :place_of_death_city, required: true, label: 'City', error: 'City is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
-          <%= f.input :place_of_death_state, label: 'State', error: 'State is mandatory, please specify one.' %>
+          <%= f.input :place_of_death_state, required: true, label: 'State', error: 'State is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
-          <%= f.input :place_of_death_zip_code, label: 'Zip Code', error: 'Zip code is mandatory, please specify one.' %>
+          <%= f.input :place_of_death_zip_code, required: true, label: 'Zip Code', error: 'Zip code is mandatory, please specify one.' %>
         </div>
         <div class="col-md-3">
-          <%= f.input :place_of_death_county, label: 'County', error: 'County is mandatory, please specify one.' %>
+          <%= f.input :place_of_death_county, required: true, label: 'County', error: 'County is mandatory, please specify one.' %>
         </div>
       </div>
     </div>
@@ -49,7 +53,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-5">
-           <%= f.input :date_pronounced_dead, label: false,  as: :date, start_year: Date.today.year - 250,
+           <%= f.input :date_pronounced_dead, required: true, label: 'Please enter the date pronounced dead:',  as: :date, start_year: Date.today.year - 250,
                     end_year: Date.today.year, order: [:month, :day, :year] %>
         </div>
       </div>
@@ -61,7 +65,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :time_pronounced_dead, label: false, as: :time %>
+          <%= f.input :time_pronounced_dead, required: true, label: 'Please enter the time pronounced dead:', as: :time %>
         </div>
       </div>
     </div>
@@ -72,7 +76,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6">
-          <%= f.input :pronouncing_medical_certifier_license_number, label: false, error: 'Pronouncer License Number is mandatory, please specify one.' %>
+          <%= f.input :pronouncing_medical_certifier_license_number, required: true, label: 'Please enter the pronouncer\'s license number:', error: 'Pronouncer License Number is mandatory, please specify one.' %>
         </div>
       </div>
     </div>
@@ -82,8 +86,8 @@
     <legend>Date of Pronouncer's Signature</legend>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-5">
-           <%= f.input :pronouncing_medical_certifier_date_of_signature, label: false,  as: :date, start_year: Date.today.year - 250,
+        <div class="col-md-8">
+           <%= f.input :pronouncing_medical_certifier_date_of_signature, required: true, label: 'What was the date of the pronouncer\'s signature?',  as: :date, start_year: Date.today.year - 250,
                     end_year: Date.today.year, order: [:month, :day, :year] %>
         </div>
       </div>
@@ -95,13 +99,13 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-5">
-           <%= f.input :actual_or_presumed_date_of_death, label: false,  as: :date, start_year: Date.today.year - 250,
+           <%= f.input :actual_or_presumed_date_of_death, required: true, label: 'Please enter the date of death:',  as: :date, start_year: Date.today.year - 250,
                     end_year: Date.today.year, order: [:month, :day, :year] %>
         </div>
       </div>
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :type_of_date_of_death, label: false, as: :radio_buttons, :collection => ['Actual', 'Approximate', 'Presumed'], error: "Can't be blank, please select one."%>
+          <%= f.input :type_of_date_of_death, required: true, label: 'Describe the date of death:', as: :radio_buttons, :collection => ['Actual', 'Approximate', 'Presumed'], error: "Can't be blank, please select one."%>
         </div>
       </div>
     </div>
@@ -112,12 +116,12 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-5">
-            <%= f.input :actual_or_presumed_time_of_death, label: false, as: :time %>
+            <%= f.input :actual_or_presumed_time_of_death, required: true, label: 'Please enter the time of death:', as: :time %>
         </div>
       </div>
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :type_of_time_of_death, label: false, as: :radio_buttons, :collection => ['Actual', 'Approximate', 'Presumed'], error: "Can't be blank, please select one."%>
+          <%= f.input :type_of_time_of_death, required: true, label: 'Describe the time of death:', as: :radio_buttons, :collection => ['Actual', 'Approximate', 'Presumed'], error: "Can't be blank, please select one."%>
         </div>
       </div>
     </div>
@@ -128,7 +132,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :was_medical_examiner_or_coroner_contacted, label: false, as: :radio_buttons, :collection => ['Yes', 'No', 'Unknown'], error: "Can't be blank, please select one."%>
+          <%= f.input :was_medical_examiner_or_coroner_contacted, required: true, label: 'Was the ME or Coroner contacted?', as: :radio_buttons, :collection => ['Yes', 'No', 'Unknown'], error: "Can't be blank, please select one."%>
         </div>
       </div>
     </div>
@@ -139,7 +143,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :was_an_autopsy_performed, label: false, as: :radio_buttons, :collection => ['Yes', 'No'], error: "Can't be blank, please select one."%>
+          <%= f.input :was_an_autopsy_performed, required: true, label: 'Was an autopsy performed?', as: :radio_buttons, :collection => ['Yes', 'No'], error: "Can't be blank, please select one."%>
         </div>
       </div>
     </div>
@@ -149,8 +153,8 @@
     <legend>Autopsy Available to Complete Cause of Death?</legend>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-5">
-          <%= f.input :were_autopsy_findings_available, label: false, as: :radio_buttons, :collection => ['Yes', 'No'], error: "Can't be blank, please select one."%>
+        <div class="col-md-8">
+          <%= f.input :were_autopsy_findings_available, required: true, label: 'Was an autopsy available to complete the cause of death?', as: :radio_buttons, :collection => ['Yes', 'No'], error: "Can't be blank, please select one."%>
         </div>
       </div>
     </div>
@@ -158,17 +162,17 @@
 
   <fieldset>
     <legend>Cause of Death</legend>
-     <div class="row col-centered text-center">
+     <div class="row col-centered text-center bottom-buffer">
         <h5>First listed cause of death is immediate, subsequent causes of death are underlying.</h5>
       </div>
     <div class="container-fluid">
       <%= f.simple_fields_for :cause_of_death do |c| %>
         <div class="row">
           <div class="col-md-7">
-            <%= c.input :cause, label: 'Cause of Death', error: "Cause of Death is mandatory, please specify one." %>
+            <%= c.input :cause, required: true, label: 'Cause of Death', error: "Cause of Death is mandatory, please specify one." %>
           </div>
           <div class="col-md-5">
-            <%= c.input :interval_to_death, label: 'Approx. Interval Onset to Death', error: "Cause of Death is mandatory, please specify one." %>
+            <%= c.input :interval_to_death, required: true, label: 'Approx. Interval Onset to Death', error: "Cause of Death is mandatory, please specify one." %>
           </div>
         </div>
       <% end %>
@@ -180,7 +184,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :did_tobacco_use_contribute_to_death, label: false, as: :radio_buttons, :collection => ['Yes', 'No', 'Probably', 'Unknown'], error: "Can't be blank, please select one."%>
+          <%= f.input :did_tobacco_use_contribute_to_death, required: true, label: 'Did Tobacco use contribute to the death?', as: :radio_buttons, :collection => ['Yes', 'No', 'Probably', 'Unknown'], error: "Can't be blank, please select one."%>
         </div>
       </div>
     </div>
@@ -191,11 +195,11 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-7">
-          <%= f.input :pregnancy_status, label: false, as: :radio_buttons, :collection => ['Not pregnant in the past year',
-                                                                                           'Pregnant at the time of death',
-                                                                                           'Not pregnant, but pregnant within 42 days of death',
-                                                                                           'Not pregnant, but pregnent 43 days to 1 year before death',
-                                                                                           'Unknown if pregnant within the past year'], error: "Can't be blank, please select one."%>
+          <%= f.input :pregnancy_status, required: true, label: 'What was the decedent\'s pregnancy status?', as: :radio_buttons, :collection => ['Not pregnant in the past year',
+                                                                                                                                                  'Pregnant at the time of death',
+                                                                                                                                                  'Not pregnant, but pregnant within 42 days of death',
+                                                                                                                                                  'Not pregnant, but pregnent 43 days to 1 year before death',
+                                                                                                                                                  'Unknown if pregnant within the past year'], error: "Can't be blank, please select one."%>
         </div>
       </div>
     </div>
@@ -206,12 +210,12 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :manner_of_death, label: false, as: :radio_buttons, :collection => ['Natural',
-                                                                                          'Accident',
-                                                                                          'Suicide',
-                                                                                          'Homicide',
-                                                                                          'Pending Investigation',
-                                                                                          'Could not be determined'], error: "Can't be blank, please select one."%>
+          <%= f.input :manner_of_death, required: true, label: 'What was the manner of the death?', as: :radio_buttons, :collection => ['Natural',
+                                                                                                                                        'Accident',
+                                                                                                                                        'Suicide',
+                                                                                                                                        'Homicide',
+                                                                                                                                        'Pending Investigation',
+                                                                                                                                        'Could not be determined'], error: "Can't be blank, please select one."%>
         </div>
       </div>
     </div>
@@ -222,13 +226,13 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4">
-          <%= f.input :medical_certifier_first, label: 'First Name', error: 'First name is mandatory, please specify one.' %>
+          <%= f.input :medical_certifier_first, required: true, label: 'First Name', error: 'First name is mandatory, please specify one.' %>
         </div>
         <div class="col-md-3">
           <%= f.input :medical_certifier_middle, label: 'Middle Name' %>
         </div>
         <div class="col-md-4">
-          <%= f.input :medical_certifier_last, label: 'Last Name (Maiden)', error: 'Last name is mandatory, please specify one.' %>
+          <%= f.input :medical_certifier_last, required: true, label: 'Last Name (Maiden)', error: 'Last name is mandatory, please specify one.' %>
         </div>
         <div class="col-md-1">
           <%= f.input :medical_certifier_suffix, label: 'Suffix' %>
@@ -242,7 +246,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-10">
-          <%= f.input :medical_certifier_street_and_number, label: 'Street', error: 'Street is mandatory, please specify one.' %>
+          <%= f.input :medical_certifier_street_and_number, required: true, label: 'Street', error: 'Street is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
           <%= f.input :medical_certifier_apt, label: 'Apt.' %>
@@ -250,16 +254,16 @@
       </div>
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :medical_certifier_city, label: 'City', error: 'City is mandatory, please specify one.' %>
+          <%= f.input :medical_certifier_city, required: true, label: 'City', error: 'City is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
-          <%= f.input :medical_certifier_state, label: 'State', error: 'State is mandatory, please specify one.' %>
+          <%= f.input :medical_certifier_state, required: true, label: 'State', error: 'State is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
-          <%= f.input :medical_certifier_zip_code, label: 'Zip Code', error: 'Zip code is mandatory, please specify one.' %>
+          <%= f.input :medical_certifier_zip_code, required: true, label: 'Zip Code', error: 'Zip code is mandatory, please specify one.' %>
         </div>
         <div class="col-md-3">
-          <%= f.input :medical_certifier_county, label: 'County', error: 'County is mandatory, please specify one.' %>
+          <%= f.input :medical_certifier_county, required: true, label: 'County', error: 'County is mandatory, please specify one.' %>
         </div>
       </div>
     </div>
@@ -269,8 +273,8 @@
     <legend>License Number of Person Completing Cause of Death</legend>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-3">
-          <%= f.input :medical_certifier_license_number, label: false, error: 'License Number is mandatory, please specify one.' %>
+        <div class="col-md-10">
+          <%= f.input :medical_certifier_license_number, required: true, label: 'Please enter the license number of the person completing the cause of death:', error: 'License Number is mandatory, please specify one.' %>
         </div>
       </div>
     </div>
@@ -281,7 +285,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :certifier_type, label: false, as: :radio_buttons, :collection => ['Certifying Physician', 'Pronouncing and Certifying Physician', 'Medical Examiner/Coroner'], error: "Can't be blank, please select one."%>
+          <%= f.input :certifier_type, required: true, label: 'Please enter the certifier type:', as: :radio_buttons, :collection => ['Certifying Physician', 'Pronouncing and Certifying Physician', 'Medical Examiner/Coroner'], error: "Can't be blank, please select one."%>
         </div>
       </div>
     </div>
@@ -292,7 +296,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-5">
-           <%= f.input :date_certified, label: false,  as: :date, start_year: Date.today.year - 250,
+           <%= f.input :date_certified, required: true, label: 'Please enter the date certified:',  as: :date, start_year: Date.today.year - 250,
                     end_year: Date.today.year, order: [:month, :day, :year] %>
         </div>
       </div>

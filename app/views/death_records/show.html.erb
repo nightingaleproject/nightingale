@@ -1,13 +1,3 @@
-<%#
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
-%>
-
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
@@ -280,13 +270,13 @@
     </div>
 </div>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Supplemental Information</h3>
-        </div>
-    </div>
-
+<% if @questions_answers.length > 0 %>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-6">
+              <h3>Supplemental Information</h3>
+          </div>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <table class="table table-striped">
@@ -315,7 +305,7 @@
           </table>
         </div>
       </div>
+  </div>
+<% end %>
 
-</div>
-
-<%= render partial: 'comments/comments', locals: { death_record: @death_record, comments: @comments}%>
+<%= render partial: 'comments/comments', locals: { death_record: @death_record, comments: @comments} %>

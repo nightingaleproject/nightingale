@@ -5,12 +5,12 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-10">
-          <%= f.input :method_of_disposition, label: false, as: :radio_buttons, :collection => ['Burial', 
-                                                                                                'Cremation', 
-                                                                                                'Donation', 
-                                                                                                'Entombment', 
-                                                                                                'Removal from State',
-                                                                                                'Other (specify)'] %>
+          <%= f.input :method_of_disposition, required: true, label: 'Please select the method of Disposition:', as: :radio_buttons, :collection => ['Burial', 
+                                                                                                                                                     'Cremation', 
+                                                                                                                                                     'Donation', 
+                                                                                                                                                     'Entombment', 
+                                                                                                                                                     'Removal from State',
+                                                                                                                                                     'Other (specify)'], error: 'Can\'t be blank..' %>
         </div>
         <div class= "col-md-5">
           <%= f.input :method_of_disposition_specified, label: false %>                                                                             
@@ -24,15 +24,15 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-10">
-          <%= f.input :place_of_disposition, label: 'Name', error: 'Name is mandatory, please specify one.' %>
+          <%= f.input :place_of_disposition, required: true, label: 'Name', error: 'Name is mandatory, please specify one.' %>
         </div>
       </div>
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :place_of_disposition_city, label: 'City', error: 'City is mandatory, please specify one.' %>
+          <%= f.input :place_of_disposition_city, required: true, label: 'City', error: 'City is mandatory, please specify one.' %>
         </div>
-        <div class="col-md-2">
-          <%= f.input :place_of_disposition_state, label: 'State', error: 'State is mandatory, please specify one.' %>
+        <div class="col-md-4">
+          <%= f.input :place_of_disposition_state, required: true, label: 'State', error: 'State is mandatory, please specify one.' %>
         </div>
       </div>
     </div>
@@ -43,26 +43,26 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-10">
-          <%= f.input :funeral_facility_name, label: 'Facility Name', error: 'Facility Name is mandatory, please specify one.' %>
+          <%= f.input :funeral_facility_name, required: true, label: 'Facility Name', error: 'Facility Name is mandatory, please specify one.' %>
         </div>
       </div>
       <div class="row">
         <div class="col-md-10">
-          <%= f.input :funeral_facility_street_and_number, label: 'Street', error: 'Street is mandatory, please specify one.' %>
+          <%= f.input :funeral_facility_street_and_number, required: true, label: 'Street', error: 'Street is mandatory, please specify one.' %>
         </div>
       </div>
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :funeral_facility_city, label: 'City', error: 'City is mandatory, please specify one.' %>
+          <%= f.input :funeral_facility_city, required: true, label: 'City', error: 'City is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
-          <%= f.input :funeral_facility_state, label: 'State', error: 'State is mandatory, please specify one.' %>
+          <%= f.input :funeral_facility_state, required: true, label: 'State', error: 'State is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
-          <%= f.input :funeral_facility_zip, label: 'Zip Code', error: 'Zip code is mandatory, please specify one.' %>
+          <%= f.input :funeral_facility_zip, required: true, label: 'Zip Code', error: 'Zip code is mandatory, please specify one.' %>
         </div>
         <div class="col-md-3">
-          <%= f.input :funeral_facility_county, label: 'County', error: 'County is mandatory, please specify one.' %>
+          <%= f.input :funeral_facility_county, required: true, label: 'County', error: 'County is mandatory, please specify one.' %>
         </div>
       </div>
     </div>
@@ -72,8 +72,8 @@
     <legend>Funeral Service License Number</legend>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-3">
-          <%= f.input :funeral_director_license_number, label: false, error: 'Funeral Service License Number is mandatory, please specify one.' %>
+        <div class="col-md-8">
+          <%= f.input :funeral_director_license_number, required: true, label: 'Please enter the License Number of the relevant Funeral Service:', error: 'Funeral Service License Number is mandatory, please specify one.' %>
         </div>
       </div>
     </div>
@@ -84,13 +84,13 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4">
-          <%= f.input :informants_name_first, label: 'First Name', error: 'First name is mandatory, please specify one.' %>
+          <%= f.input :informants_name_first, required: true, label: 'First Name', error: 'First name is mandatory, please specify one.' %>
         </div>
         <div class="col-md-3">
           <%= f.input :informants_name_middle, label: 'Middle Name' %>
         </div>
         <div class="col-md-4">
-          <%= f.input :informants_name_last, label: 'Last Name', error: 'Last name is mandatory, please specify one.' %>
+          <%= f.input :informants_name_last, required: true, label: 'Last Name', error: 'Last name is mandatory, please specify one.' %>
         </div>
         <div class="col-md-1">
           <%= f.input :informants_suffixes, label: 'Suffix' %>
@@ -104,7 +104,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-10">
-          <%= f.input :informants_mailing_address_street_and_number, label: 'Street', error: 'Street is mandatory, please specify one.' %>
+          <%= f.input :informants_mailing_address_street_and_number, required: true, label: 'Street', error: 'Street is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
           <%= f.input :informants_appt_number, label: 'Apt.' %>
@@ -112,16 +112,16 @@
       </div>
       <div class="row">
         <div class="col-md-5">
-          <%= f.input :informants_mailing_address_city, label: 'City', error: 'City is mandatory, please specify one.' %>
+          <%= f.input :informants_mailing_address_city, required: true, label: 'City', error: 'City is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
-          <%= f.input :informants_mailing_address_state, label: 'State', error: 'State is mandatory, please specify one.' %>
+          <%= f.input :informants_mailing_address_state, required: true, label: 'State', error: 'State is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
-          <%= f.input :informants_mailing_address_zip_code, label: 'Zip Code', error: 'Zip code is mandatory, please specify one.' %>
+          <%= f.input :informants_mailing_address_zip_code, required: true, label: 'Zip Code', error: 'Zip code is mandatory, please specify one.' %>
         </div>
         <div class="col-md-3">
-          <%= f.input :informants_mailing_address_county, label: 'County', error: 'County is mandatory, please specify one.' %>
+          <%= f.input :informants_mailing_address_county, required: true, label: 'County', error: 'County is mandatory, please specify one.' %>
         </div>
       </div>
     </div>
