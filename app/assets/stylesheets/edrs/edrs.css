@@ -1,7 +1,3 @@
-html, body {
-    height: 100%;
-}
-
 abbr, accronym {
   border-bottom: 0px !important;
 }
@@ -113,4 +109,20 @@ a.edrs-footer-link:active {
 
 .top-buffer {
   margin-top: 10px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  padding-bottom: 60px;
 }
