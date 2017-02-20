@@ -2,6 +2,7 @@
 class User < ApplicationRecord
   rolify
   has_many :death_records
+  has_many :comments
   has_many :user_tokens
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable

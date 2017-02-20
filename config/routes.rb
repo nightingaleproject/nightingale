@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :cause_of_deaths
   resources :death_records do
     resources :steps, only: [:show, :update], controller: 'death_record/steps'
+    resources :comments
   end
 
   use_doorkeeper
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   resources :questions
 
   match 'questions/create' => 'questions#create', :via => :get
-  
+
   match 'questions/build' => 'questions#build', :via => :put
 
   resources :users do

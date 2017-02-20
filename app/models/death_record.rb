@@ -3,6 +3,7 @@ class DeathRecord < ApplicationRecord
   after_save :check_owner_change
   audited only: :owner_id
   has_many :cause_of_death, -> { order(position: :asc) }, dependent: :destroy
+  has_many :comments
   accepts_nested_attributes_for :cause_of_death
   has_many :answer, -> { order(position: :asc) }, dependent: :destroy
   accepts_nested_attributes_for :answer
