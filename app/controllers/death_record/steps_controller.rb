@@ -85,7 +85,7 @@ class DeathRecord::StepsController < ApplicationController
       # This check confirms that they did not select a user from the drop down list.
       # Check if owner is guest user sending it to an existing user.
       if @death_record.owner_id.nil? && params[:owner_email] != ''
-        @guest_user = generate_user(params[:owner_email], step)
+        @guest_user = generate_user(params[:owner_email], params[:owner_first_name], params[:owner_last_name], params[:owner_telephone], step)
         @guest_token = generate_user_token(@guest_user.id, @death_record.id)
         @death_record.owner_id = @guest_user.id
 
@@ -113,11 +113,11 @@ class DeathRecord::StepsController < ApplicationController
 
  # Generates a new user with no password but with a token.
  # If a user already exists with that email, return the existing user.
-  def generate_user (email, step)
+  def generate_user(email, first_name, last_name, telephone, step)
     # TODO: What should the role be of the guest user?
     user = User.where(email: email).first
     if !user.present?
-      user = User.new(email: email, password: '')
+      user = User.new(email: email, password: '', first_name: first_name, last_name: last_name, telephone: telephone)
       user.is_guest_user = true
       user.skip_confirmation!
 
