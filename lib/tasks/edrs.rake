@@ -4,19 +4,19 @@ namespace :edrs do
 
     $ rake edrs:demo:setup)
     task setup: :environment do
-      user = User.create!(email: 'fd@test.com', password: '123456')
+      user = User.create!(email: 'fd@test.com', password: '123456', first_name: 'FD', last_name: 'Test', telephone: '000-000-0000')
       if user
         user.confirm
         puts 'The fd was created successfully'
         user.add_role 'funeral_director'
       end
-      user1 = User.create!(email: 'doc@test.com', password: '123456')
+      user1 = User.create!(email: 'doc@test.com', password: '123456', first_name: 'ME', last_name: 'Test', telephone: '000-000-0000')
       if user1
         user1.confirm
         puts 'The doc was created successfully'
         user1.add_role 'physician'
       end
-      user2 = User.create!(email: 'reg@test.com', password: '123456')
+      user2 = User.create!(email: 'reg@test.com', password: '123456', first_name: 'REG', last_name: 'Test', telephone: '000-000-0000')
       if user2
         user2.confirm
         puts 'The registrar was created successfully'

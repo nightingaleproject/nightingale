@@ -36,7 +36,8 @@
         
         <div class="row">
           <div class="col-md-12">
-            <%= f.input :owner_name, as: :custom, label: 'Enter Name of Person ', error: 'Please enter the name of this person.'  %>
+            <%= f.input :owner_first_name, as: :custom, label: 'Enter First Name of Person ', error: 'Please enter the first name of this person.'  %>
+            <%= f.input :owner_last_name, as: :custom, label: 'Enter Last Name of Person ', error: 'Please enter the last name of this person.'  %>
             <%= f.input :owner_telephone, as: :custom_tel, label: 'Enter Telephone Number of Person ', error: 'Please enter the telephone number of this person.' %>
             <%= f.input :owner_email, as: :custom, label: 'Enter Email of Person ', error: 'Email does not match.', input_html: { onkeyup: 'validateEmail()' } %>
             <%= f.input :owner_email_confirmation, as: :custom, label: 'Confirm Email Address ', error: 'Email does not match.', input_html: { onkeyup: 'validateEmail()' } %>
