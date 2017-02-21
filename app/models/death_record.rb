@@ -115,7 +115,7 @@ class DeathRecord < ApplicationRecord
   end
 
   def required_for_step?(step)
-    return true if record_status.nil?
+    return true if record_status.nil? || record_status == 'wicked_finish'
     return true if APP_CONFIG[creator_role].index(step.to_s) <= APP_CONFIG[creator_role].index(form_step)
   end
 
