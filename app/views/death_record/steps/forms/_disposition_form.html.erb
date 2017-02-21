@@ -107,7 +107,7 @@
           <%= f.input :informants_mailing_address_street_and_number, required: true, label: 'Street', error: 'Street is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
-          <%= f.input :informants_appt_number, label: 'Apt.' %>
+          <%= f.input :informants_appt_number, label: 'Apt/Suite/Unit' %>
         </div>
       </div>
       <div class="row">
@@ -130,7 +130,8 @@
   <%= render :partial => 'death_record/steps/forms/supplemental', :locals=>{:f=>f} %>
 
   <div class="text-right">
-    <%= f.button :button, 'Cancel', type: :reset, class: 'btn btn-none' %>
+    <%= link_to 'Back', :back, {:class=>"btn btn-default"} %>
+    <%= link_to 'Cancel', root_path, {:class=>"btn btn-default"} %>
     <%= f.button :submit, 'Next', class: 'btn btn-primary' %>
   </div>
 

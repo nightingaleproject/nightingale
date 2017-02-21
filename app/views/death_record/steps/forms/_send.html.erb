@@ -50,7 +50,8 @@
 
 
   <div class="text-right">
-    <%= f.button :button, 'Cancel', type: :reset, class: 'btn btn-none' %>
+    <%= link_to 'Back', :back, {:class=>"btn btn-default"} %>
+    <%= link_to 'Cancel', root_path, {:class=>"btn btn-default"} %>
     <%= f.button :submit, 'Send', class: 'btn btn-primary' %>
   </div>
 

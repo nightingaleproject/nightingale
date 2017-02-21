@@ -167,14 +167,25 @@
       </div>
     <div class="container-fluid">
       <%= f.simple_fields_for :cause_of_death do |c| %>
-        <div class="row">
-          <div class="col-md-7">
-            <%= c.input :cause, required: true, label: 'Cause of Death', error: "Cause of Death is mandatory, please specify one." %>
+        <% if c.options[:child_index] == 0 %>
+          <div class="row">
+            <div class="col-md-7">
+              <%= c.input :cause, required: true, label: 'Immediate Cause of Death', error: "Cause of Death is mandatory, please specify one." %>
+            </div>
+            <div class="col-md-5">
+              <%= c.input :interval_to_death, required: true, label: 'Approx. Interval Onset to Death', error: "Cause of Death is mandatory, please specify one." %>
+            </div>
           </div>
-          <div class="col-md-5">
-            <%= c.input :interval_to_death, required: true, label: 'Approx. Interval Onset to Death', error: "Cause of Death is mandatory, please specify one." %>
+        <% elsif %>
+          <div class="row">
+            <div class="col-md-7">
+              <%= c.input :cause, label: 'Cause of Death', error: "Cause of Death is mandatory, please specify one." %>
+            </div>
+            <div class="col-md-5">
+              <%= c.input :interval_to_death, label: 'Approx. Interval Onset to Death', error: "Cause of Death is mandatory, please specify one." %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </fieldset>
@@ -249,7 +260,7 @@
           <%= f.input :medical_certifier_street_and_number, required: true, label: 'Street', error: 'Street is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
-          <%= f.input :medical_certifier_apt, label: 'Apt.' %>
+          <%= f.input :medical_certifier_apt, label: 'Apt/Suite/Unit' %>
         </div>
       </div>
       <div class="row">
@@ -306,7 +317,8 @@
   <%= render :partial => 'death_record/steps/forms/supplemental', :locals=>{:f=>f} %>
 
   <div class="text-right">
-    <%= f.button :button, 'Cancel', type: :reset, class: 'btn btn-none' %>
+    <%= link_to 'Back', :back, {:class=>"btn btn-default"} %>
+    <%= link_to 'Cancel', root_path, {:class=>"btn btn-default"} %>
     <%= f.button :button, 'Next', class: 'btn btn-success' %>
   </div>
 

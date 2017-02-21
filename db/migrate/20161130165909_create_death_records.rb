@@ -10,7 +10,7 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       t.string :record_status
       t.string :first_name, :middle_name, :last_name
       t.string :suffixes
-      t.string :akas
+      t.string :first_name_aka, :middle_name_aka, :last_name_aka, :suffixes_aka
       t.string :social_security_number
 
       # Decedent's Residence

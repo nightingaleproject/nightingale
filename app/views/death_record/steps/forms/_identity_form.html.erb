@@ -17,23 +17,20 @@
           <%= f.input :suffixes, label: 'Suffix' %>
         </div>
       </div>
-      <h4>Alternate Names (AKAs)</h4>
+      <h4>Alternate Name (Also Known As)</h4>
       <div class="row">
         <div class="col-md-4">
-          <%= f.input :akas, label: 'First Name' %>
+          <%= f.input :first_name_aka, label: 'First Name' %>
         </div>
         <div class="col-md-3">
-          <%= f.input :akas, label: 'Middle Name' %>
+          <%= f.input :middle_name_aka, label: 'Middle Name' %>
         </div>
         <div class="col-md-4">
-          <%= f.input :akas, label: 'Last Name' %>
+          <%= f.input :last_name_aka, label: 'Last Name' %>
         </div>
         <div class="col-md-1">
-          <%= f.input :akas, label: 'Suffix' %>
+          <%= f.input :suffixes_aka, label: 'Suffix' %>
         </div>
-      </div>
-      <div class="text-right">
-        <%= f.button :button, '<span class="fa fa-plus"></span> Add More'.html_safe, class: 'btn btn-primary' %>
       </div>
     </div>
   </fieldset>
@@ -57,7 +54,7 @@
           <%= f.input :street, label: 'Street', required: true, error: 'Street is mandatory, please specify one.' %>
         </div>
         <div class="col-md-2">
-          <%= f.input :appt_number, label: 'Apt.' %>
+          <%= f.input :appt_number, label: 'Apt/Suite/Unit' %>
         </div>
       </div>
       <div class="row">
@@ -145,7 +142,8 @@
   <%= render :partial => 'death_record/steps/forms/supplemental', :locals=>{:f=>f} %>
 
   <div class="text-right">
-    <%= f.button :button, 'Cancel', url: death_records_path, class: 'btn btn-none' %>
+    <%= link_to 'Back', :back, {:class=>"btn btn-default"} %>
+    <%= link_to 'Cancel', root_path, {:class=>"btn btn-default"} %>
     <%= f.button :submit, 'Next', class: 'btn btn-primary' %>
   </div>
 
