@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <%= render 'death_record/steps/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => nil} %>
+  </div>
+  <h3>Administration Tools</h3>
+  <hr/>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a class="btn btn-primary btn-block" href="<%= users_path %>"><span class="fa fa-user"></span> Users</a>
+        </td>
+        <td>
+          Shows the users currently registered with this system.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-primary btn-block" href="<%= questions_path %>"><span class="fa fa-search"></span> Questions</a>
+        </td>
+        <td>
+          Create, edit, and delete custom supplemental questions that will be asked throughout the death record creation workflow.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-primary btn-block" href="<%= reports_path %>"><span class="fa fa-bar-chart"></span> Reports</a>
+        </td>
+        <td>
+          View reports and statistics about the usage of this system.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,8 +1,28 @@
+<script>
+  $(document).ready( function () {
+      $('#questions_table').DataTable({
+        'language': {
+          'emptyTable': 'No Supplemental Questions have been created.'
+        },
+        'columnDefs': [ { orderable: false, targets: [4] } ]
+      });
+  });
+</script>
+
 <div class="container">
-  <fieldset>
-    <legend>Supplemental Questions</legend>
-    <% if !@questions.nil? && !@questions.empty? %>
-      <table class="table">
+  <div class="row">
+    <%= render 'death_record/steps/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => admins_path, "Supplemental Questions" => nil} %>
+  </div>
+  <h3>
+    Supplemental Questions
+    <% if policy(Question::Question).create? %>
+      <span class="pull-right"><%= link_to '<span class="fa fa-plus"></span> Create a new Supplemental Question'.html_safe, questions_create_path, :class => "btn btn-primary" %></span>
+    <% end %>
+  </h3>
+  <hr/>
+  <div>
+    <% if !@questions.nil? %>
+      <table class="table" id="questions_table">
         <thead>
           <tr>
             <th>Question</th>
@@ -38,17 +58,6 @@
           <% end %>
         </tbody>
       </table>
-    <% else %>
-      <div class="row">
-        <div class="col-centered text-center"><p><h4>No supplemental questions currently exist.</h4></p></div>
-      </div>
     <% end %>
-    <% if policy(Question::Question).create? %>
-      <div class="row">
-        <div class="col-centered text-center">
-          <%= link_to '<span class="fa fa-plus"></span> Create a new supplemental question'.html_safe, questions_create_path, :class => "btn btn-success" %>
-        </div>
-      </div>
-    <% end %>
-  </fieldset>
+  </div>
 </div>

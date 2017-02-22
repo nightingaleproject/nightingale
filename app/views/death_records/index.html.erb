@@ -1,52 +1,86 @@
-<fieldset>
-  <legend>In Progress Death Records</legend>
-  <% if !@death_records.nil? && !@death_records.empty? %>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Started</th>
-          <th>Last Modified</th>
-          <th>Current Step</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @death_records.each do |death_record| %>
+<script>
+  $(document).ready( function () {
+      $('#death_records_table').DataTable({
+        'language': {
+          'emptyTable': 'No Death Records currently available.'
+        },
+        'columnDefs': [ { orderable: false, targets: [6] } ]
+      });
+  });
+</script>
+
+<div class="container">
+  <h3>
+    In Progress Death Records
+    <% if policy(DeathRecord).create? %>
+      <span class="pull-right"><%= link_to '<span class="fa fa-plus"></span> Start a new Death Record'.html_safe, death_records_path, method: :post, :class => "btn btn-primary" %></span>
+    <% end %>
+  </h3>
+  <hr/>
+  <div>
+    <% if !@death_records.nil? %>
+      <table class="table" id="death_records_table">
+        <thead>
           <tr>
-            <td>
-              <%= DatetimeHelper.pretty_datetime(death_record.created_at) %>
-            </td>
-            <td>
-              <%= DatetimeHelper.pretty_datetime(death_record.updated_at) %>
-            </td>
-            <td>
-              <% if death_record.record_status.include? 'wicked' %>
-                Registration
-              <% else %>
-                <%= death_record.record_status.humanize %>
-              <% end %>
-            </td>
-            <td>
-              <% if policy(:step).show? %>
-                <%= link_to '<span class="fa fa-arrow-circle-right"></span> Continue'.html_safe, death_record_step_path(death_record, id: death_record.record_status), :class => "btn btn-primary" %>
-              <% end %>
-              <%= link_to '<span class="fa fa-search"></span> View'.html_safe, death_record, :class => "btn btn-primary" %>
-              <%= link_to '<span class="fa fa-trash"></span> Delete'.html_safe, death_record, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
-            </td>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ID</th>
+            <th>Started</th>
+            <th>Last Modified</th>
+            <th>Current Step</th>
+            <th>Actions</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <div class="row">
-      <div class="col-centered text-center"><p><h4>No Death Records are currently associated with your account.</h4></p></div>
-    </div>
-  <% end %>
-  <% if policy(DeathRecord).create? %>
-    <div class="row">
-      <div class="col-centered text-center">
-        <%= link_to '<span class="fa fa-plus"></span> Start a new Death Record'.html_safe, death_records_path, method: :post, :class => "btn btn-success" %>
-      </div>
-    </div>
-  <% end %>
-</fieldset>
+        </thead>
+        <tbody>
+          <% @death_records.each do |death_record| %>
+            <tr>
+              <td>
+                <% if death_record.first_name.nil? || death_record.first_name.empty? %>
+                  -
+                <% else %>
+                  <%= death_record.first_name %>
+                <% end %>
+              </td>
+              <td>
+                <% if death_record.last_name.nil? || death_record.last_name.empty? %>
+                  -
+                <% else %>
+                  <%= death_record.last_name %>
+                <% end %>
+              </td>
+              <td>
+                <%= death_record.id %>
+              </td>
+              <td>
+                <%= DatetimeHelper.pretty_datetime(death_record.created_at) %>
+              </td>
+              <td>
+                <%= DatetimeHelper.pretty_datetime(death_record.updated_at) %>
+              </td>
+              <td>
+                <% if death_record.record_status.include? 'wicked' %>
+                  Registration
+                <% elsif death_record.record_status.include? 'send' %>
+                  Send
+                <% else %>
+                  <%= death_record.record_status.humanize %>
+                <% end %>
+              </td>
+              <td>
+                <% if policy(:step).show? %>
+                  <%= link_to '<span class="fa fa-arrow-circle-right"></span> Continue'.html_safe, death_record_step_path(death_record, id: death_record.record_status), :class => "btn-sm btn-primary" %>
+                <% end %>
+                <% if policy(DeathRecord).update? %>
+                  <%= link_to '<span class="fa fa-search"></span> Review'.html_safe, death_record, :class => "btn-sm btn-primary" %>
+                <% else %>
+                  <%= link_to '<span class="fa fa-search"></span> View'.html_safe, death_record, :class => "btn-sm btn-primary" %>
+                <% end %>
+                <%= link_to '<span class="fa fa-trash"></span> Delete'.html_safe, death_record, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn-sm btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
