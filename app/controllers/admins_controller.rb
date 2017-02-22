@@ -1,16 +1,9 @@
-class UsersController < ApplicationController
+class AdminsController < ApplicationController
 
   before_filter :authenticate_user!
   before_filter :verify_is_admin
 
   def index
-    @users = User.all
-  end
-
-  def delete
-    return unless current_user.admin?
-    User.delete(params[:id])
-    redirect_to users_path
   end
 
   private

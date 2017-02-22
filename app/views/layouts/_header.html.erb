@@ -8,7 +8,7 @@
         <li><a href="<%= death_records_path %>"><span class="fa fa-th-list"></span> Dashboard</a></li>
         <li><a href="<%= edit_user_registration_path %>"><span class="fa fa-gear"></span> My Account</a></li>
         <% if current_user.admin? %>
-          <li><a href="<%= users_path %>"><span class="fa fa-gears"></span> Admin</a></li>
+          <li><a href="<%= admins_path %>"><span class="fa fa-gears"></span> Admin</a></li>
         <% end %>
         <li><a href="<%= destroy_user_session_path %>"><span class="fa fa-sign-out"></span> Logout</a></li>
       </ul>
