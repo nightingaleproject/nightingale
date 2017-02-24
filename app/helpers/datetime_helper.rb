@@ -1,14 +1,26 @@
 # Datetime Helper module
 module DatetimeHelper
   def self.pretty_datetime(datetime)
-    return datetime.localtime.strftime('%b %d, %Y %I:%M %p')
+    unless datetime.nil?
+      return datetime.localtime.strftime('%b %d, %Y %I:%M %p')
+    else
+      return ''
+    end
   end
   
   def self.pretty_date(date)
-    return date.localtime.strftime('%b %d, %Y')
+    unless date.nil?
+      return date.localtime.strftime('%b %d, %Y')
+    else
+      return ''
+    end
   end
   
   def self.pretty_time(time)
-    return time.localtime.strftime('%I:%M %p')
+    unless time.nil?
+      return time.localtime.strftime('%I:%M %p')
+    else
+      return ''
+    end
   end
 end
