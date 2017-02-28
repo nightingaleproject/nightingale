@@ -13,5 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-datepicker
 //= require datatables
 //= require_tree .
+//= require highcharts
+//= require chartkick

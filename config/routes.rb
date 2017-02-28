@@ -20,6 +20,12 @@ Rails.application.routes.draw do
 
   resources :reports
 
+  resources :charts, only: [:create] do
+    collection do
+      get 'by_day'
+    end
+  end
+
   resources :admins
 
   resources :users do
