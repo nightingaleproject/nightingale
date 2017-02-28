@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.string   "remote_address"
     t.string   "request_uuid"
     t.datetime "created_at"
+    t.index "to_tsvector('english'::regconfig, audited_changes)", name: "audits_idx", using: :gin
     t.index ["associated_id", "associated_type"], name: "associated_index", using: :btree
     t.index ["auditable_id", "auditable_type"], name: "auditable_index", using: :btree
     t.index ["created_at"], name: "index_audits_on_created_at", using: :btree
@@ -412,11 +413,11 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.boolean  "is_guest_user",          default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "telephone"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

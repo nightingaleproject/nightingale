@@ -22,6 +22,7 @@ class InstallAudited < ActiveRecord::Migration
     add_index :audits, [:user_id, :user_type], :name => 'user_index'
     add_index :audits, :request_uuid
     add_index :audits, :created_at
+    add_index :audits, "to_tsvector('english', audited_changes)", using: :gin, name: 'audits_idx'
   end
 
   def self.down

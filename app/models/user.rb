@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :death_records
   has_many :comments
   has_many :user_tokens
+  audited
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 

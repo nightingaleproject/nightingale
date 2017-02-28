@@ -53,6 +53,10 @@ gem 'glyphicons-rails'
 gem 'audited', '~> 4.3'
 gem 'rails-observers', git: 'http://github.com/rails/rails-observers'
 
+# JavaScript charts
+gem 'chartkick'
+gem 'groupdate'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

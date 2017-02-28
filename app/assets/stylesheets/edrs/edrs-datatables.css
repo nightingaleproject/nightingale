@@ -1,3 +1,25 @@
 .dataTables_filter {
   float: right;
 }
+
+td.details-control:before {
+  font-family: FontAwesome;
+  content: "\f055";
+  display: inline-block;
+  color: green;
+}
+
+td.details-control {
+    background: no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control:before {
+  font-family: FontAwesome;
+  content: "\f056";
+  display: inline-block;
+  color: red;
+}
+tr.shown td.details-control {
+    background: no-repeat center center;
+}
