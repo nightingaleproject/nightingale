@@ -3,26 +3,35 @@ abbr, accronym {
 }
 
 fieldset {
-    border: 2px solid #BBB;
-    padding: 0 1em 1em 1em;
-    margin: 1.5em 0 3.5em 0;
+  border: 2px solid #BBB;
+  padding: 0 1em 1em 1em;
+  margin: 1.5em 0 3.5em 0;
 }
 
 legend {
-    font-size: 1.8em;
-    font-weight: medium;
-    width: inherit;
-    padding: 0 10px;
-    border-bottom: none;
+  font-size: 1.8em;
+  font-weight: medium;
+  width: inherit;
+  padding: 0 10px;
+  border-bottom: none;
+}
+
+.field_with_errors {
+  background-color: white !important;
 }
 
 .footer-custom {
-    background: #EBEBEB;
-    color: #424242;
-    font-size: 1.5em;
-    font-weight: 300;
-    margin-top: 2em;
-    padding: 1em;
+  background: #EBEBEB;
+  color: #424242;
+  font-size: 1.5em;
+  font-weight: 300;
+  margin-top: 2em;
+  padding: 1em;
+}
+
+.vertical-align {
+  display: flex;
+  align-items: center;
 }
 
 * {
@@ -30,7 +39,7 @@ legend {
 }
 
 .table > tbody > tr > td {
-     vertical-align: middle;
+  vertical-align: middle;
 }
 
 .breadcrumb {
@@ -82,13 +91,13 @@ a.edrs-footer-link:active {
   color: #FFFFFF !important;
 }
 
- .btn-danger {
-   color: #FFFFFF !important;
- }
+.btn-danger {
+  color: #FFFFFF !important;
+}
 
- .btn-success {
-   color: #FFFFFF !important;
- }
+.btn-success {
+  color: #FFFFFF !important;
+}
 
 .col-centered {
   float: none;
@@ -96,7 +105,7 @@ a.edrs-footer-link:active {
 }
 
 [class^="icon-"].icon-fixed-width, [class*=" icon-"].icon-fixed-width {
-    text-align: center;
+  text-align: center;
 }
 
 .v-space {
@@ -121,8 +130,8 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 60px;
   padding-bottom: 60px;
 }

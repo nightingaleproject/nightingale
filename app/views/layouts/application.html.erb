@@ -9,22 +9,9 @@
   <body>
     <% if !current_user.nil? && user_signed_in? %>
       <%= render "layouts/header" %>
-      <div id="wrap">
-        <div class="container">
-          <% flash.each do |key, value| %>
-            <% if key == 'danger' %>
-              <div class="alert alert-danger">
-            <% elsif key == 'warning' %>
-              <div class="alert alert-warning">
-            <% elsif key == 'notice' %>
-              <div class="alert alert-success">
-            <% else %>
-              <div class="alert alert-info">
-            <%end %>
-            <%= value %></div>
-          <% end %>
-          <%= yield %>
-        </div>
+      <div class="container">
+        <%= render "layouts/errors" %>
+        <%= yield %>
       </div>
       <%= render "layouts/footer" %>
     <% else %>

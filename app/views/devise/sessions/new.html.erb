@@ -1,24 +1,35 @@
-<h2>EDRS Prototype</h2>
-<%= simple_form_for(resource, as: resource_name, html: { class: 'form-vertical' }, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<body class="sign_in_body">
+<div class="container">
+  <div class="row v-align-row">
+    <div class="col-md-8">
+      <h1 class="title-name">Nightingale</h1>
+      <h2 class="title-desc">A Community Electronic Death Registration System.</h2><br />
+      <a class="title-more title-more-link" href="https://www.cdc.gov/nchs/nvss/modernization/">learn more</a>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in", class: 'btn btn-primary' %>
+    <div class="col-md-4">
+      <div class="sign-in-box">
+        <h2 class="title-sign-in">Sign in</h2><br />
+        <%= simple_form_for(resource, as: resource_name, html: { class: 'form-vertical' }, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <h5 class="title-label"><%= f.label :email %></h5>
+              <%= f.email_field :email, autofocus: true, class: 'sign-in-field' %>
+          </div>
+          <div class="field">
+            <h5 class="title-label"><%= f.label :password %></h5>
+            <%= f.password_field :password, autocomplete: "off", class: 'sign-in-field' %>
+          </div>
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me, :as => :boolean, :label => false, :inline_label => true %>
+              <h5 class="title-label"><%= f.label :remember_me %><h5>
+            </div>
+          <% end -%>
+          <div class="actions">
+            <%= f.submit "Sign in", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-<% end %>
-<%= render "devise/shared/links" %>
+</div>
