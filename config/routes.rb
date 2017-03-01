@@ -18,6 +18,12 @@ Rails.application.routes.draw do
 
   match 'questions/build' => 'questions#build', :via => :put
 
+  match 'geographic/counties' => 'geographic#counties', :via => :get
+  match 'geographic/cities' => 'geographic#cities', :via => :get
+  match 'geographic/zipcodes' => 'geographic#zipcodes', :via => :get
+
+  match 'entity/funeral_director_details' => 'entity#funeral_director_details', :via => :get
+
   resources :reports
 
   resources :charts, only: [:create] do

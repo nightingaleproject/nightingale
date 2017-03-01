@@ -25,19 +25,7 @@
   
   <fieldset>
     <legend>Place of Birth</legend>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-4">
-          <%= f.input :birthplace_city, required: true, label: 'City', error: 'City is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-3">
-          <%= f.input :birthplace_state, required: true, label: 'State or Province', error: 'State is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-3">
-          <%= f.input :birthplace_country, required: true, as: :string, label: 'Country', error: 'Country is mandatory, please specify one.' %>
-        </div>
-      </div>
-    </div>
+    <%= render :partial => 'death_record/steps/forms/addresses/place_of_birth', :locals=>{:f=>f} %>
   </fieldset>
   
   <fieldset>

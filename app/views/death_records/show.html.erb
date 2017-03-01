@@ -60,12 +60,12 @@
                     <td>Place of Death Address</td>
                     <td>
                         <%=
-                          display_address(@death_record.place_of_death_street_number,
+                          display_address(@death_record.place_of_death_street_and_number,
                                           @death_record.place_of_death_city,
                                           @death_record.place_of_death_state,
                                           @death_record.place_of_death_zip_code,
                                           county: @death_record.place_of_death_county,
-                                          apartment_number: @death_record.place_of_death_appt_number)
+                                          apartment_number: @death_record.place_of_death_apt)
                         %>
                     </td>
                 </tr>
@@ -115,7 +115,7 @@
                                           @death_record.location_of_injury_city,
                                           @death_record.location_of_injury_state,
                                           @death_record.location_of_injury_zip_code,
-                                          apartment_number: @death_record.location_of_injury_apartment_number)
+                                          apartment_number: @death_record.location_of_injury_apt)
                         %>
                     </td>
                 </tr>
@@ -159,11 +159,11 @@
                     <td>Residence</td>
                     <td>
                         <%=
-                          display_address(@death_record.street,
+                          display_address(@death_record.street_and_number,
                                           @death_record.city,
                                           @death_record.state,
                                           @death_record.zip_code,
-                                          apartment_number: @death_record.appt_number)
+                                          apartment_number: @death_record.apt)
                         %>
                     </td>
                 </tr>

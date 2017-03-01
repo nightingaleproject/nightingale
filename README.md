@@ -1,8 +1,24 @@
-# EDRS
+Nightingale
+===========
 
 Electronic Death Registration System (EDRS) app built using Ruby on Rails
 
-# Rake tasks:
+Setup (for demo mode):
+----------------------
+
+> bundle exec rake db:drop
+> bundle exec rake db:create
+> bundle exec rake db:migrate
+> bundle exec rake db:setup
+> bundle exec rake edrs:demo:setup
+
+This will create (all with the password "123456"):
+- A funeral director user (fd@test.com)
+- A physician user (doc@test.com)
+- A registrar user (reg@test.com)
+
+Rake tasks:
+-----------
 
 To create a user:
 ```

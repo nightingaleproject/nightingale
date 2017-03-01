@@ -1,0 +1,36 @@
+<script>
+  $(document).ready(function() {
+    // Reset inputs
+    $('#' + 'death_record_place_of_disposition_state').val($("#target option:first").val());
+
+    enableSelect2ForDropdowns(['death_record_place_of_disposition_state', 'death_record_place_of_disposition_city'])
+
+    // State was selected
+    $('#death_record_place_of_disposition_state').change(function(data) {
+      var state = $('#death_record_place_of_disposition_state :selected').text();
+      debugger
+      $.get("/geographic/cities", {'state': state},
+        function(data) {
+          // Update form
+          clearDropdowns(['death_record_place_of_disposition_city'])
+          addOptions('death_record_place_of_disposition_city', data)
+          enableInputs(['death_record_place_of_disposition_city'])
+      })
+    });
+  });
+</script>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10">
+      <%= f.input :place_of_disposition, input_html: { :autocomplete => "off" }, required: true, label: 'Name', error: 'Name is mandatory, please specify one.' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <%= f.input :place_of_disposition_state, input_html: { :autocomplete => "off" }, required: true, label: 'State', error: 'State is mandatory, please specify one.', collection: GeoHelper.get_states %>
+    </div>
+    <div class="col-md-5">
+      <%= f.input :place_of_disposition_city, input_html: { :autocomplete => "off" }, required: true, label: 'City', error: 'City is mandatory, please specify one.', collection: [], disabled: true %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+class FuneralDirector < ApplicationRecord
+end

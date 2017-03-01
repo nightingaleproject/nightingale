@@ -41,6 +41,7 @@ gem 'pundit'
 
 # Form builder
 gem 'simple_form'
+gem 'country_select'
 
 # Multi-page form helper
 gem 'wicked'
@@ -48,6 +49,9 @@ gem 'wicked'
 # Icons
 gem 'font-awesome-rails'
 gem 'glyphicons-rails'
+
+# Better select boxes
+gem "select2-rails"
 
 # Use audited for tracking ownership of records
 gem 'audited', '~> 4.3'
