@@ -30,8 +30,8 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
         params: {
           death_record: {
             place_of_death_facility_name: @death_record.place_of_death_facility_name,
-            place_of_death_street_number: @death_record.place_of_death_street_number,
-            place_of_death_appt_number: @death_record.place_of_death_appt_number,
+            place_of_death_street_and_number: @death_record.place_of_death_street_and_number,
+            place_of_death_apt: @death_record.place_of_death_apt,
             place_of_death_city: @death_record.place_of_death_city,
             place_of_death_state: @death_record.place_of_death_state,
             place_of_death_county: @death_record.place_of_death_county,
@@ -55,7 +55,7 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
             location_of_injury_state: @death_record.location_of_injury_state,
             location_of_injury_city: @death_record.location_of_injury_city,
             location_of_injury_street_and_number: @death_record.location_of_injury_street_and_number,
-            location_of_injury_apartment_number: @death_record.location_of_injury_apartment_number,
+            location_of_injury_apt: @death_record.location_of_injury_apt,
             location_of_injury_zip_code: @death_record.location_of_injury_zip_code,
             description_of_injury_occurrence: @death_record.description_of_injury_occurrence,
             transportation_injury: @death_record.transportation_injury,
@@ -85,8 +85,8 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
       params: {
         death_record: {
           place_of_death_facility_name: @death_record.place_of_death_facility_name,
-          place_of_death_street_number: @death_record.place_of_death_street_number,
-          place_of_death_appt_number: @death_record.place_of_death_appt_number,
+          place_of_death_street_and_number: @death_record.place_of_death_street_and_number,
+          place_of_death_apt: @death_record.place_of_death_apt,
           place_of_death_city: @death_record.place_of_death_city,
           place_of_death_state: @death_record.place_of_death_state,
           place_of_death_county: @death_record.place_of_death_county,
@@ -110,7 +110,7 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
           location_of_injury_state: @death_record.location_of_injury_state,
           location_of_injury_city: @death_record.location_of_injury_city,
           location_of_injury_street_and_number: @death_record.location_of_injury_street_and_number,
-          location_of_injury_apartment_number: @death_record.location_of_injury_apartment_number,
+          location_of_injury_apt: @death_record.location_of_injury_apt,
           location_of_injury_zip_code: @death_record.location_of_injury_zip_code,
           description_of_injury_occurrence: @death_record.description_of_injury_occurrence,
           transportation_injury: @death_record.transportation_injury,
