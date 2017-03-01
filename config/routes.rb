@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   match 'geographic/cities' => 'geographic#cities', :via => :get
   match 'geographic/zipcodes' => 'geographic#zipcodes', :via => :get
 
-  match 'entity/funeral_director_details' => 'entity#funeral_director_details', :via => :get
+  match 'entity/funeral_facility_details' => 'entity#funeral_facility_details', :via => :get
 
   resources :reports
 

@@ -5,7 +5,7 @@ $(document).ready(function() {
   // Funeral director was selected
   $('#death_record_funeral_facility_name').change(function(data) {
     var fd = $('#death_record_funeral_facility_name :selected').text();
-    $.get("/entity/funeral_director_details", {'name': fd},
+    $.get("/entity/funeral_facility_details", {'name': fd},
       function(data) {
         $('#death_record_funeral_facility_street_and_number').val(data.street_and_number)
         $('#death_record_funeral_facility_city').val(data.city)
@@ -20,7 +20,7 @@ $(document).ready(function() {
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-10">
-      <%= f.input :funeral_facility_name, required: true, label: 'Facility Name', error: 'Facility Name is mandatory, please specify one.', collection: EntityHelper.get_funeral_director_names %>
+      <%= f.input :funeral_facility_name, required: true, label: 'Facility Name', error: 'Facility Name is mandatory, please specify one.', collection: EntityHelper.get_funeral_facility_names %>
     </div>
   </div>
   <div class="row">

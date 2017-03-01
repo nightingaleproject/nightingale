@@ -1,6 +1,6 @@
-class CreateFuneralDirectors < ActiveRecord::Migration[5.0]
+class CreateFuneralFacilities < ActiveRecord::Migration[5.0]
   def change
-    create_table :funeral_directors do |t|
+    create_table :funeral_facilities do |t|
       t.string :name
       t.string :street_and_number
       t.string :city

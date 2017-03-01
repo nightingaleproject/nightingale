@@ -1,14 +1,14 @@
 # Entity helper module; used for structured data (funeral directors, etc.)
 module EntityHelper
-  def self.get_funeral_director_names
+  def self.get_funeral_facility_names
     fd_names = []
-    FuneralDirector.all.each do |fd|
+    FuneralFacility.all.each do |fd|
       fd_names.push(fd.name)
     end
     fd_names
   end
   
-  def self.get_funeral_director_details(name)
-    FuneralDirector.find_by name: name
+  def self.get_funeral_facility_details(name)
+    FuneralFacility.find_by name: name
   end
 end

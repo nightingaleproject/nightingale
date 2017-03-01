@@ -82,7 +82,7 @@ namespace :geo do
 
   desc %(Loads the given YML file containing funeral director information.
 
-  An example file is located at data/funeral_directors.yml
+  An example file is located at data/funeral_facilities.yml
 
   $ rake geo:load_fd_yml INPUT=###)
   task load_fd_yml: :environment do
@@ -92,7 +92,7 @@ namespace :geo do
     data = YAML.load_file(ENV['INPUT'])
     
     data.each do |fd, fd_info|
-      fd_obj = FuneralDirector.new(name: fd,
+      fd_obj = FuneralFacility.new(name: fd,
                                    street_and_number: fd_info['street_and_number'],
                                    city: fd_info['city'],
                                    county: fd_info['county'],

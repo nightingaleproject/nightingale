@@ -334,7 +334,7 @@ ActiveRecord::Schema.define(version: 20170301012703) do
     t.index ["owner_id"], name: "index_death_records_on_owner_id", using: :btree
   end
 
-  create_table "funeral_directors", force: :cascade do |t|
+  create_table "funeral_facilities", force: :cascade do |t|
     t.string   "name"
     t.string   "street_and_number"
     t.string   "city"

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FuneralDirectorTest < ActiveSupport::TestCase
+class FuneralFacilityTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

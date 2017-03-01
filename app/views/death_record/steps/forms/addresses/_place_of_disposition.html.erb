@@ -8,7 +8,6 @@
     // State was selected
     $('#death_record_place_of_disposition_state').change(function(data) {
       var state = $('#death_record_place_of_disposition_state :selected').text();
-      debugger
       $.get("/geographic/cities", {'state': state},
         function(data) {
           // Update form
