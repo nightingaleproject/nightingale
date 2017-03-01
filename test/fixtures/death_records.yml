@@ -7,8 +7,8 @@
 one:
     id: 1
     place_of_death_facility_name: Test Facility
-    place_of_death_street_number: 2 Fake St.
-    place_of_death_appt_number: 234
+    place_of_death_street_and_number: 2 Fake St.
+    place_of_death_apt: 234
     place_of_death_city: Medford
     place_of_death_state: MA
     place_of_death_county: Norfolk
@@ -32,7 +32,7 @@ one:
     location_of_injury_state: MD
     location_of_injury_city: Appleton
     location_of_injury_street_and_number: 14 Fake St
-    location_of_injury_apartment_number: 333
+    location_of_injury_apt: 333
     location_of_injury_zip_code: 02021
     description_of_injury_occurrence: bad things happened
     transportation_injury: true
@@ -53,8 +53,8 @@ one:
 two:
     id: 2
     place_of_death_facility_name: Test Facility
-    place_of_death_street_number: 2 Fake St.
-    place_of_death_appt_number: 234
+    place_of_death_street_and_number: 2 Fake St.
+    place_of_death_apt: 234
     place_of_death_city: Medford
     place_of_death_state: MA
     place_of_death_county: Norfolk
@@ -78,7 +78,7 @@ two:
     location_of_injury_state: MD
     location_of_injury_city: Appleton
     location_of_injury_street_and_number: 14 Fake St
-    location_of_injury_apartment_number: 333
+    location_of_injury_apt: 333
     location_of_injury_zip_code: 02021
     description_of_injury_occurrence: bad things happened
     transportation_injury: true
@@ -102,10 +102,12 @@ three:
     middle_name: 'X.'
     last_name: 'Cash'
     suffixes: '1st'
-    akas: 'The Man in Black'
+    first_name_aka: 'The'
+    middle_name_aka: 'Man'
+    last_name_aka: 'in Black'
     social_security_number: '123-45-6780'
-    street: '2 Fake St'
-    appt_number: '2'
+    street_and_number: '2 Fake St'
+    apt: '2'
     city: 'Nashville'
     state: 'TN'
     county: 'Nashville'
@@ -144,7 +146,7 @@ three:
     funeral_facility_street_and_number: '13 Music St.'
     funeral_facility_city: 'Nashville'
     funeral_facility_state: 'TN'
-    funeral_facility_zip: '03033'
+    funeral_facility_zip_code: '03033'
     funeral_facility_county: 'Nashville County'
     funeral_director_license_number: '12345'
     informants_name_first: 'Billy Bob'
@@ -152,7 +154,7 @@ three:
     informants_name_last: 'Smith'
     informants_suffixes: 'Jr.'
     informants_mailing_address_street_and_number: '1 fake st.'
-    informants_appt_number: 'Apt 44'
+    informants_mailing_address_apt: 'Apt 44'
     informants_mailing_address_city: 'Nashville'
     informants_mailing_address_state: 'TN'
     informants_mailing_address_zip_code: '03033'
@@ -160,8 +162,8 @@ three:
     place_of_death_type: 'funeral home'
     place_of_death_type_specific: 'n/a'
     place_of_death_facility_name: 'Norwood Hospital'
-    place_of_death_street_number: '1 Lazy St.'
-    place_of_death_appt_number: 'n/a'
+    place_of_death_street_and_number: '1 Lazy St.'
+    place_of_death_apt: 'n/a'
     place_of_death_city: 'Norwood'
     place_of_death_state: 'MA'
     place_of_death_county: 'Norfolk'
@@ -187,7 +189,7 @@ three:
     location_of_injury_state: 'MA'
     location_of_injury_city: 'Norwood'
     location_of_injury_street_and_number: '1 Bored Rd.'
-    location_of_injury_apartment_number: '215'
+    location_of_injury_apt: '215'
     location_of_injury_zip_code: '02043'
     description_of_injury_occurrence: 'heart failed'
     transportation_injury: false
@@ -205,4 +207,3 @@ three:
     medical_certifier_license_number: '654321'
     date_certified: '12-06-2016'
     form_steps: ['identity', 'demographics', 'medical']
-    #decedent: decedent_jc
