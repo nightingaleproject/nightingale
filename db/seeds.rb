@@ -25,7 +25,7 @@ end
 # Record creation for funeral facility data
 ###############################################################################
 require 'yaml'
-data = YAML.load_file(ENV['INPUT'])
+data = YAML.load_file('data/funeral_directors.yml')
 data.each do |fd, fd_info|
   fd_obj = FuneralDirector.new(name: fd,
                                street_and_number: fd_info['street_and_number'],
