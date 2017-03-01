@@ -122,9 +122,8 @@ class DeathRecord < ApplicationRecord
 
   # If the "owner_id" is updated on the model update Death_Record_History with the new owner_id and death_record_id.
   def check_owner_change
-    if !changes['owner_id'].nil?
-      DeathRecordHistory.create!({death_record_id: id, user_id: changes['owner_id'][1]})
+    unless changes['owner_id'].nil?
+      DeathRecordHistory.create!(death_record_id: id, user_id: changes['owner_id'][1])
     end
   end
-
 end

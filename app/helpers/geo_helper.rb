@@ -5,7 +5,7 @@ module GeoHelper
     State.all.each do |state|
       states.push(state.name)
     end
-    states.sort_by!{ |e| ActiveSupport::Inflector.transliterate(e.downcase) }
+    states.sort_by! { |e| ActiveSupport::Inflector.transliterate(e.downcase) }
   end
 
   def self.get_counties(state)
@@ -14,7 +14,7 @@ module GeoHelper
     state_obj.counties.each do |county|
       counties.push(county.name)
     end
-    counties.sort_by!{ |e| ActiveSupport::Inflector.transliterate(e.downcase) }
+    counties.sort_by! { |e| ActiveSupport::Inflector.transliterate(e.downcase) }
   end
 
   def self.get_cities(state, county)
@@ -24,7 +24,7 @@ module GeoHelper
     county_obj.cities.each do |city|
       cities.push(city.name)
     end
-    cities.sort_by!{ |e| ActiveSupport::Inflector.transliterate(e.downcase) }
+    cities.sort_by! { |e| ActiveSupport::Inflector.transliterate(e.downcase) }
   end
 
   def self.get_cities_in_state(state)
@@ -33,7 +33,7 @@ module GeoHelper
     state_obj.cities.each do |city|
       cities.push(city.name)
     end
-    cities.sort_by!{ |e| ActiveSupport::Inflector.transliterate(e.downcase) }
+    cities.sort_by! { |e| ActiveSupport::Inflector.transliterate(e.downcase) }
   end
 
   def self.get_zipcodes(state, county, city)
@@ -44,6 +44,6 @@ module GeoHelper
     city_obj.zipcodes.each do |zipcode|
       zipcodes.push(zipcode.name)
     end
-    zipcodes.sort_by!{ |e| ActiveSupport::Inflector.transliterate(e.downcase) }
+    zipcodes.sort_by! { |e| ActiveSupport::Inflector.transliterate(e.downcase) }
   end
 end

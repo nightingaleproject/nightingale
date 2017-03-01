@@ -51,7 +51,7 @@ gem 'font-awesome-rails'
 gem 'glyphicons-rails'
 
 # Better select boxes
-gem "select2-rails"
+gem 'select2-rails'
 
 # Use audited for tracking ownership of records
 gem 'audited', '~> 4.3'

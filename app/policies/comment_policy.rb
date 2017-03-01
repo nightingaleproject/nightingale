@@ -6,7 +6,7 @@ class CommentPolicy
   end
 
   def create?
-    # TODO How would this be checked?
+    # TODO: How would this be checked?
     true
   end
 

@@ -1,4 +1,6 @@
+# Question Module
 module Question
+  # MultipleChoice Question Model
   class MultipleChoiceQuestion < Question
     has_many :choice
 
@@ -11,7 +13,7 @@ module Question
       multi_options.split(/\s*,\s*/).each do |opt|
         options += '<option>' + ActionView::Base.full_sanitizer.sanitize(opt) + '</option>'
       end
-      return options.html_safe
+      options.html_safe
     end
   end
 end

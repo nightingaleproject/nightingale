@@ -13,22 +13,22 @@ namespace :geo do
     # Source of State abbreviations
     url_states = 'https://raw.githubusercontent.com/midwire/free_zipcode_data/master/all_us_states.csv'
 
-    require "open-uri"
+    require 'open-uri'
     require 'csv'
     require 'yaml'
 
     # Open CSV source of State abbreviations
     abbreviations = {}
-    url_data = open(url_states).read()
-    csv = CSV.parse(url_data, :headers => false)
+    url_data = open(url_states).read
+    csv = CSV.parse(url_data, headers: false)
     csv.drop(1).each do |row|
       abbreviations[row[0]] = row[1]
     end
 
     # Open CSV source of all info and parse to nested hash
     output = {}
-    url_data = open(url_all).read()
-    csv = CSV.parse(url_data, :headers => false)
+    url_data = open(url_all).read
+    csv = CSV.parse(url_data, headers: false)
     csv.drop(1).each do |row|
       state = abbreviations[row[2]]
       county = row[3]
@@ -46,20 +46,20 @@ namespace :geo do
 
   desc %(Loads the given YML file containing U.S. geographic information
   into models useable by the edrs application.
-  
+
   This YML file is expected to be in the structure that geo:generate_geo_yml
   creates (States->Counties->Cities->Zipcodes).
 
-  NOTE: This should not normally have to be done manually! The seeds.rb 
+  NOTE: This should not normally have to be done manually! The seeds.rb
   does this itself on rake db:setup!
 
   $ rake geo:load_geo_yml INPUT=###)
   task load_geo_yml: :environment do
     require 'yaml'
-    
+
     # Load YML file
     data = YAML.load_file(ENV['INPUT'])
-    
+
     # Parse into database models
     data.each do |state, counties|
       state_obj = State.new(name: state)
@@ -87,10 +87,10 @@ namespace :geo do
   $ rake geo:load_fd_yml INPUT=###)
   task load_fd_yml: :environment do
     require 'yaml'
-    
+
     # Load YML file
     data = YAML.load_file(ENV['INPUT'])
-    
+
     data.each do |fd, fd_info|
       fd_obj = FuneralFacility.new(name: fd,
                                    street_and_number: fd_info['street_and_number'],

@@ -7,7 +7,7 @@ module EntityHelper
     end
     fd_names
   end
-  
+
   def self.get_funeral_facility_details(name)
     FuneralFacility.find_by name: name
   end

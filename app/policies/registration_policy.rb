@@ -2,6 +2,7 @@
 class RegistrationPolicy
   def initialize(user, registration)
     @user = user
+    @registration = registration
   end
 
   def edit?

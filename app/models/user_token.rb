@@ -12,16 +12,15 @@ class UserToken < ApplicationRecord
 
   def login_token_expired?
     # Does the token exist anymore?
-    if self.is_expired
-      return true
-    end
+    return true if is_expired
+
     # Has the token expired?
-    if Time.now.utc > (self.token_generated_at + token_validity)
+    if Time.now.utc > (token_generated_at + token_validity)
       expire_token!
       return true
     end
 
-    return false
+    false
   end
 
   def expire_token!
