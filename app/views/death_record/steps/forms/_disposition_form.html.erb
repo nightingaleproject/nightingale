@@ -21,51 +21,12 @@
 
   <fieldset>
     <legend>Place of Disposition</legend>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-10">
-          <%= f.input :place_of_disposition, required: true, label: 'Name', error: 'Name is mandatory, please specify one.' %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-5">
-          <%= f.input :place_of_disposition_city, required: true, label: 'City', error: 'City is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-4">
-          <%= f.input :place_of_disposition_state, required: true, label: 'State', error: 'State is mandatory, please specify one.' %>
-        </div>
-      </div>
-    </div>
+    <%= render :partial => 'death_record/steps/forms/addresses/place_of_disposition', :locals=>{:f=>f} %>
   </fieldset>
 
    <fieldset>
     <legend>Funeral Facility</legend>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-10">
-          <%= f.input :funeral_facility_name, required: true, label: 'Facility Name', error: 'Facility Name is mandatory, please specify one.' %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-10">
-          <%= f.input :funeral_facility_street_and_number, required: true, label: 'Street', error: 'Street is mandatory, please specify one.' %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-5">
-          <%= f.input :funeral_facility_city, required: true, label: 'City', error: 'City is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-2">
-          <%= f.input :funeral_facility_state, required: true, label: 'State', error: 'State is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-2">
-          <%= f.input :funeral_facility_zip, required: true, label: 'Zip Code', error: 'Zip code is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-3">
-          <%= f.input :funeral_facility_county, required: true, label: 'County', error: 'County is mandatory, please specify one.' %>
-        </div>
-      </div>
-    </div>
+    <%= render :partial => 'death_record/steps/forms/addresses/funeral_facility', :locals=>{:f=>f} %>
   </fieldset>
 
   <fieldset>
@@ -101,30 +62,7 @@
 
    <fieldset>
     <legend>Informant's Address</legend>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-10">
-          <%= f.input :informants_mailing_address_street_and_number, required: true, label: 'Street', error: 'Street is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-2">
-          <%= f.input :informants_appt_number, label: 'Apt/Suite/Unit' %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-5">
-          <%= f.input :informants_mailing_address_city, required: true, label: 'City', error: 'City is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-2">
-          <%= f.input :informants_mailing_address_state, required: true, label: 'State', error: 'State is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-2">
-          <%= f.input :informants_mailing_address_zip_code, required: true, label: 'Zip Code', error: 'Zip code is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-3">
-          <%= f.input :informants_mailing_address_county, required: true, label: 'County', error: 'County is mandatory, please specify one.' %>
-        </div>
-      </div>
-    </div>
+    <%= render :partial => 'death_record/steps/forms/addresses/generic_address', :locals=>{:f=>f, :identifier=>'informants_mailing_address'} %>
   </fieldset>
 
   <%= render :partial => 'death_record/steps/forms/supplemental', :locals=>{:f=>f} %>

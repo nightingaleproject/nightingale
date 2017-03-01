@@ -21,7 +21,7 @@ class DeathRecord < ApplicationRecord
     step.validates :first_name, presence: true
     step.validates :last_name, presence: true
     step.validates :social_security_number, presence: true
-    step.validates :street, presence: true
+    step.validates :street_and_number, presence: true
     step.validates :city, presence: true
     step.validates :state, presence: true
     step.validates :county, presence: true
@@ -59,7 +59,7 @@ class DeathRecord < ApplicationRecord
     step.validates :funeral_facility_street_and_number, presence: true
     step.validates :funeral_facility_city, presence: true
     step.validates :funeral_facility_state, presence: true
-    step.validates :funeral_facility_zip, presence: true
+    step.validates :funeral_facility_zip_code, presence: true
     step.validates :funeral_facility_county, presence: true
     step.validates :funeral_director_license_number, presence: true
     step.validates :informants_name_first, presence: true
@@ -75,7 +75,7 @@ class DeathRecord < ApplicationRecord
   with_options if: -> { required_for_step?(:medical) } do |step|
     step.validates :place_of_death_type, presence: true
     step.validates :place_of_death_facility_name, presence: true
-    step.validates :place_of_death_street_number, presence: true
+    step.validates :place_of_death_street_and_number, presence: true
     step.validates :place_of_death_city, presence: true
     step.validates :place_of_death_state, presence: true
     step.validates :place_of_death_zip_code, presence: true

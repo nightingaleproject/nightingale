@@ -13,7 +13,7 @@
           <%= devise_error_messages! %>
           <div class="field">
             <%= f.label :email %>
-            <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+            <%= f.email_field :email, autofocus: true, class: 'sign-in-field', value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
           </div>
           <br />
           <div class="actions">

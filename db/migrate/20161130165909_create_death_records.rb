@@ -14,7 +14,7 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       t.string :social_security_number
 
       # Decedent's Residence
-      t.string :street, :appt_number, :city, :state, :county, :zip_code
+      t.string :street_and_number, :apt, :city, :state, :county, :zip_code
       t.boolean :inside_city_limits
 
       # Decedent's Spouse Information
@@ -64,7 +64,7 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
 
       # 21. NAME AND COMPLETE ADDRESS OF FUNERAL FACILITY
       t.string :funeral_facility_name, :funeral_facility_street_and_number, :funeral_facility_city, :funeral_facility_state,
-               :funeral_facility_zip, :funeral_facility_county
+               :funeral_facility_zip_code, :funeral_facility_county
 
         # 23. LICENSE NUMBER (Of Licensee)
       t.string :funeral_director_license_number
@@ -73,7 +73,7 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       t.string :informants_name_first, :informants_name_middle, :informants_name_last, :informants_suffixes
 
       # 13c. MAILING ADDRESS (Street and Number, City, State, Zip Code)
-      t.string :informants_mailing_address_street_and_number, :informants_appt_number, :informants_mailing_address_city, :informants_mailing_address_state,
+      t.string :informants_mailing_address_street_and_number, :informants_mailing_address_apt, :informants_mailing_address_city, :informants_mailing_address_state,
                :informants_mailing_address_zip_code, :informants_mailing_address_county
 
       # Place of Death (notes from standard cert):
@@ -84,7 +84,7 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       # TODO: We need to enforce that this field is constrained to particular values, perhaps using postgres enumerated types (allowing other)
       t.string :place_of_death_type, :place_of_death_type_specific
       t.string :place_of_death_facility_name
-      t.string :place_of_death_street_number, :place_of_death_appt_number, :place_of_death_city,
+      t.string :place_of_death_street_and_number, :place_of_death_apt, :place_of_death_city,
         :place_of_death_state, :place_of_death_county, :place_of_death_zip_code
 
       # Date/time of death
@@ -133,7 +133,7 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       #PLACE OF INJURY (e.g., Decedent’s home; construction site; restaurant; wooded area)
       t.string :place_of_injury
 
-      t.string :location_of_injury_state, :location_of_injury_city, :location_of_injury_street_and_number, :location_of_injury_apartment_number,
+      t.string :location_of_injury_state, :location_of_injury_city, :location_of_injury_street_and_number, :location_of_injury_apt,
                :location_of_injury_zip_code
       t.string :description_of_injury_occurrence
       t.boolean :transportation_injury

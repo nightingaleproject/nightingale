@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require datatables
+//= require select2
 //= require_tree .
 //= require highcharts
 //= require chartkick

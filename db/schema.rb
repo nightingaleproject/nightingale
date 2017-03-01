@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220194455) do
+ActiveRecord::Schema.define(version: 20170301012703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.index ["death_record_id"], name: "index_cause_of_deaths_on_death_record_id", using: :btree
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.integer  "county_id"
+    t.integer  "state_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["county_id"], name: "index_cities_on_county_id", using: :btree
+    t.index ["state_id"], name: "index_cities_on_state_id", using: :btree
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string   "content"
     t.integer  "death_record_id"
@@ -71,6 +81,14 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.datetime "updated_at",      null: false
     t.index ["death_record_id"], name: "index_comments_on_death_record_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "counties", force: :cascade do |t|
+    t.integer  "state_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state_id"], name: "index_counties_on_state_id", using: :btree
   end
 
   create_table "date_time_questions", force: :cascade do |t|
@@ -200,8 +218,8 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.string   "last_name_aka"
     t.string   "suffixes_aka"
     t.string   "social_security_number"
-    t.string   "street"
-    t.string   "appt_number"
+    t.string   "street_and_number"
+    t.string   "apt"
     t.string   "city"
     t.string   "state"
     t.string   "county"
@@ -244,7 +262,7 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.string   "funeral_facility_street_and_number"
     t.string   "funeral_facility_city"
     t.string   "funeral_facility_state"
-    t.string   "funeral_facility_zip"
+    t.string   "funeral_facility_zip_code"
     t.string   "funeral_facility_county"
     t.string   "funeral_director_license_number"
     t.string   "informants_name_first"
@@ -252,7 +270,7 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.string   "informants_name_last"
     t.string   "informants_suffixes"
     t.string   "informants_mailing_address_street_and_number"
-    t.string   "informants_appt_number"
+    t.string   "informants_mailing_address_apt"
     t.string   "informants_mailing_address_city"
     t.string   "informants_mailing_address_state"
     t.string   "informants_mailing_address_zip_code"
@@ -260,8 +278,8 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.string   "place_of_death_type"
     t.string   "place_of_death_type_specific"
     t.string   "place_of_death_facility_name"
-    t.string   "place_of_death_street_number"
-    t.string   "place_of_death_appt_number"
+    t.string   "place_of_death_street_and_number"
+    t.string   "place_of_death_apt"
     t.string   "place_of_death_city"
     t.string   "place_of_death_state"
     t.string   "place_of_death_county"
@@ -287,7 +305,7 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.string   "location_of_injury_state"
     t.string   "location_of_injury_city"
     t.string   "location_of_injury_street_and_number"
-    t.string   "location_of_injury_apartment_number"
+    t.string   "location_of_injury_apt"
     t.string   "location_of_injury_zip_code"
     t.string   "description_of_injury_occurrence"
     t.boolean  "transportation_injury"
@@ -314,6 +332,17 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.datetime "updated_at",                                                   null: false
     t.integer  "owner_id"
     t.index ["owner_id"], name: "index_death_records_on_owner_id", using: :btree
+  end
+
+  create_table "funeral_facilities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "street_and_number"
+    t.string   "city"
+    t.string   "county"
+    t.string   "state"
+    t.string   "zip_code"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "multiple_choice_questions", force: :cascade do |t|
@@ -380,6 +409,12 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
+  create_table "states", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "string_questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -413,11 +448,11 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.boolean  "is_guest_user",          default: false
+    t.string   "first_name",             default: "",    null: false
+    t.string   "last_name",              default: "",    null: false
+    t.string   "telephone",              default: "",    null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "telephone"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -427,6 +462,14 @@ ActiveRecord::Schema.define(version: 20170220194455) do
     t.integer "user_id"
     t.integer "role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+  end
+
+  create_table "zipcodes", force: :cascade do |t|
+    t.integer  "city_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_zipcodes_on_city_id", using: :btree
   end
 
   add_foreign_key "cause_of_deaths", "death_records"

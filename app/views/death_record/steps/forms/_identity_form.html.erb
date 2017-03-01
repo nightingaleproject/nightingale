@@ -47,29 +47,8 @@
   
   <fieldset>
     <legend>Decedent's Residence</legend>
+    <%= render :partial => 'death_record/steps/forms/addresses/generic_address', :locals=>{:f=>f, :identifier=>''} %>
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-10">
-          <%= f.input :street, label: 'Street', required: true, error: 'Street is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-2">
-          <%= f.input :appt_number, label: 'Apt/Suite/Unit' %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-5">
-          <%= f.input :city, label: 'City', required: true, error: 'City is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-2">
-          <%= f.input :state, label: 'State', required: true, error: 'State is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-2">
-          <%= f.input :zip_code, label: 'Zip Code', required: true, error: 'Zip code is mandatory, please specify one.' %>
-        </div>
-        <div class="col-md-3">
-          <%= f.input :county, label: 'County', required: true, error: 'County is mandatory, please specify one.' %>
-        </div>
-      </div>
       <div class="row">
         <div class="col-md-10">
           <%= f.input :inside_city_limits, as: :radio_buttons, label: 'Is this address within the city limits?', required: true, error: 'Please specify if this address is within the city limits.' %>
