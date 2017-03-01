@@ -15,7 +15,9 @@ class ReportsController < ApplicationController
   def death_records_by_current_step()
     death_records = DeathRecord.group(:record_status).count
 
-    death_records["registrar"] = death_records.delete "wicked_finish"
+    if death_records.key?('wicked_finish')
+      death_records["registrar"] = death_records.delete "wicked_finish"
+    end
 
     # Titleize all keys
     titleize_hash = {}
@@ -68,7 +70,9 @@ class ReportsController < ApplicationController
     end
 
     # Replace 'wicked_finish' with 'registrar'
-    average_scores["registrar"] = average_scores.delete "wicked_finish"
+    if average_scores.key?('wicked_finish')
+      average_scores["registrar"] = average_scores.delete "wicked_finish"
+    end
 
     # Titleize all keys
     titleize_hash = {}
@@ -84,34 +88,38 @@ class ReportsController < ApplicationController
     calculatable_records = []
     # Grab all records of completed death records.
     completed_death_records = DeathRecord.where.not(time_registered: nil)
-    completed_death_records.each do |record|
-      # Subtract started time from the completed time to get the difference in seconds.
-      calculatable_records << record.time_registered - record.created_at
-    end
+    unless completed_death_records.blank?
+      completed_death_records.each do |record|
+        # Subtract started time from the completed time to get the difference in seconds.
+        calculatable_records << record.time_registered - record.created_at
+      end
 
-    # Use the array of differences and find the average difference.
-    mean_in_seconds = calculatable_records.inject(0.0) { |sum, el| sum + el } / calculatable_records.size
-    mean = seconds_to_string(mean_in_seconds)
+      # Use the array of differences and find the average difference.
+      mean_in_seconds = calculatable_records.inject(0.0) { |sum, el| sum + el } / calculatable_records.size
+      mean = seconds_to_string(mean_in_seconds)
+    else
+      'No Completed Records'
+    end
   end
 
    # Convert time from seconds to properly formatted time. 129 :=> 2 minutes, 9 seconds
    def seconds_to_string(s)
-    s = s.to_i.abs
-    # d = days, h = hours, m = minutes, s = seconds
-    m = (s / 60).floor
-    s = s % 60
-    h = (m / 60).floor
-    m = m % 60
-    d = (h / 24).floor
-    h = h % 24
+     s = s.to_i.abs
+     # d = days, h = hours, m = minutes, s = seconds
+     m = (s / 60).floor
+     s = s % 60
+     h = (m / 60).floor
+     m = m % 60
+     d = (h / 24).floor
+     h = h % 24
 
-    output = "#{s} second#{pluralize(s)}" if (s > 0)
-    output = "#{m} minute#{pluralize(m)}, #{s} second#{pluralize(s)}" if (m > 0)
-    output = "#{h} hour#{pluralize(h)}, #{m} minute#{pluralize(m)}, #{s} second#{pluralize(s)}" if (h > 0)
-    output = "#{d} day#{pluralize(d)}, #{h} hour#{pluralize(h)}, #{m} minute#{pluralize(m)}, #{s} second#{pluralize(s)}" if (d > 0)
+     output = "#{s} second#{pluralize(s)}" if (s > 0)
+     output = "#{m} minute#{pluralize(m)}, #{s} second#{pluralize(s)}" if (m > 0)
+     output = "#{h} hour#{pluralize(h)}, #{m} minute#{pluralize(m)}, #{s} second#{pluralize(s)}" if (h > 0)
+     output = "#{d} day#{pluralize(d)}, #{h} hour#{pluralize(h)}, #{m} minute#{pluralize(m)}, #{s} second#{pluralize(s)}" if (d > 0)
 
-    return output
-  end
+     return output
+   end
 
   def pluralize number
     return "s" unless number == 1
