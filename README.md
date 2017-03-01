@@ -6,11 +6,15 @@ Electronic Death Registration System (EDRS) app built using Ruby on Rails
 Setup (for demo mode):
 ----------------------
 
-> bundle exec rake db:drop
-> bundle exec rake db:create
-> bundle exec rake db:migrate
-> bundle exec rake db:setup
-> bundle exec rake edrs:demo:setup
+```
+
+        bundle exec rake db:drop
+        bundle exec rake db:create
+        bundle exec rake db:migrate
+        bundle exec rake db:setup
+        bundle exec rake edrs:demo:setup
+
+```
 
 This will create (all with the password "123456"):
 - A funeral director user (fd@test.com)
