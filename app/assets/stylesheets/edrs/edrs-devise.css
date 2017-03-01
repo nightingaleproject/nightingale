@@ -10,6 +10,10 @@
 .attribution {
   position: fixed;
   bottom: 0;
+  color: #888;
+}
+.attribution a {
+  color: #BBB;
 }
 .v-align-row {
   display: flex;
