@@ -61,7 +61,7 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.permit! # TODO
+      params.permit(:question, :required, :step, :question_type, :multi_options)
     end
     
     def filter_params_for_type(params, type)
