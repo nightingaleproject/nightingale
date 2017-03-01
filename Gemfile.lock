@@ -1,3 +1,10 @@
+GIT
+  remote: http://github.com/rails/rails-observers
+  revision: 3fe157d6cbb5b5e767ded248009fc59443d63fa1
+  specs:
+    rails-observers (0.1.3.alpha)
+      activemodel (>= 4.0, < 5.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -42,11 +49,15 @@ GEM
       activerecord (>= 3.0)
     arel (7.1.4)
     ast (2.2.0)
+    audited (4.3.0)
+      activerecord (>= 4.0, < 5.1)
+      rails-observers (~> 0.1.2)
     bcrypt (3.1.11)
     bcrypt (3.1.11-x86-mingw32)
     brakeman (3.4.0)
     builder (3.2.2)
     byebug (9.0.6)
+    chartkick (2.2.2)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -55,8 +66,16 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    countries (2.0.7)
+      i18n_data (~> 0.7.0)
+      money (~> 6.7)
+      sixarm_ruby_unaccent (~> 1.1)
+      unicode_utils (~> 1.4)
+    country_select (3.0.0)
+      countries (~> 2.0)
+      sort_alphabetical (~> 1.0)
     debug_inspector (0.0.2)
-    devise (4.1.1)
+    devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.1)
@@ -68,9 +87,17 @@ GEM
     execjs (2.7.0)
     ffi (1.9.14)
     ffi (1.9.14-x86-mingw32)
+    font-awesome-rails (4.7.0.0)
+      railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    glyphicons-rails (0.1.2)
+      sass (~> 3.3)
+      sass-rails
+    groupdate (3.2.0)
+      activesupport (>= 3)
     i18n (0.7.0)
+    i18n_data (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -91,6 +118,9 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
+    money (6.8.1)
+      i18n (>= 0.6.4, <= 0.7.0)
+      sixarm_ruby_unaccent (>= 1.1.1, < 2)
     multi_json (1.12.1)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
@@ -154,6 +184,14 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    select2-rails (4.0.3)
+      thor (~> 0.14)
+    simple_form (3.3.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
+    sixarm_ruby_unaccent (1.1.1)
+    sort_alphabetical (1.1.0)
+      unicode_utils (>= 1.2.2)
     spring (2.0.0)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -169,9 +207,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
-    turbolinks (5.0.1)
-      turbolinks-source (~> 5)
-    turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     tzinfo-data (1.2016.10)
@@ -179,6 +214,7 @@ GEM
     uglifier (3.0.3)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (0.3.1)
+    unicode_utils (1.4.0)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (3.4.0)
@@ -189,6 +225,8 @@ GEM
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    wicked (1.3.1)
+      railties (>= 3.0.7)
 
 PLATFORMS
   ruby
@@ -196,11 +234,17 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
+  audited (~> 4.3)
   brakeman
   byebug
+  chartkick
   coffee-rails (~> 4.2)
+  country_select
   devise
   doorkeeper
+  font-awesome-rails
+  glyphicons-rails
+  groupdate
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -208,15 +252,18 @@ DEPENDENCIES
   puma (~> 3.0)
   pundit
   rails (~> 5.0.0, >= 5.0.0.1)
+  rails-observers!
   rolify
   rubocop
   sass-rails (~> 5.0)
+  select2-rails
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
-  turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console
+  wicked
 
 BUNDLED WITH
    1.13.6

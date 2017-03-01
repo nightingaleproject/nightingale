@@ -1,0 +1,73 @@
+.sign_in_body {
+  background-image: url("/bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.attribution {
+  position: fixed;
+  bottom: 0;
+  color: #888;
+}
+.attribution a {
+  color: #BBB;
+}
+.v-align-row {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+.title-name {
+  font-weight: bold;
+  font-size: 7em;
+  color: white;
+}
+.title-desc {
+  font-size: 3.0em;
+  color: white;
+}
+.title-more {
+  font-size: 2.0em;
+  color: white;
+}
+.title-sign-in {
+  font-weight: bold;
+  font-size: 2.5em;
+}
+.title-label {
+  font-weight: normal;
+  font-size: 1.0em;
+}
+.sign-in-box {
+  background-color: white;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  opacity: .8;
+  border-color: #266a93;
+  border-width: 2px;
+  border-style: solid;
+}
+.sign-in-field {
+  width: 100%;
+}
+a.title-more-link {
+  text-decoration: underline;
+  color: white !important;
+  background-color: inherit;
+}
+a.title-more-link:visited {
+  color: white !important;
+  background-color: inherit;
+}
+a.title-more-link:hover {
+  color: white !important;
+  background-color: inherit;
+}
+a.title-more-link:active {
+  color: white !important;
+  background-color: inherit;
+}

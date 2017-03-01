@@ -3,14 +3,19 @@
   <head>
     <title>EDRS</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'default', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'default', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <% if !current_user.nil? && user_signed_in? %>
+      <%= render "layouts/header" %>
+      <div class="container">
+        <%= render "layouts/errors" %>
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

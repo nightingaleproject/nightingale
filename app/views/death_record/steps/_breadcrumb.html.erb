@@ -1,0 +1,13 @@
+<!-- This view draws a breadcrumb based on the given 'crumbs' parameter.
+The 'crumbs' paramter should be a hash, where the keys are the strings
+to display and the values are the urls. The last given key/value pair should
+have a value of nil. -->
+<div class="breadcrumb">
+  <% crumbs.each do |crumb, url| %>
+    <% if url != nil %>
+      <a href="<%= url %>" class="edrs-bc-link"><%= crumb %></a> <span class="fa fa-chevron-right"></span>
+    <% else %>
+      <%= crumb %>
+    <% end %>
+  <% end %>
+</div>

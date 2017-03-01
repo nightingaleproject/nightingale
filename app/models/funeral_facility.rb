@@ -1,0 +1,2 @@
+class FuneralFacility < ApplicationRecord
+end

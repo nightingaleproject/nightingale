@@ -1,0 +1,60 @@
+<script type="text/javascript">
+
+  function validateEmail() {
+    if (document.getElementById('owner_email').value === document.getElementById('owner_email_confirmation').value) {
+      $(".btn-primary").removeAttr("disabled");
+    } else {
+      $(".btn-primary").attr("disabled", "true");
+    }
+  }
+
+</script>
+
+<%= simple_form_for(@death_record, html: { class: 'form-vertical' }, method: :put, url: wizard_path) do |f| %>
+
+ <fieldset>
+    <legend><%=@title%></legend>
+    <div class="container-fluid">
+      <div class="row bottom-buffer">
+        <div class="col-md-12">
+          <h5>Select a person with an existing account that you wish to send this Death Record to from the drop down box below.</h5>
+        </div>
+      </div>    
+      
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.input :owner_id, :collection => @users_with_roles, :label_method => :email, :value_method => :id%>
+        </div>
+      </div>
+
+      <% if 'send_to_registrar' != step %>
+        <div class="row bottom-buffer top-buffer">
+          <div class="col-md-12">
+            <h5>If this person does not currently have an account on this system, enter their name, telephone number, and email address below to allow them temporary access to this Death Record.</h5>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.input :owner_first_name, as: :custom, label: 'Enter First Name of Person ', error: 'Please enter the first name of this person.'  %>
+            <%= f.input :owner_last_name, as: :custom, label: 'Enter Last Name of Person ', error: 'Please enter the last name of this person.'  %>
+            <%= f.input :owner_telephone, as: :custom_tel, label: 'Enter Telephone Number of Person ', error: 'Please enter the telephone number of this person.' %>
+            <%= f.input :owner_email, as: :custom, label: 'Enter Email of Person ', error: 'Email does not match.', input_html: { onkeyup: 'validateEmail()' } %>
+            <%= f.input :owner_email_confirmation, as: :custom, label: 'Confirm Email Address ', error: 'Email does not match.', input_html: { onkeyup: 'validateEmail()' } %>
+          </div>
+        </div>
+      <%end%>
+
+    </div>
+  </fieldset>
+
+
+  <div class="text-right">
+    <%= link_to 'Back', :back, {:class=>"btn btn-default"} %>
+    <%= link_to 'Cancel', root_path, {:class=>"btn btn-default"} %>
+    <%= f.button :submit, 'Send', class: 'btn btn-primary' %>
+  </div>
+
+<% end %>
+
+<%= render partial: 'comments/comments', locals: { death_record: @death_record, comments: @comments}%>

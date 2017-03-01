@@ -1,13 +1,25 @@
 require 'test_helper'
 
 class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
+    bob = users(:bob)
+    # Need to assign an actual role to bob.
+    bob.add_role(:funeral_director)
+    # Give bob all roles
+    # rubocop:disable Style/PredicateName
+    def bob.has_role?(*)
+      true
+    end
+    # rubocop:enable Style/PredicateName
+    sign_in bob
     @death_record = death_records(:one)
     @cause_of_death_1 = cause_of_deaths(:cod_one)
   end
 
   test 'should get index' do
-    get death_records_url
+    get death_record_url @death_record
     assert_response :success
   end
 
@@ -18,11 +30,11 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
         params: {
           death_record: {
             place_of_death_facility_name: @death_record.place_of_death_facility_name,
-            place_of_death_street_number: @death_record.place_of_death_street_number,
-            place_of_death_appt_number: @death_record.place_of_death_appt_number,
+            place_of_death_street_and_number: @death_record.place_of_death_street_and_number,
+            place_of_death_apt: @death_record.place_of_death_apt,
             place_of_death_city: @death_record.place_of_death_city,
             place_of_death_state: @death_record.place_of_death_state,
-            place_of_death_country: @death_record.place_of_death_country,
+            place_of_death_county: @death_record.place_of_death_county,
             place_of_death_zip_code: @death_record.place_of_death_zip_code,
             time_pronounced_dead: @death_record.time_pronounced_dead,
             date_pronounced_dead: @death_record.date_pronounced_dead,
@@ -43,7 +55,7 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
             location_of_injury_state: @death_record.location_of_injury_state,
             location_of_injury_city: @death_record.location_of_injury_city,
             location_of_injury_street_and_number: @death_record.location_of_injury_street_and_number,
-            location_of_injury_apartment_number: @death_record.location_of_injury_apartment_number,
+            location_of_injury_apt: @death_record.location_of_injury_apt,
             location_of_injury_zip_code: @death_record.location_of_injury_zip_code,
             description_of_injury_occurrence: @death_record.description_of_injury_occurrence,
             transportation_injury: @death_record.transportation_injury,
@@ -64,7 +76,7 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
         })
     end
 
-    assert_redirected_to death_record_url(DeathRecord.last)
+    assert_redirected_to death_record_step_path(DeathRecord.last, @death_record.form_steps.first)
   end
 
   test 'should update death_record' do
@@ -73,11 +85,11 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
       params: {
         death_record: {
           place_of_death_facility_name: @death_record.place_of_death_facility_name,
-          place_of_death_street_number: @death_record.place_of_death_street_number,
-          place_of_death_appt_number: @death_record.place_of_death_appt_number,
+          place_of_death_street_and_number: @death_record.place_of_death_street_and_number,
+          place_of_death_apt: @death_record.place_of_death_apt,
           place_of_death_city: @death_record.place_of_death_city,
           place_of_death_state: @death_record.place_of_death_state,
-          place_of_death_country: @death_record.place_of_death_country,
+          place_of_death_county: @death_record.place_of_death_county,
           place_of_death_zip_code: @death_record.place_of_death_zip_code,
           time_pronounced_dead: @death_record.time_pronounced_dead,
           date_pronounced_dead: @death_record.date_pronounced_dead,
@@ -98,7 +110,7 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
           location_of_injury_state: @death_record.location_of_injury_state,
           location_of_injury_city: @death_record.location_of_injury_city,
           location_of_injury_street_and_number: @death_record.location_of_injury_street_and_number,
-          location_of_injury_apartment_number: @death_record.location_of_injury_apartment_number,
+          location_of_injury_apt: @death_record.location_of_injury_apt,
           location_of_injury_zip_code: @death_record.location_of_injury_zip_code,
           description_of_injury_occurrence: @death_record.description_of_injury_occurrence,
           transportation_injury: @death_record.transportation_injury,

@@ -1,27 +1,86 @@
-<p id="notice"><%= notice %></p>
+<script>
+  $(document).ready( function () {
+      $('#death_records_table').DataTable({
+        'language': {
+          'emptyTable': 'No Death Records currently available.'
+        },
+        'columnDefs': [ { orderable: false, targets: [6] } ]
+      });
+  });
+</script>
 
-<h1>Death Records</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @death_records.each do |death_record| %>
-      <tr>
-          <!-- TODO: Need to add fields, if this is to be used -->
-          
-        <td><%= link_to 'Show', death_record %></td>
-        <td><%= link_to 'Edit', edit_death_record_path(death_record) %></td>
-        <td><%= link_to 'Destroy', death_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="container-fluid">
+  <h3>
+    In Progress Death Records
+    <% if policy(DeathRecord).create? %>
+      <span class="pull-right"><%= link_to '<span class="fa fa-plus"></span> Start a new Death Record'.html_safe, death_records_path, method: :post, :class => "btn btn-primary" %></span>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Death Record', new_death_record_path %>
+  </h3>
+  <hr/>
+  <div>
+    <% if !@death_records.nil? %>
+      <table class="table" id="death_records_table">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ID</th>
+            <th>Started</th>
+            <th>Last Modified</th>
+            <th>Current Step</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @death_records.each do |death_record| %>
+            <tr>
+              <td>
+                <% if death_record.first_name.nil? || death_record.first_name.empty? %>
+                  -
+                <% else %>
+                  <%= death_record.first_name %>
+                <% end %>
+              </td>
+              <td>
+                <% if death_record.last_name.nil? || death_record.last_name.empty? %>
+                  -
+                <% else %>
+                  <%= death_record.last_name %>
+                <% end %>
+              </td>
+              <td>
+                <%= death_record.id %>
+              </td>
+              <td>
+                <%= DatetimeHelper.pretty_datetime(death_record.created_at) %>
+              </td>
+              <td>
+                <%= DatetimeHelper.pretty_datetime(death_record.updated_at) %>
+              </td>
+              <td>
+                <% if death_record.record_status.include? 'wicked' %>
+                  Registration
+                <% elsif death_record.record_status.include? 'send' %>
+                  Send
+                <% else %>
+                  <%= death_record.record_status.humanize %>
+                <% end %>
+              </td>
+              <td>
+                <% if policy(:step).show? %>
+                  <%= link_to '<span class="fa fa-arrow-circle-right"></span> Continue'.html_safe, death_record_step_path(death_record, id: death_record.record_status), :class => "btn-sm btn-primary" %>
+                <% end %>
+                <% if policy(DeathRecord).update? %>
+                  <%= link_to '<span class="fa fa-search"></span> Review'.html_safe, death_record, :class => "btn-sm btn-primary" %>
+                <% else %>
+                  <%= link_to '<span class="fa fa-search"></span> View'.html_safe, death_record, :class => "btn-sm btn-primary" %>
+                <% end %>
+                <%= link_to '<span class="fa fa-trash"></span> Delete'.html_safe, death_record, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn-sm btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

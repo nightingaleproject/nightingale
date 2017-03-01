@@ -1,0 +1,63 @@
+<script>
+  $(document).ready( function () {
+      $('#questions_table').DataTable({
+        'language': {
+          'emptyTable': 'No Supplemental Questions have been created.'
+        },
+        'columnDefs': [ { orderable: false, targets: [4] } ]
+      });
+  });
+</script>
+
+<div class="container">
+  <div class="row">
+    <%= render 'death_record/steps/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => admins_path, "Supplemental Questions" => nil} %>
+  </div>
+  <h3>
+    Supplemental Questions
+    <% if policy(Question::Question).create? %>
+      <span class="pull-right"><%= link_to '<span class="fa fa-plus"></span> Create a new Supplemental Question'.html_safe, questions_create_path, :class => "btn btn-primary" %></span>
+    <% end %>
+  </h3>
+  <hr/>
+  <div>
+    <% if !@questions.nil? %>
+      <table class="table" id="questions_table">
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Type</th>
+            <th>Required?</th>
+            <th>Step</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @questions.each do |question| %>
+            <tr>
+              <td>
+                <%= question.question %>
+              </td>
+              <td>
+                <%= question.question_type %>
+              </td>
+              <td>
+                <% if question.required %>
+                  Yes
+                <% else %>
+                  No
+                <% end %>
+              </td>
+              <td>
+                <%= question.step %>
+              </td>
+              <td>
+                <%= link_to '<span class="fa fa-trash"></span> Delete'.html_safe, question_path(question), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

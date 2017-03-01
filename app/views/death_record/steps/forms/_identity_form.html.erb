@@ -1,0 +1,128 @@
+<%= simple_form_for(@death_record, html: { class: 'form-vertical' }, method: :put, url: wizard_path) do |f| %>
+  <fieldset>
+    <legend>Decedent's Legal Name</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.input :first_name, label: 'First Name', required: true, error: 'First name is mandatory, please specify one.' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :middle_name, label: 'Middle Name' %>
+        </div>
+        <div class="col-md-4">
+          <%= f.input :last_name, label: 'Last Name', required: true, error: 'Last name is mandatory, please specify one.' %>
+        </div>
+        <div class="col-md-1">
+          <%= f.input :suffixes, label: 'Suffix' %>
+        </div>
+      </div>
+      <h4>Alternate Name (Also Known As)</h4>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.input :first_name_aka, label: 'First Name' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :middle_name_aka, label: 'Middle Name' %>
+        </div>
+        <div class="col-md-4">
+          <%= f.input :last_name_aka, label: 'Last Name' %>
+        </div>
+        <div class="col-md-1">
+          <%= f.input :suffixes_aka, label: 'Suffix' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>SSN</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.input :social_security_number, label: 'Social Security Number', required: true, error: 'Social Security Number is mandatory, please specify one.' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Decedent's Residence</legend>
+    <%= render :partial => 'death_record/steps/forms/addresses/generic_address', :locals=>{:f=>f, :identifier=>''} %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <%= f.input :inside_city_limits, as: :radio_buttons, label: 'Is this address within the city limits?', required: true, error: 'Please specify if this address is within the city limits.' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Surviving Spouse's Name</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.input :spouse_first_name, label: 'First Name', error: 'First name is mandatory, please specify one.' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :spouse_middle_name, label: 'Middle Name' %>
+        </div>
+        <div class="col-md-4">
+          <%= f.input :spouse_last_name, label: 'Last Name (Maiden)', error: 'Last name is mandatory, please specify one.' %>
+        </div>
+        <div class="col-md-1">
+          <%= f.input :spouse_suffixes, label: 'Suffix' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Father's Name</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.input :father_first_name, label: 'First Name', required: true, error: 'Father\'s first name is mandatory, please specify one.' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :father_middle_name, label: 'Middle Name' %>
+        </div>
+        <div class="col-md-4">
+          <%= f.input :father_last_name, label: 'Last Name', required: true, error: 'Father\'s last name is mandatory, please specify one.' %>
+        </div>
+        <div class="col-md-1">
+          <%= f.input :father_suffixes, label: 'Suffix' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Mother's Name</legend>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.input :mother_first_name, label: 'First Name', required: true, error: 'Mother\'s first name is mandatory, please specify one.' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :mother_middle_name, label: 'Middle Name' %>
+        </div>
+        <div class="col-md-4">
+          <%= f.input :mother_last_name, label: 'Maiden Name', required: true, error: 'Mother\'s maiden name is mandatory, please specify one.' %>
+        </div>
+        <div class="col-md-1">
+          <%= f.input :mother_suffixes, label: 'Suffix' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  
+  <%= render :partial => 'death_record/steps/forms/supplemental', :locals=>{:f=>f} %>
+
+  <div class="text-right">
+    <%= link_to 'Back', :back, {:class=>"btn btn-default"} %>
+    <%= link_to 'Cancel', root_path, {:class=>"btn btn-default"} %>
+    <%= f.button :submit, 'Next', class: 'btn btn-primary' %>
+  </div>
+
+<% end %>

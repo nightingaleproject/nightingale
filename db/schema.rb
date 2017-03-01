@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130170126) do
+ActiveRecord::Schema.define(version: 20170301012703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string   "type"
+    t.text     "answer"
+    t.integer  "death_record_id"
+    t.integer  "question_id"
+    t.text     "question"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "audits", force: :cascade do |t|
+    t.integer  "auditable_id"
+    t.string   "auditable_type"
+    t.integer  "associated_id"
+    t.string   "associated_type"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.string   "username"
+    t.string   "action"
+    t.text     "audited_changes"
+    t.integer  "version",         default: 0
+    t.string   "comment"
+    t.string   "remote_address"
+    t.string   "request_uuid"
+    t.datetime "created_at"
+    t.index "to_tsvector('english'::regconfig, audited_changes)", name: "audits_idx", using: :gin
+    t.index ["associated_id", "associated_type"], name: "associated_index", using: :btree
+    t.index ["auditable_id", "auditable_type"], name: "auditable_index", using: :btree
+    t.index ["created_at"], name: "index_audits_on_created_at", using: :btree
+    t.index ["request_uuid"], name: "index_audits_on_request_uuid", using: :btree
+    t.index ["user_id", "user_type"], name: "user_index", using: :btree
+  end
+
+  create_table "boolean_questions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cause_of_deaths", force: :cascade do |t|
     t.string   "cause"
@@ -25,11 +63,37 @@ ActiveRecord::Schema.define(version: 20161130170126) do
     t.index ["death_record_id"], name: "index_cause_of_deaths_on_death_record_id", using: :btree
   end
 
-  create_table "causes_of_deaths", force: :cascade do |t|
+  create_table "cities", force: :cascade do |t|
+    t.integer  "county_id"
+    t.integer  "state_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["county_id"], name: "index_cities_on_county_id", using: :btree
+    t.index ["state_id"], name: "index_cities_on_state_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
     t.integer  "death_record_id"
+    t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["death_record_id"], name: "index_causes_of_deaths_on_death_record_id", using: :btree
+    t.index ["death_record_id"], name: "index_comments_on_death_record_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "counties", force: :cascade do |t|
+    t.integer  "state_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state_id"], name: "index_counties_on_state_id", using: :btree
+  end
+
+  create_table "date_time_questions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "death_certificates", force: :cascade do |t|
@@ -134,66 +198,31 @@ ActiveRecord::Schema.define(version: 20161130170126) do
     t.datetime "updated_at",                                   null: false
   end
 
-  create_table "death_records", force: :cascade do |t|
-    t.string   "place_of_death_facility_name"
-    t.string   "place_of_death_street_number"
-    t.string   "place_of_death_appt_number"
-    t.string   "place_of_death_city"
-    t.string   "place_of_death_state"
-    t.string   "place_of_death_country"
-    t.string   "place_of_death_zip_code"
-    t.time     "time_pronounced_dead"
-    t.date     "date_pronounced_dead"
-    t.string   "pronouncing_medical_certifier_license_number"
-    t.date     "pronouncing_medical_certifier_date_of_signature"
-    t.date     "actual_or_presumed_date_of_death"
-    t.time     "actual_or_presumed_time_of_death"
-    t.boolean  "was_medical_examiner_or_coroner_contacted"
-    t.boolean  "was_an_autopsy_performed"
-    t.boolean  "were_autopsy_findings_available"
-    t.string   "did_tobacco_use_contribute_to_death"
-    t.string   "pregnancy_status"
-    t.string   "manner_of_death"
-    t.time     "time_of_injury"
-    t.date     "date_of_injury"
-    t.boolean  "injury_at_work"
-    t.string   "place_of_injury"
-    t.string   "location_of_injury_state"
-    t.string   "location_of_injury_city"
-    t.string   "location_of_injury_street_and_number"
-    t.string   "location_of_injury_apartment_number"
-    t.string   "location_of_injury_zip_code"
-    t.string   "description_of_injury_occurrence"
-    t.boolean  "transportation_injury"
-    t.string   "transportation_injury_role"
-    t.string   "transportation_injury_role_specified"
-    t.string   "certifier_type"
-    t.string   "medical_certifier_first"
-    t.string   "medical_certifier_last"
-    t.string   "medical_certifier_state"
-    t.string   "medical_certifier_city"
-    t.string   "medical_certifier_street_and_number"
-    t.string   "medical_certifier_zip_code"
-    t.string   "medical_certifier_title"
-    t.string   "medical_certifier_license_number"
-    t.date     "date_certified"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+  create_table "death_record_histories", force: :cascade do |t|
+    t.integer  "death_record_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  create_table "decedents", force: :cascade do |t|
-    t.integer  "death_record_id"
+  create_table "death_records", force: :cascade do |t|
+    t.string   "form_steps",                                      default: [],              array: true
+    t.string   "creator_role"
+    t.string   "record_status"
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
     t.string   "suffixes"
-    t.string   "akas"
+    t.string   "first_name_aka"
+    t.string   "middle_name_aka"
+    t.string   "last_name_aka"
+    t.string   "suffixes_aka"
     t.string   "social_security_number"
-    t.string   "street_number"
-    t.string   "appt_number"
+    t.string   "street_and_number"
+    t.string   "apt"
     t.string   "city"
     t.string   "state"
-    t.string   "country"
+    t.string   "county"
     t.string   "zip_code"
     t.boolean  "inside_city_limits"
     t.string   "spouse_first_name"
@@ -213,16 +242,112 @@ ActiveRecord::Schema.define(version: 20161130170126) do
     t.string   "birthplace_city"
     t.string   "birthplace_state"
     t.string   "birthplace_country"
-    t.boolean  "ever_in_us_armed_forces"
+    t.string   "ever_in_us_armed_forces"
     t.string   "marital_status_at_time_of_death"
     t.string   "education"
     t.string   "hispanic_origin"
+    t.string   "hispanic_origin_explain"
+    t.string   "hispanic_origin_other_specify"
     t.string   "race"
+    t.string   "race_explain"
+    t.string   "race_other_specify"
     t.string   "usual_occupation"
     t.string   "kind_of_business"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.index ["death_record_id"], name: "index_decedents_on_death_record_id", using: :btree
+    t.string   "method_of_disposition"
+    t.string   "method_of_disposition_specified"
+    t.string   "place_of_disposition"
+    t.string   "place_of_disposition_city"
+    t.string   "place_of_disposition_state"
+    t.string   "funeral_facility_name"
+    t.string   "funeral_facility_street_and_number"
+    t.string   "funeral_facility_city"
+    t.string   "funeral_facility_state"
+    t.string   "funeral_facility_zip_code"
+    t.string   "funeral_facility_county"
+    t.string   "funeral_director_license_number"
+    t.string   "informants_name_first"
+    t.string   "informants_name_middle"
+    t.string   "informants_name_last"
+    t.string   "informants_suffixes"
+    t.string   "informants_mailing_address_street_and_number"
+    t.string   "informants_mailing_address_apt"
+    t.string   "informants_mailing_address_city"
+    t.string   "informants_mailing_address_state"
+    t.string   "informants_mailing_address_zip_code"
+    t.string   "informants_mailing_address_county"
+    t.string   "place_of_death_type"
+    t.string   "place_of_death_type_specific"
+    t.string   "place_of_death_facility_name"
+    t.string   "place_of_death_street_and_number"
+    t.string   "place_of_death_apt"
+    t.string   "place_of_death_city"
+    t.string   "place_of_death_state"
+    t.string   "place_of_death_county"
+    t.string   "place_of_death_zip_code"
+    t.time     "time_pronounced_dead"
+    t.date     "date_pronounced_dead"
+    t.string   "pronouncing_medical_certifier_license_number"
+    t.date     "pronouncing_medical_certifier_date_of_signature"
+    t.date     "actual_or_presumed_date_of_death"
+    t.string   "type_of_date_of_death"
+    t.time     "actual_or_presumed_time_of_death"
+    t.string   "type_of_time_of_death"
+    t.string   "was_medical_examiner_or_coroner_contacted"
+    t.boolean  "was_an_autopsy_performed"
+    t.boolean  "were_autopsy_findings_available"
+    t.string   "did_tobacco_use_contribute_to_death"
+    t.string   "pregnancy_status"
+    t.string   "manner_of_death"
+    t.time     "time_of_injury"
+    t.date     "date_of_injury"
+    t.boolean  "injury_at_work"
+    t.string   "place_of_injury"
+    t.string   "location_of_injury_state"
+    t.string   "location_of_injury_city"
+    t.string   "location_of_injury_street_and_number"
+    t.string   "location_of_injury_apt"
+    t.string   "location_of_injury_zip_code"
+    t.string   "description_of_injury_occurrence"
+    t.boolean  "transportation_injury"
+    t.string   "transportation_injury_role"
+    t.string   "transportation_injury_role_specified"
+    t.string   "certifier_type"
+    t.string   "medical_certifier_first"
+    t.string   "medical_certifier_middle"
+    t.string   "medical_certifier_last"
+    t.string   "medical_certifier_suffix"
+    t.string   "medical_certifier_state"
+    t.string   "medical_certifier_city"
+    t.string   "medical_certifier_street_and_number"
+    t.string   "medical_certifier_apt"
+    t.string   "medical_certifier_zip_code"
+    t.string   "medical_certifier_county"
+    t.string   "medical_certifier_title"
+    t.string   "medical_certifier_license_number"
+    t.date     "date_certified"
+    t.datetime "time_registered"
+    t.integer  "registered_by_id"
+    t.integer  "certificate_number"
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
+    t.integer  "owner_id"
+    t.index ["owner_id"], name: "index_death_records_on_owner_id", using: :btree
+  end
+
+  create_table "funeral_facilities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "street_and_number"
+    t.string   "city"
+    t.string   "county"
+    t.string   "state"
+    t.string   "zip_code"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "multiple_choice_questions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -263,6 +388,17 @@ ActiveRecord::Schema.define(version: 20161130170126) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string   "type"
+    t.string   "question_type"
+    t.text     "question"
+    t.boolean  "required"
+    t.string   "step"
+    t.text     "multi_options"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.string   "resource_type"
@@ -273,13 +409,36 @@ ActiveRecord::Schema.define(version: 20161130170126) do
     t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
+  create_table "states", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "string_questions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_tokens", force: :cascade do |t|
+    t.string   "token"
+    t.datetime "token_generated_at"
+    t.boolean  "is_expired",         default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "user_id"
+    t.integer  "death_record_id"
+    t.index ["death_record_id"], name: "index_user_tokens_on_death_record_id", using: :btree
+    t.index ["user_id"], name: "index_user_tokens_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -288,8 +447,12 @@ ActiveRecord::Schema.define(version: 20161130170126) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.boolean  "is_guest_user",          default: false
+    t.string   "first_name",             default: "",    null: false
+    t.string   "last_name",              default: "",    null: false
+    t.string   "telephone",              default: "",    null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -301,7 +464,18 @@ ActiveRecord::Schema.define(version: 20161130170126) do
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
+  create_table "zipcodes", force: :cascade do |t|
+    t.integer  "city_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_zipcodes_on_city_id", using: :btree
+  end
+
   add_foreign_key "cause_of_deaths", "death_records"
+  add_foreign_key "death_records", "users", column: "owner_id"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "user_tokens", "death_records"
+  add_foreign_key "user_tokens", "users"
 end
