@@ -44,7 +44,8 @@ class DeathRecord < ApplicationRecord
     step.validates :marital_status_at_time_of_death, presence: true
     step.validates :education, presence: true
     step.validates :hispanic_origin, presence: true
-    step.validates :race, presence: true
+    # TODO: update this validation to work correctly
+    # step.validates :race, presence: true
     step.validates :usual_occupation, presence: true
     step.validates :kind_of_business, presence: true
   end
