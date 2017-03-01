@@ -1,7 +1,7 @@
 # Comments Controller
 class CommentsController < ApplicationController
- before_action :set_comment, only: [:destroy, :update]
- before_action :set_death_record, only: [:destroy, :update, :create]
+  before_action :set_comment, only: [:destroy, :update]
+  before_action :set_death_record, only: [:destroy, :update, :create]
 
   def create
     authorize :comment, :create?
@@ -41,5 +41,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).merge(death_record_id: params['death_record_id']).permit(:content, :death_record_id)
   end
-
 end

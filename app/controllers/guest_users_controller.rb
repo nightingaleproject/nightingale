@@ -1,3 +1,5 @@
+# Guest Users Controller - Redirects to steps controller with the addition
+# Of the user_token and death_record
 class GuestUsersController < ApplicationController
   before_action :set_params, only: [:show]
 

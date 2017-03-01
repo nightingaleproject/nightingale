@@ -1,3 +1,4 @@
+# Statistics Module for helping with building charts
 module StatisticsHelper
   # Helper function that creates the line_chart for the view after calling "by_day" in the charts_controller
   def stat_by(start_date, end_date, query_action)
@@ -12,26 +13,26 @@ module StatisticsHelper
   end
 
   private
+
   # Helper function that builds the settings we pass into the line chart.
   def basic_opts(title, start_date, end_date)
-   {
-    discrete: true,
-    library: {
-      title: {text: title, x: -20},
-      subtitle: {text: "from #{DatetimeHelper.pretty_datetime(start_date)} to #{DatetimeHelper.pretty_datetime(end_date)}", x: -20},
-      yAxis: {
-        title: {
-          text: 'Count'
+    {
+      discrete: true,
+      library: {
+        title: { text: title, x: -20 },
+        subtitle: { text: "from #{DatetimeHelper.pretty_datetime(start_date)} to #{DatetimeHelper.pretty_datetime(end_date)}", x: -20 },
+        yAxis: {
+          title: {
+            text: 'Count'
+          }
+        },
+        tooltip: {
+          valueSuffix: ' item(s)'
+        },
+        credits: {
+          enabled: false
         }
-      },
-      tooltip: {
-        valueSuffix: ' item(s)'
-      },
-      credits: {
-        enabled: false
       }
-     }
-  }
+    }
   end
-
 end

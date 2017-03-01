@@ -1,6 +1,6 @@
 # Question Policy
 class Question::QuestionPolicy < ApplicationPolicy
-
+  # Scope Class
   class Scope < Scope
     def resolve
       if !user.nil? && user.admin?

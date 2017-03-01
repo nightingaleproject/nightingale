@@ -1,6 +1,6 @@
+# Geographic Controller
 class GeographicController < ApplicationController
-
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def counties
     render json: GeoHelper.get_counties(params[:state])
@@ -17,5 +17,4 @@ class GeographicController < ApplicationController
   def zipcodes
     render json: GeoHelper.get_zipcodes(params[:state], params[:county], params[:city])
   end
-
 end

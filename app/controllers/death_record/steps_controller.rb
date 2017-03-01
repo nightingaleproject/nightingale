@@ -29,9 +29,8 @@ class DeathRecord::StepsController < ApplicationController
 
     # For now we will include comments at the bottom of the send page only.
     # TODO: This might need to change. Maybe we want it on all pages?
-    if step.start_with? 'send'
-      @comments = @death_record.comments
-    end
+    @comments = @death_record.comments if step.start_with? 'send'
+
     render_wizard
   end
 
@@ -63,14 +62,11 @@ class DeathRecord::StepsController < ApplicationController
         answer.save!
       end
     end
-    if @error.nil? || !@error
-      @death_record.supplemental_error_flag = false
-    else
-      @death_record.supplemental_error_flag = true
-    end
+
+    @death_record.supplemental_error_flag = !(@error.nil? || !@error)
 
     # Update the death record
-    unless @death_record.update(death_record_params(step))
+    if !@death_record.update(death_record_params(step))
       flash[:danger] = 'There were error(s) with your submission, please see below.'
     else
       flash[:danger].clear unless flash[:danger].nil?
@@ -111,12 +107,12 @@ class DeathRecord::StepsController < ApplicationController
 
   private
 
- # Generates a new user with no password but with a token.
- # If a user already exists with that email, return the existing user.
+  # Generates a new user with no password but with a token.
+  # If a user already exists with that email, return the existing user.
   def generate_user(email, first_name, last_name, telephone, step)
     # TODO: What should the role be of the guest user?
     user = User.where(email: email).first
-    if !user.present?
+    unless user.present?
       user = User.new(email: email, password: '', first_name: first_name, last_name: last_name, telephone: telephone)
       user.is_guest_user = true
       user.skip_confirmation!
@@ -130,14 +126,14 @@ class DeathRecord::StepsController < ApplicationController
       user.save(validate: false)
     end
 
-    return user
+    user
   end
 
-  def generate_user_token (user_id, death_record_id)
+  def generate_user_token(user_id, death_record_id)
     @guest_token = UserToken.new(user_id: user_id, death_record_id: death_record_id)
     @guest_token.new_token!
     @guest_token.save
-    return @guest_token
+    @guest_token
   end
 
   def send_login_link(guest_user, login_link)

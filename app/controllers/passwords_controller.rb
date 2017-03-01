@@ -1,6 +1,5 @@
 # app/controllers/registrations_controller.rb
 class PasswordsController < Devise::PasswordsController
-
   protected
 
   # If the user resetting their password is a guest user,
