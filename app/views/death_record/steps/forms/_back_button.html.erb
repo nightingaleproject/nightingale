@@ -1,0 +1,7 @@
+<!-- Adds a back button if the previous step is not outside the scope of the current user and it is not the first step -->
+<!-- Add a disabled button if either of the checks are true -->
+<% if (previous_wizard_path.split('/').last.start_with? 'send') || (previous_wizard_path == wizard_path) %>
+  <%= button_to 'Back', {}, disabled: true, :class=>"btn btn-default" %>
+<% else %>
+  <%= link_to 'Back', death_record_step_path(@death_record, id: previous_wizard_path.split('/').last), :class => "btn btn-default" %>
+<% end %>

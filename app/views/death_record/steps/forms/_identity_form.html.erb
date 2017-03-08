@@ -120,7 +120,7 @@
   <%= render :partial => 'death_record/steps/forms/supplemental', :locals=>{:f=>f} %>
 
   <div class="text-right">
-    <%= link_to 'Back', :back, {:class=>"btn btn-default"} %>
+    <%= render :partial => 'death_record/steps/forms/back_button' %>
     <%= link_to 'Cancel', root_path, {:class=>"btn btn-default"} %>
     <%= f.button :submit, 'Next', class: 'btn btn-primary' %>
   </div>
