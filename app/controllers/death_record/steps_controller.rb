@@ -11,7 +11,6 @@ class DeathRecord::StepsController < ApplicationController
     # Wicked uses the current step's name to match it to a corresponding erb file in (/views/death_record/steps/)
     authorize :step, :show?
     @death_record = DeathRecord.find(params[:death_record_id])
-
     # TODO: Should be able to move this logic or remove it.
     if step.to_sym == :send_to_registrar
       @users_with_roles = User.with_any_role(:registrar)
@@ -33,9 +32,11 @@ class DeathRecord::StepsController < ApplicationController
     # Policy function update in step_policy.rb
     authorize :step, :update?
     @death_record = DeathRecord.find(params[:death_record_id])
-    old_step = @death_record.record_status
+
+    old_step = @death_record.death_record_flow.current_step.name
     old_updated_time = @death_record.updated_at
-    @death_record.record_status = next_step
+    # Update death record's step progress
+    @death_record.death_record_flow = WorkflowHelper.next_step(@death_record)
 
     # Grab supplemental questions for this step
     @questions = Question::Question.where(step: step.to_s).to_a
@@ -61,7 +62,7 @@ class DeathRecord::StepsController < ApplicationController
     @death_record.supplemental_error_flag = !(@error.nil? || !@error)
 
     # Update the death record
-    if !@death_record.update(death_record_params(step))
+    if !@death_record.update(death_record_params)
       flash[:danger] = 'There were error(s) with your submission, please see below.'
     else
       flash[:danger].clear unless flash[:danger].nil?
@@ -144,11 +145,13 @@ class DeathRecord::StepsController < ApplicationController
 
   # Set the steps for the multipage form from the steps set on the death record model
   def set_steps
-    self.steps = APP_CONFIG[DeathRecord.find(params[:death_record_id]).creator_role]
+    record = DeathRecord.find(params[:death_record_id])
+    self.steps = []
+    self.steps.push(*WorkflowHelper.all_steps_for_given_record(record))
   end
 
   # Never trust parameters from the internet, only allow the white list through.
-  def death_record_params(step)
+  def death_record_params
     params.require(:death_record).permit(:first_name,
                                          :middle_name,
                                          :last_name,
@@ -257,6 +260,6 @@ class DeathRecord::StepsController < ApplicationController
                                          :medical_certifier_state,
                                          :medical_certifier_license_number,
                                          :certifier_type,
-                                         :date_certified).merge(form_step: step)
+                                         :date_certified)
   end
 end

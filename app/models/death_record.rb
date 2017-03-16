@@ -6,12 +6,8 @@ class DeathRecord < ApplicationRecord
   accepts_nested_attributes_for :cause_of_death
   belongs_to :user
   audited
-  has_one :user_token
-
-  # TODO: Comment here.
-  # TODO: Combine form_step and record_status
-  # Looks like form_step is used as the last step completed while record_status is the next step.
-  attr_accessor :form_step
+  has_one :user_token, dependent: :destroy
+  has_one :death_record_flow, dependent: :destroy
 
   # Used for validating supplemental errors
   attr_accessor :supplemental_error_flag, :supplemental_error
@@ -116,8 +112,11 @@ class DeathRecord < ApplicationRecord
   end
 
   def required_for_step?(step)
-    return true if record_status.nil? || record_status == 'wicked_finish'
-    return true if APP_CONFIG[creator_role].index(step.to_s) <= APP_CONFIG[creator_role].index(form_step)
+    # TODO: This is a slow process if its called for every parameter.
+    #return true if record_status.nil? || record_status == 'wicked_finish'
+    return false
+    return true if id.nil?   
+    #return WorkflowHelper.step_come_before_current_step?(step.to_s, self)
   end
 
   # If the "owner_id" is updated on the model update Death_Record_History with the new owner_id and death_record_id.

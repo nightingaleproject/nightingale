@@ -6,8 +6,6 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       # Record information
       #########################################################################
 
-      t.string :form_steps, array: true, default: []
-
       t.string :creator_role
       t.integer :creator_id
       t.string :record_status

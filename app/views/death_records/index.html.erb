@@ -162,7 +162,7 @@
                 <!-- Actions -->
                 <div class="text-center">
                   <% if policy(:step).show? %>
-                    <%= link_to death_record_step_path(death_record, id: death_record.record_status), { :class => 'edrs-bc-link', 'data-toggle' => 'tooltip', :title => 'Continue' } do %><span class="fa fa-play-circle action-font"></span><% end %>
+                    <%= link_to death_record_step_path(death_record, id: death_record.death_record_flow.current_step.name), { :class => 'edrs-bc-link', 'data-toggle' => 'tooltip', :title => 'Continue' } do %><span class="fa fa-play-circle action-font"></span><% end %>
                   <% end %>
                   <% if current_user.registrar? %>
                     <%= link_to death_record, { :class => 'edrs-bc-link', 'data-toggle' => 'tooltip', :title => 'Review' }  do %><span class="fa fa fa-play-circle action-font"></span><% end %>
