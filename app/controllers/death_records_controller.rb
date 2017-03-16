@@ -15,9 +15,6 @@ class DeathRecordsController < ApplicationController
     answers.each do |answer|
       @questions_answers[answer.question] = answer.answer
     end
-
-    # Grabbing Comments for this death record
-    @comments = @death_record.comments
   end
 
   def destroy

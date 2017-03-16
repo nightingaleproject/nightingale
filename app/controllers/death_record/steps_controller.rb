@@ -27,10 +27,6 @@ class DeathRecord::StepsController < ApplicationController
     # Grab supplemental questions for this step
     @questions = Question::Question.where(step: step.to_s).to_a
 
-    # For now we will include comments at the bottom of the send page only.
-    # TODO: This might need to change. Maybe we want it on all pages?
-    @comments = @death_record.comments if step.start_with? 'send'
-
     render_wizard
   end
 
