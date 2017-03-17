@@ -26,7 +26,6 @@ class DeathRecord::StepsController < ApplicationController
 
     # Grab supplemental questions for this step
     @questions = Question::Question.where(step: step.to_s).to_a
-
     render_wizard
   end
 
@@ -34,6 +33,8 @@ class DeathRecord::StepsController < ApplicationController
     # Policy function update in step_policy.rb
     authorize :step, :update?
     @death_record = DeathRecord.find(params[:death_record_id])
+    old_step = @death_record.record_status
+    old_updated_time = @death_record.updated_at
     @death_record.record_status = next_step
 
     # Grab supplemental questions for this step
@@ -47,8 +48,6 @@ class DeathRecord::StepsController < ApplicationController
       if question.required && !question.valid_answer(result)
         @error = true
       else
-        # Destroy any old versions of this answer
-        Answer::Answer.where(death_record_id: @death_record.id, question_id: question.id).destroy_all
         # Create a new answer
         answer = Answer::Answer.new
         answer.answer = params['question' + question.id.to_s]
@@ -66,6 +65,9 @@ class DeathRecord::StepsController < ApplicationController
       flash[:danger] = 'There were error(s) with your submission, please see below.'
     else
       flash[:danger].clear unless flash[:danger].nil?
+      # Create new StepTimeTaken, used for calculating averages for statistics
+      sta = StepTimeTaken.new(step: old_step, user_id: current_user.id, time_taken: (@death_record.updated_at - old_updated_time) / 60)
+      sta.save!
     end
 
     # Special Case when transfering ownership from Funeral director to physician or ME or Registrar

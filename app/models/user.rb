@@ -12,6 +12,10 @@ class User < ApplicationRecord
     has_role?(:admin)
   end
 
+  def registrar?
+    has_role?(:registrar)
+  end
+
   def grant_admin
     add_role :admin
     confirm unless confirmed?

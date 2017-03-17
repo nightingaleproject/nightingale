@@ -7,7 +7,7 @@ module DatetimeHelper
 
   def self.pretty_date(date)
     return '' if date.nil?
-    date.localtime.strftime('%b %d, %Y')
+    date.localtime.strftime('%b. %d, %Y')
   end
 
   def self.pretty_time(time)

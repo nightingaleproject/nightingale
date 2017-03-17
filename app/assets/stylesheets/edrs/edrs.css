@@ -36,6 +36,7 @@ legend {
 
 * {
   border-radius: 0 !important;
+  font-family: sans-serif;
 }
 
 .table > tbody > tr > td {
@@ -44,6 +45,7 @@ legend {
 
 .breadcrumb {
   background: #FFFFFF;
+  font-weight: bold;
 }
 
 a.edrs-bc-link {
@@ -120,6 +122,10 @@ a.edrs-footer-link:active {
   margin-top: 10px;
 }
 
+.top-padding-lg {
+  padding-top: 50px;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -134,4 +140,32 @@ html {
 body {
   margin-bottom: 60px;
   padding-bottom: 60px;
+}
+
+hr {
+    height: 3px;
+    background-color: #ddd;
+    border-top: none;
+}
+
+.completion-font {
+  font-size: 25px;
+}
+
+.action-font {
+  font-size: 25px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.table-padding-left {
+  padding-left: 15px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+td {
+  font-size: 14px !important;
 }

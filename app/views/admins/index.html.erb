@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <%= render 'death_record/steps/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => nil} %>
+    <%= render 'components/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => nil} %>
   </div>
   <h3>Administration Tools</h3>
   <hr/>
@@ -30,10 +30,18 @@
       </tr>
       <tr>
         <td>
-          <a class="btn btn-primary btn-block" href="<%= reports_path %>"><span class="fa fa-bar-chart"></span> Reports</a>
+          <a class="btn btn-primary btn-block" href="<%= reports_path %>"><span class="fa fa-bar-chart"></span> Audit Report</a>
         </td>
         <td>
-          View reports and statistics about the usage of this system.
+          View the system audit report, which contains logs of all the actions users have taken during the use of this system.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-primary btn-block" href="<%= statistics_path %>"><span class="fa fa-dashboard"></span> Statistics</a>
+        </td>
+        <td>
+          View statistics about the usage of this system.
         </td>
       </tr>
     </tbody>

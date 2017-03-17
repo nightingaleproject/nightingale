@@ -2,25 +2,44 @@ namespace :edrs do
   namespace :demo do
     desc %(Creates demo user accounts.
 
-    $ rake edrs:demo:setup)
-    task setup: :environment do
-      user = User.create!(email: 'fd@test.com', password: '123456', first_name: 'FD', last_name: 'Test', telephone: '000-000-0000')
+    $ rake edrs:demo:create_users)
+    task create_users: :environment do
+      # Generate system users
+      user = User.create!(email: 'fd@test.com', password: '123456', first_name: 'Example', last_name: 'FD', telephone: '000-876-5309')
       if user
         user.confirm
-        puts 'The fd was created successfully'
+        puts user.email + ' was created successfully'
         user.add_role 'funeral_director'
       end
-      user1 = User.create!(email: 'doc@test.com', password: '123456', first_name: 'ME', last_name: 'Test', telephone: '000-000-0000')
-      if user1
-        user1.confirm
-        puts 'The doc was created successfully'
-        user1.add_role 'physician'
+      user = User.create!(email: 'fd2@test.com', password: '123456', first_name: 'Example', last_name: 'FD', telephone: '000-876-5310')
+      if user
+        user.confirm
+        puts user.email + ' was created successfully'
+        user.add_role 'funeral_director'
       end
-      user2 = User.create!(email: 'reg@test.com', password: '123456', first_name: 'REG', last_name: 'Test', telephone: '000-000-0000')
-      if user2
-        user2.confirm
-        puts 'The registrar was created successfully'
-        user2.add_role 'registrar'
+      user = User.create!(email: 'doc@test.com', password: '123456', first_name: 'Example', last_name: 'Physician', telephone: '111-876-5309')
+      if user
+        user.confirm
+        puts user.email + ' was created successfully'
+        user.add_role 'physician'
+      end
+      user = User.create!(email: 'doc2@test.com', password: '123456', first_name: 'Example', last_name: 'Physician', telephone: '111-876-5310')
+      if user
+        user.confirm
+        puts user.email + ' was created successfully'
+        user.add_role 'physician'
+      end
+      user = User.create!(email: 'reg@test.com', password: '123456', first_name: 'Example', last_name: 'Registrar', telephone: '222-876-5309')
+      if user
+        user.confirm
+        puts user.email + ' was created successfully'
+        user.add_role 'registrar'
+      end
+      user = User.create!(email: 'admin@test.com', password: '123456', first_name: 'Example', last_name: 'Admin', telephone: '333-876-5310')
+      if user
+        user.confirm
+        puts user.email + ' was created successfully'
+        user.grant_admin unless user.admin?
       end
     end
   end
@@ -61,9 +80,7 @@ namespace :edrs do
     task list: :environment do
       users = User.all
       users.each do |user|
-        user.roles.each do |role|
-          puts 'Email: ' + user.email + ', Role: ' + role.name
-        end
+        puts 'Email: ' + user.email + ', Roles: ' + user.roles
       end
     end
 

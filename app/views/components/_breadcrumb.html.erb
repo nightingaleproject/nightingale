@@ -1,7 +1,16 @@
-<!-- This view draws a breadcrumb based on the given 'crumbs' parameter.
+<!--
+This partial renders a breadcrumb based on the given 'crumbs' parameter.
 The 'crumbs' paramter should be a hash, where the keys are the strings
 to display and the values are the urls. The last given key/value pair should
-have a value of nil. -->
+have a value of nil.
+
+Example:
+crumbs: {"Dashboard" => death_records_path, "Admin" => admins_path, "Reports" => nil
+
+will result in:
+
+'Dashboard > Admin > Reports'
+-->
 <div class="breadcrumb">
   <% crumbs.each do |crumb, url| %>
     <% if url != nil %>

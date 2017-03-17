@@ -44,12 +44,13 @@ Once the prerequisites are available, Nightingale can be installed and demonstra
 
 * Set up system with demonstration data
 
-    `bundle exec rake edrs:demo:setup`
+    `bundle exec rake edrs:demo:create_users`
 
   * This will create (all with the password "123456"):
-    * A funeral director user (fd@test.com)
-    * A physician user (doc@test.com)
+    * Two funeral director users (fd@test.com, fd2@test.com)
+    * Two physician users (doc@test.com, doc2@test.com)
     * A registrar user (reg@test.com)
+    * An administrator user (admin@test.com)
 
 * Manage user accounts
 

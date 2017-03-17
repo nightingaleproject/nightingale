@@ -15,7 +15,7 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <%= f.input :step, label: 'Which step of the workflow should this question appear on?', collection: ['identity', 'demographics', 'disposition', 'medical'], selected: 'identity' %>
+          <%= f.input :step, label: 'Which step of the workflow should this question appear on?', collection: StepsHelper.steps, selected: 'identity' %>
         </div>
       </div>
       <div class="row" id="required_question">

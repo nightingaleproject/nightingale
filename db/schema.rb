@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301012703) do
+ActiveRecord::Schema.define(version: 20170316012703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,7 +208,9 @@ ActiveRecord::Schema.define(version: 20170301012703) do
   create_table "death_records", force: :cascade do |t|
     t.string   "form_steps",                                      default: [],              array: true
     t.string   "creator_role"
+    t.integer  "creator_id"
     t.string   "record_status"
+    t.boolean  "voided"
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
@@ -411,6 +413,14 @@ ActiveRecord::Schema.define(version: 20170301012703) do
 
   create_table "states", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "step_time_takens", force: :cascade do |t|
+    t.float    "time_taken"
+    t.string   "step"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
