@@ -1,5 +1,17 @@
 namespace :edrs do
   namespace :demo do
+    desc %(Handy task to configure the database for demo use.
+
+    Calls:
+      - edrs:demo:create_users
+      - edrs:demo:load_funeral_facilities
+
+    $ rake edrs:demo:setup)
+    task setup: :environment do
+      Rake::Task['edrs:demo:create_users'].invoke
+      Rake::Task['edrs:demo:load_funeral_facilities'].invoke
+    end
+
     desc %(Creates demo user accounts.
 
     $ rake edrs:demo:create_users)
@@ -41,6 +53,17 @@ namespace :edrs do
         puts user.email + ' was created successfully'
         user.grant_admin unless user.admin?
       end
+    end
+
+    desc %(Loads YML fixture file containing funeral director information.
+
+    Fixture files are located at:
+      - test/fixtures/funeral_director.yml
+
+    $ rake edrs:demo:load_funeral_facilities)
+    task load_funeral_facilities: :environment do
+      ENV['FIXTURES'] = 'funeral_facilities'
+      Rake::Task['db:fixtures:load'].invoke
     end
   end
 

@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 20170316012703) do
   end
 
   create_table "cities", force: :cascade do |t|
-    t.integer  "county_id"
     t.integer  "state_id"
+    t.integer  "county_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -413,6 +413,7 @@ ActiveRecord::Schema.define(version: 20170316012703) do
 
   create_table "states", force: :cascade do |t|
     t.string   "name"
+    t.string   "abbrv"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -475,11 +476,15 @@ ActiveRecord::Schema.define(version: 20170316012703) do
   end
 
   create_table "zipcodes", force: :cascade do |t|
+    t.integer  "state_id"
+    t.integer  "county_id"
     t.integer  "city_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["city_id"], name: "index_zipcodes_on_city_id", using: :btree
+    t.index ["county_id"], name: "index_zipcodes_on_county_id", using: :btree
+    t.index ["state_id"], name: "index_zipcodes_on_state_id", using: :btree
   end
 
   add_foreign_key "cause_of_deaths", "death_records"

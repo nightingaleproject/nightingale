@@ -1,13 +1,15 @@
 namespace :geo do
-  desc %(Generates a YML file containing U.S. geographic information.
+  desc %(Generates YML fixtures containing U.S. geographic information.
 
-  Specifically, it contains: States->Counties->Cities->Zipcodes
+  Specifically, this will generate fixtures for the following models:
 
-  The purpose of this file is to seed the database for geographic
-  information used during the workflow (see rake geo:load_geo_yml)
+  States->Counties->Cities->Zipcodes
 
-  $ rake geo:generate_geo_yml OUTPUT=###)
-  task generate_geo_yml: :environment do
+  The purpose of these fixtures is to seed the database for geographic
+  information used during the workflow (see rake geo:load_geo_fixtures)
+
+  $ rake geo:generate_geo_fixtures)
+  task generate_geo_fixtures: :environment do
     # Source of States, Counties, Cities, and Zips
     url_all = 'https://raw.githubusercontent.com/midwire/free_zipcode_data/master/all_us_zipcodes.csv'
     # Source of State abbreviations
@@ -26,7 +28,7 @@ namespace :geo do
     end
 
     # Open CSV source of all info and parse to nested hash
-    output = {}
+    parsed_geo_data = {}
     url_data = open(url_all).read
     csv = CSV.parse(url_data, headers: false)
     csv.drop(1).each do |row|
@@ -34,71 +36,87 @@ namespace :geo do
       county = row[3]
       city = row[1]
       zip = row[0]
-      output[state] = {} if output[state].nil? # State
-      output[state][county] = {} if output[state][county].nil? # County
-      output[state][county][city] = [] if output[state][county][city].nil? # City
-      output[state][county][city].push(zip.to_s) # Zip
+      parsed_geo_data[state] = {} if parsed_geo_data[state].nil? # State
+      parsed_geo_data[state][county] = {} if parsed_geo_data[state][county].nil? # County
+      parsed_geo_data[state][county][city] = [] if parsed_geo_data[state][county][city].nil? # City
+      parsed_geo_data[state][county][city].push(zip.to_s) # Zip
     end
 
-    # Write to file
-    open(ENV['OUTPUT'], 'w') { |f| f << output.to_yaml }
-  end
-
-  desc %(Loads the given YML file containing U.S. geographic information
-  into models useable by the edrs application.
-
-  This YML file is expected to be in the structure that geo:generate_geo_yml
-  creates (States->Counties->Cities->Zipcodes).
-
-  NOTE: This should not normally have to be done manually! The seeds.rb
-  does this itself on rake db:setup!
-
-  $ rake geo:load_geo_yml INPUT=###)
-  task load_geo_yml: :environment do
-    require 'yaml'
-
-    # Load YML file
-    data = YAML.load_file(ENV['INPUT'])
-
-    # Parse into database models
-    data.each do |state, counties|
-      state_obj = State.new(name: state)
-      state_obj.save!
-      counties.each do |county, cities|
-        county_obj = state_obj.counties.create(name: county)
-        county_obj.save!
-        cities.each do |city, zipcodes|
-          city_obj = county_obj.cities.create(name: city)
-          city_obj.state_id = state_obj.id
-          city_obj.save!
-          zipcodes.each do |zipcode|
-            zipcode_obj = city_obj.zipcodes.create(name: zipcode)
-            zipcode_obj.save!
+    # Generate fixtures from geographical information
+    states = {}
+    counties = {}
+    cities = {}
+    zipcodes = {}
+    county_index_all = 0
+    city_index_all = 0
+    zipcode_index_all = 0
+    parsed_geo_data.each_with_index do |(state, state_data), state_index|
+      states[state] = {
+        id: state_index,
+        name: state,
+        abbrv: abbreviations.key(state)
+      }.stringify_keys!
+      state_data.each do |county, county_data|
+        counties[county + state] = {
+          id: county_index_all,
+          name: county,
+          state_id: state_index
+        }.stringify_keys!
+        county_data.each do |city, city_data|
+          cities[city + county + state] = {
+            id: city_index_all,
+            name: city,
+            state_id: state_index,
+            county_id: county_index_all
+          }.stringify_keys!
+          city_data.each do |zipcode|
+            zipcodes[zipcode + city + county + state] = {
+              id: zipcode_index_all,
+              name: zipcode,
+              state_id: state_index,
+              county_id: county_index_all,
+              city_id: city_index_all
+            }.stringify_keys!
+            zipcode_index_all += 1
           end
+          city_index_all += 1
         end
+        county_index_all += 1
       end
     end
+
+    # Ensure omap YAML type (ensures order when loading)
+    states = "--- !omap\n" + states.to_yaml.lines.to_a[1..-1].join
+    counties = "--- !omap\n" + counties.to_yaml.lines.to_a[1..-1].join
+    cities = "--- !omap\n" + cities.to_yaml.lines.to_a[1..-1].join
+    zipcodes = "--- !omap\n" + zipcodes.to_yaml.lines.to_a[1..-1].join
+
+    # Write results to fixture files
+    open('test/fixtures/states.yml', 'w') { |f| f << states }
+    open('test/fixtures/counties.yml', 'w') { |f| f << counties }
+    open('test/fixtures/cities.yml', 'w') { |f| f << cities }
+    open('test/fixtures/zipcodes.yml', 'w') { |f| f << zipcodes }
   end
 
-  desc %(Loads the given YML file containing funeral director information.
+  desc %(Loads YML fixture files containing U.S. geographic information
+  into models useable by nightingale.
 
-  An example file is located at data/funeral_facilities.yml
+  This rake task expects these YML fixtures to be in the form as created by
+  the geo:generate_geo_fixtures rake task, and to be located under the
+  <ROOT DIRECTORY>/data directory.
 
-  $ rake geo:load_fd_yml INPUT=###)
-  task load_fd_yml: :environment do
-    require 'yaml'
+  Fixture files are located at:
+    - test/fixtures/states.yml
+    - test/fixtures/counties.yml
+    - test/fixtures/cities.yml
+    - test/fixtures/zipcodes.yml
 
-    # Load YML file
-    data = YAML.load_file(ENV['INPUT'])
+  NOTE: This should not normally have to be run manually! The seeds.rb
+  does this itself on rake db:setup!
 
-    data.each do |fd, fd_info|
-      fd_obj = FuneralFacility.new(name: fd,
-                                   street_and_number: fd_info['street_and_number'],
-                                   city: fd_info['city'],
-                                   county: fd_info['county'],
-                                   state: fd_info['state'],
-                                   zip_code: fd_info['zip_code'])
-      fd_obj.save!
-    end
+  $ rake geo:load_geo_fixtures)
+  task load_geo_fixtures: :environment do
+    ENV['FIXTURES'] = 'states,counties,cities,zipcodes'
+    Rake::Task['db:fixtures:load'].invoke
   end
 end
