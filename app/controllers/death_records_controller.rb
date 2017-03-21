@@ -6,7 +6,11 @@ class DeathRecordsController < ApplicationController
     # Authorization in death_record_policy.rb index function (this is only to restrict guest_users)
     authorize DeathRecord
     # Shows only the records that the user owns. Admin can see all records.
-    @death_records = policy_scope(DeathRecord).select { |record| record.time_registered.nil? && !record.voided }
+    @death_records = if current_user.registrar?
+                       policy_scope(DeathRecord).select { |record| record.time_registered.nil? }
+                     else
+                       policy_scope(DeathRecord).select { |record| !record.voided }
+                     end
     # Grab all records that have been voided
     @voided_death_records = voided_death_records
     # Grab all records touched by this user minus those that are active

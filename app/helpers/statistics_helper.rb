@@ -11,7 +11,7 @@ module StatisticsHelper
   # given start date to end date.
   def self.line_death_records_created(start_date, end_date)
     # Grab data
-    data = Audited::Audit.where(auditable_type: :DeathRecord, action: :create)
+    data = DeathRecord.all
     # Create line chart
     StatisticsHelper.generate_date_line_chart(start_date, end_date, data, 'Death Records Created')
   end
@@ -20,7 +20,7 @@ module StatisticsHelper
   # given start date to end date.
   def self.line_death_records_completed(start_date, end_date)
     # Grab data
-    data = Audited::Audit.where("to_tsvector('english', audited_changes) @@ to_tsquery(?)", 'time_registered').where(action: :update)
+    data = DeathRecord.where.not(time_registered: nil)
     # Create line chart
     StatisticsHelper.generate_date_line_chart(start_date, end_date, data, 'Death Records Completed')
   end

@@ -182,7 +182,7 @@
   <div class="container-fluid top-padding-lg">
     <h3>
       <% if current_user.registrar? %>
-        Certified Records
+        Registered Records
       <% else %>
         My Transferred Records
       <% end %>
@@ -202,7 +202,7 @@
               <th class="dt-header-bottom">Decedent Name</th>
               <th class="dt-header-bottom">Start Date</th>
               <th class="dt-header-bottom">Registered Date</th>
-              <th class="dt-header-bottom"></th>
+              <th class="dt-header-bottom">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -222,8 +222,8 @@
                 </td>
                 <td>
                   <!-- View -->
-                  <div class="text-right">
-                    <%= link_to '<span class="fa fa-search"></span> View'.html_safe, death_record, :class => "btn-sm btn-primary" %>
+                  <div class="text-center">
+                    <%= link_to death_record, { :class => 'edrs-bc-link', 'data-toggle' => 'tooltip', :title => 'View' }  do %><span class="fa fa fa-search action-font"></span><% end %>
                   </div>
                 </td>
               </tr>

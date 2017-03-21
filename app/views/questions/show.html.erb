@@ -1,5 +1,7 @@
 <%= simple_form_for(question_path, html: { class: 'form-vertical' }, method: :put, :defaults => {:required => false}) do |f| %>
 
+  <%= render 'components/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => admins_path, "Supplemental Questions" => questions_path, "Question Details" => nil} %>
+
   <fieldset id="type">
     <legend>Question Details</legend>
     <div class="container-fluid">
