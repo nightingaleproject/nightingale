@@ -22,7 +22,7 @@ module StatisticsHelper
     # Grab data
     data = DeathRecord.where.not(time_registered: nil)
     # Create line chart
-    StatisticsHelper.generate_date_line_chart(start_date, end_date, data, 'Death Records Completed')
+    StatisticsHelper.generate_date_line_chart(start_date, end_date, data, 'Death Records Completed', 'time_registered')
   end
 
   # Generate a line chart representing new user sign ups over the
@@ -44,8 +44,8 @@ module StatisticsHelper
   end
 
   # Builds data for generating line charts based on time periods.
-  def self.generate_date_line_chart_data(data, start_date, end_date)
-    opts = ['created_at', { range: start_date..end_date, format: '%d %b' }]
+  def self.generate_date_line_chart_data(data, start_date, end_date, field)
+    opts = [field, { range: start_date..end_date, format: '%d %b' }]
     method_name = :group_by_day
     if end_date - (1.year + 2.days) > start_date
       opts[1][:format] = '%Y'
@@ -81,10 +81,10 @@ module StatisticsHelper
   end
 
   # Renders a date based line chart based on the given parameters.
-  def self.generate_date_line_chart(start_date, end_date, data, title)
+  def self.generate_date_line_chart(start_date, end_date, data, title, field = 'created_at')
     start_date, end_date = StatisticsHelper.format_start_end_dates(start_date, end_date)
     options = StatisticsHelper.build_date_line_chart_options(title, start_date, end_date)
-    line_chart StatisticsHelper.generate_date_line_chart_data(data, start_date, end_date), options
+    line_chart StatisticsHelper.generate_date_line_chart_data(data, start_date, end_date, field), options
   end
 
   #############################################################################

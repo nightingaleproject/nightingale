@@ -50,8 +50,8 @@
       },
       'columnDefs': [
         { orderable: false, targets: <%= (3..(2 + StepsHelper.steps.count)).to_a.push(3 + StepsHelper.steps.count) %> },
-        { "width": "20%", "targets": [0] },
-        { "width": "15%", "targets": [1, 2] }
+        { "width": "22%", "targets": [0] },
+        { "width": "18%", "targets": [1, 2, <%= (3 + StepsHelper.steps.count) %>] }
       ]
     });
     // Draw death record completion time bar chart
