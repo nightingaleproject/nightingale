@@ -1,5 +1,5 @@
 <script>
-  $(document).ready( function () {
+  $(document).ready(function () {
       $('#questions_table').DataTable({
         'language': {
           'emptyTable': 'No Supplemental Questions have been created.'
@@ -11,7 +11,7 @@
 
 <div class="container">
   <div class="row">
-    <%= render 'death_record/steps/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => admins_path, "Supplemental Questions" => nil} %>
+    <%= render 'components/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => admins_path, "Supplemental Questions" => nil} %>
   </div>
   <h3>
     Supplemental Questions

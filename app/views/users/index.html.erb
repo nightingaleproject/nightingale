@@ -1,12 +1,12 @@
 <script>
-  $(document).ready( function () {
+  $(document).ready(function () {
       $('#users_table').DataTable();
   });
 </script>
 
 <div class="container">
   <div class="row">
-    <%= render 'death_record/steps/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => admins_path, "Users" => nil} %>
+    <%= render 'components/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => admins_path, "Users" => nil} %>
   </div>
   <h3>User Accounts</h3>
   <hr/>
@@ -47,9 +47,9 @@
             <td>
               <% user.roles.as_json.each do |role| %>
                 <% if role == user.roles.as_json.last %>
-                  <%= role['name'].humanize %>
+                  <%= role['name'].titleize %>
                 <% else %>
-                  <%= role['name'].humanize %>,&nbsp;
+                  <%= role['name'].titleize %>,&nbsp;
                 <% end %>
               <% end %>
             </td>

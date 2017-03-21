@@ -2,15 +2,8 @@
   <div class="container-fluid">
     <% flash.each do |key, value| %>
       <% if key == 'danger' %>
-        <div class="alert alert-danger">
-      <% elsif key == 'warning' %>
-        <div class="alert alert-warning">
-      <% elsif key == 'notice' %>
-        <div class="alert alert-success">
-      <% else %>
-        <div class="alert alert-info">
+        <div class="alert alert-danger"><%= value %></div>
       <% end %>
-      <%= value %></div>
     <% end %>
   </div>
 <% end %>

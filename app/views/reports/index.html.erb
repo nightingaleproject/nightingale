@@ -1,12 +1,10 @@
 <script>
-  /* Formatting function for row details - modify as you need */
-  function format ( d ) {
+  // Formatting function for row details - modify as you need
+  function format(d) {
     // 'd' is the original data object for the row
     return d.changes;
   }
-
-  $(document).ready( function () {
-
+  $(document).ready(function () {
     $('#event_period').datepicker({
       inputs: $('.actual_range'),
       startDate: '-3y',
@@ -15,209 +13,133 @@
       todayHighlight: 'true',
       format: 'yyyy-mm-dd'
     });
-
-     var table = $('#audits_table').DataTable( {
-       "columns": [
-         {
-           "className":       'details-control',
-           "orderable":       false,
-           "data"     :       null,
-           "defaultContent":  ''
-         },
-         { "data": "action" },
-         { "data": "type" },
-         { "data": "when" },
-         { "data": "who" },
-         { "data": "changes", "visible": false },
-       ]
-     });
-
-     $('#audits_table tbody').on('click', 'td.details-control', function() {
-       var tr = $(this).closest('tr');
-       var row = table.row(tr);
-
-       if (row.child.isShown()) {
-         // This row is already open - close it
-         row.child.hide();
-         tr.removeClass('shown');
-       }
-       else {
-         //Open this row
-         row.child( format(row.data()) ).show();
-         tr.addClass('shown');
-       }
-     });
-
-   // Once everything is loaded we display the table
-   $('#audits_table').show();
+    var table = $('#audits_table').DataTable({
+      'language': {
+        'emptyTable': 'No Supplemental Questions have been created.'
+      },
+      "columns": [
+        {
+          "className": 'details-control',
+          "orderable": false,
+          "data": null,
+          "defaultContent": ''
+        }, {
+          "data": "action"
+        }, {
+          "data": "type"
+        }, {
+          "data": "when"
+        }, {
+          "data": "who"
+        }, {
+          "data": "changes",
+          "visible": false
+        }
+      ]
+    });
+    $('#audits_table tbody').on('click', 'td.details-control', function () {
+      var tr = $(this).closest('tr');
+      var row = table.row(tr);
+      if (row.child.isShown()) {
+        // This row is already open - close it
+        row.child.hide();
+        tr.removeClass('shown');
+      } else {
+        // Open this row
+        row.child(format(row.data())).show();
+        tr.addClass('shown');
+      }
+    });
+    // Once everything is loaded we display the table
+    $('#audits_table').show();
   });
 </script>
 
 <div class="container">
   <div class="row">
-    <%= render 'death_record/steps/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => admins_path, "Reports" => nil} %>
+    <%= render 'components/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => admins_path, "Audit Report" => nil} %>
   </div>
-  <h2>System Reports</h2>
+  <h3>Audit Report</h3>
   <hr/>
 
   <div>
-    Average amount of time for death records to currently be completed: <b> <%= @mean %> </b>
+    Average amount of time for death records to currently be completed:
+    <b>
+      <%= @mean %>
+    </b>
   </div>
   <br>
 
-  <h3>Audit Logs</h3>
-  <% if !@audits.nil? %>
-    <table class="table" id="audits_table" width="100%" style="display:none">
-      <thead>
-        <tr>
-          <th>Changes</th>
-          <th>Action</th>
-          <th>Type</th>
-          <th>When</th>
-          <th>Who</th>
-          <th>Changes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @audits.each do |audit| %>
-          <tr>
-            <td>
-
-            </td>
-            <td>
-              <%= audit.action.humanize %>
-            </td>
-            <td>
-              <%= audit.auditable_type %>
-            </td>
-            <td>
-            <!-- Datatables doesn't sort on formatted dates and times well -->
-              <%= audit.created_at %>
-            </td>
-            <td>
-              <% if audit.user.nil?%>
-                User not registered yet
-              <% else %>
-               <%= audit.user.email %>
+  <table class="table" id="audits_table" width="100%" style="display:none">
+    <thead>
+      <tr>
+        <th>Changes</th>
+        <th>Action</th>
+        <th>Type</th>
+        <th>When</th>
+        <th>Who</th>
+        <th>Changes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @audits.each do |audit| %>
+      <tr>
+        <td></td>
+        <td>
+          <%= audit.action.humanize %>
+        </td>
+        <td>
+          <%= audit.auditable_type %>
+        </td>
+        <td>
+          <!-- Datatables doesn't sort on formatted dates and times well -->
+          <%= audit.created_at %>
+        </td>
+        <td>
+          <% if audit.user.nil?%>
+          User not registered yet
+        <% else %>
+          <%= audit.user.email %>
+          <% end %>
+        </td>
+        <td>
+          <!-- Hidden table that will be displayed when user clicks "Expand" button for each row -->
+          <table class="table" id="audit_changes_table" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>From</th>
+                <th>To</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% audit.audited_changes.each do |k, v| %>
+              <tr>
+                <td>
+                  <%= k.titleize %>
+                </td>
+                <% if v.class == Array # If updated %>
+                <td>
+                  <%= "'#{v[0]}'" %>
+                </td>
+                <td>
+                  <%= "'#{v[1]}'" %>
+                </td>
+              <% else # If created %>
+                <td>
+                  New
+                </td>
+                <td>
+                  <%= v %>
+                </td>
+                <% end %>
+              </tr>
               <% end %>
-            </td>
-            <td>
-            <!-- Hidden table that will be displayed when user clicks "Expand" button for each row -->
-              <table class="table" id="audit_changes_table" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
-                <thead>
-                  <tr>
-                    <th>Field</th>
-                    <th>From</th>
-                    <th>To</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% audit.audited_changes.each do |k, v| %>
-                    <tr>
-                      <td>
-                          <%= k.titleize %>
-                      </td>
-                      <% if v.class == Array # if updated %>
-                        <td>
-                            <%= "'#{v[0]}'" %>
-                        </td>
-                        <td>
-                            <%= "'#{v[1]}'" %>
-                        </td>
-                      <% else # if created %>
-                        <td>
-                          New
-                        </td>
-                        <td>
-                          <%= v %>
-                        </td>
-                      <% end %>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <div class="row">
-      <div class="col-centered text-center"><p><h4>No reports currently available.</h4></p></div>
-    </div>
-  <% end %>
-<br>
-<br>
-
-
-<h3>Charts</h3>
-<br>
-
-<div id="event_period" class="row">
-  <%= form_tag charts_path, remote: true do %>
-
-    <div class="row">
-      <div class="col-sm-2" align='right'>
-        <label for="start_date">Start date</label>
-      </div>
-
-      <div class="col-sm-3">
-        <div class="input-group">
-          <input type="text" class="actual_range form-control datepicker" id="start_date" name="start_date">
-          <div class="input-group-addon">
-            <span class="glyphicon glyphicon-th"></span>
-          </div>
-        </div>
-      </div>
-
-       <div class="col-sm-3" align='right'>
-        <label for="query_action">Query Data</label>
-      </div>
-
-      <div class="col-sm-3" align='right'>
-        <div class="input-group">
-          <select id = "query_action" name="query_action">
-           <option value = "death_records_created">Death Records Created</option>
-           <option value = "death_records_completed">Death Records Completed</option>
-           <option value = "users_created">Users Created</option>
-           <option value = "users_sign_in">Users Signed In</option>
-         </select>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-sm-2"  align='right'>
-        <label for="end_date">End date</label>
-      </div>
-
-      <div class="col-sm-3">
-        <div class="input-group">
-          <input type="text" class="actual_range form-control datepicker" id="end_date" name="end_date">
-          <div class="input-group-addon">
-            <span class="glyphicon glyphicon-th"></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6" align='right'>
-        <%= submit_tag 'Show', class: 'btn btn-primary' %>
-      </div>
-    </div>
-
-  <% end %>
-</div>
-
-  <hr/>
-  <%= render 'charts/graph' %>
-  <br>
-
-  <div class="row">
-    <div class="col-sm-4">
-      <%= pie_chart @death_records_by_step, id: "record-count-chart", title: "Death Records by Current Step"%>
-    </div>
-    <div class="col-sm-8">
-      <%= bar_chart @average_times, label: "Minutes", title: "Death Record Time (in minutes) by Step", id: "record-step-chart"%>
-    </div>
-  </div>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

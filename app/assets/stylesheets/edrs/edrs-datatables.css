@@ -20,6 +20,24 @@ tr.shown td.details-control:before {
   display: inline-block;
   color: red;
 }
+
 tr.shown td.details-control {
     background: no-repeat center center;
+}
+
+.dt-header-bottom {
+    border-top: none !important;
+}
+
+.dt-header {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.dataTables_info {
+  padding-top: 30px !important;
+}
+
+.dataTables_paginate {
+  padding-top: 30px !important;
 }

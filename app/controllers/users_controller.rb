@@ -7,12 +7,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def delete
-    return unless current_user.admin?
-    User.delete(params[:id])
-    redirect_to users_path
-  end
-
   private
 
   def verify_is_admin

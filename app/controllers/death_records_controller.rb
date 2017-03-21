@@ -1,18 +1,26 @@
 # Death Records Controller
 class DeathRecordsController < ApplicationController
-  before_action :set_death_record, only: [:show, :destroy, :update]
+  before_action :set_death_record, only: [:show, :destroy, :update, :reenable]
 
   def index
     # Authorization in death_record_policy.rb index function (this is only to restrict guest_users)
     authorize DeathRecord
-    @death_records = policy_scope(DeathRecord) # Shows only the records that the user owns. Admin can see all records.
+    # Shows only the records that the user owns. Admin can see all records.
+    @death_records = if current_user.registrar?
+                       policy_scope(DeathRecord).select { |record| record.time_registered.nil? }
+                     else
+                       policy_scope(DeathRecord).select { |record| !record.voided }
+                     end
+    # Grab all records that have been voided
+    @voided_death_records = voided_death_records
+    # Grab all records touched by this user minus those that are active
+    @transferred_death_records = transferred_death_records - @death_records - @voided_death_records
   end
 
   def show
-    # TODO: if not logged in, redirect to login.
+    # Grab supplementary questions and their answers
     @questions_answers = {}
-    answers = Answer::Answer.where(death_record_id: @death_record.id).to_a
-    answers.each do |answer|
+    Answer::Answer.where(death_record_id: @death_record.id).each do |answer|
       @questions_answers[answer.question] = answer.answer
     end
   end
@@ -20,7 +28,18 @@ class DeathRecordsController < ApplicationController
   def destroy
     # Authorization in death_record_policy.rb destroy function.
     authorize DeathRecord
-    @death_record.destroy unless @death_record.nil?
+    # Do not delete any death records, only void them.
+    @death_record.update_attribute('voided', true)
+    @death_record.save(validate: false)
+    redirect_to root_path
+  end
+
+  def reenable
+    # Authorization in death_record_policy.rb destroy function.
+    authorize DeathRecord
+    # Reenable voided death record.
+    @death_record.update_attribute('voided', false)
+    @death_record.save(validate: false)
     redirect_to root_path
   end
 
@@ -28,7 +47,8 @@ class DeathRecordsController < ApplicationController
     # Authorization in death_record_policy.rb create function.
     authorize DeathRecord
     @death_record = DeathRecord.new
-    @death_record.owner_id = current_user[:id]
+    @death_record.owner_id = current_user.id
+    @death_record.creator_id = current_user.id
     # A user can have multiple roles. For now we are assuming a user will have one role.
     @death_record.creator_role = current_user.roles[0].name
     # Grab the first step for the given record based on the user's role (Step list can be found in /config/steps/steps_config.yml)
@@ -40,23 +60,18 @@ class DeathRecordsController < ApplicationController
   def update
     # Authorization in death_record_policy.rb update function.
     authorize DeathRecord
-    # TODO: Look into Time.now.getLocal
-    time_registered = Time.now.getlocal
+    time_registered = Time.zone.now
     registered_by_id = current_user.id
-    max_cert = DeathRecord.maximum('certificate_number')
-    # starting certificate numbers at 10000 for now
-    # TODO:  Confirm starting number and/or (likely) put this in a config file somewhere
-    # TODO:  NOT ATOMIC
-    certificate_number = max_cert ? max_cert + 1 : 10_000
 
-    if !@death_record.update_attributes(time_registered: time_registered,
-                                        registered_by_id: registered_by_id,
-                                        certificate_number: certificate_number,
-                                        was_an_autopsy_performed: true,
-                                        were_autopsy_findings_available: true)
+    # Start ceritifcate number at 10000, and increment by death record id
+    certificate_number = 9999 + @death_record.id
+
+    unless @death_record.update_attributes(time_registered: time_registered,
+                                           registered_by_id: registered_by_id,
+                                           certificate_number: certificate_number,
+                                           was_an_autopsy_performed: true,
+                                           were_autopsy_findings_available: true)
       logger.debug(@death_record.errors.inspect)
-    else
-      flash[:notice] = 'Successfully registered'
     end
 
     redirect_to action: 'show', id: @death_record.id
@@ -67,5 +82,32 @@ class DeathRecordsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_death_record
     @death_record = DeathRecord.find(params[:id])
+  end
+
+  # Grab all records that at one point was touched by this user.
+  def transferred_death_records
+    historical_death_records = DeathRecordHistory.where(user_id: current_user.id)
+    transferred_death_records = []
+    if current_user.registrar?
+      historical_death_records.each do |record|
+        if DeathRecord.exists?(id: record.death_record_id) &&
+           !DeathRecord.find(record.death_record_id).time_registered.nil?
+          transferred_death_records << DeathRecord.find(record.death_record_id)
+        end
+      end
+    else
+      historical_death_records.each do |record|
+        if DeathRecord.exists?(id: record.death_record_id)
+          transferred_death_records << DeathRecord.find(record.death_record_id)
+        end
+      end
+    end
+    transferred_death_records
+  end
+
+  # Grab all records that have been voided.
+  def voided_death_records
+    return DeathRecord.where(voided: true) if current_user.admin?
+    DeathRecord.where(creator_id: current_user.id, voided: true)
   end
 end

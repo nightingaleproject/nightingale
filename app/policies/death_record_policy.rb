@@ -30,4 +30,8 @@ class DeathRecordPolicy < ApplicationPolicy
   def destroy?
     APP_CONFIG['death_record']['delete'].any? { |role| user.has_role?(role) } && !user.is_guest_user
   end
+
+  def reenable?
+    destroy?
+  end
 end

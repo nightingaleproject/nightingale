@@ -6,7 +6,7 @@ class UserToken < ApplicationRecord
   def new_token!
     SecureRandom.hex(32).tap do |random_token|
       self.token = random_token
-      self.token_generated_at = Time.now.utc
+      self.token_generated_at = Time.zone.now
     end
   end
 
@@ -15,7 +15,7 @@ class UserToken < ApplicationRecord
     return true if is_expired
 
     # Has the token expired?
-    if Time.now.utc > (token_generated_at + token_validity)
+    if Time.zone.now > (token_generated_at + token_validity)
       expire_token!
       return true
     end
