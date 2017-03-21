@@ -147,7 +147,7 @@ class DeathRecord::StepsController < ApplicationController
   def set_steps
     record = DeathRecord.find(params[:death_record_id])
     self.steps = []
-    self.steps.push(*WorkflowHelper.all_steps_for_given_record(record))
+    steps.push(*WorkflowHelper.all_steps_for_given_record(record))
   end
 
   # Never trust parameters from the internet, only allow the white list through.

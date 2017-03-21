@@ -51,10 +51,10 @@ class DeathRecordsController < ApplicationController
     @death_record.creator_id = current_user.id
     # A user can have multiple roles. For now we are assuming a user will have one role.
     @death_record.creator_role = current_user.roles[0].name
-    
+
     # Create workflow steps for death record
     create_death_record_flow(@death_record)
-    
+
     @death_record.save(validate: false)
     redirect_to death_record_step_path(@death_record, @death_record.death_record_flow.current_step.name)
   end

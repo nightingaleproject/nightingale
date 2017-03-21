@@ -1,29 +1,28 @@
 ###############################################################################
 # Record creation for geographic data used for structured data input
 ###############################################################################
+
 Rake::Task['geo:load_geo_fixtures'].invoke
 
 ###############################################################################
 # Record creation for Workflow data
 ###############################################################################
 
-Workflow.create!(name: "funeral_director")
-Workflow.create!(name: "physician")
-Workflow.create!(name: "other")
-
+Workflow.create!(name: 'funeral_director')
+Workflow.create!(name: 'physician')
+Workflow.create!(name: 'other')
 
 ###############################################################################
 # Record creation for Step data
 ###############################################################################
 
-Step.create!(name: "identity")
-Step.create!(name: "demographics")
-Step.create!(name: "disposition")
-Step.create!(name: "send_to_medical_professional")
-Step.create!(name: "medical")
-Step.create!(name: "send_to_registrar")
-Step.create!(name: "send_to_funeral_director")
-
+Step.create!(name: 'identity')
+Step.create!(name: 'demographics')
+Step.create!(name: 'disposition')
+Step.create!(name: 'send_to_medical_professional')
+Step.create!(name: 'medical')
+Step.create!(name: 'send_to_registrar')
+Step.create!(name: 'send_to_funeral_director')
 
 ###############################################################################
 # Record creation for Workflow Steps Navigation
