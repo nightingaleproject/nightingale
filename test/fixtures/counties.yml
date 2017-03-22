@@ -1,7 +1,12565 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: counties1
-
-two:
-  name: counties2
+--- !omap
+SUFFOLKNew York:
+  id: 0
+  name: SUFFOLK
+  state_id: 0
+NEW YORKNew York:
+  id: 1
+  name: NEW YORK
+  state_id: 0
+RICHMONDNew York:
+  id: 2
+  name: RICHMOND
+  state_id: 0
+BRONXNew York:
+  id: 3
+  name: BRONX
+  state_id: 0
+WESTCHESTERNew York:
+  id: 4
+  name: WESTCHESTER
+  state_id: 0
+PUTNAMNew York:
+  id: 5
+  name: PUTNAM
+  state_id: 0
+ROCKLANDNew York:
+  id: 6
+  name: ROCKLAND
+  state_id: 0
+ORANGENew York:
+  id: 7
+  name: ORANGE
+  state_id: 0
+NASSAUNew York:
+  id: 8
+  name: NASSAU
+  state_id: 0
+QUEENSNew York:
+  id: 9
+  name: QUEENS
+  state_id: 0
+KINGSNew York:
+  id: 10
+  name: KINGS
+  state_id: 0
+ALBANYNew York:
+  id: 11
+  name: ALBANY
+  state_id: 0
+SCHENECTADYNew York:
+  id: 12
+  name: SCHENECTADY
+  state_id: 0
+MONTGOMERYNew York:
+  id: 13
+  name: MONTGOMERY
+  state_id: 0
+GREENENew York:
+  id: 14
+  name: GREENE
+  state_id: 0
+COLUMBIANew York:
+  id: 15
+  name: COLUMBIA
+  state_id: 0
+RENSSELAERNew York:
+  id: 16
+  name: RENSSELAER
+  state_id: 0
+SARATOGANew York:
+  id: 17
+  name: SARATOGA
+  state_id: 0
+FULTONNew York:
+  id: 18
+  name: FULTON
+  state_id: 0
+SCHOHARIENew York:
+  id: 19
+  name: SCHOHARIE
+  state_id: 0
+WASHINGTONNew York:
+  id: 20
+  name: WASHINGTON
+  state_id: 0
+OTSEGONew York:
+  id: 21
+  name: OTSEGO
+  state_id: 0
+HAMILTONNew York:
+  id: 22
+  name: HAMILTON
+  state_id: 0
+DELAWARENew York:
+  id: 23
+  name: DELAWARE
+  state_id: 0
+ULSTERNew York:
+  id: 24
+  name: ULSTER
+  state_id: 0
+DUTCHESSNew York:
+  id: 25
+  name: DUTCHESS
+  state_id: 0
+SULLIVANNew York:
+  id: 26
+  name: SULLIVAN
+  state_id: 0
+WARRENNew York:
+  id: 27
+  name: WARREN
+  state_id: 0
+ESSEXNew York:
+  id: 28
+  name: ESSEX
+  state_id: 0
+CLINTONNew York:
+  id: 29
+  name: CLINTON
+  state_id: 0
+FRANKLINNew York:
+  id: 30
+  name: FRANKLIN
+  state_id: 0
+SAINT LAWRENCENew York:
+  id: 31
+  name: SAINT LAWRENCE
+  state_id: 0
+ONONDAGANew York:
+  id: 32
+  name: ONONDAGA
+  state_id: 0
+CAYUGANew York:
+  id: 33
+  name: CAYUGA
+  state_id: 0
+OSWEGONew York:
+  id: 34
+  name: OSWEGO
+  state_id: 0
+MADISONNew York:
+  id: 35
+  name: MADISON
+  state_id: 0
+CORTLANDNew York:
+  id: 36
+  name: CORTLAND
+  state_id: 0
+TOMPKINSNew York:
+  id: 37
+  name: TOMPKINS
+  state_id: 0
+ONEIDANew York:
+  id: 38
+  name: ONEIDA
+  state_id: 0
+SENECANew York:
+  id: 39
+  name: SENECA
+  state_id: 0
+CHENANGONew York:
+  id: 40
+  name: CHENANGO
+  state_id: 0
+WAYNENew York:
+  id: 41
+  name: WAYNE
+  state_id: 0
+LEWISNew York:
+  id: 42
+  name: LEWIS
+  state_id: 0
+HERKIMERNew York:
+  id: 43
+  name: HERKIMER
+  state_id: 0
+JEFFERSONNew York:
+  id: 44
+  name: JEFFERSON
+  state_id: 0
+TIOGANew York:
+  id: 45
+  name: TIOGA
+  state_id: 0
+BROOMENew York:
+  id: 46
+  name: BROOME
+  state_id: 0
+ERIENew York:
+  id: 47
+  name: ERIE
+  state_id: 0
+GENESEENew York:
+  id: 48
+  name: GENESEE
+  state_id: 0
+NIAGARANew York:
+  id: 49
+  name: NIAGARA
+  state_id: 0
+WYOMINGNew York:
+  id: 50
+  name: WYOMING
+  state_id: 0
+ALLEGANYNew York:
+  id: 51
+  name: ALLEGANY
+  state_id: 0
+CATTARAUGUSNew York:
+  id: 52
+  name: CATTARAUGUS
+  state_id: 0
+CHAUTAUQUANew York:
+  id: 53
+  name: CHAUTAUQUA
+  state_id: 0
+ORLEANSNew York:
+  id: 54
+  name: ORLEANS
+  state_id: 0
+MONROENew York:
+  id: 55
+  name: MONROE
+  state_id: 0
+LIVINGSTONNew York:
+  id: 56
+  name: LIVINGSTON
+  state_id: 0
+YATESNew York:
+  id: 57
+  name: YATES
+  state_id: 0
+ONTARIONew York:
+  id: 58
+  name: ONTARIO
+  state_id: 0
+STEUBENNew York:
+  id: 59
+  name: STEUBEN
+  state_id: 0
+SCHUYLERNew York:
+  id: 60
+  name: SCHUYLER
+  state_id: 0
+CHEMUNGNew York:
+  id: 61
+  name: CHEMUNG
+  state_id: 0
+HAMPDENMassachusetts:
+  id: 62
+  name: HAMPDEN
+  state_id: 1
+HAMPSHIREMassachusetts:
+  id: 63
+  name: HAMPSHIRE
+  state_id: 1
+WORCESTERMassachusetts:
+  id: 64
+  name: WORCESTER
+  state_id: 1
+BERKSHIREMassachusetts:
+  id: 65
+  name: BERKSHIRE
+  state_id: 1
+FRANKLINMassachusetts:
+  id: 66
+  name: FRANKLIN
+  state_id: 1
+MIDDLESEXMassachusetts:
+  id: 67
+  name: MIDDLESEX
+  state_id: 1
+ESSEXMassachusetts:
+  id: 68
+  name: ESSEX
+  state_id: 1
+PLYMOUTHMassachusetts:
+  id: 69
+  name: PLYMOUTH
+  state_id: 1
+NORFOLKMassachusetts:
+  id: 70
+  name: NORFOLK
+  state_id: 1
+BRISTOLMassachusetts:
+  id: 71
+  name: BRISTOL
+  state_id: 1
+SUFFOLKMassachusetts:
+  id: 72
+  name: SUFFOLK
+  state_id: 1
+BARNSTABLEMassachusetts:
+  id: 73
+  name: BARNSTABLE
+  state_id: 1
+DUKESMassachusetts:
+  id: 74
+  name: DUKES
+  state_id: 1
+NANTUCKETMassachusetts:
+  id: 75
+  name: NANTUCKET
+  state_id: 1
+NEWPORTRhode Island:
+  id: 76
+  name: NEWPORT
+  state_id: 2
+PROVIDENCERhode Island:
+  id: 77
+  name: PROVIDENCE
+  state_id: 2
+WASHINGTONRhode Island:
+  id: 78
+  name: WASHINGTON
+  state_id: 2
+BRISTOLRhode Island:
+  id: 79
+  name: BRISTOL
+  state_id: 2
+KENTRhode Island:
+  id: 80
+  name: KENT
+  state_id: 2
+HILLSBOROUGHNew Hampshire:
+  id: 81
+  name: HILLSBOROUGH
+  state_id: 3
+ROCKINGHAMNew Hampshire:
+  id: 82
+  name: ROCKINGHAM
+  state_id: 3
+MERRIMACKNew Hampshire:
+  id: 83
+  name: MERRIMACK
+  state_id: 3
+GRAFTONNew Hampshire:
+  id: 84
+  name: GRAFTON
+  state_id: 3
+BELKNAPNew Hampshire:
+  id: 85
+  name: BELKNAP
+  state_id: 3
+CARROLLNew Hampshire:
+  id: 86
+  name: CARROLL
+  state_id: 3
+SULLIVANNew Hampshire:
+  id: 87
+  name: SULLIVAN
+  state_id: 3
+CHESHIRENew Hampshire:
+  id: 88
+  name: CHESHIRE
+  state_id: 3
+COOSNew Hampshire:
+  id: 89
+  name: COOS
+  state_id: 3
+STRAFFORDNew Hampshire:
+  id: 90
+  name: STRAFFORD
+  state_id: 3
+YORKMaine:
+  id: 91
+  name: YORK
+  state_id: 4
+CUMBERLANDMaine:
+  id: 92
+  name: CUMBERLAND
+  state_id: 4
+SAGADAHOCMaine:
+  id: 93
+  name: SAGADAHOC
+  state_id: 4
+OXFORDMaine:
+  id: 94
+  name: OXFORD
+  state_id: 4
+ANDROSCOGGINMaine:
+  id: 95
+  name: ANDROSCOGGIN
+  state_id: 4
+FRANKLINMaine:
+  id: 96
+  name: FRANKLIN
+  state_id: 4
+KENNEBECMaine:
+  id: 97
+  name: KENNEBEC
+  state_id: 4
+LINCOLNMaine:
+  id: 98
+  name: LINCOLN
+  state_id: 4
+WALDOMaine:
+  id: 99
+  name: WALDO
+  state_id: 4
+PENOBSCOTMaine:
+  id: 100
+  name: PENOBSCOT
+  state_id: 4
+PISCATAQUISMaine:
+  id: 101
+  name: PISCATAQUIS
+  state_id: 4
+HANCOCKMaine:
+  id: 102
+  name: HANCOCK
+  state_id: 4
+WASHINGTONMaine:
+  id: 103
+  name: WASHINGTON
+  state_id: 4
+AROOSTOOKMaine:
+  id: 104
+  name: AROOSTOOK
+  state_id: 4
+SOMERSETMaine:
+  id: 105
+  name: SOMERSET
+  state_id: 4
+KNOXMaine:
+  id: 106
+  name: KNOX
+  state_id: 4
+WINDSORVermont:
+  id: 107
+  name: WINDSOR
+  state_id: 5
+ORANGEVermont:
+  id: 108
+  name: ORANGE
+  state_id: 5
+CALEDONIAVermont:
+  id: 109
+  name: CALEDONIA
+  state_id: 5
+WINDHAMVermont:
+  id: 110
+  name: WINDHAM
+  state_id: 5
+BENNINGTONVermont:
+  id: 111
+  name: BENNINGTON
+  state_id: 5
+CHITTENDENVermont:
+  id: 112
+  name: CHITTENDEN
+  state_id: 5
+GRAND ISLEVermont:
+  id: 113
+  name: GRAND ISLE
+  state_id: 5
+FRANKLINVermont:
+  id: 114
+  name: FRANKLIN
+  state_id: 5
+LAMOILLEVermont:
+  id: 115
+  name: LAMOILLE
+  state_id: 5
+ADDISONVermont:
+  id: 116
+  name: ADDISON
+  state_id: 5
+WASHINGTONVermont:
+  id: 117
+  name: WASHINGTON
+  state_id: 5
+RUTLANDVermont:
+  id: 118
+  name: RUTLAND
+  state_id: 5
+ORLEANSVermont:
+  id: 119
+  name: ORLEANS
+  state_id: 5
+ESSEXVermont:
+  id: 120
+  name: ESSEX
+  state_id: 5
+HARTFORDConnecticut:
+  id: 121
+  name: HARTFORD
+  state_id: 6
+LITCHFIELDConnecticut:
+  id: 122
+  name: LITCHFIELD
+  state_id: 6
+TOLLANDConnecticut:
+  id: 123
+  name: TOLLAND
+  state_id: 6
+WINDHAMConnecticut:
+  id: 124
+  name: WINDHAM
+  state_id: 6
+NEW LONDONConnecticut:
+  id: 125
+  name: NEW LONDON
+  state_id: 6
+NEW HAVENConnecticut:
+  id: 126
+  name: NEW HAVEN
+  state_id: 6
+FAIRFIELDConnecticut:
+  id: 127
+  name: FAIRFIELD
+  state_id: 6
+MIDDLESEXConnecticut:
+  id: 128
+  name: MIDDLESEX
+  state_id: 6
+MIDDLESEXNew Jersey:
+  id: 129
+  name: MIDDLESEX
+  state_id: 7
+HUDSONNew Jersey:
+  id: 130
+  name: HUDSON
+  state_id: 7
+ESSEXNew Jersey:
+  id: 131
+  name: ESSEX
+  state_id: 7
+MORRISNew Jersey:
+  id: 132
+  name: MORRIS
+  state_id: 7
+BERGENNew Jersey:
+  id: 133
+  name: BERGEN
+  state_id: 7
+PASSAICNew Jersey:
+  id: 134
+  name: PASSAIC
+  state_id: 7
+UNIONNew Jersey:
+  id: 135
+  name: UNION
+  state_id: 7
+SOMERSETNew Jersey:
+  id: 136
+  name: SOMERSET
+  state_id: 7
+SUSSEXNew Jersey:
+  id: 137
+  name: SUSSEX
+  state_id: 7
+MONMOUTHNew Jersey:
+  id: 138
+  name: MONMOUTH
+  state_id: 7
+WARRENNew Jersey:
+  id: 139
+  name: WARREN
+  state_id: 7
+HUNTERDONNew Jersey:
+  id: 140
+  name: HUNTERDON
+  state_id: 7
+SALEMNew Jersey:
+  id: 141
+  name: SALEM
+  state_id: 7
+CAMDENNew Jersey:
+  id: 142
+  name: CAMDEN
+  state_id: 7
+OCEANNew Jersey:
+  id: 143
+  name: OCEAN
+  state_id: 7
+BURLINGTONNew Jersey:
+  id: 144
+  name: BURLINGTON
+  state_id: 7
+GLOUCESTERNew Jersey:
+  id: 145
+  name: GLOUCESTER
+  state_id: 7
+ATLANTICNew Jersey:
+  id: 146
+  name: ATLANTIC
+  state_id: 7
+CAPE MAYNew Jersey:
+  id: 147
+  name: CAPE MAY
+  state_id: 7
+CUMBERLANDNew Jersey:
+  id: 148
+  name: CUMBERLAND
+  state_id: 7
+MERCERNew Jersey:
+  id: 149
+  name: MERCER
+  state_id: 7
+BEAVERPennsylvania:
+  id: 150
+  name: BEAVER
+  state_id: 8
+WASHINGTONPennsylvania:
+  id: 151
+  name: WASHINGTON
+  state_id: 8
+ALLEGHENYPennsylvania:
+  id: 152
+  name: ALLEGHENY
+  state_id: 8
+FAYETTEPennsylvania:
+  id: 153
+  name: FAYETTE
+  state_id: 8
+WESTMORELANDPennsylvania:
+  id: 154
+  name: WESTMORELAND
+  state_id: 8
+GREENEPennsylvania:
+  id: 155
+  name: GREENE
+  state_id: 8
+SOMERSETPennsylvania:
+  id: 156
+  name: SOMERSET
+  state_id: 8
+BEDFORDPennsylvania:
+  id: 157
+  name: BEDFORD
+  state_id: 8
+FULTONPennsylvania:
+  id: 158
+  name: FULTON
+  state_id: 8
+ARMSTRONGPennsylvania:
+  id: 159
+  name: ARMSTRONG
+  state_id: 8
+INDIANAPennsylvania:
+  id: 160
+  name: INDIANA
+  state_id: 8
+JEFFERSONPennsylvania:
+  id: 161
+  name: JEFFERSON
+  state_id: 8
+CAMBRIAPennsylvania:
+  id: 162
+  name: CAMBRIA
+  state_id: 8
+CLEARFIELDPennsylvania:
+  id: 163
+  name: CLEARFIELD
+  state_id: 8
+ELKPennsylvania:
+  id: 164
+  name: ELK
+  state_id: 8
+FORESTPennsylvania:
+  id: 165
+  name: FOREST
+  state_id: 8
+CAMERONPennsylvania:
+  id: 166
+  name: CAMERON
+  state_id: 8
+BUTLERPennsylvania:
+  id: 167
+  name: BUTLER
+  state_id: 8
+CLARIONPennsylvania:
+  id: 168
+  name: CLARION
+  state_id: 8
+LAWRENCEPennsylvania:
+  id: 169
+  name: LAWRENCE
+  state_id: 8
+CRAWFORDPennsylvania:
+  id: 170
+  name: CRAWFORD
+  state_id: 8
+MERCERPennsylvania:
+  id: 171
+  name: MERCER
+  state_id: 8
+VENANGOPennsylvania:
+  id: 172
+  name: VENANGO
+  state_id: 8
+WARRENPennsylvania:
+  id: 173
+  name: WARREN
+  state_id: 8
+MCKEANPennsylvania:
+  id: 174
+  name: MCKEAN
+  state_id: 8
+ERIEPennsylvania:
+  id: 175
+  name: ERIE
+  state_id: 8
+BLAIRPennsylvania:
+  id: 176
+  name: BLAIR
+  state_id: 8
+HUNTINGDONPennsylvania:
+  id: 177
+  name: HUNTINGDON
+  state_id: 8
+CENTREPennsylvania:
+  id: 178
+  name: CENTRE
+  state_id: 8
+POTTERPennsylvania:
+  id: 179
+  name: POTTER
+  state_id: 8
+CLINTONPennsylvania:
+  id: 180
+  name: CLINTON
+  state_id: 8
+TIOGAPennsylvania:
+  id: 181
+  name: TIOGA
+  state_id: 8
+BRADFORDPennsylvania:
+  id: 182
+  name: BRADFORD
+  state_id: 8
+CUMBERLANDPennsylvania:
+  id: 183
+  name: CUMBERLAND
+  state_id: 8
+MIFFLINPennsylvania:
+  id: 184
+  name: MIFFLIN
+  state_id: 8
+LEBANONPennsylvania:
+  id: 185
+  name: LEBANON
+  state_id: 8
+DAUPHINPennsylvania:
+  id: 186
+  name: DAUPHIN
+  state_id: 8
+PERRYPennsylvania:
+  id: 187
+  name: PERRY
+  state_id: 8
+JUNIATAPennsylvania:
+  id: 188
+  name: JUNIATA
+  state_id: 8
+NORTHUMBERLANDPennsylvania:
+  id: 189
+  name: NORTHUMBERLAND
+  state_id: 8
+YORKPennsylvania:
+  id: 190
+  name: YORK
+  state_id: 8
+LANCASTERPennsylvania:
+  id: 191
+  name: LANCASTER
+  state_id: 8
+FRANKLINPennsylvania:
+  id: 192
+  name: FRANKLIN
+  state_id: 8
+ADAMSPennsylvania:
+  id: 193
+  name: ADAMS
+  state_id: 8
+LYCOMINGPennsylvania:
+  id: 194
+  name: LYCOMING
+  state_id: 8
+SULLIVANPennsylvania:
+  id: 195
+  name: SULLIVAN
+  state_id: 8
+UNIONPennsylvania:
+  id: 196
+  name: UNION
+  state_id: 8
+SNYDERPennsylvania:
+  id: 197
+  name: SNYDER
+  state_id: 8
+COLUMBIAPennsylvania:
+  id: 198
+  name: COLUMBIA
+  state_id: 8
+MONTOURPennsylvania:
+  id: 199
+  name: MONTOUR
+  state_id: 8
+SCHUYLKILLPennsylvania:
+  id: 200
+  name: SCHUYLKILL
+  state_id: 8
+NORTHAMPTONPennsylvania:
+  id: 201
+  name: NORTHAMPTON
+  state_id: 8
+LEHIGHPennsylvania:
+  id: 202
+  name: LEHIGH
+  state_id: 8
+CARBONPennsylvania:
+  id: 203
+  name: CARBON
+  state_id: 8
+BUCKSPennsylvania:
+  id: 204
+  name: BUCKS
+  state_id: 8
+MONTGOMERYPennsylvania:
+  id: 205
+  name: MONTGOMERY
+  state_id: 8
+BERKSPennsylvania:
+  id: 206
+  name: BERKS
+  state_id: 8
+MONROEPennsylvania:
+  id: 207
+  name: MONROE
+  state_id: 8
+LUZERNEPennsylvania:
+  id: 208
+  name: LUZERNE
+  state_id: 8
+PIKEPennsylvania:
+  id: 209
+  name: PIKE
+  state_id: 8
+WAYNEPennsylvania:
+  id: 210
+  name: WAYNE
+  state_id: 8
+LACKAWANNAPennsylvania:
+  id: 211
+  name: LACKAWANNA
+  state_id: 8
+SUSQUEHANNAPennsylvania:
+  id: 212
+  name: SUSQUEHANNA
+  state_id: 8
+WYOMINGPennsylvania:
+  id: 213
+  name: WYOMING
+  state_id: 8
+DELAWAREPennsylvania:
+  id: 214
+  name: DELAWARE
+  state_id: 8
+PHILADELPHIAPennsylvania:
+  id: 215
+  name: PHILADELPHIA
+  state_id: 8
+CHESTERPennsylvania:
+  id: 216
+  name: CHESTER
+  state_id: 8
+NEW CASTLEDelaware:
+  id: 217
+  name: NEW CASTLE
+  state_id: 9
+KENTDelaware:
+  id: 218
+  name: KENT
+  state_id: 9
+SUSSEXDelaware:
+  id: 219
+  name: SUSSEX
+  state_id: 9
+DISTRICT OF COLUMBIADistrict of Columbia:
+  id: 220
+  name: DISTRICT OF COLUMBIA
+  state_id: 10
+POLKDistrict of Columbia:
+  id: 221
+  name: POLK
+  state_id: 10
+LOUDOUNVirginia:
+  id: 222
+  name: LOUDOUN
+  state_id: 11
+RAPPAHANNOCKVirginia:
+  id: 223
+  name: RAPPAHANNOCK
+  state_id: 11
+MANASSAS CITYVirginia:
+  id: 224
+  name: MANASSAS CITY
+  state_id: 11
+MANASSAS PARK CITYVirginia:
+  id: 225
+  name: MANASSAS PARK CITY
+  state_id: 11
+FAUQUIERVirginia:
+  id: 226
+  name: FAUQUIER
+  state_id: 11
+FAIRFAXVirginia:
+  id: 227
+  name: FAIRFAX
+  state_id: 11
+PRINCE WILLIAMVirginia:
+  id: 228
+  name: PRINCE WILLIAM
+  state_id: 11
+FAIRFAX CITYVirginia:
+  id: 229
+  name: FAIRFAX CITY
+  state_id: 11
+FALLS CHURCH CITYVirginia:
+  id: 230
+  name: FALLS CHURCH CITY
+  state_id: 11
+ARLINGTONVirginia:
+  id: 231
+  name: ARLINGTON
+  state_id: 11
+ALEXANDRIA CITYVirginia:
+  id: 232
+  name: ALEXANDRIA CITY
+  state_id: 11
+FREDERICKSBURG CITYVirginia:
+  id: 233
+  name: FREDERICKSBURG CITY
+  state_id: 11
+STAFFORDVirginia:
+  id: 234
+  name: STAFFORD
+  state_id: 11
+SPOTSYLVANIAVirginia:
+  id: 235
+  name: SPOTSYLVANIA
+  state_id: 11
+CAROLINEVirginia:
+  id: 236
+  name: CAROLINE
+  state_id: 11
+NORTHUMBERLANDVirginia:
+  id: 237
+  name: NORTHUMBERLAND
+  state_id: 11
+ORANGEVirginia:
+  id: 238
+  name: ORANGE
+  state_id: 11
+ESSEXVirginia:
+  id: 239
+  name: ESSEX
+  state_id: 11
+WESTMORELANDVirginia:
+  id: 240
+  name: WESTMORELAND
+  state_id: 11
+KING GEORGEVirginia:
+  id: 241
+  name: KING GEORGE
+  state_id: 11
+RICHMONDVirginia:
+  id: 242
+  name: RICHMOND
+  state_id: 11
+LANCASTERVirginia:
+  id: 243
+  name: LANCASTER
+  state_id: 11
+WINCHESTER CITYVirginia:
+  id: 244
+  name: WINCHESTER CITY
+  state_id: 11
+FREDERICKVirginia:
+  id: 245
+  name: FREDERICK
+  state_id: 11
+WARRENVirginia:
+  id: 246
+  name: WARREN
+  state_id: 11
+CLARKEVirginia:
+  id: 247
+  name: CLARKE
+  state_id: 11
+SHENANDOAHVirginia:
+  id: 248
+  name: SHENANDOAH
+  state_id: 11
+PAGEVirginia:
+  id: 249
+  name: PAGE
+  state_id: 11
+CULPEPERVirginia:
+  id: 250
+  name: CULPEPER
+  state_id: 11
+MADISONVirginia:
+  id: 251
+  name: MADISON
+  state_id: 11
+HARRISONBURG CITYVirginia:
+  id: 252
+  name: HARRISONBURG CITY
+  state_id: 11
+ROCKINGHAMVirginia:
+  id: 253
+  name: ROCKINGHAM
+  state_id: 11
+AUGUSTAVirginia:
+  id: 254
+  name: AUGUSTA
+  state_id: 11
+ALBEMARLEVirginia:
+  id: 255
+  name: ALBEMARLE
+  state_id: 11
+CHARLOTTESVILLE CITYVirginia:
+  id: 256
+  name: CHARLOTTESVILLE CITY
+  state_id: 11
+NELSONVirginia:
+  id: 257
+  name: NELSON
+  state_id: 11
+GREENEVirginia:
+  id: 258
+  name: GREENE
+  state_id: 11
+FLUVANNAVirginia:
+  id: 259
+  name: FLUVANNA
+  state_id: 11
+WAYNESBORO CITYVirginia:
+  id: 260
+  name: WAYNESBORO CITY
+  state_id: 11
+GLOUCESTERVirginia:
+  id: 261
+  name: GLOUCESTER
+  state_id: 11
+AMELIAVirginia:
+  id: 262
+  name: AMELIA
+  state_id: 11
+BUCKINGHAMVirginia:
+  id: 263
+  name: BUCKINGHAM
+  state_id: 11
+HANOVERVirginia:
+  id: 264
+  name: HANOVER
+  state_id: 11
+KING WILLIAMVirginia:
+  id: 265
+  name: KING WILLIAM
+  state_id: 11
+NEW KENTVirginia:
+  id: 266
+  name: NEW KENT
+  state_id: 11
+GOOCHLANDVirginia:
+  id: 267
+  name: GOOCHLAND
+  state_id: 11
+MATHEWSVirginia:
+  id: 268
+  name: MATHEWS
+  state_id: 11
+KING AND QUEENVirginia:
+  id: 269
+  name: KING AND QUEEN
+  state_id: 11
+LOUISAVirginia:
+  id: 270
+  name: LOUISA
+  state_id: 11
+CUMBERLANDVirginia:
+  id: 271
+  name: CUMBERLAND
+  state_id: 11
+CHARLES CITYVirginia:
+  id: 272
+  name: CHARLES CITY
+  state_id: 11
+MIDDLESEXVirginia:
+  id: 273
+  name: MIDDLESEX
+  state_id: 11
+HENRICOVirginia:
+  id: 274
+  name: HENRICO
+  state_id: 11
+JAMES CITYVirginia:
+  id: 275
+  name: JAMES CITY
+  state_id: 11
+YORKVirginia:
+  id: 276
+  name: YORK
+  state_id: 11
+POWHATANVirginia:
+  id: 277
+  name: POWHATAN
+  state_id: 11
+CHESTERFIELDVirginia:
+  id: 278
+  name: CHESTERFIELD
+  state_id: 11
+RICHMOND CITYVirginia:
+  id: 279
+  name: RICHMOND CITY
+  state_id: 11
+WILLIAMSBURG CITYVirginia:
+  id: 280
+  name: WILLIAMSBURG CITY
+  state_id: 11
+ACCOMACKVirginia:
+  id: 281
+  name: ACCOMACK
+  state_id: 11
+ISLE OF WIGHTVirginia:
+  id: 282
+  name: ISLE OF WIGHT
+  state_id: 11
+NORTHAMPTONVirginia:
+  id: 283
+  name: NORTHAMPTON
+  state_id: 11
+CHESAPEAKE CITYVirginia:
+  id: 284
+  name: CHESAPEAKE CITY
+  state_id: 11
+SUFFOLK CITYVirginia:
+  id: 285
+  name: SUFFOLK CITY
+  state_id: 11
+VIRGINIA BEACH CITYVirginia:
+  id: 286
+  name: VIRGINIA BEACH CITY
+  state_id: 11
+NORFOLK CITYVirginia:
+  id: 287
+  name: NORFOLK CITY
+  state_id: 11
+NEWPORT NEWS CITYVirginia:
+  id: 288
+  name: NEWPORT NEWS CITY
+  state_id: 11
+HAMPTON CITYVirginia:
+  id: 289
+  name: HAMPTON CITY
+  state_id: 11
+POQUOSON CITYVirginia:
+  id: 290
+  name: POQUOSON CITY
+  state_id: 11
+PORTSMOUTH CITYVirginia:
+  id: 291
+  name: PORTSMOUTH CITY
+  state_id: 11
+PRINCE GEORGEVirginia:
+  id: 292
+  name: PRINCE GEORGE
+  state_id: 11
+PETERSBURG CITYVirginia:
+  id: 293
+  name: PETERSBURG CITY
+  state_id: 11
+BRUNSWICKVirginia:
+  id: 294
+  name: BRUNSWICK
+  state_id: 11
+DINWIDDIEVirginia:
+  id: 295
+  name: DINWIDDIE
+  state_id: 11
+NOTTOWAYVirginia:
+  id: 296
+  name: NOTTOWAY
+  state_id: 11
+SOUTHAMPTONVirginia:
+  id: 297
+  name: SOUTHAMPTON
+  state_id: 11
+COLONIAL HEIGHTS CITYVirginia:
+  id: 298
+  name: COLONIAL HEIGHTS CITY
+  state_id: 11
+SURRYVirginia:
+  id: 299
+  name: SURRY
+  state_id: 11
+EMPORIA CITYVirginia:
+  id: 300
+  name: EMPORIA CITY
+  state_id: 11
+FRANKLIN CITYVirginia:
+  id: 301
+  name: FRANKLIN CITY
+  state_id: 11
+HOPEWELL CITYVirginia:
+  id: 302
+  name: HOPEWELL CITY
+  state_id: 11
+SUSSEXVirginia:
+  id: 303
+  name: SUSSEX
+  state_id: 11
+GREENSVILLEVirginia:
+  id: 304
+  name: GREENSVILLE
+  state_id: 11
+PRINCE EDWARDVirginia:
+  id: 305
+  name: PRINCE EDWARD
+  state_id: 11
+MECKLENBURGVirginia:
+  id: 306
+  name: MECKLENBURG
+  state_id: 11
+CHARLOTTEVirginia:
+  id: 307
+  name: CHARLOTTE
+  state_id: 11
+LUNENBURGVirginia:
+  id: 308
+  name: LUNENBURG
+  state_id: 11
+APPOMATTOXVirginia:
+  id: 309
+  name: APPOMATTOX
+  state_id: 11
+ROANOKE CITYVirginia:
+  id: 310
+  name: ROANOKE CITY
+  state_id: 11
+ROANOKEVirginia:
+  id: 311
+  name: ROANOKE
+  state_id: 11
+BOTETOURTVirginia:
+  id: 312
+  name: BOTETOURT
+  state_id: 11
+MONTGOMERYVirginia:
+  id: 313
+  name: MONTGOMERY
+  state_id: 11
+PATRICKVirginia:
+  id: 314
+  name: PATRICK
+  state_id: 11
+HENRYVirginia:
+  id: 315
+  name: HENRY
+  state_id: 11
+PULASKIVirginia:
+  id: 316
+  name: PULASKI
+  state_id: 11
+FRANKLINVirginia:
+  id: 317
+  name: FRANKLIN
+  state_id: 11
+PITTSYLVANIAVirginia:
+  id: 318
+  name: PITTSYLVANIA
+  state_id: 11
+FLOYDVirginia:
+  id: 319
+  name: FLOYD
+  state_id: 11
+GILESVirginia:
+  id: 320
+  name: GILES
+  state_id: 11
+BEDFORDVirginia:
+  id: 321
+  name: BEDFORD
+  state_id: 11
+MARTINSVILLE CITYVirginia:
+  id: 322
+  name: MARTINSVILLE CITY
+  state_id: 11
+CRAIGVirginia:
+  id: 323
+  name: CRAIG
+  state_id: 11
+SALEMVirginia:
+  id: 324
+  name: SALEM
+  state_id: 11
+BRISTOLVirginia:
+  id: 325
+  name: BRISTOL
+  state_id: 11
+WASHINGTONVirginia:
+  id: 326
+  name: WASHINGTON
+  state_id: 11
+WISEVirginia:
+  id: 327
+  name: WISE
+  state_id: 11
+DICKENSONVirginia:
+  id: 328
+  name: DICKENSON
+  state_id: 11
+LEEVirginia:
+  id: 329
+  name: LEE
+  state_id: 11
+RUSSELLVirginia:
+  id: 330
+  name: RUSSELL
+  state_id: 11
+BUCHANANVirginia:
+  id: 331
+  name: BUCHANAN
+  state_id: 11
+SCOTTVirginia:
+  id: 332
+  name: SCOTT
+  state_id: 11
+NORTON CITYVirginia:
+  id: 333
+  name: NORTON CITY
+  state_id: 11
+GRAYSONVirginia:
+  id: 334
+  name: GRAYSON
+  state_id: 11
+SMYTHVirginia:
+  id: 335
+  name: SMYTH
+  state_id: 11
+WYTHEVirginia:
+  id: 336
+  name: WYTHE
+  state_id: 11
+BLANDVirginia:
+  id: 337
+  name: BLAND
+  state_id: 11
+CARROLLVirginia:
+  id: 338
+  name: CARROLL
+  state_id: 11
+GALAX CITYVirginia:
+  id: 339
+  name: GALAX CITY
+  state_id: 11
+TAZEWELLVirginia:
+  id: 340
+  name: TAZEWELL
+  state_id: 11
+STAUNTON CITYVirginia:
+  id: 341
+  name: STAUNTON CITY
+  state_id: 11
+BATHVirginia:
+  id: 342
+  name: BATH
+  state_id: 11
+HIGHLANDVirginia:
+  id: 343
+  name: HIGHLAND
+  state_id: 11
+ROCKBRIDGEVirginia:
+  id: 344
+  name: ROCKBRIDGE
+  state_id: 11
+BUENA VISTA CITYVirginia:
+  id: 345
+  name: BUENA VISTA CITY
+  state_id: 11
+CLIFTON FORGE CITYVirginia:
+  id: 346
+  name: CLIFTON FORGE CITY
+  state_id: 11
+COVINGTON CITYVirginia:
+  id: 347
+  name: COVINGTON CITY
+  state_id: 11
+ALLEGHANYVirginia:
+  id: 348
+  name: ALLEGHANY
+  state_id: 11
+LEXINGTON CITYVirginia:
+  id: 349
+  name: LEXINGTON CITY
+  state_id: 11
+LYNCHBURG CITYVirginia:
+  id: 350
+  name: LYNCHBURG CITY
+  state_id: 11
+CAMPBELLVirginia:
+  id: 351
+  name: CAMPBELL
+  state_id: 11
+HALIFAXVirginia:
+  id: 352
+  name: HALIFAX
+  state_id: 11
+AMHERSTVirginia:
+  id: 353
+  name: AMHERST
+  state_id: 11
+BEDFORD CITYVirginia:
+  id: 354
+  name: BEDFORD CITY
+  state_id: 11
+DANVILLE CITYVirginia:
+  id: 355
+  name: DANVILLE CITY
+  state_id: 11
+PRINCE GEORGESMaryland:
+  id: 356
+  name: PRINCE GEORGES
+  state_id: 12
+CHARLESMaryland:
+  id: 357
+  name: CHARLES
+  state_id: 12
+SAINT MARYSMaryland:
+  id: 358
+  name: SAINT MARYS
+  state_id: 12
+CALVERTMaryland:
+  id: 359
+  name: CALVERT
+  state_id: 12
+HOWARDMaryland:
+  id: 360
+  name: HOWARD
+  state_id: 12
+ANNE ARUNDELMaryland:
+  id: 361
+  name: ANNE ARUNDEL
+  state_id: 12
+MONTGOMERYMaryland:
+  id: 362
+  name: MONTGOMERY
+  state_id: 12
+HARFORDMaryland:
+  id: 363
+  name: HARFORD
+  state_id: 12
+BALTIMOREMaryland:
+  id: 364
+  name: BALTIMORE
+  state_id: 12
+CARROLLMaryland:
+  id: 365
+  name: CARROLL
+  state_id: 12
+BALTIMORE CITYMaryland:
+  id: 366
+  name: BALTIMORE CITY
+  state_id: 12
+ALLEGANYMaryland:
+  id: 367
+  name: ALLEGANY
+  state_id: 12
+GARRETTMaryland:
+  id: 368
+  name: GARRETT
+  state_id: 12
+TALBOTMaryland:
+  id: 369
+  name: TALBOT
+  state_id: 12
+QUEEN ANNESMaryland:
+  id: 370
+  name: QUEEN ANNES
+  state_id: 12
+CAROLINEMaryland:
+  id: 371
+  name: CAROLINE
+  state_id: 12
+KENTMaryland:
+  id: 372
+  name: KENT
+  state_id: 12
+DORCHESTERMaryland:
+  id: 373
+  name: DORCHESTER
+  state_id: 12
+FREDERICKMaryland:
+  id: 374
+  name: FREDERICK
+  state_id: 12
+WASHINGTONMaryland:
+  id: 375
+  name: WASHINGTON
+  state_id: 12
+WICOMICOMaryland:
+  id: 376
+  name: WICOMICO
+  state_id: 12
+WORCESTERMaryland:
+  id: 377
+  name: WORCESTER
+  state_id: 12
+SOMERSETMaryland:
+  id: 378
+  name: SOMERSET
+  state_id: 12
+CECILMaryland:
+  id: 379
+  name: CECIL
+  state_id: 12
+MERCERWest Virginia:
+  id: 380
+  name: MERCER
+  state_id: 13
+WYOMINGWest Virginia:
+  id: 381
+  name: WYOMING
+  state_id: 13
+MCDOWELLWest Virginia:
+  id: 382
+  name: MCDOWELL
+  state_id: 13
+MINGOWest Virginia:
+  id: 383
+  name: MINGO
+  state_id: 13
+GREENBRIERWest Virginia:
+  id: 384
+  name: GREENBRIER
+  state_id: 13
+POCAHONTASWest Virginia:
+  id: 385
+  name: POCAHONTAS
+  state_id: 13
+MONROEWest Virginia:
+  id: 386
+  name: MONROE
+  state_id: 13
+SUMMERSWest Virginia:
+  id: 387
+  name: SUMMERS
+  state_id: 13
+FAYETTEWest Virginia:
+  id: 388
+  name: FAYETTE
+  state_id: 13
+KANAWHAWest Virginia:
+  id: 389
+  name: KANAWHA
+  state_id: 13
+RALEIGHWest Virginia:
+  id: 390
+  name: RALEIGH
+  state_id: 13
+ROANEWest Virginia:
+  id: 391
+  name: ROANE
+  state_id: 13
+BOONEWest Virginia:
+  id: 392
+  name: BOONE
+  state_id: 13
+PUTNAMWest Virginia:
+  id: 393
+  name: PUTNAM
+  state_id: 13
+CLAYWest Virginia:
+  id: 394
+  name: CLAY
+  state_id: 13
+LOGANWest Virginia:
+  id: 395
+  name: LOGAN
+  state_id: 13
+NICHOLASWest Virginia:
+  id: 396
+  name: NICHOLAS
+  state_id: 13
+MASONWest Virginia:
+  id: 397
+  name: MASON
+  state_id: 13
+JACKSONWest Virginia:
+  id: 398
+  name: JACKSON
+  state_id: 13
+CALHOUNWest Virginia:
+  id: 399
+  name: CALHOUN
+  state_id: 13
+GILMERWest Virginia:
+  id: 400
+  name: GILMER
+  state_id: 13
+BERKELEYWest Virginia:
+  id: 401
+  name: BERKELEY
+  state_id: 13
+JEFFERSONWest Virginia:
+  id: 402
+  name: JEFFERSON
+  state_id: 13
+MORGANWest Virginia:
+  id: 403
+  name: MORGAN
+  state_id: 13
+HAMPSHIREWest Virginia:
+  id: 404
+  name: HAMPSHIRE
+  state_id: 13
+LINCOLNWest Virginia:
+  id: 405
+  name: LINCOLN
+  state_id: 13
+CABELLWest Virginia:
+  id: 406
+  name: CABELL
+  state_id: 13
+WAYNEWest Virginia:
+  id: 407
+  name: WAYNE
+  state_id: 13
+OHIOWest Virginia:
+  id: 408
+  name: OHIO
+  state_id: 13
+BROOKEWest Virginia:
+  id: 409
+  name: BROOKE
+  state_id: 13
+MARSHALLWest Virginia:
+  id: 410
+  name: MARSHALL
+  state_id: 13
+HANCOCKWest Virginia:
+  id: 411
+  name: HANCOCK
+  state_id: 13
+WOODWest Virginia:
+  id: 412
+  name: WOOD
+  state_id: 13
+PLEASANTSWest Virginia:
+  id: 413
+  name: PLEASANTS
+  state_id: 13
+TYLERWest Virginia:
+  id: 414
+  name: TYLER
+  state_id: 13
+WIRTWest Virginia:
+  id: 415
+  name: WIRT
+  state_id: 13
+RITCHIEWest Virginia:
+  id: 416
+  name: RITCHIE
+  state_id: 13
+WETZELWest Virginia:
+  id: 417
+  name: WETZEL
+  state_id: 13
+UPSHURWest Virginia:
+  id: 418
+  name: UPSHUR
+  state_id: 13
+WEBSTERWest Virginia:
+  id: 419
+  name: WEBSTER
+  state_id: 13
+RANDOLPHWest Virginia:
+  id: 420
+  name: RANDOLPH
+  state_id: 13
+BARBOURWest Virginia:
+  id: 421
+  name: BARBOUR
+  state_id: 13
+TUCKERWest Virginia:
+  id: 422
+  name: TUCKER
+  state_id: 13
+HARRISONWest Virginia:
+  id: 423
+  name: HARRISON
+  state_id: 13
+LEWISWest Virginia:
+  id: 424
+  name: LEWIS
+  state_id: 13
+DODDRIDGEWest Virginia:
+  id: 425
+  name: DODDRIDGE
+  state_id: 13
+BRAXTONWest Virginia:
+  id: 426
+  name: BRAXTON
+  state_id: 13
+TAYLORWest Virginia:
+  id: 427
+  name: TAYLOR
+  state_id: 13
+PRESTONWest Virginia:
+  id: 428
+  name: PRESTON
+  state_id: 13
+MONONGALIAWest Virginia:
+  id: 429
+  name: MONONGALIA
+  state_id: 13
+MARIONWest Virginia:
+  id: 430
+  name: MARION
+  state_id: 13
+GRANTWest Virginia:
+  id: 431
+  name: GRANT
+  state_id: 13
+MINERALWest Virginia:
+  id: 432
+  name: MINERAL
+  state_id: 13
+HARDYWest Virginia:
+  id: 433
+  name: HARDY
+  state_id: 13
+PENDLETONWest Virginia:
+  id: 434
+  name: PENDLETON
+  state_id: 13
+DAVIENorth Carolina:
+  id: 435
+  name: DAVIE
+  state_id: 14
+SURRYNorth Carolina:
+  id: 436
+  name: SURRY
+  state_id: 14
+FORSYTHNorth Carolina:
+  id: 437
+  name: FORSYTH
+  state_id: 14
+YADKINNorth Carolina:
+  id: 438
+  name: YADKIN
+  state_id: 14
+ROWANNorth Carolina:
+  id: 439
+  name: ROWAN
+  state_id: 14
+STOKESNorth Carolina:
+  id: 440
+  name: STOKES
+  state_id: 14
+ROCKINGHAMNorth Carolina:
+  id: 441
+  name: ROCKINGHAM
+  state_id: 14
+ALAMANCENorth Carolina:
+  id: 442
+  name: ALAMANCE
+  state_id: 14
+RANDOLPHNorth Carolina:
+  id: 443
+  name: RANDOLPH
+  state_id: 14
+CHATHAMNorth Carolina:
+  id: 444
+  name: CHATHAM
+  state_id: 14
+MONTGOMERYNorth Carolina:
+  id: 445
+  name: MONTGOMERY
+  state_id: 14
+CASWELLNorth Carolina:
+  id: 446
+  name: CASWELL
+  state_id: 14
+GUILFORDNorth Carolina:
+  id: 447
+  name: GUILFORD
+  state_id: 14
+ORANGENorth Carolina:
+  id: 448
+  name: ORANGE
+  state_id: 14
+LEENorth Carolina:
+  id: 449
+  name: LEE
+  state_id: 14
+DAVIDSONNorth Carolina:
+  id: 450
+  name: DAVIDSON
+  state_id: 14
+MOORENorth Carolina:
+  id: 451
+  name: MOORE
+  state_id: 14
+PERSONNorth Carolina:
+  id: 452
+  name: PERSON
+  state_id: 14
+HARNETTNorth Carolina:
+  id: 453
+  name: HARNETT
+  state_id: 14
+WAKENorth Carolina:
+  id: 454
+  name: WAKE
+  state_id: 14
+DURHAMNorth Carolina:
+  id: 455
+  name: DURHAM
+  state_id: 14
+JOHNSTONNorth Carolina:
+  id: 456
+  name: JOHNSTON
+  state_id: 14
+GRANVILLENorth Carolina:
+  id: 457
+  name: GRANVILLE
+  state_id: 14
+FRANKLINNorth Carolina:
+  id: 458
+  name: FRANKLIN
+  state_id: 14
+WAYNENorth Carolina:
+  id: 459
+  name: WAYNE
+  state_id: 14
+VANCENorth Carolina:
+  id: 460
+  name: VANCE
+  state_id: 14
+WARRENNorth Carolina:
+  id: 461
+  name: WARREN
+  state_id: 14
+EDGECOMBENorth Carolina:
+  id: 462
+  name: EDGECOMBE
+  state_id: 14
+NASHNorth Carolina:
+  id: 463
+  name: NASH
+  state_id: 14
+BERTIENorth Carolina:
+  id: 464
+  name: BERTIE
+  state_id: 14
+BEAUFORTNorth Carolina:
+  id: 465
+  name: BEAUFORT
+  state_id: 14
+PITTNorth Carolina:
+  id: 466
+  name: PITT
+  state_id: 14
+WILSONNorth Carolina:
+  id: 467
+  name: WILSON
+  state_id: 14
+HERTFORDNorth Carolina:
+  id: 468
+  name: HERTFORD
+  state_id: 14
+NORTHAMPTONNorth Carolina:
+  id: 469
+  name: NORTHAMPTON
+  state_id: 14
+HALIFAXNorth Carolina:
+  id: 470
+  name: HALIFAX
+  state_id: 14
+HYDENorth Carolina:
+  id: 471
+  name: HYDE
+  state_id: 14
+MARTINNorth Carolina:
+  id: 472
+  name: MARTIN
+  state_id: 14
+GREENENorth Carolina:
+  id: 473
+  name: GREENE
+  state_id: 14
+PASQUOTANKNorth Carolina:
+  id: 474
+  name: PASQUOTANK
+  state_id: 14
+DARENorth Carolina:
+  id: 475
+  name: DARE
+  state_id: 14
+CURRITUCKNorth Carolina:
+  id: 476
+  name: CURRITUCK
+  state_id: 14
+PERQUIMANSNorth Carolina:
+  id: 477
+  name: PERQUIMANS
+  state_id: 14
+CAMDENNorth Carolina:
+  id: 478
+  name: CAMDEN
+  state_id: 14
+TYRRELLNorth Carolina:
+  id: 479
+  name: TYRRELL
+  state_id: 14
+GATESNorth Carolina:
+  id: 480
+  name: GATES
+  state_id: 14
+WASHINGTONNorth Carolina:
+  id: 481
+  name: WASHINGTON
+  state_id: 14
+CHOWANNorth Carolina:
+  id: 482
+  name: CHOWAN
+  state_id: 14
+STANLYNorth Carolina:
+  id: 483
+  name: STANLY
+  state_id: 14
+GASTONNorth Carolina:
+  id: 484
+  name: GASTON
+  state_id: 14
+ANSONNorth Carolina:
+  id: 485
+  name: ANSON
+  state_id: 14
+IREDELLNorth Carolina:
+  id: 486
+  name: IREDELL
+  state_id: 14
+CLEVELANDNorth Carolina:
+  id: 487
+  name: CLEVELAND
+  state_id: 14
+RUTHERFORDNorth Carolina:
+  id: 488
+  name: RUTHERFORD
+  state_id: 14
+CABARRUSNorth Carolina:
+  id: 489
+  name: CABARRUS
+  state_id: 14
+MECKLENBURGNorth Carolina:
+  id: 490
+  name: MECKLENBURG
+  state_id: 14
+LINCOLNNorth Carolina:
+  id: 491
+  name: LINCOLN
+  state_id: 14
+UNIONNorth Carolina:
+  id: 492
+  name: UNION
+  state_id: 14
+CUMBERLANDNorth Carolina:
+  id: 493
+  name: CUMBERLAND
+  state_id: 14
+SAMPSONNorth Carolina:
+  id: 494
+  name: SAMPSON
+  state_id: 14
+ROBESONNorth Carolina:
+  id: 495
+  name: ROBESON
+  state_id: 14
+BLADENNorth Carolina:
+  id: 496
+  name: BLADEN
+  state_id: 14
+DUPLINNorth Carolina:
+  id: 497
+  name: DUPLIN
+  state_id: 14
+RICHMONDNorth Carolina:
+  id: 498
+  name: RICHMOND
+  state_id: 14
+SCOTLANDNorth Carolina:
+  id: 499
+  name: SCOTLAND
+  state_id: 14
+HOKENorth Carolina:
+  id: 500
+  name: HOKE
+  state_id: 14
+NEW HANOVERNorth Carolina:
+  id: 501
+  name: NEW HANOVER
+  state_id: 14
+BRUNSWICKNorth Carolina:
+  id: 502
+  name: BRUNSWICK
+  state_id: 14
+PENDERNorth Carolina:
+  id: 503
+  name: PENDER
+  state_id: 14
+COLUMBUSNorth Carolina:
+  id: 504
+  name: COLUMBUS
+  state_id: 14
+ONSLOWNorth Carolina:
+  id: 505
+  name: ONSLOW
+  state_id: 14
+LENOIRNorth Carolina:
+  id: 506
+  name: LENOIR
+  state_id: 14
+PAMLICONorth Carolina:
+  id: 507
+  name: PAMLICO
+  state_id: 14
+CARTERETNorth Carolina:
+  id: 508
+  name: CARTERET
+  state_id: 14
+CRAVENNorth Carolina:
+  id: 509
+  name: CRAVEN
+  state_id: 14
+JONESNorth Carolina:
+  id: 510
+  name: JONES
+  state_id: 14
+CATAWBANorth Carolina:
+  id: 511
+  name: CATAWBA
+  state_id: 14
+AVERYNorth Carolina:
+  id: 512
+  name: AVERY
+  state_id: 14
+WATAUGANorth Carolina:
+  id: 513
+  name: WATAUGA
+  state_id: 14
+WILKESNorth Carolina:
+  id: 514
+  name: WILKES
+  state_id: 14
+CALDWELLNorth Carolina:
+  id: 515
+  name: CALDWELL
+  state_id: 14
+BURKENorth Carolina:
+  id: 516
+  name: BURKE
+  state_id: 14
+ASHENorth Carolina:
+  id: 517
+  name: ASHE
+  state_id: 14
+ALLEGHANYNorth Carolina:
+  id: 518
+  name: ALLEGHANY
+  state_id: 14
+ALEXANDERNorth Carolina:
+  id: 519
+  name: ALEXANDER
+  state_id: 14
+BUNCOMBENorth Carolina:
+  id: 520
+  name: BUNCOMBE
+  state_id: 14
+SWAINNorth Carolina:
+  id: 521
+  name: SWAIN
+  state_id: 14
+MITCHELLNorth Carolina:
+  id: 522
+  name: MITCHELL
+  state_id: 14
+JACKSONNorth Carolina:
+  id: 523
+  name: JACKSON
+  state_id: 14
+TRANSYLVANIANorth Carolina:
+  id: 524
+  name: TRANSYLVANIA
+  state_id: 14
+HENDERSONNorth Carolina:
+  id: 525
+  name: HENDERSON
+  state_id: 14
+YANCEYNorth Carolina:
+  id: 526
+  name: YANCEY
+  state_id: 14
+HAYWOODNorth Carolina:
+  id: 527
+  name: HAYWOOD
+  state_id: 14
+POLKNorth Carolina:
+  id: 528
+  name: POLK
+  state_id: 14
+GRAHAMNorth Carolina:
+  id: 529
+  name: GRAHAM
+  state_id: 14
+MACONNorth Carolina:
+  id: 530
+  name: MACON
+  state_id: 14
+MCDOWELLNorth Carolina:
+  id: 531
+  name: MCDOWELL
+  state_id: 14
+MADISONNorth Carolina:
+  id: 532
+  name: MADISON
+  state_id: 14
+CHEROKEENorth Carolina:
+  id: 533
+  name: CHEROKEE
+  state_id: 14
+CLAYNorth Carolina:
+  id: 534
+  name: CLAY
+  state_id: 14
+CLARENDONSouth Carolina:
+  id: 535
+  name: CLARENDON
+  state_id: 15
+RICHLANDSouth Carolina:
+  id: 536
+  name: RICHLAND
+  state_id: 15
+BAMBERGSouth Carolina:
+  id: 537
+  name: BAMBERG
+  state_id: 15
+LEXINGTONSouth Carolina:
+  id: 538
+  name: LEXINGTON
+  state_id: 15
+KERSHAWSouth Carolina:
+  id: 539
+  name: KERSHAW
+  state_id: 15
+LEESouth Carolina:
+  id: 540
+  name: LEE
+  state_id: 15
+CHESTERSouth Carolina:
+  id: 541
+  name: CHESTER
+  state_id: 15
+FAIRFIELDSouth Carolina:
+  id: 542
+  name: FAIRFIELD
+  state_id: 15
+ORANGEBURGSouth Carolina:
+  id: 543
+  name: ORANGEBURG
+  state_id: 15
+CALHOUNSouth Carolina:
+  id: 544
+  name: CALHOUN
+  state_id: 15
+UNIONSouth Carolina:
+  id: 545
+  name: UNION
+  state_id: 15
+NEWBERRYSouth Carolina:
+  id: 546
+  name: NEWBERRY
+  state_id: 15
+SUMTERSouth Carolina:
+  id: 547
+  name: SUMTER
+  state_id: 15
+WILLIAMSBURGSouth Carolina:
+  id: 548
+  name: WILLIAMSBURG
+  state_id: 15
+LANCASTERSouth Carolina:
+  id: 549
+  name: LANCASTER
+  state_id: 15
+DARLINGTONSouth Carolina:
+  id: 550
+  name: DARLINGTON
+  state_id: 15
+COLLETONSouth Carolina:
+  id: 551
+  name: COLLETON
+  state_id: 15
+CHESTERFIELDSouth Carolina:
+  id: 552
+  name: CHESTERFIELD
+  state_id: 15
+SALUDASouth Carolina:
+  id: 553
+  name: SALUDA
+  state_id: 15
+FLORENCESouth Carolina:
+  id: 554
+  name: FLORENCE
+  state_id: 15
+AIKENSouth Carolina:
+  id: 555
+  name: AIKEN
+  state_id: 15
+SPARTANBURGSouth Carolina:
+  id: 556
+  name: SPARTANBURG
+  state_id: 15
+LAURENSSouth Carolina:
+  id: 557
+  name: LAURENS
+  state_id: 15
+CHEROKEESouth Carolina:
+  id: 558
+  name: CHEROKEE
+  state_id: 15
+CHARLESTONSouth Carolina:
+  id: 559
+  name: CHARLESTON
+  state_id: 15
+BERKELEYSouth Carolina:
+  id: 560
+  name: BERKELEY
+  state_id: 15
+DORCHESTERSouth Carolina:
+  id: 561
+  name: DORCHESTER
+  state_id: 15
+GEORGETOWNSouth Carolina:
+  id: 562
+  name: GEORGETOWN
+  state_id: 15
+HORRYSouth Carolina:
+  id: 563
+  name: HORRY
+  state_id: 15
+MARLBOROSouth Carolina:
+  id: 564
+  name: MARLBORO
+  state_id: 15
+MARIONSouth Carolina:
+  id: 565
+  name: MARION
+  state_id: 15
+DILLONSouth Carolina:
+  id: 566
+  name: DILLON
+  state_id: 15
+GREENVILLESouth Carolina:
+  id: 567
+  name: GREENVILLE
+  state_id: 15
+ABBEVILLESouth Carolina:
+  id: 568
+  name: ABBEVILLE
+  state_id: 15
+ANDERSONSouth Carolina:
+  id: 569
+  name: ANDERSON
+  state_id: 15
+PICKENSSouth Carolina:
+  id: 570
+  name: PICKENS
+  state_id: 15
+OCONEESouth Carolina:
+  id: 571
+  name: OCONEE
+  state_id: 15
+GREENWOODSouth Carolina:
+  id: 572
+  name: GREENWOOD
+  state_id: 15
+YORKSouth Carolina:
+  id: 573
+  name: YORK
+  state_id: 15
+ALLENDALESouth Carolina:
+  id: 574
+  name: ALLENDALE
+  state_id: 15
+BARNWELLSouth Carolina:
+  id: 575
+  name: BARNWELL
+  state_id: 15
+MCCORMICKSouth Carolina:
+  id: 576
+  name: MCCORMICK
+  state_id: 15
+EDGEFIELDSouth Carolina:
+  id: 577
+  name: EDGEFIELD
+  state_id: 15
+BEAUFORTSouth Carolina:
+  id: 578
+  name: BEAUFORT
+  state_id: 15
+HAMPTONSouth Carolina:
+  id: 579
+  name: HAMPTON
+  state_id: 15
+JASPERSouth Carolina:
+  id: 580
+  name: JASPER
+  state_id: 15
+DEKALBGeorgia:
+  id: 581
+  name: DEKALB
+  state_id: 16
+GWINNETTGeorgia:
+  id: 582
+  name: GWINNETT
+  state_id: 16
+FULTONGeorgia:
+  id: 583
+  name: FULTON
+  state_id: 16
+COBBGeorgia:
+  id: 584
+  name: COBB
+  state_id: 16
+BARROWGeorgia:
+  id: 585
+  name: BARROW
+  state_id: 16
+ROCKDALEGeorgia:
+  id: 586
+  name: ROCKDALE
+  state_id: 16
+NEWTONGeorgia:
+  id: 587
+  name: NEWTON
+  state_id: 16
+WALTONGeorgia:
+  id: 588
+  name: WALTON
+  state_id: 16
+FORSYTHGeorgia:
+  id: 589
+  name: FORSYTH
+  state_id: 16
+JASPERGeorgia:
+  id: 590
+  name: JASPER
+  state_id: 16
+BARTOWGeorgia:
+  id: 591
+  name: BARTOW
+  state_id: 16
+POLKGeorgia:
+  id: 592
+  name: POLK
+  state_id: 16
+FLOYDGeorgia:
+  id: 593
+  name: FLOYD
+  state_id: 16
+CHEROKEEGeorgia:
+  id: 594
+  name: CHEROKEE
+  state_id: 16
+CARROLLGeorgia:
+  id: 595
+  name: CARROLL
+  state_id: 16
+HARALSONGeorgia:
+  id: 596
+  name: HARALSON
+  state_id: 16
+DOUGLASGeorgia:
+  id: 597
+  name: DOUGLAS
+  state_id: 16
+PAULDINGGeorgia:
+  id: 598
+  name: PAULDING
+  state_id: 16
+GORDONGeorgia:
+  id: 599
+  name: GORDON
+  state_id: 16
+PICKENSGeorgia:
+  id: 600
+  name: PICKENS
+  state_id: 16
+LAMARGeorgia:
+  id: 601
+  name: LAMAR
+  state_id: 16
+FAYETTEGeorgia:
+  id: 602
+  name: FAYETTE
+  state_id: 16
+PIKEGeorgia:
+  id: 603
+  name: PIKE
+  state_id: 16
+SPALDINGGeorgia:
+  id: 604
+  name: SPALDING
+  state_id: 16
+BUTTSGeorgia:
+  id: 605
+  name: BUTTS
+  state_id: 16
+HEARDGeorgia:
+  id: 606
+  name: HEARD
+  state_id: 16
+MERIWETHERGeorgia:
+  id: 607
+  name: MERIWETHER
+  state_id: 16
+COWETAGeorgia:
+  id: 608
+  name: COWETA
+  state_id: 16
+HENRYGeorgia:
+  id: 609
+  name: HENRY
+  state_id: 16
+TROUPGeorgia:
+  id: 610
+  name: TROUP
+  state_id: 16
+CLAYTONGeorgia:
+  id: 611
+  name: CLAYTON
+  state_id: 16
+UPSONGeorgia:
+  id: 612
+  name: UPSON
+  state_id: 16
+EMANUELGeorgia:
+  id: 613
+  name: EMANUEL
+  state_id: 16
+MONTGOMERYGeorgia:
+  id: 614
+  name: MONTGOMERY
+  state_id: 16
+WHEELERGeorgia:
+  id: 615
+  name: WHEELER
+  state_id: 16
+JEFFERSONGeorgia:
+  id: 616
+  name: JEFFERSON
+  state_id: 16
+EVANSGeorgia:
+  id: 617
+  name: EVANS
+  state_id: 16
+BULLOCHGeorgia:
+  id: 618
+  name: BULLOCH
+  state_id: 16
+TATTNALLGeorgia:
+  id: 619
+  name: TATTNALL
+  state_id: 16
+SCREVENGeorgia:
+  id: 620
+  name: SCREVEN
+  state_id: 16
+BURKEGeorgia:
+  id: 621
+  name: BURKE
+  state_id: 16
+TOOMBSGeorgia:
+  id: 622
+  name: TOOMBS
+  state_id: 16
+CANDLERGeorgia:
+  id: 623
+  name: CANDLER
+  state_id: 16
+JENKINSGeorgia:
+  id: 624
+  name: JENKINS
+  state_id: 16
+LAURENSGeorgia:
+  id: 625
+  name: LAURENS
+  state_id: 16
+TREUTLENGeorgia:
+  id: 626
+  name: TREUTLEN
+  state_id: 16
+HALLGeorgia:
+  id: 627
+  name: HALL
+  state_id: 16
+HABERSHAMGeorgia:
+  id: 628
+  name: HABERSHAM
+  state_id: 16
+BANKSGeorgia:
+  id: 629
+  name: BANKS
+  state_id: 16
+UNIONGeorgia:
+  id: 630
+  name: UNION
+  state_id: 16
+FANNINGeorgia:
+  id: 631
+  name: FANNIN
+  state_id: 16
+HARTGeorgia:
+  id: 632
+  name: HART
+  state_id: 16
+JACKSONGeorgia:
+  id: 633
+  name: JACKSON
+  state_id: 16
+FRANKLINGeorgia:
+  id: 634
+  name: FRANKLIN
+  state_id: 16
+GILMERGeorgia:
+  id: 635
+  name: GILMER
+  state_id: 16
+RABUNGeorgia:
+  id: 636
+  name: RABUN
+  state_id: 16
+WHITEGeorgia:
+  id: 637
+  name: WHITE
+  state_id: 16
+LUMPKINGeorgia:
+  id: 638
+  name: LUMPKIN
+  state_id: 16
+DAWSONGeorgia:
+  id: 639
+  name: DAWSON
+  state_id: 16
+STEPHENSGeorgia:
+  id: 640
+  name: STEPHENS
+  state_id: 16
+TOWNSGeorgia:
+  id: 641
+  name: TOWNS
+  state_id: 16
+CLARKEGeorgia:
+  id: 642
+  name: CLARKE
+  state_id: 16
+OGLETHORPEGeorgia:
+  id: 643
+  name: OGLETHORPE
+  state_id: 16
+OCONEEGeorgia:
+  id: 644
+  name: OCONEE
+  state_id: 16
+MORGANGeorgia:
+  id: 645
+  name: MORGAN
+  state_id: 16
+ELBERTGeorgia:
+  id: 646
+  name: ELBERT
+  state_id: 16
+MADISONGeorgia:
+  id: 647
+  name: MADISON
+  state_id: 16
+TALIAFERROGeorgia:
+  id: 648
+  name: TALIAFERRO
+  state_id: 16
+GREENEGeorgia:
+  id: 649
+  name: GREENE
+  state_id: 16
+WILKESGeorgia:
+  id: 650
+  name: WILKES
+  state_id: 16
+MURRAYGeorgia:
+  id: 651
+  name: MURRAY
+  state_id: 16
+WALKERGeorgia:
+  id: 652
+  name: WALKER
+  state_id: 16
+WHITFIELDGeorgia:
+  id: 653
+  name: WHITFIELD
+  state_id: 16
+CATOOSAGeorgia:
+  id: 654
+  name: CATOOSA
+  state_id: 16
+CHATTOOGAGeorgia:
+  id: 655
+  name: CHATTOOGA
+  state_id: 16
+DADEGeorgia:
+  id: 656
+  name: DADE
+  state_id: 16
+COLUMBIAGeorgia:
+  id: 657
+  name: COLUMBIA
+  state_id: 16
+RICHMONDGeorgia:
+  id: 658
+  name: RICHMOND
+  state_id: 16
+MCDUFFIEGeorgia:
+  id: 659
+  name: MCDUFFIE
+  state_id: 16
+WARRENGeorgia:
+  id: 660
+  name: WARREN
+  state_id: 16
+GLASCOCKGeorgia:
+  id: 661
+  name: GLASCOCK
+  state_id: 16
+LINCOLNGeorgia:
+  id: 662
+  name: LINCOLN
+  state_id: 16
+WILCOXGeorgia:
+  id: 663
+  name: WILCOX
+  state_id: 16
+WILKINSONGeorgia:
+  id: 664
+  name: WILKINSON
+  state_id: 16
+MONROEGeorgia:
+  id: 665
+  name: MONROE
+  state_id: 16
+HOUSTONGeorgia:
+  id: 666
+  name: HOUSTON
+  state_id: 16
+TAYLORGeorgia:
+  id: 667
+  name: TAYLOR
+  state_id: 16
+DOOLYGeorgia:
+  id: 668
+  name: DOOLY
+  state_id: 16
+PEACHGeorgia:
+  id: 669
+  name: PEACH
+  state_id: 16
+CRISPGeorgia:
+  id: 670
+  name: CRISP
+  state_id: 16
+DODGEGeorgia:
+  id: 671
+  name: DODGE
+  state_id: 16
+BLECKLEYGeorgia:
+  id: 672
+  name: BLECKLEY
+  state_id: 16
+TWIGGSGeorgia:
+  id: 673
+  name: TWIGGS
+  state_id: 16
+WASHINGTONGeorgia:
+  id: 674
+  name: WASHINGTON
+  state_id: 16
+PUTNAMGeorgia:
+  id: 675
+  name: PUTNAM
+  state_id: 16
+JONESGeorgia:
+  id: 676
+  name: JONES
+  state_id: 16
+BALDWINGeorgia:
+  id: 677
+  name: BALDWIN
+  state_id: 16
+PULASKIGeorgia:
+  id: 678
+  name: PULASKI
+  state_id: 16
+TELFAIRGeorgia:
+  id: 679
+  name: TELFAIR
+  state_id: 16
+MACONGeorgia:
+  id: 680
+  name: MACON
+  state_id: 16
+JOHNSONGeorgia:
+  id: 681
+  name: JOHNSON
+  state_id: 16
+CRAWFORDGeorgia:
+  id: 682
+  name: CRAWFORD
+  state_id: 16
+HANCOCKGeorgia:
+  id: 683
+  name: HANCOCK
+  state_id: 16
+BIBBGeorgia:
+  id: 684
+  name: BIBB
+  state_id: 16
+LIBERTYGeorgia:
+  id: 685
+  name: LIBERTY
+  state_id: 16
+CHATHAMGeorgia:
+  id: 686
+  name: CHATHAM
+  state_id: 16
+EFFINGHAMGeorgia:
+  id: 687
+  name: EFFINGHAM
+  state_id: 16
+MCINTOSHGeorgia:
+  id: 688
+  name: MCINTOSH
+  state_id: 16
+BRYANGeorgia:
+  id: 689
+  name: BRYAN
+  state_id: 16
+LONGGeorgia:
+  id: 690
+  name: LONG
+  state_id: 16
+WAREGeorgia:
+  id: 691
+  name: WARE
+  state_id: 16
+BACONGeorgia:
+  id: 692
+  name: BACON
+  state_id: 16
+COFFEEGeorgia:
+  id: 693
+  name: COFFEE
+  state_id: 16
+APPLINGGeorgia:
+  id: 694
+  name: APPLING
+  state_id: 16
+PIERCEGeorgia:
+  id: 695
+  name: PIERCE
+  state_id: 16
+GLYNNGeorgia:
+  id: 696
+  name: GLYNN
+  state_id: 16
+JEFF DAVISGeorgia:
+  id: 697
+  name: JEFF DAVIS
+  state_id: 16
+CHARLTONGeorgia:
+  id: 698
+  name: CHARLTON
+  state_id: 16
+BRANTLEYGeorgia:
+  id: 699
+  name: BRANTLEY
+  state_id: 16
+WAYNEGeorgia:
+  id: 700
+  name: WAYNE
+  state_id: 16
+CAMDENGeorgia:
+  id: 701
+  name: CAMDEN
+  state_id: 16
+DECATURGeorgia:
+  id: 702
+  name: DECATUR
+  state_id: 16
+LOWNDESGeorgia:
+  id: 703
+  name: LOWNDES
+  state_id: 16
+COOKGeorgia:
+  id: 704
+  name: COOK
+  state_id: 16
+BERRIENGeorgia:
+  id: 705
+  name: BERRIEN
+  state_id: 16
+CLINCHGeorgia:
+  id: 706
+  name: CLINCH
+  state_id: 16
+ATKINSONGeorgia:
+  id: 707
+  name: ATKINSON
+  state_id: 16
+BROOKSGeorgia:
+  id: 708
+  name: BROOKS
+  state_id: 16
+THOMASGeorgia:
+  id: 709
+  name: THOMAS
+  state_id: 16
+LANIERGeorgia:
+  id: 710
+  name: LANIER
+  state_id: 16
+ECHOLSGeorgia:
+  id: 711
+  name: ECHOLS
+  state_id: 16
+DOUGHERTYGeorgia:
+  id: 712
+  name: DOUGHERTY
+  state_id: 16
+SUMTERGeorgia:
+  id: 713
+  name: SUMTER
+  state_id: 16
+CALHOUNGeorgia:
+  id: 714
+  name: CALHOUN
+  state_id: 16
+TURNERGeorgia:
+  id: 715
+  name: TURNER
+  state_id: 16
+MITCHELLGeorgia:
+  id: 716
+  name: MITCHELL
+  state_id: 16
+COLQUITTGeorgia:
+  id: 717
+  name: COLQUITT
+  state_id: 16
+EARLYGeorgia:
+  id: 718
+  name: EARLY
+  state_id: 16
+CLAYGeorgia:
+  id: 719
+  name: CLAY
+  state_id: 16
+TERRELLGeorgia:
+  id: 720
+  name: TERRELL
+  state_id: 16
+TIFTGeorgia:
+  id: 721
+  name: TIFT
+  state_id: 16
+GRADYGeorgia:
+  id: 722
+  name: GRADY
+  state_id: 16
+RANDOLPHGeorgia:
+  id: 723
+  name: RANDOLPH
+  state_id: 16
+SEMINOLEGeorgia:
+  id: 724
+  name: SEMINOLE
+  state_id: 16
+BEN HILLGeorgia:
+  id: 725
+  name: BEN HILL
+  state_id: 16
+QUITMANGeorgia:
+  id: 726
+  name: QUITMAN
+  state_id: 16
+IRWINGeorgia:
+  id: 727
+  name: IRWIN
+  state_id: 16
+LEEGeorgia:
+  id: 728
+  name: LEE
+  state_id: 16
+BAKERGeorgia:
+  id: 729
+  name: BAKER
+  state_id: 16
+WORTHGeorgia:
+  id: 730
+  name: WORTH
+  state_id: 16
+TALBOTGeorgia:
+  id: 731
+  name: TALBOT
+  state_id: 16
+MARIONGeorgia:
+  id: 732
+  name: MARION
+  state_id: 16
+HARRISGeorgia:
+  id: 733
+  name: HARRIS
+  state_id: 16
+CHATTAHOOCHEEGeorgia:
+  id: 734
+  name: CHATTAHOOCHEE
+  state_id: 16
+SCHLEYGeorgia:
+  id: 735
+  name: SCHLEY
+  state_id: 16
+MUSCOGEEGeorgia:
+  id: 736
+  name: MUSCOGEE
+  state_id: 16
+STEWARTGeorgia:
+  id: 737
+  name: STEWART
+  state_id: 16
+WEBSTERGeorgia:
+  id: 738
+  name: WEBSTER
+  state_id: 16
+PHELPSGeorgia:
+  id: 739
+  name: PHELPS
+  state_id: 16
+CLAYFlorida:
+  id: 740
+  name: CLAY
+  state_id: 17
+SAINT JOHNSFlorida:
+  id: 741
+  name: SAINT JOHNS
+  state_id: 17
+PUTNAMFlorida:
+  id: 742
+  name: PUTNAM
+  state_id: 17
+SUWANNEEFlorida:
+  id: 743
+  name: SUWANNEE
+  state_id: 17
+NASSAUFlorida:
+  id: 744
+  name: NASSAU
+  state_id: 17
+LAFAYETTEFlorida:
+  id: 745
+  name: LAFAYETTE
+  state_id: 17
+COLUMBIAFlorida:
+  id: 746
+  name: COLUMBIA
+  state_id: 17
+UNIONFlorida:
+  id: 747
+  name: UNION
+  state_id: 17
+BAKERFlorida:
+  id: 748
+  name: BAKER
+  state_id: 17
+BRADFORDFlorida:
+  id: 749
+  name: BRADFORD
+  state_id: 17
+HAMILTONFlorida:
+  id: 750
+  name: HAMILTON
+  state_id: 17
+MADISONFlorida:
+  id: 751
+  name: MADISON
+  state_id: 17
+DUVALFlorida:
+  id: 752
+  name: DUVAL
+  state_id: 17
+LAKEFlorida:
+  id: 753
+  name: LAKE
+  state_id: 17
+VOLUSIAFlorida:
+  id: 754
+  name: VOLUSIA
+  state_id: 17
+FLAGLERFlorida:
+  id: 755
+  name: FLAGLER
+  state_id: 17
+MARIONFlorida:
+  id: 756
+  name: MARION
+  state_id: 17
+SUMTERFlorida:
+  id: 757
+  name: SUMTER
+  state_id: 17
+LEONFlorida:
+  id: 758
+  name: LEON
+  state_id: 17
+WAKULLAFlorida:
+  id: 759
+  name: WAKULLA
+  state_id: 17
+FRANKLINFlorida:
+  id: 760
+  name: FRANKLIN
+  state_id: 17
+LIBERTYFlorida:
+  id: 761
+  name: LIBERTY
+  state_id: 17
+GADSDENFlorida:
+  id: 762
+  name: GADSDEN
+  state_id: 17
+JEFFERSONFlorida:
+  id: 763
+  name: JEFFERSON
+  state_id: 17
+TAYLORFlorida:
+  id: 764
+  name: TAYLOR
+  state_id: 17
+BAYFlorida:
+  id: 765
+  name: BAY
+  state_id: 17
+JACKSONFlorida:
+  id: 766
+  name: JACKSON
+  state_id: 17
+CALHOUNFlorida:
+  id: 767
+  name: CALHOUN
+  state_id: 17
+WALTONFlorida:
+  id: 768
+  name: WALTON
+  state_id: 17
+HOLMESFlorida:
+  id: 769
+  name: HOLMES
+  state_id: 17
+WASHINGTONFlorida:
+  id: 770
+  name: WASHINGTON
+  state_id: 17
+GULFFlorida:
+  id: 771
+  name: GULF
+  state_id: 17
+ESCAMBIAFlorida:
+  id: 772
+  name: ESCAMBIA
+  state_id: 17
+SANTA ROSAFlorida:
+  id: 773
+  name: SANTA ROSA
+  state_id: 17
+OKALOOSAFlorida:
+  id: 774
+  name: OKALOOSA
+  state_id: 17
+ALACHUAFlorida:
+  id: 775
+  name: ALACHUA
+  state_id: 17
+GILCHRISTFlorida:
+  id: 776
+  name: GILCHRIST
+  state_id: 17
+LEVYFlorida:
+  id: 777
+  name: LEVY
+  state_id: 17
+DIXIEFlorida:
+  id: 778
+  name: DIXIE
+  state_id: 17
+SEMINOLEFlorida:
+  id: 779
+  name: SEMINOLE
+  state_id: 17
+ORANGEFlorida:
+  id: 780
+  name: ORANGE
+  state_id: 17
+BREVARDFlorida:
+  id: 781
+  name: BREVARD
+  state_id: 17
+INDIAN RIVERFlorida:
+  id: 782
+  name: INDIAN RIVER
+  state_id: 17
+MONROEFlorida:
+  id: 783
+  name: MONROE
+  state_id: 17
+MIAMI DADEFlorida:
+  id: 784
+  name: MIAMI DADE
+  state_id: 17
+BROWARDFlorida:
+  id: 785
+  name: BROWARD
+  state_id: 17
+PALM BEACHFlorida:
+  id: 786
+  name: PALM BEACH
+  state_id: 17
+HENDRYFlorida:
+  id: 787
+  name: HENDRY
+  state_id: 17
+MARTINFlorida:
+  id: 788
+  name: MARTIN
+  state_id: 17
+GLADESFlorida:
+  id: 789
+  name: GLADES
+  state_id: 17
+HILLSBOROUGHFlorida:
+  id: 790
+  name: HILLSBOROUGH
+  state_id: 17
+PASCOFlorida:
+  id: 791
+  name: PASCO
+  state_id: 17
+PINELLASFlorida:
+  id: 792
+  name: PINELLAS
+  state_id: 17
+POLKFlorida:
+  id: 793
+  name: POLK
+  state_id: 17
+HIGHLANDSFlorida:
+  id: 794
+  name: HIGHLANDS
+  state_id: 17
+HARDEEFlorida:
+  id: 795
+  name: HARDEE
+  state_id: 17
+OSCEOLAFlorida:
+  id: 796
+  name: OSCEOLA
+  state_id: 17
+LEEFlorida:
+  id: 797
+  name: LEE
+  state_id: 17
+CHARLOTTEFlorida:
+  id: 798
+  name: CHARLOTTE
+  state_id: 17
+COLLIERFlorida:
+  id: 799
+  name: COLLIER
+  state_id: 17
+MANATEEFlorida:
+  id: 800
+  name: MANATEE
+  state_id: 17
+SARASOTAFlorida:
+  id: 801
+  name: SARASOTA
+  state_id: 17
+DE SOTOFlorida:
+  id: 802
+  name: DE SOTO
+  state_id: 17
+CITRUSFlorida:
+  id: 803
+  name: CITRUS
+  state_id: 17
+HERNANDOFlorida:
+  id: 804
+  name: HERNANDO
+  state_id: 17
+SAINT LUCIEFlorida:
+  id: 805
+  name: SAINT LUCIE
+  state_id: 17
+OKEECHOBEEFlorida:
+  id: 806
+  name: OKEECHOBEE
+  state_id: 17
+SAINT CLAIRAlabama:
+  id: 807
+  name: SAINT CLAIR
+  state_id: 18
+JEFFERSONAlabama:
+  id: 808
+  name: JEFFERSON
+  state_id: 18
+SHELBYAlabama:
+  id: 809
+  name: SHELBY
+  state_id: 18
+TALLAPOOSAAlabama:
+  id: 810
+  name: TALLAPOOSA
+  state_id: 18
+BLOUNTAlabama:
+  id: 811
+  name: BLOUNT
+  state_id: 18
+TALLADEGAAlabama:
+  id: 812
+  name: TALLADEGA
+  state_id: 18
+MARSHALLAlabama:
+  id: 813
+  name: MARSHALL
+  state_id: 18
+CULLMANAlabama:
+  id: 814
+  name: CULLMAN
+  state_id: 18
+BIBBAlabama:
+  id: 815
+  name: BIBB
+  state_id: 18
+WALKERAlabama:
+  id: 816
+  name: WALKER
+  state_id: 18
+CHILTONAlabama:
+  id: 817
+  name: CHILTON
+  state_id: 18
+COOSAAlabama:
+  id: 818
+  name: COOSA
+  state_id: 18
+CLAYAlabama:
+  id: 819
+  name: CLAY
+  state_id: 18
+TUSCALOOSAAlabama:
+  id: 820
+  name: TUSCALOOSA
+  state_id: 18
+HALEAlabama:
+  id: 821
+  name: HALE
+  state_id: 18
+PICKENSAlabama:
+  id: 822
+  name: PICKENS
+  state_id: 18
+GREENEAlabama:
+  id: 823
+  name: GREENE
+  state_id: 18
+SUMTERAlabama:
+  id: 824
+  name: SUMTER
+  state_id: 18
+WINSTONAlabama:
+  id: 825
+  name: WINSTON
+  state_id: 18
+FAYETTEAlabama:
+  id: 826
+  name: FAYETTE
+  state_id: 18
+MARIONAlabama:
+  id: 827
+  name: MARION
+  state_id: 18
+LAMARAlabama:
+  id: 828
+  name: LAMAR
+  state_id: 18
+FRANKLINAlabama:
+  id: 829
+  name: FRANKLIN
+  state_id: 18
+MORGANAlabama:
+  id: 830
+  name: MORGAN
+  state_id: 18
+LAUDERDALEAlabama:
+  id: 831
+  name: LAUDERDALE
+  state_id: 18
+LIMESTONEAlabama:
+  id: 832
+  name: LIMESTONE
+  state_id: 18
+COLBERTAlabama:
+  id: 833
+  name: COLBERT
+  state_id: 18
+LAWRENCEAlabama:
+  id: 834
+  name: LAWRENCE
+  state_id: 18
+JACKSONAlabama:
+  id: 835
+  name: JACKSON
+  state_id: 18
+MADISONAlabama:
+  id: 836
+  name: MADISON
+  state_id: 18
+ETOWAHAlabama:
+  id: 837
+  name: ETOWAH
+  state_id: 18
+CHEROKEEAlabama:
+  id: 838
+  name: CHEROKEE
+  state_id: 18
+DE KALBAlabama:
+  id: 839
+  name: DE KALB
+  state_id: 18
+AUTAUGAAlabama:
+  id: 840
+  name: AUTAUGA
+  state_id: 18
+PIKEAlabama:
+  id: 841
+  name: PIKE
+  state_id: 18
+CRENSHAWAlabama:
+  id: 842
+  name: CRENSHAW
+  state_id: 18
+MONTGOMERYAlabama:
+  id: 843
+  name: MONTGOMERY
+  state_id: 18
+BUTLERAlabama:
+  id: 844
+  name: BUTLER
+  state_id: 18
+BARBOURAlabama:
+  id: 845
+  name: BARBOUR
+  state_id: 18
+ELMOREAlabama:
+  id: 846
+  name: ELMORE
+  state_id: 18
+BULLOCKAlabama:
+  id: 847
+  name: BULLOCK
+  state_id: 18
+MACONAlabama:
+  id: 848
+  name: MACON
+  state_id: 18
+LOWNDESAlabama:
+  id: 849
+  name: LOWNDES
+  state_id: 18
+COVINGTONAlabama:
+  id: 850
+  name: COVINGTON
+  state_id: 18
+CALHOUNAlabama:
+  id: 851
+  name: CALHOUN
+  state_id: 18
+CLEBURNEAlabama:
+  id: 852
+  name: CLEBURNE
+  state_id: 18
+RANDOLPHAlabama:
+  id: 853
+  name: RANDOLPH
+  state_id: 18
+HOUSTONAlabama:
+  id: 854
+  name: HOUSTON
+  state_id: 18
+HENRYAlabama:
+  id: 855
+  name: HENRY
+  state_id: 18
+DALEAlabama:
+  id: 856
+  name: DALE
+  state_id: 18
+GENEVAAlabama:
+  id: 857
+  name: GENEVA
+  state_id: 18
+COFFEEAlabama:
+  id: 858
+  name: COFFEE
+  state_id: 18
+CONECUHAlabama:
+  id: 859
+  name: CONECUH
+  state_id: 18
+MONROEAlabama:
+  id: 860
+  name: MONROE
+  state_id: 18
+ESCAMBIAAlabama:
+  id: 861
+  name: ESCAMBIA
+  state_id: 18
+WILCOXAlabama:
+  id: 862
+  name: WILCOX
+  state_id: 18
+CLARKEAlabama:
+  id: 863
+  name: CLARKE
+  state_id: 18
+MOBILEAlabama:
+  id: 864
+  name: MOBILE
+  state_id: 18
+BALDWINAlabama:
+  id: 865
+  name: BALDWIN
+  state_id: 18
+WASHINGTONAlabama:
+  id: 866
+  name: WASHINGTON
+  state_id: 18
+DALLASAlabama:
+  id: 867
+  name: DALLAS
+  state_id: 18
+MARENGOAlabama:
+  id: 868
+  name: MARENGO
+  state_id: 18
+PERRYAlabama:
+  id: 869
+  name: PERRY
+  state_id: 18
+LEEAlabama:
+  id: 870
+  name: LEE
+  state_id: 18
+RUSSELLAlabama:
+  id: 871
+  name: RUSSELL
+  state_id: 18
+CHAMBERSAlabama:
+  id: 872
+  name: CHAMBERS
+  state_id: 18
+CHOCTAWAlabama:
+  id: 873
+  name: CHOCTAW
+  state_id: 18
+ROBERTSONTennessee:
+  id: 874
+  name: ROBERTSON
+  state_id: 19
+DAVIDSONTennessee:
+  id: 875
+  name: DAVIDSON
+  state_id: 19
+DEKALBTennessee:
+  id: 876
+  name: DEKALB
+  state_id: 19
+WILLIAMSONTennessee:
+  id: 877
+  name: WILLIAMSON
+  state_id: 19
+CHEATHAMTennessee:
+  id: 878
+  name: CHEATHAM
+  state_id: 19
+CANNONTennessee:
+  id: 879
+  name: CANNON
+  state_id: 19
+COFFEETennessee:
+  id: 880
+  name: COFFEE
+  state_id: 19
+MARSHALLTennessee:
+  id: 881
+  name: MARSHALL
+  state_id: 19
+BEDFORDTennessee:
+  id: 882
+  name: BEDFORD
+  state_id: 19
+SUMNERTennessee:
+  id: 883
+  name: SUMNER
+  state_id: 19
+STEWARTTennessee:
+  id: 884
+  name: STEWART
+  state_id: 19
+HICKMANTennessee:
+  id: 885
+  name: HICKMAN
+  state_id: 19
+DICKSONTennessee:
+  id: 886
+  name: DICKSON
+  state_id: 19
+SMITHTennessee:
+  id: 887
+  name: SMITH
+  state_id: 19
+RUTHERFORDTennessee:
+  id: 888
+  name: RUTHERFORD
+  state_id: 19
+MONTGOMERYTennessee:
+  id: 889
+  name: MONTGOMERY
+  state_id: 19
+HOUSTONTennessee:
+  id: 890
+  name: HOUSTON
+  state_id: 19
+WILSONTennessee:
+  id: 891
+  name: WILSON
+  state_id: 19
+TROUSDALETennessee:
+  id: 892
+  name: TROUSDALE
+  state_id: 19
+HUMPHREYSTennessee:
+  id: 893
+  name: HUMPHREYS
+  state_id: 19
+MACONTennessee:
+  id: 894
+  name: MACON
+  state_id: 19
+PERRYTennessee:
+  id: 895
+  name: PERRY
+  state_id: 19
+WARRENTennessee:
+  id: 896
+  name: WARREN
+  state_id: 19
+LINCOLNTennessee:
+  id: 897
+  name: LINCOLN
+  state_id: 19
+MAURYTennessee:
+  id: 898
+  name: MAURY
+  state_id: 19
+GRUNDYTennessee:
+  id: 899
+  name: GRUNDY
+  state_id: 19
+HAMILTONTennessee:
+  id: 900
+  name: HAMILTON
+  state_id: 19
+MCMINNTennessee:
+  id: 901
+  name: MCMINN
+  state_id: 19
+FRANKLINTennessee:
+  id: 902
+  name: FRANKLIN
+  state_id: 19
+POLKTennessee:
+  id: 903
+  name: POLK
+  state_id: 19
+BRADLEYTennessee:
+  id: 904
+  name: BRADLEY
+  state_id: 19
+MONROETennessee:
+  id: 905
+  name: MONROE
+  state_id: 19
+RHEATennessee:
+  id: 906
+  name: RHEA
+  state_id: 19
+MEIGSTennessee:
+  id: 907
+  name: MEIGS
+  state_id: 19
+SEQUATCHIETennessee:
+  id: 908
+  name: SEQUATCHIE
+  state_id: 19
+MARIONTennessee:
+  id: 909
+  name: MARION
+  state_id: 19
+MOORETennessee:
+  id: 910
+  name: MOORE
+  state_id: 19
+BLEDSOETennessee:
+  id: 911
+  name: BLEDSOE
+  state_id: 19
+SHELBYTennessee:
+  id: 912
+  name: SHELBY
+  state_id: 19
+WASHINGTONTennessee:
+  id: 913
+  name: WASHINGTON
+  state_id: 19
+GREENETennessee:
+  id: 914
+  name: GREENE
+  state_id: 19
+SULLIVANTennessee:
+  id: 915
+  name: SULLIVAN
+  state_id: 19
+JOHNSONTennessee:
+  id: 916
+  name: JOHNSON
+  state_id: 19
+HAWKINSTennessee:
+  id: 917
+  name: HAWKINS
+  state_id: 19
+CARTERTennessee:
+  id: 918
+  name: CARTER
+  state_id: 19
+UNICOITennessee:
+  id: 919
+  name: UNICOI
+  state_id: 19
+BLOUNTTennessee:
+  id: 920
+  name: BLOUNT
+  state_id: 19
+ANDERSONTennessee:
+  id: 921
+  name: ANDERSON
+  state_id: 19
+CLAIBORNETennessee:
+  id: 922
+  name: CLAIBORNE
+  state_id: 19
+GRAINGERTennessee:
+  id: 923
+  name: GRAINGER
+  state_id: 19
+COCKETennessee:
+  id: 924
+  name: COCKE
+  state_id: 19
+CAMPBELLTennessee:
+  id: 925
+  name: CAMPBELL
+  state_id: 19
+MORGANTennessee:
+  id: 926
+  name: MORGAN
+  state_id: 19
+KNOXTennessee:
+  id: 927
+  name: KNOX
+  state_id: 19
+CUMBERLANDTennessee:
+  id: 928
+  name: CUMBERLAND
+  state_id: 19
+JEFFERSONTennessee:
+  id: 929
+  name: JEFFERSON
+  state_id: 19
+SCOTTTennessee:
+  id: 930
+  name: SCOTT
+  state_id: 19
+SEVIERTennessee:
+  id: 931
+  name: SEVIER
+  state_id: 19
+LOUDONTennessee:
+  id: 932
+  name: LOUDON
+  state_id: 19
+ROANETennessee:
+  id: 933
+  name: ROANE
+  state_id: 19
+HANCOCKTennessee:
+  id: 934
+  name: HANCOCK
+  state_id: 19
+HAMBLENTennessee:
+  id: 935
+  name: HAMBLEN
+  state_id: 19
+UNIONTennessee:
+  id: 936
+  name: UNION
+  state_id: 19
+CROCKETTTennessee:
+  id: 937
+  name: CROCKETT
+  state_id: 19
+FAYETTETennessee:
+  id: 938
+  name: FAYETTE
+  state_id: 19
+TIPTONTennessee:
+  id: 939
+  name: TIPTON
+  state_id: 19
+DYERTennessee:
+  id: 940
+  name: DYER
+  state_id: 19
+HARDEMANTennessee:
+  id: 941
+  name: HARDEMAN
+  state_id: 19
+HAYWOODTennessee:
+  id: 942
+  name: HAYWOOD
+  state_id: 19
+LAUDERDALETennessee:
+  id: 943
+  name: LAUDERDALE
+  state_id: 19
+LAKETennessee:
+  id: 944
+  name: LAKE
+  state_id: 19
+CARROLLTennessee:
+  id: 945
+  name: CARROLL
+  state_id: 19
+BENTONTennessee:
+  id: 946
+  name: BENTON
+  state_id: 19
+HENRYTennessee:
+  id: 947
+  name: HENRY
+  state_id: 19
+WEAKLEYTennessee:
+  id: 948
+  name: WEAKLEY
+  state_id: 19
+OBIONTennessee:
+  id: 949
+  name: OBION
+  state_id: 19
+GIBSONTennessee:
+  id: 950
+  name: GIBSON
+  state_id: 19
+MADISONTennessee:
+  id: 951
+  name: MADISON
+  state_id: 19
+MCNAIRYTennessee:
+  id: 952
+  name: MCNAIRY
+  state_id: 19
+DECATURTennessee:
+  id: 953
+  name: DECATUR
+  state_id: 19
+HARDINTennessee:
+  id: 954
+  name: HARDIN
+  state_id: 19
+HENDERSONTennessee:
+  id: 955
+  name: HENDERSON
+  state_id: 19
+CHESTERTennessee:
+  id: 956
+  name: CHESTER
+  state_id: 19
+WAYNETennessee:
+  id: 957
+  name: WAYNE
+  state_id: 19
+GILESTennessee:
+  id: 958
+  name: GILES
+  state_id: 19
+LAWRENCETennessee:
+  id: 959
+  name: LAWRENCE
+  state_id: 19
+LEWISTennessee:
+  id: 960
+  name: LEWIS
+  state_id: 19
+PUTNAMTennessee:
+  id: 961
+  name: PUTNAM
+  state_id: 19
+FENTRESSTennessee:
+  id: 962
+  name: FENTRESS
+  state_id: 19
+OVERTONTennessee:
+  id: 963
+  name: OVERTON
+  state_id: 19
+PICKETTTennessee:
+  id: 964
+  name: PICKETT
+  state_id: 19
+CLAYTennessee:
+  id: 965
+  name: CLAY
+  state_id: 19
+WHITETennessee:
+  id: 966
+  name: WHITE
+  state_id: 19
+JACKSONTennessee:
+  id: 967
+  name: JACKSON
+  state_id: 19
+VAN BURENTennessee:
+  id: 968
+  name: VAN BUREN
+  state_id: 19
+LAFAYETTEMississippi:
+  id: 969
+  name: LAFAYETTE
+  state_id: 20
+TATEMississippi:
+  id: 970
+  name: TATE
+  state_id: 20
+BENTONMississippi:
+  id: 971
+  name: BENTON
+  state_id: 20
+PANOLAMississippi:
+  id: 972
+  name: PANOLA
+  state_id: 20
+QUITMANMississippi:
+  id: 973
+  name: QUITMAN
+  state_id: 20
+TIPPAHMississippi:
+  id: 974
+  name: TIPPAH
+  state_id: 20
+MARSHALLMississippi:
+  id: 975
+  name: MARSHALL
+  state_id: 20
+COAHOMAMississippi:
+  id: 976
+  name: COAHOMA
+  state_id: 20
+TUNICAMississippi:
+  id: 977
+  name: TUNICA
+  state_id: 20
+UNIONMississippi:
+  id: 978
+  name: UNION
+  state_id: 20
+DE SOTOMississippi:
+  id: 979
+  name: DE SOTO
+  state_id: 20
+WASHINGTONMississippi:
+  id: 980
+  name: WASHINGTON
+  state_id: 20
+BOLIVARMississippi:
+  id: 981
+  name: BOLIVAR
+  state_id: 20
+SHARKEYMississippi:
+  id: 982
+  name: SHARKEY
+  state_id: 20
+SUNFLOWERMississippi:
+  id: 983
+  name: SUNFLOWER
+  state_id: 20
+ISSAQUENAMississippi:
+  id: 984
+  name: ISSAQUENA
+  state_id: 20
+HUMPHREYSMississippi:
+  id: 985
+  name: HUMPHREYS
+  state_id: 20
+LEEMississippi:
+  id: 986
+  name: LEE
+  state_id: 20
+PONTOTOCMississippi:
+  id: 987
+  name: PONTOTOC
+  state_id: 20
+MONROEMississippi:
+  id: 988
+  name: MONROE
+  state_id: 20
+TISHOMINGOMississippi:
+  id: 989
+  name: TISHOMINGO
+  state_id: 20
+PRENTISSMississippi:
+  id: 990
+  name: PRENTISS
+  state_id: 20
+ALCORNMississippi:
+  id: 991
+  name: ALCORN
+  state_id: 20
+CALHOUNMississippi:
+  id: 992
+  name: CALHOUN
+  state_id: 20
+ITAWAMBAMississippi:
+  id: 993
+  name: ITAWAMBA
+  state_id: 20
+CHICKASAWMississippi:
+  id: 994
+  name: CHICKASAW
+  state_id: 20
+GRENADAMississippi:
+  id: 995
+  name: GRENADA
+  state_id: 20
+CARROLLMississippi:
+  id: 996
+  name: CARROLL
+  state_id: 20
+TALLAHATCHIEMississippi:
+  id: 997
+  name: TALLAHATCHIE
+  state_id: 20
+YALOBUSHAMississippi:
+  id: 998
+  name: YALOBUSHA
+  state_id: 20
+HOLMESMississippi:
+  id: 999
+  name: HOLMES
+  state_id: 20
+MONTGOMERYMississippi:
+  id: 1000
+  name: MONTGOMERY
+  state_id: 20
+LEFLOREMississippi:
+  id: 1001
+  name: LEFLORE
+  state_id: 20
+YAZOOMississippi:
+  id: 1002
+  name: YAZOO
+  state_id: 20
+HINDSMississippi:
+  id: 1003
+  name: HINDS
+  state_id: 20
+RANKINMississippi:
+  id: 1004
+  name: RANKIN
+  state_id: 20
+SIMPSONMississippi:
+  id: 1005
+  name: SIMPSON
+  state_id: 20
+MADISONMississippi:
+  id: 1006
+  name: MADISON
+  state_id: 20
+LEAKEMississippi:
+  id: 1007
+  name: LEAKE
+  state_id: 20
+NEWTONMississippi:
+  id: 1008
+  name: NEWTON
+  state_id: 20
+COPIAHMississippi:
+  id: 1009
+  name: COPIAH
+  state_id: 20
+ATTALAMississippi:
+  id: 1010
+  name: ATTALA
+  state_id: 20
+JEFFERSONMississippi:
+  id: 1011
+  name: JEFFERSON
+  state_id: 20
+SCOTTMississippi:
+  id: 1012
+  name: SCOTT
+  state_id: 20
+CLAIBORNEMississippi:
+  id: 1013
+  name: CLAIBORNE
+  state_id: 20
+SMITHMississippi:
+  id: 1014
+  name: SMITH
+  state_id: 20
+COVINGTONMississippi:
+  id: 1015
+  name: COVINGTON
+  state_id: 20
+ADAMSMississippi:
+  id: 1016
+  name: ADAMS
+  state_id: 20
+LAWRENCEMississippi:
+  id: 1017
+  name: LAWRENCE
+  state_id: 20
+WARRENMississippi:
+  id: 1018
+  name: WARREN
+  state_id: 20
+LAUDERDALEMississippi:
+  id: 1019
+  name: LAUDERDALE
+  state_id: 20
+WAYNEMississippi:
+  id: 1020
+  name: WAYNE
+  state_id: 20
+KEMPERMississippi:
+  id: 1021
+  name: KEMPER
+  state_id: 20
+CLARKEMississippi:
+  id: 1022
+  name: CLARKE
+  state_id: 20
+JASPERMississippi:
+  id: 1023
+  name: JASPER
+  state_id: 20
+WINSTONMississippi:
+  id: 1024
+  name: WINSTON
+  state_id: 20
+NOXUBEEMississippi:
+  id: 1025
+  name: NOXUBEE
+  state_id: 20
+NESHOBAMississippi:
+  id: 1026
+  name: NESHOBA
+  state_id: 20
+GREENEMississippi:
+  id: 1027
+  name: GREENE
+  state_id: 20
+FORRESTMississippi:
+  id: 1028
+  name: FORREST
+  state_id: 20
+JEFFERSON DAVISMississippi:
+  id: 1029
+  name: JEFFERSON DAVIS
+  state_id: 20
+PERRYMississippi:
+  id: 1030
+  name: PERRY
+  state_id: 20
+PEARL RIVERMississippi:
+  id: 1031
+  name: PEARL RIVER
+  state_id: 20
+MARIONMississippi:
+  id: 1032
+  name: MARION
+  state_id: 20
+JONESMississippi:
+  id: 1033
+  name: JONES
+  state_id: 20
+GEORGEMississippi:
+  id: 1034
+  name: GEORGE
+  state_id: 20
+LAMARMississippi:
+  id: 1035
+  name: LAMAR
+  state_id: 20
+HARRISONMississippi:
+  id: 1036
+  name: HARRISON
+  state_id: 20
+HANCOCKMississippi:
+  id: 1037
+  name: HANCOCK
+  state_id: 20
+JACKSONMississippi:
+  id: 1038
+  name: JACKSON
+  state_id: 20
+STONEMississippi:
+  id: 1039
+  name: STONE
+  state_id: 20
+LINCOLNMississippi:
+  id: 1040
+  name: LINCOLN
+  state_id: 20
+FRANKLINMississippi:
+  id: 1041
+  name: FRANKLIN
+  state_id: 20
+WILKINSONMississippi:
+  id: 1042
+  name: WILKINSON
+  state_id: 20
+PIKEMississippi:
+  id: 1043
+  name: PIKE
+  state_id: 20
+AMITEMississippi:
+  id: 1044
+  name: AMITE
+  state_id: 20
+WALTHALLMississippi:
+  id: 1045
+  name: WALTHALL
+  state_id: 20
+LOWNDESMississippi:
+  id: 1046
+  name: LOWNDES
+  state_id: 20
+CHOCTAWMississippi:
+  id: 1047
+  name: CHOCTAW
+  state_id: 20
+WEBSTERMississippi:
+  id: 1048
+  name: WEBSTER
+  state_id: 20
+CLAYMississippi:
+  id: 1049
+  name: CLAY
+  state_id: 20
+OKTIBBEHAMississippi:
+  id: 1050
+  name: OKTIBBEHA
+  state_id: 20
+SHELBYKentucky:
+  id: 1051
+  name: SHELBY
+  state_id: 21
+NELSONKentucky:
+  id: 1052
+  name: NELSON
+  state_id: 21
+TRIMBLEKentucky:
+  id: 1053
+  name: TRIMBLE
+  state_id: 21
+HENRYKentucky:
+  id: 1054
+  name: HENRY
+  state_id: 21
+MARIONKentucky:
+  id: 1055
+  name: MARION
+  state_id: 21
+OLDHAMKentucky:
+  id: 1056
+  name: OLDHAM
+  state_id: 21
+JEFFERSONKentucky:
+  id: 1057
+  name: JEFFERSON
+  state_id: 21
+WASHINGTONKentucky:
+  id: 1058
+  name: WASHINGTON
+  state_id: 21
+SPENCERKentucky:
+  id: 1059
+  name: SPENCER
+  state_id: 21
+BULLITTKentucky:
+  id: 1060
+  name: BULLITT
+  state_id: 21
+MEADEKentucky:
+  id: 1061
+  name: MEADE
+  state_id: 21
+BRECKINRIDGEKentucky:
+  id: 1062
+  name: BRECKINRIDGE
+  state_id: 21
+GRAYSONKentucky:
+  id: 1063
+  name: GRAYSON
+  state_id: 21
+HARDINKentucky:
+  id: 1064
+  name: HARDIN
+  state_id: 21
+MERCERKentucky:
+  id: 1065
+  name: MERCER
+  state_id: 21
+NICHOLASKentucky:
+  id: 1066
+  name: NICHOLAS
+  state_id: 21
+POWELLKentucky:
+  id: 1067
+  name: POWELL
+  state_id: 21
+ROWANKentucky:
+  id: 1068
+  name: ROWAN
+  state_id: 21
+MENIFEEKentucky:
+  id: 1069
+  name: MENIFEE
+  state_id: 21
+CLARKKentucky:
+  id: 1070
+  name: CLARK
+  state_id: 21
+SCOTTKentucky:
+  id: 1071
+  name: SCOTT
+  state_id: 21
+MONTGOMERYKentucky:
+  id: 1072
+  name: MONTGOMERY
+  state_id: 21
+ESTILLKentucky:
+  id: 1073
+  name: ESTILL
+  state_id: 21
+JESSAMINEKentucky:
+  id: 1074
+  name: JESSAMINE
+  state_id: 21
+ANDERSONKentucky:
+  id: 1075
+  name: ANDERSON
+  state_id: 21
+WOODFORDKentucky:
+  id: 1076
+  name: WOODFORD
+  state_id: 21
+BOURBONKentucky:
+  id: 1077
+  name: BOURBON
+  state_id: 21
+OWENKentucky:
+  id: 1078
+  name: OWEN
+  state_id: 21
+BATHKentucky:
+  id: 1079
+  name: BATH
+  state_id: 21
+MADISONKentucky:
+  id: 1080
+  name: MADISON
+  state_id: 21
+JACKSONKentucky:
+  id: 1081
+  name: JACKSON
+  state_id: 21
+ROCKCASTLEKentucky:
+  id: 1082
+  name: ROCKCASTLE
+  state_id: 21
+GARRARDKentucky:
+  id: 1083
+  name: GARRARD
+  state_id: 21
+LINCOLNKentucky:
+  id: 1084
+  name: LINCOLN
+  state_id: 21
+BOYLEKentucky:
+  id: 1085
+  name: BOYLE
+  state_id: 21
+FAYETTEKentucky:
+  id: 1086
+  name: FAYETTE
+  state_id: 21
+FRANKLINKentucky:
+  id: 1087
+  name: FRANKLIN
+  state_id: 21
+WHITLEYKentucky:
+  id: 1088
+  name: WHITLEY
+  state_id: 21
+LAURELKentucky:
+  id: 1089
+  name: LAUREL
+  state_id: 21
+KNOXKentucky:
+  id: 1090
+  name: KNOX
+  state_id: 21
+HARLANKentucky:
+  id: 1091
+  name: HARLAN
+  state_id: 21
+LESLIEKentucky:
+  id: 1092
+  name: LESLIE
+  state_id: 21
+BELLKentucky:
+  id: 1093
+  name: BELL
+  state_id: 21
+LETCHERKentucky:
+  id: 1094
+  name: LETCHER
+  state_id: 21
+CLAYKentucky:
+  id: 1095
+  name: CLAY
+  state_id: 21
+PERRYKentucky:
+  id: 1096
+  name: PERRY
+  state_id: 21
+CAMPBELLKentucky:
+  id: 1097
+  name: CAMPBELL
+  state_id: 21
+BRACKENKentucky:
+  id: 1098
+  name: BRACKEN
+  state_id: 21
+HARRISONKentucky:
+  id: 1099
+  name: HARRISON
+  state_id: 21
+BOONEKentucky:
+  id: 1100
+  name: BOONE
+  state_id: 21
+PENDLETONKentucky:
+  id: 1101
+  name: PENDLETON
+  state_id: 21
+CARROLLKentucky:
+  id: 1102
+  name: CARROLL
+  state_id: 21
+GRANTKentucky:
+  id: 1103
+  name: GRANT
+  state_id: 21
+KENTONKentucky:
+  id: 1104
+  name: KENTON
+  state_id: 21
+MASONKentucky:
+  id: 1105
+  name: MASON
+  state_id: 21
+FLEMINGKentucky:
+  id: 1106
+  name: FLEMING
+  state_id: 21
+GALLATINKentucky:
+  id: 1107
+  name: GALLATIN
+  state_id: 21
+ROBERTSONKentucky:
+  id: 1108
+  name: ROBERTSON
+  state_id: 21
+BOYDKentucky:
+  id: 1109
+  name: BOYD
+  state_id: 21
+GREENUPKentucky:
+  id: 1110
+  name: GREENUP
+  state_id: 21
+LAWRENCEKentucky:
+  id: 1111
+  name: LAWRENCE
+  state_id: 21
+LEWISKentucky:
+  id: 1112
+  name: LEWIS
+  state_id: 21
+CARTERKentucky:
+  id: 1113
+  name: CARTER
+  state_id: 21
+ELLIOTTKentucky:
+  id: 1114
+  name: ELLIOTT
+  state_id: 21
+MARTINKentucky:
+  id: 1115
+  name: MARTIN
+  state_id: 21
+JOHNSONKentucky:
+  id: 1116
+  name: JOHNSON
+  state_id: 21
+WOLFEKentucky:
+  id: 1117
+  name: WOLFE
+  state_id: 21
+BREATHITTKentucky:
+  id: 1118
+  name: BREATHITT
+  state_id: 21
+LEEKentucky:
+  id: 1119
+  name: LEE
+  state_id: 21
+OWSLEYKentucky:
+  id: 1120
+  name: OWSLEY
+  state_id: 21
+MORGANKentucky:
+  id: 1121
+  name: MORGAN
+  state_id: 21
+MAGOFFINKentucky:
+  id: 1122
+  name: MAGOFFIN
+  state_id: 21
+PIKEKentucky:
+  id: 1123
+  name: PIKE
+  state_id: 21
+FLOYDKentucky:
+  id: 1124
+  name: FLOYD
+  state_id: 21
+KNOTTKentucky:
+  id: 1125
+  name: KNOTT
+  state_id: 21
+MCCRACKENKentucky:
+  id: 1126
+  name: MCCRACKEN
+  state_id: 21
+CALLOWAYKentucky:
+  id: 1127
+  name: CALLOWAY
+  state_id: 21
+CARLISLEKentucky:
+  id: 1128
+  name: CARLISLE
+  state_id: 21
+BALLARDKentucky:
+  id: 1129
+  name: BALLARD
+  state_id: 21
+MARSHALLKentucky:
+  id: 1130
+  name: MARSHALL
+  state_id: 21
+GRAVESKentucky:
+  id: 1131
+  name: GRAVES
+  state_id: 21
+LIVINGSTONKentucky:
+  id: 1132
+  name: LIVINGSTON
+  state_id: 21
+HICKMANKentucky:
+  id: 1133
+  name: HICKMAN
+  state_id: 21
+CRITTENDENKentucky:
+  id: 1134
+  name: CRITTENDEN
+  state_id: 21
+LYONKentucky:
+  id: 1135
+  name: LYON
+  state_id: 21
+FULTONKentucky:
+  id: 1136
+  name: FULTON
+  state_id: 21
+WARRENKentucky:
+  id: 1137
+  name: WARREN
+  state_id: 21
+ALLENKentucky:
+  id: 1138
+  name: ALLEN
+  state_id: 21
+BARRENKentucky:
+  id: 1139
+  name: BARREN
+  state_id: 21
+METCALFEKentucky:
+  id: 1140
+  name: METCALFE
+  state_id: 21
+MONROEKentucky:
+  id: 1141
+  name: MONROE
+  state_id: 21
+SIMPSONKentucky:
+  id: 1142
+  name: SIMPSON
+  state_id: 21
+EDMONSONKentucky:
+  id: 1143
+  name: EDMONSON
+  state_id: 21
+BUTLERKentucky:
+  id: 1144
+  name: BUTLER
+  state_id: 21
+LOGANKentucky:
+  id: 1145
+  name: LOGAN
+  state_id: 21
+TODDKentucky:
+  id: 1146
+  name: TODD
+  state_id: 21
+TRIGGKentucky:
+  id: 1147
+  name: TRIGG
+  state_id: 21
+CHRISTIANKentucky:
+  id: 1148
+  name: CHRISTIAN
+  state_id: 21
+DAVIESSKentucky:
+  id: 1149
+  name: DAVIESS
+  state_id: 21
+OHIOKentucky:
+  id: 1150
+  name: OHIO
+  state_id: 21
+MUHLENBERGKentucky:
+  id: 1151
+  name: MUHLENBERG
+  state_id: 21
+MCLEANKentucky:
+  id: 1152
+  name: MCLEAN
+  state_id: 21
+HANCOCKKentucky:
+  id: 1153
+  name: HANCOCK
+  state_id: 21
+HENDERSONKentucky:
+  id: 1154
+  name: HENDERSON
+  state_id: 21
+WEBSTERKentucky:
+  id: 1155
+  name: WEBSTER
+  state_id: 21
+HOPKINSKentucky:
+  id: 1156
+  name: HOPKINS
+  state_id: 21
+CALDWELLKentucky:
+  id: 1157
+  name: CALDWELL
+  state_id: 21
+UNIONKentucky:
+  id: 1158
+  name: UNION
+  state_id: 21
+PULASKIKentucky:
+  id: 1159
+  name: PULASKI
+  state_id: 21
+CASEYKentucky:
+  id: 1160
+  name: CASEY
+  state_id: 21
+CLINTONKentucky:
+  id: 1161
+  name: CLINTON
+  state_id: 21
+RUSSELLKentucky:
+  id: 1162
+  name: RUSSELL
+  state_id: 21
+MCCREARYKentucky:
+  id: 1163
+  name: MCCREARY
+  state_id: 21
+WAYNEKentucky:
+  id: 1164
+  name: WAYNE
+  state_id: 21
+CUMBERLANDKentucky:
+  id: 1165
+  name: CUMBERLAND
+  state_id: 21
+HARTKentucky:
+  id: 1166
+  name: HART
+  state_id: 21
+ADAIRKentucky:
+  id: 1167
+  name: ADAIR
+  state_id: 21
+LARUEKentucky:
+  id: 1168
+  name: LARUE
+  state_id: 21
+TAYLORKentucky:
+  id: 1169
+  name: TAYLOR
+  state_id: 21
+GREENKentucky:
+  id: 1170
+  name: GREEN
+  state_id: 21
+LICKINGOhio:
+  id: 1171
+  name: LICKING
+  state_id: 22
+FRANKLINOhio:
+  id: 1172
+  name: FRANKLIN
+  state_id: 22
+DELAWAREOhio:
+  id: 1173
+  name: DELAWARE
+  state_id: 22
+KNOXOhio:
+  id: 1174
+  name: KNOX
+  state_id: 22
+UNIONOhio:
+  id: 1175
+  name: UNION
+  state_id: 22
+CHAMPAIGNOhio:
+  id: 1176
+  name: CHAMPAIGN
+  state_id: 22
+CLARKOhio:
+  id: 1177
+  name: CLARK
+  state_id: 22
+FAIRFIELDOhio:
+  id: 1178
+  name: FAIRFIELD
+  state_id: 22
+MADISONOhio:
+  id: 1179
+  name: MADISON
+  state_id: 22
+PERRYOhio:
+  id: 1180
+  name: PERRY
+  state_id: 22
+ROSSOhio:
+  id: 1181
+  name: ROSS
+  state_id: 22
+PICKAWAYOhio:
+  id: 1182
+  name: PICKAWAY
+  state_id: 22
+FAYETTEOhio:
+  id: 1183
+  name: FAYETTE
+  state_id: 22
+HOCKINGOhio:
+  id: 1184
+  name: HOCKING
+  state_id: 22
+MARIONOhio:
+  id: 1185
+  name: MARION
+  state_id: 22
+LOGANOhio:
+  id: 1186
+  name: LOGAN
+  state_id: 22
+MORROWOhio:
+  id: 1187
+  name: MORROW
+  state_id: 22
+WYANDOTOhio:
+  id: 1188
+  name: WYANDOT
+  state_id: 22
+HARDINOhio:
+  id: 1189
+  name: HARDIN
+  state_id: 22
+WOODOhio:
+  id: 1190
+  name: WOOD
+  state_id: 22
+SANDUSKYOhio:
+  id: 1191
+  name: SANDUSKY
+  state_id: 22
+OTTAWAOhio:
+  id: 1192
+  name: OTTAWA
+  state_id: 22
+LUCASOhio:
+  id: 1193
+  name: LUCAS
+  state_id: 22
+ERIEOhio:
+  id: 1194
+  name: ERIE
+  state_id: 22
+WILLIAMSOhio:
+  id: 1195
+  name: WILLIAMS
+  state_id: 22
+FULTONOhio:
+  id: 1196
+  name: FULTON
+  state_id: 22
+HENRYOhio:
+  id: 1197
+  name: HENRY
+  state_id: 22
+DEFIANCEOhio:
+  id: 1198
+  name: DEFIANCE
+  state_id: 22
+MUSKINGUMOhio:
+  id: 1199
+  name: MUSKINGUM
+  state_id: 22
+NOBLEOhio:
+  id: 1200
+  name: NOBLE
+  state_id: 22
+BELMONTOhio:
+  id: 1201
+  name: BELMONT
+  state_id: 22
+MONROEOhio:
+  id: 1202
+  name: MONROE
+  state_id: 22
+GUERNSEYOhio:
+  id: 1203
+  name: GUERNSEY
+  state_id: 22
+MORGANOhio:
+  id: 1204
+  name: MORGAN
+  state_id: 22
+COSHOCTONOhio:
+  id: 1205
+  name: COSHOCTON
+  state_id: 22
+TUSCARAWASOhio:
+  id: 1206
+  name: TUSCARAWAS
+  state_id: 22
+JEFFERSONOhio:
+  id: 1207
+  name: JEFFERSON
+  state_id: 22
+HARRISONOhio:
+  id: 1208
+  name: HARRISON
+  state_id: 22
+COLUMBIANAOhio:
+  id: 1209
+  name: COLUMBIANA
+  state_id: 22
+LORAINOhio:
+  id: 1210
+  name: LORAIN
+  state_id: 22
+ASHTABULAOhio:
+  id: 1211
+  name: ASHTABULA
+  state_id: 22
+CUYAHOGAOhio:
+  id: 1212
+  name: CUYAHOGA
+  state_id: 22
+GEAUGAOhio:
+  id: 1213
+  name: GEAUGA
+  state_id: 22
+LAKEOhio:
+  id: 1214
+  name: LAKE
+  state_id: 22
+SUMMITOhio:
+  id: 1215
+  name: SUMMIT
+  state_id: 22
+PORTAGEOhio:
+  id: 1216
+  name: PORTAGE
+  state_id: 22
+MEDINAOhio:
+  id: 1217
+  name: MEDINA
+  state_id: 22
+WAYNEOhio:
+  id: 1218
+  name: WAYNE
+  state_id: 22
+MAHONINGOhio:
+  id: 1219
+  name: MAHONING
+  state_id: 22
+TRUMBULLOhio:
+  id: 1220
+  name: TRUMBULL
+  state_id: 22
+STARKOhio:
+  id: 1221
+  name: STARK
+  state_id: 22
+CARROLLOhio:
+  id: 1222
+  name: CARROLL
+  state_id: 22
+HOLMESOhio:
+  id: 1223
+  name: HOLMES
+  state_id: 22
+SENECAOhio:
+  id: 1224
+  name: SENECA
+  state_id: 22
+HANCOCKOhio:
+  id: 1225
+  name: HANCOCK
+  state_id: 22
+ASHLANDOhio:
+  id: 1226
+  name: ASHLAND
+  state_id: 22
+HURONOhio:
+  id: 1227
+  name: HURON
+  state_id: 22
+RICHLANDOhio:
+  id: 1228
+  name: RICHLAND
+  state_id: 22
+CRAWFORDOhio:
+  id: 1229
+  name: CRAWFORD
+  state_id: 22
+HAMILTONOhio:
+  id: 1230
+  name: HAMILTON
+  state_id: 22
+BUTLEROhio:
+  id: 1231
+  name: BUTLER
+  state_id: 22
+WARRENOhio:
+  id: 1232
+  name: WARREN
+  state_id: 22
+PREBLEOhio:
+  id: 1233
+  name: PREBLE
+  state_id: 22
+BROWNOhio:
+  id: 1234
+  name: BROWN
+  state_id: 22
+CLERMONTOhio:
+  id: 1235
+  name: CLERMONT
+  state_id: 22
+ADAMSOhio:
+  id: 1236
+  name: ADAMS
+  state_id: 22
+CLINTONOhio:
+  id: 1237
+  name: CLINTON
+  state_id: 22
+HIGHLANDOhio:
+  id: 1238
+  name: HIGHLAND
+  state_id: 22
+GREENEOhio:
+  id: 1239
+  name: GREENE
+  state_id: 22
+SHELBYOhio:
+  id: 1240
+  name: SHELBY
+  state_id: 22
+DARKEOhio:
+  id: 1241
+  name: DARKE
+  state_id: 22
+MIAMIOhio:
+  id: 1242
+  name: MIAMI
+  state_id: 22
+MONTGOMERYOhio:
+  id: 1243
+  name: MONTGOMERY
+  state_id: 22
+MERCEROhio:
+  id: 1244
+  name: MERCER
+  state_id: 22
+PIKEOhio:
+  id: 1245
+  name: PIKE
+  state_id: 22
+GALLIAOhio:
+  id: 1246
+  name: GALLIA
+  state_id: 22
+LAWRENCEOhio:
+  id: 1247
+  name: LAWRENCE
+  state_id: 22
+JACKSONOhio:
+  id: 1248
+  name: JACKSON
+  state_id: 22
+VINTONOhio:
+  id: 1249
+  name: VINTON
+  state_id: 22
+SCIOTOOhio:
+  id: 1250
+  name: SCIOTO
+  state_id: 22
+ATHENSOhio:
+  id: 1251
+  name: ATHENS
+  state_id: 22
+WASHINGTONOhio:
+  id: 1252
+  name: WASHINGTON
+  state_id: 22
+MEIGSOhio:
+  id: 1253
+  name: MEIGS
+  state_id: 22
+ALLENOhio:
+  id: 1254
+  name: ALLEN
+  state_id: 22
+AUGLAIZEOhio:
+  id: 1255
+  name: AUGLAIZE
+  state_id: 22
+PAULDINGOhio:
+  id: 1256
+  name: PAULDING
+  state_id: 22
+PUTNAMOhio:
+  id: 1257
+  name: PUTNAM
+  state_id: 22
+VAN WERTOhio:
+  id: 1258
+  name: VAN WERT
+  state_id: 22
+MADISONIndiana:
+  id: 1259
+  name: MADISON
+  state_id: 23
+HAMILTONIndiana:
+  id: 1260
+  name: HAMILTON
+  state_id: 23
+CLINTONIndiana:
+  id: 1261
+  name: CLINTON
+  state_id: 23
+HANCOCKIndiana:
+  id: 1262
+  name: HANCOCK
+  state_id: 23
+TIPTONIndiana:
+  id: 1263
+  name: TIPTON
+  state_id: 23
+BOONEIndiana:
+  id: 1264
+  name: BOONE
+  state_id: 23
+HENDRICKSIndiana:
+  id: 1265
+  name: HENDRICKS
+  state_id: 23
+RUSHIndiana:
+  id: 1266
+  name: RUSH
+  state_id: 23
+PUTNAMIndiana:
+  id: 1267
+  name: PUTNAM
+  state_id: 23
+JOHNSONIndiana:
+  id: 1268
+  name: JOHNSON
+  state_id: 23
+MARIONIndiana:
+  id: 1269
+  name: MARION
+  state_id: 23
+SHELBYIndiana:
+  id: 1270
+  name: SHELBY
+  state_id: 23
+MORGANIndiana:
+  id: 1271
+  name: MORGAN
+  state_id: 23
+FAYETTEIndiana:
+  id: 1272
+  name: FAYETTE
+  state_id: 23
+HENRYIndiana:
+  id: 1273
+  name: HENRY
+  state_id: 23
+BROWNIndiana:
+  id: 1274
+  name: BROWN
+  state_id: 23
+PORTERIndiana:
+  id: 1275
+  name: PORTER
+  state_id: 23
+LAKEIndiana:
+  id: 1276
+  name: LAKE
+  state_id: 23
+JASPERIndiana:
+  id: 1277
+  name: JASPER
+  state_id: 23
+LA PORTEIndiana:
+  id: 1278
+  name: LA PORTE
+  state_id: 23
+NEWTONIndiana:
+  id: 1279
+  name: NEWTON
+  state_id: 23
+STARKEIndiana:
+  id: 1280
+  name: STARKE
+  state_id: 23
+MARSHALLIndiana:
+  id: 1281
+  name: MARSHALL
+  state_id: 23
+KOSCIUSKOIndiana:
+  id: 1282
+  name: KOSCIUSKO
+  state_id: 23
+ELKHARTIndiana:
+  id: 1283
+  name: ELKHART
+  state_id: 23
+ST JOSEPHIndiana:
+  id: 1284
+  name: ST JOSEPH
+  state_id: 23
+LAGRANGEIndiana:
+  id: 1285
+  name: LAGRANGE
+  state_id: 23
+NOBLEIndiana:
+  id: 1286
+  name: NOBLE
+  state_id: 23
+HUNTINGTONIndiana:
+  id: 1287
+  name: HUNTINGTON
+  state_id: 23
+STEUBENIndiana:
+  id: 1288
+  name: STEUBEN
+  state_id: 23
+ALLENIndiana:
+  id: 1289
+  name: ALLEN
+  state_id: 23
+DE KALBIndiana:
+  id: 1290
+  name: DE KALB
+  state_id: 23
+ADAMSIndiana:
+  id: 1291
+  name: ADAMS
+  state_id: 23
+WELLSIndiana:
+  id: 1292
+  name: WELLS
+  state_id: 23
+WHITLEYIndiana:
+  id: 1293
+  name: WHITLEY
+  state_id: 23
+HOWARDIndiana:
+  id: 1294
+  name: HOWARD
+  state_id: 23
+FULTONIndiana:
+  id: 1295
+  name: FULTON
+  state_id: 23
+MIAMIIndiana:
+  id: 1296
+  name: MIAMI
+  state_id: 23
+CARROLLIndiana:
+  id: 1297
+  name: CARROLL
+  state_id: 23
+GRANTIndiana:
+  id: 1298
+  name: GRANT
+  state_id: 23
+CASSIndiana:
+  id: 1299
+  name: CASS
+  state_id: 23
+WABASHIndiana:
+  id: 1300
+  name: WABASH
+  state_id: 23
+PULASKIIndiana:
+  id: 1301
+  name: PULASKI
+  state_id: 23
+DEARBORNIndiana:
+  id: 1302
+  name: DEARBORN
+  state_id: 23
+UNIONIndiana:
+  id: 1303
+  name: UNION
+  state_id: 23
+RIPLEYIndiana:
+  id: 1304
+  name: RIPLEY
+  state_id: 23
+FRANKLINIndiana:
+  id: 1305
+  name: FRANKLIN
+  state_id: 23
+SWITZERLANDIndiana:
+  id: 1306
+  name: SWITZERLAND
+  state_id: 23
+OHIOIndiana:
+  id: 1307
+  name: OHIO
+  state_id: 23
+SCOTTIndiana:
+  id: 1308
+  name: SCOTT
+  state_id: 23
+CLARKIndiana:
+  id: 1309
+  name: CLARK
+  state_id: 23
+HARRISONIndiana:
+  id: 1310
+  name: HARRISON
+  state_id: 23
+WASHINGTONIndiana:
+  id: 1311
+  name: WASHINGTON
+  state_id: 23
+CRAWFORDIndiana:
+  id: 1312
+  name: CRAWFORD
+  state_id: 23
+FLOYDIndiana:
+  id: 1313
+  name: FLOYD
+  state_id: 23
+BARTHOLOMEWIndiana:
+  id: 1314
+  name: BARTHOLOMEW
+  state_id: 23
+JACKSONIndiana:
+  id: 1315
+  name: JACKSON
+  state_id: 23
+JENNINGSIndiana:
+  id: 1316
+  name: JENNINGS
+  state_id: 23
+JEFFERSONIndiana:
+  id: 1317
+  name: JEFFERSON
+  state_id: 23
+DECATURIndiana:
+  id: 1318
+  name: DECATUR
+  state_id: 23
+DELAWAREIndiana:
+  id: 1319
+  name: DELAWARE
+  state_id: 23
+WAYNEIndiana:
+  id: 1320
+  name: WAYNE
+  state_id: 23
+JAYIndiana:
+  id: 1321
+  name: JAY
+  state_id: 23
+RANDOLPHIndiana:
+  id: 1322
+  name: RANDOLPH
+  state_id: 23
+BLACKFORDIndiana:
+  id: 1323
+  name: BLACKFORD
+  state_id: 23
+MONROEIndiana:
+  id: 1324
+  name: MONROE
+  state_id: 23
+LAWRENCEIndiana:
+  id: 1325
+  name: LAWRENCE
+  state_id: 23
+GREENEIndiana:
+  id: 1326
+  name: GREENE
+  state_id: 23
+OWENIndiana:
+  id: 1327
+  name: OWEN
+  state_id: 23
+ORANGEIndiana:
+  id: 1328
+  name: ORANGE
+  state_id: 23
+DAVIESSIndiana:
+  id: 1329
+  name: DAVIESS
+  state_id: 23
+KNOXIndiana:
+  id: 1330
+  name: KNOX
+  state_id: 23
+DUBOISIndiana:
+  id: 1331
+  name: DUBOIS
+  state_id: 23
+PERRYIndiana:
+  id: 1332
+  name: PERRY
+  state_id: 23
+MARTINIndiana:
+  id: 1333
+  name: MARTIN
+  state_id: 23
+SPENCERIndiana:
+  id: 1334
+  name: SPENCER
+  state_id: 23
+PIKEIndiana:
+  id: 1335
+  name: PIKE
+  state_id: 23
+WARRICKIndiana:
+  id: 1336
+  name: WARRICK
+  state_id: 23
+POSEYIndiana:
+  id: 1337
+  name: POSEY
+  state_id: 23
+VANDERBURGHIndiana:
+  id: 1338
+  name: VANDERBURGH
+  state_id: 23
+GIBSONIndiana:
+  id: 1339
+  name: GIBSON
+  state_id: 23
+VIGOIndiana:
+  id: 1340
+  name: VIGO
+  state_id: 23
+PARKEIndiana:
+  id: 1341
+  name: PARKE
+  state_id: 23
+VERMILLIONIndiana:
+  id: 1342
+  name: VERMILLION
+  state_id: 23
+CLAYIndiana:
+  id: 1343
+  name: CLAY
+  state_id: 23
+SULLIVANIndiana:
+  id: 1344
+  name: SULLIVAN
+  state_id: 23
+TIPPECANOEIndiana:
+  id: 1345
+  name: TIPPECANOE
+  state_id: 23
+MONTGOMERYIndiana:
+  id: 1346
+  name: MONTGOMERY
+  state_id: 23
+BENTONIndiana:
+  id: 1347
+  name: BENTON
+  state_id: 23
+FOUNTAINIndiana:
+  id: 1348
+  name: FOUNTAIN
+  state_id: 23
+WHITEIndiana:
+  id: 1349
+  name: WHITE
+  state_id: 23
+WARRENIndiana:
+  id: 1350
+  name: WARREN
+  state_id: 23
+SAINT CLAIRMichigan:
+  id: 1351
+  name: SAINT CLAIR
+  state_id: 24
+LAPEERMichigan:
+  id: 1352
+  name: LAPEER
+  state_id: 24
+MACOMBMichigan:
+  id: 1353
+  name: MACOMB
+  state_id: 24
+OAKLANDMichigan:
+  id: 1354
+  name: OAKLAND
+  state_id: 24
+WAYNEMichigan:
+  id: 1355
+  name: WAYNE
+  state_id: 24
+WASHTENAWMichigan:
+  id: 1356
+  name: WASHTENAW
+  state_id: 24
+MONROEMichigan:
+  id: 1357
+  name: MONROE
+  state_id: 24
+LIVINGSTONMichigan:
+  id: 1358
+  name: LIVINGSTON
+  state_id: 24
+SANILACMichigan:
+  id: 1359
+  name: SANILAC
+  state_id: 24
+GENESEEMichigan:
+  id: 1360
+  name: GENESEE
+  state_id: 24
+HURONMichigan:
+  id: 1361
+  name: HURON
+  state_id: 24
+SHIAWASSEEMichigan:
+  id: 1362
+  name: SHIAWASSEE
+  state_id: 24
+SAGINAWMichigan:
+  id: 1363
+  name: SAGINAW
+  state_id: 24
+TUSCOLAMichigan:
+  id: 1364
+  name: TUSCOLA
+  state_id: 24
+OGEMAWMichigan:
+  id: 1365
+  name: OGEMAW
+  state_id: 24
+BAYMichigan:
+  id: 1366
+  name: BAY
+  state_id: 24
+GLADWINMichigan:
+  id: 1367
+  name: GLADWIN
+  state_id: 24
+GRATIOTMichigan:
+  id: 1368
+  name: GRATIOT
+  state_id: 24
+CLAREMichigan:
+  id: 1369
+  name: CLARE
+  state_id: 24
+MIDLANDMichigan:
+  id: 1370
+  name: MIDLAND
+  state_id: 24
+OSCODAMichigan:
+  id: 1371
+  name: OSCODA
+  state_id: 24
+ROSCOMMONMichigan:
+  id: 1372
+  name: ROSCOMMON
+  state_id: 24
+ARENACMichigan:
+  id: 1373
+  name: ARENAC
+  state_id: 24
+ALCONAMichigan:
+  id: 1374
+  name: ALCONA
+  state_id: 24
+IOSCOMichigan:
+  id: 1375
+  name: IOSCO
+  state_id: 24
+ISABELLAMichigan:
+  id: 1376
+  name: ISABELLA
+  state_id: 24
+INGHAMMichigan:
+  id: 1377
+  name: INGHAM
+  state_id: 24
+CLINTONMichigan:
+  id: 1378
+  name: CLINTON
+  state_id: 24
+IONIAMichigan:
+  id: 1379
+  name: IONIA
+  state_id: 24
+MONTCALMMichigan:
+  id: 1380
+  name: MONTCALM
+  state_id: 24
+EATONMichigan:
+  id: 1381
+  name: EATON
+  state_id: 24
+BARRYMichigan:
+  id: 1382
+  name: BARRY
+  state_id: 24
+KALAMAZOOMichigan:
+  id: 1383
+  name: KALAMAZOO
+  state_id: 24
+ALLEGANMichigan:
+  id: 1384
+  name: ALLEGAN
+  state_id: 24
+CALHOUNMichigan:
+  id: 1385
+  name: CALHOUN
+  state_id: 24
+VAN BURENMichigan:
+  id: 1386
+  name: VAN BUREN
+  state_id: 24
+BERRIENMichigan:
+  id: 1387
+  name: BERRIEN
+  state_id: 24
+BRANCHMichigan:
+  id: 1388
+  name: BRANCH
+  state_id: 24
+SAINT JOSEPHMichigan:
+  id: 1389
+  name: SAINT JOSEPH
+  state_id: 24
+CASSMichigan:
+  id: 1390
+  name: CASS
+  state_id: 24
+JACKSONMichigan:
+  id: 1391
+  name: JACKSON
+  state_id: 24
+LENAWEEMichigan:
+  id: 1392
+  name: LENAWEE
+  state_id: 24
+HILLSDALEMichigan:
+  id: 1393
+  name: HILLSDALE
+  state_id: 24
+KENTMichigan:
+  id: 1394
+  name: KENT
+  state_id: 24
+MUSKEGONMichigan:
+  id: 1395
+  name: MUSKEGON
+  state_id: 24
+LAKEMichigan:
+  id: 1396
+  name: LAKE
+  state_id: 24
+MECOSTAMichigan:
+  id: 1397
+  name: MECOSTA
+  state_id: 24
+NEWAYGOMichigan:
+  id: 1398
+  name: NEWAYGO
+  state_id: 24
+OTTAWAMichigan:
+  id: 1399
+  name: OTTAWA
+  state_id: 24
+MASONMichigan:
+  id: 1400
+  name: MASON
+  state_id: 24
+OCEANAMichigan:
+  id: 1401
+  name: OCEANA
+  state_id: 24
+WEXFORDMichigan:
+  id: 1402
+  name: WEXFORD
+  state_id: 24
+GRAND TRAVERSEMichigan:
+  id: 1403
+  name: GRAND TRAVERSE
+  state_id: 24
+ANTRIMMichigan:
+  id: 1404
+  name: ANTRIM
+  state_id: 24
+MANISTEEMichigan:
+  id: 1405
+  name: MANISTEE
+  state_id: 24
+BENZIEMichigan:
+  id: 1406
+  name: BENZIE
+  state_id: 24
+LEELANAUMichigan:
+  id: 1407
+  name: LEELANAU
+  state_id: 24
+OSCEOLAMichigan:
+  id: 1408
+  name: OSCEOLA
+  state_id: 24
+MISSAUKEEMichigan:
+  id: 1409
+  name: MISSAUKEE
+  state_id: 24
+KALKASKAMichigan:
+  id: 1410
+  name: KALKASKA
+  state_id: 24
+CHEBOYGANMichigan:
+  id: 1411
+  name: CHEBOYGAN
+  state_id: 24
+EMMETMichigan:
+  id: 1412
+  name: EMMET
+  state_id: 24
+ALPENAMichigan:
+  id: 1413
+  name: ALPENA
+  state_id: 24
+MONTMORENCYMichigan:
+  id: 1414
+  name: MONTMORENCY
+  state_id: 24
+CHIPPEWAMichigan:
+  id: 1415
+  name: CHIPPEWA
+  state_id: 24
+CHARLEVOIXMichigan:
+  id: 1416
+  name: CHARLEVOIX
+  state_id: 24
+MACKINACMichigan:
+  id: 1417
+  name: MACKINAC
+  state_id: 24
+OTSEGOMichigan:
+  id: 1418
+  name: OTSEGO
+  state_id: 24
+CRAWFORDMichigan:
+  id: 1419
+  name: CRAWFORD
+  state_id: 24
+PRESQUE ISLEMichigan:
+  id: 1420
+  name: PRESQUE ISLE
+  state_id: 24
+DICKINSONMichigan:
+  id: 1421
+  name: DICKINSON
+  state_id: 24
+KEWEENAWMichigan:
+  id: 1422
+  name: KEWEENAW
+  state_id: 24
+ALGERMichigan:
+  id: 1423
+  name: ALGER
+  state_id: 24
+DELTAMichigan:
+  id: 1424
+  name: DELTA
+  state_id: 24
+MARQUETTEMichigan:
+  id: 1425
+  name: MARQUETTE
+  state_id: 24
+MENOMINEEMichigan:
+  id: 1426
+  name: MENOMINEE
+  state_id: 24
+SCHOOLCRAFTMichigan:
+  id: 1427
+  name: SCHOOLCRAFT
+  state_id: 24
+LUCEMichigan:
+  id: 1428
+  name: LUCE
+  state_id: 24
+IRONMichigan:
+  id: 1429
+  name: IRON
+  state_id: 24
+HOUGHTONMichigan:
+  id: 1430
+  name: HOUGHTON
+  state_id: 24
+BARAGAMichigan:
+  id: 1431
+  name: BARAGA
+  state_id: 24
+ONTONAGONMichigan:
+  id: 1432
+  name: ONTONAGON
+  state_id: 24
+GOGEBICMichigan:
+  id: 1433
+  name: GOGEBIC
+  state_id: 24
+WARRENIowa:
+  id: 1434
+  name: WARREN
+  state_id: 25
+ADAIRIowa:
+  id: 1435
+  name: ADAIR
+  state_id: 25
+DALLASIowa:
+  id: 1436
+  name: DALLAS
+  state_id: 25
+MARSHALLIowa:
+  id: 1437
+  name: MARSHALL
+  state_id: 25
+HARDINIowa:
+  id: 1438
+  name: HARDIN
+  state_id: 25
+POLKIowa:
+  id: 1439
+  name: POLK
+  state_id: 25
+WAYNEIowa:
+  id: 1440
+  name: WAYNE
+  state_id: 25
+STORYIowa:
+  id: 1441
+  name: STORY
+  state_id: 25
+CASSIowa:
+  id: 1442
+  name: CASS
+  state_id: 25
+AUDUBONIowa:
+  id: 1443
+  name: AUDUBON
+  state_id: 25
+GUTHRIEIowa:
+  id: 1444
+  name: GUTHRIE
+  state_id: 25
+MAHASKAIowa:
+  id: 1445
+  name: MAHASKA
+  state_id: 25
+JASPERIowa:
+  id: 1446
+  name: JASPER
+  state_id: 25
+BOONEIowa:
+  id: 1447
+  name: BOONE
+  state_id: 25
+MADISONIowa:
+  id: 1448
+  name: MADISON
+  state_id: 25
+HAMILTONIowa:
+  id: 1449
+  name: HAMILTON
+  state_id: 25
+FRANKLINIowa:
+  id: 1450
+  name: FRANKLIN
+  state_id: 25
+MARIONIowa:
+  id: 1451
+  name: MARION
+  state_id: 25
+LUCASIowa:
+  id: 1452
+  name: LUCAS
+  state_id: 25
+GREENEIowa:
+  id: 1453
+  name: GREENE
+  state_id: 25
+CARROLLIowa:
+  id: 1454
+  name: CARROLL
+  state_id: 25
+DECATURIowa:
+  id: 1455
+  name: DECATUR
+  state_id: 25
+WRIGHTIowa:
+  id: 1456
+  name: WRIGHT
+  state_id: 25
+RINGGOLDIowa:
+  id: 1457
+  name: RINGGOLD
+  state_id: 25
+KEOKUKIowa:
+  id: 1458
+  name: KEOKUK
+  state_id: 25
+POWESHIEKIowa:
+  id: 1459
+  name: POWESHIEK
+  state_id: 25
+UNIONIowa:
+  id: 1460
+  name: UNION
+  state_id: 25
+MONROEIowa:
+  id: 1461
+  name: MONROE
+  state_id: 25
+TAMAIowa:
+  id: 1462
+  name: TAMA
+  state_id: 25
+CLARKEIowa:
+  id: 1463
+  name: CLARKE
+  state_id: 25
+CERRO GORDOIowa:
+  id: 1464
+  name: CERRO GORDO
+  state_id: 25
+HANCOCKIowa:
+  id: 1465
+  name: HANCOCK
+  state_id: 25
+WINNEBAGOIowa:
+  id: 1466
+  name: WINNEBAGO
+  state_id: 25
+MITCHELLIowa:
+  id: 1467
+  name: MITCHELL
+  state_id: 25
+WORTHIowa:
+  id: 1468
+  name: WORTH
+  state_id: 25
+FLOYDIowa:
+  id: 1469
+  name: FLOYD
+  state_id: 25
+KOSSUTHIowa:
+  id: 1470
+  name: KOSSUTH
+  state_id: 25
+HOWARDIowa:
+  id: 1471
+  name: HOWARD
+  state_id: 25
+WEBSTERIowa:
+  id: 1472
+  name: WEBSTER
+  state_id: 25
+BUENA VISTAIowa:
+  id: 1473
+  name: BUENA VISTA
+  state_id: 25
+EMMETIowa:
+  id: 1474
+  name: EMMET
+  state_id: 25
+PALO ALTOIowa:
+  id: 1475
+  name: PALO ALTO
+  state_id: 25
+HUMBOLDTIowa:
+  id: 1476
+  name: HUMBOLDT
+  state_id: 25
+SACIowa:
+  id: 1477
+  name: SAC
+  state_id: 25
+CALHOUNIowa:
+  id: 1478
+  name: CALHOUN
+  state_id: 25
+POCAHONTASIowa:
+  id: 1479
+  name: POCAHONTAS
+  state_id: 25
+BUTLERIowa:
+  id: 1480
+  name: BUTLER
+  state_id: 25
+CHICKASAWIowa:
+  id: 1481
+  name: CHICKASAW
+  state_id: 25
+FAYETTEIowa:
+  id: 1482
+  name: FAYETTE
+  state_id: 25
+BUCHANANIowa:
+  id: 1483
+  name: BUCHANAN
+  state_id: 25
+GRUNDYIowa:
+  id: 1484
+  name: GRUNDY
+  state_id: 25
+BLACK HAWKIowa:
+  id: 1485
+  name: BLACK HAWK
+  state_id: 25
+BREMERIowa:
+  id: 1486
+  name: BREMER
+  state_id: 25
+DELAWAREIowa:
+  id: 1487
+  name: DELAWARE
+  state_id: 25
+TAYLORIowa:
+  id: 1488
+  name: TAYLOR
+  state_id: 25
+ADAMSIowa:
+  id: 1489
+  name: ADAMS
+  state_id: 25
+MONTGOMERYIowa:
+  id: 1490
+  name: MONTGOMERY
+  state_id: 25
+PLYMOUTHIowa:
+  id: 1491
+  name: PLYMOUTH
+  state_id: 25
+SIOUXIowa:
+  id: 1492
+  name: SIOUX
+  state_id: 25
+WOODBURYIowa:
+  id: 1493
+  name: WOODBURY
+  state_id: 25
+CHEROKEEIowa:
+  id: 1494
+  name: CHEROKEE
+  state_id: 25
+IDAIowa:
+  id: 1495
+  name: IDA
+  state_id: 25
+OBRIENIowa:
+  id: 1496
+  name: OBRIEN
+  state_id: 25
+MONONAIowa:
+  id: 1497
+  name: MONONA
+  state_id: 25
+CLAYIowa:
+  id: 1498
+  name: CLAY
+  state_id: 25
+LYONIowa:
+  id: 1499
+  name: LYON
+  state_id: 25
+OSCEOLAIowa:
+  id: 1500
+  name: OSCEOLA
+  state_id: 25
+DICKINSONIowa:
+  id: 1501
+  name: DICKINSON
+  state_id: 25
+CRAWFORDIowa:
+  id: 1502
+  name: CRAWFORD
+  state_id: 25
+SHELBYIowa:
+  id: 1503
+  name: SHELBY
+  state_id: 25
+POTTAWATTAMIEIowa:
+  id: 1504
+  name: POTTAWATTAMIE
+  state_id: 25
+HARRISONIowa:
+  id: 1505
+  name: HARRISON
+  state_id: 25
+MILLSIowa:
+  id: 1506
+  name: MILLS
+  state_id: 25
+PAGEIowa:
+  id: 1507
+  name: PAGE
+  state_id: 25
+FREMONTIowa:
+  id: 1508
+  name: FREMONT
+  state_id: 25
+DUBUQUEIowa:
+  id: 1509
+  name: DUBUQUE
+  state_id: 25
+JACKSONIowa:
+  id: 1510
+  name: JACKSON
+  state_id: 25
+CLINTONIowa:
+  id: 1511
+  name: CLINTON
+  state_id: 25
+CLAYTONIowa:
+  id: 1512
+  name: CLAYTON
+  state_id: 25
+WINNESHIEKIowa:
+  id: 1513
+  name: WINNESHIEK
+  state_id: 25
+ALLAMAKEEIowa:
+  id: 1514
+  name: ALLAMAKEE
+  state_id: 25
+WASHINGTONIowa:
+  id: 1515
+  name: WASHINGTON
+  state_id: 25
+LINNIowa:
+  id: 1516
+  name: LINN
+  state_id: 25
+IOWAIowa:
+  id: 1517
+  name: IOWA
+  state_id: 25
+JONESIowa:
+  id: 1518
+  name: JONES
+  state_id: 25
+BENTONIowa:
+  id: 1519
+  name: BENTON
+  state_id: 25
+CEDARIowa:
+  id: 1520
+  name: CEDAR
+  state_id: 25
+JOHNSONIowa:
+  id: 1521
+  name: JOHNSON
+  state_id: 25
+WAPELLOIowa:
+  id: 1522
+  name: WAPELLO
+  state_id: 25
+JEFFERSONIowa:
+  id: 1523
+  name: JEFFERSON
+  state_id: 25
+VAN BURENIowa:
+  id: 1524
+  name: VAN BUREN
+  state_id: 25
+DAVISIowa:
+  id: 1525
+  name: DAVIS
+  state_id: 25
+APPANOOSEIowa:
+  id: 1526
+  name: APPANOOSE
+  state_id: 25
+DES MOINESIowa:
+  id: 1527
+  name: DES MOINES
+  state_id: 25
+LEEIowa:
+  id: 1528
+  name: LEE
+  state_id: 25
+HENRYIowa:
+  id: 1529
+  name: HENRY
+  state_id: 25
+LOUISAIowa:
+  id: 1530
+  name: LOUISA
+  state_id: 25
+MUSCATINEIowa:
+  id: 1531
+  name: MUSCATINE
+  state_id: 25
+SCOTTIowa:
+  id: 1532
+  name: SCOTT
+  state_id: 25
+SHEBOYGANWisconsin:
+  id: 1533
+  name: SHEBOYGAN
+  state_id: 26
+WASHINGTONWisconsin:
+  id: 1534
+  name: WASHINGTON
+  state_id: 26
+DODGEWisconsin:
+  id: 1535
+  name: DODGE
+  state_id: 26
+OZAUKEEWisconsin:
+  id: 1536
+  name: OZAUKEE
+  state_id: 26
+WAUKESHAWisconsin:
+  id: 1537
+  name: WAUKESHA
+  state_id: 26
+FOND DU LACWisconsin:
+  id: 1538
+  name: FOND DU LAC
+  state_id: 26
+CALUMETWisconsin:
+  id: 1539
+  name: CALUMET
+  state_id: 26
+MANITOWOCWisconsin:
+  id: 1540
+  name: MANITOWOC
+  state_id: 26
+JEFFERSONWisconsin:
+  id: 1541
+  name: JEFFERSON
+  state_id: 26
+KENOSHAWisconsin:
+  id: 1542
+  name: KENOSHA
+  state_id: 26
+RACINEWisconsin:
+  id: 1543
+  name: RACINE
+  state_id: 26
+MILWAUKEEWisconsin:
+  id: 1544
+  name: MILWAUKEE
+  state_id: 26
+WALWORTHWisconsin:
+  id: 1545
+  name: WALWORTH
+  state_id: 26
+ROCKWisconsin:
+  id: 1546
+  name: ROCK
+  state_id: 26
+GREENWisconsin:
+  id: 1547
+  name: GREEN
+  state_id: 26
+IOWAWisconsin:
+  id: 1548
+  name: IOWA
+  state_id: 26
+LAFAYETTEWisconsin:
+  id: 1549
+  name: LAFAYETTE
+  state_id: 26
+DANEWisconsin:
+  id: 1550
+  name: DANE
+  state_id: 26
+GRANTWisconsin:
+  id: 1551
+  name: GRANT
+  state_id: 26
+RICHLANDWisconsin:
+  id: 1552
+  name: RICHLAND
+  state_id: 26
+COLUMBIAWisconsin:
+  id: 1553
+  name: COLUMBIA
+  state_id: 26
+SAUKWisconsin:
+  id: 1554
+  name: SAUK
+  state_id: 26
+CRAWFORDWisconsin:
+  id: 1555
+  name: CRAWFORD
+  state_id: 26
+ADAMSWisconsin:
+  id: 1556
+  name: ADAMS
+  state_id: 26
+MARQUETTEWisconsin:
+  id: 1557
+  name: MARQUETTE
+  state_id: 26
+GREEN LAKEWisconsin:
+  id: 1558
+  name: GREEN LAKE
+  state_id: 26
+JUNEAUWisconsin:
+  id: 1559
+  name: JUNEAU
+  state_id: 26
+POLKWisconsin:
+  id: 1560
+  name: POLK
+  state_id: 26
+SAINT CROIXWisconsin:
+  id: 1561
+  name: SAINT CROIX
+  state_id: 26
+PIERCEWisconsin:
+  id: 1562
+  name: PIERCE
+  state_id: 26
+OCONTOWisconsin:
+  id: 1563
+  name: OCONTO
+  state_id: 26
+MARINETTEWisconsin:
+  id: 1564
+  name: MARINETTE
+  state_id: 26
+FORESTWisconsin:
+  id: 1565
+  name: FOREST
+  state_id: 26
+OUTAGAMIEWisconsin:
+  id: 1566
+  name: OUTAGAMIE
+  state_id: 26
+SHAWANOWisconsin:
+  id: 1567
+  name: SHAWANO
+  state_id: 26
+BROWNWisconsin:
+  id: 1568
+  name: BROWN
+  state_id: 26
+FLORENCEWisconsin:
+  id: 1569
+  name: FLORENCE
+  state_id: 26
+MENOMINEEWisconsin:
+  id: 1570
+  name: MENOMINEE
+  state_id: 26
+KEWAUNEEWisconsin:
+  id: 1571
+  name: KEWAUNEE
+  state_id: 26
+DOORWisconsin:
+  id: 1572
+  name: DOOR
+  state_id: 26
+MARATHONWisconsin:
+  id: 1573
+  name: MARATHON
+  state_id: 26
+WOODWisconsin:
+  id: 1574
+  name: WOOD
+  state_id: 26
+CLARKWisconsin:
+  id: 1575
+  name: CLARK
+  state_id: 26
+PORTAGEWisconsin:
+  id: 1576
+  name: PORTAGE
+  state_id: 26
+LANGLADEWisconsin:
+  id: 1577
+  name: LANGLADE
+  state_id: 26
+TAYLORWisconsin:
+  id: 1578
+  name: TAYLOR
+  state_id: 26
+LINCOLNWisconsin:
+  id: 1579
+  name: LINCOLN
+  state_id: 26
+PRICEWisconsin:
+  id: 1580
+  name: PRICE
+  state_id: 26
+ONEIDAWisconsin:
+  id: 1581
+  name: ONEIDA
+  state_id: 26
+VILASWisconsin:
+  id: 1582
+  name: VILAS
+  state_id: 26
+ASHLANDWisconsin:
+  id: 1583
+  name: ASHLAND
+  state_id: 26
+IRONWisconsin:
+  id: 1584
+  name: IRON
+  state_id: 26
+RUSKWisconsin:
+  id: 1585
+  name: RUSK
+  state_id: 26
+LA CROSSEWisconsin:
+  id: 1586
+  name: LA CROSSE
+  state_id: 26
+BUFFALOWisconsin:
+  id: 1587
+  name: BUFFALO
+  state_id: 26
+JACKSONWisconsin:
+  id: 1588
+  name: JACKSON
+  state_id: 26
+TREMPEALEAUWisconsin:
+  id: 1589
+  name: TREMPEALEAU
+  state_id: 26
+MONROEWisconsin:
+  id: 1590
+  name: MONROE
+  state_id: 26
+VERNONWisconsin:
+  id: 1591
+  name: VERNON
+  state_id: 26
+EAU CLAIREWisconsin:
+  id: 1592
+  name: EAU CLAIRE
+  state_id: 26
+PEPINWisconsin:
+  id: 1593
+  name: PEPIN
+  state_id: 26
+CHIPPEWAWisconsin:
+  id: 1594
+  name: CHIPPEWA
+  state_id: 26
+DUNNWisconsin:
+  id: 1595
+  name: DUNN
+  state_id: 26
+BARRONWisconsin:
+  id: 1596
+  name: BARRON
+  state_id: 26
+WASHBURNWisconsin:
+  id: 1597
+  name: WASHBURN
+  state_id: 26
+BAYFIELDWisconsin:
+  id: 1598
+  name: BAYFIELD
+  state_id: 26
+DOUGLASWisconsin:
+  id: 1599
+  name: DOUGLAS
+  state_id: 26
+SAWYERWisconsin:
+  id: 1600
+  name: SAWYER
+  state_id: 26
+BURNETTWisconsin:
+  id: 1601
+  name: BURNETT
+  state_id: 26
+WINNEBAGOWisconsin:
+  id: 1602
+  name: WINNEBAGO
+  state_id: 26
+WAUPACAWisconsin:
+  id: 1603
+  name: WAUPACA
+  state_id: 26
+WAUSHARAWisconsin:
+  id: 1604
+  name: WAUSHARA
+  state_id: 26
+WASHINGTONMinnesota:
+  id: 1605
+  name: WASHINGTON
+  state_id: 27
+CHISAGOMinnesota:
+  id: 1606
+  name: CHISAGO
+  state_id: 27
+ANOKAMinnesota:
+  id: 1607
+  name: ANOKA
+  state_id: 27
+ISANTIMinnesota:
+  id: 1608
+  name: ISANTI
+  state_id: 27
+PINEMinnesota:
+  id: 1609
+  name: PINE
+  state_id: 27
+GOODHUEMinnesota:
+  id: 1610
+  name: GOODHUE
+  state_id: 27
+DAKOTAMinnesota:
+  id: 1611
+  name: DAKOTA
+  state_id: 27
+RICEMinnesota:
+  id: 1612
+  name: RICE
+  state_id: 27
+SCOTTMinnesota:
+  id: 1613
+  name: SCOTT
+  state_id: 27
+WABASHAMinnesota:
+  id: 1614
+  name: WABASHA
+  state_id: 27
+STEELEMinnesota:
+  id: 1615
+  name: STEELE
+  state_id: 27
+KANABECMinnesota:
+  id: 1616
+  name: KANABEC
+  state_id: 27
+RAMSEYMinnesota:
+  id: 1617
+  name: RAMSEY
+  state_id: 27
+HENNEPINMinnesota:
+  id: 1618
+  name: HENNEPIN
+  state_id: 27
+WRIGHTMinnesota:
+  id: 1619
+  name: WRIGHT
+  state_id: 27
+SIBLEYMinnesota:
+  id: 1620
+  name: SIBLEY
+  state_id: 27
+SHERBURNEMinnesota:
+  id: 1621
+  name: SHERBURNE
+  state_id: 27
+RENVILLEMinnesota:
+  id: 1622
+  name: RENVILLE
+  state_id: 27
+MCLEODMinnesota:
+  id: 1623
+  name: MCLEOD
+  state_id: 27
+CARVERMinnesota:
+  id: 1624
+  name: CARVER
+  state_id: 27
+MEEKERMinnesota:
+  id: 1625
+  name: MEEKER
+  state_id: 27
+STEARNSMinnesota:
+  id: 1626
+  name: STEARNS
+  state_id: 27
+MILLE LACSMinnesota:
+  id: 1627
+  name: MILLE LACS
+  state_id: 27
+LAKEMinnesota:
+  id: 1628
+  name: LAKE
+  state_id: 27
+SAINT LOUISMinnesota:
+  id: 1629
+  name: SAINT LOUIS
+  state_id: 27
+COOKMinnesota:
+  id: 1630
+  name: COOK
+  state_id: 27
+CARLTONMinnesota:
+  id: 1631
+  name: CARLTON
+  state_id: 27
+ITASCAMinnesota:
+  id: 1632
+  name: ITASCA
+  state_id: 27
+AITKINMinnesota:
+  id: 1633
+  name: AITKIN
+  state_id: 27
+OLMSTEDMinnesota:
+  id: 1634
+  name: OLMSTED
+  state_id: 27
+MOWERMinnesota:
+  id: 1635
+  name: MOWER
+  state_id: 27
+WINONAMinnesota:
+  id: 1636
+  name: WINONA
+  state_id: 27
+HOUSTONMinnesota:
+  id: 1637
+  name: HOUSTON
+  state_id: 27
+FILLMOREMinnesota:
+  id: 1638
+  name: FILLMORE
+  state_id: 27
+DODGEMinnesota:
+  id: 1639
+  name: DODGE
+  state_id: 27
+BLUE EARTHMinnesota:
+  id: 1640
+  name: BLUE EARTH
+  state_id: 27
+NICOLLETMinnesota:
+  id: 1641
+  name: NICOLLET
+  state_id: 27
+FREEBORNMinnesota:
+  id: 1642
+  name: FREEBORN
+  state_id: 27
+FARIBAULTMinnesota:
+  id: 1643
+  name: FARIBAULT
+  state_id: 27
+LE SUEURMinnesota:
+  id: 1644
+  name: LE SUEUR
+  state_id: 27
+BROWNMinnesota:
+  id: 1645
+  name: BROWN
+  state_id: 27
+WATONWANMinnesota:
+  id: 1646
+  name: WATONWAN
+  state_id: 27
+MARTINMinnesota:
+  id: 1647
+  name: MARTIN
+  state_id: 27
+WASECAMinnesota:
+  id: 1648
+  name: WASECA
+  state_id: 27
+REDWOODMinnesota:
+  id: 1649
+  name: REDWOOD
+  state_id: 27
+COTTONWOODMinnesota:
+  id: 1650
+  name: COTTONWOOD
+  state_id: 27
+NOBLESMinnesota:
+  id: 1651
+  name: NOBLES
+  state_id: 27
+JACKSONMinnesota:
+  id: 1652
+  name: JACKSON
+  state_id: 27
+LINCOLNMinnesota:
+  id: 1653
+  name: LINCOLN
+  state_id: 27
+MURRAYMinnesota:
+  id: 1654
+  name: MURRAY
+  state_id: 27
+LYONMinnesota:
+  id: 1655
+  name: LYON
+  state_id: 27
+ROCKMinnesota:
+  id: 1656
+  name: ROCK
+  state_id: 27
+PIPESTONEMinnesota:
+  id: 1657
+  name: PIPESTONE
+  state_id: 27
+KANDIYOHIMinnesota:
+  id: 1658
+  name: KANDIYOHI
+  state_id: 27
+STEVENSMinnesota:
+  id: 1659
+  name: STEVENS
+  state_id: 27
+SWIFTMinnesota:
+  id: 1660
+  name: SWIFT
+  state_id: 27
+BIG STONEMinnesota:
+  id: 1661
+  name: BIG STONE
+  state_id: 27
+LAC QUI PARLEMinnesota:
+  id: 1662
+  name: LAC QUI PARLE
+  state_id: 27
+TRAVERSEMinnesota:
+  id: 1663
+  name: TRAVERSE
+  state_id: 27
+YELLOW MEDICINEMinnesota:
+  id: 1664
+  name: YELLOW MEDICINE
+  state_id: 27
+CHIPPEWAMinnesota:
+  id: 1665
+  name: CHIPPEWA
+  state_id: 27
+GRANTMinnesota:
+  id: 1666
+  name: GRANT
+  state_id: 27
+DOUGLASMinnesota:
+  id: 1667
+  name: DOUGLAS
+  state_id: 27
+MORRISONMinnesota:
+  id: 1668
+  name: MORRISON
+  state_id: 27
+TODDMinnesota:
+  id: 1669
+  name: TODD
+  state_id: 27
+POPEMinnesota:
+  id: 1670
+  name: POPE
+  state_id: 27
+OTTER TAILMinnesota:
+  id: 1671
+  name: OTTER TAIL
+  state_id: 27
+BENTONMinnesota:
+  id: 1672
+  name: BENTON
+  state_id: 27
+CROW WINGMinnesota:
+  id: 1673
+  name: CROW WING
+  state_id: 27
+CASSMinnesota:
+  id: 1674
+  name: CASS
+  state_id: 27
+HUBBARDMinnesota:
+  id: 1675
+  name: HUBBARD
+  state_id: 27
+WADENAMinnesota:
+  id: 1676
+  name: WADENA
+  state_id: 27
+BECKERMinnesota:
+  id: 1677
+  name: BECKER
+  state_id: 27
+NORMANMinnesota:
+  id: 1678
+  name: NORMAN
+  state_id: 27
+CLAYMinnesota:
+  id: 1679
+  name: CLAY
+  state_id: 27
+MAHNOMENMinnesota:
+  id: 1680
+  name: MAHNOMEN
+  state_id: 27
+POLKMinnesota:
+  id: 1681
+  name: POLK
+  state_id: 27
+WILKINMinnesota:
+  id: 1682
+  name: WILKIN
+  state_id: 27
+BELTRAMIMinnesota:
+  id: 1683
+  name: BELTRAMI
+  state_id: 27
+CLEARWATERMinnesota:
+  id: 1684
+  name: CLEARWATER
+  state_id: 27
+LAKE OF THE WOODSMinnesota:
+  id: 1685
+  name: LAKE OF THE WOODS
+  state_id: 27
+KOOCHICHINGMinnesota:
+  id: 1686
+  name: KOOCHICHING
+  state_id: 27
+ROSEAUMinnesota:
+  id: 1687
+  name: ROSEAU
+  state_id: 27
+PENNINGTONMinnesota:
+  id: 1688
+  name: PENNINGTON
+  state_id: 27
+MARSHALLMinnesota:
+  id: 1689
+  name: MARSHALL
+  state_id: 27
+RED LAKEMinnesota:
+  id: 1690
+  name: RED LAKE
+  state_id: 27
+KITTSONMinnesota:
+  id: 1691
+  name: KITTSON
+  state_id: 27
+UNIONSouth Dakota:
+  id: 1692
+  name: UNION
+  state_id: 28
+BROOKINGSSouth Dakota:
+  id: 1693
+  name: BROOKINGS
+  state_id: 28
+MINNEHAHASouth Dakota:
+  id: 1694
+  name: MINNEHAHA
+  state_id: 28
+CLAYSouth Dakota:
+  id: 1695
+  name: CLAY
+  state_id: 28
+MCCOOKSouth Dakota:
+  id: 1696
+  name: MCCOOK
+  state_id: 28
+LINCOLNSouth Dakota:
+  id: 1697
+  name: LINCOLN
+  state_id: 28
+TURNERSouth Dakota:
+  id: 1698
+  name: TURNER
+  state_id: 28
+LAKESouth Dakota:
+  id: 1699
+  name: LAKE
+  state_id: 28
+MOODYSouth Dakota:
+  id: 1700
+  name: MOODY
+  state_id: 28
+HUTCHINSONSouth Dakota:
+  id: 1701
+  name: HUTCHINSON
+  state_id: 28
+YANKTONSouth Dakota:
+  id: 1702
+  name: YANKTON
+  state_id: 28
+KINGSBURYSouth Dakota:
+  id: 1703
+  name: KINGSBURY
+  state_id: 28
+BON HOMMESouth Dakota:
+  id: 1704
+  name: BON HOMME
+  state_id: 28
+CODINGTONSouth Dakota:
+  id: 1705
+  name: CODINGTON
+  state_id: 28
+DEUELSouth Dakota:
+  id: 1706
+  name: DEUEL
+  state_id: 28
+GRANTSouth Dakota:
+  id: 1707
+  name: GRANT
+  state_id: 28
+CLARKSouth Dakota:
+  id: 1708
+  name: CLARK
+  state_id: 28
+DAYSouth Dakota:
+  id: 1709
+  name: DAY
+  state_id: 28
+HAMLINSouth Dakota:
+  id: 1710
+  name: HAMLIN
+  state_id: 28
+ROBERTSSouth Dakota:
+  id: 1711
+  name: ROBERTS
+  state_id: 28
+MARSHALLSouth Dakota:
+  id: 1712
+  name: MARSHALL
+  state_id: 28
+DAVISONSouth Dakota:
+  id: 1713
+  name: DAVISON
+  state_id: 28
+HANSONSouth Dakota:
+  id: 1714
+  name: HANSON
+  state_id: 28
+JERAULDSouth Dakota:
+  id: 1715
+  name: JERAULD
+  state_id: 28
+DOUGLASSouth Dakota:
+  id: 1716
+  name: DOUGLAS
+  state_id: 28
+SANBORNSouth Dakota:
+  id: 1717
+  name: SANBORN
+  state_id: 28
+GREGORYSouth Dakota:
+  id: 1718
+  name: GREGORY
+  state_id: 28
+MINERSouth Dakota:
+  id: 1719
+  name: MINER
+  state_id: 28
+BEADLESouth Dakota:
+  id: 1720
+  name: BEADLE
+  state_id: 28
+BRULESouth Dakota:
+  id: 1721
+  name: BRULE
+  state_id: 28
+CHARLES MIXSouth Dakota:
+  id: 1722
+  name: CHARLES MIX
+  state_id: 28
+BUFFALOSouth Dakota:
+  id: 1723
+  name: BUFFALO
+  state_id: 28
+HYDESouth Dakota:
+  id: 1724
+  name: HYDE
+  state_id: 28
+HANDSouth Dakota:
+  id: 1725
+  name: HAND
+  state_id: 28
+LYMANSouth Dakota:
+  id: 1726
+  name: LYMAN
+  state_id: 28
+AURORASouth Dakota:
+  id: 1727
+  name: AURORA
+  state_id: 28
+BROWNSouth Dakota:
+  id: 1728
+  name: BROWN
+  state_id: 28
+WALWORTHSouth Dakota:
+  id: 1729
+  name: WALWORTH
+  state_id: 28
+SPINKSouth Dakota:
+  id: 1730
+  name: SPINK
+  state_id: 28
+EDMUNDSSouth Dakota:
+  id: 1731
+  name: EDMUNDS
+  state_id: 28
+FAULKSouth Dakota:
+  id: 1732
+  name: FAULK
+  state_id: 28
+MCPHERSONSouth Dakota:
+  id: 1733
+  name: MCPHERSON
+  state_id: 28
+POTTERSouth Dakota:
+  id: 1734
+  name: POTTER
+  state_id: 28
+HUGHESSouth Dakota:
+  id: 1735
+  name: HUGHES
+  state_id: 28
+SULLYSouth Dakota:
+  id: 1736
+  name: SULLY
+  state_id: 28
+JACKSONSouth Dakota:
+  id: 1737
+  name: JACKSON
+  state_id: 28
+TRIPPSouth Dakota:
+  id: 1738
+  name: TRIPP
+  state_id: 28
+JONESSouth Dakota:
+  id: 1739
+  name: JONES
+  state_id: 28
+STANLEYSouth Dakota:
+  id: 1740
+  name: STANLEY
+  state_id: 28
+BENNETTSouth Dakota:
+  id: 1741
+  name: BENNETT
+  state_id: 28
+HAAKONSouth Dakota:
+  id: 1742
+  name: HAAKON
+  state_id: 28
+TODDSouth Dakota:
+  id: 1743
+  name: TODD
+  state_id: 28
+MELLETTESouth Dakota:
+  id: 1744
+  name: MELLETTE
+  state_id: 28
+PERKINSSouth Dakota:
+  id: 1745
+  name: PERKINS
+  state_id: 28
+CORSONSouth Dakota:
+  id: 1746
+  name: CORSON
+  state_id: 28
+ZIEBACHSouth Dakota:
+  id: 1747
+  name: ZIEBACH
+  state_id: 28
+DEWEYSouth Dakota:
+  id: 1748
+  name: DEWEY
+  state_id: 28
+MEADESouth Dakota:
+  id: 1749
+  name: MEADE
+  state_id: 28
+CAMPBELLSouth Dakota:
+  id: 1750
+  name: CAMPBELL
+  state_id: 28
+HARDINGSouth Dakota:
+  id: 1751
+  name: HARDING
+  state_id: 28
+PENNINGTONSouth Dakota:
+  id: 1752
+  name: PENNINGTON
+  state_id: 28
+SHANNONSouth Dakota:
+  id: 1753
+  name: SHANNON
+  state_id: 28
+BUTTESouth Dakota:
+  id: 1754
+  name: BUTTE
+  state_id: 28
+CUSTERSouth Dakota:
+  id: 1755
+  name: CUSTER
+  state_id: 28
+LAWRENCESouth Dakota:
+  id: 1756
+  name: LAWRENCE
+  state_id: 28
+FALL RIVERSouth Dakota:
+  id: 1757
+  name: FALL RIVER
+  state_id: 28
+RICHLANDNorth Dakota:
+  id: 1758
+  name: RICHLAND
+  state_id: 29
+CASSNorth Dakota:
+  id: 1759
+  name: CASS
+  state_id: 29
+TRAILLNorth Dakota:
+  id: 1760
+  name: TRAILL
+  state_id: 29
+SARGENTNorth Dakota:
+  id: 1761
+  name: SARGENT
+  state_id: 29
+RANSOMNorth Dakota:
+  id: 1762
+  name: RANSOM
+  state_id: 29
+BARNESNorth Dakota:
+  id: 1763
+  name: BARNES
+  state_id: 29
+STEELENorth Dakota:
+  id: 1764
+  name: STEELE
+  state_id: 29
+GRAND FORKSNorth Dakota:
+  id: 1765
+  name: GRAND FORKS
+  state_id: 29
+WALSHNorth Dakota:
+  id: 1766
+  name: WALSH
+  state_id: 29
+NELSONNorth Dakota:
+  id: 1767
+  name: NELSON
+  state_id: 29
+PEMBINANorth Dakota:
+  id: 1768
+  name: PEMBINA
+  state_id: 29
+CAVALIERNorth Dakota:
+  id: 1769
+  name: CAVALIER
+  state_id: 29
+RAMSEYNorth Dakota:
+  id: 1770
+  name: RAMSEY
+  state_id: 29
+ROLETTENorth Dakota:
+  id: 1771
+  name: ROLETTE
+  state_id: 29
+PIERCENorth Dakota:
+  id: 1772
+  name: PIERCE
+  state_id: 29
+TOWNERNorth Dakota:
+  id: 1773
+  name: TOWNER
+  state_id: 29
+BOTTINEAUNorth Dakota:
+  id: 1774
+  name: BOTTINEAU
+  state_id: 29
+WELLSNorth Dakota:
+  id: 1775
+  name: WELLS
+  state_id: 29
+BENSONNorth Dakota:
+  id: 1776
+  name: BENSON
+  state_id: 29
+EDDYNorth Dakota:
+  id: 1777
+  name: EDDY
+  state_id: 29
+STUTSMANNorth Dakota:
+  id: 1778
+  name: STUTSMAN
+  state_id: 29
+MCINTOSHNorth Dakota:
+  id: 1779
+  name: MCINTOSH
+  state_id: 29
+LAMOURENorth Dakota:
+  id: 1780
+  name: LAMOURE
+  state_id: 29
+GRIGGSNorth Dakota:
+  id: 1781
+  name: GRIGGS
+  state_id: 29
+FOSTERNorth Dakota:
+  id: 1782
+  name: FOSTER
+  state_id: 29
+KIDDERNorth Dakota:
+  id: 1783
+  name: KIDDER
+  state_id: 29
+SHERIDANNorth Dakota:
+  id: 1784
+  name: SHERIDAN
+  state_id: 29
+DICKEYNorth Dakota:
+  id: 1785
+  name: DICKEY
+  state_id: 29
+LOGANNorth Dakota:
+  id: 1786
+  name: LOGAN
+  state_id: 29
+BURLEIGHNorth Dakota:
+  id: 1787
+  name: BURLEIGH
+  state_id: 29
+MORTONNorth Dakota:
+  id: 1788
+  name: MORTON
+  state_id: 29
+MERCERNorth Dakota:
+  id: 1789
+  name: MERCER
+  state_id: 29
+EMMONSNorth Dakota:
+  id: 1790
+  name: EMMONS
+  state_id: 29
+SIOUXNorth Dakota:
+  id: 1791
+  name: SIOUX
+  state_id: 29
+GRANTNorth Dakota:
+  id: 1792
+  name: GRANT
+  state_id: 29
+OLIVERNorth Dakota:
+  id: 1793
+  name: OLIVER
+  state_id: 29
+MCLEANNorth Dakota:
+  id: 1794
+  name: MCLEAN
+  state_id: 29
+STARKNorth Dakota:
+  id: 1795
+  name: STARK
+  state_id: 29
+SLOPENorth Dakota:
+  id: 1796
+  name: SLOPE
+  state_id: 29
+GOLDEN VALLEYNorth Dakota:
+  id: 1797
+  name: GOLDEN VALLEY
+  state_id: 29
+BOWMANNorth Dakota:
+  id: 1798
+  name: BOWMAN
+  state_id: 29
+DUNNNorth Dakota:
+  id: 1799
+  name: DUNN
+  state_id: 29
+BILLINGSNorth Dakota:
+  id: 1800
+  name: BILLINGS
+  state_id: 29
+MCKENZIENorth Dakota:
+  id: 1801
+  name: MCKENZIE
+  state_id: 29
+ADAMSNorth Dakota:
+  id: 1802
+  name: ADAMS
+  state_id: 29
+HETTINGERNorth Dakota:
+  id: 1803
+  name: HETTINGER
+  state_id: 29
+WARDNorth Dakota:
+  id: 1804
+  name: WARD
+  state_id: 29
+MCHENRYNorth Dakota:
+  id: 1805
+  name: MCHENRY
+  state_id: 29
+BURKENorth Dakota:
+  id: 1806
+  name: BURKE
+  state_id: 29
+DIVIDENorth Dakota:
+  id: 1807
+  name: DIVIDE
+  state_id: 29
+RENVILLENorth Dakota:
+  id: 1808
+  name: RENVILLE
+  state_id: 29
+WILLIAMSNorth Dakota:
+  id: 1809
+  name: WILLIAMS
+  state_id: 29
+MOUNTRAILNorth Dakota:
+  id: 1810
+  name: MOUNTRAIL
+  state_id: 29
+STILLWATERMontana:
+  id: 1811
+  name: STILLWATER
+  state_id: 30
+YELLOWSTONEMontana:
+  id: 1812
+  name: YELLOWSTONE
+  state_id: 30
+ROSEBUDMontana:
+  id: 1813
+  name: ROSEBUD
+  state_id: 30
+CARBONMontana:
+  id: 1814
+  name: CARBON
+  state_id: 30
+TREASUREMontana:
+  id: 1815
+  name: TREASURE
+  state_id: 30
+SWEET GRASSMontana:
+  id: 1816
+  name: SWEET GRASS
+  state_id: 30
+BIG HORNMontana:
+  id: 1817
+  name: BIG HORN
+  state_id: 30
+PARKMontana:
+  id: 1818
+  name: PARK
+  state_id: 30
+FERGUSMontana:
+  id: 1819
+  name: FERGUS
+  state_id: 30
+WHEATLANDMontana:
+  id: 1820
+  name: WHEATLAND
+  state_id: 30
+GOLDEN VALLEYMontana:
+  id: 1821
+  name: GOLDEN VALLEY
+  state_id: 30
+MEAGHERMontana:
+  id: 1822
+  name: MEAGHER
+  state_id: 30
+MUSSELSHELLMontana:
+  id: 1823
+  name: MUSSELSHELL
+  state_id: 30
+GARFIELDMontana:
+  id: 1824
+  name: GARFIELD
+  state_id: 30
+POWDER RIVERMontana:
+  id: 1825
+  name: POWDER RIVER
+  state_id: 30
+PETROLEUMMontana:
+  id: 1826
+  name: PETROLEUM
+  state_id: 30
+ROOSEVELTMontana:
+  id: 1827
+  name: ROOSEVELT
+  state_id: 30
+SHERIDANMontana:
+  id: 1828
+  name: SHERIDAN
+  state_id: 30
+MCCONEMontana:
+  id: 1829
+  name: MCCONE
+  state_id: 30
+RICHLANDMontana:
+  id: 1830
+  name: RICHLAND
+  state_id: 30
+DANIELSMontana:
+  id: 1831
+  name: DANIELS
+  state_id: 30
+VALLEYMontana:
+  id: 1832
+  name: VALLEY
+  state_id: 30
+DAWSONMontana:
+  id: 1833
+  name: DAWSON
+  state_id: 30
+PHILLIPSMontana:
+  id: 1834
+  name: PHILLIPS
+  state_id: 30
+CUSTERMontana:
+  id: 1835
+  name: CUSTER
+  state_id: 30
+CARTERMontana:
+  id: 1836
+  name: CARTER
+  state_id: 30
+FALLONMontana:
+  id: 1837
+  name: FALLON
+  state_id: 30
+PRAIRIEMontana:
+  id: 1838
+  name: PRAIRIE
+  state_id: 30
+WIBAUXMontana:
+  id: 1839
+  name: WIBAUX
+  state_id: 30
+CASCADEMontana:
+  id: 1840
+  name: CASCADE
+  state_id: 30
+LEWIS AND CLARKMontana:
+  id: 1841
+  name: LEWIS AND CLARK
+  state_id: 30
+GLACIERMontana:
+  id: 1842
+  name: GLACIER
+  state_id: 30
+PONDERAMontana:
+  id: 1843
+  name: PONDERA
+  state_id: 30
+TETONMontana:
+  id: 1844
+  name: TETON
+  state_id: 30
+CHOUTEAUMontana:
+  id: 1845
+  name: CHOUTEAU
+  state_id: 30
+TOOLEMontana:
+  id: 1846
+  name: TOOLE
+  state_id: 30
+JUDITH BASINMontana:
+  id: 1847
+  name: JUDITH BASIN
+  state_id: 30
+LIBERTYMontana:
+  id: 1848
+  name: LIBERTY
+  state_id: 30
+HILLMontana:
+  id: 1849
+  name: HILL
+  state_id: 30
+BLAINEMontana:
+  id: 1850
+  name: BLAINE
+  state_id: 30
+JEFFERSONMontana:
+  id: 1851
+  name: JEFFERSON
+  state_id: 30
+BROADWATERMontana:
+  id: 1852
+  name: BROADWATER
+  state_id: 30
+SILVER BOWMontana:
+  id: 1853
+  name: SILVER BOW
+  state_id: 30
+MADISONMontana:
+  id: 1854
+  name: MADISON
+  state_id: 30
+DEER LODGEMontana:
+  id: 1855
+  name: DEER LODGE
+  state_id: 30
+POWELLMontana:
+  id: 1856
+  name: POWELL
+  state_id: 30
+GALLATINMontana:
+  id: 1857
+  name: GALLATIN
+  state_id: 30
+BEAVERHEADMontana:
+  id: 1858
+  name: BEAVERHEAD
+  state_id: 30
+MISSOULAMontana:
+  id: 1859
+  name: MISSOULA
+  state_id: 30
+MINERALMontana:
+  id: 1860
+  name: MINERAL
+  state_id: 30
+LAKEMontana:
+  id: 1861
+  name: LAKE
+  state_id: 30
+RAVALLIMontana:
+  id: 1862
+  name: RAVALLI
+  state_id: 30
+SANDERSMontana:
+  id: 1863
+  name: SANDERS
+  state_id: 30
+GRANITEMontana:
+  id: 1864
+  name: GRANITE
+  state_id: 30
+FLATHEADMontana:
+  id: 1865
+  name: FLATHEAD
+  state_id: 30
+LINCOLNMontana:
+  id: 1866
+  name: LINCOLN
+  state_id: 30
+MCHENRYIllinois:
+  id: 1867
+  name: MCHENRY
+  state_id: 31
+LAKEIllinois:
+  id: 1868
+  name: LAKE
+  state_id: 31
+COOKIllinois:
+  id: 1869
+  name: COOK
+  state_id: 31
+DU PAGEIllinois:
+  id: 1870
+  name: DU PAGE
+  state_id: 31
+KANEIllinois:
+  id: 1871
+  name: KANE
+  state_id: 31
+DE KALBIllinois:
+  id: 1872
+  name: DE KALB
+  state_id: 31
+OGLEIllinois:
+  id: 1873
+  name: OGLE
+  state_id: 31
+WILLIllinois:
+  id: 1874
+  name: WILL
+  state_id: 31
+GRUNDYIllinois:
+  id: 1875
+  name: GRUNDY
+  state_id: 31
+LIVINGSTONIllinois:
+  id: 1876
+  name: LIVINGSTON
+  state_id: 31
+LA SALLEIllinois:
+  id: 1877
+  name: LA SALLE
+  state_id: 31
+KENDALLIllinois:
+  id: 1878
+  name: KENDALL
+  state_id: 31
+LEEIllinois:
+  id: 1879
+  name: LEE
+  state_id: 31
+KANKAKEEIllinois:
+  id: 1880
+  name: KANKAKEE
+  state_id: 31
+IROQUOISIllinois:
+  id: 1881
+  name: IROQUOIS
+  state_id: 31
+FORDIllinois:
+  id: 1882
+  name: FORD
+  state_id: 31
+VERMILIONIllinois:
+  id: 1883
+  name: VERMILION
+  state_id: 31
+CHAMPAIGNIllinois:
+  id: 1884
+  name: CHAMPAIGN
+  state_id: 31
+JO DAVIESSIllinois:
+  id: 1885
+  name: JO DAVIESS
+  state_id: 31
+BOONEIllinois:
+  id: 1886
+  name: BOONE
+  state_id: 31
+STEPHENSONIllinois:
+  id: 1887
+  name: STEPHENSON
+  state_id: 31
+CARROLLIllinois:
+  id: 1888
+  name: CARROLL
+  state_id: 31
+WINNEBAGOIllinois:
+  id: 1889
+  name: WINNEBAGO
+  state_id: 31
+WHITESIDEIllinois:
+  id: 1890
+  name: WHITESIDE
+  state_id: 31
+ROCK ISLANDIllinois:
+  id: 1891
+  name: ROCK ISLAND
+  state_id: 31
+MERCERIllinois:
+  id: 1892
+  name: MERCER
+  state_id: 31
+HENRYIllinois:
+  id: 1893
+  name: HENRY
+  state_id: 31
+BUREAUIllinois:
+  id: 1894
+  name: BUREAU
+  state_id: 31
+PUTNAMIllinois:
+  id: 1895
+  name: PUTNAM
+  state_id: 31
+MARSHALLIllinois:
+  id: 1896
+  name: MARSHALL
+  state_id: 31
+KNOXIllinois:
+  id: 1897
+  name: KNOX
+  state_id: 31
+MCDONOUGHIllinois:
+  id: 1898
+  name: MCDONOUGH
+  state_id: 31
+FULTONIllinois:
+  id: 1899
+  name: FULTON
+  state_id: 31
+WARRENIllinois:
+  id: 1900
+  name: WARREN
+  state_id: 31
+HENDERSONIllinois:
+  id: 1901
+  name: HENDERSON
+  state_id: 31
+STARKIllinois:
+  id: 1902
+  name: STARK
+  state_id: 31
+HANCOCKIllinois:
+  id: 1903
+  name: HANCOCK
+  state_id: 31
+PEORIAIllinois:
+  id: 1904
+  name: PEORIA
+  state_id: 31
+SCHUYLERIllinois:
+  id: 1905
+  name: SCHUYLER
+  state_id: 31
+WOODFORDIllinois:
+  id: 1906
+  name: WOODFORD
+  state_id: 31
+MASONIllinois:
+  id: 1907
+  name: MASON
+  state_id: 31
+TAZEWELLIllinois:
+  id: 1908
+  name: TAZEWELL
+  state_id: 31
+MCLEANIllinois:
+  id: 1909
+  name: MCLEAN
+  state_id: 31
+LOGANIllinois:
+  id: 1910
+  name: LOGAN
+  state_id: 31
+DEWITTIllinois:
+  id: 1911
+  name: DEWITT
+  state_id: 31
+MACONIllinois:
+  id: 1912
+  name: MACON
+  state_id: 31
+PIATTIllinois:
+  id: 1913
+  name: PIATT
+  state_id: 31
+DOUGLASIllinois:
+  id: 1914
+  name: DOUGLAS
+  state_id: 31
+COLESIllinois:
+  id: 1915
+  name: COLES
+  state_id: 31
+MOULTRIEIllinois:
+  id: 1916
+  name: MOULTRIE
+  state_id: 31
+EDGARIllinois:
+  id: 1917
+  name: EDGAR
+  state_id: 31
+SHELBYIllinois:
+  id: 1918
+  name: SHELBY
+  state_id: 31
+MADISONIllinois:
+  id: 1919
+  name: MADISON
+  state_id: 31
+CALHOUNIllinois:
+  id: 1920
+  name: CALHOUN
+  state_id: 31
+MACOUPINIllinois:
+  id: 1921
+  name: MACOUPIN
+  state_id: 31
+FAYETTEIllinois:
+  id: 1922
+  name: FAYETTE
+  state_id: 31
+JERSEYIllinois:
+  id: 1923
+  name: JERSEY
+  state_id: 31
+MONTGOMERYIllinois:
+  id: 1924
+  name: MONTGOMERY
+  state_id: 31
+GREENEIllinois:
+  id: 1925
+  name: GREENE
+  state_id: 31
+BONDIllinois:
+  id: 1926
+  name: BOND
+  state_id: 31
+SAINT CLAIRIllinois:
+  id: 1927
+  name: SAINT CLAIR
+  state_id: 31
+CHRISTIANIllinois:
+  id: 1928
+  name: CHRISTIAN
+  state_id: 31
+WASHINGTONIllinois:
+  id: 1929
+  name: WASHINGTON
+  state_id: 31
+CLINTONIllinois:
+  id: 1930
+  name: CLINTON
+  state_id: 31
+RANDOLPHIllinois:
+  id: 1931
+  name: RANDOLPH
+  state_id: 31
+MONROEIllinois:
+  id: 1932
+  name: MONROE
+  state_id: 31
+PERRYIllinois:
+  id: 1933
+  name: PERRY
+  state_id: 31
+ADAMSIllinois:
+  id: 1934
+  name: ADAMS
+  state_id: 31
+PIKEIllinois:
+  id: 1935
+  name: PIKE
+  state_id: 31
+BROWNIllinois:
+  id: 1936
+  name: BROWN
+  state_id: 31
+EFFINGHAMIllinois:
+  id: 1937
+  name: EFFINGHAM
+  state_id: 31
+WABASHIllinois:
+  id: 1938
+  name: WABASH
+  state_id: 31
+CRAWFORDIllinois:
+  id: 1939
+  name: CRAWFORD
+  state_id: 31
+LAWRENCEIllinois:
+  id: 1940
+  name: LAWRENCE
+  state_id: 31
+RICHLANDIllinois:
+  id: 1941
+  name: RICHLAND
+  state_id: 31
+CLARKIllinois:
+  id: 1942
+  name: CLARK
+  state_id: 31
+CUMBERLANDIllinois:
+  id: 1943
+  name: CUMBERLAND
+  state_id: 31
+JASPERIllinois:
+  id: 1944
+  name: JASPER
+  state_id: 31
+CLAYIllinois:
+  id: 1945
+  name: CLAY
+  state_id: 31
+WAYNEIllinois:
+  id: 1946
+  name: WAYNE
+  state_id: 31
+EDWARDSIllinois:
+  id: 1947
+  name: EDWARDS
+  state_id: 31
+SANGAMONIllinois:
+  id: 1948
+  name: SANGAMON
+  state_id: 31
+MORGANIllinois:
+  id: 1949
+  name: MORGAN
+  state_id: 31
+SCOTTIllinois:
+  id: 1950
+  name: SCOTT
+  state_id: 31
+CASSIllinois:
+  id: 1951
+  name: CASS
+  state_id: 31
+MENARDIllinois:
+  id: 1952
+  name: MENARD
+  state_id: 31
+MARIONIllinois:
+  id: 1953
+  name: MARION
+  state_id: 31
+FRANKLINIllinois:
+  id: 1954
+  name: FRANKLIN
+  state_id: 31
+JEFFERSONIllinois:
+  id: 1955
+  name: JEFFERSON
+  state_id: 31
+HAMILTONIllinois:
+  id: 1956
+  name: HAMILTON
+  state_id: 31
+WHITEIllinois:
+  id: 1957
+  name: WHITE
+  state_id: 31
+WILLIAMSONIllinois:
+  id: 1958
+  name: WILLIAMSON
+  state_id: 31
+GALLATINIllinois:
+  id: 1959
+  name: GALLATIN
+  state_id: 31
+JACKSONIllinois:
+  id: 1960
+  name: JACKSON
+  state_id: 31
+UNIONIllinois:
+  id: 1961
+  name: UNION
+  state_id: 31
+JOHNSONIllinois:
+  id: 1962
+  name: JOHNSON
+  state_id: 31
+MASSACIllinois:
+  id: 1963
+  name: MASSAC
+  state_id: 31
+ALEXANDERIllinois:
+  id: 1964
+  name: ALEXANDER
+  state_id: 31
+SALINEIllinois:
+  id: 1965
+  name: SALINE
+  state_id: 31
+HARDINIllinois:
+  id: 1966
+  name: HARDIN
+  state_id: 31
+POPEIllinois:
+  id: 1967
+  name: POPE
+  state_id: 31
+PULASKIIllinois:
+  id: 1968
+  name: PULASKI
+  state_id: 31
+SAINT LOUISMissouri:
+  id: 1969
+  name: SAINT LOUIS
+  state_id: 32
+JEFFERSONMissouri:
+  id: 1970
+  name: JEFFERSON
+  state_id: 32
+FRANKLINMissouri:
+  id: 1971
+  name: FRANKLIN
+  state_id: 32
+SAINT FRANCOISMissouri:
+  id: 1972
+  name: SAINT FRANCOIS
+  state_id: 32
+WASHINGTONMissouri:
+  id: 1973
+  name: WASHINGTON
+  state_id: 32
+GASCONADEMissouri:
+  id: 1974
+  name: GASCONADE
+  state_id: 32
+SAINT LOUIS CITYMissouri:
+  id: 1975
+  name: SAINT LOUIS CITY
+  state_id: 32
+SAINT CHARLESMissouri:
+  id: 1976
+  name: SAINT CHARLES
+  state_id: 32
+PIKEMissouri:
+  id: 1977
+  name: PIKE
+  state_id: 32
+MONTGOMERYMissouri:
+  id: 1978
+  name: MONTGOMERY
+  state_id: 32
+WARRENMissouri:
+  id: 1979
+  name: WARREN
+  state_id: 32
+LINCOLNMissouri:
+  id: 1980
+  name: LINCOLN
+  state_id: 32
+AUDRAINMissouri:
+  id: 1981
+  name: AUDRAIN
+  state_id: 32
+CALLAWAYMissouri:
+  id: 1982
+  name: CALLAWAY
+  state_id: 32
+MARIONMissouri:
+  id: 1983
+  name: MARION
+  state_id: 32
+CLARKMissouri:
+  id: 1984
+  name: CLARK
+  state_id: 32
+MACONMissouri:
+  id: 1985
+  name: MACON
+  state_id: 32
+SCOTLANDMissouri:
+  id: 1986
+  name: SCOTLAND
+  state_id: 32
+SHELBYMissouri:
+  id: 1987
+  name: SHELBY
+  state_id: 32
+LEWISMissouri:
+  id: 1988
+  name: LEWIS
+  state_id: 32
+RALLSMissouri:
+  id: 1989
+  name: RALLS
+  state_id: 32
+KNOXMissouri:
+  id: 1990
+  name: KNOX
+  state_id: 32
+MONROEMissouri:
+  id: 1991
+  name: MONROE
+  state_id: 32
+ADAIRMissouri:
+  id: 1992
+  name: ADAIR
+  state_id: 32
+SCHUYLERMissouri:
+  id: 1993
+  name: SCHUYLER
+  state_id: 32
+SULLIVANMissouri:
+  id: 1994
+  name: SULLIVAN
+  state_id: 32
+PUTNAMMissouri:
+  id: 1995
+  name: PUTNAM
+  state_id: 32
+LINNMissouri:
+  id: 1996
+  name: LINN
+  state_id: 32
+IRONMissouri:
+  id: 1997
+  name: IRON
+  state_id: 32
+REYNOLDSMissouri:
+  id: 1998
+  name: REYNOLDS
+  state_id: 32
+SAINTE GENEVIEVEMissouri:
+  id: 1999
+  name: SAINTE GENEVIEVE
+  state_id: 32
+WAYNEMissouri:
+  id: 2000
+  name: WAYNE
+  state_id: 32
+MADISONMissouri:
+  id: 2001
+  name: MADISON
+  state_id: 32
+BOLLINGERMissouri:
+  id: 2002
+  name: BOLLINGER
+  state_id: 32
+CAPE GIRARDEAUMissouri:
+  id: 2003
+  name: CAPE GIRARDEAU
+  state_id: 32
+STODDARDMissouri:
+  id: 2004
+  name: STODDARD
+  state_id: 32
+PERRYMissouri:
+  id: 2005
+  name: PERRY
+  state_id: 32
+SCOTTMissouri:
+  id: 2006
+  name: SCOTT
+  state_id: 32
+MISSISSIPPIMissouri:
+  id: 2007
+  name: MISSISSIPPI
+  state_id: 32
+DUNKLINMissouri:
+  id: 2008
+  name: DUNKLIN
+  state_id: 32
+PEMISCOTMissouri:
+  id: 2009
+  name: PEMISCOT
+  state_id: 32
+NEW MADRIDMissouri:
+  id: 2010
+  name: NEW MADRID
+  state_id: 32
+BUTLERMissouri:
+  id: 2011
+  name: BUTLER
+  state_id: 32
+RIPLEYMissouri:
+  id: 2012
+  name: RIPLEY
+  state_id: 32
+CARTERMissouri:
+  id: 2013
+  name: CARTER
+  state_id: 32
+LAFAYETTEMissouri:
+  id: 2014
+  name: LAFAYETTE
+  state_id: 32
+JACKSONMissouri:
+  id: 2015
+  name: JACKSON
+  state_id: 32
+CASSMissouri:
+  id: 2016
+  name: CASS
+  state_id: 32
+RAYMissouri:
+  id: 2017
+  name: RAY
+  state_id: 32
+PLATTEMissouri:
+  id: 2018
+  name: PLATTE
+  state_id: 32
+JOHNSONMissouri:
+  id: 2019
+  name: JOHNSON
+  state_id: 32
+CLAYMissouri:
+  id: 2020
+  name: CLAY
+  state_id: 32
+BUCHANANMissouri:
+  id: 2021
+  name: BUCHANAN
+  state_id: 32
+GENTRYMissouri:
+  id: 2022
+  name: GENTRY
+  state_id: 32
+WORTHMissouri:
+  id: 2023
+  name: WORTH
+  state_id: 32
+ANDREWMissouri:
+  id: 2024
+  name: ANDREW
+  state_id: 32
+DEKALBMissouri:
+  id: 2025
+  name: DEKALB
+  state_id: 32
+NODAWAYMissouri:
+  id: 2026
+  name: NODAWAY
+  state_id: 32
+HARRISONMissouri:
+  id: 2027
+  name: HARRISON
+  state_id: 32
+CLINTONMissouri:
+  id: 2028
+  name: CLINTON
+  state_id: 32
+HOLTMissouri:
+  id: 2029
+  name: HOLT
+  state_id: 32
+ATCHISONMissouri:
+  id: 2030
+  name: ATCHISON
+  state_id: 32
+LIVINGSTONMissouri:
+  id: 2031
+  name: LIVINGSTON
+  state_id: 32
+DAVIESSMissouri:
+  id: 2032
+  name: DAVIESS
+  state_id: 32
+CARROLLMissouri:
+  id: 2033
+  name: CARROLL
+  state_id: 32
+CALDWELLMissouri:
+  id: 2034
+  name: CALDWELL
+  state_id: 32
+GRUNDYMissouri:
+  id: 2035
+  name: GRUNDY
+  state_id: 32
+CHARITONMissouri:
+  id: 2036
+  name: CHARITON
+  state_id: 32
+MERCERMissouri:
+  id: 2037
+  name: MERCER
+  state_id: 32
+BATESMissouri:
+  id: 2038
+  name: BATES
+  state_id: 32
+SAINT CLAIRMissouri:
+  id: 2039
+  name: SAINT CLAIR
+  state_id: 32
+HENRYMissouri:
+  id: 2040
+  name: HENRY
+  state_id: 32
+VERNONMissouri:
+  id: 2041
+  name: VERNON
+  state_id: 32
+CEDARMissouri:
+  id: 2042
+  name: CEDAR
+  state_id: 32
+BARTONMissouri:
+  id: 2043
+  name: BARTON
+  state_id: 32
+JASPERMissouri:
+  id: 2044
+  name: JASPER
+  state_id: 32
+MCDONALDMissouri:
+  id: 2045
+  name: MCDONALD
+  state_id: 32
+NEWTONMissouri:
+  id: 2046
+  name: NEWTON
+  state_id: 32
+BARRYMissouri:
+  id: 2047
+  name: BARRY
+  state_id: 32
+OSAGEMissouri:
+  id: 2048
+  name: OSAGE
+  state_id: 32
+BOONEMissouri:
+  id: 2049
+  name: BOONE
+  state_id: 32
+MORGANMissouri:
+  id: 2050
+  name: MORGAN
+  state_id: 32
+MARIESMissouri:
+  id: 2051
+  name: MARIES
+  state_id: 32
+MILLERMissouri:
+  id: 2052
+  name: MILLER
+  state_id: 32
+MONITEAUMissouri:
+  id: 2053
+  name: MONITEAU
+  state_id: 32
+CAMDENMissouri:
+  id: 2054
+  name: CAMDEN
+  state_id: 32
+COLEMissouri:
+  id: 2055
+  name: COLE
+  state_id: 32
+COOPERMissouri:
+  id: 2056
+  name: COOPER
+  state_id: 32
+HOWARDMissouri:
+  id: 2057
+  name: HOWARD
+  state_id: 32
+RANDOLPHMissouri:
+  id: 2058
+  name: RANDOLPH
+  state_id: 32
+PETTISMissouri:
+  id: 2059
+  name: PETTIS
+  state_id: 32
+SALINEMissouri:
+  id: 2060
+  name: SALINE
+  state_id: 32
+BENTONMissouri:
+  id: 2061
+  name: BENTON
+  state_id: 32
+PHELPSMissouri:
+  id: 2062
+  name: PHELPS
+  state_id: 32
+TEXASMissouri:
+  id: 2063
+  name: TEXAS
+  state_id: 32
+SHANNONMissouri:
+  id: 2064
+  name: SHANNON
+  state_id: 32
+DENTMissouri:
+  id: 2065
+  name: DENT
+  state_id: 32
+CRAWFORDMissouri:
+  id: 2066
+  name: CRAWFORD
+  state_id: 32
+PULASKIMissouri:
+  id: 2067
+  name: PULASKI
+  state_id: 32
+LACLEDEMissouri:
+  id: 2068
+  name: LACLEDE
+  state_id: 32
+HOWELLMissouri:
+  id: 2069
+  name: HOWELL
+  state_id: 32
+DALLASMissouri:
+  id: 2070
+  name: DALLAS
+  state_id: 32
+POLKMissouri:
+  id: 2071
+  name: POLK
+  state_id: 32
+DADEMissouri:
+  id: 2072
+  name: DADE
+  state_id: 32
+GREENEMissouri:
+  id: 2073
+  name: GREENE
+  state_id: 32
+LAWRENCEMissouri:
+  id: 2074
+  name: LAWRENCE
+  state_id: 32
+OREGONMissouri:
+  id: 2075
+  name: OREGON
+  state_id: 32
+DOUGLASMissouri:
+  id: 2076
+  name: DOUGLAS
+  state_id: 32
+OZARKMissouri:
+  id: 2077
+  name: OZARK
+  state_id: 32
+CHRISTIANMissouri:
+  id: 2078
+  name: CHRISTIAN
+  state_id: 32
+STONEMissouri:
+  id: 2079
+  name: STONE
+  state_id: 32
+TANEYMissouri:
+  id: 2080
+  name: TANEY
+  state_id: 32
+HICKORYMissouri:
+  id: 2081
+  name: HICKORY
+  state_id: 32
+WEBSTERMissouri:
+  id: 2082
+  name: WEBSTER
+  state_id: 32
+WRIGHTMissouri:
+  id: 2083
+  name: WRIGHT
+  state_id: 32
+ATCHISONKansas:
+  id: 2084
+  name: ATCHISON
+  state_id: 33
+DOUGLASKansas:
+  id: 2085
+  name: DOUGLAS
+  state_id: 33
+LEAVENWORTHKansas:
+  id: 2086
+  name: LEAVENWORTH
+  state_id: 33
+DONIPHANKansas:
+  id: 2087
+  name: DONIPHAN
+  state_id: 33
+LINNKansas:
+  id: 2088
+  name: LINN
+  state_id: 33
+WYANDOTTEKansas:
+  id: 2089
+  name: WYANDOTTE
+  state_id: 33
+MIAMIKansas:
+  id: 2090
+  name: MIAMI
+  state_id: 33
+ANDERSONKansas:
+  id: 2091
+  name: ANDERSON
+  state_id: 33
+JOHNSONKansas:
+  id: 2092
+  name: JOHNSON
+  state_id: 33
+FRANKLINKansas:
+  id: 2093
+  name: FRANKLIN
+  state_id: 33
+JEFFERSONKansas:
+  id: 2094
+  name: JEFFERSON
+  state_id: 33
+WABAUNSEEKansas:
+  id: 2095
+  name: WABAUNSEE
+  state_id: 33
+SHAWNEEKansas:
+  id: 2096
+  name: SHAWNEE
+  state_id: 33
+MARSHALLKansas:
+  id: 2097
+  name: MARSHALL
+  state_id: 33
+NEMAHAKansas:
+  id: 2098
+  name: NEMAHA
+  state_id: 33
+POTTAWATOMIEKansas:
+  id: 2099
+  name: POTTAWATOMIE
+  state_id: 33
+OSAGEKansas:
+  id: 2100
+  name: OSAGE
+  state_id: 33
+JACKSONKansas:
+  id: 2101
+  name: JACKSON
+  state_id: 33
+BROWNKansas:
+  id: 2102
+  name: BROWN
+  state_id: 33
+GEARYKansas:
+  id: 2103
+  name: GEARY
+  state_id: 33
+RILEYKansas:
+  id: 2104
+  name: RILEY
+  state_id: 33
+BOURBONKansas:
+  id: 2105
+  name: BOURBON
+  state_id: 33
+WILSONKansas:
+  id: 2106
+  name: WILSON
+  state_id: 33
+CRAWFORDKansas:
+  id: 2107
+  name: CRAWFORD
+  state_id: 33
+CHEROKEEKansas:
+  id: 2108
+  name: CHEROKEE
+  state_id: 33
+NEOSHOKansas:
+  id: 2109
+  name: NEOSHO
+  state_id: 33
+ALLENKansas:
+  id: 2110
+  name: ALLEN
+  state_id: 33
+WOODSONKansas:
+  id: 2111
+  name: WOODSON
+  state_id: 33
+LYONKansas:
+  id: 2112
+  name: LYON
+  state_id: 33
+MORRISKansas:
+  id: 2113
+  name: MORRIS
+  state_id: 33
+COFFEYKansas:
+  id: 2114
+  name: COFFEY
+  state_id: 33
+MARIONKansas:
+  id: 2115
+  name: MARION
+  state_id: 33
+BUTLERKansas:
+  id: 2116
+  name: BUTLER
+  state_id: 33
+CHASEKansas:
+  id: 2117
+  name: CHASE
+  state_id: 33
+GREENWOODKansas:
+  id: 2118
+  name: GREENWOOD
+  state_id: 33
+CLOUDKansas:
+  id: 2119
+  name: CLOUD
+  state_id: 33
+REPUBLICKansas:
+  id: 2120
+  name: REPUBLIC
+  state_id: 33
+SMITHKansas:
+  id: 2121
+  name: SMITH
+  state_id: 33
+WASHINGTONKansas:
+  id: 2122
+  name: WASHINGTON
+  state_id: 33
+JEWELLKansas:
+  id: 2123
+  name: JEWELL
+  state_id: 33
+SEDGWICKKansas:
+  id: 2124
+  name: SEDGWICK
+  state_id: 33
+HARPERKansas:
+  id: 2125
+  name: HARPER
+  state_id: 33
+SUMNERKansas:
+  id: 2126
+  name: SUMNER
+  state_id: 33
+COWLEYKansas:
+  id: 2127
+  name: COWLEY
+  state_id: 33
+HARVEYKansas:
+  id: 2128
+  name: HARVEY
+  state_id: 33
+PRATTKansas:
+  id: 2129
+  name: PRATT
+  state_id: 33
+CHAUTAUQUAKansas:
+  id: 2130
+  name: CHAUTAUQUA
+  state_id: 33
+COMANCHEKansas:
+  id: 2131
+  name: COMANCHE
+  state_id: 33
+KINGMANKansas:
+  id: 2132
+  name: KINGMAN
+  state_id: 33
+KIOWAKansas:
+  id: 2133
+  name: KIOWA
+  state_id: 33
+BARBERKansas:
+  id: 2134
+  name: BARBER
+  state_id: 33
+MCPHERSONKansas:
+  id: 2135
+  name: MCPHERSON
+  state_id: 33
+MONTGOMERYKansas:
+  id: 2136
+  name: MONTGOMERY
+  state_id: 33
+LABETTEKansas:
+  id: 2137
+  name: LABETTE
+  state_id: 33
+ELKKansas:
+  id: 2138
+  name: ELK
+  state_id: 33
+SALINEKansas:
+  id: 2139
+  name: SALINE
+  state_id: 33
+DICKINSONKansas:
+  id: 2140
+  name: DICKINSON
+  state_id: 33
+LINCOLNKansas:
+  id: 2141
+  name: LINCOLN
+  state_id: 33
+MITCHELLKansas:
+  id: 2142
+  name: MITCHELL
+  state_id: 33
+OTTAWAKansas:
+  id: 2143
+  name: OTTAWA
+  state_id: 33
+RICEKansas:
+  id: 2144
+  name: RICE
+  state_id: 33
+CLAYKansas:
+  id: 2145
+  name: CLAY
+  state_id: 33
+OSBORNEKansas:
+  id: 2146
+  name: OSBORNE
+  state_id: 33
+ELLSWORTHKansas:
+  id: 2147
+  name: ELLSWORTH
+  state_id: 33
+RENOKansas:
+  id: 2148
+  name: RENO
+  state_id: 33
+BARTONKansas:
+  id: 2149
+  name: BARTON
+  state_id: 33
+RUSHKansas:
+  id: 2150
+  name: RUSH
+  state_id: 33
+NESSKansas:
+  id: 2151
+  name: NESS
+  state_id: 33
+EDWARDSKansas:
+  id: 2152
+  name: EDWARDS
+  state_id: 33
+PAWNEEKansas:
+  id: 2153
+  name: PAWNEE
+  state_id: 33
+STAFFORDKansas:
+  id: 2154
+  name: STAFFORD
+  state_id: 33
+ELLISKansas:
+  id: 2155
+  name: ELLIS
+  state_id: 33
+PHILLIPSKansas:
+  id: 2156
+  name: PHILLIPS
+  state_id: 33
+NORTONKansas:
+  id: 2157
+  name: NORTON
+  state_id: 33
+GRAHAMKansas:
+  id: 2158
+  name: GRAHAM
+  state_id: 33
+RUSSELLKansas:
+  id: 2159
+  name: RUSSELL
+  state_id: 33
+TREGOKansas:
+  id: 2160
+  name: TREGO
+  state_id: 33
+ROOKSKansas:
+  id: 2161
+  name: ROOKS
+  state_id: 33
+DECATURKansas:
+  id: 2162
+  name: DECATUR
+  state_id: 33
+THOMASKansas:
+  id: 2163
+  name: THOMAS
+  state_id: 33
+RAWLINSKansas:
+  id: 2164
+  name: RAWLINS
+  state_id: 33
+CHEYENNEKansas:
+  id: 2165
+  name: CHEYENNE
+  state_id: 33
+SHERMANKansas:
+  id: 2166
+  name: SHERMAN
+  state_id: 33
+GOVEKansas:
+  id: 2167
+  name: GOVE
+  state_id: 33
+SHERIDANKansas:
+  id: 2168
+  name: SHERIDAN
+  state_id: 33
+LOGANKansas:
+  id: 2169
+  name: LOGAN
+  state_id: 33
+WALLACEKansas:
+  id: 2170
+  name: WALLACE
+  state_id: 33
+FORDKansas:
+  id: 2171
+  name: FORD
+  state_id: 33
+CLARKKansas:
+  id: 2172
+  name: CLARK
+  state_id: 33
+GRAYKansas:
+  id: 2173
+  name: GRAY
+  state_id: 33
+HAMILTONKansas:
+  id: 2174
+  name: HAMILTON
+  state_id: 33
+KEARNYKansas:
+  id: 2175
+  name: KEARNY
+  state_id: 33
+LANEKansas:
+  id: 2176
+  name: LANE
+  state_id: 33
+MEADEKansas:
+  id: 2177
+  name: MEADE
+  state_id: 33
+FINNEYKansas:
+  id: 2178
+  name: FINNEY
+  state_id: 33
+HODGEMANKansas:
+  id: 2179
+  name: HODGEMAN
+  state_id: 33
+STANTONKansas:
+  id: 2180
+  name: STANTON
+  state_id: 33
+SEWARDKansas:
+  id: 2181
+  name: SEWARD
+  state_id: 33
+WICHITAKansas:
+  id: 2182
+  name: WICHITA
+  state_id: 33
+HASKELLKansas:
+  id: 2183
+  name: HASKELL
+  state_id: 33
+SCOTTKansas:
+  id: 2184
+  name: SCOTT
+  state_id: 33
+GREELEYKansas:
+  id: 2185
+  name: GREELEY
+  state_id: 33
+GRANTKansas:
+  id: 2186
+  name: GRANT
+  state_id: 33
+MORTONKansas:
+  id: 2187
+  name: MORTON
+  state_id: 33
+STEVENSKansas:
+  id: 2188
+  name: STEVENS
+  state_id: 33
+BUTLERNebraska:
+  id: 2189
+  name: BUTLER
+  state_id: 34
+WASHINGTONNebraska:
+  id: 2190
+  name: WASHINGTON
+  state_id: 34
+SAUNDERSNebraska:
+  id: 2191
+  name: SAUNDERS
+  state_id: 34
+CUMINGNebraska:
+  id: 2192
+  name: CUMING
+  state_id: 34
+SARPYNebraska:
+  id: 2193
+  name: SARPY
+  state_id: 34
+DOUGLASNebraska:
+  id: 2194
+  name: DOUGLAS
+  state_id: 34
+CASSNebraska:
+  id: 2195
+  name: CASS
+  state_id: 34
+BURTNebraska:
+  id: 2196
+  name: BURT
+  state_id: 34
+DODGENebraska:
+  id: 2197
+  name: DODGE
+  state_id: 34
+DAKOTANebraska:
+  id: 2198
+  name: DAKOTA
+  state_id: 34
+THURSTONNebraska:
+  id: 2199
+  name: THURSTON
+  state_id: 34
+GAGENebraska:
+  id: 2200
+  name: GAGE
+  state_id: 34
+THAYERNebraska:
+  id: 2201
+  name: THAYER
+  state_id: 34
+NEMAHANebraska:
+  id: 2202
+  name: NEMAHA
+  state_id: 34
+SEWARDNebraska:
+  id: 2203
+  name: SEWARD
+  state_id: 34
+YORKNebraska:
+  id: 2204
+  name: YORK
+  state_id: 34
+LANCASTERNebraska:
+  id: 2205
+  name: LANCASTER
+  state_id: 34
+PAWNEENebraska:
+  id: 2206
+  name: PAWNEE
+  state_id: 34
+OTOENebraska:
+  id: 2207
+  name: OTOE
+  state_id: 34
+JOHNSONNebraska:
+  id: 2208
+  name: JOHNSON
+  state_id: 34
+SALINENebraska:
+  id: 2209
+  name: SALINE
+  state_id: 34
+RICHARDSONNebraska:
+  id: 2210
+  name: RICHARDSON
+  state_id: 34
+JEFFERSONNebraska:
+  id: 2211
+  name: JEFFERSON
+  state_id: 34
+FILLMORENebraska:
+  id: 2212
+  name: FILLMORE
+  state_id: 34
+CLAYNebraska:
+  id: 2213
+  name: CLAY
+  state_id: 34
+PLATTENebraska:
+  id: 2214
+  name: PLATTE
+  state_id: 34
+BOONENebraska:
+  id: 2215
+  name: BOONE
+  state_id: 34
+WHEELERNebraska:
+  id: 2216
+  name: WHEELER
+  state_id: 34
+NANCENebraska:
+  id: 2217
+  name: NANCE
+  state_id: 34
+MERRICKNebraska:
+  id: 2218
+  name: MERRICK
+  state_id: 34
+COLFAXNebraska:
+  id: 2219
+  name: COLFAX
+  state_id: 34
+ANTELOPENebraska:
+  id: 2220
+  name: ANTELOPE
+  state_id: 34
+POLKNebraska:
+  id: 2221
+  name: POLK
+  state_id: 34
+GREELEYNebraska:
+  id: 2222
+  name: GREELEY
+  state_id: 34
+MADISONNebraska:
+  id: 2223
+  name: MADISON
+  state_id: 34
+DIXONNebraska:
+  id: 2224
+  name: DIXON
+  state_id: 34
+HOLTNebraska:
+  id: 2225
+  name: HOLT
+  state_id: 34
+ROCKNebraska:
+  id: 2226
+  name: ROCK
+  state_id: 34
+CEDARNebraska:
+  id: 2227
+  name: CEDAR
+  state_id: 34
+KNOXNebraska:
+  id: 2228
+  name: KNOX
+  state_id: 34
+BOYDNebraska:
+  id: 2229
+  name: BOYD
+  state_id: 34
+WAYNENebraska:
+  id: 2230
+  name: WAYNE
+  state_id: 34
+PIERCENebraska:
+  id: 2231
+  name: PIERCE
+  state_id: 34
+KEYA PAHANebraska:
+  id: 2232
+  name: KEYA PAHA
+  state_id: 34
+STANTONNebraska:
+  id: 2233
+  name: STANTON
+  state_id: 34
+HALLNebraska:
+  id: 2234
+  name: HALL
+  state_id: 34
+BUFFALONebraska:
+  id: 2235
+  name: BUFFALO
+  state_id: 34
+CUSTERNebraska:
+  id: 2236
+  name: CUSTER
+  state_id: 34
+VALLEYNebraska:
+  id: 2237
+  name: VALLEY
+  state_id: 34
+SHERMANNebraska:
+  id: 2238
+  name: SHERMAN
+  state_id: 34
+HAMILTONNebraska:
+  id: 2239
+  name: HAMILTON
+  state_id: 34
+HOWARDNebraska:
+  id: 2240
+  name: HOWARD
+  state_id: 34
+BLAINENebraska:
+  id: 2241
+  name: BLAINE
+  state_id: 34
+GARFIELDNebraska:
+  id: 2242
+  name: GARFIELD
+  state_id: 34
+DAWSONNebraska:
+  id: 2243
+  name: DAWSON
+  state_id: 34
+LOUPNebraska:
+  id: 2244
+  name: LOUP
+  state_id: 34
+ADAMSNebraska:
+  id: 2245
+  name: ADAMS
+  state_id: 34
+HARLANNebraska:
+  id: 2246
+  name: HARLAN
+  state_id: 34
+FURNASNebraska:
+  id: 2247
+  name: FURNAS
+  state_id: 34
+PHELPSNebraska:
+  id: 2248
+  name: PHELPS
+  state_id: 34
+KEARNEYNebraska:
+  id: 2249
+  name: KEARNEY
+  state_id: 34
+WEBSTERNebraska:
+  id: 2250
+  name: WEBSTER
+  state_id: 34
+FRANKLINNebraska:
+  id: 2251
+  name: FRANKLIN
+  state_id: 34
+GOSPERNebraska:
+  id: 2252
+  name: GOSPER
+  state_id: 34
+NUCKOLLSNebraska:
+  id: 2253
+  name: NUCKOLLS
+  state_id: 34
+RED WILLOWNebraska:
+  id: 2254
+  name: RED WILLOW
+  state_id: 34
+DUNDYNebraska:
+  id: 2255
+  name: DUNDY
+  state_id: 34
+CHASENebraska:
+  id: 2256
+  name: CHASE
+  state_id: 34
+HITCHCOCKNebraska:
+  id: 2257
+  name: HITCHCOCK
+  state_id: 34
+FRONTIERNebraska:
+  id: 2258
+  name: FRONTIER
+  state_id: 34
+HAYESNebraska:
+  id: 2259
+  name: HAYES
+  state_id: 34
+LINCOLNNebraska:
+  id: 2260
+  name: LINCOLN
+  state_id: 34
+ARTHURNebraska:
+  id: 2261
+  name: ARTHUR
+  state_id: 34
+DEUELNebraska:
+  id: 2262
+  name: DEUEL
+  state_id: 34
+MORRILLNebraska:
+  id: 2263
+  name: MORRILL
+  state_id: 34
+KEITHNebraska:
+  id: 2264
+  name: KEITH
+  state_id: 34
+KIMBALLNebraska:
+  id: 2265
+  name: KIMBALL
+  state_id: 34
+CHEYENNENebraska:
+  id: 2266
+  name: CHEYENNE
+  state_id: 34
+PERKINSNebraska:
+  id: 2267
+  name: PERKINS
+  state_id: 34
+CHERRYNebraska:
+  id: 2268
+  name: CHERRY
+  state_id: 34
+THOMASNebraska:
+  id: 2269
+  name: THOMAS
+  state_id: 34
+GARDENNebraska:
+  id: 2270
+  name: GARDEN
+  state_id: 34
+HOOKERNebraska:
+  id: 2271
+  name: HOOKER
+  state_id: 34
+LOGANNebraska:
+  id: 2272
+  name: LOGAN
+  state_id: 34
+MCPHERSONNebraska:
+  id: 2273
+  name: MCPHERSON
+  state_id: 34
+BROWNNebraska:
+  id: 2274
+  name: BROWN
+  state_id: 34
+BOX BUTTENebraska:
+  id: 2275
+  name: BOX BUTTE
+  state_id: 34
+GRANTNebraska:
+  id: 2276
+  name: GRANT
+  state_id: 34
+SHERIDANNebraska:
+  id: 2277
+  name: SHERIDAN
+  state_id: 34
+DAWESNebraska:
+  id: 2278
+  name: DAWES
+  state_id: 34
+SCOTTS BLUFFNebraska:
+  id: 2279
+  name: SCOTTS BLUFF
+  state_id: 34
+BANNERNebraska:
+  id: 2280
+  name: BANNER
+  state_id: 34
+SIOUXNebraska:
+  id: 2281
+  name: SIOUX
+  state_id: 34
+JEFFERSONLouisiana:
+  id: 2282
+  name: JEFFERSON
+  state_id: 35
+SAINT CHARLESLouisiana:
+  id: 2283
+  name: SAINT CHARLES
+  state_id: 35
+SAINT BERNARDLouisiana:
+  id: 2284
+  name: SAINT BERNARD
+  state_id: 35
+PLAQUEMINESLouisiana:
+  id: 2285
+  name: PLAQUEMINES
+  state_id: 35
+ST JOHN THE BAPTISTLouisiana:
+  id: 2286
+  name: ST JOHN THE BAPTIST
+  state_id: 35
+SAINT JAMESLouisiana:
+  id: 2287
+  name: SAINT JAMES
+  state_id: 35
+ORLEANSLouisiana:
+  id: 2288
+  name: ORLEANS
+  state_id: 35
+LAFOURCHELouisiana:
+  id: 2289
+  name: LAFOURCHE
+  state_id: 35
+ASSUMPTIONLouisiana:
+  id: 2290
+  name: ASSUMPTION
+  state_id: 35
+SAINT MARYLouisiana:
+  id: 2291
+  name: SAINT MARY
+  state_id: 35
+TERREBONNELouisiana:
+  id: 2292
+  name: TERREBONNE
+  state_id: 35
+ASCENSIONLouisiana:
+  id: 2293
+  name: ASCENSION
+  state_id: 35
+TANGIPAHOALouisiana:
+  id: 2294
+  name: TANGIPAHOA
+  state_id: 35
+SAINT TAMMANYLouisiana:
+  id: 2295
+  name: SAINT TAMMANY
+  state_id: 35
+WASHINGTONLouisiana:
+  id: 2296
+  name: WASHINGTON
+  state_id: 35
+SAINT HELENALouisiana:
+  id: 2297
+  name: SAINT HELENA
+  state_id: 35
+LIVINGSTONLouisiana:
+  id: 2298
+  name: LIVINGSTON
+  state_id: 35
+LAFAYETTELouisiana:
+  id: 2299
+  name: LAFAYETTE
+  state_id: 35
+VERMILIONLouisiana:
+  id: 2300
+  name: VERMILION
+  state_id: 35
+SAINT LANDRYLouisiana:
+  id: 2301
+  name: SAINT LANDRY
+  state_id: 35
+IBERIALouisiana:
+  id: 2302
+  name: IBERIA
+  state_id: 35
+EVANGELINELouisiana:
+  id: 2303
+  name: EVANGELINE
+  state_id: 35
+ACADIALouisiana:
+  id: 2304
+  name: ACADIA
+  state_id: 35
+SAINT MARTINLouisiana:
+  id: 2305
+  name: SAINT MARTIN
+  state_id: 35
+JEFFERSON DAVISLouisiana:
+  id: 2306
+  name: JEFFERSON DAVIS
+  state_id: 35
+CALCASIEULouisiana:
+  id: 2307
+  name: CALCASIEU
+  state_id: 35
+CAMERONLouisiana:
+  id: 2308
+  name: CAMERON
+  state_id: 35
+BEAUREGARDLouisiana:
+  id: 2309
+  name: BEAUREGARD
+  state_id: 35
+ALLENLouisiana:
+  id: 2310
+  name: ALLEN
+  state_id: 35
+VERNONLouisiana:
+  id: 2311
+  name: VERNON
+  state_id: 35
+EAST BATON ROUGELouisiana:
+  id: 2312
+  name: EAST BATON ROUGE
+  state_id: 35
+WEST BATON ROUGELouisiana:
+  id: 2313
+  name: WEST BATON ROUGE
+  state_id: 35
+WEST FELICIANALouisiana:
+  id: 2314
+  name: WEST FELICIANA
+  state_id: 35
+POINTE COUPEELouisiana:
+  id: 2315
+  name: POINTE COUPEE
+  state_id: 35
+IBERVILLELouisiana:
+  id: 2316
+  name: IBERVILLE
+  state_id: 35
+EAST FELICIANALouisiana:
+  id: 2317
+  name: EAST FELICIANA
+  state_id: 35
+BIENVILLELouisiana:
+  id: 2318
+  name: BIENVILLE
+  state_id: 35
+NATCHITOCHESLouisiana:
+  id: 2319
+  name: NATCHITOCHES
+  state_id: 35
+CLAIBORNELouisiana:
+  id: 2320
+  name: CLAIBORNE
+  state_id: 35
+CADDOLouisiana:
+  id: 2321
+  name: CADDO
+  state_id: 35
+BOSSIERLouisiana:
+  id: 2322
+  name: BOSSIER
+  state_id: 35
+WEBSTERLouisiana:
+  id: 2323
+  name: WEBSTER
+  state_id: 35
+RED RIVERLouisiana:
+  id: 2324
+  name: RED RIVER
+  state_id: 35
+DE SOTOLouisiana:
+  id: 2325
+  name: DE SOTO
+  state_id: 35
+SABINELouisiana:
+  id: 2326
+  name: SABINE
+  state_id: 35
+OUACHITALouisiana:
+  id: 2327
+  name: OUACHITA
+  state_id: 35
+RICHLANDLouisiana:
+  id: 2328
+  name: RICHLAND
+  state_id: 35
+FRANKLINLouisiana:
+  id: 2329
+  name: FRANKLIN
+  state_id: 35
+MOREHOUSELouisiana:
+  id: 2330
+  name: MOREHOUSE
+  state_id: 35
+UNIONLouisiana:
+  id: 2331
+  name: UNION
+  state_id: 35
+JACKSONLouisiana:
+  id: 2332
+  name: JACKSON
+  state_id: 35
+LINCOLNLouisiana:
+  id: 2333
+  name: LINCOLN
+  state_id: 35
+MADISONLouisiana:
+  id: 2334
+  name: MADISON
+  state_id: 35
+WEST CARROLLLouisiana:
+  id: 2335
+  name: WEST CARROLL
+  state_id: 35
+EAST CARROLLLouisiana:
+  id: 2336
+  name: EAST CARROLL
+  state_id: 35
+RAPIDESLouisiana:
+  id: 2337
+  name: RAPIDES
+  state_id: 35
+CONCORDIALouisiana:
+  id: 2338
+  name: CONCORDIA
+  state_id: 35
+AVOYELLESLouisiana:
+  id: 2339
+  name: AVOYELLES
+  state_id: 35
+CATAHOULALouisiana:
+  id: 2340
+  name: CATAHOULA
+  state_id: 35
+LA SALLELouisiana:
+  id: 2341
+  name: LA SALLE
+  state_id: 35
+TENSASLouisiana:
+  id: 2342
+  name: TENSAS
+  state_id: 35
+WINNLouisiana:
+  id: 2343
+  name: WINN
+  state_id: 35
+GRANTLouisiana:
+  id: 2344
+  name: GRANT
+  state_id: 35
+CALDWELLLouisiana:
+  id: 2345
+  name: CALDWELL
+  state_id: 35
+JEFFERSONArkansas:
+  id: 2346
+  name: JEFFERSON
+  state_id: 36
+DESHAArkansas:
+  id: 2347
+  name: DESHA
+  state_id: 36
+BRADLEYArkansas:
+  id: 2348
+  name: BRADLEY
+  state_id: 36
+ASHLEYArkansas:
+  id: 2349
+  name: ASHLEY
+  state_id: 36
+CHICOTArkansas:
+  id: 2350
+  name: CHICOT
+  state_id: 36
+LINCOLNArkansas:
+  id: 2351
+  name: LINCOLN
+  state_id: 36
+DREWArkansas:
+  id: 2352
+  name: DREW
+  state_id: 36
+CLEVELANDArkansas:
+  id: 2353
+  name: CLEVELAND
+  state_id: 36
+OUACHITAArkansas:
+  id: 2354
+  name: OUACHITA
+  state_id: 36
+CLARKArkansas:
+  id: 2355
+  name: CLARK
+  state_id: 36
+NEVADAArkansas:
+  id: 2356
+  name: NEVADA
+  state_id: 36
+UNIONArkansas:
+  id: 2357
+  name: UNION
+  state_id: 36
+DALLASArkansas:
+  id: 2358
+  name: DALLAS
+  state_id: 36
+COLUMBIAArkansas:
+  id: 2359
+  name: COLUMBIA
+  state_id: 36
+CALHOUNArkansas:
+  id: 2360
+  name: CALHOUN
+  state_id: 36
+HEMPSTEADArkansas:
+  id: 2361
+  name: HEMPSTEAD
+  state_id: 36
+LITTLE RIVERArkansas:
+  id: 2362
+  name: LITTLE RIVER
+  state_id: 36
+SEVIERArkansas:
+  id: 2363
+  name: SEVIER
+  state_id: 36
+LAFAYETTEArkansas:
+  id: 2364
+  name: LAFAYETTE
+  state_id: 36
+HOWARDArkansas:
+  id: 2365
+  name: HOWARD
+  state_id: 36
+MILLERArkansas:
+  id: 2366
+  name: MILLER
+  state_id: 36
+GARLANDArkansas:
+  id: 2367
+  name: GARLAND
+  state_id: 36
+PIKEArkansas:
+  id: 2368
+  name: PIKE
+  state_id: 36
+HOT SPRINGArkansas:
+  id: 2369
+  name: HOT SPRING
+  state_id: 36
+POLKArkansas:
+  id: 2370
+  name: POLK
+  state_id: 36
+MONTGOMERYArkansas:
+  id: 2371
+  name: MONTGOMERY
+  state_id: 36
+PERRYArkansas:
+  id: 2372
+  name: PERRY
+  state_id: 36
+PULASKIArkansas:
+  id: 2373
+  name: PULASKI
+  state_id: 36
+ARKANSASArkansas:
+  id: 2374
+  name: ARKANSAS
+  state_id: 36
+JACKSONArkansas:
+  id: 2375
+  name: JACKSON
+  state_id: 36
+WOODRUFFArkansas:
+  id: 2376
+  name: WOODRUFF
+  state_id: 36
+LONOKEArkansas:
+  id: 2377
+  name: LONOKE
+  state_id: 36
+WHITEArkansas:
+  id: 2378
+  name: WHITE
+  state_id: 36
+SALINEArkansas:
+  id: 2379
+  name: SALINE
+  state_id: 36
+VAN BURENArkansas:
+  id: 2380
+  name: VAN BUREN
+  state_id: 36
+PRAIRIEArkansas:
+  id: 2381
+  name: PRAIRIE
+  state_id: 36
+MONROEArkansas:
+  id: 2382
+  name: MONROE
+  state_id: 36
+CONWAYArkansas:
+  id: 2383
+  name: CONWAY
+  state_id: 36
+FAULKNERArkansas:
+  id: 2384
+  name: FAULKNER
+  state_id: 36
+CLEBURNEArkansas:
+  id: 2385
+  name: CLEBURNE
+  state_id: 36
+STONEArkansas:
+  id: 2386
+  name: STONE
+  state_id: 36
+GRANTArkansas:
+  id: 2387
+  name: GRANT
+  state_id: 36
+INDEPENDENCEArkansas:
+  id: 2388
+  name: INDEPENDENCE
+  state_id: 36
+CRITTENDENArkansas:
+  id: 2389
+  name: CRITTENDEN
+  state_id: 36
+MISSISSIPPIArkansas:
+  id: 2390
+  name: MISSISSIPPI
+  state_id: 36
+LEEArkansas:
+  id: 2391
+  name: LEE
+  state_id: 36
+PHILLIPSArkansas:
+  id: 2392
+  name: PHILLIPS
+  state_id: 36
+CROSSArkansas:
+  id: 2393
+  name: CROSS
+  state_id: 36
+SAINT FRANCISArkansas:
+  id: 2394
+  name: SAINT FRANCIS
+  state_id: 36
+POINSETTArkansas:
+  id: 2395
+  name: POINSETT
+  state_id: 36
+CRAIGHEADArkansas:
+  id: 2396
+  name: CRAIGHEAD
+  state_id: 36
+LAWRENCEArkansas:
+  id: 2397
+  name: LAWRENCE
+  state_id: 36
+GREENEArkansas:
+  id: 2398
+  name: GREENE
+  state_id: 36
+RANDOLPHArkansas:
+  id: 2399
+  name: RANDOLPH
+  state_id: 36
+CLAYArkansas:
+  id: 2400
+  name: CLAY
+  state_id: 36
+SHARPArkansas:
+  id: 2401
+  name: SHARP
+  state_id: 36
+IZARDArkansas:
+  id: 2402
+  name: IZARD
+  state_id: 36
+FULTONArkansas:
+  id: 2403
+  name: FULTON
+  state_id: 36
+BAXTERArkansas:
+  id: 2404
+  name: BAXTER
+  state_id: 36
+BOONEArkansas:
+  id: 2405
+  name: BOONE
+  state_id: 36
+CARROLLArkansas:
+  id: 2406
+  name: CARROLL
+  state_id: 36
+MARIONArkansas:
+  id: 2407
+  name: MARION
+  state_id: 36
+NEWTONArkansas:
+  id: 2408
+  name: NEWTON
+  state_id: 36
+SEARCYArkansas:
+  id: 2409
+  name: SEARCY
+  state_id: 36
+POPEArkansas:
+  id: 2410
+  name: POPE
+  state_id: 36
+WASHINGTONArkansas:
+  id: 2411
+  name: WASHINGTON
+  state_id: 36
+BENTONArkansas:
+  id: 2412
+  name: BENTON
+  state_id: 36
+MADISONArkansas:
+  id: 2413
+  name: MADISON
+  state_id: 36
+FRANKLINArkansas:
+  id: 2414
+  name: FRANKLIN
+  state_id: 36
+YELLArkansas:
+  id: 2415
+  name: YELL
+  state_id: 36
+LOGANArkansas:
+  id: 2416
+  name: LOGAN
+  state_id: 36
+JOHNSONArkansas:
+  id: 2417
+  name: JOHNSON
+  state_id: 36
+SCOTTArkansas:
+  id: 2418
+  name: SCOTT
+  state_id: 36
+SEBASTIANArkansas:
+  id: 2419
+  name: SEBASTIAN
+  state_id: 36
+CRAWFORDArkansas:
+  id: 2420
+  name: CRAWFORD
+  state_id: 36
+CADDOOklahoma:
+  id: 2421
+  name: CADDO
+  state_id: 37
+GRADYOklahoma:
+  id: 2422
+  name: GRADY
+  state_id: 37
+OKLAHOMAOklahoma:
+  id: 2423
+  name: OKLAHOMA
+  state_id: 37
+MCCLAINOklahoma:
+  id: 2424
+  name: MCCLAIN
+  state_id: 37
+STEPHENSOklahoma:
+  id: 2425
+  name: STEPHENS
+  state_id: 37
+CANADIANOklahoma:
+  id: 2426
+  name: CANADIAN
+  state_id: 37
+KINGFISHEROklahoma:
+  id: 2427
+  name: KINGFISHER
+  state_id: 37
+CLEVELANDOklahoma:
+  id: 2428
+  name: CLEVELAND
+  state_id: 37
+WASHITAOklahoma:
+  id: 2429
+  name: WASHITA
+  state_id: 37
+LOGANOklahoma:
+  id: 2430
+  name: LOGAN
+  state_id: 37
+MURRAYOklahoma:
+  id: 2431
+  name: MURRAY
+  state_id: 37
+BLAINEOklahoma:
+  id: 2432
+  name: BLAINE
+  state_id: 37
+KIOWAOklahoma:
+  id: 2433
+  name: KIOWA
+  state_id: 37
+GARVINOklahoma:
+  id: 2434
+  name: GARVIN
+  state_id: 37
+NOBLEOklahoma:
+  id: 2435
+  name: NOBLE
+  state_id: 37
+CUSTEROklahoma:
+  id: 2436
+  name: CUSTER
+  state_id: 37
+CARTEROklahoma:
+  id: 2437
+  name: CARTER
+  state_id: 37
+LOVEOklahoma:
+  id: 2438
+  name: LOVE
+  state_id: 37
+JOHNSTONOklahoma:
+  id: 2439
+  name: JOHNSTON
+  state_id: 37
+MARSHALLOklahoma:
+  id: 2440
+  name: MARSHALL
+  state_id: 37
+BRYANOklahoma:
+  id: 2441
+  name: BRYAN
+  state_id: 37
+JEFFERSONOklahoma:
+  id: 2442
+  name: JEFFERSON
+  state_id: 37
+COMANCHEOklahoma:
+  id: 2443
+  name: COMANCHE
+  state_id: 37
+JACKSONOklahoma:
+  id: 2444
+  name: JACKSON
+  state_id: 37
+TILLMANOklahoma:
+  id: 2445
+  name: TILLMAN
+  state_id: 37
+COTTONOklahoma:
+  id: 2446
+  name: COTTON
+  state_id: 37
+HARMONOklahoma:
+  id: 2447
+  name: HARMON
+  state_id: 37
+GREEROklahoma:
+  id: 2448
+  name: GREER
+  state_id: 37
+BECKHAMOklahoma:
+  id: 2449
+  name: BECKHAM
+  state_id: 37
+ROGER MILLSOklahoma:
+  id: 2450
+  name: ROGER MILLS
+  state_id: 37
+DEWEYOklahoma:
+  id: 2451
+  name: DEWEY
+  state_id: 37
+GARFIELDOklahoma:
+  id: 2452
+  name: GARFIELD
+  state_id: 37
+ALFALFAOklahoma:
+  id: 2453
+  name: ALFALFA
+  state_id: 37
+WOODSOklahoma:
+  id: 2454
+  name: WOODS
+  state_id: 37
+MAJOROklahoma:
+  id: 2455
+  name: MAJOR
+  state_id: 37
+GRANTOklahoma:
+  id: 2456
+  name: GRANT
+  state_id: 37
+WOODWARDOklahoma:
+  id: 2457
+  name: WOODWARD
+  state_id: 37
+ELLISOklahoma:
+  id: 2458
+  name: ELLIS
+  state_id: 37
+HARPEROklahoma:
+  id: 2459
+  name: HARPER
+  state_id: 37
+BEAVEROklahoma:
+  id: 2460
+  name: BEAVER
+  state_id: 37
+TEXASOklahoma:
+  id: 2461
+  name: TEXAS
+  state_id: 37
+CIMARRONOklahoma:
+  id: 2462
+  name: CIMARRON
+  state_id: 37
+OSAGEOklahoma:
+  id: 2463
+  name: OSAGE
+  state_id: 37
+WASHINGTONOklahoma:
+  id: 2464
+  name: WASHINGTON
+  state_id: 37
+TULSAOklahoma:
+  id: 2465
+  name: TULSA
+  state_id: 37
+CREEKOklahoma:
+  id: 2466
+  name: CREEK
+  state_id: 37
+WAGONEROklahoma:
+  id: 2467
+  name: WAGONER
+  state_id: 37
+ROGERSOklahoma:
+  id: 2468
+  name: ROGERS
+  state_id: 37
+PAWNEEOklahoma:
+  id: 2469
+  name: PAWNEE
+  state_id: 37
+PAYNEOklahoma:
+  id: 2470
+  name: PAYNE
+  state_id: 37
+LINCOLNOklahoma:
+  id: 2471
+  name: LINCOLN
+  state_id: 37
+NOWATAOklahoma:
+  id: 2472
+  name: NOWATA
+  state_id: 37
+CRAIGOklahoma:
+  id: 2473
+  name: CRAIG
+  state_id: 37
+MAYESOklahoma:
+  id: 2474
+  name: MAYES
+  state_id: 37
+OTTAWAOklahoma:
+  id: 2475
+  name: OTTAWA
+  state_id: 37
+DELAWAREOklahoma:
+  id: 2476
+  name: DELAWARE
+  state_id: 37
+MUSKOGEEOklahoma:
+  id: 2477
+  name: MUSKOGEE
+  state_id: 37
+OKMULGEEOklahoma:
+  id: 2478
+  name: OKMULGEE
+  state_id: 37
+PITTSBURGOklahoma:
+  id: 2479
+  name: PITTSBURG
+  state_id: 37
+MCINTOSHOklahoma:
+  id: 2480
+  name: MCINTOSH
+  state_id: 37
+CHEROKEEOklahoma:
+  id: 2481
+  name: CHEROKEE
+  state_id: 37
+SEQUOYAHOklahoma:
+  id: 2482
+  name: SEQUOYAH
+  state_id: 37
+HASKELLOklahoma:
+  id: 2483
+  name: HASKELL
+  state_id: 37
+ADAIROklahoma:
+  id: 2484
+  name: ADAIR
+  state_id: 37
+PUSHMATAHAOklahoma:
+  id: 2485
+  name: PUSHMATAHA
+  state_id: 37
+ATOKAOklahoma:
+  id: 2486
+  name: ATOKA
+  state_id: 37
+HUGHESOklahoma:
+  id: 2487
+  name: HUGHES
+  state_id: 37
+COALOklahoma:
+  id: 2488
+  name: COAL
+  state_id: 37
+LATIMEROklahoma:
+  id: 2489
+  name: LATIMER
+  state_id: 37
+LE FLOREOklahoma:
+  id: 2490
+  name: LE FLORE
+  state_id: 37
+KAYOklahoma:
+  id: 2491
+  name: KAY
+  state_id: 37
+MCCURTAINOklahoma:
+  id: 2492
+  name: MCCURTAIN
+  state_id: 37
+CHOCTAWOklahoma:
+  id: 2493
+  name: CHOCTAW
+  state_id: 37
+POTTAWATOMIEOklahoma:
+  id: 2494
+  name: POTTAWATOMIE
+  state_id: 37
+SEMINOLEOklahoma:
+  id: 2495
+  name: SEMINOLE
+  state_id: 37
+PONTOTOCOklahoma:
+  id: 2496
+  name: PONTOTOC
+  state_id: 37
+OKFUSKEEOklahoma:
+  id: 2497
+  name: OKFUSKEE
+  state_id: 37
+TRAVISTexas:
+  id: 2498
+  name: TRAVIS
+  state_id: 38
+DALLASTexas:
+  id: 2499
+  name: DALLAS
+  state_id: 38
+COLLINTexas:
+  id: 2500
+  name: COLLIN
+  state_id: 38
+DENTONTexas:
+  id: 2501
+  name: DENTON
+  state_id: 38
+GRAYSONTexas:
+  id: 2502
+  name: GRAYSON
+  state_id: 38
+ROCKWALLTexas:
+  id: 2503
+  name: ROCKWALL
+  state_id: 38
+ELLISTexas:
+  id: 2504
+  name: ELLIS
+  state_id: 38
+NAVARROTexas:
+  id: 2505
+  name: NAVARRO
+  state_id: 38
+VAN ZANDTTexas:
+  id: 2506
+  name: VAN ZANDT
+  state_id: 38
+KAUFMANTexas:
+  id: 2507
+  name: KAUFMAN
+  state_id: 38
+HENDERSONTexas:
+  id: 2508
+  name: HENDERSON
+  state_id: 38
+HUNTTexas:
+  id: 2509
+  name: HUNT
+  state_id: 38
+WOODTexas:
+  id: 2510
+  name: WOOD
+  state_id: 38
+LAMARTexas:
+  id: 2511
+  name: LAMAR
+  state_id: 38
+RED RIVERTexas:
+  id: 2512
+  name: RED RIVER
+  state_id: 38
+FANNINTexas:
+  id: 2513
+  name: FANNIN
+  state_id: 38
+DELTATexas:
+  id: 2514
+  name: DELTA
+  state_id: 38
+HOPKINSTexas:
+  id: 2515
+  name: HOPKINS
+  state_id: 38
+RAINSTexas:
+  id: 2516
+  name: RAINS
+  state_id: 38
+CAMPTexas:
+  id: 2517
+  name: CAMP
+  state_id: 38
+TITUSTexas:
+  id: 2518
+  name: TITUS
+  state_id: 38
+FRANKLINTexas:
+  id: 2519
+  name: FRANKLIN
+  state_id: 38
+BOWIETexas:
+  id: 2520
+  name: BOWIE
+  state_id: 38
+CASSTexas:
+  id: 2521
+  name: CASS
+  state_id: 38
+MARIONTexas:
+  id: 2522
+  name: MARION
+  state_id: 38
+MORRISTexas:
+  id: 2523
+  name: MORRIS
+  state_id: 38
+GREGGTexas:
+  id: 2524
+  name: GREGG
+  state_id: 38
+PANOLATexas:
+  id: 2525
+  name: PANOLA
+  state_id: 38
+UPSHURTexas:
+  id: 2526
+  name: UPSHUR
+  state_id: 38
+HARRISONTexas:
+  id: 2527
+  name: HARRISON
+  state_id: 38
+RUSKTexas:
+  id: 2528
+  name: RUSK
+  state_id: 38
+SMITHTexas:
+  id: 2529
+  name: SMITH
+  state_id: 38
+CHEROKEETexas:
+  id: 2530
+  name: CHEROKEE
+  state_id: 38
+NACOGDOCHESTexas:
+  id: 2531
+  name: NACOGDOCHES
+  state_id: 38
+ANDERSONTexas:
+  id: 2532
+  name: ANDERSON
+  state_id: 38
+LEONTexas:
+  id: 2533
+  name: LEON
+  state_id: 38
+TRINITYTexas:
+  id: 2534
+  name: TRINITY
+  state_id: 38
+HOUSTONTexas:
+  id: 2535
+  name: HOUSTON
+  state_id: 38
+FREESTONETexas:
+  id: 2536
+  name: FREESTONE
+  state_id: 38
+MADISONTexas:
+  id: 2537
+  name: MADISON
+  state_id: 38
+ANGELINATexas:
+  id: 2538
+  name: ANGELINA
+  state_id: 38
+NEWTONTexas:
+  id: 2539
+  name: NEWTON
+  state_id: 38
+SAN AUGUSTINETexas:
+  id: 2540
+  name: SAN AUGUSTINE
+  state_id: 38
+SABINETexas:
+  id: 2541
+  name: SABINE
+  state_id: 38
+POLKTexas:
+  id: 2542
+  name: POLK
+  state_id: 38
+SHELBYTexas:
+  id: 2543
+  name: SHELBY
+  state_id: 38
+TYLERTexas:
+  id: 2544
+  name: TYLER
+  state_id: 38
+JASPERTexas:
+  id: 2545
+  name: JASPER
+  state_id: 38
+TARRANTTexas:
+  id: 2546
+  name: TARRANT
+  state_id: 38
+PARKERTexas:
+  id: 2547
+  name: PARKER
+  state_id: 38
+JOHNSONTexas:
+  id: 2548
+  name: JOHNSON
+  state_id: 38
+WISETexas:
+  id: 2549
+  name: WISE
+  state_id: 38
+HOODTexas:
+  id: 2550
+  name: HOOD
+  state_id: 38
+SOMERVELLTexas:
+  id: 2551
+  name: SOMERVELL
+  state_id: 38
+HILLTexas:
+  id: 2552
+  name: HILL
+  state_id: 38
+PALO PINTOTexas:
+  id: 2553
+  name: PALO PINTO
+  state_id: 38
+CLAYTexas:
+  id: 2554
+  name: CLAY
+  state_id: 38
+MONTAGUETexas:
+  id: 2555
+  name: MONTAGUE
+  state_id: 38
+COOKETexas:
+  id: 2556
+  name: COOKE
+  state_id: 38
+WICHITATexas:
+  id: 2557
+  name: WICHITA
+  state_id: 38
+ARCHERTexas:
+  id: 2558
+  name: ARCHER
+  state_id: 38
+KNOXTexas:
+  id: 2559
+  name: KNOX
+  state_id: 38
+WILBARGERTexas:
+  id: 2560
+  name: WILBARGER
+  state_id: 38
+YOUNGTexas:
+  id: 2561
+  name: YOUNG
+  state_id: 38
+BAYLORTexas:
+  id: 2562
+  name: BAYLOR
+  state_id: 38
+HASKELLTexas:
+  id: 2563
+  name: HASKELL
+  state_id: 38
+ERATHTexas:
+  id: 2564
+  name: ERATH
+  state_id: 38
+STEPHENSTexas:
+  id: 2565
+  name: STEPHENS
+  state_id: 38
+JACKTexas:
+  id: 2566
+  name: JACK
+  state_id: 38
+SHACKELFORDTexas:
+  id: 2567
+  name: SHACKELFORD
+  state_id: 38
+BROWNTexas:
+  id: 2568
+  name: BROWN
+  state_id: 38
+EASTLANDTexas:
+  id: 2569
+  name: EASTLAND
+  state_id: 38
+HAMILTONTexas:
+  id: 2570
+  name: HAMILTON
+  state_id: 38
+COMANCHETexas:
+  id: 2571
+  name: COMANCHE
+  state_id: 38
+CALLAHANTexas:
+  id: 2572
+  name: CALLAHAN
+  state_id: 38
+THROCKMORTONTexas:
+  id: 2573
+  name: THROCKMORTON
+  state_id: 38
+BELLTexas:
+  id: 2574
+  name: BELL
+  state_id: 38
+MILAMTexas:
+  id: 2575
+  name: MILAM
+  state_id: 38
+CORYELLTexas:
+  id: 2576
+  name: CORYELL
+  state_id: 38
+MCLENNANTexas:
+  id: 2577
+  name: MCLENNAN
+  state_id: 38
+WILLIAMSONTexas:
+  id: 2578
+  name: WILLIAMSON
+  state_id: 38
+LAMPASASTexas:
+  id: 2579
+  name: LAMPASAS
+  state_id: 38
+FALLSTexas:
+  id: 2580
+  name: FALLS
+  state_id: 38
+ROBERTSONTexas:
+  id: 2581
+  name: ROBERTSON
+  state_id: 38
+BOSQUETexas:
+  id: 2582
+  name: BOSQUE
+  state_id: 38
+LIMESTONETexas:
+  id: 2583
+  name: LIMESTONE
+  state_id: 38
+MASONTexas:
+  id: 2584
+  name: MASON
+  state_id: 38
+RUNNELSTexas:
+  id: 2585
+  name: RUNNELS
+  state_id: 38
+MCCULLOCHTexas:
+  id: 2586
+  name: MCCULLOCH
+  state_id: 38
+COLEMANTexas:
+  id: 2587
+  name: COLEMAN
+  state_id: 38
+LLANOTexas:
+  id: 2588
+  name: LLANO
+  state_id: 38
+SAN SABATexas:
+  id: 2589
+  name: SAN SABA
+  state_id: 38
+CONCHOTexas:
+  id: 2590
+  name: CONCHO
+  state_id: 38
+MENARDTexas:
+  id: 2591
+  name: MENARD
+  state_id: 38
+MILLSTexas:
+  id: 2592
+  name: MILLS
+  state_id: 38
+KIMBLETexas:
+  id: 2593
+  name: KIMBLE
+  state_id: 38
+EDWARDSTexas:
+  id: 2594
+  name: EDWARDS
+  state_id: 38
+TOM GREENTexas:
+  id: 2595
+  name: TOM GREEN
+  state_id: 38
+IRIONTexas:
+  id: 2596
+  name: IRION
+  state_id: 38
+REAGANTexas:
+  id: 2597
+  name: REAGAN
+  state_id: 38
+COKETexas:
+  id: 2598
+  name: COKE
+  state_id: 38
+SCHLEICHERTexas:
+  id: 2599
+  name: SCHLEICHER
+  state_id: 38
+CROCKETTTexas:
+  id: 2600
+  name: CROCKETT
+  state_id: 38
+SUTTONTexas:
+  id: 2601
+  name: SUTTON
+  state_id: 38
+STERLINGTexas:
+  id: 2602
+  name: STERLING
+  state_id: 38
+HARRISTexas:
+  id: 2603
+  name: HARRIS
+  state_id: 38
+MONTGOMERYTexas:
+  id: 2604
+  name: MONTGOMERY
+  state_id: 38
+WALKERTexas:
+  id: 2605
+  name: WALKER
+  state_id: 38
+LIBERTYTexas:
+  id: 2606
+  name: LIBERTY
+  state_id: 38
+SAN JACINTOTexas:
+  id: 2607
+  name: SAN JACINTO
+  state_id: 38
+GRIMESTexas:
+  id: 2608
+  name: GRIMES
+  state_id: 38
+HARDINTexas:
+  id: 2609
+  name: HARDIN
+  state_id: 38
+MATAGORDATexas:
+  id: 2610
+  name: MATAGORDA
+  state_id: 38
+FORT BENDTexas:
+  id: 2611
+  name: FORT BEND
+  state_id: 38
+COLORADOTexas:
+  id: 2612
+  name: COLORADO
+  state_id: 38
+AUSTINTexas:
+  id: 2613
+  name: AUSTIN
+  state_id: 38
+WHARTONTexas:
+  id: 2614
+  name: WHARTON
+  state_id: 38
+BRAZORIATexas:
+  id: 2615
+  name: BRAZORIA
+  state_id: 38
+WALLERTexas:
+  id: 2616
+  name: WALLER
+  state_id: 38
+WASHINGTONTexas:
+  id: 2617
+  name: WASHINGTON
+  state_id: 38
+GALVESTONTexas:
+  id: 2618
+  name: GALVESTON
+  state_id: 38
+CHAMBERSTexas:
+  id: 2619
+  name: CHAMBERS
+  state_id: 38
+ORANGETexas:
+  id: 2620
+  name: ORANGE
+  state_id: 38
+JEFFERSONTexas:
+  id: 2621
+  name: JEFFERSON
+  state_id: 38
+BRAZOSTexas:
+  id: 2622
+  name: BRAZOS
+  state_id: 38
+BURLESONTexas:
+  id: 2623
+  name: BURLESON
+  state_id: 38
+LEETexas:
+  id: 2624
+  name: LEE
+  state_id: 38
+VICTORIATexas:
+  id: 2625
+  name: VICTORIA
+  state_id: 38
+REFUGIOTexas:
+  id: 2626
+  name: REFUGIO
+  state_id: 38
+DE WITTTexas:
+  id: 2627
+  name: DE WITT
+  state_id: 38
+JACKSONTexas:
+  id: 2628
+  name: JACKSON
+  state_id: 38
+GOLIADTexas:
+  id: 2629
+  name: GOLIAD
+  state_id: 38
+LAVACATexas:
+  id: 2630
+  name: LAVACA
+  state_id: 38
+CALHOUNTexas:
+  id: 2631
+  name: CALHOUN
+  state_id: 38
+LA SALLETexas:
+  id: 2632
+  name: LA SALLE
+  state_id: 38
+BEXARTexas:
+  id: 2633
+  name: BEXAR
+  state_id: 38
+BANDERATexas:
+  id: 2634
+  name: BANDERA
+  state_id: 38
+KENDALLTexas:
+  id: 2635
+  name: KENDALL
+  state_id: 38
+FRIOTexas:
+  id: 2636
+  name: FRIO
+  state_id: 38
+MCMULLENTexas:
+  id: 2637
+  name: MCMULLEN
+  state_id: 38
+ATASCOSATexas:
+  id: 2638
+  name: ATASCOSA
+  state_id: 38
+MEDINATexas:
+  id: 2639
+  name: MEDINA
+  state_id: 38
+KERRTexas:
+  id: 2640
+  name: KERR
+  state_id: 38
+LIVE OAKTexas:
+  id: 2641
+  name: LIVE OAK
+  state_id: 38
+WEBBTexas:
+  id: 2642
+  name: WEBB
+  state_id: 38
+ZAPATATexas:
+  id: 2643
+  name: ZAPATA
+  state_id: 38
+COMALTexas:
+  id: 2644
+  name: COMAL
+  state_id: 38
+BEETexas:
+  id: 2645
+  name: BEE
+  state_id: 38
+GUADALUPETexas:
+  id: 2646
+  name: GUADALUPE
+  state_id: 38
+KARNESTexas:
+  id: 2647
+  name: KARNES
+  state_id: 38
+WILSONTexas:
+  id: 2648
+  name: WILSON
+  state_id: 38
+GONZALESTexas:
+  id: 2649
+  name: GONZALES
+  state_id: 38
+NUECESTexas:
+  id: 2650
+  name: NUECES
+  state_id: 38
+JIM WELLSTexas:
+  id: 2651
+  name: JIM WELLS
+  state_id: 38
+SAN PATRICIOTexas:
+  id: 2652
+  name: SAN PATRICIO
+  state_id: 38
+KENEDYTexas:
+  id: 2653
+  name: KENEDY
+  state_id: 38
+DUVALTexas:
+  id: 2654
+  name: DUVAL
+  state_id: 38
+BROOKSTexas:
+  id: 2655
+  name: BROOKS
+  state_id: 38
+ARANSASTexas:
+  id: 2656
+  name: ARANSAS
+  state_id: 38
+JIM HOGGTexas:
+  id: 2657
+  name: JIM HOGG
+  state_id: 38
+KLEBERGTexas:
+  id: 2658
+  name: KLEBERG
+  state_id: 38
+HIDALGOTexas:
+  id: 2659
+  name: HIDALGO
+  state_id: 38
+CAMERONTexas:
+  id: 2660
+  name: CAMERON
+  state_id: 38
+STARRTexas:
+  id: 2661
+  name: STARR
+  state_id: 38
+WILLACYTexas:
+  id: 2662
+  name: WILLACY
+  state_id: 38
+BASTROPTexas:
+  id: 2663
+  name: BASTROP
+  state_id: 38
+BURNETTexas:
+  id: 2664
+  name: BURNET
+  state_id: 38
+BLANCOTexas:
+  id: 2665
+  name: BLANCO
+  state_id: 38
+HAYSTexas:
+  id: 2666
+  name: HAYS
+  state_id: 38
+CALDWELLTexas:
+  id: 2667
+  name: CALDWELL
+  state_id: 38
+GILLESPIETexas:
+  id: 2668
+  name: GILLESPIE
+  state_id: 38
+UVALDETexas:
+  id: 2669
+  name: UVALDE
+  state_id: 38
+DIMMITTexas:
+  id: 2670
+  name: DIMMIT
+  state_id: 38
+ZAVALATexas:
+  id: 2671
+  name: ZAVALA
+  state_id: 38
+KINNEYTexas:
+  id: 2672
+  name: KINNEY
+  state_id: 38
+REALTexas:
+  id: 2673
+  name: REAL
+  state_id: 38
+VAL VERDETexas:
+  id: 2674
+  name: VAL VERDE
+  state_id: 38
+TERRELLTexas:
+  id: 2675
+  name: TERRELL
+  state_id: 38
+MAVERICKTexas:
+  id: 2676
+  name: MAVERICK
+  state_id: 38
+FAYETTETexas:
+  id: 2677
+  name: FAYETTE
+  state_id: 38
+OLDHAMTexas:
+  id: 2678
+  name: OLDHAM
+  state_id: 38
+GRAYTexas:
+  id: 2679
+  name: GRAY
+  state_id: 38
+WHEELERTexas:
+  id: 2680
+  name: WHEELER
+  state_id: 38
+LIPSCOMBTexas:
+  id: 2681
+  name: LIPSCOMB
+  state_id: 38
+HUTCHINSONTexas:
+  id: 2682
+  name: HUTCHINSON
+  state_id: 38
+PARMERTexas:
+  id: 2683
+  name: PARMER
+  state_id: 38
+POTTERTexas:
+  id: 2684
+  name: POTTER
+  state_id: 38
+MOORETexas:
+  id: 2685
+  name: MOORE
+  state_id: 38
+HEMPHILLTexas:
+  id: 2686
+  name: HEMPHILL
+  state_id: 38
+RANDALLTexas:
+  id: 2687
+  name: RANDALL
+  state_id: 38
+HARTLEYTexas:
+  id: 2688
+  name: HARTLEY
+  state_id: 38
+ARMSTRONGTexas:
+  id: 2689
+  name: ARMSTRONG
+  state_id: 38
+HALETexas:
+  id: 2690
+  name: HALE
+  state_id: 38
+DALLAMTexas:
+  id: 2691
+  name: DALLAM
+  state_id: 38
+DEAF SMITHTexas:
+  id: 2692
+  name: DEAF SMITH
+  state_id: 38
+CASTROTexas:
+  id: 2693
+  name: CASTRO
+  state_id: 38
+LAMBTexas:
+  id: 2694
+  name: LAMB
+  state_id: 38
+OCHILTREETexas:
+  id: 2695
+  name: OCHILTREE
+  state_id: 38
+CARSONTexas:
+  id: 2696
+  name: CARSON
+  state_id: 38
+HANSFORDTexas:
+  id: 2697
+  name: HANSFORD
+  state_id: 38
+SWISHERTexas:
+  id: 2698
+  name: SWISHER
+  state_id: 38
+ROBERTSTexas:
+  id: 2699
+  name: ROBERTS
+  state_id: 38
+COLLINGSWORTHTexas:
+  id: 2700
+  name: COLLINGSWORTH
+  state_id: 38
+SHERMANTexas:
+  id: 2701
+  name: SHERMAN
+  state_id: 38
+CHILDRESSTexas:
+  id: 2702
+  name: CHILDRESS
+  state_id: 38
+DICKENSTexas:
+  id: 2703
+  name: DICKENS
+  state_id: 38
+FLOYDTexas:
+  id: 2704
+  name: FLOYD
+  state_id: 38
+COTTLETexas:
+  id: 2705
+  name: COTTLE
+  state_id: 38
+HARDEMANTexas:
+  id: 2706
+  name: HARDEMAN
+  state_id: 38
+DONLEYTexas:
+  id: 2707
+  name: DONLEY
+  state_id: 38
+FOARDTexas:
+  id: 2708
+  name: FOARD
+  state_id: 38
+KINGTexas:
+  id: 2709
+  name: KING
+  state_id: 38
+HALLTexas:
+  id: 2710
+  name: HALL
+  state_id: 38
+MOTLEYTexas:
+  id: 2711
+  name: MOTLEY
+  state_id: 38
+BRISCOETexas:
+  id: 2712
+  name: BRISCOE
+  state_id: 38
+HOCKLEYTexas:
+  id: 2713
+  name: HOCKLEY
+  state_id: 38
+COCHRANTexas:
+  id: 2714
+  name: COCHRAN
+  state_id: 38
+TERRYTexas:
+  id: 2715
+  name: TERRY
+  state_id: 38
+BAILEYTexas:
+  id: 2716
+  name: BAILEY
+  state_id: 38
+CROSBYTexas:
+  id: 2717
+  name: CROSBY
+  state_id: 38
+YOAKUMTexas:
+  id: 2718
+  name: YOAKUM
+  state_id: 38
+LUBBOCKTexas:
+  id: 2719
+  name: LUBBOCK
+  state_id: 38
+GARZATexas:
+  id: 2720
+  name: GARZA
+  state_id: 38
+DAWSONTexas:
+  id: 2721
+  name: DAWSON
+  state_id: 38
+GAINESTexas:
+  id: 2722
+  name: GAINES
+  state_id: 38
+LYNNTexas:
+  id: 2723
+  name: LYNN
+  state_id: 38
+JONESTexas:
+  id: 2724
+  name: JONES
+  state_id: 38
+STONEWALLTexas:
+  id: 2725
+  name: STONEWALL
+  state_id: 38
+NOLANTexas:
+  id: 2726
+  name: NOLAN
+  state_id: 38
+TAYLORTexas:
+  id: 2727
+  name: TAYLOR
+  state_id: 38
+HOWARDTexas:
+  id: 2728
+  name: HOWARD
+  state_id: 38
+MITCHELLTexas:
+  id: 2729
+  name: MITCHELL
+  state_id: 38
+SCURRYTexas:
+  id: 2730
+  name: SCURRY
+  state_id: 38
+KENTTexas:
+  id: 2731
+  name: KENT
+  state_id: 38
+FISHERTexas:
+  id: 2732
+  name: FISHER
+  state_id: 38
+MIDLANDTexas:
+  id: 2733
+  name: MIDLAND
+  state_id: 38
+ANDREWSTexas:
+  id: 2734
+  name: ANDREWS
+  state_id: 38
+REEVESTexas:
+  id: 2735
+  name: REEVES
+  state_id: 38
+WARDTexas:
+  id: 2736
+  name: WARD
+  state_id: 38
+PECOSTexas:
+  id: 2737
+  name: PECOS
+  state_id: 38
+CRANETexas:
+  id: 2738
+  name: CRANE
+  state_id: 38
+JEFF DAVISTexas:
+  id: 2739
+  name: JEFF DAVIS
+  state_id: 38
+BORDENTexas:
+  id: 2740
+  name: BORDEN
+  state_id: 38
+GLASSCOCKTexas:
+  id: 2741
+  name: GLASSCOCK
+  state_id: 38
+ECTORTexas:
+  id: 2742
+  name: ECTOR
+  state_id: 38
+WINKLERTexas:
+  id: 2743
+  name: WINKLER
+  state_id: 38
+MARTINTexas:
+  id: 2744
+  name: MARTIN
+  state_id: 38
+UPTONTexas:
+  id: 2745
+  name: UPTON
+  state_id: 38
+LOVINGTexas:
+  id: 2746
+  name: LOVING
+  state_id: 38
+EL PASOTexas:
+  id: 2747
+  name: EL PASO
+  state_id: 38
+BREWSTERTexas:
+  id: 2748
+  name: BREWSTER
+  state_id: 38
+HUDSPETHTexas:
+  id: 2749
+  name: HUDSPETH
+  state_id: 38
+PRESIDIOTexas:
+  id: 2750
+  name: PRESIDIO
+  state_id: 38
+CULBERSONTexas:
+  id: 2751
+  name: CULBERSON
+  state_id: 38
+JEFFERSONColorado:
+  id: 2752
+  name: JEFFERSON
+  state_id: 39
+ARAPAHOEColorado:
+  id: 2753
+  name: ARAPAHOE
+  state_id: 39
+ADAMSColorado:
+  id: 2754
+  name: ADAMS
+  state_id: 39
+BOULDERColorado:
+  id: 2755
+  name: BOULDER
+  state_id: 39
+ELBERTColorado:
+  id: 2756
+  name: ELBERT
+  state_id: 39
+DOUGLASColorado:
+  id: 2757
+  name: DOUGLAS
+  state_id: 39
+DENVERColorado:
+  id: 2758
+  name: DENVER
+  state_id: 39
+EL PASOColorado:
+  id: 2759
+  name: EL PASO
+  state_id: 39
+PARKColorado:
+  id: 2760
+  name: PARK
+  state_id: 39
+GILPINColorado:
+  id: 2761
+  name: GILPIN
+  state_id: 39
+EAGLEColorado:
+  id: 2762
+  name: EAGLE
+  state_id: 39
+SUMMITColorado:
+  id: 2763
+  name: SUMMIT
+  state_id: 39
+ROUTTColorado:
+  id: 2764
+  name: ROUTT
+  state_id: 39
+LAKEColorado:
+  id: 2765
+  name: LAKE
+  state_id: 39
+JACKSONColorado:
+  id: 2766
+  name: JACKSON
+  state_id: 39
+CLEAR CREEKColorado:
+  id: 2767
+  name: CLEAR CREEK
+  state_id: 39
+GRANDColorado:
+  id: 2768
+  name: GRAND
+  state_id: 39
+WELDColorado:
+  id: 2769
+  name: WELD
+  state_id: 39
+LARIMERColorado:
+  id: 2770
+  name: LARIMER
+  state_id: 39
+MORGANColorado:
+  id: 2771
+  name: MORGAN
+  state_id: 39
+WASHINGTONColorado:
+  id: 2772
+  name: WASHINGTON
+  state_id: 39
+PHILLIPSColorado:
+  id: 2773
+  name: PHILLIPS
+  state_id: 39
+LOGANColorado:
+  id: 2774
+  name: LOGAN
+  state_id: 39
+YUMAColorado:
+  id: 2775
+  name: YUMA
+  state_id: 39
+SEDGWICKColorado:
+  id: 2776
+  name: SEDGWICK
+  state_id: 39
+CHEYENNEColorado:
+  id: 2777
+  name: CHEYENNE
+  state_id: 39
+LINCOLNColorado:
+  id: 2778
+  name: LINCOLN
+  state_id: 39
+KIT CARSONColorado:
+  id: 2779
+  name: KIT CARSON
+  state_id: 39
+TELLERColorado:
+  id: 2780
+  name: TELLER
+  state_id: 39
+MOHAVEColorado:
+  id: 2781
+  name: MOHAVE
+  state_id: 39
+PUEBLOColorado:
+  id: 2782
+  name: PUEBLO
+  state_id: 39
+LAS ANIMASColorado:
+  id: 2783
+  name: LAS ANIMAS
+  state_id: 39
+KIOWAColorado:
+  id: 2784
+  name: KIOWA
+  state_id: 39
+BACAColorado:
+  id: 2785
+  name: BACA
+  state_id: 39
+OTEROColorado:
+  id: 2786
+  name: OTERO
+  state_id: 39
+CROWLEYColorado:
+  id: 2787
+  name: CROWLEY
+  state_id: 39
+BENTColorado:
+  id: 2788
+  name: BENT
+  state_id: 39
+HUERFANOColorado:
+  id: 2789
+  name: HUERFANO
+  state_id: 39
+PROWERSColorado:
+  id: 2790
+  name: PROWERS
+  state_id: 39
+ALAMOSAColorado:
+  id: 2791
+  name: ALAMOSA
+  state_id: 39
+CONEJOSColorado:
+  id: 2792
+  name: CONEJOS
+  state_id: 39
+ARCHULETAColorado:
+  id: 2793
+  name: ARCHULETA
+  state_id: 39
+LA PLATAColorado:
+  id: 2794
+  name: LA PLATA
+  state_id: 39
+COSTILLAColorado:
+  id: 2795
+  name: COSTILLA
+  state_id: 39
+SAGUACHEColorado:
+  id: 2796
+  name: SAGUACHE
+  state_id: 39
+MINERALColorado:
+  id: 2797
+  name: MINERAL
+  state_id: 39
+RIO GRANDEColorado:
+  id: 2798
+  name: RIO GRANDE
+  state_id: 39
+CHAFFEEColorado:
+  id: 2799
+  name: CHAFFEE
+  state_id: 39
+GUNNISONColorado:
+  id: 2800
+  name: GUNNISON
+  state_id: 39
+FREMONTColorado:
+  id: 2801
+  name: FREMONT
+  state_id: 39
+MONTROSEColorado:
+  id: 2802
+  name: MONTROSE
+  state_id: 39
+HINSDALEColorado:
+  id: 2803
+  name: HINSDALE
+  state_id: 39
+CUSTERColorado:
+  id: 2804
+  name: CUSTER
+  state_id: 39
+DOLORESColorado:
+  id: 2805
+  name: DOLORES
+  state_id: 39
+MONTEZUMAColorado:
+  id: 2806
+  name: MONTEZUMA
+  state_id: 39
+SAN MIGUELColorado:
+  id: 2807
+  name: SAN MIGUEL
+  state_id: 39
+DELTAColorado:
+  id: 2808
+  name: DELTA
+  state_id: 39
+OURAYColorado:
+  id: 2809
+  name: OURAY
+  state_id: 39
+SAN JUANColorado:
+  id: 2810
+  name: SAN JUAN
+  state_id: 39
+MESAColorado:
+  id: 2811
+  name: MESA
+  state_id: 39
+GARFIELDColorado:
+  id: 2812
+  name: GARFIELD
+  state_id: 39
+MOFFATColorado:
+  id: 2813
+  name: MOFFAT
+  state_id: 39
+PITKINColorado:
+  id: 2814
+  name: PITKIN
+  state_id: 39
+RIO BLANCOColorado:
+  id: 2815
+  name: RIO BLANCO
+  state_id: 39
+LARAMIEWyoming:
+  id: 2816
+  name: LARAMIE
+  state_id: 40
+ALBANYWyoming:
+  id: 2817
+  name: ALBANY
+  state_id: 40
+PARKWyoming:
+  id: 2818
+  name: PARK
+  state_id: 40
+PLATTEWyoming:
+  id: 2819
+  name: PLATTE
+  state_id: 40
+GOSHENWyoming:
+  id: 2820
+  name: GOSHEN
+  state_id: 40
+NIOBRARAWyoming:
+  id: 2821
+  name: NIOBRARA
+  state_id: 40
+CONVERSEWyoming:
+  id: 2822
+  name: CONVERSE
+  state_id: 40
+CARBONWyoming:
+  id: 2823
+  name: CARBON
+  state_id: 40
+FREMONTWyoming:
+  id: 2824
+  name: FREMONT
+  state_id: 40
+SWEETWATERWyoming:
+  id: 2825
+  name: SWEETWATER
+  state_id: 40
+WASHAKIEWyoming:
+  id: 2826
+  name: WASHAKIE
+  state_id: 40
+BIG HORNWyoming:
+  id: 2827
+  name: BIG HORN
+  state_id: 40
+HOT SPRINGSWyoming:
+  id: 2828
+  name: HOT SPRINGS
+  state_id: 40
+NATRONAWyoming:
+  id: 2829
+  name: NATRONA
+  state_id: 40
+JOHNSONWyoming:
+  id: 2830
+  name: JOHNSON
+  state_id: 40
+WESTONWyoming:
+  id: 2831
+  name: WESTON
+  state_id: 40
+CROOKWyoming:
+  id: 2832
+  name: CROOK
+  state_id: 40
+CAMPBELLWyoming:
+  id: 2833
+  name: CAMPBELL
+  state_id: 40
+SHERIDANWyoming:
+  id: 2834
+  name: SHERIDAN
+  state_id: 40
+SUBLETTEWyoming:
+  id: 2835
+  name: SUBLETTE
+  state_id: 40
+UINTAWyoming:
+  id: 2836
+  name: UINTA
+  state_id: 40
+TETONWyoming:
+  id: 2837
+  name: TETON
+  state_id: 40
+LINCOLNWyoming:
+  id: 2838
+  name: LINCOLN
+  state_id: 40
+BANNOCKIdaho:
+  id: 2839
+  name: BANNOCK
+  state_id: 41
+BINGHAMIdaho:
+  id: 2840
+  name: BINGHAM
+  state_id: 41
+POWERIdaho:
+  id: 2841
+  name: POWER
+  state_id: 41
+BUTTEIdaho:
+  id: 2842
+  name: BUTTE
+  state_id: 41
+CARIBOUIdaho:
+  id: 2843
+  name: CARIBOU
+  state_id: 41
+BEAR LAKEIdaho:
+  id: 2844
+  name: BEAR LAKE
+  state_id: 41
+CUSTERIdaho:
+  id: 2845
+  name: CUSTER
+  state_id: 41
+FRANKLINIdaho:
+  id: 2846
+  name: FRANKLIN
+  state_id: 41
+LEMHIIdaho:
+  id: 2847
+  name: LEMHI
+  state_id: 41
+ONEIDAIdaho:
+  id: 2848
+  name: ONEIDA
+  state_id: 41
+TWIN FALLSIdaho:
+  id: 2849
+  name: TWIN FALLS
+  state_id: 41
+CASSIAIdaho:
+  id: 2850
+  name: CASSIA
+  state_id: 41
+BLAINEIdaho:
+  id: 2851
+  name: BLAINE
+  state_id: 41
+GOODINGIdaho:
+  id: 2852
+  name: GOODING
+  state_id: 41
+CAMASIdaho:
+  id: 2853
+  name: CAMAS
+  state_id: 41
+LINCOLNIdaho:
+  id: 2854
+  name: LINCOLN
+  state_id: 41
+JEROMEIdaho:
+  id: 2855
+  name: JEROME
+  state_id: 41
+MINIDOKAIdaho:
+  id: 2856
+  name: MINIDOKA
+  state_id: 41
+BONNEVILLEIdaho:
+  id: 2857
+  name: BONNEVILLE
+  state_id: 41
+FREMONTIdaho:
+  id: 2858
+  name: FREMONT
+  state_id: 41
+TETONIdaho:
+  id: 2859
+  name: TETON
+  state_id: 41
+CLARKIdaho:
+  id: 2860
+  name: CLARK
+  state_id: 41
+JEFFERSONIdaho:
+  id: 2861
+  name: JEFFERSON
+  state_id: 41
+MADISONIdaho:
+  id: 2862
+  name: MADISON
+  state_id: 41
+NEZ PERCEIdaho:
+  id: 2863
+  name: NEZ PERCE
+  state_id: 41
+CLEARWATERIdaho:
+  id: 2864
+  name: CLEARWATER
+  state_id: 41
+IDAHOIdaho:
+  id: 2865
+  name: IDAHO
+  state_id: 41
+LEWISIdaho:
+  id: 2866
+  name: LEWIS
+  state_id: 41
+LATAHIdaho:
+  id: 2867
+  name: LATAH
+  state_id: 41
+ELMOREIdaho:
+  id: 2868
+  name: ELMORE
+  state_id: 41
+BOISEIdaho:
+  id: 2869
+  name: BOISE
+  state_id: 41
+OWYHEEIdaho:
+  id: 2870
+  name: OWYHEE
+  state_id: 41
+CANYONIdaho:
+  id: 2871
+  name: CANYON
+  state_id: 41
+WASHINGTONIdaho:
+  id: 2872
+  name: WASHINGTON
+  state_id: 41
+VALLEYIdaho:
+  id: 2873
+  name: VALLEY
+  state_id: 41
+ADAMSIdaho:
+  id: 2874
+  name: ADAMS
+  state_id: 41
+ADAIdaho:
+  id: 2875
+  name: ADA
+  state_id: 41
+GEMIdaho:
+  id: 2876
+  name: GEM
+  state_id: 41
+PAYETTEIdaho:
+  id: 2877
+  name: PAYETTE
+  state_id: 41
+KOOTENAIIdaho:
+  id: 2878
+  name: KOOTENAI
+  state_id: 41
+SHOSHONEIdaho:
+  id: 2879
+  name: SHOSHONE
+  state_id: 41
+BONNERIdaho:
+  id: 2880
+  name: BONNER
+  state_id: 41
+BOUNDARYIdaho:
+  id: 2881
+  name: BOUNDARY
+  state_id: 41
+BENEWAHIdaho:
+  id: 2882
+  name: BENEWAH
+  state_id: 41
+DUCHESNEUtah:
+  id: 2883
+  name: DUCHESNE
+  state_id: 42
+UTAHUtah:
+  id: 2884
+  name: UTAH
+  state_id: 42
+SALT LAKEUtah:
+  id: 2885
+  name: SALT LAKE
+  state_id: 42
+UINTAHUtah:
+  id: 2886
+  name: UINTAH
+  state_id: 42
+DAVISUtah:
+  id: 2887
+  name: DAVIS
+  state_id: 42
+SUMMITUtah:
+  id: 2888
+  name: SUMMIT
+  state_id: 42
+MORGANUtah:
+  id: 2889
+  name: MORGAN
+  state_id: 42
+TOOELEUtah:
+  id: 2890
+  name: TOOELE
+  state_id: 42
+DAGGETTUtah:
+  id: 2891
+  name: DAGGETT
+  state_id: 42
+RICHUtah:
+  id: 2892
+  name: RICH
+  state_id: 42
+WASATCHUtah:
+  id: 2893
+  name: WASATCH
+  state_id: 42
+WEBERUtah:
+  id: 2894
+  name: WEBER
+  state_id: 42
+BOX ELDERUtah:
+  id: 2895
+  name: BOX ELDER
+  state_id: 42
+CACHEUtah:
+  id: 2896
+  name: CACHE
+  state_id: 42
+CARBONUtah:
+  id: 2897
+  name: CARBON
+  state_id: 42
+SAN JUANUtah:
+  id: 2898
+  name: SAN JUAN
+  state_id: 42
+EMERYUtah:
+  id: 2899
+  name: EMERY
+  state_id: 42
+GRANDUtah:
+  id: 2900
+  name: GRAND
+  state_id: 42
+SEVIERUtah:
+  id: 2901
+  name: SEVIER
+  state_id: 42
+SANPETEUtah:
+  id: 2902
+  name: SANPETE
+  state_id: 42
+MILLARDUtah:
+  id: 2903
+  name: MILLARD
+  state_id: 42
+JUABUtah:
+  id: 2904
+  name: JUAB
+  state_id: 42
+KANEUtah:
+  id: 2905
+  name: KANE
+  state_id: 42
+GARFIELDUtah:
+  id: 2906
+  name: GARFIELD
+  state_id: 42
+BEAVERUtah:
+  id: 2907
+  name: BEAVER
+  state_id: 42
+IRONUtah:
+  id: 2908
+  name: IRON
+  state_id: 42
+WAYNEUtah:
+  id: 2909
+  name: WAYNE
+  state_id: 42
+WASHINGTONUtah:
+  id: 2910
+  name: WASHINGTON
+  state_id: 42
+PIUTEUtah:
+  id: 2911
+  name: PIUTE
+  state_id: 42
+MARICOPAArizona:
+  id: 2912
+  name: MARICOPA
+  state_id: 43
+PINALArizona:
+  id: 2913
+  name: PINAL
+  state_id: 43
+GILAArizona:
+  id: 2914
+  name: GILA
+  state_id: 43
+PIMAArizona:
+  id: 2915
+  name: PIMA
+  state_id: 43
+YAVAPAIArizona:
+  id: 2916
+  name: YAVAPAI
+  state_id: 43
+LA PAZArizona:
+  id: 2917
+  name: LA PAZ
+  state_id: 43
+YUMAArizona:
+  id: 2918
+  name: YUMA
+  state_id: 43
+MOHAVEArizona:
+  id: 2919
+  name: MOHAVE
+  state_id: 43
+GRAHAMArizona:
+  id: 2920
+  name: GRAHAM
+  state_id: 43
+GREENLEEArizona:
+  id: 2921
+  name: GREENLEE
+  state_id: 43
+COCHISEArizona:
+  id: 2922
+  name: COCHISE
+  state_id: 43
+SANTA CRUZArizona:
+  id: 2923
+  name: SANTA CRUZ
+  state_id: 43
+NAVAJOArizona:
+  id: 2924
+  name: NAVAJO
+  state_id: 43
+APACHEArizona:
+  id: 2925
+  name: APACHE
+  state_id: 43
+COCONINOArizona:
+  id: 2926
+  name: COCONINO
+  state_id: 43
+SANDOVALNew Mexico:
+  id: 2927
+  name: SANDOVAL
+  state_id: 44
+VALENCIANew Mexico:
+  id: 2928
+  name: VALENCIA
+  state_id: 44
+CIBOLANew Mexico:
+  id: 2929
+  name: CIBOLA
+  state_id: 44
+BERNALILLONew Mexico:
+  id: 2930
+  name: BERNALILLO
+  state_id: 44
+TORRANCENew Mexico:
+  id: 2931
+  name: TORRANCE
+  state_id: 44
+SANTA FENew Mexico:
+  id: 2932
+  name: SANTA FE
+  state_id: 44
+SOCORRONew Mexico:
+  id: 2933
+  name: SOCORRO
+  state_id: 44
+RIO ARRIBANew Mexico:
+  id: 2934
+  name: RIO ARRIBA
+  state_id: 44
+SAN JUANNew Mexico:
+  id: 2935
+  name: SAN JUAN
+  state_id: 44
+MCKINLEYNew Mexico:
+  id: 2936
+  name: MCKINLEY
+  state_id: 44
+TAOSNew Mexico:
+  id: 2937
+  name: TAOS
+  state_id: 44
+SAN MIGUELNew Mexico:
+  id: 2938
+  name: SAN MIGUEL
+  state_id: 44
+LOS ALAMOSNew Mexico:
+  id: 2939
+  name: LOS ALAMOS
+  state_id: 44
+COLFAXNew Mexico:
+  id: 2940
+  name: COLFAX
+  state_id: 44
+GUADALUPENew Mexico:
+  id: 2941
+  name: GUADALUPE
+  state_id: 44
+MORANew Mexico:
+  id: 2942
+  name: MORA
+  state_id: 44
+HARDINGNew Mexico:
+  id: 2943
+  name: HARDING
+  state_id: 44
+CATRONNew Mexico:
+  id: 2944
+  name: CATRON
+  state_id: 44
+SIERRANew Mexico:
+  id: 2945
+  name: SIERRA
+  state_id: 44
+DONA ANANew Mexico:
+  id: 2946
+  name: DONA ANA
+  state_id: 44
+HIDALGONew Mexico:
+  id: 2947
+  name: HIDALGO
+  state_id: 44
+GRANTNew Mexico:
+  id: 2948
+  name: GRANT
+  state_id: 44
+LUNANew Mexico:
+  id: 2949
+  name: LUNA
+  state_id: 44
+CURRYNew Mexico:
+  id: 2950
+  name: CURRY
+  state_id: 44
+ROOSEVELTNew Mexico:
+  id: 2951
+  name: ROOSEVELT
+  state_id: 44
+LEANew Mexico:
+  id: 2952
+  name: LEA
+  state_id: 44
+DE BACANew Mexico:
+  id: 2953
+  name: DE BACA
+  state_id: 44
+QUAYNew Mexico:
+  id: 2954
+  name: QUAY
+  state_id: 44
+CHAVESNew Mexico:
+  id: 2955
+  name: CHAVES
+  state_id: 44
+EDDYNew Mexico:
+  id: 2956
+  name: EDDY
+  state_id: 44
+LINCOLNNew Mexico:
+  id: 2957
+  name: LINCOLN
+  state_id: 44
+OTERONew Mexico:
+  id: 2958
+  name: OTERO
+  state_id: 44
+UNIONNew Mexico:
+  id: 2959
+  name: UNION
+  state_id: 44
+CLARKNevada:
+  id: 2960
+  name: CLARK
+  state_id: 45
+LINCOLNNevada:
+  id: 2961
+  name: LINCOLN
+  state_id: 45
+NYENevada:
+  id: 2962
+  name: NYE
+  state_id: 45
+ESMERALDANevada:
+  id: 2963
+  name: ESMERALDA
+  state_id: 45
+WHITE PINENevada:
+  id: 2964
+  name: WHITE PINE
+  state_id: 45
+LANDERNevada:
+  id: 2965
+  name: LANDER
+  state_id: 45
+EUREKANevada:
+  id: 2966
+  name: EUREKA
+  state_id: 45
+WASHOENevada:
+  id: 2967
+  name: WASHOE
+  state_id: 45
+LYONNevada:
+  id: 2968
+  name: LYON
+  state_id: 45
+HUMBOLDTNevada:
+  id: 2969
+  name: HUMBOLDT
+  state_id: 45
+CHURCHILLNevada:
+  id: 2970
+  name: CHURCHILL
+  state_id: 45
+DOUGLASNevada:
+  id: 2971
+  name: DOUGLAS
+  state_id: 45
+MINERALNevada:
+  id: 2972
+  name: MINERAL
+  state_id: 45
+PERSHINGNevada:
+  id: 2973
+  name: PERSHING
+  state_id: 45
+STOREYNevada:
+  id: 2974
+  name: STOREY
+  state_id: 45
+CARSON CITYNevada:
+  id: 2975
+  name: CARSON CITY
+  state_id: 45
+ELKONevada:
+  id: 2976
+  name: ELKO
+  state_id: 45
+LOS ANGELESCalifornia:
+  id: 2977
+  name: LOS ANGELES
+  state_id: 46
+ORANGECalifornia:
+  id: 2978
+  name: ORANGE
+  state_id: 46
+VENTURACalifornia:
+  id: 2979
+  name: VENTURA
+  state_id: 46
+SAN BERNARDINOCalifornia:
+  id: 2980
+  name: SAN BERNARDINO
+  state_id: 46
+RIVERSIDECalifornia:
+  id: 2981
+  name: RIVERSIDE
+  state_id: 46
+SAN DIEGOCalifornia:
+  id: 2982
+  name: SAN DIEGO
+  state_id: 46
+IMPERIALCalifornia:
+  id: 2983
+  name: IMPERIAL
+  state_id: 46
+INYOCalifornia:
+  id: 2984
+  name: INYO
+  state_id: 46
+SANTA BARBARACalifornia:
+  id: 2985
+  name: SANTA BARBARA
+  state_id: 46
+TULARECalifornia:
+  id: 2986
+  name: TULARE
+  state_id: 46
+KINGSCalifornia:
+  id: 2987
+  name: KINGS
+  state_id: 46
+KERNCalifornia:
+  id: 2988
+  name: KERN
+  state_id: 46
+FRESNOCalifornia:
+  id: 2989
+  name: FRESNO
+  state_id: 46
+SAN LUIS OBISPOCalifornia:
+  id: 2990
+  name: SAN LUIS OBISPO
+  state_id: 46
+MONTEREYCalifornia:
+  id: 2991
+  name: MONTEREY
+  state_id: 46
+MONOCalifornia:
+  id: 2992
+  name: MONO
+  state_id: 46
+MADERACalifornia:
+  id: 2993
+  name: MADERA
+  state_id: 46
+MERCEDCalifornia:
+  id: 2994
+  name: MERCED
+  state_id: 46
+MARIPOSACalifornia:
+  id: 2995
+  name: MARIPOSA
+  state_id: 46
+SAN MATEOCalifornia:
+  id: 2996
+  name: SAN MATEO
+  state_id: 46
+SANTA CLARACalifornia:
+  id: 2997
+  name: SANTA CLARA
+  state_id: 46
+SAN FRANCISCOCalifornia:
+  id: 2998
+  name: SAN FRANCISCO
+  state_id: 46
+SACRAMENTOCalifornia:
+  id: 2999
+  name: SACRAMENTO
+  state_id: 46
+ALAMEDACalifornia:
+  id: 3000
+  name: ALAMEDA
+  state_id: 46
+NAPACalifornia:
+  id: 3001
+  name: NAPA
+  state_id: 46
+CONTRA COSTACalifornia:
+  id: 3002
+  name: CONTRA COSTA
+  state_id: 46
+SOLANOCalifornia:
+  id: 3003
+  name: SOLANO
+  state_id: 46
+MARINCalifornia:
+  id: 3004
+  name: MARIN
+  state_id: 46
+SONOMACalifornia:
+  id: 3005
+  name: SONOMA
+  state_id: 46
+SANTA CRUZCalifornia:
+  id: 3006
+  name: SANTA CRUZ
+  state_id: 46
+SAN BENITOCalifornia:
+  id: 3007
+  name: SAN BENITO
+  state_id: 46
+SAN JOAQUINCalifornia:
+  id: 3008
+  name: SAN JOAQUIN
+  state_id: 46
+CALAVERASCalifornia:
+  id: 3009
+  name: CALAVERAS
+  state_id: 46
+TUOLUMNECalifornia:
+  id: 3010
+  name: TUOLUMNE
+  state_id: 46
+STANISLAUSCalifornia:
+  id: 3011
+  name: STANISLAUS
+  state_id: 46
+MENDOCINOCalifornia:
+  id: 3012
+  name: MENDOCINO
+  state_id: 46
+LAKECalifornia:
+  id: 3013
+  name: LAKE
+  state_id: 46
+HUMBOLDTCalifornia:
+  id: 3014
+  name: HUMBOLDT
+  state_id: 46
+TRINITYCalifornia:
+  id: 3015
+  name: TRINITY
+  state_id: 46
+DEL NORTECalifornia:
+  id: 3016
+  name: DEL NORTE
+  state_id: 46
+SISKIYOUCalifornia:
+  id: 3017
+  name: SISKIYOU
+  state_id: 46
+AMADORCalifornia:
+  id: 3018
+  name: AMADOR
+  state_id: 46
+PLACERCalifornia:
+  id: 3019
+  name: PLACER
+  state_id: 46
+YOLOCalifornia:
+  id: 3020
+  name: YOLO
+  state_id: 46
+EL DORADOCalifornia:
+  id: 3021
+  name: EL DORADO
+  state_id: 46
+ALPINECalifornia:
+  id: 3022
+  name: ALPINE
+  state_id: 46
+SUTTERCalifornia:
+  id: 3023
+  name: SUTTER
+  state_id: 46
+YUBACalifornia:
+  id: 3024
+  name: YUBA
+  state_id: 46
+NEVADACalifornia:
+  id: 3025
+  name: NEVADA
+  state_id: 46
+SIERRACalifornia:
+  id: 3026
+  name: SIERRA
+  state_id: 46
+COLUSACalifornia:
+  id: 3027
+  name: COLUSA
+  state_id: 46
+GLENNCalifornia:
+  id: 3028
+  name: GLENN
+  state_id: 46
+BUTTECalifornia:
+  id: 3029
+  name: BUTTE
+  state_id: 46
+PLUMASCalifornia:
+  id: 3030
+  name: PLUMAS
+  state_id: 46
+SHASTACalifornia:
+  id: 3031
+  name: SHASTA
+  state_id: 46
+MODOCCalifornia:
+  id: 3032
+  name: MODOC
+  state_id: 46
+LASSENCalifornia:
+  id: 3033
+  name: LASSEN
+  state_id: 46
+TEHAMACalifornia:
+  id: 3034
+  name: TEHAMA
+  state_id: 46
+HONOLULUHawaii:
+  id: 3035
+  name: HONOLULU
+  state_id: 47
+KAUAIHawaii:
+  id: 3036
+  name: KAUAI
+  state_id: 47
+HAWAIIHawaii:
+  id: 3037
+  name: HAWAII
+  state_id: 47
+MAUIHawaii:
+  id: 3038
+  name: MAUI
+  state_id: 47
+WASCOOregon:
+  id: 3039
+  name: WASCO
+  state_id: 48
+MARIONOregon:
+  id: 3040
+  name: MARION
+  state_id: 48
+CLACKAMASOregon:
+  id: 3041
+  name: CLACKAMAS
+  state_id: 48
+WASHINGTONOregon:
+  id: 3042
+  name: WASHINGTON
+  state_id: 48
+MULTNOMAHOregon:
+  id: 3043
+  name: MULTNOMAH
+  state_id: 48
+HOOD RIVEROregon:
+  id: 3044
+  name: HOOD RIVER
+  state_id: 48
+COLUMBIAOregon:
+  id: 3045
+  name: COLUMBIA
+  state_id: 48
+SHERMANOregon:
+  id: 3046
+  name: SHERMAN
+  state_id: 48
+YAMHILLOregon:
+  id: 3047
+  name: YAMHILL
+  state_id: 48
+CLATSOPOregon:
+  id: 3048
+  name: CLATSOP
+  state_id: 48
+TILLAMOOKOregon:
+  id: 3049
+  name: TILLAMOOK
+  state_id: 48
+POLKOregon:
+  id: 3050
+  name: POLK
+  state_id: 48
+LINNOregon:
+  id: 3051
+  name: LINN
+  state_id: 48
+BENTONOregon:
+  id: 3052
+  name: BENTON
+  state_id: 48
+LINCOLNOregon:
+  id: 3053
+  name: LINCOLN
+  state_id: 48
+LANEOregon:
+  id: 3054
+  name: LANE
+  state_id: 48
+CURRYOregon:
+  id: 3055
+  name: CURRY
+  state_id: 48
+COOSOregon:
+  id: 3056
+  name: COOS
+  state_id: 48
+DOUGLASOregon:
+  id: 3057
+  name: DOUGLAS
+  state_id: 48
+KLAMATHOregon:
+  id: 3058
+  name: KLAMATH
+  state_id: 48
+JOSEPHINEOregon:
+  id: 3059
+  name: JOSEPHINE
+  state_id: 48
+JACKSONOregon:
+  id: 3060
+  name: JACKSON
+  state_id: 48
+LAKEOregon:
+  id: 3061
+  name: LAKE
+  state_id: 48
+DESCHUTESOregon:
+  id: 3062
+  name: DESCHUTES
+  state_id: 48
+HARNEYOregon:
+  id: 3063
+  name: HARNEY
+  state_id: 48
+JEFFERSONOregon:
+  id: 3064
+  name: JEFFERSON
+  state_id: 48
+WHEELEROregon:
+  id: 3065
+  name: WHEELER
+  state_id: 48
+CROOKOregon:
+  id: 3066
+  name: CROOK
+  state_id: 48
+UMATILLAOregon:
+  id: 3067
+  name: UMATILLA
+  state_id: 48
+GILLIAMOregon:
+  id: 3068
+  name: GILLIAM
+  state_id: 48
+BAKEROregon:
+  id: 3069
+  name: BAKER
+  state_id: 48
+GRANTOregon:
+  id: 3070
+  name: GRANT
+  state_id: 48
+MORROWOregon:
+  id: 3071
+  name: MORROW
+  state_id: 48
+UNIONOregon:
+  id: 3072
+  name: UNION
+  state_id: 48
+WALLOWAOregon:
+  id: 3073
+  name: WALLOWA
+  state_id: 48
+MALHEUROregon:
+  id: 3074
+  name: MALHEUR
+  state_id: 48
+KINGWashington:
+  id: 3075
+  name: KING
+  state_id: 49
+SNOHOMISHWashington:
+  id: 3076
+  name: SNOHOMISH
+  state_id: 49
+KITSAPWashington:
+  id: 3077
+  name: KITSAP
+  state_id: 49
+WHATCOMWashington:
+  id: 3078
+  name: WHATCOM
+  state_id: 49
+SKAGITWashington:
+  id: 3079
+  name: SKAGIT
+  state_id: 49
+SAN JUANWashington:
+  id: 3080
+  name: SAN JUAN
+  state_id: 49
+ISLANDWashington:
+  id: 3081
+  name: ISLAND
+  state_id: 49
+PIERCEWashington:
+  id: 3082
+  name: PIERCE
+  state_id: 49
+CLALLAMWashington:
+  id: 3083
+  name: CLALLAM
+  state_id: 49
+JEFFERSONWashington:
+  id: 3084
+  name: JEFFERSON
+  state_id: 49
+LEWISWashington:
+  id: 3085
+  name: LEWIS
+  state_id: 49
+THURSTONWashington:
+  id: 3086
+  name: THURSTON
+  state_id: 49
+GRAYS HARBORWashington:
+  id: 3087
+  name: GRAYS HARBOR
+  state_id: 49
+MASONWashington:
+  id: 3088
+  name: MASON
+  state_id: 49
+PACIFICWashington:
+  id: 3089
+  name: PACIFIC
+  state_id: 49
+COWLITZWashington:
+  id: 3090
+  name: COWLITZ
+  state_id: 49
+CLARKWashington:
+  id: 3091
+  name: CLARK
+  state_id: 49
+KLICKITATWashington:
+  id: 3092
+  name: KLICKITAT
+  state_id: 49
+SKAMANIAWashington:
+  id: 3093
+  name: SKAMANIA
+  state_id: 49
+WAHKIAKUMWashington:
+  id: 3094
+  name: WAHKIAKUM
+  state_id: 49
+CHELANWashington:
+  id: 3095
+  name: CHELAN
+  state_id: 49
+DOUGLASWashington:
+  id: 3096
+  name: DOUGLAS
+  state_id: 49
+OKANOGANWashington:
+  id: 3097
+  name: OKANOGAN
+  state_id: 49
+GRANTWashington:
+  id: 3098
+  name: GRANT
+  state_id: 49
+YAKIMAWashington:
+  id: 3099
+  name: YAKIMA
+  state_id: 49
+KITTITASWashington:
+  id: 3100
+  name: KITTITAS
+  state_id: 49
+SPOKANEWashington:
+  id: 3101
+  name: SPOKANE
+  state_id: 49
+LINCOLNWashington:
+  id: 3102
+  name: LINCOLN
+  state_id: 49
+STEVENSWashington:
+  id: 3103
+  name: STEVENS
+  state_id: 49
+WHITMANWashington:
+  id: 3104
+  name: WHITMAN
+  state_id: 49
+ADAMSWashington:
+  id: 3105
+  name: ADAMS
+  state_id: 49
+FERRYWashington:
+  id: 3106
+  name: FERRY
+  state_id: 49
+PEND OREILLEWashington:
+  id: 3107
+  name: PEND OREILLE
+  state_id: 49
+FRANKLINWashington:
+  id: 3108
+  name: FRANKLIN
+  state_id: 49
+BENTONWashington:
+  id: 3109
+  name: BENTON
+  state_id: 49
+WALLA WALLAWashington:
+  id: 3110
+  name: WALLA WALLA
+  state_id: 49
+COLUMBIAWashington:
+  id: 3111
+  name: COLUMBIA
+  state_id: 49
+GARFIELDWashington:
+  id: 3112
+  name: GARFIELD
+  state_id: 49
+ASOTINWashington:
+  id: 3113
+  name: ASOTIN
+  state_id: 49
+ANCHORAGEAlaska:
+  id: 3114
+  name: ANCHORAGE
+  state_id: 50
+BETHELAlaska:
+  id: 3115
+  name: BETHEL
+  state_id: 50
+ALEUTIANS WESTAlaska:
+  id: 3116
+  name: ALEUTIANS WEST
+  state_id: 50
+LAKE AND PENINSULAAlaska:
+  id: 3117
+  name: LAKE AND PENINSULA
+  state_id: 50
+KODIAK ISLANDAlaska:
+  id: 3118
+  name: KODIAK ISLAND
+  state_id: 50
+ALEUTIANS EASTAlaska:
+  id: 3119
+  name: ALEUTIANS EAST
+  state_id: 50
+WADE HAMPTONAlaska:
+  id: 3120
+  name: WADE HAMPTON
+  state_id: 50
+DILLINGHAMAlaska:
+  id: 3121
+  name: DILLINGHAM
+  state_id: 50
+KENAI PENINSULAAlaska:
+  id: 3122
+  name: KENAI PENINSULA
+  state_id: 50
+YUKON KOYUKUKAlaska:
+  id: 3123
+  name: YUKON KOYUKUK
+  state_id: 50
+VALDEZ CORDOVAAlaska:
+  id: 3124
+  name: VALDEZ CORDOVA
+  state_id: 50
+MATANUSKA SUSITNAAlaska:
+  id: 3125
+  name: MATANUSKA SUSITNA
+  state_id: 50
+BRISTOL BAYAlaska:
+  id: 3126
+  name: BRISTOL BAY
+  state_id: 50
+NOMEAlaska:
+  id: 3127
+  name: NOME
+  state_id: 50
+YAKUTATAlaska:
+  id: 3128
+  name: YAKUTAT
+  state_id: 50
+FAIRBANKS NORTH STARAlaska:
+  id: 3129
+  name: FAIRBANKS NORTH STAR
+  state_id: 50
+DENALIAlaska:
+  id: 3130
+  name: DENALI
+  state_id: 50
+NORTH SLOPEAlaska:
+  id: 3131
+  name: NORTH SLOPE
+  state_id: 50
+NORTHWEST ARCTICAlaska:
+  id: 3132
+  name: NORTHWEST ARCTIC
+  state_id: 50
+SOUTHEAST FAIRBANKSAlaska:
+  id: 3133
+  name: SOUTHEAST FAIRBANKS
+  state_id: 50
+JUNEAUAlaska:
+  id: 3134
+  name: JUNEAU
+  state_id: 50
+SKAGWAY HOONAH ANGOONAlaska:
+  id: 3135
+  name: SKAGWAY HOONAH ANGOON
+  state_id: 50
+HAINESAlaska:
+  id: 3136
+  name: HAINES
+  state_id: 50
+WRANGELL PETERSBURGAlaska:
+  id: 3137
+  name: WRANGELL PETERSBURG
+  state_id: 50
+SITKAAlaska:
+  id: 3138
+  name: SITKA
+  state_id: 50
+KETCHIKAN GATEWAYAlaska:
+  id: 3139
+  name: KETCHIKAN GATEWAY
+  state_id: 50
+PRINCE WALES KETCHIKANAlaska:
+  id: 3140
+  name: PRINCE WALES KETCHIKAN
+  state_id: 50

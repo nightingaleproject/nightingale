@@ -1,7 +1,205 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: state1
-
-two:
-  name: state2
+--- !omap
+New York:
+  id: 0
+  name: New York
+  abbrv: NY
+Massachusetts:
+  id: 1
+  name: Massachusetts
+  abbrv: MA
+Rhode Island:
+  id: 2
+  name: Rhode Island
+  abbrv: RI
+New Hampshire:
+  id: 3
+  name: New Hampshire
+  abbrv: NH
+Maine:
+  id: 4
+  name: Maine
+  abbrv: ME
+Vermont:
+  id: 5
+  name: Vermont
+  abbrv: VT
+Connecticut:
+  id: 6
+  name: Connecticut
+  abbrv: CT
+New Jersey:
+  id: 7
+  name: New Jersey
+  abbrv: NJ
+Pennsylvania:
+  id: 8
+  name: Pennsylvania
+  abbrv: PA
+Delaware:
+  id: 9
+  name: Delaware
+  abbrv: DE
+District of Columbia:
+  id: 10
+  name: District of Columbia
+  abbrv: DC
+Virginia:
+  id: 11
+  name: Virginia
+  abbrv: VA
+Maryland:
+  id: 12
+  name: Maryland
+  abbrv: MD
+West Virginia:
+  id: 13
+  name: West Virginia
+  abbrv: WV
+North Carolina:
+  id: 14
+  name: North Carolina
+  abbrv: NC
+South Carolina:
+  id: 15
+  name: South Carolina
+  abbrv: SC
+Georgia:
+  id: 16
+  name: Georgia
+  abbrv: GA
+Florida:
+  id: 17
+  name: Florida
+  abbrv: FL
+Alabama:
+  id: 18
+  name: Alabama
+  abbrv: AL
+Tennessee:
+  id: 19
+  name: Tennessee
+  abbrv: TN
+Mississippi:
+  id: 20
+  name: Mississippi
+  abbrv: MS
+Kentucky:
+  id: 21
+  name: Kentucky
+  abbrv: KY
+Ohio:
+  id: 22
+  name: Ohio
+  abbrv: OH
+Indiana:
+  id: 23
+  name: Indiana
+  abbrv: IN
+Michigan:
+  id: 24
+  name: Michigan
+  abbrv: MI
+Iowa:
+  id: 25
+  name: Iowa
+  abbrv: IA
+Wisconsin:
+  id: 26
+  name: Wisconsin
+  abbrv: WI
+Minnesota:
+  id: 27
+  name: Minnesota
+  abbrv: MN
+South Dakota:
+  id: 28
+  name: South Dakota
+  abbrv: SD
+North Dakota:
+  id: 29
+  name: North Dakota
+  abbrv: ND
+Montana:
+  id: 30
+  name: Montana
+  abbrv: MT
+Illinois:
+  id: 31
+  name: Illinois
+  abbrv: IL
+Missouri:
+  id: 32
+  name: Missouri
+  abbrv: MO
+Kansas:
+  id: 33
+  name: Kansas
+  abbrv: KS
+Nebraska:
+  id: 34
+  name: Nebraska
+  abbrv: NE
+Louisiana:
+  id: 35
+  name: Louisiana
+  abbrv: LA
+Arkansas:
+  id: 36
+  name: Arkansas
+  abbrv: AR
+Oklahoma:
+  id: 37
+  name: Oklahoma
+  abbrv: OK
+Texas:
+  id: 38
+  name: Texas
+  abbrv: TX
+Colorado:
+  id: 39
+  name: Colorado
+  abbrv: CO
+Wyoming:
+  id: 40
+  name: Wyoming
+  abbrv: WY
+Idaho:
+  id: 41
+  name: Idaho
+  abbrv: ID
+Utah:
+  id: 42
+  name: Utah
+  abbrv: UT
+Arizona:
+  id: 43
+  name: Arizona
+  abbrv: AZ
+New Mexico:
+  id: 44
+  name: New Mexico
+  abbrv: NM
+Nevada:
+  id: 45
+  name: Nevada
+  abbrv: NV
+California:
+  id: 46
+  name: California
+  abbrv: CA
+Hawaii:
+  id: 47
+  name: Hawaii
+  abbrv: HI
+Oregon:
+  id: 48
+  name: Oregon
+  abbrv: OR
+Washington:
+  id: 49
+  name: Washington
+  abbrv: WA
+Alaska:
+  id: 50
+  name: Alaska
+  abbrv: AK
