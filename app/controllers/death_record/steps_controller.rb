@@ -83,7 +83,7 @@ class DeathRecord::StepsController < ApplicationController
         @guest_user = generate_user(params[:owner_email], params[:owner_first_name], params[:owner_last_name], params[:owner_telephone], step)
         @guest_token = generate_user_token(@guest_user.id, @death_record.id)
         @death_record.owner_id = @guest_user.id
-
+        @death_record.save!
         # TODO: Send email
         login_link = generate_login_link(@guest_token)
         send_login_link(@guest_user, login_link)

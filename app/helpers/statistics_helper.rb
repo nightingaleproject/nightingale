@@ -119,13 +119,16 @@ module StatisticsHelper
   # Generate a pie chart representing death records by their current
   # step.
   def self.pie_death_records_by_step
-    death_records = DeathRecord.group(:record_status).count
-    if death_records.key?('wicked_finish')
-      death_records['registrar'] = death_records.delete 'wicked_finish'
-    end
+    death_record_flows = DeathRecordFlow.group(:current_step).count
+
+    # TODO: need to add a different step since "wicked_finish" is not a step in the DB.
+    # Currently the last step is "send_to_registrar" which doesn't give enough detail.
+    # if death_record_flows.key?('wicked_finish')
+    #   death_records['registrar'] = death_records.delete 'wicked_finish'
+    # end
     titleize_hash = {}
-    death_records.each do |step, count|
-      titleize_hash[step.titleize] = count
+    death_record_flows.each do |step, count|
+      titleize_hash[step.name.titleize] = count
     end
     pie_chart titleize_hash, id: 'record-count-chart', title: 'Death Records by Current Step'
   end

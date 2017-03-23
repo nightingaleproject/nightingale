@@ -8,7 +8,6 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
 
       t.string :creator_role
       t.integer :creator_id
-      t.string :record_status
       t.boolean :voided
 
 

@@ -221,7 +221,6 @@ ActiveRecord::Schema.define(version: 20170316012703) do
   create_table "death_records", force: :cascade do |t|
     t.string   "creator_role"
     t.integer  "creator_id"
-    t.string   "record_status"
     t.boolean  "voided"
     t.string   "first_name"
     t.string   "middle_name"
