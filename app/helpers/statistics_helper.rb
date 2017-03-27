@@ -135,9 +135,9 @@ module StatisticsHelper
 
   # Generate a pie chart representing death record ages by range.
   def self.pie_death_record_ages_by_range(user)
-    death_records_lt_5 = DeathRecord.where(owner_id: user.id).where('created_at > ?', 5.days.ago).count
-    death_records_gt_10 = DeathRecord.where(owner_id: user.id).where('created_at > ?', 10.days.ago).count - death_records_lt_5
-    death_records_5_to_10 = DeathRecord.where(owner_id: user.id).count - death_records_lt_5 - death_records_gt_10
+    death_records_lt_5 = DeathRecord.where(owner_id: user.id).where(voided: [false, nil]).where('created_at > ?', 5.days.ago).count
+    death_records_gt_10 = DeathRecord.where(owner_id: user.id).where(voided: [false, nil]).where('created_at > ?', 10.days.ago).count - death_records_lt_5
+    death_records_5_to_10 = DeathRecord.where(owner_id: user.id).where(voided: [false, nil]).count - death_records_lt_5 - death_records_gt_10
     ages = {}
     ages['Less than 5 days'] = death_records_lt_5 unless death_records_lt_5 == 0
     ages['5 to 10 days'] = death_records_lt_5 unless death_records_5_to_10 == 0
