@@ -48,7 +48,6 @@ one:
     medical_certifier_title: Mr. Manager
     medical_certifier_license_number: 9877656
     date_certified: 2016-10-11
-    form_steps: ['identity', 'demographics', 'medical']
 
 two:
     id: 2
@@ -94,7 +93,6 @@ two:
     medical_certifier_title: Mr. Manager
     medical_certifier_license_number: 9877656
     date_certified: 2016-10-11
-    form_steps: ['identity', 'demographics', 'medical']
 
 three:
     id: 3
@@ -206,4 +204,3 @@ three:
     medical_certifier_title: 'Captain Certifier'
     medical_certifier_license_number: '654321'
     date_certified: '12-06-2016'
-    form_steps: ['identity', 'demographics', 'medical']

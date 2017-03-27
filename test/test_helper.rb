@@ -5,6 +5,7 @@ require 'devise'
 
 module ActiveSupport
   class TestCase
+    load "#{Rails.root}/db/seeds.rb"
     fixtures :all
   end
 end
