@@ -5,7 +5,7 @@ class GuestUsersController < ApplicationController
 
   def show
     # Redirects to correct step with the correct death record.
-    redirect_to death_record_step_path(@death_record, id: @death_record.record_status, guest_user_id: @user_token.token)
+    redirect_to death_record_step_path(@death_record, id: @death_record.death_record_flow.current_step.name, guest_user_id: @user_token.token)
   end
 
   private

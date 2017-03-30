@@ -198,6 +198,19 @@ ActiveRecord::Schema.define(version: 20170316012703) do
     t.datetime "updated_at",                                   null: false
   end
 
+  create_table "death_record_flows", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "current_step_id"
+    t.integer  "next_step_id"
+    t.integer  "workflow_id"
+    t.integer  "death_record_id"
+    t.index ["current_step_id"], name: "index_death_record_flows_on_current_step_id", using: :btree
+    t.index ["death_record_id"], name: "index_death_record_flows_on_death_record_id", using: :btree
+    t.index ["next_step_id"], name: "index_death_record_flows_on_next_step_id", using: :btree
+    t.index ["workflow_id"], name: "index_death_record_flows_on_workflow_id", using: :btree
+  end
+
   create_table "death_record_histories", force: :cascade do |t|
     t.integer  "death_record_id"
     t.integer  "user_id"
@@ -206,10 +219,8 @@ ActiveRecord::Schema.define(version: 20170316012703) do
   end
 
   create_table "death_records", force: :cascade do |t|
-    t.string   "form_steps",                                      default: [],              array: true
     t.string   "creator_role"
     t.integer  "creator_id"
-    t.string   "record_status"
     t.boolean  "voided"
     t.string   "first_name"
     t.string   "middle_name"
@@ -330,9 +341,11 @@ ActiveRecord::Schema.define(version: 20170316012703) do
     t.datetime "time_registered"
     t.integer  "registered_by_id"
     t.integer  "certificate_number"
-    t.datetime "created_at",                                                   null: false
-    t.datetime "updated_at",                                                   null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.integer  "owner_id"
+    t.integer  "death_record_flow_id"
+    t.index ["death_record_flow_id"], name: "index_death_records_on_death_record_flow_id", using: :btree
     t.index ["owner_id"], name: "index_death_records_on_owner_id", using: :btree
   end
 
@@ -426,6 +439,12 @@ ActiveRecord::Schema.define(version: 20170316012703) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "steps", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "string_questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -475,6 +494,24 @@ ActiveRecord::Schema.define(version: 20170316012703) do
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
+  create_table "workflow_step_navigations", force: :cascade do |t|
+    t.integer  "workflow_id"
+    t.integer  "transition_order"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "current_step_id"
+    t.integer  "next_step_id"
+    t.index ["current_step_id"], name: "index_workflow_step_navigations_on_current_step_id", using: :btree
+    t.index ["next_step_id"], name: "index_workflow_step_navigations_on_next_step_id", using: :btree
+    t.index ["workflow_id"], name: "index_workflow_step_navigations_on_workflow_id", using: :btree
+  end
+
+  create_table "workflows", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "zipcodes", force: :cascade do |t|
     t.integer  "state_id"
     t.integer  "county_id"
@@ -488,9 +525,17 @@ ActiveRecord::Schema.define(version: 20170316012703) do
   end
 
   add_foreign_key "cause_of_deaths", "death_records"
+  add_foreign_key "death_record_flows", "death_records"
+  add_foreign_key "death_record_flows", "steps", column: "current_step_id"
+  add_foreign_key "death_record_flows", "steps", column: "next_step_id"
+  add_foreign_key "death_record_flows", "workflows"
+  add_foreign_key "death_records", "death_record_flows"
   add_foreign_key "death_records", "users", column: "owner_id"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "user_tokens", "death_records"
   add_foreign_key "user_tokens", "users"
+  add_foreign_key "workflow_step_navigations", "steps", column: "current_step_id"
+  add_foreign_key "workflow_step_navigations", "steps", column: "next_step_id"
+  add_foreign_key "workflow_step_navigations", "workflows"
 end

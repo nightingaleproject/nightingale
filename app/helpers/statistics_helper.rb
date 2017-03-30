@@ -119,22 +119,25 @@ module StatisticsHelper
   # Generate a pie chart representing death records by their current
   # step.
   def self.pie_death_records_by_step
-    death_records = DeathRecord.group(:record_status).count
-    if death_records.key?('wicked_finish')
-      death_records['registrar'] = death_records.delete 'wicked_finish'
-    end
+    death_record_flows = DeathRecordFlow.group(:current_step).count
+
+    # TODO: need to add a different step since "wicked_finish" is not a step in the DB.
+    # Currently the last step is "send_to_registrar" which doesn't give enough detail.
+    # if death_record_flows.key?('wicked_finish')
+    #   death_records['registrar'] = death_records.delete 'wicked_finish'
+    # end
     titleize_hash = {}
-    death_records.each do |step, count|
-      titleize_hash[step.titleize] = count
+    death_record_flows.each do |step, count|
+      titleize_hash[step.name.titleize] = count
     end
     pie_chart titleize_hash, id: 'record-count-chart', title: 'Death Records by Current Step'
   end
 
   # Generate a pie chart representing death record ages by range.
   def self.pie_death_record_ages_by_range(user)
-    death_records_lt_5 = DeathRecord.where(owner_id: user.id).where('created_at > ?', 5.days.ago).count
-    death_records_gt_10 = DeathRecord.where(owner_id: user.id).where('created_at > ?', 10.days.ago).count - death_records_lt_5
-    death_records_5_to_10 = DeathRecord.where(owner_id: user.id).count - death_records_lt_5 - death_records_gt_10
+    death_records_lt_5 = DeathRecord.where(owner_id: user.id).where(voided: [false, nil]).where('created_at > ?', 5.days.ago).count
+    death_records_gt_10 = DeathRecord.where(owner_id: user.id).where(voided: [false, nil]).where('created_at > ?', 10.days.ago).count - death_records_lt_5
+    death_records_5_to_10 = DeathRecord.where(owner_id: user.id).where(voided: [false, nil]).count - death_records_lt_5 - death_records_gt_10
     ages = {}
     ages['Less than 5 days'] = death_records_lt_5 unless death_records_lt_5 == 0
     ages['5 to 10 days'] = death_records_lt_5 unless death_records_5_to_10 == 0

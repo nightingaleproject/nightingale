@@ -51,10 +51,12 @@ class DeathRecordsController < ApplicationController
     @death_record.creator_id = current_user.id
     # A user can have multiple roles. For now we are assuming a user will have one role.
     @death_record.creator_role = current_user.roles[0].name
-    # Grab the first step for the given record based on the user's role (Step list can be found in /config/steps/steps_config.yml)
-    @death_record.record_status = APP_CONFIG[@death_record.creator_role][0]
+
+    # Create workflow steps for death record
+    create_death_record_flow(@death_record)
+
     @death_record.save(validate: false)
-    redirect_to death_record_step_path(@death_record, @death_record.record_status)
+    redirect_to death_record_step_path(@death_record, @death_record.death_record_flow.current_step.name)
   end
 
   def update
@@ -78,6 +80,12 @@ class DeathRecordsController < ApplicationController
   end
 
   private
+
+  # Grab the correct workflow steps and assign them to the DeathRecordFlow class
+  def create_death_record_flow(death_record)
+    initial_workflow = WorkflowStepNavigation.where(workflow_id: Workflow.where(name: death_record.creator_role).first).order(transition_order: :asc).first
+    @death_record.create_death_record_flow(current_step_id: initial_workflow.current_step_id, next_step_id: initial_workflow.next_step_id, workflow_id: initial_workflow.workflow_id)
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_death_record

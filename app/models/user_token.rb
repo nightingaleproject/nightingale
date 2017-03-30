@@ -1,5 +1,6 @@
 # User Token model
 class UserToken < ApplicationRecord
+  audited
   belongs_to :user
   belongs_to :death_record
 
