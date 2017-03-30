@@ -83,8 +83,8 @@ class DeathRecordsController < ApplicationController
 
   # Grab the correct workflow steps and assign them to the DeathRecordFlow class
   def create_death_record_flow(death_record)
-    iniitial_workflow = WorkflowStepNavigation.where(workflow_id: Workflow.where(name: death_record.creator_role).first).order(transition_order: :asc).first
-    @death_record.create_death_record_flow(current_step_id: iniitial_workflow.current_step_id, next_step_id: iniitial_workflow.next_step_id, workflow_id: iniitial_workflow.workflow_id)
+    initial_workflow = WorkflowStepNavigation.where(workflow_id: Workflow.where(name: death_record.creator_role).first).order(transition_order: :asc).first
+    @death_record.create_death_record_flow(current_step_id: initial_workflow.current_step_id, next_step_id: initial_workflow.next_step_id, workflow_id: initial_workflow.workflow_id)
   end
 
   # Use callbacks to share common setup or constraints between actions.

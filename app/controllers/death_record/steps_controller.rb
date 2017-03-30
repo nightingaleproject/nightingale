@@ -146,8 +146,7 @@ class DeathRecord::StepsController < ApplicationController
   # Set the steps for the multipage form from the steps set on the death record model
   def set_steps
     record = DeathRecord.find(params[:death_record_id])
-    self.steps = []
-    steps.push(*WorkflowHelper.all_steps_for_given_record(record))
+    self.steps = WorkflowHelper.all_steps_for_given_record(record)
   end
 
   # Never trust parameters from the internet, only allow the white list through.

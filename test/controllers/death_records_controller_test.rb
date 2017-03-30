@@ -76,7 +76,7 @@ class DeathRecordsControllerTest < ActionDispatch::IntegrationTest
         })
     end
 
-    assert_redirected_to death_record_step_path(DeathRecord.last, 'identity')
+    assert_redirected_to death_record_step_path(DeathRecord.last, WorkflowHelper.first_step_based_on_record(DeathRecord.last))
   end
 
   test 'should update death_record' do
