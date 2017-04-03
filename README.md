@@ -1,4 +1,4 @@
-## Nightingale EDRS Prototype Version 0.1
+## Nightingale EDRS Prototype Version 0.2
 
 Nightingale is a prototype electronic death registration system (EDRS), built to both provide basic EDRS capabilities and explore next generation EDRS concepts. This prototype represents a work-in-progress, and is expected to change and grow over time in response to feedback from subject matter experts and users. Nightingale ERDS currently supports the following functionality at various degrees of maturity:
 
