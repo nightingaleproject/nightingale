@@ -100,6 +100,7 @@ Once the prerequisites are available, Nightingale can be installed and demonstra
 * Support for more flexible workflow customizations
 * Refined data validation to allow entry of partial data
 * Reworked retrieval of geographic data from backend for increased efficiency
+* Added basic API for initial testing of FHIR client for EHR integration workflow
 
 ### v0.1 - 2017-03-01
 
