@@ -48,10 +48,10 @@ Rails.application.routes.draw do
     root :to => 'death_records#index', :as => :authenticated_root
   end
   root :to => redirect('/users/sign_in')
-  
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-        resources :death_records
-    end  
+      resources :death_records
+    end
   end
 end

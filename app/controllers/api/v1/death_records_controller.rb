@@ -1,5 +1,8 @@
 # SMART on FHIR API
 class Api::V1::DeathRecordsController < UnauthenticatedApplicationController
+  # Don't allow use in production environment until authentication is sorted out
+  raise 'Open API not appropriate for use in a production environment' if Rails.env.production?
+
   def authenticate!
     # TBD:  Add authentication, currently anyone can add users
     # error!('401 Unauthorized', 401) unless current_user
@@ -21,8 +24,9 @@ class Api::V1::DeathRecordsController < UnauthenticatedApplicationController
         physician = User.find_for_authentication(email: physician_email)
         death_record.owner_id = physician.id
         death_record.creator_id = physician.id
-        death_record.record_status = 'medical'
         death_record.creator_role = 'physician'
+        initial_workflow = WorkflowStepNavigation.where(workflow_id: Workflow.where(name: death_record.creator_role).first).order(transition_order: :asc).first
+        death_record.create_death_record_flow(current_step_id: initial_workflow.current_step_id, next_step_id: initial_workflow.next_step_id, workflow_id: initial_workflow.workflow_id)
         Rails.logger.debug 'Saving new decedent'
         # save but do not validate for now, as validation will not pass since
         # not all data will be in place
