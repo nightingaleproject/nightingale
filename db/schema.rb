@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316012703) do
+ActiveRecord::Schema.define(version: 20170413164500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -199,8 +199,10 @@ ActiveRecord::Schema.define(version: 20170316012703) do
   end
 
   create_table "death_record_flows", force: :cascade do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "requested_edits",      default: false
+    t.boolean  "skip_normal_workflow", default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "current_step_id"
     t.integer  "next_step_id"
     t.integer  "workflow_id"
@@ -431,6 +433,15 @@ ActiveRecord::Schema.define(version: 20170316012703) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "step_role_permissions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "role_id"
+    t.integer  "step_id"
+    t.index ["role_id"], name: "index_step_role_permissions_on_role_id", using: :btree
+    t.index ["step_id"], name: "index_step_role_permissions_on_step_id", using: :btree
+  end
+
   create_table "step_time_takens", force: :cascade do |t|
     t.float    "time_taken"
     t.string   "step"
@@ -533,6 +544,8 @@ ActiveRecord::Schema.define(version: 20170316012703) do
   add_foreign_key "death_records", "users", column: "owner_id"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "step_role_permissions", "roles"
+  add_foreign_key "step_role_permissions", "steps"
   add_foreign_key "user_tokens", "death_records"
   add_foreign_key "user_tokens", "users"
   add_foreign_key "workflow_step_navigations", "steps", column: "current_step_id"

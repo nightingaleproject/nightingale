@@ -1,6 +1,8 @@
 class DeathRecordFlows < ActiveRecord::Migration[5.0]
   def change
     create_table :death_record_flows do |t|
+      t.boolean :requested_edits, default: false
+      t.boolean :skip_normal_workflow, default: false
       t.timestamps
     end
 

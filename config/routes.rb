@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :cause_of_deaths
   resources :death_records do
     resources :steps, only: [:show, :update], controller: 'death_record/steps'
+    resources :transfer, controller: 'death_record/transfer'
     resources :comments
     member do
       get 'reenable'

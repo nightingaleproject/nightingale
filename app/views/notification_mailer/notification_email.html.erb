@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Nightingale Notification, <%= @user.email %></h1>
+    <p>
+      There is a new Nightingale notification!<br>
+    </p>
+    <p> You have a new Death Record to view: <%= @death_record.id %> </p>
+    <p>
+      Comments from previous user: 
+         <p> <%= @comment.content%> </p>    
+    </p>
+    <p>
+      To login to the site, just follow this link: <a href=<%= @link %>> <%= @link %> </a>.
+    </p>
+    
+  </body>
+</html>

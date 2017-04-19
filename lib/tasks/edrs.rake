@@ -5,11 +5,13 @@ namespace :edrs do
     Calls:
       - edrs:demo:create_users
       - edrs:demo:load_funeral_facilities
+      - edrs:demo:load_steps_roles_permissions
 
     $ rake edrs:demo:setup)
     task setup: :environment do
       Rake::Task['edrs:demo:create_users'].invoke
       Rake::Task['edrs:demo:load_funeral_facilities'].invoke
+      Rake::Task['edrs:demo:load_steps_roles_permissions'].invoke
     end
 
     desc %(Creates demo user accounts.
@@ -53,6 +55,20 @@ namespace :edrs do
         puts user.email + ' was created successfully'
         user.grant_admin unless user.admin?
       end
+    end
+
+    desc %(Loads Steps to Roles permissions.
+
+    $ rake edrs:demo:load_steps_roles_permissions)
+    task load_steps_roles_permissions: :environment do
+      StepRolePermission.create!(step_id: Step.where(name: 'identity').first.id, role_id: Role.where(name: 'funeral_director').first.id)
+      StepRolePermission.create!(step_id: Step.where(name: 'demographics').first.id, role_id: Role.where(name: 'funeral_director').first.id)
+      StepRolePermission.create!(step_id: Step.where(name: 'disposition').first.id, role_id: Role.where(name: 'funeral_director').first.id)
+      StepRolePermission.create!(step_id: Step.where(name: 'send_to_medical_professional').first.id, role_id: Role.where(name: 'funeral_director').first.id)
+      StepRolePermission.create!(step_id: Step.where(name: 'send_to_registrar').first.id, role_id: Role.where(name: 'funeral_director').first.id)
+
+      StepRolePermission.create!(step_id: Step.where(name: 'medical').first.id, role_id: Role.where(name: 'physician').first.id)
+      StepRolePermission.create!(step_id: Step.where(name: 'send_to_registrar').first.id, role_id: Role.where(name: 'physician').first.id)
     end
 
     desc %(Loads YML fixture file containing funeral director information.

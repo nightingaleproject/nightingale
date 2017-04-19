@@ -23,6 +23,10 @@ class DeathRecordPolicy < ApplicationPolicy
     APP_CONFIG['death_record']['update'].any? { |role| user.has_role?(role) } && !user.is_guest_user
   end
 
+  def show?
+    APP_CONFIG['death_record']['show'].any? { |role| user.has_role?(role) } && !user.is_guest_user && record.owner_id == user.id
+  end
+
   def create?
     APP_CONFIG['death_record']['create'].any? { |role| user.has_role?(role) } && !user.is_guest_user
   end

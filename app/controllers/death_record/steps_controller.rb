@@ -75,20 +75,23 @@ class DeathRecord::StepsController < ApplicationController
     # Instead of directing to the next step screen, we send the user back to the home dashboard
     # becasue they no longer are owners of the death record
     if step.start_with? 'send'
+      # Set death_record to no longer skip_normal_workflow
+      @death_record.death_record_flow.skip_normal_workflow = false
+      @death_record.death_record_flow.save!
+
       # TODO: Should we allow guest users to send the record to another guest user??!
       # Death record owner_id gets set in the view if they use the drop down.
       # This check confirms that they did not select a user from the drop down list.
       # Check if owner is guest user sending it to an existing user.
       if @death_record.owner_id.nil? && params[:owner_email] != ''
-        @guest_user = generate_user(params[:owner_email], params[:owner_first_name], params[:owner_last_name], params[:owner_telephone], step)
-        @guest_token = generate_user_token(@guest_user.id, @death_record.id)
+        @guest_user = GuestUserHelper.generate_user(params[:owner_email], params[:owner_first_name], params[:owner_last_name], params[:owner_telephone], step)
+        @guest_token = GuestUserHelper.generate_user_token(@guest_user.id, @death_record.id)
         @death_record.owner_id = @guest_user.id
-        @death_record.save!
-        # TODO: Send email
-        login_link = generate_login_link(@guest_token)
-        send_login_link(@guest_user, login_link)
+        login_link = GuestUserHelper.generate_login_link(@guest_token, root_url)
+        GuestUserHelper.send_login_link(@guest_user, login_link)
       end
 
+      @death_record.save!
       # Check if old owner is guest user.
       # Invalidate token by using a table that matches record id + token id + user id.
       # Logs guest user out.
@@ -106,47 +109,22 @@ class DeathRecord::StepsController < ApplicationController
 
   private
 
-  # Generates a new user with no password but with a token.
-  # If a user already exists with that email, return the existing user.
-  def generate_user(email, first_name, last_name, telephone, step)
-    # TODO: What should the role be of the guest user?
-    user = User.where(email: email).first
-    unless user.present?
-      user = User.new(email: email, password: '', first_name: first_name, last_name: last_name, telephone: telephone)
-      user.is_guest_user = true
-      user.skip_confirmation!
-
-      # Assuming guest_user's role based on step.
-      if step.to_sym == :send_to_medical_professional
-        user.add_role 'physician' # :medical_examiner TODO: How do we determine if its physician or medical_examiner
-      elsif step.to_sym == :send_to_funeral_director
-        user.add_role 'funeral_director'
-      end
-      user.save(validate: false)
-    end
-
-    user
-  end
-
-  def generate_user_token(user_id, death_record_id)
-    @guest_token = UserToken.new(user_id: user_id, death_record_id: death_record_id)
-    @guest_token.new_token!
-    @guest_token.save
-    @guest_token
-  end
-
-  def send_login_link(guest_user, login_link)
-    GuestMailer.guest_user_email(guest_user, login_link).deliver_later
-  end
-
-  def generate_login_link(user_token)
-    root_url + "guest_users/#{user_token.token}"
-  end
-
   # Set the steps for the multipage form from the steps set on the death record model
   def set_steps
     record = DeathRecord.find(params[:death_record_id])
-    self.steps = WorkflowHelper.all_steps_for_given_record(record)
+    all_steps = WorkflowHelper.all_steps_for_given_record(record)
+    # Check if the current and next steps are in order with the all steps. Or if the next step is the actual next index.
+    if record.death_record_flow.next_step.nil? || all_steps.index(record.death_record_flow.current_step.name) == all_steps.index(record.death_record_flow.next_step.name) - 1
+      self.steps = all_steps
+    # If the registrar requested edits for this death record and wanted it sent back after the change.
+    elsif record.death_record_flow.requested_edits && record.death_record_flow.skip_normal_workflow
+      steps_for_role = WorkflowHelper.all_steps_for_given_role_permission(current_user.roles.first, record)
+      steps_for_role << record.death_record_flow.next_step.name
+      self.steps = steps_for_role
+    # Not sure when this scenario would be used.
+    else
+      self.steps = [record.death_record_flow.current_step.name, record.death_record_flow.next_step.name]
+    end
   end
 
   # Never trust parameters from the internet, only allow the white list through.

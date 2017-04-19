@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <%= render 'components/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Request Edits" => nil} %>
+      </div>
+      <div class="row">
+        <div class="col-md-10">
+          <%= form_for :Transfer, :html => {:class => "form-vertical"}, url: "#create" do |form| %>
+             <!-- This will change if its a normal transfer !-->
+             <%= hidden_field_tag(:reason, 'Request Edits') %>
+            <fieldset>
+              <legend>Transfer Record</legend>
+              <div class="container-fluid">
+                <div class="row bottom-buffer">
+                  <div class="col-md-3">
+                    <label>Send To A Previous User</label>
+                  </div>
+                  <div class="col-md-9">
+                    <%= form.collection_select :previous_email, @past_users, :to_s, :to_s, :include_blank => false %>
+                  </div>
+                </div>
+ 
+                <div class="row bottom-buffer">
+                  <div class="col-md-3">
+                    <label>Immedietely send back? </label>
+                  </div>
+                  <div class="col-md-9">
+                    <%= form.check_box :send_back %>
+                  </div>
+                </div>
+ 
+                <div class="row bottom-buffer">
+                  <div class="col-md-3">
+                    <label>Comment To User</label>
+                  </div>
+                  <div class="col-md-9">
+                    <%= form.text_area :comment, rows: 3, class: 'form-control' %>  
+                  </div>
+                </div>
+               </div>
+            </fieldset> 
+            <%= link_to 'Cancel', root_path, {:class=>"btn btn-default"} %>         
+            <%= form.submit "Submit Transfer", class: 'btn btn-primary pull-right' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,6 +18,7 @@ class DeathRecordsController < ApplicationController
   end
 
   def show
+    authorize @death_record
     # Grab supplementary questions and their answers
     @questions_answers = {}
     Answer::Answer.where(death_record_id: @death_record.id).each do |answer|

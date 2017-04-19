@@ -23,7 +23,8 @@
     <% if policy(DeathRecord).update? and !@death_record.certificate_number %>
     <div class="container row">
         <%= link_to '<span class="fa fa-search"></span> Register'.html_safe, @death_record, method: :put, class: 'btn btn-primary' %>
-        <%= link_to '<span class="fa fa-search"></span> Deny'.html_safe, @death_record, class: 'btn btn-warning' %>
+        <%= link_to '<span class="fa fa-serach"></span> Remove'.html_safe, @death_record, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger' %>
+        <%= link_to '<span class="fa fa-search"></span> Request Edits'.html_safe, '/death_records/' + @death_record.id.to_s + '/transfer', class: 'btn btn-warning' %>
     </div>
     <% end %>
     <div class="row">
