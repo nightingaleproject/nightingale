@@ -1,0 +1,13 @@
+<fieldset>
+  <legend>Decedent</legend>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <b>Name:</b><input type="text" class="form-control" value="<%= NameHelper.pretty_decedent_name(@death_record) %>" readonly>
+      </div>
+      <div class="col-md-4">
+        <b>SSN:</b><input type="text" class="form-control" value="<%= @death_record.social_security_number %>" readonly>
+      </div>
+    </div>
+  </div>
+</fieldset>

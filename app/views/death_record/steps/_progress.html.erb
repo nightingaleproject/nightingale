@@ -1,13 +1,25 @@
-<h5>
+<ul class="nav nav-pills nav-stacked col-md-12">
   <% @wizard_steps.each do |every_step| %>
     <% if every_step.include? 'send' %>
       <!-- Do nothing, we don't want to show send as a step -->
     <% elsif every_step == step %>
-      <span class="fa fa-arrow-right"></span> <b><%= every_step.humanize %></b><br><br>
+      <% if StepsHelper.steps_for_role(current_user.roles.first.name).include? every_step %>
+        <li><a href="<%= death_record_step_path(@death_record.id, every_step) %>"><span class="fa fa-arrow-right"></span><b> <%= every_step.humanize %></b></a></li>
+      <% else %>
+        <li><a href=""><span class="fa fa-arrow-right inactive-link"></span><b> <%= every_step.humanize %></b></a></li>
+      <% end %>
     <% elsif past_step?(every_step) %>
-      <span class="fa fa-check-square-o"></span> <%= every_step.humanize %><br><br>
+      <% if StepsHelper.steps_for_role(current_user.roles.first.name).include? every_step %>
+        <li><a href="<%= death_record_step_path(@death_record.id, every_step) %>" class="text-muted"><span class="fa fa-check-square-o"></span><b> <%= every_step.humanize %></b></a></li>
+      <% else %>
+        <li><a href="" class="text-muted inactive-link"><span class="fa fa-check-square-o"></span><b> <%= every_step.humanize %></b></a></li>
+      <% end %>
     <% else %>
-      <span class="fa fa-square-o"></span> <%= every_step.humanize %> <br><br>
+      <% if StepsHelper.steps_for_role(current_user.roles.first.name).include? every_step %>
+        <li><a href="<%= death_record_step_path(@death_record.id, every_step) %>" class="text-muted"><span class="fa fa-square-o"></span><b> <%= every_step.humanize %></b></a></li>
+      <% else %>
+        <li><a href="" class="text-muted inactive-link"><span class="fa fa-square-o"></span><b> <%= every_step.humanize %></b></a></li>
+      <% end %>
     <% end %>
   <% end %>
-</h5>
+</ul>

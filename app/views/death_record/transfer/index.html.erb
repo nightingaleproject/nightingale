@@ -5,7 +5,7 @@
         <%= render 'components/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Request Edits" => nil} %>
       </div>
       <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
           <%= form_for :Transfer, :html => {:class => "form-vertical"}, url: "#create" do |form| %>
              <!-- This will change if its a normal transfer !-->
              <%= hidden_field_tag(:reason, 'Request Edits') %>

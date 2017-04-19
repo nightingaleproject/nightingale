@@ -10,6 +10,7 @@
         </div>
         <div class="col-md-10">
           <% if current_user.has_role?(:physician) || current_user.has_role?(:medical_examiner) %>
+            <%= render 'death_record/steps/decedent_info_header' %>
             <%= render 'death_record/steps/forms/medical_form' %>
           <% end %>
         </div>

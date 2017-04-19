@@ -169,3 +169,8 @@ hr {
 td {
   font-size: 14px !important;
 }
+
+.inactive-link {
+  pointer-events: none;
+  cursor: default;
+}

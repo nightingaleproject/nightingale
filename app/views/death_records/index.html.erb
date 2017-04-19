@@ -37,23 +37,6 @@
         <% end %>
       ]
     });
-    // Create datatables instance of voided death records table
-    $('#voided_death_records_table').DataTable({
-      'language': {
-        <% if current_user.admin? %>
-          'emptyTable': 'No voided death records in the system.',
-        <% else %>
-          'emptyTable': 'You currently have no voided death records.',
-        <% end %>
-        'lengthMenu': 'Display _MENU_ records per page',
-        'info': 'Showing _PAGE_ of _PAGES_'
-      },
-      'columnDefs': [
-        { orderable: false, targets: <%= (3..(2 + StepsHelper.steps.count)).to_a.push(3 + StepsHelper.steps.count) %> },
-        { "width": "22%", "targets": [0] },
-        { "width": "18%", "targets": [1, 2, <%= (3 + StepsHelper.steps.count) %>] }
-      ]
-    });
     // Draw death record completion time bar chart
     $.get("statistics/bar_average_completion", function (data, status) {
       $('#bar_average_completion').replaceWith(data);
@@ -168,9 +151,6 @@
                     <%= link_to death_record, { :class => 'edrs-bc-link', 'data-toggle' => 'tooltip', :title => 'Review' }  do %><span class="fa fa fa-play-circle action-font"></span><% end %>
                   <% else %>
                     <%= link_to death_record, { :class => 'edrs-bc-link', 'data-toggle' => 'tooltip', :title => 'View' }  do %><span class="fa fa fa-search action-font"></span><% end %>
-                  <% end %>
-                  <% if current_user.id == death_record.creator_id || current_user.admin? %>
-                    <%= link_to death_record, { :method => :delete, :confirm => 'Are you sure?', :class => 'edrs-bc-link', 'data-toggle' => 'tooltip', :title => 'Void' } do %><span class="fa fa fa-trash action-font"></span><% end %>
                   <% end %>
                 </div>
               </td>
@@ -293,73 +273,6 @@
           </tbody>
         </table>
       <% end %>
-    </div>
-  </div>
-<% end %>
-
-<% unless current_user.registrar? %>
-  <div class="container-fluid top-padding-lg">
-    <h3>
-      <% if current_user.admin? %>
-        Voided Records
-      <% else %>
-        My Voided Records
-      <% end %>
-    </h3>
-    <hr/>
-    <div>
-      <table class="table" id="voided_death_records_table" class="death-records-table">
-        <thead>
-          <tr>
-            <th class="dt-header"></th>
-            <th class="dt-header"></th>
-            <th class="dt-header"></th>
-            <th colspan="<%= StepsHelper.steps.count %>" class="text-center dt-header-bottom">Completion Status</th>
-            <th class="dt-header"></th>
-          </tr>
-          <tr>
-            <th class="dt-header-bottom">Decedent Name</th>
-            <th class="dt-header-bottom">Start Date</th>
-            <th class="dt-header-bottom">Last Updated</th>
-            <% StepsHelper.steps_short.each do |step| %>
-              <th class="text-center">
-                <%= step.humanize %>
-              </th>
-            <% end %>
-            <th class="dt-header-bottom text-center">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @voided_death_records.each do |death_record| %>
-            <tr>
-              <td>
-                <!-- Decedent Name -->
-                <%= NameHelper.pretty_decedent_name(death_record) %>
-              </td>
-              <td>
-                <!-- Death Record Start Date -->
-                <%= DatetimeHelper.pretty_date(death_record.created_at) %>
-              </td>
-              <td>
-                <!-- Death Record Last Updated -->
-                <%= DatetimeHelper.pretty_date(death_record.updated_at) %>
-              </td>
-                <!-- Completion status -->
-                <% StepsHelper.steps.each do |step| %>
-                  <td class="text-center">
-                    <%= render 'components/step_status', status: StepsHelper.step_status(step, death_record) %>
-                  </td>
-                <% end %>
-              <td class="text-center">
-                <!-- Actions -->
-                <%= link_to reenable_death_record_path(death_record), { :class => 'edrs-bc-link', 'data-toggle' => 'tooltip', :title => 'Re-enable' }  do %><span class="fa fa fa-support action-font"></span><% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
     </div>
   </div>
 <% end %>
