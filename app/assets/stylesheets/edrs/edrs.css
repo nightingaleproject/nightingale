@@ -174,3 +174,13 @@ td {
   pointer-events: none;
   cursor: default;
 }
+
+.decedent-header-name {
+  float: left;
+  font-size: 1.4em;
+}
+
+.decedent-header-ssn {
+  float: right;
+  font-size: 1.4em;
+}
