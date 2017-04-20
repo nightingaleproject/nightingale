@@ -19,3 +19,4 @@
 //= require_tree .
 //= require highcharts
 //= require chartkick
+//= require jquery.are-you-sure

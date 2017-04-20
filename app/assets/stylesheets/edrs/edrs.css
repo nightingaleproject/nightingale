@@ -184,3 +184,12 @@ td {
   float: right;
   font-size: 1.4em;
 }
+
+.panel-primary {
+  border-color: #226891 !important;
+}
+
+.panel-heading {
+  background: #226891 !important;
+  border-color: #226891 !important;
+}

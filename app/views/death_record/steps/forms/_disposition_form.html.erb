@@ -1,3 +1,11 @@
+<script>
+  $(document).ready(function() {
+    // Warn the user that they have unsaved changes before trying to
+    // navigate away from this page.
+    $('form').areYouSure();
+  });
+</script>
+
 <%= simple_form_for(@death_record, html: { class: 'form-vertical' }, method: :put, url: wizard_path) do |f| %>
 
  <fieldset>
