@@ -1,0 +1,159 @@
+.night-form-outer > fieldset {
+  border: 0;
+  margin: 0;
+  margin-top: -.75em;
+  padding: 0;
+  width: inherit;
+}
+
+fieldset {
+  border: 1px solid $btn-secondary-border;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: inherit;
+  margin-bottom: 1.75em;
+  margin-top: 1em;
+  padding-bottom: .5em;
+  border-radius: $border-radius;
+  display: block;
+}
+
+legend {
+  padding-left: 0.20em;
+  margin-left: -0.20em;
+  padding-right: 0.20em;
+  font-size: 1.6em;
+  font-weight: medium;
+  width: inherit;
+  border-bottom: none;
+}
+
+.night-required-icon {
+  vertical-align: middle;
+  font-size: 0.6em;
+}
+
+.night-ssn-divider {
+  line-height: 2em;
+}
+
+.night-input {
+  border: 1px solid $btn-secondary-border;
+  border-radius: $border-radius;
+}
+
+.dropdown-toggle.btn-default {
+  color: #292b2c;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.bootstrap-select.show>.dropdown-menu>.dropdown-menu {
+  display: block;
+}
+
+.bootstrap-select > .dropdown-menu > .dropdown-menu li.hidden{
+  display:none;
+}
+
+.bootstrap-select > .dropdown-menu > .dropdown-menu li a{
+  display: block;
+  width: 100%;
+  padding: 3px 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #292b2c;
+  text-align: inherit;
+  white-space: nowrap;
+  background: 0 0;
+  border: 0;
+}
+
+.dropdown-menu > li.active > a {
+  color: #fff !important;
+  background-color: #337ab7 !important;
+}
+
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+  display: inline !important;
+}
+
+.col16-md-1 { width: 6.25%; }
+.col16-md-2 { width: 12.5%; }
+.col16-md-3 { width: 18.75%; }
+.col16-md-4 { width: 25%; }
+.col16-md-5 { width: 31.25%; }
+.col16-md-6 { width: 37.5%; }
+.col16-md-7 { width: 43.75%; }
+.col16-md-8 { width: 50%; }
+.col16-md-9 { width: 56.25%; }
+.col16-md-10 { width: 62.5%; }
+.col16-md-11 { width: 68.75%; }
+.col16-md-12 { width: 75%; }
+.col16-md-13 { width: 81.25%; }
+.col16-md-14 { width: 87.5%; }
+.col16-md-15 { width: 93.75%; }
+.col16-md-16 { width: 100%; }
+.col16-md-1, .col16-md-2, .col16-md-3, .col16-md-4, .col16-md-5, .col16-md-6, .col16-md-7, .col16-md-8,
+.col16-md-9, .col16-md-10, .col16-md-11, .col16-md-12, .col16-md-13, .col16-md-14, .col16-md-15, .col16-md-16
+{
+  float: left;
+}
+.col16-md-1, .col16-md-2, .col16-md-3, .col16-md-4, .col16-md-5, .col16-md-6, .col16-md-7, .col16-md-8,
+.col16-md-9, .col16-md-10, .col16-md-11, .col16-md-12, .col16-md-13, .col16-md-14, .col16-md-15, .col16-md-16
+{
+  position: relative;
+  min-height: 1px;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.col32-md-1 { width: 3.125%; }
+.col32-md-2 { width: 6.25%; }
+.col32-md-3 { width: 9.375%; }
+.col32-md-4 { width: 12.5%; }
+.col32-md-5 { width: 15.625%; }
+.col32-md-6 { width: 18.75%; }
+.col32-md-7 { width: 21.875%; }
+.col32-md-8 { width: 25%; }
+.col32-md-9 { width: 28.125%; }
+.col32-md-10 { width: 31.25%; }
+.col32-md-11 { width: 34.375%; }
+.col32-md-12 { width: 37.5%; }
+.col32-md-13 { width: 40.625%; }
+.col32-md-14 { width: 43.75%; }
+.col32-md-15 { width: 46.875%; }
+.col32-md-16 { width: 50%; }
+.col32-md-17 { width: 53.125%; }
+.col32-md-18 { width: 56.25%; }
+.col32-md-19 { width: 59.375%; }
+.col32-md-20 { width: 62.5%; }
+.col32-md-21 { width: 65.625%; }
+.col32-md-22 { width: 68.75%; }
+.col32-md-23 { width: 71.875%; }
+.col32-md-24 { width: 75%; }
+.col32-md-25 { width: 78.125%; }
+.col32-md-26 { width: 81.25%; }
+.col32-md-27 { width: 84.375%; }
+.col32-md-28 { width: 87.5%; }
+.col32-md-29 { width: 90.625%; }
+.col32-md-30 { width: 93.75%; }
+.col32-md-31 { width: 96.875%; }
+.col32-md-31 { width: 100%; }
+.col32-md-1, .col32-md-2, .col32-md-3, .col32-md-4, .col32-md-5, .col32-md-6, .col32-md-7, .col32-md-8,
+.col32-md-9, .col32-md-10, .col32-md-11, .col32-md-12, .col32-md-13, .col32-md-14, .col32-md-15, .col32-md-16,
+.col32-md-17, .col32-md-18, .col32-md-19, .col32-md-20, .col32-md-21, .col32-md-22, .col32-md-23, .col32-md-24,
+.col32-md-25, .col32-md-26, .col32-md-27, .col32-md-28, .col32-md-29, .col32-md-30, .col32-md-31, .col32-md-32
+{
+  float: left;
+}
+.col32-md-1, .col32-md-2, .col32-md-3, .col32-md-4, .col32-md-5, .col32-md-6, .col32-md-7, .col32-md-8,
+.col32-md-9, .col32-md-10, .col32-md-11, .col32-md-12, .col32-md-13, .col32-md-14, .col32-md-15, .col32-md-16,
+.col32-md-17, .col32-md-18, .col32-md-19, .col32-md-20, .col32-md-21, .col32-md-22, .col32-md-23, .col32-md-24,
+.col32-md-25, .col32-md-26, .col32-md-27, .col32-md-28, .col32-md-29, .col32-md-30, .col32-md-31, .col32-md-32
+{
+  position: relative;
+  min-height: 1px;
+  padding-right: 1em;
+  padding-left: 1em;
+}

@@ -1,2 +1,0 @@
-class FuneralFacility < ApplicationRecord
-end

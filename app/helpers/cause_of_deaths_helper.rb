@@ -1,3 +1,0 @@
-# helper
-module CauseOfDeathsHelper
-end

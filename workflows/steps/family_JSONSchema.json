@@ -1,0 +1,79 @@
+{
+  "type": "object",
+  "properties": {
+    "spouseName": {
+      "title": "Surviving Spouse's Name",
+      "type": "object",
+      "showAkas": false,
+      "showMaiden": true,
+      "humanReadable": "{lastName}, {firstName} {middleName} {suffix}",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "title": "First Name"
+        },
+        "middleName": {
+          "type": "string",
+          "title": "Middle Name"
+        },
+        "lastName": {
+          "type": "string",
+          "title": "Last Name"
+        },
+        "suffix": {
+          "type": "string",
+          "title": "Suffix"
+        }
+      }
+    },
+    "fatherName": {
+      "title": "Father's Name",
+      "type": "object",
+      "showAkas": false,
+      "humanReadable": "{lastName}, {firstName} {middleName} {suffix}",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "title": "First Name"
+        },
+        "middleName": {
+          "type": "string",
+          "title": "Middle Name"
+        },
+        "lastName": {
+          "type": "string",
+          "title": "Last Name"
+        },
+        "suffix": {
+          "type": "string",
+          "title": "Suffix"
+        }
+      }
+    },
+    "motherName": {
+      "title": "Mother's Name",
+      "type": "object",
+      "showAkas": false,
+      "showMaiden": true,
+      "humanReadable": "{lastName}, {firstName} {middleName} {suffix}",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "title": "First Name"
+        },
+        "middleName": {
+          "type": "string",
+          "title": "Middle Name"
+        },
+        "lastName": {
+          "type": "string",
+          "title": "Maiden Name"
+        },
+        "suffix": {
+          "type": "string",
+          "title": "Suffix"
+        }
+      }
+    }
+  }
+}

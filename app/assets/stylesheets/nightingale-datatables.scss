@@ -1,0 +1,37 @@
+td.details-control:before {
+  font-family: FontAwesome;
+  content: "\f055";
+  display: inline-block;
+  color: green;
+}
+
+td.details-control {
+  background: no-repeat center center;
+  cursor: pointer;
+}
+
+tr.shown td.details-control:before {
+  font-family: FontAwesome;
+  content: "\f056";
+  display: inline-block;
+  color: red;
+}
+
+tr.shown td.details-control {
+   background: no-repeat center center;
+}
+
+.dataTables_wrapper {
+  flex: 1;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+  border: 0 !important;
+  padding: 0.75rem !important;
+}
+
+.no-footer {
+  border: 0 !important;
+}

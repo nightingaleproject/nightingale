@@ -5,7 +5,6 @@ class ReportsController < ApplicationController
 
   def index
     @audits = Audited::Audit.all.order(created_at: :desc)
-    @mean = ReportsHelper.calculate_average_time_for_death_records
   end
 
   private

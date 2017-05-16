@@ -1,8 +1,0 @@
-<% if NameHelper.pretty_decedent_name(@death_record).present? && @death_record.social_security_number.present? %>
-  <div class="panel panel-primary">
-    <div class="panel-heading clearfix">
-      <div class="decedent-header-name"><%= NameHelper.pretty_decedent_name(@death_record) %></div>
-      <div class="decedent-header-ssn"><%= @death_record.social_security_number %></div>
-    </div>
-  </div>
-<% end %>

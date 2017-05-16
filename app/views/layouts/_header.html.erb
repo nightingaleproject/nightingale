@@ -1,18 +1,17 @@
-<nav class="navbar navbar-default navbar-static-top">
-  <div class="container">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <div class="navbar-brand">Nightingale</div>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="<%= death_records_path %>"><span class="fa fa-th-list"></span> Dashboard</a></li>
-        <li><a href="<%= edit_user_registration_path %>"><span class="fa fa-gear"></span> My Account</a></li>
-        <% if current_user.admin? %>
-          <li><a href="<%= admins_path %>"><span class="fa fa-gears"></span> Admin</a></li>
-        <% end %>
-        <li><a href="#"><span class="fa fa-question-circle"></span> Help</a></li>
-        <li><a href="<%= destroy_user_session_path %>"><span class="fa fa-sign-out"></span> Logout</a></li>
-      </ul>
-    </div>
+<nav class="navbar navbar-toggleable-sm navbar-inverse bg-primary night-header-padding">
+  <div class="container night-container night-header-padding">
+    <h1 class="navbar-brand mb-0">Nightingale</h1>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link night-nav-link" href="<%= death_records_path %>"><span class="fa fa-th-list"></span> Dashboard</a></li>
+      <li class="nav-item ml-1"><a class="nav-link night-nav-link" href="<%= edit_user_registration_path %>"><span class="fa fa-gear"></span> My Account</a></li>
+      <% unless current_user.admin? || current_user.is_guest_user %>
+        <!-- <li class="nav-item ml-1"><a class="nav-link night-nav-link" href="#"><span class="fa fa-suitcase"></span> My Organization</a></li> -->
+      <% end %>
+      <% if current_user.admin? %>
+        <li class="nav-item ml-1"><a class="nav-link night-nav-link" href="<%= admins_path %>"><span class="fa fa-gears"></span> Admin</a></li>
+      <% end %>
+      <!-- <li class="nav-item ml-1"><a class="nav-link night-nav-link" href="#"><span class="fa fa-question-circle"></span> Help</a></li> -->
+      <li class="nav-item ml-1"><a class="nav-link night-nav-link" href="<%= destroy_user_session_path %>" data-method="DELETE"><span class="fa fa-sign-out"></span> Logout</a></li>
+    </ul>
   </div>
 </nav>

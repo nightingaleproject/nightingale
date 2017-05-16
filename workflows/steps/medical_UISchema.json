@@ -1,0 +1,63 @@
+{
+  "classNames": "night-form-outer",
+  "placeOfDeath": {
+    "ui:field": "nightMultiSelect"
+  },
+  "locationOfDeath": {
+    "ui:field": "nightFullAddress"
+  },
+  "datePronouncedDead": {
+    "ui:field": "nightDate"
+  },
+  "timePronouncedDead": {
+    "ui:field": "nightTime"
+  },
+  "pronouncerLicenseNumber": {
+    "ui:field": "nightInput"
+  },
+  "dateOfPronouncerSignature": {
+    "ui:field": "nightDate"
+  },
+  "dateOfDeath": {
+    "ui:field": "nightDate"
+  },
+  "timeOfDeath": {
+    "ui:field": "nightTime"
+  },
+  "meOrCoronerContacted": {
+    "ui:field": "nightRadioSelect"
+  },
+  "autopsyPerformed": {
+    "ui:field": "nightRadioSelect"
+  },
+  "autopsyAvailableToCompleteCauseOfDeath": {
+    "ui:field": "nightRadioSelect"
+  },
+  "cod": {
+    "ui:field": "nightCOD"
+  },
+  "didTobaccoUseContributeToDeath": {
+    "ui:field": "nightRadioSelect"
+  },
+  "pregnancyStatus": {
+    "ui:field": "nightRadioSelect"
+  },
+  "mannerOfDeath": {
+    "ui:field": "nightRadioSelect"
+  },
+  "personCompletingCauseOfDeathName": {
+    "ui:field": "nightName"
+  },
+  "personCompletingCauseOfDeathAddress": {
+    "ui:field": "nightFullAddress"
+  },
+  "personCompletingCauseOfDeathLicenseNumber": {
+    "ui:field": "nightInput"
+  },
+  "certifierType": {
+    "ui:field": "nightRadioSelect"
+  },
+  "dateCertified": {
+    "ui:field": "nightDate"
+  }
+}

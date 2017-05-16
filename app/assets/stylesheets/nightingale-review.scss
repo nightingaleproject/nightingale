@@ -1,0 +1,30 @@
+.night-send-to {
+  border: 1px solid #ddd;
+}
+
+.night-send-to-user {
+  border-top-right-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+.night-send-to-guest {
+  border-radius: $border-radius;
+}
+
+.night-send-to-guest {
+  border: 1px solid #ddd;
+}
+
+.night-send-to-tabs {
+  border: 0px;
+}
+
+.night-step-completion {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.step-content {
+  white-space: pre-line;
+}

@@ -1,0 +1,12 @@
+{
+  "classNames": "night-form-outer",
+  "spouseName": {
+    "ui:field": "nightName"
+  },
+  "fatherName": {
+    "ui:field": "nightName"
+  },
+  "motherName": {
+    "ui:field": "nightName"
+  }
+}

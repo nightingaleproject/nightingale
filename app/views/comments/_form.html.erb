@@ -1,8 +1,0 @@
-<!-- Partial view for entering a comment -->
-<%= form_for [death_record, Comment.new], remote: true do |f| %>
-<%= f.text_area :content, id: 'comment-body', rows: 1, class: 'form-control', placeholder: "Enter comment here"%>
-<div class="form-group">
-  <br>
-  <%= f.submit "Submit Comment", class: 'btn btn-success pull-right', disable_with: 'Submitting...' %>
-</div>
-<% end %>

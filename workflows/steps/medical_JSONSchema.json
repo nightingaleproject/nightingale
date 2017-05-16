@@ -1,0 +1,311 @@
+{
+  "type": "object",
+  "properties": {
+    "placeOfDeath": {
+      "type": "object",
+      "title": "Place of Death",
+      "humanReadable": "{placeOfDeath}",
+      "required": true,
+      "properties": {
+        "placeOfDeath": {
+          "type": "object",
+          "properties": {
+            "option": {
+              "type": "string"
+            },
+            "specify": {
+              "type": "string"
+            },
+            "specifyInputs": {
+              "type": "string"
+            }
+          },
+          "options": ["Inpatient", "Outpatient/ER", "DOA", "Decedent's Home", "Hospice Facility", "Nursing Home/Long Term Care Facility", {"text": "Other (specify)", "input": true}]
+        }
+      }
+    },
+    "locationOfDeath": {
+      "title": "Location of Death",
+      "type": "object",
+      "named": true,
+      "humanReadable": "{name}\\n{street} {apt}\\n{city}, {county}, {state}\\n{zip}",
+      "required": true,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "apt": {
+          "type": "string"
+        }
+      }
+    },
+    "datePronouncedDead": {
+      "type": "object",
+      "title": "Date Pronounced Dead",
+      "humanReadable": "{datePronouncedDead}",
+      "required": true,
+      "properties": {
+        "datePronouncedDead": {
+          "type": "string"
+        }
+      }
+    },
+    "timePronouncedDead": {
+      "type": "object",
+      "title": "Time Pronounced Dead",
+      "humanReadable": "{timePronouncedDead}",
+      "required": true,
+      "properties": {
+        "timePronouncedDead": {
+          "type": "string"
+        }
+      }
+    },
+    "pronouncerLicenseNumber": {
+      "title": "Pronouncer's License Number",
+      "type": "object",
+      "humanReadable": "{pronouncerLicenseNumber}",
+      "required": true,
+      "properties": {
+        "pronouncerLicenseNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "dateOfPronouncerSignature": {
+      "type": "object",
+      "title": "Date of Pronouncer's Signature",
+      "humanReadable": "{dateOfPronouncerSignature}",
+      "required": true,
+      "properties": {
+        "dateOfPronouncerSignature": {
+          "type": "string"
+        }
+      }
+    },
+    "dateOfDeath": {
+      "type": "object",
+      "title": "Date of Death",
+      "showDateType": true,
+      "humanReadable": "{dateOfDeath}: {dateType}",
+      "required": true,
+      "properties": {
+        "dateOfDeath": {
+          "type": "string"
+        },
+        "dateType": {
+          "type": "string",
+          "options": ["Actual", "Approximate", "Presumed"]
+        }
+      }
+    },
+    "timeOfDeath": {
+      "type": "object",
+      "title": "Time of Death",
+      "showTimeType": true,
+      "humanReadable": "{timeOfDeath}: {timeType}",
+      "required": true,
+      "properties": {
+        "timeOfDeath": {
+          "type": "string"
+        },
+        "timeType": {
+          "type": "string",
+          "options": ["Actual", "Approximate", "Presumed"]
+        }
+      }
+    },
+    "meOrCoronerContacted": {
+      "type": "object",
+      "title": "ME or Coroner Contacted?",
+      "humanReadable": "{meOrCoronerContacted}",
+      "properties": {
+        "meOrCoronerContacted": {
+          "options": ["Yes", "No", "Unknown"]
+        }
+      }
+    },
+    "autopsyPerformed": {
+      "type": "object",
+      "title": "Autopsy Performed?",
+      "humanReadable": "{autopsyPerformed}",
+      "properties": {
+        "autopsyPerformed": {
+          "options": ["Yes", "No"]
+        }
+      }
+    },
+    "autopsyAvailableToCompleteCauseOfDeath": {
+      "type": "object",
+      "title": "Autopsy Available to Complete Cause of Death?",
+      "humanReadable": "{autopsyAvailableToCompleteCauseOfDeath}",
+      "properties": {
+        "autopsyAvailableToCompleteCauseOfDeath": {
+          "options": ["Yes", "No"]
+        }
+      }
+    },
+    "cod": {
+      "title": "Cause of Death",
+      "type": "object",
+      "humanReadable": "{immediate}: {immediateInt}\\n{under1}: {under1Int}\\n{under2}: {under2Int}\\n{under3}: {under3Int}",
+      "required": true,
+      "properties": {
+        "immediate": {
+          "type": "string"
+        },
+        "immediateInt": {
+          "type": "string"
+        },
+        "under1": {
+          "type": "string"
+        },
+        "under1Int": {
+          "type": "string"
+        },
+        "under2": {
+          "type": "string"
+        },
+        "under2Int": {
+          "type": "string"
+        },
+        "under3": {
+          "type": "string"
+        },
+        "under3Int": {
+          "type": "string"
+        }
+      }
+    },
+    "didTobaccoUseContributeToDeath": {
+      "type": "object",
+      "title": "Did Tobacco Use Contribute to Death?",
+      "humanReadable": "{didTobaccoUseContributeToDeath}",
+      "properties": {
+        "didTobaccoUseContributeToDeath": {
+          "options": ["Yes", "No", "Probably", "Unknown"]
+        }
+      }
+    },
+    "pregnancyStatus": {
+      "type": "object",
+      "title": "Pregnancy Status",
+      "humanReadable": "{pregnancyStatus}",
+      "properties": {
+        "pregnancyStatus": {
+          "options": ["Not pregnant in the past year", "Pregnant at the time of death", "Not pregnant, but pregnant within 42 days of death", "Not pregnant, but pregnant 43 days to 1 year before death", "Unknown if pregnant within the past year"]
+        }
+      }
+    },
+    "mannerOfDeath": {
+      "type": "object",
+      "title": "Manner of Death",
+      "humanReadable": "{mannerOfDeath}",
+      "required": true,
+      "properties": {
+        "mannerOfDeath": {
+          "options": ["Natural", "Accident", "Suicide", "Homicide", "Pending investigation", "Could not be determined"]
+        }
+      }
+    },
+    "personCompletingCauseOfDeathName": {
+      "title": "Name of Person Completing Cause of Death",
+      "type": "object",
+      "showAkas": false,
+      "humanReadable": "{lastName}, {firstName} {middleName} {suffix}",
+      "required": true,
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "title": "First Name"
+        },
+        "middleName": {
+          "type": "string",
+          "title": "Middle Name"
+        },
+        "lastName": {
+          "type": "string",
+          "title": "Last Name"
+        },
+        "suffix": {
+          "type": "string",
+          "title": "Suffix"
+        }
+      }
+    },
+    "personCompletingCauseOfDeathAddress": {
+      "title": "Address of Person Completing Cause of Death",
+      "type": "object",
+      "humanReadable": "{street} {apt}\\n{city}, {county}, {state}\\n{zip}",
+      "required": true,
+      "properties": {
+        "state": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "apt": {
+          "type": "string"
+        }
+      }
+    },
+    "personCompletingCauseOfDeathLicenseNumber": {
+      "title": "License Number of Person Completing Cause of Death",
+      "type": "object",
+      "humanReadable": "{personCompletingCauseOfDeathLicenseNumber}",
+      "required": true,
+      "properties": {
+        "personCompletingCauseOfDeathLicenseNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "certifierType": {
+      "type": "object",
+      "title": "Certifier Type",
+      "humanReadable": "{certifierType}",
+      "required": true,
+      "properties": {
+        "certifierType": {
+          "options": ["Certifying Physician", "Pronouncing and Certifying Physician", "Medical Examiner/Coroner"]
+        }
+      }
+    },
+    "dateCertified": {
+      "type": "object",
+      "title": "Date Certified",
+      "humanReadable": "{dateCertified}",
+      "required": true,
+      "properties": {
+        "dateCertified": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

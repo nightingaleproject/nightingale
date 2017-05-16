@@ -1,50 +1,53 @@
 Rails.application.routes.draw do
-  resources :causes_of_deaths
-  resources :cause_of_deaths
-  resources :death_records do
-    resources :steps, only: [:show, :update], controller: 'death_record/steps'
-    resources :transfer, controller: 'death_record/transfer'
-    resources :comments
+  # User related routes
+  devise_for :users, :controllers => {registrations: 'registrations', passwords: 'passwords'}
+
+  # Guest user related routes
+  resources :guest_users, only: [:show], param: :guest_user_token, controller: 'guest_users'
+
+  # Death Record related routes
+  resources :death_records, only: [:index, :show, :new, :edit, :update] do
     member do
-      get 'reenable'
+      post :update_step
+      post :update_active_step
+      post :users_by_role
+      post :register
+      post :request_edits
     end
   end
 
-  use_doorkeeper
+  # Step related routes
+  resources :step, only: [:update]
 
-  devise_for :users, :controllers => {:registrations => 'registrations', :passwords => 'passwords'}
+  # Comment related routes
+  resources :comments, only: [:create, :destroy]
 
-  resources :guest_users, param: :guest_user_token, controller: 'guest_users'
+  # Geography related routes
+  match 'geography_full' => 'geography#geography_full', :via => :post
+  match 'geography_short' => 'geography#geography_short', :via => :post
 
-  resources :questions
-  match 'questions/create' => 'questions#create', :via => :get
-  match 'questions/build' => 'questions#build', :via => :put
-
-  match 'geographic/counties' => 'geographic#counties', :via => :get
-  match 'geographic/cities' => 'geographic#cities', :via => :get
-  match 'geographic/zipcodes' => 'geographic#zipcodes', :via => :get
-
-  match 'entity/funeral_facility_details' => 'entity#funeral_facility_details', :via => :get
-
+  # Admin related routes
+  resources :admins, only: [:index]
   resources :reports
-
-  resources :statistics do
-    collection do
-      get 'line_death_records_created'
-      get 'line_death_records_completed'
-      get 'line_users_created'
-      get 'line_user_sign_ins'
-      get 'pie_death_records_by_step'
-      get 'bar_death_record_time_by_step'
-      get 'bar_average_completion'
-      get 'pie_death_record_ages_by_range'
-    end
-  end
-
-  resources :admins
-
+  resources :statistics
+  resources :questions
   resources :users
 
+  # Statistics related routes
+  resources :statistics do
+    collection do
+      post 'line_death_records_created'
+      post 'line_death_records_completed'
+      post 'line_users_created'
+      post 'line_user_sign_ins'
+      post 'pie_death_records_by_step'
+      post 'bar_death_record_time_by_step'
+      post 'bar_average_completion'
+      post 'pie_death_record_ages_by_range'
+    end
+  end
+
+  # Default route
   authenticated :user do
     root :to => 'death_records#index', :as => :authenticated_root
   end
