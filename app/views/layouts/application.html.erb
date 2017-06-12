@@ -3,14 +3,13 @@
   <head>
     <title>Nightingale</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
   <body>
     <% if !current_user.nil? && user_signed_in? %>
       <%= render "layouts/header" %>
-      <div class="container">
-        <%= render "layouts/errors" %>
+      <div class="container night-container night-main-padding">
         <%= yield %>
       </div>
       <%= render "layouts/footer" %>

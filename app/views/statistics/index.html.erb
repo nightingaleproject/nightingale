@@ -1,16 +1,8 @@
 <script>
   $(document).ready(function () {
-    $('#event_period').datepicker({
-      inputs: $('.actual_range'),
-      startDate: '-3y',
-      endDate: '0d',
-      todayBtn: 'linked',
-      todayHighlight: 'true',
-      format: 'yyyy-mm-dd'
-    });
     // Attach datepicker to chart start and end time inputs
-    $('#event_period').datepicker({
-      inputs: $('.actual_range'),
+    $('.event-period').datepicker({
+      inputs: $('.actual-range'),
       startDate: '-3y',
       endDate: '0d',
       todayBtn: 'linked',
@@ -22,82 +14,75 @@
       var start_date = $("#start_date").val()
       var end_date = $("#end_date").val()
       var type = $("#query_action").val()
-      $.get("statistics/" + type, {'start_date': start_date, 'end_date': end_date}, function (data, status) {
+      $.post("statistics/" + type, {'start_date': start_date, 'end_date': end_date}, function (data, status) {
         $('[id^=chart-]').replaceWith(data);
       });
     });
     // Draw initial line chart
-    $.get("statistics/line_death_records_created", function (data, status) {
+    $.post("statistics/line_death_records_created", function (data, status) {
       $('[id^=chart-]').replaceWith(data);
     });
     // Draw death records by step pie chart
-    $.get("statistics/pie_death_records_by_step", function (data, status) {
+    $.post("statistics/pie_death_records_by_step", function (data, status) {
       $('#pie_death_records_by_step').replaceWith(data);
     });
     // Draw death record time by step bar chart
-    $.get("statistics/bar_death_record_time_by_step", function (data, status) {
+    $.post("statistics/bar_death_record_time_by_step", function (data, status) {
       $('#bar_death_record_time_by_step').replaceWith(data);
     });
   });
 </script>
-
-<div class="container">
-  <div class="row">
-    <%= render 'components/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => admins_path, "Statistics" => nil} %>
-  </div>
+<div class="mt-3 mb-3">
+  <%= react_component('Breadcrumb', {currentUser: current_user, crumbs: [{ name: 'Dashboard', url: death_records_path }, { name: 'Administration', url: admins_path }, { name: 'Statistics' }]}) %>
+</div>
+<div class="row mb-4">
   <h3>Statistics</h3>
-  <hr/>
-  <div class="row">
-    <div id="event_period" class="row">
-      <div class="row">
-        <div class="col-sm-2" align='right'>
-          <label for="start_date">Start date</label>
-        </div>
-        <div class="col-sm-3">
-          <div class="input-group">
-            <input type="text" class="actual_range form-control datepicker" id="start_date" name="start_date">
-          </div>
-        </div>
-        <div class="col-sm-3" align='right'>
-          <label for="query_action">Query Data</label>
-        </div>
-        <div class="col-sm-3" align='right'>
-          <div class="input-group">
-            <select id="query_action" name="query_action">
-              <option value="line_death_records_created">Death Records Created</option>
-              <option value="line_death_records_completed">Death Records Completed</option>
-              <option value="line_users_created">Users Created</option>
-              <option value="line_user_sign_ins">User Sign Ins</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-sm-2" align='right'>
-          <label for="end_date">End date</label>
-        </div>
-        <div class="col-sm-3">
-          <div class="input-group">
-            <input type="text" class="actual_range form-control datepicker" id="end_date" name="end_date">
-          </div>
-        </div>
-        <div class="col-sm-6" align='right'>
-          <button type="button" id="show-line-chart" class="btn btn-primary">Show</button>
-        </div>
+</div>
+<div class="row mb-4 pl-0 pr-0 align-items-center">
+  <div class="event-period night-full-width align-items-center">
+    <div class="col16-md-2 align-items-center" align="right">
+      <label for="start_date">Start date:</label>
+    </div>
+    <div class="col16-md-2">
+      <div class="input-group">
+        <input type="text" class="actual-range form-control datepicker" id="start_date" name="start_date">
       </div>
     </div>
-    </br>
-    </br>
-    </br>
-    <div id="chart-1"></div>
-    <div class="row">
-      <div class="col-sm-4">
-        <div id="pie_death_records_by_step"></div>
-      </div>
-      <div class="col-sm-8">
-        <div id="bar_death_record_time_by_step"></div>
+    <div class="col16-md-2" align="right">
+      <label for="end_date">End date:</label>
+    </div>
+    <div class="col16-md-2">
+      <div class="input-group">
+        <input type="text" class="actual-range form-control datepicker" id="end_date" name="end_date">
       </div>
     </div>
+    <div class="col16-md-2" align="right">
+      <label for="query_action">Query Data:</label>
+    </div>
+    <div class="col16-md-3">
+      <div class="input-group">
+        <select id="query_action" name="query_action">
+          <option value="line_death_records_created">Death Records Created</option>
+          <option value="line_death_records_completed">Death Records Completed</option>
+          <option value="line_users_created">Users Created</option>
+          <option value="line_user_sign_ins">User Sign Ins</option>
+        </select>
+      </div>
+    </div>
+    <div class="col16-md-2 pl-5" align="right">
+      <button type="button" id="show-line-chart" class="btn btn-primary">Update Chart!</button>
+    </div>
+  </div>
+</div>
+<div class="row mb-4">
+  <div id="chart-1">
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col-sm-4">
+    <div id="pie_death_records_by_step"></div>
+  </div>
+  <div class="col-sm-8">
+    <div id="bar_death_record_time_by_step"></div>
   </div>
 </div>

@@ -1,0 +1,95 @@
+{
+  "type": "object",
+  "properties": {
+    "decedentName": {
+      "title": "Decedent's Legal Name",
+      "type": "object",
+      "showAkas": true,
+      "humanReadable": "{lastName}, {firstName} {middleName} {suffix}",
+      "required": true,
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "title": "First Name"
+        },
+        "middleName": {
+          "type": "string",
+          "title": "Middle Name"
+        },
+        "lastName": {
+          "type": "string",
+          "title": "Last Name"
+        },
+        "suffix": {
+          "type": "string",
+          "title": "Suffix"
+        },
+        "akas": {
+          "type": "array",
+          "properties": {
+            "firstName": {
+              "type": "string",
+              "title": "First Name"
+            },
+            "middleName": {
+              "type": "string",
+              "title": "Middle Name"
+            },
+            "lastName": {
+              "type": "string",
+              "title": "Last Name"
+            },
+            "suffix": {
+              "type": "string",
+              "title": "Suffix"
+            }
+          }
+        }
+      }
+    },
+    "ssn": {
+      "title": "Social Security Number",
+      "type": "object",
+      "humanReadable": "{ssn1}-{ssn2}-{ssn3}",
+      "required": true,
+      "properties": {
+        "ssn1": {
+          "type": "string"
+        },
+        "ssn2": {
+          "type": "string"
+        },
+        "ssn3": {
+          "type": "string"
+        }
+      }
+    },
+    "decedentAddress": {
+      "title": "Decedent's Residence",
+      "type": "object",
+      "named": false,
+      "humanReadable": "{street} {apt}\\n{city}, {county}, {state}\\n{zip}",
+      "required": true,
+      "properties": {
+        "state": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "apt": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

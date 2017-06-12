@@ -1,0 +1,23 @@
+$footer-color: #ebebeb;
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.footer {
+  background-color: $footer-color;
+  bottom: 0;
+  height: 60px;
+  line-height: 60px;
+  position: absolute;
+  width: 100%;
+}
+
+.night-footer-padding {
+  padding: 0;
+}

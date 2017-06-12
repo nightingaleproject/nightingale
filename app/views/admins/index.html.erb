@@ -1,9 +1,11 @@
-<div class="container">
-  <div class="row">
-    <%= render 'components/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => nil} %>
-  </div>
+<div class="mt-3 mb-3">
+  <%= react_component('Breadcrumb', {currentUser: current_user, crumbs: [{ name: 'Dashboard', url: death_records_path }, { name: 'Administration' }]}) %>
+</div>
+<div class="row mb-3">
   <h3>Administration Tools</h3>
   <hr/>
+</div>
+<div class="row">
   <table class="table">
     <thead>
       <tr>
@@ -14,7 +16,7 @@
     <tbody>
       <tr>
         <td>
-          <a class="btn btn-primary btn-block" href="<%= users_path %>"><span class="fa fa-user"></span> Users</a>
+          <a class="btn btn-primary btn-block" href="<%= users_path %>"><span class="fa fa-user"></span> User Accounts</a>
         </td>
         <td>
           Shows the users currently registered with this system.
@@ -22,7 +24,7 @@
       </tr>
       <tr>
         <td>
-          <a class="btn btn-primary btn-block" href="<%= questions_path %>"><span class="fa fa-search"></span> Questions</a>
+          <a class="btn btn-primary btn-block disabled" href="<%= questions_path %>"><span class="fa fa-search"></span> Questions</a>
         </td>
         <td>
           Create, edit, and delete custom supplemental questions that will be asked throughout the death record creation workflow.

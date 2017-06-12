@@ -1,0 +1,223 @@
+{
+  "permissions": {
+    "funeral_director": {
+      "can_start_record": true,
+      "can_register_record": false,
+      "can_request_edits": false
+    },
+    "physician": {
+      "can_start_record": true,
+      "can_register_record": false,
+      "can_request_edits": true
+    },
+    "medical_examiner": {
+      "can_start_record": false,
+      "can_register_record": false,
+      "can_request_edits": false
+    },
+    "registrar": {
+      "can_start_record": false,
+      "can_register_record": true,
+      "can_request_edits": true
+    }
+  },
+  "steps": [
+    {
+      "name": "Identity",
+      "abbrv": "Id",
+      "step_type": "form",
+      "description": "User enters identity information about the decedent; e.g. name",
+      "jsonschema": "workflows/steps/identity_JSONSchema.json",
+      "uischema": "workflows/steps/identity_UISchema.json",
+      "icon": "fa-user"
+    },
+    {
+      "name": "Demographics",
+      "abbrv": "Dem",
+      "step_type": "form",
+      "description": "User enters demographic information about the decedent; e.g. date of birth",
+      "jsonschema": "workflows/steps/demographics_JSONSchema.json",
+      "uischema": "workflows/steps/demographics_UISchema.json",
+      "icon": "fa-briefcase"
+    },
+    {
+      "name": "Family",
+      "abbrv": "Fam",
+      "step_type": "form",
+      "description": "User enters family information about the decedent; e.g. parents",
+      "jsonschema": "workflows/steps/family_JSONSchema.json",
+      "uischema": "workflows/steps/family_UISchema.json",
+      "icon": "fa-users"
+    },
+    {
+      "name": "Disposition",
+      "abbrv": "Dis",
+      "step_type": "form",
+      "description": "User enters disposition information about the decedent; e.g. burial method",
+      "jsonschema": "workflows/steps/disposition_JSONSchema.json",
+      "uischema": "workflows/steps/disposition_UISchema.json",
+      "icon": "fa-institution"
+    },
+    {
+      "name": "Medical",
+      "abbrv": "Med",
+      "step_type": "form",
+      "description": "User enters medical information about the decedent; e.g. cause of death",
+      "jsonschema": "workflows/steps/medical_JSONSchema.json",
+      "uischema": "workflows/steps/medical_UISchema.json",
+      "icon": "fa-user-md"
+    },
+    {
+      "name": "F.D. Review",
+      "abbrv": "Rev",
+      "step_type": "review",
+      "description": "Funeral Director reviews and submits the death record to a physician.",
+      "icon": "fa-search"
+    },
+    {
+      "name": "Physician Review",
+      "abbrv": "Rev",
+      "step_type": "review",
+      "description": "Physician reviews and submits the death record to a registrar or medical examiner",
+      "icon": "fa-search"
+    },
+    {
+      "name": "Physician Re-review",
+      "abbrv": "Rev",
+      "step_type": "review",
+      "description": "Physician reviews and submits the death record to a registrar",
+      "icon": "fa-search"
+    },
+    {
+      "name": "M.E. Review",
+      "abbrv": "Rev",
+      "step_type": "review",
+      "description": "Medical Examiner reviews and submits the death record to a registrar",
+      "icon": "fa-search"
+    },
+    {
+      "name": "Registration",
+      "abbrv": "Rev",
+      "step_type": "review",
+      "description": "Registrar registers a death record.",
+      "icon": "fa-file-text"
+    }
+  ],
+  "workflows": [
+    {
+      "name": "fd_starts",
+      "version": "20170509-1",
+      "deathCertifcateTemplate": "///template201705-09.pdf",
+      "description": "An example workflow where a funeral director starts a death record.",
+      "initiator_role": "funeral_director",
+      "reactions": {
+
+      },
+      "roles": [
+        {
+          "name": "funeral_director",
+          "steps": [
+            {
+              "name": "Identity"
+            },
+            {
+              "name": "Demographics"
+            },
+            {
+              "name": "Family"
+            },
+            {
+              "name": "Disposition"
+            },
+            {
+              "name": "F.D. Review",
+              "send_to_role": "physician"
+            }
+          ]
+        },
+        {
+          "name": "physician",
+          "steps": [
+            {
+              "name": "Medical"
+            },
+            {
+              "name": "Physician Review",
+              "send_to_role": "registrar"
+            }
+          ]
+        },
+        {
+          "name": "registrar",
+          "steps": [
+            {
+              "name": "Registration"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "physician_starts",
+      "version": "20170509-1",
+      "deathCertifcateTemplate": "///template201705-09.pdf",
+      "description": "An example workflow where a physician starts a death record.",
+      "initiator_role": "physician",
+      "reactions": {
+
+      },
+      "roles": [
+        {
+          "name": "physician",
+          "steps": [
+            {
+              "name": "Medical"
+            },
+            {
+              "name": "Physician Review",
+              "send_to_role": "funeral_director"
+            }
+          ]
+        },
+        {
+          "name": "funeral_director",
+          "steps": [
+            {
+              "name": "Identity"
+            },
+            {
+              "name": "Demographics"
+            },
+            {
+              "name": "Family"
+            },
+            {
+              "name": "Disposition"
+            },
+            {
+              "name": "F.D. Review",
+              "send_to_role": "physician"
+            }
+          ]
+        },
+        {
+          "name": "physician",
+          "steps": [
+            {
+              "name": "Physician Re-review",
+              "send_to_role": "registrar"
+            }
+          ]
+        },
+        {
+          "name": "registrar",
+          "steps": [
+            {
+              "name": "Registration"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

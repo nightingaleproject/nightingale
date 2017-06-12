@@ -1,4 +1,4 @@
-## Nightingale EDRS Prototype Version 0.2
+## Nightingale EDRS Prototype
 
 Nightingale is a prototype electronic death registration system (EDRS), built to both provide basic EDRS capabilities and explore next generation EDRS concepts. This prototype represents a work-in-progress, and is expected to change and grow over time in response to feedback from subject matter experts and users. Nightingale ERDS currently supports the following functionality at various degrees of maturity:
 
@@ -8,10 +8,10 @@ Nightingale is a prototype electronic death registration system (EDRS), built to
   * Determining who can initiate a death record
   * Assignment of in-process death records to other system users
   * Token based login for medical certifiers who are infrequent system users
+* Workflow and Death record versioning
 * Support for structured data entry, minimizing opportunities for user error
 * Auditing of user actions
 * Basic reports on system usage patterns
-* Configurable "supplemental questions", allowing ad-hoc support for specific data gathering needs such as collecting information related to specific natural disasters
 
 ### Installation and Setup for Development or Testing
 
@@ -22,7 +22,7 @@ Nightingale EDRS is a Ruby on Rails application that uses the PostgreSQL databas
 To work with the application, you will need to install some prerequisites:
 
 * [Ruby](https://www.ruby-lang.org/)
-
+* [Bundler](http://bundler.io/)
 * [Postgres](http://www.postgresql.org/)
 
 Once the prerequisites are available, Nightingale can be installed and demonstration data can be loaded.
@@ -31,7 +31,7 @@ Once the prerequisites are available, Nightingale can be installed and demonstra
 
 * Retrieve the application source code; if the source code is provided as a zip archive
 
-    `unzip nightingale-edrs-0.1.zip`
+    `unzip nightingale-edrs-0.4.zip`
     `cd edrs`
 
 * Install ruby gem dependencies
@@ -44,39 +44,50 @@ Once the prerequisites are available, Nightingale can be installed and demonstra
 
 * Set up system with demonstration data
 
-    `bundle exec rake edrs:demo:create_users`
+    `bundle exec rake nightingale:demo:setup`
 
-  * This will create (all with the password "123456"):
-    * Two funeral director users (fd@test.com, fd2@test.com)
-    * Two physician users (doc@test.com, doc2@test.com)
-    * A registrar user (reg@test.com)
-    * An administrator user (admin@test.com)
+  * This will initialize Nightingale with demonstration data, such as:
+    * Demo user accounts (all with a password of 123456):
+      * Two funeral director users (fd1@example.com, fd2@example.com)
+      * Two physician users (doc1@example.com, doc2@example.com)
+      * Two medical examiner users (me1@example.com, me2@example.com)
+      * Two registrar users (reg1@example.com, reg2@example.com)
+      * An administrator user (admin@test.com)
+    * Two demo workflows:
+      * A simple workflow where a funeral director initiates a record
+      * A simple workflow where a physician initiates a record
+    * U.S. geographical data, used for structured data input
+
+#### Tasks
 
 * Manage user accounts
 
   * Create a user
 
-      `bundle exec rake edrs:users:create EMAIL=<email_address> PASS=<password>`
+      `bundle exec rake nightingale:users:create EMAIL=<email_address> PASS=<password>`
  
   * List all currently registered users (and their roles)
 
-      `bundle exec rake edrs:users:list`
+      `bundle exec rake nightingale:users:list`
  
   * Delete a user
 
-      `bundle exec rake edrs:users:delete EMAIL=<email_address>`
+      `bundle exec rake nightingale:users:delete EMAIL=<email_address>`
 
   * Grant a user admin privileges
 
-      `bundle exec rake edrs:users:grant_admin EMAIL=<email_address>`
+      `bundle exec rake nightingale:users:grant_admin EMAIL=<email_address>`
 
   * Revoke admin privileges from a user
 
-      `bundle exec rake edrs:users:revoke_admin EMAIL=<email_address>`
+      `bundle exec rake nightingale:users:revoke_admin EMAIL=<email_address>`
 
   * Add a role to a user
 
-      `bundle exec rake edrs:users:add_role EMAIL=<email_address> ROLE=<role>`
+      `bundle exec rake nightingale:users:add_role EMAIL=<email_address> ROLE=<role>`
+
+* Update system workflows
+      `bundle exec rake nightingale:workflows:build`
 
 * Run tests
 
@@ -88,32 +99,6 @@ Once the prerequisites are available, Nightingale can be installed and demonstra
     `bundle exec rails server`
 
     The server will be running at http://localhost:3000/
-
-## Change Log
-
-### v0.2 - 2017-04-03
-
-* Redesigned and refactored user dashboards
-  * New and revised graphs
-  * Viewing and tracking of transferred records
-  * Soft deletion of death records (keeping historical record)
-* Support for more flexible workflow customizations
-* Refined data validation to allow entry of partial data
-* Reworked retrieval of geographic data from backend for increased efficiency
-* Added basic API for initial testing of FHIR client for EHR integration workflow
-
-### v0.1 - 2017-03-01
-
-* User roles for funeral directors, medical certifiers, registrars, and administrators
-* Death record data entry
-* Basic support for configurable, flexible workflows, such as
-  * Determining who can initiate a death record
-  * Assignment of in-process death records to other system users
-  * Token based login for medical certifiers who are infrequent system users
-* Support for structured data entry, minimizing opportunities for user error
-* Auditing of user actions
-* Basic reports on system usage patterns
-* Configurable "supplemental questions", allowing ad-hoc support for specific data gathering needs such as collecting information related to specific natural disasters
 
 ## Contact Information
 

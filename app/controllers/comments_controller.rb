@@ -1,44 +1,56 @@
 # Comments Controller
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:destroy, :update]
-  before_action :set_death_record, only: [:destroy, :update, :create]
+  before_action :set_comment, only: [:destroy]
+  before_action :set_death_record, only: [:create]
 
   def create
-    authorize :comment, :create?
-    @comment = current_user.comments.create(comment_params)
-
-    respond_to do |format|
-      format.html { redirect_to death_record_path(@death_record) }
-      format.js
-    end
-  end
-
-  def update
-    authroize @comment, :update?
-    @comment.update_attributes(comment_params)
+    # No new comments if the record has been registered.
+    return unless @death_record.registration.nil?
+    @comment = Comment.create!(content: comment_params[:content], death_record: @death_record)
+    current_user.comments << @comment
+    render :json => @comment
   end
 
   def destroy
-    authorize @comment, :delete?
-    @comment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to death_record_path(@death_record) }
-      format.js
-    end
+    # No deleting comments if the record has been registered.
+    return unless @comment.death_record.registration.nil?
+    @comment.destroy! if @comment.user == current_user
   end
 
   private
 
+  # Retrieve the Comment requested by id.
   def set_comment
     @comment = Comment.find(params[:id])
   end
 
+  # Retrieve the DeathRecord requested by id (and scope by owner). Admins
+  # have access to any DeathRecord, regardless of ownership.
   def set_death_record
-    @death_record = DeathRecord.find(params['death_record_id'])
+    if current_user.admin?
+      @death_record = DeathRecord.find(params[:death_record_id])
+    else
+      @death_record = current_user.owned_death_records.find_by(id: params[:death_record_id])
+      # Allow viewing of death records that were touched but aren't
+      # currently owned.
+      if @death_record.nil?
+        set_transferred_death_records
+        @death_record = @transferred_death_records.select{ |record| record.id.to_s == params[:death_record_id].to_s }.first
+      end
+    end
+  end
+
+  # Retrieve all DeathRecords created by this user (that aren't currently
+  # owned by this user).
+  def set_transferred_death_records
+    transferred = []
+    current_user.step_histories.each do |history|
+      transferred.push(history.death_record)
+    end
+    @transferred_death_records = transferred - current_user.owned_death_records
   end
 
   def comment_params
-    params.require(:comment).merge(death_record_id: params['death_record_id']).permit(:content, :death_record_id)
+    params.permit(:content, :death_record_id)
   end
 end

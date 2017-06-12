@@ -1,50 +1,39 @@
-<body class="sign_in_body">
-<div class="container">
-  <div class="row v-align-row">
-    <div class="col-md-8">
-      <h1 class="title-name">Nightingale</h1>
-        <h2 class="title-desc">A Community Electronic Death Registration System.</h2><br />
-        <a class="title-more title-more-link" href="https://www.cdc.gov/nchs/nvss/modernization/">learn more</a>
-    </div>
-    <div class="col-md-4">
-      <div class="sign-in-box">
-        <h2 class="title-sign-in">Sign up</h2><br />
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= devise_error_messages! %>
-          <div class="field">
-            <%= f.label :email %>
-            <%= f.email_field :email, autofocus: true, class: 'sign-in-field' %>
-          </div>
-          <div class="field">
-            <%= f.label :password %>
-            <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br />
-            <%= f.password_field :password, autocomplete: "off", class: 'sign-in-field' %>
-          </div>
-          <div class="field">
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'sign-in-field' %>
-          </div>
-          <div class="field">
-            <%= f.label :first_name %>
-            <%= f.text_field :first_name, class: 'sign-in-field' %>
-          </div>
-          <div class="field">
-            <%= f.label :last_name %>
-            <%= f.text_field :last_name, class: 'sign-in-field' %>
-          </div>
-          <div class="field">
-            <%= f.label 'Telephone #' %>
-            <%= f.text_field :telephone, class: 'sign-in-field' %>
-          </div>
-          <div class="actions">
-            <%= f.submit "Sign up", class: 'btn btn-primary' %>
-          </div>
-        <% end %>
-        <%= render "devise/shared/links" %>
+<body class="auth-body">
+  <div class="auth-container">
+    <div class="row align-items-center">
+      <div class="col16-md-10">
+        <span class="auth-title-name">Nightingale</span><br />
+        <span class="auth-title-desc">An Open Source Electronic Death Registration System.</span><br />
+        <a class="auth-title-link" href="https://www.cdc.gov/nchs/nvss/modernization/">learn more</a>
+      </div>
+      <div class="col16-md-6">
+        <div class="auth-sign-in-box">
+          <span class="auth-title">Sign up</span><br />
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.label :email, :class => 'mt-2 auth-label' %><br />
+            <%= f.email_field :email, autofocus: true, :class => 'form-control' %>
+            <%= f.label :password, :class => 'mt-2 auth-label' %>
+            <%= f.password_field :password, autocomplete: 'off', :class => 'form-control' %>
+            <%= f.label :password_confirmation, :class => 'mt-2 auth-label' %><br />
+            <%= f.password_field :password_confirmation, autocomplete: 'off', :class => 'form-control' %>
+            <%= f.label :first_name, :class => 'mt-2 auth-label' %>
+            <%= f.text_field :first_name, :class => 'form-control' %>
+            <%= f.label :last_name, :class => 'mt-2 auth-label' %>
+            <%= f.text_field :last_name, :class => 'form-control' %>
+            <%= f.label 'Telephone', :class => 'mt-2 auth-label' %>
+            <%= f.text_field :telephone, :class => 'form-control' %>
+            <%= f.submit 'Sign up', :class => 'btn btn-primary auth-label mt-3 mb-3' %>
+          <% end %>
+          <%= render "devise/shared/links" %>
         </div>
       </div>
     </div>
+  </div>
+  <div class="auth-attribution">
+    <a href="https://www.flickr.com/photos/francesco_veronesi/19175825750/">Common Nightingale</a>
+    by
+    <a href="https://www.flickr.com/people/30818542@N04">Francesco Veronesi</a>
+    is licensed under
+    <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>
   </div>
 </div>

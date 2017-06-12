@@ -1,0 +1,33 @@
+{
+  "classNames": "night-form-outer",
+  "sex": {
+    "ui:field": "nightRadioSelect"
+  },
+  "dateOfBirth": {
+    "ui:field": "nightDate"
+  },
+  "placeOfBirth": {
+    "ui:field": "nightShortAddress"
+  },
+  "armedForcesService": {
+    "ui:field": "nightRadioSelect"
+  },
+  "maritalStatus": {
+    "ui:field": "nightRadioSelect"
+  },
+  "education": {
+    "ui:field": "nightRadioSelect"
+  },
+  "hispanicOrigin": {
+    "ui:field": "nightMultiSelect"
+  },
+  "race": {
+    "ui:field": "nightMultiSelect"
+  },
+  "usualOccupation": {
+    "ui:field": "nightTextarea"
+  },
+  "kindOfBusiness": {
+    "ui:field": "nightTextarea"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "classNames": "night-form-outer",
+  "decedentName": {
+    "ui:field": "nightName"
+  },
+  "ssn": {
+    "ui:field": "nightSSN"
+  },
+  "decedentAddress": {
+    "ui:field": "nightFullAddress"
+  }
+}

@@ -1,0 +1,88 @@
+.auth-body {
+  background-image: url("/bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.auth-container {
+  position: fixed;
+  width: 65%;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: -webkit-translate(-50%, -50%);
+  transform: -moz-translate(-50%, -50%);
+  transform: -ms-translate(-50%, -50%);
+}
+
+.auth-title {
+  font-weight: bold;
+  font-size: 3vw;
+}
+
+.auth-label {
+  font-size: 1.2vw;
+}
+
+.auth-sign-in-box {
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  opacity: .8;
+  border-color: #266a93;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.auth-title-name {
+  font-weight: bold;
+  font-size: 6vw;
+  color: white;
+}
+
+.auth-title-desc {
+  font-size: 2.5vw;
+  color: white;
+  margin-right: 30px;
+  line-height: 120%;
+}
+
+.auth-attribution {
+  font-size: 1vw;
+  position: fixed;
+  bottom: 0;
+  color: #888;
+}
+
+.auth-attribution a {
+  color: #BBB;
+}
+
+a.auth-title-link {
+  font-size: 2vw;
+  color: white;
+  text-decoration: underline;
+  color: white !important;
+  background-color: inherit;
+}
+
+a.auth-title-link:visited {
+  color: white !important;
+  background-color: inherit;
+}
+
+a.auth-title-link:hover {
+  color: white !important;
+  background-color: inherit;
+}
+
+a.auth-title-link:active {
+  color: white !important;
+  background-color: inherit;
+}

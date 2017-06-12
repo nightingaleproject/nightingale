@@ -1,0 +1,21 @@
+{
+  "classNames": "night-form-outer",
+  "methodOfDisposition": {
+    "ui:field": "nightMultiSelect"
+  },
+  "placeOfDisposition": {
+    "ui:field": "nightShortAddress"
+  },
+  "funeralFacility": {
+    "ui:field": "nightFullAddress"
+  },
+  "funeralLicenseNumber": {
+    "ui:field": "nightInput"
+  },
+  "informantName": {
+    "ui:field": "nightName"
+  },
+  "informantAddress": {
+    "ui:field": "nightFullAddress"
+  }
+}

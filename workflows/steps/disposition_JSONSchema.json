@@ -1,0 +1,141 @@
+{
+  "type": "object",
+  "properties": {
+    "methodOfDisposition": {
+      "type": "object",
+      "title": "Method of Disposition",
+      "humanReadable": "{methodOfDisposition}",
+      "required": true,
+      "properties": {
+        "methodOfDisposition": {
+          "type": "object",
+          "properties": {
+            "option": {
+              "type": "string"
+            },
+            "specify": {
+              "type": "string"
+            },
+            "specifyInputs": {
+              "type": "string"
+            }
+          },
+          "options": ["Burial", "Cremation", "Donation", "Entombment", "Removal from State", {"text": "Other (specify)", "input": true}]
+        }
+      }
+    },
+    "placeOfDisposition": {
+      "title": "Place of Disposition",
+      "type": "object",
+      "named": true,
+      "humanReadable": "{name}\\n{city}, {state}, {country}",
+      "required": true,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        }
+      }
+    },
+    "funeralFacility": {
+      "title": "Funeral Facility",
+      "type": "object",
+      "named": true,
+      "humanReadable": "{name}\\n{street} {apt}\\n{city}, {county}, {state}\\n{zip}",
+      "required": true,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "apt": {
+          "type": "string"
+        }
+      }
+    },
+    "funeralLicenseNumber": {
+      "title": "Funeral Service License Number",
+      "type": "object",
+      "humanReadable": "{funeralLicenseNumber}",
+      "required": true,
+      "properties": {
+        "funeralLicenseNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "informantName": {
+      "title": "Informant's Name",
+      "type": "object",
+      "showAkas": false,
+      "humanReadable": "{lastName}, {firstName} {middleName} {suffix}",
+      "required": true,
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "title": "First Name"
+        },
+        "middleName": {
+          "type": "string",
+          "title": "Middle Name"
+        },
+        "lastName": {
+          "type": "string",
+          "title": "Last Name"
+        },
+        "suffix": {
+          "type": "string",
+          "title": "Suffix"
+        }
+      }
+    },
+    "informantAddress": {
+      "title": "Informant's Address",
+      "type": "object",
+      "named": false,
+      "humanReadable": "{street} {apt}\\n{city}, {county}, {state}\\n{zip}",
+      "properties": {
+        "state": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "apt": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

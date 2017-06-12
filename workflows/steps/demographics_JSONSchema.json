@@ -1,0 +1,142 @@
+{
+  "type": "object",
+  "properties": {
+    "sex": {
+      "type": "object",
+      "title": "Sex",
+      "humanReadable": "{sex}",
+      "required": true,
+      "properties": {
+        "sex": {
+          "options": ["Male", "Female", "Unknown"]
+        }
+      }
+    },
+    "dateOfBirth": {
+      "type": "object",
+      "title": "Date of Birth",
+      "humanReadable": "{dateOfBirth}",
+      "required": true,
+      "properties": {
+        "dateOfBirth": {
+          "type": "string"
+        }
+      }
+    },
+    "placeOfBirth": {
+      "title": "Place of Birth",
+      "type": "object",
+      "named": false,
+      "humanReadable": "{country}, {state}, {city}",
+      "required": true,
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        }
+      }
+    },
+    "armedForcesService": {
+      "type": "object",
+      "title": "Armed Forces Service",
+      "humanReadable": "{armedForcesService}",
+      "properties": {
+        "armedForcesService": {
+          "options": ["Yes", "No", "Unknown"]
+        }
+      }
+    },
+    "maritalStatus": {
+      "type": "object",
+      "title": "Marital Status",
+      "humanReadable": "{maritalStatus}",
+      "properties": {
+        "maritalStatus": {
+          "options": ["Married", "Married but seperated", "Widowed", "Widowed (but not remarried)", "Divorced (but not remarried)", "Never married", "Unknown"]
+        }
+      }
+    },
+    "education": {
+      "type": "object",
+      "title": "Education",
+      "humanReadable": "{education}",
+      "properties": {
+        "education": {
+          "options": ["8th grade or less", "9th - 12th grade, no diploma", "High school graduate or GED completed", "Some college credit, but no degree", "Associate's degree", "Bachelor's degree", "Master's degree", "Doctorate or Professional degree", "Refused", "Not Obtainable", "Unknown", "Not Classifiable"]
+        }
+      }
+    },
+    "hispanicOrigin": {
+      "type": "object",
+      "title": "Hispanic Origin",
+      "humanReadable": "{hispanicOrigin}",
+      "properties": {
+        "hispanicOrigin": {
+          "type": "object",
+          "properties": {
+            "option": {
+              "type": "string"
+            },
+            "specify": {
+              "type": "string"
+            },
+            "specifyInputs": {
+              "type": "string"
+            }
+          },
+          "options": [{"text": "Yes", "show": "specify1"}, "No", "Refused", "Not Obtainable", "Unknown"],
+          "specifyOptions": {"specify1": ["Mexican, Mexican American, Chicano", "Puerto Rican", "Cuban", {"text": "Other Spanish/Hispanic/Latino (specify)", "input": true}]}
+        }
+      }
+    },
+    "race": {
+      "type": "object",
+      "title": "Race",
+      "humanReadable": "{race}",
+      "required": true,
+      "properties": {
+        "race": {
+          "type": "object",
+          "properties": {
+            "option": {
+              "type": "string"
+            },
+            "specify": {
+              "type": "string"
+            },
+            "specifyInputs": {
+              "type": "string"
+            }
+          },
+          "options": [{"text": "Known", "show": "specify1"}, "Refused", "Not Obtainable", "Unknown"],
+          "specifyOptions": {"specify1": ["White", "Black or African America", {"text": "American Indian or Alaskan Native (specify tribe)", "input": true}, "Asian Indian", "Chinese", "Filipino", "Japanese", "Korean", "Vietnamese", {"text": "Other Asian (specify)", "input": true}, "Native Hawaiian", "Guamanian or Chamorro", "Samoan", {"text": "Other Pacific Islander (specify)", "input": true}, {"text": "Other (specify)", "input": true}]}
+        }
+      }
+    },
+    "usualOccupation": {
+      "type": "object",
+      "title": "Usual Occupation",
+      "humanReadable": "{usualOccupation}",
+      "properties": {
+        "usualOccupation": {
+          "type": "string"
+        }
+      }
+    },
+    "kindOfBusiness": {
+      "type": "object",
+      "title": "Kind Of Business",
+      "humanReadable": "{kindOfBusiness}",
+      "properties": {
+        "kindOfBusiness": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

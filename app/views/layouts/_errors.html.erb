@@ -1,9 +1,0 @@
-<% unless flash.empty? %>
-  <div class="container-fluid">
-    <% flash.each do |key, value| %>
-      <% if key == 'danger' %>
-        <div class="alert alert-danger"><%= value %></div>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>

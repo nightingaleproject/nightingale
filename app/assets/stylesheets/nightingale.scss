@@ -1,0 +1,39 @@
+.night-container {
+  max-width: 1200px;
+  width: 90%;
+}
+
+.rjsf {
+  flex: 1;
+}
+
+.night-full-width {
+  flex: 1;
+}
+
+.night-full-height {
+  min-height: 100%;
+  height: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
+.night-sidebar {
+  margin: 0 1em 0 0;
+}
+
+.night-main {
+  margin: 0 0 0 1em;
+}
+
+.night-nav-link {
+  color: white !important;
+  opacity: 1 !important;
+}
+
+a.night-nav-link:hover {
+  color: white !important;
+  opacity: 0.5 !important;
+}

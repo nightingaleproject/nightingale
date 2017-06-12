@@ -3,63 +3,57 @@
       $('#users_table').DataTable();
   });
 </script>
-
-<div class="container">
-  <div class="row">
-    <%= render 'components/breadcrumb', crumbs: {"Dashboard" => death_records_path, "Admin" => admins_path, "Users" => nil} %>
-  </div>
+<div class="mt-3 mb-3">
+  <%= react_component('Breadcrumb', {currentUser: current_user, crumbs: [{ name: 'Dashboard', url: death_records_path }, { name: 'Administration', url: admins_path }, { name: 'User Accounts' }]}) %>
+</div>
+<div class="row mt-3 mb-3">
   <h3>User Accounts</h3>
-  <hr/>
-  <% if !@users.nil? %>
-    <table class="table" id="users_table">
-      <thead>
+</div>
+<div class="row">
+  <table class="table" id="users_table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Telephone Number</th>
+        <th>Email</th>
+        <th>Last Sign In</th>
+        <th>Death Record Count</th>
+        <th>Roles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Telephone Number</th>
-          <th>Email</th>
-          <th>Last Sign In</th>
-          <th>Death Record Count</th>
-          <th>Roles</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td>
-              <%= user.first_name %>
-            </td>
-            <td>
-              <%= user.last_name %>
-            </td>
-            <td>
-              <%= user.telephone %>
-            </td>
-            <td>
-              <%= user.email %>
-            </td>
-            <td>
-              <%= DatetimeHelper.pretty_datetime(user.last_sign_in_at) %>
-            </td>
-            <td>
-              <%= DeathRecord.where(owner_id: user.id).count %>
-            </td>
-            <td>
-              <% user.roles.as_json.each do |role| %>
-                <% if role == user.roles.as_json.last %>
-                  <%= role['name'].titleize %>
-                <% else %>
-                  <%= role['name'].titleize %>,&nbsp;
-                <% end %>
+          <td>
+            <%= user.first_name %>
+          </td>
+          <td>
+            <%= user.last_name %>
+          </td>
+          <td>
+            <%= user.telephone %>
+          </td>
+          <td>
+            <%= user.email %>
+          </td>
+          <td>
+            <%= DatetimeHelper.pretty_datetime(user.last_sign_in_at) %>
+          </td>
+          <td>
+            <%= DeathRecord.where(owner_id: user.id).count %>
+          </td>
+          <td>
+            <% user.roles.as_json.each do |role| %>
+              <% if role == user.roles.as_json.last %>
+                <%= role['name'].titleize %>
+              <% else %>
+                <%= role['name'].titleize %>,&nbsp;
               <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <div class="row">
-      <div class="col-centered text-center"><p><h4>No users currently registered.</h4></p></div>
-    </div>
-  <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
