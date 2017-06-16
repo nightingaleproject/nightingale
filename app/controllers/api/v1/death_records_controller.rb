@@ -38,7 +38,6 @@ class Api::V1::DeathRecordsController < UnauthenticatedApplicationController
         steps_content_hash = @death_record.separate_step_contents(params[:contents])
         @death_record.steps.each do |step|
           unless steps_content_hash[step.name].empty?
-            debugger
             StepContent.update_or_create_new(death_record: @death_record,
                                              step: step,
                                              contents: steps_content_hash[step.name],
