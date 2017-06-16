@@ -132,13 +132,6 @@ class NightCOD extends React.Component {
             />
           </div>
         </div>
-        // <div className="row mt-1 mb-2">
-        //   <div className="col-md-12">
-        //     <button className="btn btn-primary pull-right" type="button">
-        //       Validate
-        //     </button>
-        //   </div>
-        // </div>
       </fieldset>
     );
   }
