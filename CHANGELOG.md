@@ -1,14 +1,23 @@
 ## Change Log
 
-### v0.4 - 2017-06-05
-* Nightingale now utilizes the react-rails framework for front-end user interaction
-* UI now leverages flexbox layouts for compatibility with more device form factors
+### v0.4.0 - 2017-06-12
 
-### v0.3 - 2017-05-15
+* Integrated the react-rails framework for front-end user interaction
+* Implemented flexbox layouts in the UI for compatibility with more device form factors
 * Implemented JSON configurable workflows
-* Workflows and their corresponding death records are now versioned
+* Added versioning support for workflows and their corresponding death records
+* Rewrote database death record model and workflow to be more dynamic
+* Improved user workflows related to partial and incomplete data
+* Exposed illustration API to allow demonstration of EHR integration concepts
+* Integrated Bootstrap 4 for UI styling
+* Updated Rails version
 
-### v0.2 - 2017-04-03
+### v0.3.0 - 2017-05-01
+
+* Added check for unsaved changes before navigation
+* Added support for notification emails
+
+### v0.2.0 - 2017-04-03
 
 * Redesigned and refactored user dashboards
   * New and revised graphs
@@ -19,7 +28,7 @@
 * Reworked retrieval of geographic data from backend for increased efficiency
 * Added basic API for initial testing of FHIR client for EHR integration workflow
 
-### v0.1 - 2017-03-01
+### v0.1.0 - 2017-03-01
 
 * User roles for funeral directors, medical certifiers, registrars, and administrators
 * Death record data entry

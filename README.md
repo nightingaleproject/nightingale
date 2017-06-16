@@ -29,10 +29,13 @@ Once the prerequisites are available, Nightingale can be installed and demonstra
 
 #### Setup
 
-* Retrieve the application source code; if the source code is provided as a zip archive
+* Retrieve the application source code
 
-    `unzip nightingale-edrs-0.4.zip`
-    `cd edrs`
+    `git clone https://github.com/nightingaleproject/nightingale.git`
+
+* Change into the new directory
+
+    `cd nightingale`
 
 * Install ruby gem dependencies
 
@@ -87,7 +90,8 @@ Once the prerequisites are available, Nightingale can be installed and demonstra
       `bundle exec rake nightingale:users:add_role EMAIL=<email_address> ROLE=<role>`
 
 * Update system workflows
-      `bundle exec rake nightingale:workflows:build`
+
+    `bundle exec rake nightingale:workflows:build`
 
 * Run tests
 
@@ -100,7 +104,25 @@ Once the prerequisites are available, Nightingale can be installed and demonstra
 
     The server will be running at http://localhost:3000/
 
-## Contact Information
+### Version History
+
+This project adheres to [Semantic Versioning](http://semver.org/).
+
+Releases are documented in the [CHANGELOG](https://github.com/nightingaleproject/nightingale/blob/master/CHANGELOG.md).
+
+### License
+
+Copyright 2017 The MITRE Corporation
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+```
+http://www.apache.org/licenses/LICENSE-2.0
+```
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+### Contact Information
 
 For questions or comments about Nightingale EDRS, please send email to
 
