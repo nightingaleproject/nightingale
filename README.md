@@ -55,7 +55,7 @@ Once the prerequisites are available, Nightingale can be installed and demonstra
       * Two physician users (doc1@example.com, doc2@example.com)
       * Two medical examiner users (me1@example.com, me2@example.com)
       * Two registrar users (reg1@example.com, reg2@example.com)
-      * An administrator user (admin@test.com)
+      * An administrator user (admin@example.com)
     * Two demo workflows:
       * A simple workflow where a funeral director initiates a record
       * A simple workflow where a physician initiates a record
