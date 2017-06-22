@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/nightingaleproject/ije
+  revision: 1c9e24b5bb2b9d031d17a42790c5eb392ec16932
+  specs:
+    ije (0.0.1)
+
+GIT
   remote: https://github.com/nightingaleproject/views_connector
   revision: c3377810ed88badf92bdd98036573dfa2084f4aa
   branch: nokogiri_1_7_2
@@ -17,6 +23,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    StreetAddress (1.0.6)
     actioncable (5.0.5)
       actionpack (= 5.0.5)
       nio4r (>= 1.2, < 3.0)
@@ -97,6 +104,7 @@ GEM
     chromedriver-helper (1.1.0)
       archive-zip (~> 0.7.0)
       nokogiri (~> 1.6)
+    codez (0.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -126,6 +134,7 @@ GEM
     fixtures_dumper (0.0.1)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
+    geokit (1.11.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     groupdate (3.2.0)
@@ -308,6 +317,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  StreetAddress
   audited (~> 4.3)
   bootstrap (~> 4.0.0.alpha6)
   bootstrap-datepicker-rails
@@ -317,6 +327,7 @@ DEPENDENCIES
   capybara
   chartkick
   chromedriver-helper
+  codez
   coffee-rails (~> 4.2)
   config
   database_cleaner
@@ -324,8 +335,10 @@ DEPENDENCIES
   doorkeeper
   fixtures_dumper
   font-awesome-sass
+  geokit
   groupdate
   hashdiff
+  ije!
   jbuilder (~> 2.5)
   jquery-rails
   js-routes

@@ -73,6 +73,12 @@ gem 'views', git: 'https://github.com/nightingaleproject/views_connector', branc
 # OAuth2
 gem 'doorkeeper'
 
+# IJE exporting
+gem 'ije', git: 'https://github.com/nightingaleproject/ije'
+gem 'codez'
+gem 'StreetAddress'
+gem 'geokit'
+
 group :development, :test, :ci do
   gem 'byebug', platform: :mri
   gem 'brakeman'
