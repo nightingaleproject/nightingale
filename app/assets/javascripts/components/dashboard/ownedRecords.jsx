@@ -85,6 +85,7 @@ class OwnedRecords extends React.Component {
           key={deathRecord.id + step.name}
         >
           <i className="fa fa-check-circle text-success night-progress-icon" />
+          &nbsp;
         </a>
       );
     } else if (step.contents.contents) {
@@ -97,6 +98,7 @@ class OwnedRecords extends React.Component {
           key={deathRecord.id + step.name}
         >
           <i className="fa fa-times-circle text-danger night-progress-icon" />
+          &nbsp;
         </a>
       );
     } else {
@@ -109,6 +111,7 @@ class OwnedRecords extends React.Component {
           key={deathRecord.id + step.name}
         >
           <i className="fa fa-circle-o text-muted night-progress-icon" />
+          &nbsp;
         </a>
       );
     }
