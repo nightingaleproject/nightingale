@@ -100,6 +100,10 @@ class SendTo extends React.Component {
     info = { ...this.state.userInfo };
     info['step'] = this.state.deathRecord.stepStatus.nextStep.name;
     info['reassign'] = true;
+    $.LoadingOverlay('show', {
+      image: '',
+      fontawesome: 'fa fa-spinner fa-spin'
+    });
     $.post(
       Routes.update_active_step_death_record_path(this.props.deathRecord.id),
       info
