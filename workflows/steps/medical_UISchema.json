@@ -36,6 +36,9 @@
   "cod": {
     "ui:field": "nightCOD"
   },
+  "contributingCauses": {
+    "ui:field": "nightTextarea"
+  },
   "didTobaccoUseContributeToDeath": {
     "ui:field": "nightRadioSelect"
   },
