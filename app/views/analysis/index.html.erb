@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+  <title></title>
+  <style type="text/css">
+    .chart div {
+      font: 10px sans-serif;
+      background-color: steelblue;
+      text-align: right;
+      padding: 3px;
+      margin: 1px;
+      color: white;
+    }
+
+    .js-filter {
+      border-bottom: 1px #111 solid;
+      padding: 5px;
+    }
+
+    .js-filter .btn-link {
+      color: #000
+    }
+
+    #map {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <form>
+    <div class="mt-3 mb-3">
+      <%= react_component('Breadcrumb', {currentUser: current_user, crumbs: [{ name: 'Dashboard', url: death_records_path }, { name: 'Administration', url: admins_path }, { name: 'Records Analysis' }]}) %>
+    </div>
+    <div class="row mb-4">
+      <h3>Analysis</h3>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="mb-4 pl-0 pr-0 align-items-center">
+          <div class="row">
+            <button type="button" class="btn btn-primary btn-block" id="cause_death" onclick="toggle_filter_display()">Cause of Death</button>
+            <button type="button" class="btn btn-primary btn-block">Maps</button>
+          </div>
+          <br>
+          <div class="js-filter" id="header" align="left" style="display:none">
+            <p><b><font size = 4>Visualization Type</font></b></p>
+            <br>
+            <input type="radio" id="tabular_data" name="data_type" value="tabular_data"> Tabular data<br>
+            <input type="radio" id="horizontal_bar_chart" name="data_type" value="horizontal_bar_chart"> Horizontal bar chart<br>
+            <input type="radio" id="vertical_bar_chart" name="data_type" value="vertical_bar_chart"> Vertical bar chart<br>
+            <input type="radio" id="line_graph" name="data_type" value="line_graph"> Line graph<br>
+            <input type="radio" id="scatter_plot" name="data_type" value="scatter_plot"> Scatter plot<br>
+            <input type="radio" id="pie_chart" name="data_type" value="pie_chart"> Pie chart<br>
+            <p><b><font size = 4>Filtering</font></b></p>
+          </div>
+          <div class="row js-filter" id="causes_id" align="left" style="display:none">
+            <button id="cause_button" type="button" class="btn btn-link" data-toggle="collapse" data-target="#cause">
+            <span class="fa fa-plus"></span> Cause of Death
+            </button>
+            <div id="cause" class="collapse">
+              <label>Specify Cause of Death</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="input_cause" name="cause_of_death" onblur="generate_cause_graphs()">
+              </div>
+              <div class="row">
+
+                <div class="form-group">
+                  <label>Number of Causes</label>
+                  <select name="num_causes" id="num_causes">
+                      <option value="20">20</option>
+                      <option value="35">35</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row js-filter" id="ages_id" align="left" style="display:none">
+            <div align="left">
+              <button type="button" class="btn btn-link" data-toggle="collapse" id="age_range" data-target="#age">
+            <span class="fa fa-plus"></span> Age Range
+            </button>
+              <div id="age" class="collapse">
+                <input type="checkbox" id="age_range" name="age_range" value="0"> Less than 10 years old<br>
+                <input type="checkbox" id="age_range" name="age_range" value="10"> 10 - 19 years old<br>
+                <input type="checkbox" id="age_range" name="age_range" value="20"> 20 - 29 years old<br>
+                <input type="checkbox" id="age_range" name="age_range" value="30"> 30 - 39 years old<br>
+                <input type="checkbox" id="age_range" name="age_range" value="40"> 40 - 49 years old<br>
+                <input type="checkbox" id="age_range" name="age_range" value="50"> 50 - 59 years old<br>
+                <input type="checkbox" id="age_range" name="age_range" value="60"> 60 - 69 years old<br>
+                <input type="checkbox" id="age_range" name="age_range" value="70"> 70 - 79 years old<br>
+                <input type="checkbox" id="age_range" name="age_range" value="80"> 80 - 89 years old<br>
+                <input type="checkbox" id="age_range" name="age_range" value="90"> 90 - 99 years old<br>
+                <input type="checkbox" id="age_range" name="age_range" value="100"> Over 100 years old<br>
+              </div>
+            </div>
+          </div>
+          <div class="row js-filter" id="sex_id" style="display:none">
+            <div align="left">
+              <button type="button" class="btn btn-link" data-toggle="collapse" id="sex_selected" data-target="#sex">
+            <span class="fa fa-plus"></span> Sex
+            </button>
+              <div id="sex" class="collapse">
+                <input type="checkbox" name="sex" value="Male"> Male<br>
+                <input type="checkbox" name="sex" value="Female"> Female<br>
+              </div>
+            </div>
+          </div>
+          <div class="row js-filter" id="location_id" , style="display:none">
+            <div align="left">
+              <button type="button" class="btn btn-link" data-toggle="collapse" id="location_selected" data-target="#location">
+            <span class="fa fa-plus"></span> Location
+            </button>
+              <div id="location" class="collapse">
+                <label>Residence Zip Code</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="residence_zipcode" name="residence_zipcode" onblur="generate_cause_graphs()">
+                </div>
+                <label>Location of Death Zip Code</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="death_zipcode" name="death_zipcode" onblur="generate_cause_graphs()">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row js-filter" id="date_range" style="display:none">
+            <div align="left">
+              <button type="button" class="btn btn-link" data-toggle="collapse" id="year_selected" data-target="#year">
+            <span class="fa fa-plus"></span> Date Range
+            </button>
+              <div id="year" class="collapse">
+                <label>Start Year</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" id="start_year" name="start_year" min="1900" max="2017" onblur="generate_cause_graphs()">
+                </div>
+                <label>End Year</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" id="end_year" name="end_year" min="1901" max="2017" onblur="generate_cause_graphs()">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row js-filter" id="races_chosen" style="display:none">
+            <div align="left">
+              <button type="button" class="btn btn-link" data-toggle="collapse" id="race_choice" data-target="#race_chosen">
+            <span class="fa fa-plus"></span> Race
+            </button>
+              <div id="race_chosen" class="collapse">
+                <input type="checkbox" name="race" value="White"> White<br>
+                <input type="checkbox" name="race" value="Black or African American"> Black or African American<br>
+                <input type="checkbox" name="race" value="American Indian or Alaskan Native (specify tribe)"> American Indian or Alaskan Native<br>
+                <input type="checkbox" name="race" value="Asian Indian"> Asian Indian<br>
+                <input type="checkbox" name="race" value="Chinese"> Chinese<br>
+                <input type="checkbox" name="race" value="Filipino"> Filipino<br>
+                <input type="checkbox" name="race" value="Japanese"> Japanese<br>
+                <input type="checkbox" name="race" value="Korean"> Korean<br>
+                <input type="checkbox" name="race" value="Vietnamese"> Vietnamese<br>
+                <input type="checkbox" name="race" value="Native Hawaiian"> Native Hawaiian<br>
+                <input type="checkbox" name="race" value="Guamanian or Chamorro"> Guamanian or Chamorro<br>
+                <input type="checkbox" name="race" value="Samoan"> Samoan<br>
+              </div>
+            </div>
+          </div>
+          <div class="row js-filter" id="other_criteria" style="display:none">
+            <div align="left">
+              <button type="button" class="btn btn-link" data-toggle="collapse" id="specify_criteria" data-target="#other_options">
+            <span class="fa fa-plus"></span> Other Options
+            </button>
+              <div id="other_options" class="collapse">
+                <input type="checkbox" name="specified_criteria" value="served_armed_forces"> Only show Armed Forces service members<br>
+                <input type="checkbox" name="specified_criteria" value="tobacco_cause"> Only show tobacco-related deaths<br>
+              </div>
+            </div>
+          </div>
+          <br>
+        </div>
+        <br>
+      </div>
+      <div class="col-md-8 offset-md-1">
+        Chart Display
+        <div class="row">
+          <div align="left">
+            <button type="button" onclick="common_deaths_age()" class="btn btn-primary">Most Common Causes Of Death</button>&nbsp;
+          </div>
+          <div align="center">
+            <button type="button" onclick="display_causes_map()" class="btn btn-primary">Display Map</button>&nbsp;
+          </div>
+          <div class="right">
+            <button type="button" id="save_chart" class="btn btn-primary" align="right">Save Chart Image</button>&nbsp;
+          </div>
+        </div>
+        <div class="row mt-3">
+          <p id="demo"></p>
+          <div id="chart" align="center"></div>
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </form>
+  <script>
+    // Obtain all of the contents from the form on the Records Analysis page.
+    function showValues() {
+      var fields = $("form").serializeArray();
+      var all_inputs = {};
+      jQuery.each(fields, function() {
+        if (all_inputs[this.name]) {
+          if (!Array.isArray(all_inputs[this.name])) {
+            all_inputs[this.name] = [all_inputs[this.name]];
+          }
+          all_inputs[this.name].push(this.value || '');
+        } else {
+          all_inputs[this.name] = this.value || '';
+        }
+      });
+      return all_inputs;
+    }
+
+    // If user wishes to save the chart as an image, download it as a png file.
+    $("#save_chart").click(function() {
+      domtoimage.toPng(document.getElementById('chart'))
+        .then(function(dataUrl) {
+          var download = document.createElement('a');
+          download.href = dataUrl;
+          download.download = 'chart.png'
+          download.click();
+        })
+        .catch(function(error) {
+          console.error('Error:', error);
+        });
+    });
+
+    // Toggle the plus and minus icons based on whether or not a certain category should be expanded upon.
+    $(function() {
+      $("[data-toggle='collapse']").on('click.bs.collapse.data-api', function() {
+        $("span", this).toggleClass('fa-plus').toggleClass("fa-minus")
+      });
+    })
+
+    // Function to toggle all of the buttons to either collapse or come back up.
+    function toggle_filter_display() {
+      $(".js-filter").toggle();
+      common_deaths_age();
+    }
+
+    $("input[type='checkbox'], input[type='radio']").on("click", generate_cause_graphs);
+    $("select").on("change", generate_cause_graphs);
+
+    // Generic function to obtain the axis values based upon a start value, end value and a specified increment.
+    function get_axis_values(start, end, increment) {
+      axis_values = [];
+      for (var i = start; i <= end; i += increment) {
+        axis_values.push(i)
+      }
+      if (axis_values[axis_values.length - 1] < end) {
+        axis_values.push(end);
+      }
+      return axis_values;
+    }
+
+    //Function to determine the appropriate years that are to be displayed on the chart axis.
+    function determine_x_ticks(statistical_data, start_year, end_year) {
+      var year_difference = end_year - start_year;
+
+      if (year_difference >= 0 && year_difference <= 11) {
+        return get_axis_values(start_year, end_year, 2);
+      } else if (year_difference >= 12 && year_difference <= 30) {
+        return get_axis_values(start_year, end_year, 4);
+      } else if (year_difference >= 31 && year_difference <= 50) {
+        return get_axis_values(start_year, end_year, 6);
+      } else if (year_difference >= 51 && year_difference <= 70) {
+        return get_axis_values(start_year, end_year, 8);
+      } else if (year_difference >= 71 && year_difference <= 89) {
+        return get_axis_values(start_year, end_year, 12);
+      } else if (year_difference >= 90) {
+        return get_axis_values(start_year, end_year, 15);
+      }
+    }
+
+    // Function that will compute the appropriate ticks to be displayed for the y axis.
+    function determine_y_ticks(statistical_data) {
+      var y_values = [];
+      var min_y_value = 0;
+      var max_y_value = 0;
+      var y_axis = [];
+      var y_difference = 0;
+      for (var j in statistical_data) {
+        for (var k in statistical_data[j]) {
+          y_values.push(statistical_data[j][k]);
+        }
+      }
+
+      if (y_values.length > 0) {
+        min_y_value = d3.min(y_values);
+        max_y_value = d3.max(y_values);
+        y_difference = max_y_value - min_y_value;
+      }
+
+      if (y_difference >= 1 && y_difference <= 11) {
+        return get_axis_values(min_y_value, max_y_value, 2);
+      } else if (y_difference >= 12 && y_difference <= 30) {
+        return get_axis_values(min_y_value, max_y_value, 4);
+      } else if (y_difference >= 31 && y_difference <= 50) {
+        return get_axis_values(min_y_value, max_y_value, 6);
+      } else if (y_difference >= 51 && y_difference <= 70) {
+        return get_axis_values(min_y_value, max_y_value, 8);
+      } else if (y_difference >= 71 && y_difference <= 89) {
+        return get_axis_values(min_y_value, max_y_value, 12);
+      } else if (y_difference >= 90 && y_difference <= 99) {
+        return get_axis_values(min_y_value, max_y_value, 15);
+      } else if (y_difference >= 100 && y_difference <= 200) {
+        return get_axis_values(min_y_value, max_y_value, 25);
+      } else if (y_difference >= 201 && y_difference <= 500) {
+        return get_axis_values(min_y_value, max_y_value, 50);
+      } else if (y_difference >= 501 && y_difference <= 999) {
+        return get_axis_values(min_y_value, max_y_value, 100);
+      } else if (y_difference >= 1000 && y_difference <= 2000) {
+        return get_axis_values(min_y_value, max_y_value, 250);
+      } else if (y_difference >= 2001 && y_difference <= 5000) {
+        return get_axis_values(min_y_value, max_y_value, 500);
+      } else if (y_difference >= 5001 && y_difference <= 10000) {
+        return get_axis_values(min_y_value, max_y_value, 1000);
+      } else if (y_difference >= 10001 && y_difference <= 50000) {
+        return get_axis_values(min_y_value, max_y_value, 2000);
+      } else if (y_difference >= 50001 && y_difference <= 99999) {
+        return get_axis_values(min_y_value, max_y_value, 4000);
+      } else if (y_difference >= 100000 && y_difference <= 499999) {
+        return get_axis_values(min_y_value, max_y_value, 40000);
+      } else if (y_difference >= 500000 && y_difference <= 1000000) {
+        return get_axis_values(min_y_value, max_y_value, 70000);
+      }
+    }
+
+    // Function that determines if a given year is valid.
+    function check_if_valid(id, min_val) {
+      if (id.indexOf(".") == -1 && id.indexOf("-") == -1) {
+        term = parseInt(id);
+        if (term >= min_val) {
+          return true;
+        }
+        return false;
+      }
+      return false;
+    }
+
+    function common_deaths_age() {
+      // Default configurations when page is loaded by the user.
+      $("#demo").html("");
+      var sent_input = {
+        "sex": [],
+        "race": [],
+        "start_year": "1985",
+        "end_year": "2017",
+        "num_causes": "20",
+        "cause_of_death": "",
+        "age_range": [],
+        "specified_criteria": [],
+        "residence_zipcode": "",
+        "death_zipcode": ""
+      }
+      var filled_input = showValues();
+      for (var i in filled_input) {
+        if (filled_input[i] != "" && i != "cause_of_death") {
+          if (Array.isArray(sent_input[i]) && !Array.isArray(filled_input[i])) {
+            sent_input[i].push(filled_input[i]);
+          } else {
+            sent_input[i] = filled_input[i]
+          }
+        }
+      }
+
+      for (var j in sent_input) {
+        if (Array.isArray(sent_input[j])) {
+          sent_input[j] = JSON.stringify(sent_input[j]);
+        }
+      }
+      if (!check_if_valid(sent_input["start_year"], 1900)) {
+        $("#demo").html("Invalid year entered! Starting year must be from 1900 and onwards!");
+        return;
+      }
+      if (!check_if_valid(sent_input["end_year"], sent_input["start_year"])) {
+        $("#demo").html("Invalid year entered! Please also note that the end year must be after the starting year!");
+        return;
+      }
+      $.post(Routes.analyze_causes_path(),
+        sent_input,
+        function(data) {
+          statistical_data = data
+          causes_array = [];
+          graph_title = "";
+          for (var k in statistical_data) {
+            storage = [];
+            storage.push(k);
+            storage.push(statistical_data[k]);
+            causes_array.push(storage);
+          }
+          if (causes_array.length > 0) {
+            if (start_year == end_year) {
+              graph_title = 'Top ' + causes_array.length + ' causes of death from ' + sent_input["start_year"];
+
+            } else {
+              graph_title = 'Top ' + causes_array.length + ' causes of death from ' + sent_input["start_year"] + " to " + sent_input["end_year"];
+            }
+            var chart = c3.generate({
+              bindto: '#chart',
+              data: {
+                columns: causes_array,
+
+                type: 'bar'
+              },
+              size: {
+                height: 650,
+                width: 650
+              },
+              pie: {
+                label: {
+                  format: function(value, ratio, id) {
+                    return d3.format('')(value);
+                  }
+                }
+              },
+              title: {
+                text: graph_title
+              },
+              axis: {
+                rotated: true
+              }
+            });
+          } else {
+            document.getElementById("demo").innerHTML = "No Results were found!";
+          }
+
+        });
+    }
+
+    // Function to generate different charts based on specified input from the form.
+    function generate_cause_graphs() {
+      $("#demo").html("");
+      //Default sent_input JavaScript object which is to be sent in the case of an empty form.
+      var sent_input = {
+        "sex": [],
+        "race": [],
+        "start_year": "1985",
+        "end_year": "2017",
+        "num_causes": "20",
+        "cause_of_death": "",
+        "age_range": [],
+        "specified_criteria": [],
+        "residence_zipcode": "",
+        "death_zipcode": ""
+      }
+
+      //Iterate through the filled out values in the form and update the sent_input object.
+      var filled_input = showValues();
+      var visualization_type = "";
+      if ("data_type" in filled_input) {
+        visualization_type = filled_input["data_type"];
+      } else {
+        $("#demo").html("Please specify a visualization type!");
+        return;
+      }
+      if (filled_input["cause_of_death"] === "") {
+        $("#demo").html("Please specify a cause of death!");
+        return;
+      }
+      for (var i in filled_input) {
+        if (filled_input[i] != "") {
+          if (Array.isArray(sent_input[i]) && !Array.isArray(filled_input[i])) {
+            sent_input[i].push(filled_input[i]);
+          } else {
+            sent_input[i] = filled_input[i]
+          }
+        }
+      }
+      // Error checking done to ensure starting year is at least 1900 for graphs generated.
+      if (!check_if_valid(sent_input["start_year"], 1900)) {
+        $("#demo").html("Invalid year entered! Starting year must be from 1900 and onwards!");
+        return;
+      }
+
+      // Error checking to make sure end year is after starting year.
+      if (!check_if_valid(sent_input["end_year"], sent_input["start_year"])) {
+        $("#demo").html("Invalid year entered! Please also note that the end year must be after the starting year!");
+        return;
+      }
+      if (sent_input["sex"].length > 0 || sent_input["race"].length > 0 || sent_input["age_range"].length > 0 || sent_input["cause_of_death"].length > 0) {
+        for (var j in sent_input) {
+          if (Array.isArray(sent_input[j])) {
+            sent_input[j] = JSON.stringify(sent_input[j]);
+          }
+        }
+        $.post(Routes.analyze_causes_path(),
+          sent_input,
+          function(data) {
+            var statistical_data = data;
+            var c_data = [];
+            var dict = {};
+            var is_rotated = false;
+            var visualization_hash = {
+              "horizontal_bar_chart": 'bar',
+              "vertical_bar_chart": 'bar',
+              "scatter_plot": 'scatter',
+              "line_graph": 'line',
+              "pie_chart": 'pie'
+            }
+            if (visualization_type == "horizontal_bar_chart") {
+              is_rotated = true;
+            }
+            for (var k in statistical_data) {
+              var current_x_axis = [k.toLowerCase()];
+              var current_y_axis = [k];
+              dict[k] = k.toLowerCase();
+              for (var j in statistical_data[k]) {
+                current_x_axis.push(j);
+                current_y_axis.push(statistical_data[k][j]);
+              }
+              c_data.push(current_x_axis);
+              c_data.push(current_y_axis);
+            }
+
+            var chart = c3.generate({
+              bindto: '#chart',
+              padding: {
+                top: 90,
+                right: 100,
+                bottom: 90,
+                left: 100,
+              },
+              data: {
+                xs: dict,
+                columns: c_data,
+                type: visualization_hash[visualization_type],
+              },
+              bar: {
+                width: {
+                  ratio: 0.5
+                }
+              },
+              size: {
+                height: 850 + (4 * Object.keys(statistical_data).length),
+                width: 850 + (3 * Object.keys(statistical_data).length)
+              },
+              title: {
+                text: 'Deaths from ' + sent_input["cause_of_death"] + ' between ' + sent_input["start_year"] + ' and ' + sent_input["end_year"]
+              },
+              pie: {
+                label: {
+                  format: function(value, ratio, id) {
+                    return d3.format('')(value);
+                  }
+                }
+              },
+              axis: {
+                x: {
+                  label: {
+                    text: 'Year',
+                    position: 'outer-center',
+                  },
+                  tick: {
+                    values: determine_x_ticks(statistical_data, parseInt(sent_input["start_year"]), parseInt(sent_input["end_year"])),
+                    rotate: 90
+                  }
+                },
+                y: {
+                  label: {
+                    text: 'Number of Deaths',
+                    position: 'outer-middle'
+                  },
+                  tick: {
+                    values: determine_y_ticks(statistical_data),
+                    rotate: 90
+                  }
+                },
+                rotated: is_rotated
+              }
+            });
+          });
+      } else {
+        common_deaths_age();
+      }
+    }
+
+    // Outline a map.
+    function display_causes_map() {
+      var map = L.map('map').setView([42.35, -71.08], 13);
+      // load a tile layer
+      L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
+        attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+        maxZoom: 17,
+        minZoom: 1
+      }).addTo(map);
+    }
+  </script>
+</body>

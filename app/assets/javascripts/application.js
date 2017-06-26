@@ -31,4 +31,8 @@
 //= require jquery.dataTables.min
 //= require dataTables.bootstrap4.min
 //= require loadingoverlay.min
+//= require d3.min
+//= require c3
+//= require dom-to-image.min
+//= require leaflet
 //= require_tree .
