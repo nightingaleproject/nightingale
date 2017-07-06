@@ -192,6 +192,16 @@
         }
       }
     },
+    "contributingCauses": {
+      "type": "object",
+      "title": "Contributing Causes",
+      "humanReadable": "{contributingCauses}",
+      "properties": {
+        "usualOccupation": {
+          "type": "string"
+        }
+      }
+    },
     "didTobaccoUseContributeToDeath": {
       "type": "object",
       "title": "Did Tobacco Use Contribute to Death?",
