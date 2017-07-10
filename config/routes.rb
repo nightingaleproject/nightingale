@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       post :users_by_role
       post :register
       post :request_edits
+      post :abandon
+      post :views_validate
     end
   end
 

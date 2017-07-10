@@ -100,14 +100,38 @@ class SendTo extends React.Component {
     info = { ...this.state.userInfo };
     info['step'] = this.state.deathRecord.stepStatus.nextStep.name;
     info['reassign'] = true;
-    $.LoadingOverlay('show', {
-      image: '',
-      fontawesome: 'fa fa-spinner fa-spin'
-    });
-    $.post(
-      Routes.update_active_step_death_record_path(this.props.deathRecord.id),
-      info
-    );
+
+    if (this.state.deathRecord.stepStatus.nextStep.name === 'Registration') {
+      var self = this;
+      swal(
+        {
+          title: 'Do you attest this record?',
+          text: 'Before sending this record for registration, it requires your attestment.',
+          type: 'info',
+          showCancelButton: true,
+          confirmButtonClass: 'btn-primary',
+          confirmButtonText: 'I attest this record.',
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+        },
+        function(isConfirm) {
+          if (!isConfirm) return;
+          $.post(
+            Routes.update_active_step_death_record_path(self.props.deathRecord.id),
+            info
+          );
+        }
+      );
+    } else {
+      $.LoadingOverlay('show', {
+        image: '',
+        fontawesome: 'fa fa-spinner fa-spin'
+      });
+      $.post(
+        Routes.update_active_step_death_record_path(this.props.deathRecord.id),
+        info
+      );
+    }
   }
 
   guestTab() {

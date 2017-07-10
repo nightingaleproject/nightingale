@@ -4,6 +4,7 @@ class OwnedRecords extends React.Component {
     super(props);
     this.state = this.props;
     this.renderRecord = this.renderRecord.bind(this);
+    this.abandonRecord = this.abandonRecord.bind(this);
     this.renderRecordProgressIcon = this.renderRecordProgressIcon.bind(this);
     this.renderRecordProgress = this.renderRecordProgress.bind(this);
     this.decedentName = this.decedentName.bind(this);
@@ -28,10 +29,11 @@ class OwnedRecords extends React.Component {
         ordering: false,
         columnDefs: [
           { searchable: false, width: '6%', targets: [0] },
-          { width: '8%', targets: [1] },
-          { width: '30%', targets: [2] },
+          { searchable: false, width: '6%', targets: [1] },
+          { width: '8%', targets: [2] },
           { width: '28%', targets: [3] },
-          { searchable: false, width: '28%', targets: [4] }
+          { width: '28%', targets: [4] },
+          { searchable: false, width: '24%', targets: [5] }
         ]
       });
     });
@@ -41,7 +43,12 @@ class OwnedRecords extends React.Component {
     var decedentName = this.decedentName(deathRecord);
     var timeago = jQuery.timeago(deathRecord.lastUpdatedAt);
     return (
-      <tr key={deathRecord.id} className="item">
+      <tr key={deathRecord.id + 'owned'} className="item">
+        <td>
+          {deathRecord.notify &&
+            !this.props.currentUser.isAdmin &&
+            <h6><span className="badge badge-danger full-width mt-1">New!</span></h6>}
+        </td>
         <td>
           <div className="btn-group btn-block" role="group">
             <button
@@ -63,6 +70,10 @@ class OwnedRecords extends React.Component {
               <a className="dropdown-item" href={Routes.death_record_path(deathRecord.id)}>
                 <i className="fa fa-search" />&nbsp;View
               </a>
+              {this.props.currentUser.id == deathRecord.creator.id &&
+                <a className="dropdown-item" onClick={() => this.abandonRecord(deathRecord)}>
+                  <i className="fa fa-trash" />&nbsp;Abandon
+                </a>}
             </div>
           </div>
         </td>
@@ -71,6 +82,26 @@ class OwnedRecords extends React.Component {
         <td>{timeago}</td>
         <td>{this.renderRecordProgress(deathRecord)}</td>
       </tr>
+    );
+  }
+
+  abandonRecord(deathRecord) {
+    var self = this;
+    swal(
+      {
+        title: 'You are about to abandon this death record!',
+        text: 'Are you sure?',
+        type: 'error',
+        showCancelButton: true,
+        confirmButtonClass: 'btn-primary',
+        confirmButtonText: 'Abandon!',
+        closeOnConfirm: false,
+        showLoaderOnConfirm: true
+      },
+      function(isConfirm) {
+        if (!isConfirm) return;
+        $.post(Routes.abandon_death_record_path(deathRecord.id));
+      }
     );
   }
 
@@ -165,6 +196,7 @@ class OwnedRecords extends React.Component {
           <table className="table" id="open_records" key={this.props.currentUser.id + 'owned-table'} width="100%">
             <thead className="thead-default" key={this.props.currentUser.id + 'owned-head'}>
               <tr>
+                <th />
                 <th />
                 <th>ID</th>
                 <th>Decedent Name</th>

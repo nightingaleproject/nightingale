@@ -1,10 +1,9 @@
 # Mailer for Notifications
 class NotificationMailer < ApplicationMailer
-  def notification_email(user, death_record, comment, login_link)
+  def notification_email(user, death_record, comments)
     @user = user
     @death_record = death_record
-    @comment = comment
-    @link = login_link
+    @comments = comments
 
     mail subject: 'Nightingale Notification', to: @user.email
   end

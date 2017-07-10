@@ -1,4 +1,4 @@
-// SendTo component; makes up the send to view.
+// Review component; makes up the send to view.
 class Review extends React.Component {
   render() {
     return (
@@ -8,6 +8,9 @@ class Review extends React.Component {
           currentUser={this.props.currentUser}
           updateStep={this.props.updateStep}
           requestEdits={this.props.requestEdits}
+        />
+        <Validation
+          deathRecord={this.props.deathRecord}
         />
         <SendTo
           deathRecord={this.props.deathRecord}
