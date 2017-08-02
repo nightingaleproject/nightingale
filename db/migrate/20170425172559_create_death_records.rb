@@ -7,6 +7,8 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       t.belongs_to :step_flow
       t.json :contents, default: {}
       t.json :cached_json
+      t.boolean :notify, default: false
+      t.boolean :abandoned, default: false
 
       t.timestamps
     end

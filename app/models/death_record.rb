@@ -132,6 +132,7 @@ class DeathRecord < ApplicationRecord
   # Change ownership of this DeathRecord.
   def update_owner(user)
     self.owner = user unless user.nil?
+    self.notify = true
     update_cache
     self.save
   end
@@ -206,7 +207,8 @@ class DeathRecord < ApplicationRecord
       steps: steps,
       metadata: metadata,
       lastUpdatedAt: self.updated_at,
-      registration: self.registration.as_json(options)
+      registration: self.registration.as_json(options),
+      notify: self.notify
     }
   end
 

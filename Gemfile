@@ -64,6 +64,8 @@ gem 'momentjs-rails'
 # Easier configuration variables
 gem 'config'
 
+gem 'views', git: 'https://github.com/nightingaleproject/views_connector'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'brakeman', require: false

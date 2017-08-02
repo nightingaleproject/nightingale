@@ -1,6 +1,6 @@
 class DeathRecordsController < ApplicationController
   before_action :new_death_record, only: [:new]
-  before_action :set_death_record, only: [:show, :edit, :update_step, :update_active_step, :register, :request_edits]
+  before_action :set_death_record, only: [:show, :edit, :update_step, :update_active_step, :register, :request_edits, :abandon, :views_validate]
   before_action :set_transferred_death_records, only: [:index]
   before_action :set_owned_death_records, only: [:index]
   before_action :set_comments, only: [:show, :edit]
@@ -20,6 +20,15 @@ class DeathRecordsController < ApplicationController
 
   # Render DeathRecord edit view.
   def edit
+    # If the current User isn't supposed to edit the DeathRecord at the
+    # current Step, redirect to dashboard.
+    unless @death_record.step_editable?(current_user, @death_record.step_status.current_step)
+      redirect_to death_records_path
+      return
+    end
+    @death_record.notify = false
+    @death_record.save
+    @death_record.update_cache
   end
 
   # Update the DeathRecord.
@@ -29,10 +38,7 @@ class DeathRecordsController < ApplicationController
 
   # Update a specific step's contents.
   def update_step
-    # If the current User isn't supposed to edit the DeathRecord at the
-    # current Step, do nothing.
     step = @death_record.step_status.current_step
-    return unless @death_record.step_editable?(current_user, step)
     create_or_update_step_history(step, @death_record, current_user)
     step_content = StepContent.update_or_create_new(death_record: @death_record,
                                                     step: step,
@@ -43,12 +49,8 @@ class DeathRecordsController < ApplicationController
   end
 
   # Update the active Step of the DeathRecord. Also addresses cases when
-  # a Step change calls for the DeathRecord to be ed to another User.
+  # a Step change calls for the DeathRecord to be assigned to another User.
   def update_active_step
-    # If the current User isn't supposed to edit the DeathRecord at the
-    # current Step, do nothing.
-    return unless @death_record.step_editable?(current_user, @death_record.step_status.current_step)
-
     # Don't allow guests sending to guests!
     return if GuestHelper.guest_user_exists?(params['email']) && params['guestMode']
 
@@ -112,6 +114,13 @@ class DeathRecordsController < ApplicationController
         guest_token.expire_token!
         sign_out(current_user)
       end
+      # Send notification email to new User
+      if !@death_record.comments.nil? && @death_record.comments.any?
+        comment_contents = @death_record.comments.collect(&:content)
+      else
+        comment_contents = []
+      end
+      NotificationMailer.notification_email(user, @death_record, comment_contents).deliver_now unless user.is_guest_user
       # Redirect to dashboard
       render js: "window.location.href='#{death_records_path}'"
       return
@@ -132,6 +141,22 @@ class DeathRecordsController < ApplicationController
     @death_record.update_cache
     @death_record.save
     render json: @death_record.cached_json
+  end
+
+  # Abandon the current record.
+  def abandon
+    return unless current_user.can_abandon_record(@death_record)
+    @death_record.abandoned = true
+    @death_record.update_cache
+    @death_record.save
+    render js: "window.location.href='#{death_records_path}'"
+    return
+  end
+
+  # VIEWS validate the current record.
+  def views_validate
+    render json: ViewsHelper.views_for_record(@death_record.contents)
+    return
   end
 
   # Handles requesting edits from users.
@@ -203,7 +228,7 @@ class DeathRecordsController < ApplicationController
     if current_user.admin?
       @owned_death_records = DeathRecord.all
     else
-      @owned_death_records = current_user.owned_death_records
+      @owned_death_records = current_user.owned_death_records.where(abandoned: false)
     end
   end
 
@@ -212,14 +237,14 @@ class DeathRecordsController < ApplicationController
   def set_transferred_death_records
     transferred = []
     current_user.step_histories.includes(:death_record).each do |history|
-      transferred.push(history.death_record) unless current_user.registrar? && history.death_record.registration.nil?
+      transferred.push(history.death_record) unless (current_user.registrar? && history.death_record.registration.nil?) || history.death_record.abandoned
     end
-    @transferred_death_records = transferred - current_user.owned_death_records
+    @transferred_death_records = transferred - current_user.owned_death_records.where(abandoned: false)
   end
 
   # Retrieve all Comments for this DeathRecord
   def set_comments
-    @comments = @death_record.comments.collect(&:content)
+    @comments = @death_record.comments.collect(&:content) unless @death_record.comments.nil?
   end
 
   # Create a whitelist of params; these are generated dynamically from the
@@ -229,7 +254,8 @@ class DeathRecordsController < ApplicationController
     whitelist = @death_record.step_status.current_step.whitelist
     whitelist = [] if whitelist.nil?
     allows = [:firstName, :lastName, :telephone, :email, :step, :guestEmail,
-              :confirmEmail, :linear, :guestMode, :id, :reassign]
+              :confirmEmail, :linear, :guestMode, :id, :reassign, :isCodOnly,
+              :contents]
     params.permit(whitelist + allows)
   end
 

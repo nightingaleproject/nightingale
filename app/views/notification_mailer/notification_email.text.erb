@@ -1,6 +1,11 @@
 Nightingale Notification, <%= @user.email %>
 ===============================================
 There is a new Nightingale notification!
-You have a new Death Record to view: <%= @death_record.id %>
-Comments from previous user: <%= @comment.content%>
-To login to the site, just follow this link: <a href=<%= @link %>> <%= @link %>
+You have a new Death Record to view: <%= link_to "Edit", edit_death_record_url(@death_record) %>.
+<% if @comments.any? %>
+  Comments from previous user(s):
+  <% @comments.each do |comment| %>
+    <%= comment %>
+  <% end %>
+<% end %>
+To login to the site, just follow this link: <a href="<%= root_url %>">Log in</a>.

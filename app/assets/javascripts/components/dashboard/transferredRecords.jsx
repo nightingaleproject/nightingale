@@ -34,10 +34,11 @@ class TransferredRecords extends React.Component {
         ordering: false,
         columnDefs: [
           { searchable: false, width: '6%', targets: [0] },
-          { width: '8%', targets: [1] },
-          { width: '30%', targets: [2] },
+          { searchable: false, width: '6%', targets: [1] },
+          { width: '8%', targets: [2] },
           { width: '28%', targets: [3] },
-          { searchable: false, width: '28%', targets: [4] }
+          { width: '28%', targets: [4] },
+          { searchable: false, width: '24%', targets: [5] }
         ]
       });
     });
@@ -48,6 +49,7 @@ class TransferredRecords extends React.Component {
     var timeago = jQuery.timeago(deathRecord.lastUpdatedAt);
     return (
       <tr key={deathRecord.id}>
+        <td />
         <td>
           <div className="btn-group btn-block" role="group">
             <button
@@ -171,6 +173,7 @@ class TransferredRecords extends React.Component {
           >
             <thead className="thead-default" key={this.props.currentUser.id + 'trans-head'}>
               <tr>
+                <th />
                 <th />
                 <th>ID</th>
                 <th>Decedent Name</th>
