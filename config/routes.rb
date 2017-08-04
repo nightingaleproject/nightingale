@@ -35,6 +35,10 @@ Rails.application.routes.draw do
   resources :questions
   resources :users
 
+  # Reports related to Nightingale records routes
+  resources :analysis
+  match 'analyze_causes' => 'analysis#analyze_causes', :via => :post
+
   # Statistics related routes
   resources :statistics do
     collection do
