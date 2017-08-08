@@ -4,11 +4,19 @@ class StepContent < ApplicationRecord
   belongs_to :editor, class_name: 'User'
   has_one :step_history
   after_commit :update_death_record_contents
-  
+  after_commit :update_death_record_metadata
+
   # Update death record's flat version of step contents.
   def update_death_record_contents
     self.death_record.contents = self.death_record.build_contents
-    self.death_record.save! 
+    self.death_record.save!
+  end
+
+  # Update decedent metadata that we want to save directly to the record.
+  def update_death_record_metadata
+    meta = self.death_record.metadata
+    self.death_record.name = NameHelper.pretty_name(meta[:firstName], meta[:middleName], meta[:lastName])
+    self.death_record.save!
   end
 
   # Update an existing StepContent if it exists with the given parameters, else
@@ -17,7 +25,6 @@ class StepContent < ApplicationRecord
     step_contents = StepContent.where(args.first.except(:contents))
     step_content = step_contents.first_or_initialize(contents: args.first[:contents].except('id'))
     step_content.update(contents: args.first[:contents].except('id'))
-    step_content.death_record.update_cache
     step_content.death_record.save
     step_content
   end

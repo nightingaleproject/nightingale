@@ -8,9 +8,8 @@ class CommentsController < ApplicationController
     return unless @death_record.registration.nil?
     @comment = Comment.create!(content: comment_params[:content], death_record: @death_record)
     current_user.comments << @comment
-    @death_record.update_cache
     @death_record.save
-    render :json => @comment
+    render json: @comment
   end
 
   def destroy

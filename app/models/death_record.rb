@@ -73,7 +73,6 @@ class DeathRecord < ApplicationRecord
       end
     end
     self.step_status.save
-    update_cache
     self.save
   end
 
@@ -92,7 +91,6 @@ class DeathRecord < ApplicationRecord
     self.step_flow = self.step_flow.prev if can_decrement_step
     self.step_status.mirror_step_flow(self.step_flow)
     self.step_status.save
-    update_cache
     self.save
   end
 
@@ -114,7 +112,6 @@ class DeathRecord < ApplicationRecord
       self.step_status.current_step = step
     end
     self.step_status.save
-    update_cache
     self.save
   end
 
@@ -124,16 +121,15 @@ class DeathRecord < ApplicationRecord
     # Determine the proper user who should be making the edits
     step_flow = step_flows.find_by(current_step: step)
     target_role = step_flow.current_step_role
-    
+
     # Update the record
     current_step_role
   end
 
   # Change ownership of this DeathRecord.
   def update_owner(user)
+    self.notify = true if self.owner != user
     self.owner = user unless user.nil?
-    self.notify = true
-    update_cache
     self.save
   end
 
@@ -159,7 +155,7 @@ class DeathRecord < ApplicationRecord
 
   # Returns a hash of some simple metadata describing the decedent.
   def metadata
-    identity_step = steps.detect{ |step| step.name == 'Identity'}
+    identity_step = steps.detect{ |step| step.name == 'Identity' }
     if identity_step.step_content(self) && identity_step.step_content(self).key?('decedentName')
       decedentName = identity_step.step_content(self)['decedentName']
     end
@@ -177,16 +173,7 @@ class DeathRecord < ApplicationRecord
     }
   end
 
-  # Keep a cached version of the death record JSON for faster loading.
-  def update_cache
-    self.cached_json = self.generate_json({user: self.owner}) if self.workflow
-  end
-
   def as_json(options = {})
-    self.cached_json
-  end
-
-  def generate_json(options = {})
     options.merge!({death_record: self})
     # Only load the things we will need.
     next_step_flow = self.workflow.step_flows.includes(:current_step).find_by(current_step: self.step_status.current_step)

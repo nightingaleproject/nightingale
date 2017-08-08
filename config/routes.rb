@@ -16,6 +16,10 @@ Rails.application.routes.draw do
       post :abandon
       post :views_validate
     end
+    collection do
+      post :owned_death_records
+      post :transferred_death_records
+    end
   end
 
   # Step related routes

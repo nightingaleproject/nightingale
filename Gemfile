@@ -64,14 +64,16 @@ gem 'momentjs-rails'
 # Easier configuration variables
 gem 'config'
 
+# Pagination
+gem 'kaminari'
+
+# VIEWS integration
 gem 'views', git: 'https://github.com/nightingaleproject/views_connector'
 
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'brakeman', require: false
   gem 'bundler-audit', require: false
-  gem 'bullet'
-  gem 'htmlbeautifier'
 end
 
 group :development do

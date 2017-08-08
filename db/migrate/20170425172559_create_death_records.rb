@@ -5,6 +5,7 @@ class CreateDeathRecords < ActiveRecord::Migration[5.0]
       t.belongs_to :owner, class_name: 'User'
       t.belongs_to :creator, class_name: 'User'
       t.belongs_to :step_flow
+      t.string :name, default: ''
       t.json :contents, default: {}
       t.json :cached_json
       t.boolean :notify, default: false

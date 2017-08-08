@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require react
+//= require react-server
 //= require react_ujs
 //= require components
 //= require tether

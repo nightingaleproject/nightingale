@@ -101,7 +101,7 @@ module StatisticsHelper
     averages['My Average'] = user_averages.values.inject(0) { |a, e| a + e }.round(5)
     averages['Jurisdiction Average'] = system_averages.values.inject(0) { |a, e| a + e }.round(5)
     if averages['Your Average'] != 0 && averages['Jurisdiction Average'] != 0
-      return bar_chart averages, label: 'Days', id: 'user-record-step-chart', height: '200px', xtitle: 'Time (days)', colors: ['#226891']
+      return bar_chart averages, label: 'Hours', id: 'user-record-step-chart', height: '200px', xtitle: 'Time (hours)', colors: ['#226891']
     else
       return 'You have not completed any death records yet.'
     end
@@ -110,7 +110,7 @@ module StatisticsHelper
   # Generate a bar chart representing death record completion time
   # by step.
   def self.bar_death_record_time_by_step
-    bar_chart StatisticsHelper.average_time_by_step(nil), xtitle: 'Time (days)', title: 'Death Record Completion by Step', id: 'record-step-chart', colors: ['#226891']
+    bar_chart StatisticsHelper.average_time_by_step(nil), xtitle: 'Time (hours)', title: 'Death Record Completion by Step', id: 'record-step-chart', colors: ['#226891']
   end
 
   #############################################################################
@@ -159,9 +159,9 @@ module StatisticsHelper
   # Set user_avg to true if the calculation should be scoped to a single user.
   def self.average_time_by_step(user = nil, user_avg = false)
     if user_avg && !user.nil?
-      user.step_histories.group(:step).average(:time_taken).transform_keys { |step| step.name }.transform_values { |avg| (avg.to_f / 86_400) }
+      user.step_histories.group(:step).average(:time_taken).transform_keys { |step| step.name }.transform_values { |avg| (avg.to_f / 3600) }
     else
-      StepHistory.all.group(:step).average(:time_taken).transform_keys { |step| step.name }.transform_values { |avg| (avg.to_f / 86_400) }
+      StepHistory.all.group(:step).average(:time_taken).transform_keys { |step| step.name }.transform_values { |avg| (avg.to_f / 3600) }
     end
   end
 end

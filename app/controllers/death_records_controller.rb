@@ -1,8 +1,6 @@
 class DeathRecordsController < ApplicationController
   before_action :new_death_record, only: [:new]
   before_action :set_death_record, only: [:show, :edit, :update_step, :update_active_step, :register, :request_edits, :abandon, :views_validate]
-  before_action :set_transferred_death_records, only: [:index]
-  before_action :set_owned_death_records, only: [:index]
   before_action :set_comments, only: [:show, :edit]
 
   # Render dashboard view.
@@ -28,7 +26,6 @@ class DeathRecordsController < ApplicationController
     end
     @death_record.notify = false
     @death_record.save
-    @death_record.update_cache
   end
 
   # Update the DeathRecord.
@@ -45,7 +42,7 @@ class DeathRecordsController < ApplicationController
                                                     contents: death_record_params,
                                                     editor: current_user)
     @death_record.increment_step
-    render json: @death_record.cached_json
+    render json: @death_record.as_json({user: current_user})
   end
 
   # Update the active Step of the DeathRecord. Also addresses cases when
@@ -127,7 +124,7 @@ class DeathRecordsController < ApplicationController
     end
 
     # Return current state
-    render json: @death_record.cached_json
+    render json: @death_record.as_json({user: current_user})
   end
 
   # Register the current record.
@@ -138,16 +135,14 @@ class DeathRecordsController < ApplicationController
     @death_record.registration = Registration.new(registered: DateTime.now)
     @death_record.registration.save
     @death_record.owner = nil
-    @death_record.update_cache
     @death_record.save
-    render json: @death_record.cached_json
+    render json: @death_record.as_json({user: current_user})
   end
 
   # Abandon the current record.
   def abandon
     return unless current_user.can_abandon_record(@death_record)
     @death_record.abandoned = true
-    @death_record.update_cache
     @death_record.save
     render js: "window.location.href='#{death_records_path}'"
     return
@@ -174,10 +169,75 @@ class DeathRecordsController < ApplicationController
 
   # Return a list of users given a role
   def users_by_role
-    render :json => User.with_role(params[:role]).map { |user| "#{user.email} (#{NameHelper.pretty_user_name(user)})" }
+    render json: User.with_role(params[:role]).map { |user| "#{user.email} (#{NameHelper.pretty_user_name(user)})" }
+  end
+
+  # Retrieve all DeathRecords currently owned by this user.
+  def owned_death_records
+    length = params[:length].to_i
+    page = params[:start].to_i == 0 ? 1 : (params[:start].to_i / length) + 1
+    draw = params[:draw].to_i
+    search = params[:search][:value] unless params[:search].nil?
+    if current_user.admin?
+      records = DeathRecord.all
+    else
+      records = current_user.owned_death_records.where(abandoned: false)
+    end
+    if search.present?
+      filtered = records.where('lower(name) like ?', "%#{search.downcase}%")
+    else
+      filtered = records
+    end
+    # NOTES:
+    # 'data' is the array of records
+    # 'recordsTotal' is the TOTAL number of records
+    # 'recordsFiltered' is the number of records AFTER filtering (but not after pagination!)
+    render json: {data: filtered.page(page).per(length), draw: draw, recordsTotal: records.count, recordsFiltered: filtered.count}
+  end
+
+  # Retrieve all DeathRecords created by this user (that aren't currently
+  # owned by this user).
+  # TODO: This should be made more efficient at some point. It will only send
+  # the number or records required for the front end (paginated), but there
+  # are still ways this could be improved on the backend.
+  def transferred_death_records
+    length = params[:length].to_i
+    page = params[:start].to_i == 0 ? 1 : (params[:start].to_i / length) + 1
+    draw = params[:draw].to_i
+    search = params[:search][:value] unless params[:search].nil?
+    transferred = []
+    total = 0
+    current_user.step_histories.includes(:death_record).each do |history|
+      unless (current_user.registrar? && history.death_record.registration.nil?) || history.death_record.abandoned
+        if search.present?
+          transferred.push(history.death_record) if history.death_record.name&.downcase&.include?(search.downcase)
+        else
+          transferred.push(history.death_record)
+        end
+        total += 1
+      end
+    end
+    transferred = Set.new(transferred).to_a - current_user.owned_death_records
+    data = Kaminari.paginate_array(transferred).page(page).per(length)
+    # NOTES:
+    # 'data' is the array of records
+    # 'recordsTotal' is the TOTAL number of records
+    # 'recordsFiltered' is the number of records AFTER filtering (but not after pagination!)
+    render json: {data: data, draw: draw, recordsTotal: total, recordsFiltered: transferred.count}
   end
 
   private
+
+  # Grab all transferred records. This method differs from the
+  # transferred_death_records method in that it does not do any pagination.
+  def all_transferred_death_records
+    transferred = []
+    current_user.step_histories.includes(:death_record).each do |history|
+      transferred.push(history.death_record) unless (current_user.registrar? && history.death_record.registration.nil?) || history.death_record.abandoned
+    end
+    transferred = Set.new(transferred).to_a
+    transferred
+  end
 
   # Create a new DeathRecord within the context of the current user and their
   # role.
@@ -203,7 +263,6 @@ class DeathRecordsController < ApplicationController
                                     next_step: step_flow.next_step,
                                     previous_step: step_flow.previous_step)
     @death_record.step_status = step_status
-    @death_record.update_cache
     @death_record.save
   end
 
@@ -217,34 +276,14 @@ class DeathRecordsController < ApplicationController
       # Allow viewing of death records that were touched but aren't
       # currently owned.
       if @death_record.nil?
-        set_transferred_death_records
-        @death_record = @transferred_death_records.select{ |record| record.id.to_s == params[:id].to_s }.first
+        @death_record = all_transferred_death_records.select{ |record| record.id.to_s == params[:id].to_s }.first
       end
     end
   end
 
-  # Retrieve all DeathRecords currently owned by this user.
-  def set_owned_death_records
-    if current_user.admin?
-      @owned_death_records = DeathRecord.all
-    else
-      @owned_death_records = current_user.owned_death_records.where(abandoned: false)
-    end
-  end
-
-  # Retrieve all DeathRecords created by this user (that aren't currently
-  # owned by this user).
-  def set_transferred_death_records
-    transferred = []
-    current_user.step_histories.includes(:death_record).each do |history|
-      transferred.push(history.death_record) unless (current_user.registrar? && history.death_record.registration.nil?) || history.death_record.abandoned
-    end
-    @transferred_death_records = transferred - current_user.owned_death_records.where(abandoned: false)
-  end
-
   # Retrieve all Comments for this DeathRecord
   def set_comments
-    @comments = @death_record.comments.collect(&:content) unless @death_record.comments.nil?
+    @comments = @death_record.comments.collect(&:content) unless @death_record.nil? || @death_record.comments.nil?
   end
 
   # Create a whitelist of params; these are generated dynamically from the

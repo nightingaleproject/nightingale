@@ -105,8 +105,8 @@ class SendTo extends React.Component {
       var self = this;
       swal(
         {
-          title: 'Do you attest this record?',
-          text: 'Before sending this record for registration, it requires your attestment.',
+          title: 'Attest record',
+          text: 'Before sending this record for registration, it requires attestation.',
           type: 'info',
           showCancelButton: true,
           confirmButtonClass: 'btn-primary',
