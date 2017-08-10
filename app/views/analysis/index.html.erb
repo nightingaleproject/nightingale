@@ -29,7 +29,7 @@
   </style>
 </head>
 
-<body>
+<body onload="toggle_filter_display()">
   <form>
     <div class="mt-3 mb-3">
       <%= react_component('Breadcrumb', {currentUser: current_user, crumbs: [{ name: 'Dashboard', url: death_records_path }, { name: 'Administration', url: admins_path }, { name: 'Records Analysis' }]}) %>
@@ -40,15 +40,11 @@
     <div class="row">
       <div class="col-md-3">
         <div class="mb-4 pl-0 pr-0 align-items-center">
-          <div class="row">
-            <button type="button" class="btn btn-primary btn-block" id="cause_death" onclick="toggle_filter_display()">Cause of Death</button>
-            <button type="button" class="btn btn-primary btn-block">Maps</button>
-          </div>
           <br>
           <div class="js-filter" id="header" align="left" style="display:none">
             <p><b><font size = 4>Visualization Type</font></b></p>
             <br>
-            <input type="radio" id="tabular_data" name="data_type" value="tabular_data"> Tabular data<br>
+      <!--  <input type="radio" id="tabular_data" name="data_type" value="tabular_data"> Tabular data<br> -->
             <input type="radio" id="horizontal_bar_chart" name="data_type" value="horizontal_bar_chart"> Horizontal bar chart<br>
             <input type="radio" id="vertical_bar_chart" name="data_type" value="vertical_bar_chart"> Vertical bar chart<br>
             <input type="radio" id="line_graph" name="data_type" value="line_graph"> Line graph<br>
@@ -62,12 +58,36 @@
             </button>
             <div id="cause" class="collapse">
               <label>Specify Cause of Death</label>
-              <div class="input-group">
-                <input type="text" class="form-control" id="input_cause" name="cause_of_death" onblur="generate_cause_graphs()">
+              <div class="form-group" onblur="generate_cause_graphs()">
+                <select name="cause_of_death" id="input_cause">
+                    <option value="Natural death with unknown cause">Natural death with unknown cause</option>
+                    <option value="Non-small cell lung cancer (disorder)">Non-small cell lung cancer</option>
+                    <option value="Myocardial Infarction">Myocardial Infarction</option>
+                    <option value="Pulmonary emphysema (disorder)">Pulmonary emphysema</option>
+                    <option value="Chronic obstructive bronchitis (disorder)">Chronic obstructive bronchitis</option>
+                    <option value="Pneumonia">Pneumonia</option>
+                    <option value="Stroke">Stroke</option>
+                    <option value="Cardiac Arrest">Cardiac Arrest</option>
+                    <option value="Sudden Cardiac Death">Sudden Cardiac Death</option>
+                    <option value="Small cell carcinoma of lung (disorder)">Small cell carcinoma of lung</option>
+                    <option value="Malignant tumor of colon">Malignant tumor of colon</option>
+                    <option value="Alzheimer's disease (disorder)">Alzheimer's disease</option>
+                    <option value="Familial Alzheimer's disease of early onset (disorder)">Familial Alzheimer's disease of early onset</option>
+                    <option value="Secondary malignant neoplasm of colon">Secondary malignant neoplasm of colon</option>
+                    <option value="Bullet wound">Bullet wound</option>
+                    <option value="Overlapping malignant neoplasm of colon">Overlapping malignant neoplasm of colon</option>
+                    <option value="Burn injury(morphologic abnormality)">Burn injury(morphologic abnormality)</option>
+                    <option value="Fracture of the vertebral column with spinal cord injury">Fracture of the vertebral column with spinal cord injury</option>
+                    <option value="Concussion injury of brain">Concussion injury of brain</option>
+                    <option value="Primary malignant neoplasm of colon">Primary malignant neoplasm of colon</option>
+                    <option value="End stage renal disease (disorder)">End stage renal disease</option>
+                    <option value="Drug overdose">Drug overdose</option>
+                    <option value="N/A">N/A</option>
+                  </select>
               </div>
               <div class="row">
 
-                <div class="form-group">
+                <div class="form-group" onblur="generate_cause_graphs()">
                   <label>Number of Causes</label>
                   <select name="num_causes" id="num_causes">
                       <option value="20">20</option>
@@ -187,7 +207,7 @@
             <button type="button" onclick="common_deaths_age()" class="btn btn-primary">Most Common Causes Of Death</button>&nbsp;
           </div>
           <div align="center">
-            <button type="button" onclick="display_causes_map()" class="btn btn-primary">Display Map</button>&nbsp;
+        <!--<button type="button" onclick="display_causes_map()" class="btn btn-primary">Display Map</button>&nbsp; -->
           </div>
           <div class="right">
             <button type="button" id="save_chart" class="btn btn-primary" align="right">Save Chart Image</button>&nbsp;
@@ -353,7 +373,7 @@
       var sent_input = {
         "sex": [],
         "race": [],
-        "start_year": "1985",
+        "start_year": "1900",
         "end_year": "2017",
         "num_causes": "20",
         "cause_of_death": "",
@@ -389,9 +409,9 @@
       $.post(Routes.analyze_causes_path(),
         sent_input,
         function(data) {
-          statistical_data = data
-          causes_array = [];
-          graph_title = "";
+          var statistical_data = data
+          var causes_array = [];
+          var graph_title = "";
           for (var k in statistical_data) {
             storage = [];
             storage.push(k);
@@ -399,7 +419,7 @@
             causes_array.push(storage);
           }
           if (causes_array.length > 0) {
-            if (start_year == end_year) {
+            if (sent_input["start_year"] === sent_input["end_year"]) {
               graph_title = 'Top ' + causes_array.length + ' causes of death from ' + sent_input["start_year"];
 
             } else {
@@ -444,7 +464,7 @@
       var sent_input = {
         "sex": [],
         "race": [],
-        "start_year": "1985",
+        "start_year": "1900",
         "end_year": "2017",
         "num_causes": "20",
         "cause_of_death": "",
@@ -500,6 +520,7 @@
             var c_data = [];
             var dict = {};
             var is_rotated = false;
+            var graph_title = "";
             var visualization_hash = {
               "horizontal_bar_chart": 'bar',
               "vertical_bar_chart": 'bar',
@@ -520,6 +541,12 @@
               }
               c_data.push(current_x_axis);
               c_data.push(current_y_axis);
+            }
+            if (sent_input["start_year"] === sent_input["end_year"]) {
+              graph_title = 'Deaths from ' + sent_input["cause_of_death"] + ' from ' + sent_input["start_year"];
+
+            } else {
+              graph_title = 'Deaths from ' + sent_input["cause_of_death"] + ' between ' + sent_input["start_year"] + ' and ' + sent_input["end_year"];
             }
 
             var chart = c3.generate({
@@ -545,7 +572,7 @@
                 width: 850 + (3 * Object.keys(statistical_data).length)
               },
               title: {
-                text: 'Deaths from ' + sent_input["cause_of_death"] + ' between ' + sent_input["start_year"] + ' and ' + sent_input["end_year"]
+                text: graph_title
               },
               pie: {
                 label: {

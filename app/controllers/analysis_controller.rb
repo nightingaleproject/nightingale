@@ -123,15 +123,19 @@ class AnalysisController < ApplicationController
   end
 
   if cause_of_death != ""
-    params_specified.push("contents ->> 'cod.immediate' = '" + cause_of_death + "'")
+    cause = ActiveRecord::Base.connection.quote(cause_of_death)
+    params_specified.push("contents ->> 'cod.immediate' = " + cause + "")
+
   end
 
   if !decedent_residence_zip.empty?
-    params_specified.push("contents ->> 'decedentAddress.zip' = '" + decedent_residence_zip + "'")
+    residence = ActiveRecord::Base.connection.quote(decedent_residence_zip)
+    params_specified.push("contents ->> 'decedentAddress.zip' = '" + residence + "'")
   end
 
   if !decedent_death_zip.empty?
-    params_specified.push("contents ->> 'locationOfDeath.zip' = '" + decedent_death_zip + "'")
+    death_zip = ActiveRecord::Base.connection.quote(decedent_death_zip)
+    params_specified.push("contents ->> 'locationOfDeath.zip' = '" + death_zip + "'")
   end
 
   if criteria.include?("served_armed_forces")
@@ -172,7 +176,7 @@ class AnalysisController < ApplicationController
         end
       end
     end
-    next if (record_birth_year.nil? || record_death_year.nil?) && decedent_age_range.length > 0
+    next if record_death_year.nil? || (record_birth_year.nil? && decedent_age_range.length > 0)
     age_at_death = -1
     # Only compute a proper age of death if the records are present for that decedent.
     if record_death_year && record_birth_year
