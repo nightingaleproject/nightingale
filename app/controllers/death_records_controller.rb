@@ -1,6 +1,6 @@
 class DeathRecordsController < ApplicationController
   before_action :new_death_record, only: [:new]
-  before_action :set_death_record, only: [:show, :edit, :update_step, :update_active_step, :register, :request_edits, :abandon, :views_validate]
+  before_action :set_death_record, only: [:show, :edit, :update_step, :update_active_step, :register, :request_edits, :abandon, :views_validate, :preview_certificate, :final_certificate]
   before_action :set_transferred_death_records, only: [:index]
   before_action :set_owned_death_records, only: [:index]
   before_action :set_comments, only: [:show, :edit]
@@ -139,8 +139,36 @@ class DeathRecordsController < ApplicationController
     @death_record.registration.save
     @death_record.owner = nil
     @death_record.update_cache
+    @death_record.generate_certificate(current_user)
     @death_record.save
     render json: @death_record.cached_json
+  end
+
+  # Provide a draft certificate, clearly marked, not for printing
+  def preview_certificate
+    watermark_pdf = Prawn::Document.new
+    watermark_pdf.text_box("NOT AN OFFICIAL COPY",
+                           :size   => 40,
+                           :width  => watermark_pdf.bounds.width,
+                           :height => watermark_pdf.bounds.height,
+                           :align  => :center,
+                           :valign => :center,
+                           :at     => [0, watermark_pdf.bounds.height],
+                           :rotate => 35,
+                           :rotate_around => :center)
+    watermark = CombinePDF.parse(watermark_pdf.render).pages[0]
+    raw_certificate = CombinePDF.parse(@death_record.death_certificate.document)
+    raw_certificate.pages.each { |page| page << watermark }
+    send_data(raw_certificate.to_pdf,
+              filename: "preview_certificate_#{@death_record.id}.pdf",
+              type: 'application/pdf', disposition: 'inline')
+  end
+
+  # Provide a final printable certificate
+  def final_certificate
+    send_data(@death_record.death_certificate.document,
+              filename: "certificate_#{@death_record.id}.pdf",
+              type: 'application/pdf', disposition: 'inline')
   end
 
   # Abandon the current record.

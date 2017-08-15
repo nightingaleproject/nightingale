@@ -10,6 +10,7 @@ class DeathRecord < ApplicationRecord
   has_many :comments
   has_one :user_token
   has_one :registration
+  has_one :death_certificate # TODO: eventually we'll likely want more than one with versioning
 
   # Return the StepFlows (in order) that make up this Workflow.
   def step_flows
@@ -219,6 +220,20 @@ class DeathRecord < ApplicationRecord
     end
     return []
   end
+
+  # Generate printable versions of a death certificate for this record and store locally
+  def generate_certificate(user)
+    # TODO: Eventually we'll want to support multiple, versioned cerficicates
+    raise "Death certificate already exists" if self.death_certificate
+    # TODO: Placeholder for local certificate generation service
+    # document = RestClient.get('http://localhost:4567/certificate', params: self.metadata).body
+    pdf = Prawn::Document.new
+    # TODO: For now we just create a notional PDF with the JSON content, no formatting
+    pdf.text JSON.pretty_generate(self.metadata)
+    document = pdf.render
+    self.create_death_certificate(document: document, metadata: self.metadata, creator: user)
+  end
+
 end
 
 # Adds a function to the Hash class.
