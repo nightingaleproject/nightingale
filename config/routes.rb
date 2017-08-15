@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       post :request_edits
       post :abandon
       post :views_validate
+      get :preview_certificate
+      get :final_certificate
     end
     collection do
       post :owned_death_records

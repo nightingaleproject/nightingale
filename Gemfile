@@ -42,6 +42,10 @@ gem 'rolify'
 # Icons
 gem 'font-awesome-sass'
 
+# Creating local PDFs, useful unless a back-end service is used for generating certificates
+gem 'prawn'
+gem 'combine_pdf'
+
 # Use audited for tracking ownership of records
 gem 'audited', '~> 4.3'
 gem 'rails-observers', git: 'https://github.com/rails/rails-observers'
