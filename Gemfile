@@ -42,6 +42,9 @@ gem 'rolify'
 # Icons
 gem 'font-awesome-sass'
 
+# Communicating with remote services
+gem 'rest-client'
+
 # Creating local PDFs, useful unless a back-end service is used for generating certificates
 gem 'prawn'
 gem 'combine_pdf'

@@ -141,6 +141,11 @@ class DeathRecordsController < ApplicationController
     @death_record.update_cache
     @death_record.generate_certificate(current_user)
     @death_record.save
+    # Submit the literals from the record to the surveillance module
+    # TODO: eventually we'll want a subscription model, webhooks, etc
+    fields = @death_record.contents.keys.grep(/^cod/)
+    fields += @death_record.contents.keys.grep(/^manner/)
+    RestClient.post('http://localhost:4000/records/', data: @death_record.contents.slice(*fields))
     render json: @death_record.cached_json
   end
 
