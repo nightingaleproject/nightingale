@@ -153,6 +153,13 @@ class DeathRecordsController < ApplicationController
     render json: ViewsHelper.views_for_record_cod(validate_params)
   end
 
+  # Function that returns an attachment of all registered records in IJE format
+  def export_records_in_ije
+    registered_ids = Registration.all.map(&:death_record_id)
+    ije_result = IJEFormat.process_data(DeathRecord.find(registered_ids).as_json)
+    send_data ije_result, disposition: 'attachment', filename: 'Records.ije'
+  end
+
   # Handles requesting edits from users.
   def request_edits
     return unless current_user.can_request_edits?

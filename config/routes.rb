@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     end
   end
 
+  match 'export_records_in_ije' => 'death_records#export_records_in_ije', :via => :get
+
   # Step related routes
   resources :step, only: [:update]
 
