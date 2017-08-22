@@ -211,14 +211,19 @@ class DeathRecord < ApplicationRecord
   # Generate printable versions of a death certificate for this record and store locally
   def generate_certificate(user)
     # TODO: Eventually we'll want to support multiple, versioned cerficicates
-    raise "Death certificate already exists" if self.death_certificate
+    #raise "Death certificate already exists" if self.death_certificate
     # TODO: Placeholder for local certificate generation service
     # document = RestClient.get('http://localhost:4567/certificate', params: self.metadata).body
-    pdf = Prawn::Document.new
-    # TODO: For now we just create a notional PDF with the JSON content, no formatting
-    pdf.text JSON.pretty_generate(self.metadata)
-    document = pdf.render
-    self.create_death_certificate(document: document, metadata: self.metadata, creator: user)
+    # We want to generate a pdf with the death record data with formatting.
+    document = FormatPDF.generate_formatted_pdf(self.build_contents)
+    template_pdf = CombinePDF.load(Rails.root + "2003-death-certificate.pdf")
+    record_pdf = CombinePDF.parse(document)
+    # Overlay the generated pdf with data over the template pdf.
+    template_pdf.pages.each_with_index do |page, index|
+      page << record_pdf.pages[index] if record_pdf.pages[index]
+    end
+
+    self.create_death_certificate(document: template_pdf.to_pdf, metadata: self.metadata, creator: user)
   end
 
 end
