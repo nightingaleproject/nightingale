@@ -3,9 +3,7 @@ class NightTime extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.formData;
-    this.state[this.props.name] = this.state[this.props.name]
-      ? this.state[this.props.name]
-      : moment().format('HH:mm');
+    this.state[this.props.name] = this.state[this.props.name] ? this.state[this.props.name] : moment().format('HH:mm');
     this.onChange = this.onChange.bind(this);
     this.renderTimeType = this.renderTimeType.bind(this);
   }
@@ -26,10 +24,7 @@ class NightTime extends React.Component {
       return (
         <div className="form-group">
           {this.props.schema.properties.timeType.options.map(item =>
-            <label
-              key={'label' + item}
-              className="row mt-1 ml-1 form-check-label"
-            >
+            <label key={'label' + item} className="row mt-1 ml-1 form-check-label">
               <input
                 key={'input' + item}
                 name="timeType"
@@ -39,7 +34,9 @@ class NightTime extends React.Component {
                 onChange={this.onChange('timeType')}
                 checked={this.state.timeType == item}
               />
-              <span className="ml-1" key={'span' + item}>{item}</span>
+              <span className="ml-1" key={'span' + item}>
+                {item}
+              </span>
             </label>
           )}
         </div>
@@ -51,8 +48,7 @@ class NightTime extends React.Component {
     return (
       <fieldset className="pt-1 pb-2">
         <legend>
-          {this.props.schema.required &&
-            <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
+          {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
         </legend>
         <div className="form-group row">

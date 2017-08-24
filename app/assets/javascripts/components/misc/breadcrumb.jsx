@@ -7,20 +7,13 @@ class Breadcrumb extends React.Component {
           {this.props.crumbs.map(function(crumb) {
             if (crumb.url) {
               return (
-                <a
-                  key={'bca' + crumb.name}
-                  className="breadcrumb-item"
-                  href={crumb.url}
-                >
+                <a key={'bca' + crumb.name} className="breadcrumb-item" href={crumb.url}>
                   {crumb.name}
                 </a>
               );
             } else {
               return (
-                <span
-                  key={'bcs' + crumb.name}
-                  className="breadcrumb-item active"
-                >
+                <span key={'bcs' + crumb.name} className="breadcrumb-item active">
                   {crumb.name}
                 </span>
               );

@@ -22,8 +22,7 @@ class NightRadioSelect extends React.Component {
     return (
       <fieldset className="mt-3 mb-4 pt-1 pb-3 form-group">
         <legend>
-          {this.props.schema.required &&
-            <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
+          {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
         </legend>
         <div className="row mt-1 mb-1">
@@ -40,7 +39,9 @@ class NightRadioSelect extends React.Component {
                     onChange={this.onChange(this.props.name)}
                     checked={this.state[this.props.name] == item}
                   />
-                  <span className="ml-1" key={'span' + item}>{item}</span>
+                  <span className="ml-1" key={'span' + item}>
+                    {item}
+                  </span>
                   {false && <input className="ml-2 col-md-4" />}
                 </label>
               </div>

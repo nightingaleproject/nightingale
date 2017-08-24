@@ -9,13 +9,8 @@ class Review extends React.Component {
           updateStep={this.props.updateStep}
           requestEdits={this.props.requestEdits}
         />
-        <Validation
-          deathRecord={this.props.deathRecord}
-        />
-        <SendTo
-          deathRecord={this.props.deathRecord}
-          updateStep={this.props.updateStep}
-        />
+        <Validation deathRecord={this.props.deathRecord} />
+        <SendTo deathRecord={this.props.deathRecord} updateStep={this.props.updateStep} />
       </div>
     );
   }

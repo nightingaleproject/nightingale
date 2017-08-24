@@ -35,12 +35,40 @@ class OwnedRecords extends React.Component {
         },
         ordering: false,
         columnDefs: [
-          { searchable: false, width: '6%', targets: [0], data: null, render: self.renderNotificationCol },
-          { searchable: false, width: '6%', targets: [1], data: null, render: self.renderActionButtonsCol },
+          {
+            searchable: false,
+            width: '6%',
+            targets: [0],
+            data: null,
+            render: self.renderNotificationCol
+          },
+          {
+            searchable: false,
+            width: '6%',
+            targets: [1],
+            data: null,
+            render: self.renderActionButtonsCol
+          },
           { width: '8%', targets: [2], data: null, render: self.renderIdCol },
-          { width: '28%', targets: [3], data: null, render: self.renderNameCol },
-          { width: '28%', targets: [4], data: null, render: self.renderTimeagoCol },
-          { searchable: false, width: '24%', targets: [5], data: null, render: self.renderProgressCol }
+          {
+            width: '28%',
+            targets: [3],
+            data: null,
+            render: self.renderNameCol
+          },
+          {
+            width: '28%',
+            targets: [4],
+            data: null,
+            render: self.renderTimeagoCol
+          },
+          {
+            searchable: false,
+            width: '24%',
+            targets: [5],
+            data: null,
+            render: self.renderProgressCol
+          }
         ],
         processing: true,
         serverSide: true,
@@ -54,19 +82,27 @@ class OwnedRecords extends React.Component {
           $('[data-toggle="tooltip"]').tooltip();
         }
       });
-    })
+    });
   }
 
   renderNotificationCol(data, type, full, meta) {
-    if (data.notify && !this.props.currentUser.isAdmin) {
-      return ReactDOMServer.renderToStaticMarkup(<h6><span className="badge badge-danger full-width mt-1">New!</span></h6>);
+    if (data.notify && !this.props.currentUser.isAdmin) {
+      return ReactDOMServer.renderToStaticMarkup(
+        <h6>
+          <span className="badge badge-danger full-width mt-1">New!</span>
+        </h6>
+      );
     } else {
       return '';
     }
   }
 
   renderActionButtonsCol(data, type, full, meta) {
-      return ReactDOMServer.renderToStaticMarkup(<div className="btn-group btn-block" role="group">
+    if (this.props.currentUser.isAdmin && this.props.currentUser.id != data.owner.id) {
+      return '';
+    }
+    return ReactDOMServer.renderToStaticMarkup(
+      <div className="btn-group btn-block" role="group">
         <button
           id="btnGroupDrop1"
           type="button"
@@ -87,23 +123,24 @@ class OwnedRecords extends React.Component {
             <i className="fa fa-search" />&nbsp;View
           </a>
         </div>
-      </div>)
+      </div>
+    );
   }
 
   renderIdCol(data, type, full, meta) {
-    return data.id
+    return data.id;
   }
 
   renderNameCol(data, type, full, meta) {
-    return ReactDOMServer.renderToStaticMarkup(this.renderDecedentName(this.decedentName(data)))
+    return ReactDOMServer.renderToStaticMarkup(this.renderDecedentName(this.decedentName(data)));
   }
 
   renderTimeagoCol(data, type, full, meta) {
-    return jQuery.timeago(data.lastUpdatedAt)
+    return jQuery.timeago(data.lastUpdatedAt);
   }
 
   renderProgressCol(data, type, full, meta) {
-    return this.renderRecordProgress(data)
+    return this.renderRecordProgress(data);
   }
 
   renderRecordProgressIcon(step, deathRecord) {
@@ -150,18 +187,22 @@ class OwnedRecords extends React.Component {
   }
 
   renderRecordProgress(deathRecord) {
-    var progress = ''
+    var progress = '';
     for (var step of deathRecord.steps) {
-      var stepProgress = this.renderRecordProgressIcon(step, deathRecord)
+      var stepProgress = this.renderRecordProgressIcon(step, deathRecord);
       if (step.type == 'form' && stepProgress) {
-        progress += stepProgress
+        progress += stepProgress;
       }
     }
     return progress;
   }
 
   renderDecedentName(name) {
-    return <span>{name}</span>;
+    return (
+      <span>
+        {name}
+      </span>
+    );
   }
 
   // Return a styled version of the decedent's name, constructed by what
@@ -187,8 +228,14 @@ class OwnedRecords extends React.Component {
       <div className="mb-5 mt-2">
         <div className="row mb-4">
           <div className="col-4 pl-0">
-            {this.state.currentUser.isAdmin && <h3><span className="fa fa-folder"></span> All Records</h3>}
-            {!this.state.currentUser.isAdmin && <h3><span className="fa fa-folder"></span> My Open Records</h3>}
+            {this.state.currentUser.isAdmin &&
+              <h3>
+                <span className="fa fa-folder" /> All Records
+              </h3>}
+            {!this.state.currentUser.isAdmin &&
+              <h3>
+                <span className="fa fa-folder" /> My Open Records
+              </h3>}
           </div>
           <div className="col-8 pr-0">
             <span className="ml-3 pull-right" />
@@ -212,8 +259,7 @@ class OwnedRecords extends React.Component {
                 <th>Progress</th>
               </tr>
             </thead>
-            <tbody key={this.props.currentUser.id + 'owned-body'}>
-            </tbody>
+            <tbody key={this.props.currentUser.id + 'owned-body'} />
           </table>
         </div>
       </div>

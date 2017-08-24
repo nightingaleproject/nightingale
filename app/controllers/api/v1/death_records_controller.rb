@@ -1,21 +1,12 @@
-class Api::V1::DeathRecordsController < UnauthenticatedApplicationController
-  # Don't allow use in production environment until authentication is sorted out
-  raise 'Open API not appropriate for use in a production environment' if Rails.env.production?
-
-  def authenticate!
-    # TBD:  Add authentication, currently anyone can add users
-    # error!('401 Unauthorized', 401) unless current_user
-    Rails.logger.debug 'Unauthorized API Access - this is by design, but should be implemented'
-  end
+class Api::V1::DeathRecordsController < Api::V1::ApiController
+  before_action :doorkeeper_authorize!
 
   # POST death_record
   def create
     respond_to do |format|
-      Rails.logger.debug 'Starting api call to create new decedent'
-      authenticate!
       # create death record
       physician_email = params[:physician_email]
-     
+
       if !physician_email
         msg = { status: 'failure', message: 'Bad physician email' }
       else
@@ -26,15 +17,15 @@ class Api::V1::DeathRecordsController < UnauthenticatedApplicationController
                                         owner: physician,
                                         workflow: workflow,
                                         step_flow: step_flow)
-        
+
         # Create and and set a StepStatus for this DeathRecord.
         step_status = StepStatus.create(death_record: @death_record,
                                     current_step: step_flow.current_step,
                                     next_step: step_flow.next_step,
                                     previous_step: step_flow.previous_step)
         @death_record.step_status = step_status
-        @death_record.save 
-                                       
+        @death_record.save
+
         steps_content_hash = @death_record.separate_step_contents(params[:contents])
         @death_record.steps.each do |step|
           unless steps_content_hash[step.name].empty?
@@ -44,7 +35,6 @@ class Api::V1::DeathRecordsController < UnauthenticatedApplicationController
                                              editor: physician)
           end
         end
-
 
         Rails.logger.debug 'Saving new decedent'
         # save but do not validate for now, as validation will not pass since

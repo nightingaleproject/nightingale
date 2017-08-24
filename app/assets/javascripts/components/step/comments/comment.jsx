@@ -23,17 +23,10 @@ class Comment extends React.Component {
     var timeago = jQuery.timeago(this.props.comment.createdAt);
 
     // Show delete button?
-    if (
-      this.props.currentUser.id === this.props.comment.author.id &&
-      !this.props.deathRecord.registration
-    ) {
+    if (this.props.currentUser.id === this.props.comment.author.id && !this.props.deathRecord.registration) {
       var deleteButton = (
         <div className="pull-right">
-          <button
-            type="button"
-            onClick={this.deleteComment}
-            className="btn btn-sm btn-danger"
-          >
+          <button type="button" onClick={this.deleteComment} className="btn btn-sm btn-danger">
             <span className="fa fa-trash" /> Delete
           </button>
         </div>
@@ -45,14 +38,15 @@ class Comment extends React.Component {
         <div className="card-header">
           <div>
             <div>
-              <b>{this.props.comment.author.name}</b> ({this.props.comment.author.rolePretty}),
-              {' '}{timeago}
+              <b>{this.props.comment.author.name}</b> ({this.props.comment.author.rolePretty}), {timeago}
               {deleteButton}
             </div>
           </div>
         </div>
         <div className="card-block">
-          <p className="card-text">{this.props.comment.content}</p>
+          <p className="card-text">
+            {this.props.comment.content}
+          </p>
         </div>
       </div>
     );

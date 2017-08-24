@@ -132,12 +132,7 @@ class NightShortAddress extends React.Component {
   buildDatalist(options, name) {
     // Check if IE 9 or earlier
     if (document.documentMode <= 9) {
-      var ieOpen = (
-        <select data-datalist={this.props.name + name}>
-          ;
-          var ieClose ={' '}
-        </select>
-      );
+      var ieOpen = <select data-datalist={this.props.name + name}>; var ieClose = </select>;
     } else {
       var ieOpen = '';
       var ieClose = '';
@@ -146,7 +141,9 @@ class NightShortAddress extends React.Component {
       <datalist id={this.props.name + name} key={this.props.name + name}>
         {ieOpen}
         {options.map(option =>
-          <option key={this.props.name + name + option}>{option}</option>
+          <option key={this.props.name + name + option}>
+            {option}
+          </option>
         )}
         {ieClose}
       </datalist>
@@ -157,8 +154,7 @@ class NightShortAddress extends React.Component {
     return (
       <fieldset className="mt-4 pb-4">
         <legend>
-          {this.props.schema.required &&
-            <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
+          {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
         </legend>
         {this.props.schema.named &&
@@ -185,10 +181,7 @@ class NightShortAddress extends React.Component {
               onChange={this.onChange('country')}
               disabled={this.disabled('country')}
             />
-            {this.buildDatalist(
-              ['United States', 'Canada', 'Mexico'],
-              'country'
-            )}
+            {this.buildDatalist(['United States', 'Canada', 'Mexico'], 'country')}
           </div>
           <div className="col-md-4">
             <label htmlFor="state">State/Territory/Province</label>

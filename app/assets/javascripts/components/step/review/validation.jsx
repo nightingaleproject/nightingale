@@ -13,14 +13,10 @@ class Validation extends React.Component {
       contentType: 'application/json',
       type: 'POST',
       success: function(messages) {
-        debugger
+        debugger;
       }.bind(this),
       error: function(xhr, status, err) {
-        console.error(
-          Routes.views_validate_death_records_path(this.props.deathRecord.id),
-          status,
-          err.toString()
-        );
+        console.error(Routes.views_validate_death_records_path(this.props.deathRecord.id), status, err.toString());
       }.bind(this)
     });
   }
@@ -34,10 +30,6 @@ class Validation extends React.Component {
   // </div>
 
   render() {
-    return (
-      <div className="mt-1">
-
-      </div>
-    );
+    return <div className="mt-1" />;
   }
 }

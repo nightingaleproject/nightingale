@@ -7,18 +7,10 @@ class NightMultiSelect extends React.Component {
     super(props);
     this.state = this.props.formData;
     this.state[this.props.name] = {
-      option: this.state[this.props.name].option
-        ? this.state[this.props.name].option
-        : null,
-      specify: this.state[this.props.name].specify
-        ? this.state[this.props.name].specify
-        : '[]',
-      specifyArr: this.state[this.props.name].specify
-        ? JSON.parse(this.state[this.props.name].specify)
-        : [],
-      specifyInputs: this.state[this.props.name].specifyInputs
-        ? this.state[this.props.name].specifyInputs
-        : '{}',
+      option: this.state[this.props.name].option ? this.state[this.props.name].option : null,
+      specify: this.state[this.props.name].specify ? this.state[this.props.name].specify : '[]',
+      specifyArr: this.state[this.props.name].specify ? JSON.parse(this.state[this.props.name].specify) : [],
+      specifyInputs: this.state[this.props.name].specifyInputs ? this.state[this.props.name].specifyInputs : '{}',
       specifyInputsObj: this.state[this.props.name].specifyInputs
         ? JSON.parse(this.state[this.props.name].specifyInputs)
         : {}
@@ -100,7 +92,9 @@ class NightMultiSelect extends React.Component {
             onChange={this.onChange}
             checked={this.state[this.props.name]['option'] === text}
           />
-          <span className="ml-1" key={'span' + text}>{text}</span>
+          <span className="ml-1" key={'span' + text}>
+            {text}
+          </span>
           {input &&
             <input
               name={text}
@@ -120,14 +114,8 @@ class NightMultiSelect extends React.Component {
           <div key={id + '2'} className="col-md-12">
             <h6 className="mb-3">Please specify:</h6>
             {options.map(item =>
-              <div
-                key={'div' + (_.isObject(item) ? item['text'] : item)}
-                className="form-check"
-              >
-                <label
-                  key={'label' + (_.isObject(item) ? item['text'] : item)}
-                  className="form-check-label"
-                >
+              <div key={'div' + (_.isObject(item) ? item['text'] : item)} className="form-check">
+                <label key={'label' + (_.isObject(item) ? item['text'] : item)} className="form-check-label">
                   <input
                     key={'input' + (_.isObject(item) ? item['text'] : item)}
                     name={this.props.name}
@@ -136,27 +124,17 @@ class NightMultiSelect extends React.Component {
                     value={_.isObject(item) ? item['text'] : item}
                     onChange={this.onSpecifyChange}
                     checked={
-                      _.indexOf(
-                        this.state[this.props.name]['specifyArr'],
-                        _.isObject(item) ? item['text'] : item
-                      ) >= 0
+                      _.indexOf(this.state[this.props.name]['specifyArr'], _.isObject(item) ? item['text'] : item) >= 0
                     }
                   />
-                  <span
-                    className="ml-1"
-                    key={'span' + (_.isObject(item) ? item['text'] : item)}
-                  >
+                  <span className="ml-1" key={'span' + (_.isObject(item) ? item['text'] : item)}>
                     {_.isObject(item) ? item['text'] : item}
                   </span>
                   {(_.isObject(item) ? item['input'] : false) &&
                     <input
                       name={_.isObject(item) ? item['text'] : item}
                       className="ml-4 col-md-4 night-input"
-                      value={
-                        this.state[this.props.name].specifyInputsObj[
-                          _.isObject(item) ? item['text'] : item
-                        ]
-                      }
+                      value={this.state[this.props.name].specifyInputsObj[_.isObject(item) ? item['text'] : item]}
                       onChange={this.onSpecifyInputChange}
                     />}
                 </label>
@@ -172,20 +150,17 @@ class NightMultiSelect extends React.Component {
     return (
       <fieldset className="mt-3 mb-4 pt-1 pb-3 form-group">
         <legend>
-          {this.props.schema.required &&
-            <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
+          {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
         </legend>
         <div className="row mt-1 mb-1">
           <div className="col-md-12">
-            {this.props.schema.properties[this.props.name].options.map(item =>
-              this.renderRadio(item)
-            )}
+            {this.props.schema.properties[this.props.name].options.map(item => this.renderRadio(item))}
           </div>
         </div>
-        {_.toPairs(
-          this.props.schema.properties[this.props.name].specifyOptions
-        ).map(specify => this.renderSpecify(specify[0], specify[1]))}
+        {_.toPairs(this.props.schema.properties[this.props.name].specifyOptions).map(specify =>
+          this.renderSpecify(specify[0], specify[1])
+        )}
       </fieldset>
     );
   }

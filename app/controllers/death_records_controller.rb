@@ -269,15 +269,11 @@ class DeathRecordsController < ApplicationController
   # Retrieve the DeathRecord requested by id (and scope by owner). Admins
   # have access to any DeathRecord, regardless of ownership.
   def set_death_record
-    if current_user.admin?
-      @death_record = DeathRecord.find(params[:id])
-    else
-      @death_record = current_user.owned_death_records.find_by(id: params[:id])
-      # Allow viewing of death records that were touched but aren't
-      # currently owned.
-      if @death_record.nil?
-        @death_record = all_transferred_death_records.select{ |record| record.id.to_s == params[:id].to_s }.first
-      end
+    @death_record = current_user.owned_death_records.find_by(id: params[:id])
+    # Allow viewing of death records that were touched but aren't
+    # currently owned.
+    if @death_record.nil?
+      @death_record = all_transferred_death_records.select{ |record| record.id.to_s == params[:id].to_s }.first
     end
   end
 

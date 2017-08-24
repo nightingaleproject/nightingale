@@ -9,7 +9,10 @@ class Decedent extends React.Component {
   decedentInfo() {
     if (this.decedentName() || this.decedentSsn()) {
       return (
-        <div className="pb-2">{this.decedentName()}{this.decedentSsn()}</div>
+        <div className="pb-2">
+          {this.decedentName()}
+          {this.decedentSsn()}
+        </div>
       );
     }
   }
@@ -22,8 +25,7 @@ class Decedent extends React.Component {
     if (metadata.firstName && metadata.lastName && metadata.middleName) {
       return (
         <h5 className="card-text">
-          {metadata.lastName}, {metadata.firstName} {metadata.middleName[0]}.
-          {' '}{metadata.suffix}
+          {metadata.lastName}, {metadata.firstName} {metadata.middleName[0]}. {metadata.suffix}
         </h5>
       );
     } else if (metadata.firstName && metadata.middleName) {
@@ -40,11 +42,15 @@ class Decedent extends React.Component {
       );
     } else if (metadata.firstName) {
       return (
-        <h5 className="card-text">{metadata.firstName} {metadata.suffix}</h5>
+        <h5 className="card-text">
+          {metadata.firstName} {metadata.suffix}
+        </h5>
       );
     } else if (metadata.lastName) {
       return (
-        <h5 className="card-text">{metadata.lastName} {metadata.suffix}</h5>
+        <h5 className="card-text">
+          {metadata.lastName} {metadata.suffix}
+        </h5>
       );
     }
   }
