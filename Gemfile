@@ -77,6 +77,13 @@ group :development, :test, :ci do
   gem 'byebug', platform: :mri
   gem 'brakeman'
   gem 'bundler-audit'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do
