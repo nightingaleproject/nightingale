@@ -14,6 +14,22 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+
+  # Precompile assets before we begin testing.
+  config.before :all do
+    ENV['PRECOMPILE_ASSETS'] ||= begin
+      case self.class.metadata[:type]
+      when :feature, :view
+        STDOUT.write 'Precompiling assets...'
+        require 'rake'
+        Rails.application.load_tasks
+        Rake::Task['assets:precompile'].invoke
+        STDOUT.puts ' done.'
+        Time.now.to_s
+      end
+    end
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
