@@ -65,7 +65,8 @@ class Comments extends React.Component {
             removeComment={this.removeComment.bind(this)}
           />
         )}
-        {!this.props.currentUser.isAdmin && this.props.allowAdd &&
+        {!this.props.currentUser.isAdmin &&
+          this.props.allowAdd &&
           <div>
             <div className="form-group mt-4">
               <h6>Add a new comment:</h6>

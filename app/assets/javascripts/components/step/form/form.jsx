@@ -12,8 +12,7 @@ class Form extends React.Component {
 
   onChange(state) {
     var currentState = { ...this.state };
-    currentState.deathRecord.stepStatus.currentStep.contents.contents =
-      state.formData;
+    currentState.deathRecord.stepStatus.currentStep.contents.contents = state.formData;
     // Update metadata if we are on the Identity step
     if (currentState.deathRecord.stepStatus.currentStep.name == 'Identity') {
       currentState.deathRecord.metadata = this.rebuildMetadata(state.formData);
@@ -55,10 +54,8 @@ class Form extends React.Component {
       nightCOD: NightCOD
     };
     var prev =
-      this.state.deathRecord.stepStatus.previousStep &&
-      this.state.deathRecord.stepStatus.previousStep.editable;
-    var contents = this.state.deathRecord.stepStatus.currentStep.contents
-      .contents;
+      this.state.deathRecord.stepStatus.previousStep && this.state.deathRecord.stepStatus.previousStep.editable;
+    var contents = this.state.deathRecord.stepStatus.currentStep.contents.contents;
     return (
       <div className="mb-4">
         <div className="row">
@@ -72,10 +69,7 @@ class Form extends React.Component {
             noValidate={true}
           >
             <div className="pull-right mt-1">
-              <a
-                href={Routes.death_records_path()}
-                className="btn btn-secondary mr-2"
-              >
+              <a href={Routes.death_records_path()} className="btn btn-secondary mr-2">
                 Cancel
               </a>
               <button type="submit" className="btn btn-primary">

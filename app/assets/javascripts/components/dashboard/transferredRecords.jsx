@@ -35,12 +35,40 @@ class TransferredRecords extends React.Component {
         },
         ordering: false,
         columnDefs: [
-          { searchable: false, width: '6%', targets: [0], data: null, render: self.renderNotificationCol },
-          { searchable: false, width: '6%', targets: [1], data: null, render: self.renderActionButtonsCol },
+          {
+            searchable: false,
+            width: '6%',
+            targets: [0],
+            data: null,
+            render: self.renderNotificationCol
+          },
+          {
+            searchable: false,
+            width: '6%',
+            targets: [1],
+            data: null,
+            render: self.renderActionButtonsCol
+          },
           { width: '8%', targets: [2], data: null, render: self.renderIdCol },
-          { width: '28%', targets: [3], data: null, render: self.renderNameCol },
-          { width: '28%', targets: [4], data: null, render: self.renderTimeagoCol },
-          { searchable: false, width: '24%', targets: [5], data: null, render: self.renderProgressCol }
+          {
+            width: '28%',
+            targets: [3],
+            data: null,
+            render: self.renderNameCol
+          },
+          {
+            width: '28%',
+            targets: [4],
+            data: null,
+            render: self.renderTimeagoCol
+          },
+          {
+            searchable: false,
+            width: '24%',
+            targets: [5],
+            data: null,
+            render: self.renderProgressCol
+          }
         ],
         processing: true,
         serverSide: true,
@@ -66,39 +94,41 @@ class TransferredRecords extends React.Component {
     if (this.props.currentUser.isAdmin && this.props.currentUser.id != data.owner.id) {
       return '';
     }
-    return ReactDOMServer.renderToStaticMarkup(<div className="btn-group btn-block" role="group">
-      <button
-        id="btnGroupDrop1"
-        type="button"
-        className="btn btn-block btn-primary btn-block dropdown-toggle btn-sm"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        <i className="fa fa-cog" />
-      </button>
-      <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
-        <a className="dropdown-item" href={Routes.death_record_path(data.id)}>
-          <i className="fa fa-search" />&nbsp;View
-        </a>
+    return ReactDOMServer.renderToStaticMarkup(
+      <div className="btn-group btn-block" role="group">
+        <button
+          id="btnGroupDrop1"
+          type="button"
+          className="btn btn-block btn-primary btn-block dropdown-toggle btn-sm"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <i className="fa fa-cog" />
+        </button>
+        <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a className="dropdown-item" href={Routes.death_record_path(data.id)}>
+            <i className="fa fa-search" />&nbsp;View
+          </a>
+        </div>
       </div>
-    </div>)
+    );
   }
 
   renderIdCol(data, type, full, meta) {
-    return data.id
+    return data.id;
   }
 
   renderNameCol(data, type, full, meta) {
-    return ReactDOMServer.renderToStaticMarkup(this.renderDecedentName(this.decedentName(data)))
+    return ReactDOMServer.renderToStaticMarkup(this.renderDecedentName(this.decedentName(data)));
   }
 
   renderTimeagoCol(data, type, full, meta) {
-    return jQuery.timeago(data.lastUpdatedAt)
+    return jQuery.timeago(data.lastUpdatedAt);
   }
 
   renderProgressCol(data, type, full, meta) {
-    return this.renderRecordProgress(data)
+    return this.renderRecordProgress(data);
   }
 
   renderRecordProgressIcon(step, deathRecord) {
@@ -145,18 +175,22 @@ class TransferredRecords extends React.Component {
   }
 
   renderRecordProgress(deathRecord) {
-    var progress = ''
+    var progress = '';
     for (var step of deathRecord.steps) {
-      var stepProgress = this.renderRecordProgressIcon(step, deathRecord)
+      var stepProgress = this.renderRecordProgressIcon(step, deathRecord);
       if (step.type == 'form' && stepProgress) {
-        progress += stepProgress
+        progress += stepProgress;
       }
     }
     return progress;
   }
 
   renderDecedentName(name) {
-    return <span>{name}</span>;
+    return (
+      <span>
+        {name}
+      </span>
+    );
   }
 
   // Return a styled version of the decedent's name, constructed by what
@@ -182,8 +216,14 @@ class TransferredRecords extends React.Component {
       <div className="pb-5">
         <div className="row mb-4">
           <div className="col pl-0">
-            {!this.props.currentUser.canRegisterRecord && <h3><span className="fa fa-folder"></span> My Transferred Records</h3>}
-            {this.props.currentUser.canRegisterRecord && <h3><span className="fa fa-folder"></span> Registered Records</h3>}
+            {!this.props.currentUser.canRegisterRecord &&
+              <h3>
+                <span className="fa fa-folder" /> My Transferred Records
+              </h3>}
+            {this.props.currentUser.canRegisterRecord &&
+              <h3>
+                <span className="fa fa-folder" /> Registered Records
+              </h3>}
           </div>
         </div>
         <div className="row">
@@ -203,8 +243,7 @@ class TransferredRecords extends React.Component {
                 <th>Progress</th>
               </tr>
             </thead>
-            <tbody key={this.props.currentUser.id + 'trans-body'}>
-            </tbody>
+            <tbody key={this.props.currentUser.id + 'trans-body'} />
           </table>
         </div>
       </div>

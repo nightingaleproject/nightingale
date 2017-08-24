@@ -61,8 +61,7 @@ class NightName extends React.Component {
     return (
       <fieldset className="pt-1 pb-2">
         <legend>
-          {this.props.schema.required &&
-            <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
+          {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
         </legend>
         <Name
@@ -75,11 +74,7 @@ class NightName extends React.Component {
           <div>
             <h5 className="mt-3 mb-3">Alternative Names (AKAs)</h5>
             {this.state.akas.map((aka, index) =>
-              <Name
-                key={'aka' + index}
-                onChange={e => this.onAkaChange(index, e)}
-                formData={aka}
-              />
+              <Name key={'aka' + index} onChange={e => this.onAkaChange(index, e)} formData={aka} />
             )}
             <div className="row pull-right pr-3 pb-3 pt-2">
               <button

@@ -26,10 +26,7 @@ class NightDate extends React.Component {
       return (
         <div className="form-group">
           {this.props.schema.properties.dateType.options.map(item =>
-            <label
-              key={'label' + item}
-              className="row mt-1 ml-1 form-check-label"
-            >
+            <label key={'label' + item} className="row mt-1 ml-1 form-check-label">
               <input
                 key={'input' + item}
                 name="dateType"
@@ -39,7 +36,9 @@ class NightDate extends React.Component {
                 onChange={this.onChange('dateType')}
                 checked={this.state.dateType == item}
               />
-              <span className="ml-1" key={'span' + item}>{item}</span>
+              <span className="ml-1" key={'span' + item}>
+                {item}
+              </span>
             </label>
           )}
         </div>
@@ -51,8 +50,7 @@ class NightDate extends React.Component {
     return (
       <fieldset className="pt-1 pb-2">
         <legend>
-          {this.props.schema.required &&
-            <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
+          {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
         </legend>
         <div className="form-group row">

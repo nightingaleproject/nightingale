@@ -78,10 +78,10 @@ class Step extends React.Component {
         title: 'Requesting Edits',
         text:
           'You are requesting edits from ' +
-            user.email +
-            ' (' +
-            user.rolePretty +
-            ').\nEnter a comment explaining why below:',
+          user.email +
+          ' (' +
+          user.rolePretty +
+          ').\nEnter a comment explaining why below:',
         type: 'input',
         showCancelButton: true,
         confirmButtonClass: 'btn-primary',
@@ -329,12 +329,16 @@ class Step extends React.Component {
                       {this.state.deathRecord.registration.id}
                     </dd>
                   </dl>}
-                  {!this.state.currentUser.canRegisterRecord &&
-                    !this.state.deathRecord.registration &&
-                    this.state.deathRecord.creator.id == this.state.currentUser.id &&
-                    <button type="button" onClick={() => this.abandonRecord(this.state.deathRecord.id)} className="btn btn-lg btn-primary pull-right">
-                      <span className="fa fa-trash" /> Abandon Record
-                    </button>}
+                {!this.state.currentUser.canRegisterRecord &&
+                  !this.state.deathRecord.registration &&
+                  this.state.deathRecord.creator.id == this.state.currentUser.id &&
+                  <button
+                    type="button"
+                    onClick={() => this.abandonRecord(this.state.deathRecord.id)}
+                    className="btn btn-lg btn-primary pull-right"
+                  >
+                    <span className="fa fa-trash" /> Abandon Record
+                  </button>}
               </span>
             </div>
           </div>

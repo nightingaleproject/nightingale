@@ -25,10 +25,7 @@ class Progress extends React.Component {
           <button
             key={'prog' + step.name}
             type="button"
-            className={
-              'btn btn-block btn-secondary text-left night-step-padding ' +
-              (step.active && 'active')
-            }
+            className={'btn btn-block btn-secondary text-left night-step-padding ' + (step.active && 'active')}
             onClick={() => this.props.updateStep(step.name, true)}
             disabled={!step.editable}
           >

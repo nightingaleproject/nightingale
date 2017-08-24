@@ -3,24 +3,14 @@ class NightCOD extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      immediate: this.props.formData.immediate
-        ? this.props.formData.immediate
-        : '',
-      immediateInt: this.props.formData.immediateInt
-        ? this.props.formData.immediateInt
-        : '',
+      immediate: this.props.formData.immediate ? this.props.formData.immediate : '',
+      immediateInt: this.props.formData.immediateInt ? this.props.formData.immediateInt : '',
       under1: this.props.formData.under1 ? this.props.formData.under1 : '',
-      under1Int: this.props.formData.under1Int
-        ? this.props.formData.under1Int
-        : '',
+      under1Int: this.props.formData.under1Int ? this.props.formData.under1Int : '',
       under2: this.props.formData.under2 ? this.props.formData.under2 : '',
-      under2Int: this.props.formData.under2Int
-        ? this.props.formData.under2Int
-        : '',
+      under2Int: this.props.formData.under2Int ? this.props.formData.under2Int : '',
       under3: this.props.formData.under3 ? this.props.formData.under3 : '',
-      under3Int: this.props.formData.under3Int
-        ? this.props.formData.under3Int
-        : ''
+      under3Int: this.props.formData.under3Int ? this.props.formData.under3Int : ''
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -40,8 +30,7 @@ class NightCOD extends React.Component {
     return (
       <fieldset className="mt-4 pt-1 pb-2">
         <legend>
-          {this.props.schema.required &&
-            <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
+          {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
         </legend>
         <div className="row mt-1 mb-1">

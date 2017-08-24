@@ -4,15 +4,9 @@ class Name extends React.Component {
     super(props);
     this.state = this.props.formData;
     this.state = {
-      firstName: this.props.formData.firstName
-        ? this.props.formData.firstName
-        : '',
-      middleName: this.props.formData.middleName
-        ? this.props.formData.middleName
-        : '',
-      lastName: this.props.formData.lastName
-        ? this.props.formData.lastName
-        : '',
+      firstName: this.props.formData.firstName ? this.props.formData.firstName : '',
+      middleName: this.props.formData.middleName ? this.props.formData.middleName : '',
+      lastName: this.props.formData.lastName ? this.props.formData.lastName : '',
       suffix: this.props.formData.suffix ? this.props.formData.suffix : ''
     };
     this.onChange = this.onChange.bind(this);

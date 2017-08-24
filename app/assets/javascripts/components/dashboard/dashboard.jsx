@@ -12,13 +12,8 @@ class Dashboard extends React.Component {
           crumbs={[{ name: 'Dashboard', url: Routes.death_records_path() }]}
           currentUser={this.state.currentUser}
         />
-        {!this.state.currentUser.isAdmin &&
-          !this.state.currentUser.isRegistrar &&
-          <DashboardCharts />}
-        <OwnedRecords
-          currentUser={this.state.currentUser}
-          ownedDeathRecords={this.state.ownedDeathRecords}
-        />
+        {!this.state.currentUser.isAdmin && !this.state.currentUser.isRegistrar && <DashboardCharts />}
+        <OwnedRecords currentUser={this.state.currentUser} ownedDeathRecords={this.state.ownedDeathRecords} />
         {!this.state.currentUser.isAdmin &&
           <TransferredRecords
             currentUser={this.state.currentUser}

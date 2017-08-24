@@ -35,11 +35,7 @@ class Completion extends React.Component {
             className="btn btn-sm btn-secondary no-collapsable"
             onClick={() => this.props.updateStep(step.name, false)}
           >
-            <span
-              key={'buttonspan' + step.name + user.id}
-              className="fa fa-pencil"
-            />
-            {' '}Edit
+            <span key={'buttonspan' + step.name + user.id} className="fa fa-pencil" /> Edit
           </button>
         </div>
       );
@@ -52,11 +48,7 @@ class Completion extends React.Component {
             className="btn btn-sm btn-secondary no-collapsable"
             onClick={() => this.requestEdits(step, step.contents.editor)}
           >
-            <span
-              key={'buttonspan' + step.name + user.id}
-              className="fa fa-send"
-            />
-            {' '}Request Edit
+            <span key={'buttonspan' + step.name + user.id} className="fa fa-send" /> Request Edit
           </button>
         </div>
       );
@@ -72,26 +64,16 @@ class Completion extends React.Component {
       // Step was never even started
       return (
         <div key={'div' + step.name}>
-          <div
-            id={step.name}
-            className="row alert alert-danger night-full-width night-step-completion"
-          >
-            <div
-              key={'divname' + step.name + user.id}
-              className="col-3 text-xs-left"
-            >
-              <strong>{step.name}</strong>
+          <div id={step.name} className="row alert alert-danger night-full-width night-step-completion">
+            <div key={'divname' + step.name + user.id} className="col-3 text-xs-left">
+              <strong>
+                {step.name}
+              </strong>
             </div>
-            <div
-              key={'divmessage' + step.name + user.id}
-              className="col-8 text-xs-left"
-            >
+            <div key={'divmessage' + step.name + user.id} className="col-8 text-xs-left">
               This step was never started!
             </div>
-            <div
-              key={'divbutton' + step.name + user.id}
-              className="col-1 text-xs-left"
-            >
+            <div key={'divbutton' + step.name + user.id} className="col-1 text-xs-left">
               {this.actionButton(step, user)}
             </div>
           </div>
@@ -109,22 +91,15 @@ class Completion extends React.Component {
             aria-controls={'collapse' + step.name}
             className="row alert alert-success night-full-width night-step-completion"
           >
-            <div
-              key={'divname' + step.name + user.id}
-              className="col-3 text-xs-left"
-            >
-              <strong>{step.name}</strong>
+            <div key={'divname' + step.name + user.id} className="col-3 text-xs-left">
+              <strong>
+                {step.name}
+              </strong>
             </div>
-            <div
-              key={'divmessage' + step.name + user.id}
-              className="col-8 text-xs-left"
-            >
+            <div key={'divmessage' + step.name + user.id} className="col-8 text-xs-left">
               All required fields are complete!
             </div>
-            <div
-              key={'divbutton' + step.name + user.id}
-              className="col-1 text-xs-left"
-            >
+            <div key={'divbutton' + step.name + user.id} className="col-1 text-xs-left">
               {this.actionButton(step, user)}
             </div>
           </div>
@@ -151,22 +126,15 @@ class Completion extends React.Component {
             aria-controls={'collapse' + step.name}
             className="row alert alert-danger night-full-width night-step-completion"
           >
-            <div
-              key={'divname' + step.name + user.id}
-              className="col-3 text-xs-left"
-            >
-              <strong>{step.name}</strong>
+            <div key={'divname' + step.name + user.id} className="col-3 text-xs-left">
+              <strong>
+                {step.name}
+              </strong>
             </div>
-            <div
-              key={'divmessage' + step.name + user.id}
-              className="col-8 text-xs-left"
-            >
+            <div key={'divmessage' + step.name + user.id} className="col-8 text-xs-left">
               Some required fields are not complete!
             </div>
-            <div
-              key={'divbutton' + step.name + user.id}
-              className="col-1 text-xs-left"
-            >
+            <div key={'divbutton' + step.name + user.id} className="col-1 text-xs-left">
               {this.actionButton(step, user)}
             </div>
           </div>
@@ -192,27 +160,26 @@ class Completion extends React.Component {
       <div>
         {step.contents.results.map(result =>
           <dl className="row" key={result.title}>
-            <dt className="p-2 col-sm-4">{result.title}</dt>
+            <dt className="p-2 col-sm-4">
+              {result.title}
+            </dt>
             <dd
               className={
                 'rounded p-2 night-full-width col-sm-8' +
                 (!result.isRequired && ' alert-info ') +
-                (result.isRequired &&
-                  result.requiredSatisfied &&
-                  ' alert-success ') +
-                (result.isRequired &&
-                  !result.requiredSatisfied &&
-                  ' alert-danger ')
+                (result.isRequired && result.requiredSatisfied && ' alert-success ') +
+                (result.isRequired && !result.requiredSatisfied && ' alert-danger ')
               }
             >
-              {result.isRequired &&
-                result.requiredSatisfied &&
-                <i className="fa fa-fw fa-check">&nbsp;</i>}
-              {result.isRequired &&
-                !result.requiredSatisfied &&
-                <i className="fa fa-fw fa-times">&nbsp;</i>}
+              {result.isRequired && result.requiredSatisfied && <i className="fa fa-fw fa-check">&nbsp;</i>}
+              {result.isRequired && !result.requiredSatisfied && <i className="fa fa-fw fa-times">&nbsp;</i>}
               {result.humanReadable.split('\\n').map((item, key) => {
-                return <span key={key}>{item}<br /></span>;
+                return (
+                  <span key={key}>
+                    {item}
+                    <br />
+                  </span>
+                );
               })}
             </dd>
           </dl>
@@ -226,13 +193,12 @@ class Completion extends React.Component {
     return (
       <div className="pb-2">
         {!this.props.registration &&
-          <div className="row mb-3 mt-2"><h4>Completion Status</h4></div>}
+          <div className="row mb-3 mt-2">
+            <h4>Completion Status</h4>
+          </div>}
         <div id="accordion" role="tablist" aria-multiselectable="true">
           {this.props.deathRecord.steps
-            .filter(
-              step =>
-              step.type === 'form'
-            )
+            .filter(step => step.type === 'form')
             .map(step => this.renderCompletionStatus(step, user))}
         </div>
       </div>
