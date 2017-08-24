@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   use_doorkeeper
+
   # User related routes
   devise_for :users, :controllers => {registrations: 'registrations', passwords: 'passwords'}
 
