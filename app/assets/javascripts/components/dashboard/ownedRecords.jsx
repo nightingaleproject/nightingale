@@ -3,12 +3,16 @@ class OwnedRecords extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props;
-    this.renderRecord = this.renderRecord.bind(this);
-    this.abandonRecord = this.abandonRecord.bind(this);
     this.renderRecordProgressIcon = this.renderRecordProgressIcon.bind(this);
     this.renderRecordProgress = this.renderRecordProgress.bind(this);
     this.decedentName = this.decedentName.bind(this);
     this.renderDecedentName = this.renderDecedentName.bind(this);
+    this.renderNotificationCol = this.renderNotificationCol.bind(this);
+    this.renderActionButtonsCol = this.renderActionButtonsCol.bind(this);
+    this.renderIdCol = this.renderIdCol.bind(this);
+    this.renderNameCol = this.renderNameCol.bind(this);
+    this.renderTimeagoCol = this.renderTimeagoCol.bind(this);
+    this.renderProgressCol = this.renderProgressCol.bind(this);
   }
 
   componentDidMount() {
@@ -19,95 +23,92 @@ class OwnedRecords extends React.Component {
       } else {
         var emptyMessage = 'You currently have no open death records.';
       }
-      $('[data-toggle="tooltip"]').tooltip();
       $('#open_records').DataTable({
         language: {
           emptyTable: emptyMessage,
           lengthMenu: 'Display _MENU_ records',
-          info: 'Showing _PAGE_ of _PAGES_'
+          info: '',
+          infoEmpty: '',
+          infoFiltered: '',
+          search: 'Search by Name:',
+          processing: "<span class='fa fa-spinner fa-spin fa-5x fa-fw'></span>"
         },
         ordering: false,
         columnDefs: [
-          { searchable: false, width: '6%', targets: [0] },
-          { searchable: false, width: '6%', targets: [1] },
-          { width: '8%', targets: [2] },
-          { width: '28%', targets: [3] },
-          { width: '28%', targets: [4] },
-          { searchable: false, width: '24%', targets: [5] }
-        ]
+          { searchable: false, width: '6%', targets: [0], data: null, render: self.renderNotificationCol },
+          { searchable: false, width: '6%', targets: [1], data: null, render: self.renderActionButtonsCol },
+          { width: '8%', targets: [2], data: null, render: self.renderIdCol },
+          { width: '28%', targets: [3], data: null, render: self.renderNameCol },
+          { width: '28%', targets: [4], data: null, render: self.renderTimeagoCol },
+          { searchable: false, width: '24%', targets: [5], data: null, render: self.renderProgressCol }
+        ],
+        processing: true,
+        serverSide: true,
+        ajax: {
+          url: Routes.owned_death_records_death_records_path(),
+          type: 'POST'
+        },
+        pagingType: 'simple',
+        lengthMenu: [10, 25, 50],
+        drawCallback: function(settings) {
+          $('[data-toggle="tooltip"]').tooltip();
+        }
       });
-    });
+    })
   }
 
-  renderRecord(deathRecord) {
-    var decedentName = this.decedentName(deathRecord);
-    var timeago = jQuery.timeago(deathRecord.lastUpdatedAt);
-    return (
-      <tr key={deathRecord.id + 'owned'} className="item">
-        <td>
-          {deathRecord.notify &&
+  renderNotificationCol(data, type, full, meta) {
+    if (data.notify && !this.props.currentUser.isAdmin) {
+      return ReactDOMServer.renderToStaticMarkup(<h6><span className="badge badge-danger full-width mt-1">New!</span></h6>);
+    } else {
+      return '';
+    }
+  }
+
+  renderActionButtonsCol(data, type, full, meta) {
+      return ReactDOMServer.renderToStaticMarkup(<div className="btn-group btn-block" role="group">
+        <button
+          id="btnGroupDrop1"
+          type="button"
+          className="btn btn-primary btn-block dropdown-toggle btn-sm"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <i className="fa fa-cog" />
+        </button>
+        <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          {!this.props.currentUser.canRegisterRecord &&
             !this.props.currentUser.isAdmin &&
-            <h6><span className="badge badge-danger full-width mt-1">New!</span></h6>}
-        </td>
-        <td>
-          <div className="btn-group btn-block" role="group">
-            <button
-              id="btnGroupDrop1"
-              type="button"
-              className="btn btn-primary btn-block dropdown-toggle btn-sm"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <i className="fa fa-cog" />
-            </button>
-            <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              {!this.props.currentUser.canRegisterRecord &&
-                !this.props.currentUser.isAdmin &&
-                <a className="dropdown-item" href={Routes.edit_death_record_path(deathRecord.id)}>
-                  <i className="fa fa-play" />&nbsp;Continue
-                </a>}
-              <a className="dropdown-item" href={Routes.death_record_path(deathRecord.id)}>
-                <i className="fa fa-search" />&nbsp;View
-              </a>
-              {this.props.currentUser.id == deathRecord.creator.id &&
-                <a className="dropdown-item" onClick={() => this.abandonRecord(deathRecord)}>
-                  <i className="fa fa-trash" />&nbsp;Abandon
-                </a>}
-            </div>
-          </div>
-        </td>
-        <td>{deathRecord.id}</td>
-        <td>{this.renderDecedentName(decedentName)}</td>
-        <td>{timeago}</td>
-        <td>{this.renderRecordProgress(deathRecord)}</td>
-      </tr>
-    );
+            <a className="dropdown-item" href={Routes.edit_death_record_path(data.id)}>
+              <i className="fa fa-play" />&nbsp;Continue
+            </a>}
+          <a className="dropdown-item" href={Routes.death_record_path(data.id)}>
+            <i className="fa fa-search" />&nbsp;View
+          </a>
+        </div>
+      </div>)
   }
 
-  abandonRecord(deathRecord) {
-    var self = this;
-    swal(
-      {
-        title: 'You are about to abandon this death record!',
-        text: 'Are you sure?',
-        type: 'error',
-        showCancelButton: true,
-        confirmButtonClass: 'btn-primary',
-        confirmButtonText: 'Abandon!',
-        closeOnConfirm: false,
-        showLoaderOnConfirm: true
-      },
-      function(isConfirm) {
-        if (!isConfirm) return;
-        $.post(Routes.abandon_death_record_path(deathRecord.id));
-      }
-    );
+  renderIdCol(data, type, full, meta) {
+    return data.id
+  }
+
+  renderNameCol(data, type, full, meta) {
+    return ReactDOMServer.renderToStaticMarkup(this.renderDecedentName(this.decedentName(data)))
+  }
+
+  renderTimeagoCol(data, type, full, meta) {
+    return jQuery.timeago(data.lastUpdatedAt)
+  }
+
+  renderProgressCol(data, type, full, meta) {
+    return this.renderRecordProgress(data)
   }
 
   renderRecordProgressIcon(step, deathRecord) {
     if (step.contents.contents && step.contents.requiredSatisfied) {
-      return (
+      return ReactDOMServer.renderToStaticMarkup(
         <a
           data-toggle="tooltip"
           data-animation="false"
@@ -120,7 +121,7 @@ class OwnedRecords extends React.Component {
         </a>
       );
     } else if (step.contents.contents) {
-      return (
+      return ReactDOMServer.renderToStaticMarkup(
         <a
           data-toggle="tooltip"
           data-animation="false"
@@ -133,7 +134,7 @@ class OwnedRecords extends React.Component {
         </a>
       );
     } else {
-      return (
+      return ReactDOMServer.renderToStaticMarkup(
         <a
           data-toggle="tooltip"
           data-animation="false"
@@ -149,7 +150,14 @@ class OwnedRecords extends React.Component {
   }
 
   renderRecordProgress(deathRecord) {
-    return deathRecord.steps.map(step => step.type == 'form' && this.renderRecordProgressIcon(step, deathRecord));
+    var progress = ''
+    for (var step of deathRecord.steps) {
+      var stepProgress = this.renderRecordProgressIcon(step, deathRecord)
+      if (step.type == 'form' && stepProgress) {
+        progress += stepProgress
+      }
+    }
+    return progress;
   }
 
   renderDecedentName(name) {
@@ -179,8 +187,8 @@ class OwnedRecords extends React.Component {
       <div className="mb-5 mt-2">
         <div className="row mb-4">
           <div className="col-4 pl-0">
-            {this.state.currentUser.isAdmin && <h3>All Records</h3>}
-            {!this.state.currentUser.isAdmin && <h3>My Open Records</h3>}
+            {this.state.currentUser.isAdmin && <h3><span className="fa fa-folder"></span> All Records</h3>}
+            {!this.state.currentUser.isAdmin && <h3><span className="fa fa-folder"></span> My Open Records</h3>}
           </div>
           <div className="col-8 pr-0">
             <span className="ml-3 pull-right" />
@@ -194,7 +202,7 @@ class OwnedRecords extends React.Component {
         </div>
         <div className="row">
           <table className="table" id="open_records" key={this.props.currentUser.id + 'owned-table'} width="100%">
-            <thead className="thead-default" key={this.props.currentUser.id + 'owned-head'}>
+            <thead key={this.props.currentUser.id + 'owned-head'}>
               <tr>
                 <th />
                 <th />
@@ -205,7 +213,6 @@ class OwnedRecords extends React.Component {
               </tr>
             </thead>
             <tbody key={this.props.currentUser.id + 'owned-body'}>
-              {this.props.ownedDeathRecords.map(deathRecord => this.renderRecord(deathRecord))}
             </tbody>
           </table>
         </div>

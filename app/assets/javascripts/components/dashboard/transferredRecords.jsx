@@ -3,17 +3,16 @@ class TransferredRecords extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props;
-    this.renderRecord = this.renderRecord.bind(this);
     this.renderRecordProgressIcon = this.renderRecordProgressIcon.bind(this);
     this.renderRecordProgress = this.renderRecordProgress.bind(this);
     this.decedentName = this.decedentName.bind(this);
     this.renderDecedentName = this.renderDecedentName.bind(this);
-  }
-
-  componentDidMount() {
-    $(function() {
-      $('[data-toggle="tooltip"]').tooltip();
-    });
+    this.renderNotificationCol = this.renderNotificationCol.bind(this);
+    this.renderActionButtonsCol = this.renderActionButtonsCol.bind(this);
+    this.renderIdCol = this.renderIdCol.bind(this);
+    this.renderNameCol = this.renderNameCol.bind(this);
+    this.renderTimeagoCol = this.renderTimeagoCol.bind(this);
+    this.renderProgressCol = this.renderProgressCol.bind(this);
   }
 
   componentDidMount() {
@@ -24,62 +23,84 @@ class TransferredRecords extends React.Component {
       } else {
         var emptyMessage = 'No death records to show.';
       }
-      $('[data-toggle="tooltip"]').tooltip();
       $('#transferred_records').DataTable({
         language: {
           emptyTable: emptyMessage,
           lengthMenu: 'Display _MENU_ records',
-          info: 'Showing _PAGE_ of _PAGES_'
+          info: '',
+          infoEmpty: '',
+          infoFiltered: '',
+          search: 'Search by Name:',
+          processing: "<span class='fa fa-spinner fa-spin fa-5x fa-fw'></span>"
         },
         ordering: false,
         columnDefs: [
-          { searchable: false, width: '6%', targets: [0] },
-          { searchable: false, width: '6%', targets: [1] },
-          { width: '8%', targets: [2] },
-          { width: '28%', targets: [3] },
-          { width: '28%', targets: [4] },
-          { searchable: false, width: '24%', targets: [5] }
-        ]
+          { searchable: false, width: '6%', targets: [0], data: null, render: self.renderNotificationCol },
+          { searchable: false, width: '6%', targets: [1], data: null, render: self.renderActionButtonsCol },
+          { width: '8%', targets: [2], data: null, render: self.renderIdCol },
+          { width: '28%', targets: [3], data: null, render: self.renderNameCol },
+          { width: '28%', targets: [4], data: null, render: self.renderTimeagoCol },
+          { searchable: false, width: '24%', targets: [5], data: null, render: self.renderProgressCol }
+        ],
+        processing: true,
+        serverSide: true,
+        ajax: {
+          url: Routes.transferred_death_records_death_records_path(),
+          type: 'POST'
+        },
+        pagingType: 'simple',
+        lengthMenu: [10, 25, 50],
+        drawCallback: function(settings) {
+          $('[data-toggle="tooltip"]').tooltip();
+        }
       });
     });
   }
 
-  renderRecord(deathRecord) {
-    var decedentName = this.decedentName(deathRecord);
-    var timeago = jQuery.timeago(deathRecord.lastUpdatedAt);
-    return (
-      <tr key={deathRecord.id}>
-        <td />
-        <td>
-          <div className="btn-group btn-block" role="group">
-            <button
-              id="btnGroupDrop1"
-              type="button"
-              className="btn btn-block btn-primary btn-block dropdown-toggle btn-sm"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <i className="fa fa-cog" />
-            </button>
-            <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              <a className="dropdown-item" href={Routes.death_record_path(deathRecord.id)}>
-                <i className="fa fa-search" />&nbsp;View
-              </a>
-            </div>
-          </div>
-        </td>
-        <td>{deathRecord.id}</td>
-        <td>{this.renderDecedentName(decedentName)}</td>
-        <td>{timeago}</td>
-        <td>{this.renderRecordProgress(deathRecord)}</td>
-      </tr>
-    );
+  renderNotificationCol(data, type, full, meta) {
+    // QUESTION: Do we ever want to show notifications in the transferred list?
+    return '';
+  }
+
+  renderActionButtonsCol(data, type, full, meta) {
+      return ReactDOMServer.renderToStaticMarkup(<div className="btn-group btn-block" role="group">
+        <button
+          id="btnGroupDrop1"
+          type="button"
+          className="btn btn-block btn-primary btn-block dropdown-toggle btn-sm"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <i className="fa fa-cog" />
+        </button>
+        <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a className="dropdown-item" href={Routes.death_record_path(data.id)}>
+            <i className="fa fa-search" />&nbsp;View
+          </a>
+        </div>
+      </div>)
+  }
+
+  renderIdCol(data, type, full, meta) {
+    return data.id
+  }
+
+  renderNameCol(data, type, full, meta) {
+    return ReactDOMServer.renderToStaticMarkup(this.renderDecedentName(this.decedentName(data)))
+  }
+
+  renderTimeagoCol(data, type, full, meta) {
+    return jQuery.timeago(data.lastUpdatedAt)
+  }
+
+  renderProgressCol(data, type, full, meta) {
+    return this.renderRecordProgress(data)
   }
 
   renderRecordProgressIcon(step, deathRecord) {
     if (step.contents.contents && step.contents.requiredSatisfied) {
-      return (
+      return ReactDOMServer.renderToStaticMarkup(
         <a
           data-toggle="tooltip"
           data-animation="false"
@@ -92,7 +113,7 @@ class TransferredRecords extends React.Component {
         </a>
       );
     } else if (step.contents.contents) {
-      return (
+      return ReactDOMServer.renderToStaticMarkup(
         <a
           data-toggle="tooltip"
           data-animation="false"
@@ -105,7 +126,7 @@ class TransferredRecords extends React.Component {
         </a>
       );
     } else {
-      return (
+      return ReactDOMServer.renderToStaticMarkup(
         <a
           data-toggle="tooltip"
           data-animation="false"
@@ -121,10 +142,14 @@ class TransferredRecords extends React.Component {
   }
 
   renderRecordProgress(deathRecord) {
-    if (deathRecord.registration) {
-      return 'Registered!';
+    var progress = ''
+    for (var step of deathRecord.steps) {
+      var stepProgress = this.renderRecordProgressIcon(step, deathRecord)
+      if (step.type == 'form' && stepProgress) {
+        progress += stepProgress
+      }
     }
-    return deathRecord.steps.map(step => step.type == 'form' && this.renderRecordProgressIcon(step, deathRecord));
+    return progress;
   }
 
   renderDecedentName(name) {
@@ -149,19 +174,13 @@ class TransferredRecords extends React.Component {
     }
   }
 
-  filterTable(event) {
-    this.setState({
-      search: event.target.value
-    });
-  }
-
   render() {
     return (
-      <div className="mb-5">
+      <div className="pb-5">
         <div className="row mb-4">
           <div className="col pl-0">
-            {!this.props.currentUser.canRegisterRecord && <h3>My Transferred Records</h3>}
-            {this.props.currentUser.canRegisterRecord && <h3>Registered Records</h3>}
+            {!this.props.currentUser.canRegisterRecord && <h3><span className="fa fa-folder"></span> My Transferred Records</h3>}
+            {this.props.currentUser.canRegisterRecord && <h3><span className="fa fa-folder"></span> Registered Records</h3>}
           </div>
         </div>
         <div className="row">
@@ -171,7 +190,7 @@ class TransferredRecords extends React.Component {
             key={this.props.currentUser.id + 'trans-table'}
             width="100%"
           >
-            <thead className="thead-default" key={this.props.currentUser.id + 'trans-head'}>
+            <thead key={this.props.currentUser.id + 'trans-head'}>
               <tr>
                 <th />
                 <th />
@@ -182,7 +201,6 @@ class TransferredRecords extends React.Component {
               </tr>
             </thead>
             <tbody key={this.props.currentUser.id + 'trans-body'}>
-              {this.props.transferredDeathRecords.map(deathRecord => this.renderRecord(deathRecord))}
             </tbody>
           </table>
         </div>

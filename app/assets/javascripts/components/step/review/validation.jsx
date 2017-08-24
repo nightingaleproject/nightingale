@@ -25,16 +25,18 @@ class Validation extends React.Component {
     });
   }
 
+  // <div className="row night-full-width night-step-completion">
+  //   <div className="col-md-6 px-0 pt-2">
+  //   </div>
+  //   <div className="col-md-6 px-0">
+  //     <button className="btn btn-primary pull-right" onClick={this.validate}>Validate this Record</button>
+  //   </div>
+  // </div>
+
   render() {
     return (
       <div className="mt-1">
-        <div className="row night-full-width night-step-completion">
-          <div className="col-md-6 px-0 pt-2">
-          </div>
-          <div className="col-md-6 px-0">
-            <button className="btn btn-primary pull-right" onClick={this.validate}>Validate this Record</button>
-          </div>
-        </div>
+
       </div>
     );
   }

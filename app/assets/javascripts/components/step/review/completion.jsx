@@ -231,8 +231,7 @@ class Completion extends React.Component {
           {this.props.deathRecord.steps
             .filter(
               step =>
-                step.type === 'form' &&
-                (step.editable || user.canRequestEdits || user.isAdmin)
+              step.type === 'form'
             )
             .map(step => this.renderCompletionStatus(step, user))}
         </div>

@@ -11,6 +11,7 @@ class Step extends React.Component {
     this.register = this.register.bind(this);
     this.onUnload = this.onUnload.bind(this);
     this.requestEdits = this.requestEdits.bind(this);
+    this.abandonRecord = this.abandonRecord.bind(this);
   }
 
   componentDidMount() {
@@ -181,6 +182,26 @@ class Step extends React.Component {
     );
   }
 
+  abandonRecord(deathRecordId) {
+    var self = this;
+    swal(
+      {
+        title: 'You are about to abandon this death record!',
+        text: 'Are you sure?',
+        type: 'error',
+        showCancelButton: true,
+        confirmButtonClass: 'btn-primary',
+        confirmButtonText: 'Abandon!',
+        closeOnConfirm: false,
+        showLoaderOnConfirm: true
+      },
+      function(isConfirm) {
+        if (!isConfirm) return;
+        $.post(Routes.abandon_death_record_path(deathRecordId));
+      }
+    );
+  }
+
   // Handles registering the entire death record.
   register() {
     var self = this;
@@ -308,6 +329,12 @@ class Step extends React.Component {
                       {this.state.deathRecord.registration.id}
                     </dd>
                   </dl>}
+                  {!this.state.currentUser.canRegisterRecord &&
+                    !this.state.deathRecord.registration &&
+                    this.state.deathRecord.creator.id == this.state.currentUser.id &&
+                    <button type="button" onClick={() => this.abandonRecord(this.state.deathRecord.id)} className="btn btn-lg btn-primary pull-right">
+                      <span className="fa fa-trash" /> Abandon Record
+                    </button>}
               </span>
             </div>
           </div>
@@ -325,6 +352,7 @@ class Step extends React.Component {
           requestEdits={this.requestEdits}
           currentUser={this.props.currentUser}
           registration={true}
+          all={true}
         />
       </div>
     );

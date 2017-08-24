@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20170517024818) do
     t.integer  "owner_id"
     t.integer  "creator_id"
     t.integer  "step_flow_id"
+    t.string   "name",         default: ""
     t.json     "contents",     default: {}
     t.json     "cached_json"
     t.boolean  "notify",       default: false
