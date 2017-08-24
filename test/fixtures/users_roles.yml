@@ -1,0 +1,27 @@
+users_roles1:
+  user: fd1
+  role: funeral_director
+users_roles2:
+  user: fd2
+  role: funeral_director
+users_roles3:
+  user: doc1
+  role: physician
+users_roles4:
+  user: doc2
+  role: physician
+users_roles5:
+  user: me1
+  role: medical_examiner
+users_roles6:
+  user: me2
+  role: medical_examiner
+users_roles7:
+  user: reg1
+  role: registrar
+users_roles8:
+  user: reg2
+  role: registrar
+users_roles9:
+  user: admin
+  role: admin

@@ -1,0 +1,10 @@
+funeral_director:
+  name: :funeral_director
+physician:
+  name: :physician
+medical_examiner:
+  name: :medical_examiner
+registrar:
+  name: :registrar
+admin:
+  name: :admin

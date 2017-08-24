@@ -1,0 +1,64 @@
+fd1:
+  email: fd1@example.com
+  encrypted_password: "$2a$11$W0pTtMLVxWu62ww8InIUo.Fd1x7RN2UarHDJNHIetKkURx0K1QwKK"
+  is_guest_user: false
+  first_name: Example
+  last_name: FD
+  telephone: 000-000-0000
+fd2:
+  email: fd2@example.com
+  encrypted_password: "$2a$11$Owudnoi05S9jcE16BX4Z2eprAdZ.Hu6adveKKiOhk4eaCrFIvJ0Pu"
+  is_guest_user: false
+  first_name: Example
+  last_name: FD
+  telephone: 000-000-0000
+doc1:
+  email: doc1@example.com
+  encrypted_password: "$2a$11$/Rkzj8CBw.3GUtUEf9ZuMeAa2f/stz/koNKWBClVZEz72CrHVjpTS"
+  is_guest_user: false
+  first_name: Example
+  last_name: Physician
+  telephone: 000-000-0000
+doc2:
+  email: doc2@example.com
+  encrypted_password: "$2a$11$J26Gi5cb8oMgVC.H5jZ3c.ZJTcHvA64E/uWOp8MWdzuEOgTtiixxy"
+  is_guest_user: false
+  first_name: Example
+  last_name: Physician
+  telephone: 000-000-0000
+me1:
+  email: me1@example.com
+  encrypted_password: "$2a$11$BB/adN9bvAIFRhdS0RmlBOgiXVSnVL6lAXXUiglFntTvFoqU4M3L6"
+  is_guest_user: false
+  first_name: Example
+  last_name: ME
+  telephone: 000-000-0000
+me2:
+  email: me2@example.com
+  encrypted_password: "$2a$11$dJtfm6rqkyTdsVWq8YsZke4hmg7QxEyKJD3hbVppw21FV3i.5SoXi"
+  is_guest_user: false
+  first_name: Example
+  last_name: ME
+  telephone: 000-000-0000
+reg1:
+  id: 7
+  email: reg1@example.com
+  encrypted_password: "$2a$11$T.Z.lyHf8G3V7WVNs15GhOlGwnwGnMYYr9ItMCDdJ/4WFk.9O83Du"
+  is_guest_user: false
+  first_name: Example
+  last_name: Registrar
+  telephone: 000-000-0000
+reg2:
+  email: reg2@example.com
+  encrypted_password: "$2a$11$N4Liilww9aqrHKrPkYPNuOG42MldpariucMq/sAzCmIBQIfYGzICS"
+  is_guest_user: false
+  first_name: Example
+  last_name: Registrar
+  telephone: 000-000-0000
+admin:
+  email: admin@example.com
+  encrypted_password: "$2a$11$XOFG5li3i.xD/rYrq7./ReIAfJ4WhwzYZmKyj8ePvU3AKGGAu8z8e"
+  is_guest_user: false
+  first_name: Example
+  last_name: Admin
+  telephone: 000-000-0000
