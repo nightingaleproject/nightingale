@@ -22,22 +22,17 @@ class CommentsController < ApplicationController
 
   # Retrieve the Comment requested by id.
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
   end
 
-  # Retrieve the DeathRecord requested by id (and scope by owner). Admins
-  # have access to any DeathRecord, regardless of ownership.
+  # Retrieve the DeathRecord requested by id (and scope by owner).
   def set_death_record
-    if current_user.admin?
-      @death_record = DeathRecord.find(params[:death_record_id])
-    else
-      @death_record = current_user.owned_death_records.find_by(id: params[:death_record_id])
-      # Allow viewing of death records that were touched but aren't
-      # currently owned.
-      if @death_record.nil?
-        set_transferred_death_records
-        @death_record = @transferred_death_records.select{ |record| record.id.to_s == params[:death_record_id].to_s }.first
-      end
+    @death_record = current_user.owned_death_records.find_by(id: params[:death_record_id])
+    # Allow viewing of death records that were touched but aren't
+    # currently owned.
+    if @death_record.nil?
+      set_transferred_death_records
+      @death_record = @transferred_death_records.select{ |record| record.id.to_s == params[:death_record_id].to_s }.first
     end
   end
 

@@ -7,6 +7,6 @@ before_install:
 services: postgresql
 bundler_args: --without test development
 script:
-  - bundle exec rake bundler_audit:run
-  - bundle exec rake brakeman:run
+  - bundle exec bundle-audit check --update
+  - bundle exec brakeman -qAzw1
   - export DISPLAY=:99.0 && bundle exec rake

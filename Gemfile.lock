@@ -1,9 +1,10 @@
 GIT
   remote: https://github.com/nightingaleproject/views_connector
-  revision: e78ce745de1cfc99c5feb5b6efefc24613172765
+  revision: c3377810ed88badf92bdd98036573dfa2084f4aa
+  branch: nokogiri_1_7_2
   specs:
     views (0.1.0)
-      nokogiri (= 1.6.8.1)
+      nokogiri (>= 1.6.8.1)
       savon (~> 2.0)
 
 GIT
@@ -99,6 +100,8 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    doorkeeper (4.2.6)
+      railties (>= 4.2)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -156,7 +159,7 @@ GEM
       railties (>= 3.1)
     multi_json (1.12.1)
     nio4r (2.1.0)
-    nokogiri (1.6.8.1)
+    nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     nori (2.6.0)
     orm_adapter (0.5.0)
@@ -270,6 +273,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   config
   devise
+  doorkeeper
   font-awesome-sass
   groupdate
   hashdiff

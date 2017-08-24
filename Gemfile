@@ -68,12 +68,15 @@ gem 'config'
 gem 'kaminari'
 
 # VIEWS integration
-gem 'views', git: 'https://github.com/nightingaleproject/views_connector'
+gem 'views', git: 'https://github.com/nightingaleproject/views_connector', branch: 'nokogiri_1_7_2'
 
-group :development, :test do
+# OAuth2
+gem 'doorkeeper'
+
+group :development, :test, :ci do
   gem 'byebug', platform: :mri
-  gem 'brakeman', require: false
-  gem 'bundler-audit', require: false
+  gem 'brakeman'
+  gem 'bundler-audit'
 end
 
 group :development do

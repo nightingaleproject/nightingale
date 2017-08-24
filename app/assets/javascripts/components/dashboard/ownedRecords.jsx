@@ -66,28 +66,31 @@ class OwnedRecords extends React.Component {
   }
 
   renderActionButtonsCol(data, type, full, meta) {
-      return ReactDOMServer.renderToStaticMarkup(<div className="btn-group btn-block" role="group">
-        <button
-          id="btnGroupDrop1"
-          type="button"
-          className="btn btn-primary btn-block dropdown-toggle btn-sm"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <i className="fa fa-cog" />
-        </button>
-        <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
-          {!this.props.currentUser.canRegisterRecord &&
-            !this.props.currentUser.isAdmin &&
-            <a className="dropdown-item" href={Routes.edit_death_record_path(data.id)}>
-              <i className="fa fa-play" />&nbsp;Continue
-            </a>}
-          <a className="dropdown-item" href={Routes.death_record_path(data.id)}>
-            <i className="fa fa-search" />&nbsp;View
-          </a>
-        </div>
-      </div>)
+    if (this.props.currentUser.isAdmin && this.props.currentUser.id != data.owner.id) {
+      return '';
+    }
+    return ReactDOMServer.renderToStaticMarkup(<div className="btn-group btn-block" role="group">
+      <button
+        id="btnGroupDrop1"
+        type="button"
+        className="btn btn-primary btn-block dropdown-toggle btn-sm"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i className="fa fa-cog" />
+      </button>
+      <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        {!this.props.currentUser.canRegisterRecord &&
+         !this.props.currentUser.isAdmin &&
+          <a className="dropdown-item" href={Routes.edit_death_record_path(data.id)}>
+            <i className="fa fa-play" />&nbsp;Continue
+          </a>}
+        <a className="dropdown-item" href={Routes.death_record_path(data.id)}>
+          <i className="fa fa-search" />&nbsp;View
+        </a>
+      </div>
+    </div>)
   }
 
   renderIdCol(data, type, full, meta) {

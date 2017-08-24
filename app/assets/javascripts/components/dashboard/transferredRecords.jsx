@@ -63,23 +63,26 @@ class TransferredRecords extends React.Component {
   }
 
   renderActionButtonsCol(data, type, full, meta) {
-      return ReactDOMServer.renderToStaticMarkup(<div className="btn-group btn-block" role="group">
-        <button
-          id="btnGroupDrop1"
-          type="button"
-          className="btn btn-block btn-primary btn-block dropdown-toggle btn-sm"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <i className="fa fa-cog" />
-        </button>
-        <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
-          <a className="dropdown-item" href={Routes.death_record_path(data.id)}>
-            <i className="fa fa-search" />&nbsp;View
-          </a>
-        </div>
-      </div>)
+    if (this.props.currentUser.isAdmin && this.props.currentUser.id != data.owner.id) {
+      return '';
+    }
+    return ReactDOMServer.renderToStaticMarkup(<div className="btn-group btn-block" role="group">
+      <button
+        id="btnGroupDrop1"
+        type="button"
+        className="btn btn-block btn-primary btn-block dropdown-toggle btn-sm"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i className="fa fa-cog" />
+      </button>
+      <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a className="dropdown-item" href={Routes.death_record_path(data.id)}>
+          <i className="fa fa-search" />&nbsp;View
+        </a>
+      </div>
+    </div>)
   }
 
   renderIdCol(data, type, full, meta) {
