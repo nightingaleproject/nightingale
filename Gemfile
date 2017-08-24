@@ -84,6 +84,7 @@ end
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'poltergeist'
 end
 
 group :development do

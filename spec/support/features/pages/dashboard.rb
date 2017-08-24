@@ -1,9 +1,9 @@
 module Pages
-    class Dashboard
-      include Capybara::DSL
+  class Dashboard
+    include Capybara::DSL
+
+    def on_dashboard_page?
       
-      def be_on_dashboard_page
-        page.should have_content 'Welcome'
-      end
     end
-  end    
+  end
+end
