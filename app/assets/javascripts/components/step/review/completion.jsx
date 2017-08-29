@@ -47,6 +47,7 @@ class Completion extends React.Component {
             type="button"
             className="btn btn-sm btn-secondary no-collapsable"
             onClick={() => this.requestEdits(step, step.contents.editor)}
+            id={step.name + "RequestEditsButton"}
           >
             <span key={'buttonspan' + step.name + user.id} className="fa fa-send" /> Request Edit
           </button>

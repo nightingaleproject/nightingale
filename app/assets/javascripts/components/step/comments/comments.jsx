@@ -75,6 +75,7 @@ class Comments extends React.Component {
                 value={this.state.inputValue}
                 className="form-control"
                 rows="3"
+                id="commentArea"
               />
             </div>
             <button
@@ -82,6 +83,7 @@ class Comments extends React.Component {
               onClick={this.saveComment}
               disabled={!this.state.inputValue}
               className="btn btn-primary pull-right"
+              id="submitComment"
             >
               Submit Comment
             </button>

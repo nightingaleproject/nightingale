@@ -197,7 +197,7 @@
       "title": "Contributing Causes",
       "humanReadable": "{contributingCauses}",
       "properties": {
-        "usualOccupation": {
+        "contributingCauses": {
           "type": "string"
         }
       }

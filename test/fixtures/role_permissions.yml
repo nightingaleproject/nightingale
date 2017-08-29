@@ -1,0 +1,20 @@
+role_permission_1:
+  role: funeral_director
+  can_start_record: true
+  can_register_record: false
+  can_request_edits: false
+role_permission_2:
+  role: physician
+  can_start_record: true
+  can_register_record: false
+  can_request_edits: true
+role_permission_3:
+  role: medical_examiner
+  can_start_record: false
+  can_register_record: false
+  can_request_edits: false
+role_permission_4:
+  role: registrar
+  can_start_record: false
+  can_register_record: true
+  can_request_edits: true

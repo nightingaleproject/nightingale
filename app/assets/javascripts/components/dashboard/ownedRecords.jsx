@@ -116,10 +116,10 @@ class OwnedRecords extends React.Component {
         <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
           {!this.props.currentUser.canRegisterRecord &&
             !this.props.currentUser.isAdmin &&
-            <a className="dropdown-item" href={Routes.edit_death_record_path(data.id)}>
+            <a className="dropdown-item" href={Routes.edit_death_record_path(data.id)} id={'continue' + data.id}>
               <i className="fa fa-play" />&nbsp;Continue
             </a>}
-          <a className="dropdown-item" href={Routes.death_record_path(data.id)}>
+          <a className="dropdown-item" href={Routes.death_record_path(data.id)} id={'view' + data.id}>
             <i className="fa fa-search" />&nbsp;View
           </a>
         </div>
@@ -140,7 +140,11 @@ class OwnedRecords extends React.Component {
   }
 
   renderProgressCol(data, type, full, meta) {
-    return this.renderRecordProgress(data);
+    if (data.registration) {
+      return 'Registered!';
+    } else {
+      return this.renderRecordProgress(data);
+    }
   }
 
   renderRecordProgressIcon(step, deathRecord) {
@@ -153,7 +157,7 @@ class OwnedRecords extends React.Component {
           title={step.name}
           key={deathRecord.id + step.name}
         >
-          <i className="fa fa-check-circle text-success night-progress-icon" />
+          <i className="fa fa-check-circle text-success night-progress-icon" id={step.name + 'prog'} />
           &nbsp;
         </a>
       );
@@ -166,7 +170,7 @@ class OwnedRecords extends React.Component {
           title={step.name}
           key={deathRecord.id + step.name}
         >
-          <i className="fa fa-times-circle text-danger night-progress-icon" />
+          <i className="fa fa-times-circle text-danger night-progress-icon" id={step.name + 'prog'} />
           &nbsp;
         </a>
       );
@@ -179,7 +183,7 @@ class OwnedRecords extends React.Component {
           title={step.name}
           key={deathRecord.id + step.name}
         >
-          <i className="fa fa-circle-o text-muted night-progress-icon" />
+          <i className="fa fa-circle-o text-muted night-progress-icon" id={step.name + 'prog'} />
           &nbsp;
         </a>
       );
@@ -225,7 +229,7 @@ class OwnedRecords extends React.Component {
 
   render() {
     return (
-      <div className="mb-5 mt-2">
+      <div className="mb-5 mt-2" id="open">
         <div className="row mb-4">
           <div className="col-4 pl-0">
             {this.state.currentUser.isAdmin &&

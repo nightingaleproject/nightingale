@@ -20,7 +20,7 @@ class NightTextarea extends React.Component {
 
   render() {
     return (
-      <fieldset className="mt-4 pt-1 pb-2">
+      <fieldset className="mt-4 pt-1 pb-2" id={this.props.name + 'field'}>
         <legend>
           {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
@@ -31,6 +31,7 @@ class NightTextarea extends React.Component {
             rows="5"
             onChange={this.onChange(this.props.name)}
             value={this.state[this.props.name]}
+            id={this.props.name + 'area'}
           />
         </div>
       </fieldset>

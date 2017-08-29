@@ -20,11 +20,9 @@ RSpec.configure do |config|
     ENV['PRECOMPILE_ASSETS'] ||= begin
       case self.class.metadata[:type]
       when :feature, :view
-        STDOUT.write 'Precompiling assets...'
         require 'rake'
         Rails.application.load_tasks
         Rake::Task['assets:precompile'].invoke
-        STDOUT.puts ' done.'
         Time.now.to_s
       end
     end

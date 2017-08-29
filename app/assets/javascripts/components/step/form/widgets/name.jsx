@@ -25,7 +25,7 @@ class Name extends React.Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row" id={'aka' + this.props.index}>
         <div className="form-group col16-md-5">
           <label htmlFor="first">First Name</label>
           <input

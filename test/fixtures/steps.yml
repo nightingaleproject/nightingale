@@ -1,0 +1,854 @@
+step_1:
+  id: 1
+  name: Identity
+  abbrv: Id
+  description: User enters identity information about the decedent; e.g. name
+  version: 206f86b09f18791bdb9ab4bb2088287787a2841c0510beee48e26f80c365aae65b8568587b5bf597d7885ec59452e09fe6326f1b75a14f3fd5c6678d6d5913f8
+  jsonschema:
+    type: object
+    properties:
+      decedentName:
+        title: Decedent's Legal Name
+        type: object
+        showAkas: true
+        humanReadable: "{lastName}, {firstName} {middleName} {suffix}"
+        required: true
+        properties:
+          firstName:
+            type: string
+            title: First Name
+          middleName:
+            type: string
+            title: Middle Name
+          lastName:
+            type: string
+            title: Last Name
+          suffix:
+            type: string
+            title: Suffix
+          akas:
+            type: array
+            properties:
+              firstName:
+                type: string
+                title: First Name
+              middleName:
+                type: string
+                title: Middle Name
+              lastName:
+                type: string
+                title: Last Name
+              suffix:
+                type: string
+                title: Suffix
+      ssn:
+        title: Social Security Number
+        type: object
+        humanReadable: "{ssn1}-{ssn2}-{ssn3}"
+        required: true
+        properties:
+          ssn1:
+            type: string
+          ssn2:
+            type: string
+          ssn3:
+            type: string
+      decedentAddress:
+        title: Decedent's Residence
+        type: object
+        named: false
+        humanReadable: "{street} {apt}\\n{city}, {county}, {state}\\n{zip}"
+        required: true
+        properties:
+          state:
+            type: string
+          county:
+            type: string
+          city:
+            type: string
+          zip:
+            type: string
+          street:
+            type: string
+          apt:
+            type: string
+  uischema:
+    classNames: night-form-outer
+    decedentName:
+      ui:field: nightName
+    ssn:
+      ui:field: nightSSN
+    decedentAddress:
+      ui:field: nightFullAddress
+  icon: fa-user
+  step_type: form
+step_2:
+  id: 2
+  name: Demographics
+  abbrv: Dem
+  description: User enters demographic information about the decedent; e.g. date of
+    birth
+  version: 50d95cd8fd9133cf6c91d75d4384623917b6efe46c2f7cdb24689b4765161b26b5a74a798f430c93610fdcd2082e3373ce2de56c6c32f054fdfb24e37471e778
+  jsonschema:
+    type: object
+    properties:
+      sex:
+        type: object
+        title: Sex
+        humanReadable: "{sex}"
+        required: true
+        properties:
+          sex:
+            options:
+            - Male
+            - Female
+            - Unknown
+      dateOfBirth:
+        type: object
+        title: Date of Birth
+        humanReadable: "{dateOfBirth}"
+        required: true
+        properties:
+          dateOfBirth:
+            type: string
+      placeOfBirth:
+        title: Place of Birth
+        type: object
+        named: false
+        humanReadable: "{country}, {state}, {city}"
+        required: true
+        properties:
+          country:
+            type: string
+          state:
+            type: string
+          city:
+            type: string
+      armedForcesService:
+        type: object
+        title: Armed Forces Service
+        humanReadable: "{armedForcesService}"
+        properties:
+          armedForcesService:
+            options:
+            - 'Yes'
+            - 'No'
+            - Unknown
+      maritalStatus:
+        type: object
+        title: Marital Status
+        humanReadable: "{maritalStatus}"
+        properties:
+          maritalStatus:
+            options:
+            - Married
+            - Married but seperated
+            - Widowed
+            - Widowed (but not remarried)
+            - Divorced (but not remarried)
+            - Never married
+            - Unknown
+      education:
+        type: object
+        title: Education
+        humanReadable: "{education}"
+        properties:
+          education:
+            options:
+            - 8th grade or less
+            - 9th - 12th grade, no diploma
+            - High school graduate or GED completed
+            - Some college credit, but no degree
+            - Associate's degree
+            - Bachelor's degree
+            - Master's degree
+            - Doctorate or Professional degree
+            - Refused
+            - Not Obtainable
+            - Unknown
+            - Not Classifiable
+      hispanicOrigin:
+        type: object
+        title: Hispanic Origin
+        humanReadable: "{hispanicOrigin}"
+        properties:
+          hispanicOrigin:
+            type: object
+            properties:
+              option:
+                type: string
+              specify:
+                type: string
+              specifyInputs:
+                type: string
+            options:
+            - text: 'Yes'
+              show: specify1
+            - 'No'
+            - Refused
+            - Not Obtainable
+            - Unknown
+            specifyOptions:
+              specify1:
+              - Mexican, Mexican American, Chicano
+              - Puerto Rican
+              - Cuban
+              - text: Other Spanish/Hispanic/Latino (specify)
+                input: true
+      race:
+        type: object
+        title: Race
+        humanReadable: "{race}"
+        required: true
+        properties:
+          race:
+            type: object
+            properties:
+              option:
+                type: string
+              specify:
+                type: string
+              specifyInputs:
+                type: string
+            options:
+            - text: Known
+              show: specify1
+            - Refused
+            - Not Obtainable
+            - Unknown
+            specifyOptions:
+              specify1:
+              - White
+              - Black or African America
+              - text: American Indian or Alaskan Native (specify tribe)
+                input: true
+              - Asian Indian
+              - Chinese
+              - Filipino
+              - Japanese
+              - Korean
+              - Vietnamese
+              - text: Other Asian (specify)
+                input: true
+              - Native Hawaiian
+              - Guamanian or Chamorro
+              - Samoan
+              - text: Other Pacific Islander (specify)
+                input: true
+              - text: Other (specify)
+                input: true
+      usualOccupation:
+        type: object
+        title: Usual Occupation
+        humanReadable: "{usualOccupation}"
+        properties:
+          usualOccupation:
+            type: string
+      kindOfBusiness:
+        type: object
+        title: Kind Of Business
+        humanReadable: "{kindOfBusiness}"
+        properties:
+          kindOfBusiness:
+            type: string
+  uischema:
+    classNames: night-form-outer
+    sex:
+      ui:field: nightRadioSelect
+    dateOfBirth:
+      ui:field: nightDate
+    placeOfBirth:
+      ui:field: nightShortAddress
+    armedForcesService:
+      ui:field: nightRadioSelect
+    maritalStatus:
+      ui:field: nightRadioSelect
+    education:
+      ui:field: nightRadioSelect
+    hispanicOrigin:
+      ui:field: nightMultiSelect
+    race:
+      ui:field: nightMultiSelect
+    usualOccupation:
+      ui:field: nightTextarea
+    kindOfBusiness:
+      ui:field: nightTextarea
+  icon: fa-briefcase
+  step_type: form
+step_3:
+  id: 3
+  name: Family
+  abbrv: Fam
+  description: User enters family information about the decedent; e.g. parents
+  version: 5ffc2e39fb46d95700c760e76156638d4b115dc82eb41ff12ccb0380b99683f45b1b30514ca12d9b98ad30f03849d83d440ed4f3072328832abda1690bf9c92d
+  jsonschema:
+    type: object
+    properties:
+      spouseName:
+        title: Surviving Spouse's Name
+        type: object
+        showAkas: false
+        showMaiden: true
+        humanReadable: "{lastName}, {firstName} {middleName} {suffix}"
+        properties:
+          firstName:
+            type: string
+            title: First Name
+          middleName:
+            type: string
+            title: Middle Name
+          lastName:
+            type: string
+            title: Last Name
+          suffix:
+            type: string
+            title: Suffix
+      fatherName:
+        title: Father's Name
+        type: object
+        showAkas: false
+        humanReadable: "{lastName}, {firstName} {middleName} {suffix}"
+        properties:
+          firstName:
+            type: string
+            title: First Name
+          middleName:
+            type: string
+            title: Middle Name
+          lastName:
+            type: string
+            title: Last Name
+          suffix:
+            type: string
+            title: Suffix
+      motherName:
+        title: Mother's Name
+        type: object
+        showAkas: false
+        showMaiden: true
+        humanReadable: "{lastName}, {firstName} {middleName} {suffix}"
+        properties:
+          firstName:
+            type: string
+            title: First Name
+          middleName:
+            type: string
+            title: Middle Name
+          lastName:
+            type: string
+            title: Maiden Name
+          suffix:
+            type: string
+            title: Suffix
+  uischema:
+    classNames: night-form-outer
+    spouseName:
+      ui:field: nightName
+    fatherName:
+      ui:field: nightName
+    motherName:
+      ui:field: nightName
+  icon: fa-users
+  step_type: form
+step_4:
+  id: 4
+  name: Disposition
+  abbrv: Dis
+  description: User enters disposition information about the decedent; e.g. burial
+    method
+  version: 129fb631fd91da5f60e3003396c8ae7b01aa27cef7692ce888cc77abcc2e05bde3d1db3e80f302ccc59f7fe4466c1d90bda2f3754285f1f9952048c500fe0070
+  jsonschema:
+    type: object
+    properties:
+      methodOfDisposition:
+        type: object
+        title: Method of Disposition
+        humanReadable: "{methodOfDisposition}"
+        required: true
+        properties:
+          methodOfDisposition:
+            type: object
+            properties:
+              option:
+                type: string
+              specify:
+                type: string
+              specifyInputs:
+                type: string
+            options:
+            - Burial
+            - Cremation
+            - Donation
+            - Entombment
+            - Removal from State
+            - text: Other (specify)
+              input: true
+      placeOfDisposition:
+        title: Place of Disposition
+        type: object
+        named: true
+        humanReadable: "{name}\\n{city}, {state}, {country}"
+        required: true
+        properties:
+          name:
+            type: string
+          country:
+            type: string
+          state:
+            type: string
+          city:
+            type: string
+      funeralFacility:
+        title: Funeral Facility
+        type: object
+        named: true
+        humanReadable: "{name}\\n{street} {apt}\\n{city}, {county}, {state}\\n{zip}"
+        required: true
+        properties:
+          name:
+            type: string
+          state:
+            type: string
+          county:
+            type: string
+          city:
+            type: string
+          zip:
+            type: string
+          street:
+            type: string
+          apt:
+            type: string
+      funeralLicenseNumber:
+        title: Funeral Service License Number
+        type: object
+        humanReadable: "{funeralLicenseNumber}"
+        required: true
+        properties:
+          funeralLicenseNumber:
+            type: string
+      informantName:
+        title: Informant's Name
+        type: object
+        showAkas: false
+        humanReadable: "{lastName}, {firstName} {middleName} {suffix}"
+        required: true
+        properties:
+          firstName:
+            type: string
+            title: First Name
+          middleName:
+            type: string
+            title: Middle Name
+          lastName:
+            type: string
+            title: Last Name
+          suffix:
+            type: string
+            title: Suffix
+      informantAddress:
+        title: Informant's Address
+        type: object
+        named: false
+        humanReadable: "{street} {apt}\\n{city}, {county}, {state}\\n{zip}"
+        properties:
+          state:
+            type: string
+          county:
+            type: string
+          city:
+            type: string
+          zip:
+            type: string
+          street:
+            type: string
+          apt:
+            type: string
+  uischema:
+    classNames: night-form-outer
+    methodOfDisposition:
+      ui:field: nightMultiSelect
+    placeOfDisposition:
+      ui:field: nightShortAddress
+    funeralFacility:
+      ui:field: nightFullAddress
+    funeralLicenseNumber:
+      ui:field: nightInput
+    informantName:
+      ui:field: nightName
+    informantAddress:
+      ui:field: nightFullAddress
+  icon: fa-institution
+  step_type: form
+step_5:
+  id: 5
+  name: Medical
+  abbrv: Med
+  description: User enters medical information about the decedent; e.g. cause of death
+  version: fab1751fd79fa94876524334ef76b71197cd048428be0d09b54c481005cc6f6603b9dd51e6cd3ad279dc2d548468fe8efa4fe11bc54f57afa9d95b364744a167
+  jsonschema:
+    type: object
+    properties:
+      placeOfDeath:
+        type: object
+        title: Place of Death
+        humanReadable: "{placeOfDeath}"
+        required: true
+        properties:
+          placeOfDeath:
+            type: object
+            properties:
+              option:
+                type: string
+              specify:
+                type: string
+              specifyInputs:
+                type: string
+            options:
+            - Inpatient
+            - Outpatient/ER
+            - DOA
+            - Decedent's Home
+            - Hospice Facility
+            - Nursing Home/Long Term Care Facility
+            - text: Other (specify)
+              input: true
+      locationOfDeath:
+        title: Location of Death
+        type: object
+        named: true
+        humanReadable: "{name}\\n{street} {apt}\\n{city}, {county}, {state}\\n{zip}"
+        required: true
+        properties:
+          name:
+            type: string
+          state:
+            type: string
+          county:
+            type: string
+          city:
+            type: string
+          zip:
+            type: string
+          street:
+            type: string
+          apt:
+            type: string
+      datePronouncedDead:
+        type: object
+        title: Date Pronounced Dead
+        humanReadable: "{datePronouncedDead}"
+        required: true
+        properties:
+          datePronouncedDead:
+            type: string
+      timePronouncedDead:
+        type: object
+        title: Time Pronounced Dead
+        humanReadable: "{timePronouncedDead}"
+        required: true
+        properties:
+          timePronouncedDead:
+            type: string
+      pronouncerLicenseNumber:
+        title: Pronouncer's License Number
+        type: object
+        humanReadable: "{pronouncerLicenseNumber}"
+        required: true
+        properties:
+          pronouncerLicenseNumber:
+            type: string
+      dateOfPronouncerSignature:
+        type: object
+        title: Date of Pronouncer's Signature
+        humanReadable: "{dateOfPronouncerSignature}"
+        required: true
+        properties:
+          dateOfPronouncerSignature:
+            type: string
+      dateOfDeath:
+        type: object
+        title: Date of Death
+        showDateType: true
+        humanReadable: "{dateOfDeath}: {dateType}"
+        required: true
+        properties:
+          dateOfDeath:
+            type: string
+          dateType:
+            type: string
+            options:
+            - Actual
+            - Approximate
+            - Presumed
+      timeOfDeath:
+        type: object
+        title: Time of Death
+        showTimeType: true
+        humanReadable: "{timeOfDeath}: {timeType}"
+        required: true
+        properties:
+          timeOfDeath:
+            type: string
+          timeType:
+            type: string
+            options:
+            - Actual
+            - Approximate
+            - Presumed
+      meOrCoronerContacted:
+        type: object
+        title: ME or Coroner Contacted?
+        humanReadable: "{meOrCoronerContacted}"
+        properties:
+          meOrCoronerContacted:
+            options:
+            - 'Yes'
+            - 'No'
+            - Unknown
+      autopsyPerformed:
+        type: object
+        title: Autopsy Performed?
+        humanReadable: "{autopsyPerformed}"
+        properties:
+          autopsyPerformed:
+            options:
+            - 'Yes'
+            - 'No'
+      autopsyAvailableToCompleteCauseOfDeath:
+        type: object
+        title: Autopsy Available to Complete Cause of Death?
+        humanReadable: "{autopsyAvailableToCompleteCauseOfDeath}"
+        properties:
+          autopsyAvailableToCompleteCauseOfDeath:
+            options:
+            - 'Yes'
+            - 'No'
+      cod:
+        title: Cause of Death
+        type: object
+        humanReadable: "{immediate}: {immediateInt}\\n{under1}: {under1Int}\\n{under2}:
+          {under2Int}\\n{under3}: {under3Int}"
+        required: true
+        properties:
+          immediate:
+            type: string
+          immediateInt:
+            type: string
+          under1:
+            type: string
+          under1Int:
+            type: string
+          under2:
+            type: string
+          under2Int:
+            type: string
+          under3:
+            type: string
+          under3Int:
+            type: string
+      contributingCauses:
+        type: object
+        title: Contributing Causes
+        humanReadable: "{contributingCauses}"
+        properties:
+          contributingCauses:
+            type: string
+      didTobaccoUseContributeToDeath:
+        type: object
+        title: Did Tobacco Use Contribute to Death?
+        humanReadable: "{didTobaccoUseContributeToDeath}"
+        properties:
+          didTobaccoUseContributeToDeath:
+            options:
+            - 'Yes'
+            - 'No'
+            - Probably
+            - Unknown
+      pregnancyStatus:
+        type: object
+        title: Pregnancy Status
+        humanReadable: "{pregnancyStatus}"
+        properties:
+          pregnancyStatus:
+            options:
+            - Not pregnant in the past year
+            - Pregnant at the time of death
+            - Not pregnant, but pregnant within 42 days of death
+            - Not pregnant, but pregnant 43 days to 1 year before death
+            - Unknown if pregnant within the past year
+      mannerOfDeath:
+        type: object
+        title: Manner of Death
+        humanReadable: "{mannerOfDeath}"
+        required: true
+        properties:
+          mannerOfDeath:
+            options:
+            - Natural
+            - Accident
+            - Suicide
+            - Homicide
+            - Pending investigation
+            - Could not be determined
+      personCompletingCauseOfDeathName:
+        title: Name of Person Completing Cause of Death
+        type: object
+        showAkas: false
+        humanReadable: "{lastName}, {firstName} {middleName} {suffix}"
+        required: true
+        properties:
+          firstName:
+            type: string
+            title: First Name
+          middleName:
+            type: string
+            title: Middle Name
+          lastName:
+            type: string
+            title: Last Name
+          suffix:
+            type: string
+            title: Suffix
+      personCompletingCauseOfDeathAddress:
+        title: Address of Person Completing Cause of Death
+        type: object
+        humanReadable: "{street} {apt}\\n{city}, {county}, {state}\\n{zip}"
+        required: true
+        properties:
+          state:
+            type: string
+          county:
+            type: string
+          city:
+            type: string
+          zip:
+            type: string
+          street:
+            type: string
+          apt:
+            type: string
+      personCompletingCauseOfDeathLicenseNumber:
+        title: License Number of Person Completing Cause of Death
+        type: object
+        humanReadable: "{personCompletingCauseOfDeathLicenseNumber}"
+        required: true
+        properties:
+          personCompletingCauseOfDeathLicenseNumber:
+            type: string
+      certifierType:
+        type: object
+        title: Certifier Type
+        humanReadable: "{certifierType}"
+        required: true
+        properties:
+          certifierType:
+            options:
+            - Certifying Physician
+            - Pronouncing and Certifying Physician
+            - Medical Examiner/Coroner
+      dateCertified:
+        type: object
+        title: Date Certified
+        humanReadable: "{dateCertified}"
+        required: true
+        properties:
+          dateCertified:
+            type: string
+  uischema:
+    classNames: night-form-outer
+    placeOfDeath:
+      ui:field: nightMultiSelect
+    locationOfDeath:
+      ui:field: nightFullAddress
+    datePronouncedDead:
+      ui:field: nightDate
+    timePronouncedDead:
+      ui:field: nightTime
+    pronouncerLicenseNumber:
+      ui:field: nightInput
+    dateOfPronouncerSignature:
+      ui:field: nightDate
+    dateOfDeath:
+      ui:field: nightDate
+    timeOfDeath:
+      ui:field: nightTime
+    meOrCoronerContacted:
+      ui:field: nightRadioSelect
+    autopsyPerformed:
+      ui:field: nightRadioSelect
+    autopsyAvailableToCompleteCauseOfDeath:
+      ui:field: nightRadioSelect
+    cod:
+      ui:field: nightCOD
+    contributingCauses:
+      ui:field: nightTextarea
+    didTobaccoUseContributeToDeath:
+      ui:field: nightRadioSelect
+    pregnancyStatus:
+      ui:field: nightRadioSelect
+    mannerOfDeath:
+      ui:field: nightRadioSelect
+    personCompletingCauseOfDeathName:
+      ui:field: nightName
+    personCompletingCauseOfDeathAddress:
+      ui:field: nightFullAddress
+    personCompletingCauseOfDeathLicenseNumber:
+      ui:field: nightInput
+    certifierType:
+      ui:field: nightRadioSelect
+    dateCertified:
+      ui:field: nightDate
+  icon: fa-user-md
+  step_type: form
+step_6:
+  id: 6
+  name: F.D. Review
+  abbrv: Rev
+  description: Funeral Director reviews and submits the death record to a physician.
+  version: cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+  jsonschema:
+  uischema:
+  icon: fa-search
+  step_type: review
+step_7:
+  id: 7
+  name: Physician Review
+  abbrv: Rev
+  description: Physician reviews and submits the death record to a registrar or medical
+    examiner
+  version: cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+  jsonschema:
+  uischema:
+  icon: fa-search
+  step_type: review
+step_8:
+  id: 8
+  name: Physician Re-review
+  abbrv: Rev
+  description: Physician reviews and submits the death record to a registrar
+  version: cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+  jsonschema:
+  uischema:
+  icon: fa-search
+  step_type: review
+step_9:
+  id: 9
+  name: M.E. Review
+  abbrv: Rev
+  description: Medical Examiner reviews and submits the death record to a registrar
+  version: cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+  jsonschema:
+  uischema:
+  icon: fa-search
+  step_type: review
+step_10:
+  id: 10
+  name: Registration
+  abbrv: Rev
+  description: Registrar registers a death record.
+  version: cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+  jsonschema:
+  uischema:
+  icon: fa-file-text
+  step_type: review
