@@ -170,7 +170,7 @@ class NightFullAddress extends React.Component {
 
   render() {
     return (
-      <fieldset className="mt-4 pt-1 pb-2">
+      <fieldset className="mt-4 pt-1 pb-2" id={this.props.name + 'field'}>
         <legend>
           {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
@@ -198,6 +198,7 @@ class NightFullAddress extends React.Component {
               value={this.state.state}
               onChange={this.onChange('state')}
               disabled={this.disabled('state')}
+              id={this.props.name + 'state-input'}
             />
             {this.buildDatalist(this.state.options.state, 'state')}
           </div>
@@ -210,6 +211,7 @@ class NightFullAddress extends React.Component {
               value={this.state.county}
               onChange={this.onChange('county')}
               disabled={this.disabled('county')}
+              id={this.props.name + 'county-input'}
             />
             {this.buildDatalist(this.state.options.county, 'county')}
           </div>
@@ -222,6 +224,7 @@ class NightFullAddress extends React.Component {
               value={this.state.city}
               onChange={this.onChange('city')}
               disabled={this.disabled('city')}
+              id={this.props.name + 'city-input'}
             />
             {this.buildDatalist(this.state.options.city, 'city')}
           </div>
@@ -236,6 +239,7 @@ class NightFullAddress extends React.Component {
               value={this.state.zip}
               onChange={this.onChange('zip')}
               disabled={this.disabled('zip')}
+              id={this.props.name + 'zip-input'}
             />
             {this.buildDatalist(this.state.options.zip, 'zip')}
           </div>
@@ -249,6 +253,7 @@ class NightFullAddress extends React.Component {
               type="string"
               value={this.state.street}
               onChange={this.onChange('street')}
+              id={this.props.name + 'street-input'}
             />
           </div>
           <div className="col16-md-4">
@@ -259,6 +264,7 @@ class NightFullAddress extends React.Component {
               type="string"
               value={this.state.apt}
               onChange={this.onChange('apt')}
+              id={this.props.name + 'apt-input'}
             />
           </div>
         </div>

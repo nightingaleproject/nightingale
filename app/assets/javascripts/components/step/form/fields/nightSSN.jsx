@@ -23,7 +23,7 @@ class NightSSN extends React.Component {
 
   render() {
     return (
-      <fieldset className="mt-4 pt-1 pb-2">
+      <fieldset className="mt-4 pt-1 pb-2" id={this.props.name + 'field'}>
         <legend>
           {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
@@ -36,6 +36,7 @@ class NightSSN extends React.Component {
               maxLength="3"
               value={this.state.ssn1}
               onChange={this.onChange('ssn1')}
+              id="ssn-1"
             />
           </div>
           <span className="night-ssn-divider">-</span>
@@ -46,6 +47,7 @@ class NightSSN extends React.Component {
               maxLength="2"
               value={this.state.ssn2}
               onChange={this.onChange('ssn2')}
+              id="ssn-2"
             />
           </div>
           <span className="night-ssn-divider">-</span>
@@ -56,6 +58,7 @@ class NightSSN extends React.Component {
               maxLength="4"
               value={this.state.ssn3}
               onChange={this.onChange('ssn3')}
+              id="ssn-3"
             />
           </div>
         </div>

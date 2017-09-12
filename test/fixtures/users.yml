@@ -41,7 +41,6 @@ me2:
   last_name: ME
   telephone: 000-000-0000
 reg1:
-  id: 7
   email: reg1@example.com
   encrypted_password: "$2a$11$T.Z.lyHf8G3V7WVNs15GhOlGwnwGnMYYr9ItMCDdJ/4WFk.9O83Du"
   is_guest_user: false

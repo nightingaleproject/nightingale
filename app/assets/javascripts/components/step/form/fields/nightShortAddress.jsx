@@ -152,7 +152,7 @@ class NightShortAddress extends React.Component {
 
   render() {
     return (
-      <fieldset className="mt-4 pb-4">
+      <fieldset className="mt-4 pb-4" id={this.props.name + 'field'}>
         <legend>
           {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
@@ -180,6 +180,7 @@ class NightShortAddress extends React.Component {
               value={this.state.country}
               onChange={this.onChange('country')}
               disabled={this.disabled('country')}
+              id={this.props.name + 'country-input'}
             />
             {this.buildDatalist(['United States', 'Canada', 'Mexico'], 'country')}
           </div>
@@ -192,6 +193,7 @@ class NightShortAddress extends React.Component {
               value={this.state.state}
               onChange={this.onChange('state')}
               disabled={this.disabled('state')}
+              id={this.props.name + 'state-input'}
             />
             {this.buildDatalist(this.state.options.state, 'state')}
           </div>
@@ -204,6 +206,7 @@ class NightShortAddress extends React.Component {
               value={this.state.city}
               onChange={this.onChange('city')}
               disabled={this.disabled('city')}
+              id={this.props.name + 'city-input'}
             />
             {this.buildDatalist(this.state.options.city, 'city')}
           </div>

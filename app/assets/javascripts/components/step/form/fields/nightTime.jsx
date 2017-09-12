@@ -46,7 +46,7 @@ class NightTime extends React.Component {
 
   render() {
     return (
-      <fieldset className="pt-1 pb-2">
+      <fieldset className="pt-1 pb-2" id={this.props.name + 'field'}>
         <legend>
           {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
@@ -58,6 +58,7 @@ class NightTime extends React.Component {
               type="time"
               value={this.state[this.props.name]}
               onChange={this.onChange(this.props.name)}
+              id={this.props.name + 'input'}
             />
           </div>
         </div>

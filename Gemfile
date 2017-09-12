@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -53,7 +53,7 @@ gem 'groupdate'
 gem 'bootstrap-datepicker-rails'
 
 # Generate Rails routes for use in JavaScript
-gem "js-routes"
+gem 'js-routes'
 
 # Lodash for useful JavaScript functions
 gem 'lodash-rails'
@@ -78,10 +78,10 @@ group :development, :test, :ci do
   gem 'brakeman'
   gem 'bundler-audit'
   gem 'rspec-rails'
-  gem 'database_cleaner'
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'poltergeist'
+  gem 'chromedriver-helper'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -91,6 +91,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'fixtures_dumper'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

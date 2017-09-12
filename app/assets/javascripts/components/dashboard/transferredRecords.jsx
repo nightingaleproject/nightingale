@@ -107,7 +107,7 @@ class TransferredRecords extends React.Component {
           <i className="fa fa-cog" />
         </button>
         <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
-          <a className="dropdown-item" href={Routes.death_record_path(data.id)}>
+          <a className="dropdown-item" href={Routes.death_record_path(data.id)} id={'view' + data.id}>
             <i className="fa fa-search" />&nbsp;View
           </a>
         </div>
@@ -128,7 +128,11 @@ class TransferredRecords extends React.Component {
   }
 
   renderProgressCol(data, type, full, meta) {
-    return this.renderRecordProgress(data);
+    if (data.registration) {
+      return 'Registered!';
+    } else {
+      return this.renderRecordProgress(data);
+    }
   }
 
   renderRecordProgressIcon(step, deathRecord) {
@@ -141,7 +145,7 @@ class TransferredRecords extends React.Component {
           title={step.name}
           key={deathRecord.id + step.name}
         >
-          <i className="fa fa-check-circle text-success night-progress-icon" />
+          <i className="fa fa-check-circle text-success night-progress-icon" id={step.name + 'prog'} />
           &nbsp;
         </a>
       );
@@ -154,7 +158,7 @@ class TransferredRecords extends React.Component {
           title={step.name}
           key={deathRecord.id + step.name}
         >
-          <i className="fa fa-times-circle text-danger night-progress-icon" />
+          <i className="fa fa-times-circle text-danger night-progress-icon" id={step.name + 'prog'} />
           &nbsp;
         </a>
       );
@@ -167,7 +171,7 @@ class TransferredRecords extends React.Component {
           title={step.name}
           key={deathRecord.id + step.name}
         >
-          <i className="fa fa-circle-o text-muted night-progress-icon" />
+          <i className="fa fa-circle-o text-muted night-progress-icon" id={step.name + 'prog'} />
           &nbsp;
         </a>
       );
@@ -213,7 +217,7 @@ class TransferredRecords extends React.Component {
 
   render() {
     return (
-      <div className="pb-5">
+      <div className="pb-5" id="transferred">
         <div className="row mb-4">
           <div className="col pl-0">
             {!this.props.currentUser.canRegisterRecord &&

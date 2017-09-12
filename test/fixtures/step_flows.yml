@@ -1,0 +1,153 @@
+step_flow_1:
+  id: 1
+  workflow_id: 1
+  current_step_role: funeral_director
+  send_to_role:
+  current_step_id: 1
+  next_step_id: 2
+  previous_step_id:
+  transition_order: 0
+step_flow_2:
+  id: 2
+  workflow_id: 1
+  current_step_role: funeral_director
+  send_to_role:
+  current_step_id: 2
+  next_step_id: 3
+  previous_step_id: 1
+  transition_order: 1
+step_flow_3:
+  id: 3
+  workflow_id: 1
+  current_step_role: funeral_director
+  send_to_role:
+  current_step_id: 3
+  next_step_id: 4
+  previous_step_id: 2
+  transition_order: 2
+step_flow_4:
+  id: 4
+  workflow_id: 1
+  current_step_role: funeral_director
+  send_to_role:
+  current_step_id: 4
+  next_step_id: 6
+  previous_step_id: 3
+  transition_order: 3
+step_flow_5:
+  id: 5
+  workflow_id: 1
+  current_step_role: funeral_director
+  send_to_role: physician
+  current_step_id: 6
+  next_step_id: 5
+  previous_step_id: 4
+  transition_order: 4
+step_flow_6:
+  id: 6
+  workflow_id: 1
+  current_step_role: physician
+  send_to_role:
+  current_step_id: 5
+  next_step_id: 7
+  previous_step_id: 6
+  transition_order: 5
+step_flow_7:
+  id: 7
+  workflow_id: 1
+  current_step_role: physician
+  send_to_role: registrar
+  current_step_id: 7
+  next_step_id: 10
+  previous_step_id: 5
+  transition_order: 6
+step_flow_8:
+  id: 8
+  workflow_id: 1
+  current_step_role: registrar
+  send_to_role:
+  current_step_id: 10
+  next_step_id:
+  previous_step_id: 7
+  transition_order: 7
+step_flow_9:
+  id: 9
+  workflow_id: 2
+  current_step_role: physician
+  send_to_role:
+  current_step_id: 5
+  next_step_id: 7
+  previous_step_id:
+  transition_order: 0
+step_flow_10:
+  id: 10
+  workflow_id: 2
+  current_step_role: physician
+  send_to_role: funeral_director
+  current_step_id: 7
+  next_step_id: 1
+  previous_step_id: 5
+  transition_order: 1
+step_flow_11:
+  id: 11
+  workflow_id: 2
+  current_step_role: funeral_director
+  send_to_role:
+  current_step_id: 1
+  next_step_id: 2
+  previous_step_id: 7
+  transition_order: 2
+step_flow_12:
+  id: 12
+  workflow_id: 2
+  current_step_role: funeral_director
+  send_to_role:
+  current_step_id: 2
+  next_step_id: 3
+  previous_step_id: 1
+  transition_order: 3
+step_flow_13:
+  id: 13
+  workflow_id: 2
+  current_step_role: funeral_director
+  send_to_role:
+  current_step_id: 3
+  next_step_id: 4
+  previous_step_id: 2
+  transition_order: 4
+step_flow_14:
+  id: 14
+  workflow_id: 2
+  current_step_role: funeral_director
+  send_to_role:
+  current_step_id: 4
+  next_step_id: 6
+  previous_step_id: 3
+  transition_order: 5
+step_flow_15:
+  id: 15
+  workflow_id: 2
+  current_step_role: funeral_director
+  send_to_role: physician
+  current_step_id: 6
+  next_step_id: 8
+  previous_step_id: 4
+  transition_order: 6
+step_flow_16:
+  id: 16
+  workflow_id: 2
+  current_step_role: physician
+  send_to_role: registrar
+  current_step_id: 8
+  next_step_id: 10
+  previous_step_id: 6
+  transition_order: 7
+step_flow_17:
+  id: 17
+  workflow_id: 2
+  current_step_role: registrar
+  send_to_role:
+  current_step_id: 10
+  next_step_id:
+  previous_step_id: 8
+  transition_order: 8

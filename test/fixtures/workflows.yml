@@ -1,0 +1,10 @@
+workflow_1:
+  id: 1
+  name: fd_starts
+  description: An example workflow where a funeral director starts a death record.
+  initiator_role: funeral_director
+workflow_2:
+  id: 2
+  name: physician_starts
+  description: An example workflow where a physician starts a death record.
+  initiator_role: physician
