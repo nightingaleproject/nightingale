@@ -26,7 +26,12 @@ class Comment extends React.Component {
     if (this.props.currentUser.id === this.props.comment.author.id && !this.props.deathRecord.registration) {
       var deleteButton = (
         <div className="pull-right">
-          <button type="button" onClick={this.deleteComment} className="btn btn-sm btn-danger" id={"deleteComment" + this.props.comment.id}>
+          <button
+            type="button"
+            onClick={this.deleteComment}
+            className="btn btn-sm btn-danger"
+            id={'deleteComment' + this.props.comment.id}
+          >
             <span className="fa fa-trash" /> Delete
           </button>
         </div>

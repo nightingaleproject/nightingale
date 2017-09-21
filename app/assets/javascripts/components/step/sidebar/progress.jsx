@@ -21,14 +21,14 @@ class Progress extends React.Component {
   render() {
     return (
       <div className="btn-group-vertical btn-block">
-        {this.props.deathRecord.steps.map( (step, index) =>
+        {this.props.deathRecord.steps.map((step, index) =>
           <button
             key={'prog' + step.name}
             type="button"
             className={'btn btn-block btn-secondary text-left night-step-padding ' + (step.active && 'active')}
             onClick={() => this.props.updateStep(step.name, true)}
             disabled={!step.editable}
-            id={"progressButton" + index}
+            id={'progressButton' + index}
           >
             <i className={'text-primary fa fa-fw ' + step.icon} /> {step.name}
             {this.statusIcon(step)}

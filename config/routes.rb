@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     collection do
       post :owned_death_records
       post :transferred_death_records
+      post :views_validate_cod
     end
   end
 
