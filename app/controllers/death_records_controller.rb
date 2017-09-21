@@ -148,10 +148,9 @@ class DeathRecordsController < ApplicationController
     return
   end
 
-  # VIEWS validate the current record.
-  def views_validate
-    render json: ViewsHelper.views_for_record(@death_record.contents)
-    return
+  # VIEWS validate the given COD information.
+  def views_validate_cod
+    render json: ViewsHelper.views_for_record_cod(validate_params)
   end
 
   # Handles requesting edits from users.
@@ -289,9 +288,14 @@ class DeathRecordsController < ApplicationController
     whitelist = @death_record.step_status.current_step.whitelist
     whitelist = [] if whitelist.nil?
     allows = [:firstName, :lastName, :telephone, :email, :step, :guestEmail,
-              :confirmEmail, :linear, :guestMode, :id, :reassign, :isCodOnly,
-              :contents]
+              :confirmEmail, :linear, :guestMode, :id, :reassign, :contents]
     params.permit(whitelist + allows)
+  end
+
+  def validate_params
+    validates = [:immediate, :immediateInt, :under1, :under1Int, :under2,
+                 :under2Int, :under3, :under3Int, :messages, :death_record]
+    params.permit(validates)
   end
 
   # Helper method that handles creating or updating StepHistories.
