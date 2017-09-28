@@ -13,7 +13,8 @@ class ReportsController < ApplicationController
     search = params[:search][:value] unless params[:search].nil?
     records = Audited::Audit.all
     if search.present?
-      filtered = records.where('lower(name) like ?', "%#{search.downcase}%")
+      # Use Postgres free text search to search for audited_changes, auditable_type and action
+      filtered = Audited::Audit.includes(:user).where("to_tsvector('english', audited_changes) || to_tsvector('english', auditable_type) || to_tsvector('english', action) || to_tsvector('english', user) @@ to_tsquery(?)", "%#{search.downcase}%")
     else
       filtered = records
     end
@@ -21,11 +22,8 @@ class ReportsController < ApplicationController
       # 'data' is the array of records
       # 'recordsTotal' is the TOTAL number of records
       # 'recordsFiltered' is the number of records AFTER filtering (but not after pagination!)
-      render json: {data: filtered.page(page).per(length), draw: draw, recordsTotal: records.count, recordsFiltered: filtered.count}
+      render json: {data: filtered.page(page).per(length).as_json(include: :user), draw: draw, recordsTotal: records.count, recordsFiltered: filtered.count}
   end
-
-#    @audits = Audited::Audit.all.order(created_at: :desc)
- # end
 
   private
 

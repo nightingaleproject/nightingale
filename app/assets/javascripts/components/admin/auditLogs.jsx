@@ -1,16 +1,14 @@
-// OwnedRecords component; makes up the owned records list.
+// Audit Logs component; makes up the audit records list.
 class AuditLogs extends React.Component {
     constructor(props) {
       super(props);
-      this.state = this.props;
-      
-      this.decedentName = this.decedentName.bind(this);
-
-
+      this.state = props;
+      this.renderChangeCol = this.renderChangeCol.bind(this);
       this.renderActionCol = this.renderActionCol.bind(this);
       this.renderTypeCol = this.renderTypeCol.bind(this);
-
       this.renderCreatedCol = this.renderCreatedCol.bind(this);
+      this.renderWhoCol = this.renderWhoCol.bind(this);
+      this.format_data = this.format_data.bind(this);
     }
   
     componentDidMount() {
@@ -33,21 +31,21 @@ class AuditLogs extends React.Component {
               className: 'details-control',
               orderable: false,
               searchable: true,
-              width: '6%',
+              width: '15%',
               targets: [0],
               data: null,
-            //   render: self.renderNotificationCol
+              render: self.renderChangeCol
             },
             {
               searchable: true,
-              width: '6%',
+              width: '15%',
               targets: [1],
               data: null,
               render: self.renderActionCol
             },
             { 
               searchable: true,  
-              width: '8%', 
+              width: '15%',
               targets: [2], 
               data: null, 
               render: self.renderTypeCol 
@@ -60,19 +58,11 @@ class AuditLogs extends React.Component {
               render: self.renderCreatedCol 
             },
             {
-              searchable: true,
-              width: '28%',
-              targets: [4],
-              data: null,
-            //  render: self.renderTimeagoCol
-            },
-            {
-              searchable: true,
-              visible: false,
-              width: '24%',
-              targets: [5],
-              data: null,
-             // render: self.renderProgressCol
+               searchable: true,
+               width: '28%',
+               targets: [4],
+               data: null,
+               render: self.renderWhoCol
             }
           ],
           processing: true,
@@ -88,121 +78,147 @@ class AuditLogs extends React.Component {
           }
         });
       });
+
+      $('#audits_table tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = $('#audits_table').DataTable().row(tr);
+        if (row.child.isShown()) {
+          // This row is already open - close it
+          row.child.hide();
+          tr.removeClass('shown');
+        } else {
+          // Open this row
+          row.child(self.format_data(row.data().audited_changes)).show();
+          tr.addClass('shown');
+        }
+      }).bind(this);
     }
-  
-    renderNotificationCol(data, type, full, meta) {
-      if (data.notify && !this.props.currentUser.isAdmin) {
-        return ReactDOMServer.renderToStaticMarkup(
-          <h6>
-            <span className="badge badge-danger full-width mt-1">New!</span>
-          </h6>
-        );
-      } else {
-        return '';
+
+    // Builds the child table on the fly given the row data.
+    format_data(changes) {
+      var self = this;
+      html = "<table class='table' id='audit_changes_table'>" +
+                "<thead>" +
+                  "<tr>" +
+                    "<th>Field</th>" +
+                    "<th>From</th>" +
+                    "<th>To</th>" +
+                  "</tr>" +
+                "<thead>" +
+                "<tbody>";
+      // Based on the Audit changes the table will handle rendering differently
+      Object.keys(changes).map(function(key) {
+        html += "<tr>";
+        if (key == 'contents' && Array.isArray(changes[key])) { // Step Content Has changed
+          var change = changes[key]
+          for (i = 0; i < change.length; i++) { // Structure of changes is |'symbol', 'key', 'value1', 'value2'|
+            html += "<tr><td>";
+            if (change[i][1] != 'undefined' && change[i][1] != null) {
+              html += change[i][1];
+            }
+            html += "</td><td>";
+            if (change[i].length < 4) { // If there is no 4th element, then we know its a new value
+              html += "New</td><td>";
+            }
+            else {
+              html += self.renderStringFromData(change[i][2]) + "</td><td>";
+            }
+            if (change[i][3] != 'undefined' && change[i][3] != null) {
+              html += self.renderStringFromData(change[i][3]) + "</td>";
+            }
+            else {
+              html += self.renderStringFromData(change[i][2]) + "</td>";
+            }
+            html += "<tr>";
+          }
+        }
+        else {
+          html += "<td> " + key + "</td>";
+          if (Array.isArray(changes[key])) {  // If updated
+            html += "<td> " + changes[key][0] + "</td><td>" + changes[key][1] + "</td>";
+          }
+          else {  // If created
+            html += "<td>New</td><td>" + changes[key] + "</td>";
+          }
+        }
+        html += "</tr>";
+      });
+      html += "</tbody></table>";
+      return html;
+    }
+
+    // Given a String, an Array of Strings or and Array of Objects, or an Object
+    // This will parse it into a format for displaying.
+    renderStringFromData(data) {
+      output = "";
+      if (Array.isArray(data)) {
+        for (x = 0; x < data.length; x++) {
+          if (typeof data[x] == 'object'){
+            Object.keys(data[x]).map(function(key) {
+              if (data[x][key]) {
+                output += data[x][key] + ", ";
+              }
+            });
+          }
+          else {
+           output += data[x] + ", ";
+          }
+        }
       }
+      else {
+        output = data;
+      }
+      return output
     }
-  
+
+    renderChangeCol(data, type, full, meta) {
+      return ''
+    }
+
     renderActionCol(data, type, full, meta) {
-      return ReactDOMServer.renderToStaticMarkup(this.renderAction(data));
-    }
-
-    renderTypeCol(data, type, full, meta) {
-      return ReactDOMServer.renderToStaticMarkup(this.renderType(data));
-    }
-
-    renderCreatedCol(data, type, full, meta) {
-      return ReactDOMServer.renderToStaticMarkup(this.renderCreatedAt(data));
-    }
-  
-    renderProgressCol(data, type, full, meta) {
-      return this.renderRecordProgress(data);
-    }
-  
-    renderRecordProgressIcon(step, deathRecord) {
-      if (step.contents.contents && step.contents.requiredSatisfied) {
-        return ReactDOMServer.renderToStaticMarkup(
-          <a
-            data-toggle="tooltip"
-            data-animation="false"
-            data-placement="top"
-            title={step.name}
-            key={deathRecord.id + step.name}
-          >
-            <i className="fa fa-check-circle text-success night-progress-icon" />
-            &nbsp;
-          </a>
-        );
-      } else if (step.contents.contents) {
-        return ReactDOMServer.renderToStaticMarkup(
-          <a
-            data-toggle="tooltip"
-            data-animation="false"
-            data-placement="top"
-            title={step.name}
-            key={deathRecord.id + step.name}
-          >
-            <i className="fa fa-times-circle text-danger night-progress-icon" />
-            &nbsp;
-          </a>
-        );
-      } else {
-        return ReactDOMServer.renderToStaticMarkup(
-          <a
-            data-toggle="tooltip"
-            data-animation="false"
-            data-placement="top"
-            title={step.name}
-            key={deathRecord.id + step.name}
-          >
-            <i className="fa fa-circle-o text-muted night-progress-icon" />
-            &nbsp;
-          </a>
-        );
-      }
-    }
-  
-    renderAction(data) {
-      return (
+      return ReactDOMServer.renderToStaticMarkup(
         <span>
           {data.action}
         </span>
       );
     }
-  
-    renderType(data) {
-      return (
+
+    renderTypeCol(data, type, full, meta) {
+      return ReactDOMServer.renderToStaticMarkup(
         <span>
-          {data.type}
+          {data.auditable_type}
         </span>
       );
     }
 
-    renderCreatedAt(data) {
-      return (
+    renderCreatedCol(data, type, full, meta) {
+      return ReactDOMServer.renderToStaticMarkup(
         <span>
           {data.created_at}
-        </span>
-      )
+      </span>
+      );
     }
-  
-    // Return a styled version of the decedent's name, constructed by what
-    // information is available.
-    decedentName(deathRecord) {
-      var metadata = deathRecord.metadata;
-      // Format name
-      if (metadata.firstName && metadata.lastName && metadata.middleName) {
-        return metadata.lastName + ', ' + metadata.firstName + ' ' + metadata.middleName[0] + '. ' + metadata.suffix;
-      } else if (metadata.firstName && metadata.middleName) {
-        return metadata.firstName + ' ' + metadata.middleName[0] + '. ' + metadata.suffix;
-      } else if (metadata.firstName && metadata.lastName) {
-        return metadata.lastName + ', ' + metadata.firstName + ' ' + metadata.suffix;
-      } else if (metadata.firstName) {
-        return metadata.firstName + ' ' + metadata.suffix;
-      } else if (metadata.lastName) {
-        return metadata.lastName + ' ' + metadata.suffix;
+
+    renderWhoCol(data, type, full, meta) {
+      return ReactDOMServer.renderToStaticMarkup(this.renderWho(data));
+    }
+
+    renderWho(data) {
+      if (data.user) {
+        return (
+          <span>
+            {data.user.email}
+          </span>
+        );
+      } else {
+        return (
+          <span>
+            No user associated
+          </span>
+        );
       }
     }
-  
+
     render() {
       return (
         <div className="mb-5 mt-2">
@@ -218,13 +234,11 @@ class AuditLogs extends React.Component {
             <table className="table" id="audits_table" key={this.props.currentUser.id + 'audits-table'} width="100%">
               <thead key={this.props.currentUser.id + 'audits-head'}>
                 <tr>
-                  <th />
-                  <th>Change</th>
+                  <th>Changes</th>
                   <th>Action</th>
                   <th>Type</th>
                   <th>When</th>
                   <th>Who</th>
-                  <th>Change</th>
                </tr>
               </thead>
               <tbody key={this.props.currentUser.id + 'audits-body'} />

@@ -29,5 +29,9 @@ module Pages
     def view_record(id)
       visit "/death_records/#{id}"
     end
+
+    def admin
+      find(:linkhref, '/admins').click
+    end
   end
 end
