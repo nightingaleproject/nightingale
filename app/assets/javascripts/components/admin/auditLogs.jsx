@@ -8,7 +8,7 @@ class AuditLogs extends React.Component {
       this.renderTypeCol = this.renderTypeCol.bind(this);
       this.renderCreatedCol = this.renderCreatedCol.bind(this);
       this.renderWhoCol = this.renderWhoCol.bind(this);
-      this.format_data = this.format_data.bind(this);
+      this.formatData = this.formatData.bind(this);
     }
   
     componentDidMount() {
@@ -88,14 +88,14 @@ class AuditLogs extends React.Component {
           tr.removeClass('shown');
         } else {
           // Open this row
-          row.child(self.format_data(row.data().audited_changes)).show();
+          row.child(self.formatData(row.data().audited_changes)).show();
           tr.addClass('shown');
         }
       }).bind(this);
     }
 
     // Builds the child table on the fly given the row data.
-    format_data(changes) {
+    formatData(changes) {
       var self = this;
       html = "<table class='table' id='audit_changes_table'>" +
                 "<thead>" +
