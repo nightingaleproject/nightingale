@@ -1,5 +1,25 @@
 ## Change Log
 
+### v0.5.0 - 2017-10-02
+
+* Added VIEWS validation for death records
+* Implemented ability to abandon records
+* Implemented email notifications for normal users
+* Added UI notifications to the dashboard view
+* Added Physician attestation dialog before a record is sent for registration
+* Added analysis reporting tool for administrative users
+* Implemented IJE exporting functionality
+* Implemented issuance functionality for death records
+* Implemented pagination for dashboard view
+* Added travis config for continuous integration
+* Added OAuth2 support
+* Added Brakeman and Bundle Audit security checks
+* Added RSpec, Capybara, and Selenium for front end functional testing
+* Implemented Selenium tests for all major front end features
+* Added test fixtures derived from demo workflow database snapshot
+* Revamped the My Account page
+* Implemented pagination for the Audit logging view for administrative users
+
 ### v0.4.0 - 2017-06-12
 
 * Integrated the react-rails framework for front-end user interaction
