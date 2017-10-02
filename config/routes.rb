@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # IJE exporting GET for exporting death records as IJE
+  match 'export_records_in_ije' => 'death_records#export_records_in_ije', :via => :get
+
   # Step related routes
   resources :step, only: [:update]
 
