@@ -157,7 +157,7 @@ class DeathRecordsController < ApplicationController
   def export_records_in_ije
     registered_ids = Registration.all.map(&:death_record_id)
     ije_result = IJEFormat.process_data(DeathRecord.find(registered_ids).as_json)
-    send_data ije_result, disposition: 'attachment', filename: 'Records.ije'
+    send_data ije_result, disposition: 'attachment', filename: Time.now.getutc.to_s + ' Records.MOR'
   end
 
   # Handles requesting edits from users.
