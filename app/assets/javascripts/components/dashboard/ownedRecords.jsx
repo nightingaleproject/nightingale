@@ -98,7 +98,7 @@ class OwnedRecords extends React.Component {
   }
 
   renderActionButtonsCol(data, type, full, meta) {
-    if (this.props.currentUser.isAdmin && this.props.currentUser.id != data.owner.id) {
+    if (this.props.currentUser.isAdmin || (!this.props.currentUser.isRegistrar && this.props.currentUser.id != data.owner.id)) {
       return '';
     }
     return ReactDOMServer.renderToStaticMarkup(

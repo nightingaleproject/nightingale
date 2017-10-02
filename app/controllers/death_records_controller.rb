@@ -134,7 +134,6 @@ class DeathRecordsController < ApplicationController
     create_or_update_step_history(step, @death_record, current_user)
     @death_record.registration = Registration.new(registered: DateTime.now)
     @death_record.registration.save
-    @death_record.owner = nil
     @death_record.save
     render json: @death_record.as_json({user: current_user})
   end
@@ -153,11 +152,11 @@ class DeathRecordsController < ApplicationController
     render json: ViewsHelper.views_for_record_cod(validate_params)
   end
 
-  # Function that returns an attachment of all registered records in IJE format
+  # Function that returns an attachment of all registered records in IJE format.
   def export_records_in_ije
     registered_ids = Registration.all.map(&:death_record_id)
-    ije_result = IJEFormat.process_data(DeathRecord.find(registered_ids).as_json)
-    send_data ije_result, disposition: 'attachment', filename: Time.now.getutc.to_s + ' Records.MOR'
+    ije_result = IJEFormat.process_data(DeathRecord.find(registered_ids).collect(&:contents))
+    send_data ije_result, disposition: 'attachment', filename: Time.now.to_i.to_s + '_records.MOR'
   end
 
   # Handles requesting edits from users.

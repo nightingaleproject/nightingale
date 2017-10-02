@@ -5,12 +5,11 @@ require 'street_address'
 require 'geokit'
 require 'ije/mortality_format'
 
-=begin Note: For now, the appropriate fields have been added and processed.
-Some fields such as country of death information are currently not fully
-complete because Nightingale assumes that the decedent passed away in the
-United States but that may not always be the case. In addition, obtaining the
-appropriate FIPS encoding for different cities is an ongoing task.
-=end
+# Note: For now, the appropriate fields have been added and processed.
+# Some fields such as country of death information are currently not fully
+# complete because Nightingale assumes that the decedent passed away in the
+# United States but that may not always be the case. In addition, obtaining the
+# appropriate FIPS encoding for different cities is an ongoing task.
 module IJEFormat
 
   # Function to appropriately format the date into the format MM/DD/YYYY
@@ -315,42 +314,42 @@ module IJEFormat
     return "C"
   end
 
-    #Function that obtains the race code.
-    def self.race_code_lookup(record_hash, key)
-      races = []
-      if record_hash.key?(key)
-        races = record_hash[key]
-      end
-      if !races.empty?
-        races = JSON.parse(races)
-      else
-        return ""
-      end
-      race_code_hash =
-      {
-        "White" => "01",
-        "Black" => "02",
-        "American Indian or Alaskan Native (specify tribe)" => "03",
-        "Asian Indian" => "04",
-        "Chinese" => "05",
-        "Filipino" => "06",
-        "Japanese" => "07",
-        "Korean" => "08",
-        "Vietnamese" => "09",
-        "Other Asian (specify)" => "10",
-        "Native Hawaiian" => "11",
-        "Guamanian or Chamorro" => "12",
-        "Samoan" => "13",
-        "Other Pacific Islander (specify)" => "14",
-        "Other (specify)" => "15"
-      }
-
-      if !races.empty?
-        return race_code_hash[races[0]]
-      else
-        return ""
-      end
+  # Function that obtains the race code.
+  def self.race_code_lookup(record_hash, key)
+    races = []
+    if record_hash.key?(key)
+      races = record_hash[key]
     end
+    if !races.empty?
+      races = JSON.parse(races)
+    else
+      return ""
+    end
+    race_code_hash =
+    {
+      "White" => "01",
+      "Black" => "02",
+      "American Indian or Alaskan Native (specify tribe)" => "03",
+      "Asian Indian" => "04",
+      "Chinese" => "05",
+      "Filipino" => "06",
+      "Japanese" => "07",
+      "Korean" => "08",
+      "Vietnamese" => "09",
+      "Other Asian (specify)" => "10",
+      "Native Hawaiian" => "11",
+      "Guamanian or Chamorro" => "12",
+      "Samoan" => "13",
+      "Other Pacific Islander (specify)" => "14",
+      "Other (specify)" => "15"
+    }
+
+    if !races.empty?
+      return race_code_hash[races[0]]
+    else
+      return ""
+    end
+  end
 
   # Function that will retrieve the appropriate NCHS Hispanic code for the decedent.
   def self.hispanic_nchs_lookup(record_hash)
@@ -1054,9 +1053,10 @@ module IJEFormat
 
 
   # Take in an array of hashes where each hash represents a Nightingale record and create a list of strings of the corresponding IJE format.
-  def self.process_data(record_hash)
-    record_hash.each do |record|
-      record = IJE::MortalityFormat.new(date_of_death_year: IJEFormat.extract_date(record, "datePronouncedDead.datePronouncedDead", "year"),
+  def self.process_data(record_hashes)
+    records = []
+    record_hashes.each do |record|
+      record_ije = IJE::MortalityFormat.new(date_of_death_year: IJEFormat.extract_date(record, "datePronouncedDead.datePronouncedDead", "year"),
                                           state_territory_province_code: IJEFormat.territory_lookup(record, "locationOfDeath.state", "locationOfDeath.city", "locationOfDeath.country"),
                                           certificate_number: "",
                                           void_flag: 0,
@@ -1304,8 +1304,8 @@ module IJEFormat
                                           blank_for_future_expansion: "",
                                           blank_for_jurisdictional_use_only: ""
                                           )
-      result = IJE::MortalityFormat.write([record])
-      return result
+      records.push(record_ije)
     end
+    return IJE::MortalityFormat.write(records)
   end
 end
