@@ -134,6 +134,7 @@ class DeathRecordsController < ApplicationController
     create_or_update_step_history(step, @death_record, current_user)
     @death_record.registration = Registration.new(registered: DateTime.now)
     @death_record.registration.save
+    # At Register, create a death certificate
     @death_record.generate_certificate(current_user)
     @death_record.save
     render json: @death_record.as_json({user: current_user})
@@ -152,7 +153,7 @@ class DeathRecordsController < ApplicationController
                            :rotate => 35,
                            :rotate_around => :center)
     watermark = CombinePDF.parse(watermark_pdf.render).pages[0]
-    raw_certificate = CombinePDF.parse(@death_record.death_certificate.document)
+    raw_certificate = CombinePDF.parse(@death_record.newest_certificate.document)
     raw_certificate.pages.each { |page| page << watermark }
     send_data(raw_certificate.to_pdf,
               filename: "preview_certificate_#{@death_record.id}.pdf",
@@ -161,7 +162,8 @@ class DeathRecordsController < ApplicationController
 
   # Provide a final printable certificate
   def final_certificate
-    send_data(@death_record.death_certificate.document,
+    CertificateRequest.create(creator: current_user, death_certificate: @death_record.newest_certificate)
+    send_data(@death_record.newest_certificate.document,
               filename: "certificate_#{@death_record.id}.pdf",
               type: 'application/pdf', disposition: 'inline')
   end

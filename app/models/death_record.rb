@@ -10,7 +10,7 @@ class DeathRecord < ApplicationRecord
   has_many :comments
   has_one :user_token
   has_one :registration
-  has_one :death_certificate # TODO: eventually we'll likely want more than one with versioning
+  has_many :death_certificates
 
   # Return the StepFlows (in order) that make up this Workflow.
   def step_flows
@@ -210,10 +210,6 @@ class DeathRecord < ApplicationRecord
 
   # Generate printable versions of a death certificate for this record and store locally
   def generate_certificate(user)
-    # TODO: Eventually we'll want to support multiple, versioned cerficicates
-    #raise "Death certificate already exists" if self.death_certificate
-    # TODO: Placeholder for local certificate generation service
-    # document = RestClient.get('http://localhost:4567/certificate', params: self.metadata).body
     # We want to generate a pdf with the death record data with formatting.
     document = FormatPDF.generate_formatted_pdf(self.build_contents)
     template_pdf = CombinePDF.load(Rails.root + "2003-death-certificate.pdf")
@@ -223,7 +219,12 @@ class DeathRecord < ApplicationRecord
       page << record_pdf.pages[index] if record_pdf.pages[index]
     end
 
-    self.create_death_certificate(document: template_pdf.to_pdf, metadata: self.metadata, creator: user)
+    death_certificate = DeathCertificate.create(death_record: self, document: template_pdf.to_pdf, metadata: self.metadata, creator: user)
+  end
+
+  # Grabs the most recent created Death Certificate
+  def newest_certificate
+    self.death_certificates.where('created_at is NOT NULL').order('created_at DESC').first
   end
 
 end

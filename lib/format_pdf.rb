@@ -10,7 +10,7 @@ module FormatPDF
       formatted_data.push({name: decedent_name, size:8, x:30, y:930}) if decedent_name
         
       # Box 2 - Sex
-      formatted_data.push({name: death_record_data['sex.sex'], size:8, x:315, y:930})
+      formatted_data.push({name: death_record_data['sex.sex'], size:8, x:315, y:930}) if death_record_data['sex.sex']
 
       # Box 3 - SSN
       if death_record_data['ssn.ssn1'] && death_record_data['ssn.ssn2'] && death_record_data['ssn.ssn3']
@@ -18,29 +18,31 @@ module FormatPDF
       end
 
       # Box 4 - Age of Decedent
-      death_date = Time.parse(death_record_data['dateOfDeath.dateOfDeath']) 
-      birth_date = Time.parse(death_record_data['dateOfBirth.dateOfBirth'])
-      years_old = death_date.year - birth_date.year
-      # Box 4a - Years
-      formatted_data.push({name: years_old.to_s, size:8, x:35, y:905})
-      if years_old < 1
-        months_old = death_date.month - birth_date.month
-        days_old = death_date.day - birth_date.day
-        # Box 4b - Months and Days
-        formatted_data.push({name: months_old.to_s, size:8, x:110, y:903})
-        formatted_data.push({name: days_old.to_s, size:8, x:145, y:903})
-        
-        if days_old < 1
-          # TODO  We can't support less than a day old
-          # Box 4c - Hours and Minutes
-          formatted_data.push({name: 'Hours', size:8, x:175, y:903})
-          formatted_data.push({name: 'Minutes', size:8, x:200, y:903})
+      death_date = Time.parse(death_record_data['dateOfDeath.dateOfDeath']) if death_record_data['dateOfDeath.dateOfDeath']
+      birth_date = Time.parse(death_record_data['dateOfBirth.dateOfBirth']) if death_record_data['dateOfBirth.dateOfBirth']
+      if death_date && birth_date
+        years_old = death_date.year - birth_date.year
+        # Box 4a - Years
+        formatted_data.push({name: years_old.to_s, size:8, x:35, y:905})
+        if years_old < 1
+          months_old = death_date.month - birth_date.month
+          days_old = death_date.day - birth_date.day
+          # Box 4b - Months and Days
+          formatted_data.push({name: months_old.to_s, size:8, x:110, y:903})
+          formatted_data.push({name: days_old.to_s, size:8, x:145, y:903})
+
+          if days_old < 1
+            # TODO  Don't support less than a day old
+            # Box 4c - Hours and Minutes
+            formatted_data.push({name: 'Hours', size:8, x:175, y:903})
+            formatted_data.push({name: 'Minutes', size:8, x:200, y:903})
+          end
         end
       end
-      
+
       # Box 5 - Date of Birth
       birthdate = Time.parse(death_record_data['dateOfBirth.dateOfBirth']).strftime("%m/%d/%Y") if death_record_data['dateOfBirth.dateOfBirth']
-      formatted_data.push({name: birthdate, size:8, x:250, y:905})
+      formatted_data.push({name: birthdate, size:8, x:250, y:905}) if birthdate
         
       # Box 6 - Place of Birth
       # If country is United States, include City and State, otherwise just include country
@@ -402,21 +404,21 @@ module FormatPDF
       end
 
       # Box 53 - Decedent's Race
-      formatted_data.push({name: 'x', size:9, x:346, y:168}) if death_record_data['race.race.specify'].include?('White')
-      formatted_data.push({name: 'x', size:9, x:346, y:162}) if death_record_data['race.race.specify'].include?('African American')
-      formatted_data.push({name: 'x', size:9, x:346, y:156}) if death_record_data['race.race.specify'].include?('American Indian')  #Will need a naother line for (tribe)
-      formatted_data.push({name: 'x', size:9, x:346, y:144}) if death_record_data['race.race.specify'].include?('Asian Indian')
-      formatted_data.push({name: 'x', size:9, x:346, y:138}) if death_record_data['race.race.specify'].include?('Chinese')
-      formatted_data.push({name: 'x', size:9, x:346, y:132}) if death_record_data['race.race.specify'].include?('Filipino')
-      formatted_data.push({name: 'x', size:9, x:346, y:126}) if death_record_data['race.race.specify'].include?('Japanese')
-      formatted_data.push({name: 'x', size:9, x:346, y:120}) if death_record_data['race.race.specify'].include?('Korean')
-      formatted_data.push({name: 'x', size:9, x:346, y:114}) if death_record_data['race.race.specify'].include?('Vietnamese')
-      formatted_data.push({name: 'x', size:9, x:346, y:108}) if death_record_data['race.race.specify'].include?('Other Asian')  # Need another line for (specify)
-      formatted_data.push({name: 'x', size:9, x:346, y:102}) if death_record_data['race.race.specify'].include?('Native Hawaiian')
-      formatted_data.push({name: 'x', size:9, x:346, y:96}) if death_record_data['race.race.specify'].include?('Guamanian')
-      formatted_data.push({name: 'x', size:9, x:346, y:90}) if death_record_data['race.race.specify'].include?('Samoan')
-      formatted_data.push({name: 'x', size:9, x:346, y:84}) if death_record_data['race.race.specify'].include?('Other Pacific Islander') # Need another line
-      formatted_data.push({name: 'x', size:9, x:346, y:76}) if death_record_data['race.race.specify'].include?('Other (Specify)') # Need another line
+      formatted_data.push({name: 'x', size:9, x:346, y:168}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('White')
+      formatted_data.push({name: 'x', size:9, x:346, y:162}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('African American')
+      formatted_data.push({name: 'x', size:9, x:346, y:156}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('American Indian')  # Will need a naother line for (tribe)
+      formatted_data.push({name: 'x', size:9, x:346, y:144}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('Asian Indian')
+      formatted_data.push({name: 'x', size:9, x:346, y:138}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('Chinese')
+      formatted_data.push({name: 'x', size:9, x:346, y:132}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('Filipino')
+      formatted_data.push({name: 'x', size:9, x:346, y:126}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('Japanese')
+      formatted_data.push({name: 'x', size:9, x:346, y:120}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('Korean')
+      formatted_data.push({name: 'x', size:9, x:346, y:114}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('Vietnamese')
+      formatted_data.push({name: 'x', size:9, x:346, y:108}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('Other Asian')  # Need another line for (specify)
+      formatted_data.push({name: 'x', size:9, x:346, y:102}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('Native Hawaiian')
+      formatted_data.push({name: 'x', size:9, x:346, y:96}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('Guamanian')
+      formatted_data.push({name: 'x', size:9, x:346, y:90}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('Samoan')
+      formatted_data.push({name: 'x', size:9, x:346, y:84}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('Other Pacific Islander') # Need another line
+      formatted_data.push({name: 'x', size:9, x:346, y:76}) if death_record_data['race.race.specify'] && death_record_data['race.race.specify'].include?('Other (Specify)') # Need another line
 
       # Box 54 - Usual Occupation
       formatted_data.push({name: death_record_data['usualOccupation.usualOccupation'], size:8, x:30, y:38}) if death_record_data['usualOccupation.usualOccupation']
@@ -443,12 +445,3 @@ module FormatPDF
         pdf.render
     end
 end
-
-#     # BOX 7g. Inside city limits
-#     # Yes version
-#     pdf.text_box("x",
-#           :size   => 12,
-#           :width  => 250,
-#           :heigh  => 5,
-#           :at     => [471, 875],
-#           :style  => :bold)
