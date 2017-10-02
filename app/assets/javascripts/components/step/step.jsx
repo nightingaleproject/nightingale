@@ -333,33 +333,31 @@ class Step extends React.Component {
           <div className="row mb-3 mt-2">
             <div className="col pl-0">
               <span className="pull-left">
-                {(!this.state.currentUser.canRegisterRecord || this.state.currentUser.isAdmin) &&
-                  <h2 className="pt-2">View Death Record</h2>}
+                {(!this.state.currentUser.canRegisterRecord || this.state.currentUser.isAdmin) && (
+                  <h2 className="pt-2">View Death Record</h2>
+                )}
                 {this.state.currentUser.canRegisterRecord && <h2 className="pt-2">Registration</h2>}
               </span>
             </div>
             <div className="col pr-0">
               <span className="pull-right">
                 {this.state.currentUser.canRegisterRecord &&
-                  !this.state.deathRecord.registration &&
-                  <button
-                    type="button"
-                    onClick={this.register}
-                    className="btn btn-lg btn-primary pull-right"
-                    id="registerBtn"
-                  >
-                    <span className="fa fa-thumbs-up" /> Register Record
-                  </button>}
-                {this.state.deathRecord.registration &&
+                  !this.state.deathRecord.registration && (
+                    <button
+                      type="button"
+                      onClick={this.register}
+                      className="btn btn-lg btn-primary pull-right"
+                      id="registerBtn"
+                    >
+                      <span className="fa fa-thumbs-up" /> Register Record
+                    </button>
+                  )}
+                {this.state.deathRecord.registration && (
                   <dl className="row pt-3">
                     <dt className="col-sm-5">Registered at</dt>
-                    <dd className="col-sm-7">
-                      {this.state.deathRecord.registration.registered}
-                    </dd>
+                    <dd className="col-sm-7">{this.state.deathRecord.registration.registered}</dd>
                     <dt className="col-sm-5">Certificate Number</dt>
-                    <dd className="col-sm-7">
-                      {this.state.deathRecord.registration.id}
-                    </dd>
+                    <dd className="col-sm-7">{this.state.deathRecord.registration.id}</dd>
                     <dt className="col-sm-12">
                       <button type="button" onClick={this.printPreview} className="btn btn-primary">
                         <span className="fa fa-eye" /> Print Preview
@@ -369,18 +367,20 @@ class Step extends React.Component {
                         <span className="fa fa-print" /> Print Final
                       </button>
                     </dt>
-                  </dl>}
+                  </dl>
+                )}
                 {!this.state.currentUser.canRegisterRecord &&
                   !this.state.deathRecord.registration &&
-                  this.state.deathRecord.creator.id == this.state.currentUser.id &&
-                  <button
-                    type="button"
-                    onClick={() => this.abandonRecord(this.state.deathRecord.id)}
-                    className="btn btn-lg btn-primary pull-right"
-                    id="abandonBtn"
-                  >
-                    <span className="fa fa-trash" /> Abandon Record
-                  </button>}
+                  this.state.deathRecord.creator.id == this.state.currentUser.id && (
+                    <button
+                      type="button"
+                      onClick={() => this.abandonRecord(this.state.deathRecord.id)}
+                      className="btn btn-lg btn-primary pull-right"
+                      id="abandonBtn"
+                    >
+                      <span className="fa fa-trash" /> Abandon Record
+                    </button>
+                  )}
               </span>
             </div>
           </div>
