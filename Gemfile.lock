@@ -112,6 +112,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    combine_pdf (1.0.7)
+      ruby-rc4 (>= 0.1.5)
     concurrent-ruby (1.0.5)
     config (1.4.0)
       activesupport (>= 3.0)
@@ -193,8 +195,12 @@ GEM
       mini_portile2 (~> 2.3.0)
     nori (2.6.0)
     orm_adapter (0.5.0)
+    pdf-core (0.7.0)
     pg (0.21.0)
     popper_js (1.11.1)
+    prawn (2.2.2)
+      pdf-core (~> 0.7.0)
+      ttfunk (~> 1.5)
     public_suffix (3.0.0)
     puma (3.10.0)
     rack (2.0.3)
@@ -254,6 +260,7 @@ GEM
       rspec-mocks (~> 3.6.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
+    ruby-rc4 (0.1.5)
     rubyzip (1.2.1)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
@@ -293,6 +300,7 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    ttfunk (1.5.1)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -329,6 +337,7 @@ DEPENDENCIES
   chromedriver-helper
   codez
   coffee-rails (~> 4.2)
+  combine_pdf
   config
   database_cleaner
   devise
@@ -347,6 +356,7 @@ DEPENDENCIES
   lodash-rails
   momentjs-rails
   pg
+  prawn
   puma (~> 3.0)
   rails (~> 5.0.2)
   rails-observers!

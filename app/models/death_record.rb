@@ -10,6 +10,7 @@ class DeathRecord < ApplicationRecord
   has_many :comments
   has_one :user_token
   has_one :registration
+  has_many :death_certificates
 
   # Return the StepFlows (in order) that make up this Workflow.
   def step_flows
@@ -206,6 +207,26 @@ class DeathRecord < ApplicationRecord
     end
     return []
   end
+
+  # Generate printable versions of a death certificate for this record and store locally
+  def generate_certificate(user)
+    # We want to generate a pdf with the death record data with formatting.
+    document = FormatPDF.generate_formatted_pdf(self.build_contents)
+    template_pdf = CombinePDF.load(Rails.root + "2003-death-certificate.pdf")
+    record_pdf = CombinePDF.parse(document)
+    # Overlay the generated pdf with data over the template pdf.
+    template_pdf.pages.each_with_index do |page, index|
+      page << record_pdf.pages[index] if record_pdf.pages[index]
+    end
+
+    death_certificate = DeathCertificate.create(death_record: self, document: template_pdf.to_pdf, metadata: self.metadata, creator: user)
+  end
+
+  # Grabs the most recent created Death Certificate
+  def newest_certificate
+    self.death_certificates.where('created_at is NOT NULL').order('created_at DESC').first
+  end
+
 end
 
 # Adds a function to the Hash class.

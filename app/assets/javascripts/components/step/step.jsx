@@ -9,6 +9,8 @@ class Step extends React.Component {
     this.renderStepEdit = this.renderStepEdit.bind(this);
     this.renderStepView = this.renderStepView.bind(this);
     this.register = this.register.bind(this);
+    this.printPreview = this.printPreview.bind(this);
+    this.printFinal = this.printFinal.bind(this);
     this.onUnload = this.onUnload.bind(this);
     this.requestEdits = this.requestEdits.bind(this);
     this.abandonRecord = this.abandonRecord.bind(this);
@@ -237,6 +239,31 @@ class Step extends React.Component {
     );
   }
 
+  printPreview() {
+    window.open(Routes.preview_certificate_death_record_path(this.state.deathRecord.id));
+  }
+
+  printFinal() {
+    var self = this;
+    swal(
+      {
+        title: 'You are about to print a death certificate!',
+        text: 'Are you sure?',
+        type: 'info',
+        showCancelButton: true,
+        confirmButtonClass: 'btn-primary',
+        confirmButtonText: 'Print',
+        closeOnConfirm: true,
+        showLoaderOnConfirm: true
+      },
+      function(isConfirm) {
+        if (!isConfirm) return;
+        // TODO: Ideally we would show a print dialog
+        window.open(Routes.final_certificate_death_record_path(self.state.deathRecord.id));
+      }
+    );
+  }
+
   // Renders a form component; allows the user to enter information for
   // the active step.
   renderForm() {
@@ -306,45 +333,54 @@ class Step extends React.Component {
           <div className="row mb-3 mt-2">
             <div className="col pl-0">
               <span className="pull-left">
-                {(!this.state.currentUser.canRegisterRecord || this.state.currentUser.isAdmin) &&
-                  <h2 className="pt-2">View Death Record</h2>}
+                {(!this.state.currentUser.canRegisterRecord || this.state.currentUser.isAdmin) && (
+                  <h2 className="pt-2">View Death Record</h2>
+                )}
                 {this.state.currentUser.canRegisterRecord && <h2 className="pt-2">Registration</h2>}
               </span>
             </div>
             <div className="col pr-0">
               <span className="pull-right">
                 {this.state.currentUser.canRegisterRecord &&
-                  !this.state.deathRecord.registration &&
-                  <button
-                    type="button"
-                    onClick={this.register}
-                    className="btn btn-lg btn-primary pull-right"
-                    id="registerBtn"
-                  >
-                    <span className="fa fa-thumbs-up" /> Register Record
-                  </button>}
-                {this.state.deathRecord.registration &&
+                  !this.state.deathRecord.registration && (
+                    <button
+                      type="button"
+                      onClick={this.register}
+                      className="btn btn-lg btn-primary pull-right"
+                      id="registerBtn"
+                    >
+                      <span className="fa fa-thumbs-up" /> Register Record
+                    </button>
+                  )}
+                {this.state.deathRecord.registration && (
                   <dl className="row pt-3">
                     <dt className="col-sm-5">Registered at</dt>
-                    <dd className="col-sm-7">
-                      {this.state.deathRecord.registration.registered}
-                    </dd>
+                    <dd className="col-sm-7">{this.state.deathRecord.registration.registered}</dd>
                     <dt className="col-sm-5">Certificate Number</dt>
-                    <dd className="col-sm-7">
-                      {this.state.deathRecord.registration.id}
-                    </dd>
-                  </dl>}
+                    <dd className="col-sm-7">{this.state.deathRecord.registration.id}</dd>
+                    <dt className="col-sm-12">
+                      <button type="button" onClick={this.printPreview} className="btn btn-primary">
+                        <span className="fa fa-eye" /> Print Preview
+                      </button>
+                      &nbsp;
+                      <button type="button" onClick={this.printFinal} className="btn btn-danger">
+                        <span className="fa fa-print" /> Print Final
+                      </button>
+                    </dt>
+                  </dl>
+                )}
                 {!this.state.currentUser.canRegisterRecord &&
                   !this.state.deathRecord.registration &&
-                  this.state.deathRecord.creator.id == this.state.currentUser.id &&
-                  <button
-                    type="button"
-                    onClick={() => this.abandonRecord(this.state.deathRecord.id)}
-                    className="btn btn-lg btn-primary pull-right"
-                    id="abandonBtn"
-                  >
-                    <span className="fa fa-trash" /> Abandon Record
-                  </button>}
+                  this.state.deathRecord.creator.id == this.state.currentUser.id && (
+                    <button
+                      type="button"
+                      onClick={() => this.abandonRecord(this.state.deathRecord.id)}
+                      className="btn btn-lg btn-primary pull-right"
+                      id="abandonBtn"
+                    >
+                      <span className="fa fa-trash" /> Abandon Record
+                    </button>
+                  )}
               </span>
             </div>
           </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824155927) do
+ActiveRecord::Schema.define(version: 20170929014009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20170824155927) do
     t.index ["created_at"], name: "index_audits_on_created_at", using: :btree
     t.index ["request_uuid"], name: "index_audits_on_request_uuid", using: :btree
     t.index ["user_id", "user_type"], name: "user_index", using: :btree
+  end
+
+  create_table "certificate_requests", force: :cascade do |t|
+    t.integer  "death_certificate_id"
+    t.integer  "creator_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["creator_id"], name: "index_certificate_requests_on_creator_id", using: :btree
+    t.index ["death_certificate_id"], name: "index_certificate_requests_on_death_certificate_id", using: :btree
   end
 
   create_table "cities", force: :cascade do |t|
@@ -63,6 +72,17 @@ ActiveRecord::Schema.define(version: 20170824155927) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["state_id"], name: "index_counties_on_state_id", using: :btree
+  end
+
+  create_table "death_certificates", force: :cascade do |t|
+    t.binary   "document"
+    t.json     "metadata",        default: {}
+    t.integer  "death_record_id"
+    t.integer  "creator_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["creator_id"], name: "index_death_certificates_on_creator_id", using: :btree
+    t.index ["death_record_id"], name: "index_death_certificates_on_death_record_id", using: :btree
   end
 
   create_table "death_records", force: :cascade do |t|
