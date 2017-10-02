@@ -37,7 +37,11 @@ Rails.application.routes.draw do
 
   # Admin related routes
   resources :admins, only: [:index]
-  resources :reports
+  resources :reports, only: [:index] do
+    collection do
+      post :audit_logs
+    end
+  end
   resources :statistics
   resources :questions
   resources :users
