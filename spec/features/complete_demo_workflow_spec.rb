@@ -147,6 +147,8 @@ feature 'Complete demo workflow', js: true do
     dashboard_page = Pages::Dashboard.new
     expect(dashboard_page).to have_content 'Search by Name'
     expect(dashboard_page).to have_content 'Registered!'
+    assert dashboard_page.open_count == 0
+    assert dashboard_page.transferred_count == 1
 
     # Log out, log in as admin, make sure record is visible
     dashboard_page.log_out
@@ -154,6 +156,5 @@ feature 'Complete demo workflow', js: true do
     login_page.sign_in_as 'admin@example.com', '123456'
     dashboard_page = Pages::Dashboard.new
     expect(dashboard_page).to have_content 'Person, Example M. Jr.'
-    expect(dashboard_page).to have_content 'Registered!'
   end
 end

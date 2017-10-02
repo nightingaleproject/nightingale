@@ -134,6 +134,7 @@ class DeathRecordsController < ApplicationController
     create_or_update_step_history(step, @death_record, current_user)
     @death_record.registration = Registration.new(registered: DateTime.now)
     @death_record.registration.save
+    @death_record.owner = nil
     # At Register, create a death certificate
     @death_record.generate_certificate(current_user)
     @death_record.save
