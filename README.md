@@ -2,10 +2,11 @@
 
 ## Nightingale EDRS Prototype
 
-Nightingale is a prototype electronic death registration system (EDRS), built to both provide basic EDRS capabilities and explore next generation EDRS concepts. This prototype represents a work-in-progress, and is expected to change and grow over time in response to feedback from subject matter experts and users. Nightingale ERDS currently supports the following functionality at various degrees of maturity:
+Nightingale is a prototype electronic death registration system (EDRS), built to both demonstrate basic EDRS capabilities and act as a foundation for exploring next generation EDRS concepts. This prototype represents a work-in-progress, and is expected to change and grow over time in response to feedback from subject matter experts and users. Nightingale ERDS currently supports the following functionality at various degrees of maturity:
 
 * User roles for funeral directors, medical certifiers, registrars, and administrators
 * Death record data entry
+* Validation of death record data using VIEWS
 * Basic support for configurable, flexible workflows, such as
   * Determining who can initiate a death record
   * Assignment of in-process death records to other system users
@@ -13,7 +14,10 @@ Nightingale is a prototype electronic death registration system (EDRS), built to
 * Workflow and Death record versioning
 * Support for structured data entry, minimizing opportunities for user error
 * Auditing of user actions
+* Export of records in IJE format
+* Basic issuance and archival of death certificates
 * Basic reports on system usage patterns
+* Basic reports on collected mortality data
 
 ### Installation and Setup for Development or Testing
 
