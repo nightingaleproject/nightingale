@@ -19,5 +19,6 @@ before_script:
 script:
   - bundle exec bundle-audit check --update
   - bundle exec brakeman -qAzw1
-  - bundle exec rake test
+  - bundle exec rake test TESTOPTS="-v"
   - bundle exec rake spec
+
