@@ -4,11 +4,6 @@ step_content_1:
   death_record_id: 1
   editor_id: 1
   contents:
-    spouseName:
-      firstName: Spouse
-      middleName: ''
-      lastName: Example
-      suffix: ''
     fatherName:
       firstName: Father
       middleName: ''

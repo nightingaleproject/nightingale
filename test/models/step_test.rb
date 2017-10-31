@@ -8,7 +8,6 @@ class StepTest < ActiveSupport::TestCase
 
   test 'steps have correct fields' do
     assert @identity.fields.key? 'decedentName'
-    assert @identity.fields.key? 'akas'
     assert @identity.fields.key? 'ssn'
     assert @identity.fields.key? 'decedentAddress'
     assert @medical.fields.key? 'placeOfDeath'
@@ -19,7 +18,6 @@ class StepTest < ActiveSupport::TestCase
 
   test 'steps have correct params whitelist' do
     assert @identity.whitelist.reduce({}, :merge).key? 'decedentName'
-    assert @identity.whitelist.reduce({}, :merge).key? 'akas'
     assert @identity.whitelist.reduce({}, :merge).key? 'ssn'
     assert @identity.whitelist.reduce({}, :merge).key? 'decedentAddress'
     assert @medical.whitelist.reduce({}, :merge).key? 'placeOfDeath'
