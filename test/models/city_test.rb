@@ -38,4 +38,19 @@ class CityTest < ActiveSupport::TestCase
     end
     assert correct
   end
+
+  test 'cities have correct zipcodes' do
+    correct = false
+    City.where(name: 'Manchester').each do |city|
+      correct = city.zipcodes.where(name: '03103').count > 0
+      break if correct
+    end
+    assert correct
+    correct = false
+    City.where(name: 'Billerica').each do |city|
+      correct = city.zipcodes.where(name: '01821').count > 0
+      break if correct
+    end
+    assert correct
+  end
 end
