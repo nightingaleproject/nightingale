@@ -1,0 +1,54 @@
+step_content_1:
+  id: 1
+  step_id: 3
+  death_record_id: 1
+  editor_id: 1
+  contents:
+    fatherName:
+      firstName: Father
+      middleName: ''
+      lastName: Example
+      suffix: ''
+    motherName:
+      firstName: Mother
+      middleName: ''
+      lastName: Maiden
+      suffix: ''
+step_content_2:
+  id: 2
+  step_id: 4
+  death_record_id: 1
+  editor_id: 1
+  contents:
+    methodOfDisposition:
+      methodOfDisposition:
+        option: Burial
+        specify: ''
+        specifyInputs: "{}"
+    placeOfDisposition:
+      name: Example Cemetery
+      country: United States
+      state: Massachusetts
+      city: Lowell
+    funeralFacility:
+      name: Example Funeral Home
+      state: Massachusetts
+      county: MIDDLESEX
+      city: Lowell
+      zip: '01852'
+      street: 2 Example St.
+      apt: ''
+    funeralLicenseNumber:
+      funeralLicenseNumber: '12345'
+    informantName:
+      firstName: Brother
+      middleName: ''
+      lastName: Example
+      suffix: ''
+    informantAddress:
+      state: Massachusetts
+      county: MIDDLESEX
+      city: Lowell
+      zip: '01852'
+      street: 3 Example St.
+      apt: ''

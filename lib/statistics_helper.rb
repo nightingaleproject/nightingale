@@ -131,8 +131,8 @@ module StatisticsHelper
     death_records_5_to_10 = DeathRecord.where(owner_id: user.id).where(abandoned: false).count - death_records_lt_5 - death_records_gt_10
     ages = {}
     ages['Less than 5 days'] = death_records_lt_5 unless death_records_lt_5 == 0
-    ages['5 to 10 days'] = death_records_lt_5 unless death_records_5_to_10 == 0
-    ages['More than 10 days'] = death_records_lt_5 unless death_records_gt_10 == 0
+    ages['5 to 10 days'] = death_records_5_to_10 unless death_records_5_to_10 == 0
+    ages['More than 10 days'] = death_records_gt_10 unless death_records_gt_10 == 0
     if (death_records_lt_5 + death_records_gt_10 + death_records_5_to_10).positive?
       return pie_chart ages, id: 'death-record-ages-by-range', height: '200px', colors: ['#226891', '#3A7539', '#AB4642']
     else

@@ -1,0 +1,53 @@
+death_record_1:
+  id: 1
+  workflow_id: 1
+  owner_id:
+  creator_id: 1
+  step_flow_id: 8
+  name: Person, Example
+  contents:
+    fatherName.firstName: Father
+    fatherName.middleName: ''
+    fatherName.lastName: Example
+    fatherName.suffix: ''
+    motherName.firstName: Mother
+    motherName.middleName: ''
+    motherName.lastName: Maiden
+    motherName.suffix: ''
+    methodOfDisposition.methodOfDisposition.option: Burial
+    methodOfDisposition.methodOfDisposition.specify: ''
+    methodOfDisposition.methodOfDisposition.specifyInputs: "{}"
+    placeOfDisposition.name: Example Cemetery
+    placeOfDisposition.country: United States
+    placeOfDisposition.state: Massachusetts
+    placeOfDisposition.city: Lowell
+    funeralFacility.name: Example Funeral Home
+    funeralFacility.state: Massachusetts
+    funeralFacility.county: MIDDLESEX
+    funeralFacility.city: Lowell
+    funeralFacility.zip: '01852'
+    funeralFacility.street: 2 Example St.
+    funeralFacility.apt: ''
+    funeralLicenseNumber.funeralLicenseNumber: '12345'
+    informantName.firstName: Brother
+    informantName.middleName: ''
+    informantName.lastName: Example
+    informantName.suffix: ''
+    informantAddress.state: Massachusetts
+    informantAddress.county: MIDDLESEX
+    informantAddress.city: Lowell
+    informantAddress.zip: '01852'
+    informantAddress.street: 3 Example St.
+    informantAddress.apt: ''
+  cached_json:
+  notify: true
+  abandoned: false
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-10-29 19:51:00.120844000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-10-29 20:02:48.436380000 Z
+    zone: *2
+    time: *3
