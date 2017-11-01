@@ -1,5 +1,10 @@
 ## Change Log
 
+### v0.6.0 - 2017-11-01
+
+* Added unit tests
+* Minor bug fixes
+
 ### v0.5.0 - 2017-10-02
 
 * Added VIEWS validation for death records
