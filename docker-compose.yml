@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: postgres
+  app:
+    build: .
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - /var/www/nightingale
+    expose:
+      - "3000"
+    depends_on:
+      - db
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app
