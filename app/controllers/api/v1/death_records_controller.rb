@@ -1,4 +1,4 @@
-class Api::V1::DeathRecordsController < Api::V1::ApiController
+class Api::V1::DeathRecordsController < ApplicationController
   before_action :doorkeeper_authorize!
 
   # POST death_record
