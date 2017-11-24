@@ -185,7 +185,7 @@ class AuditLogs extends React.Component {
   }
 
   renderCreatedCol(data, type, full, meta) {
-    return ReactDOMServer.renderToStaticMarkup(<span>{data.created_at}</span>);
+    return ReactDOMServer.renderToStaticMarkup(this.renderDate(data));
   }
 
   renderWhoCol(data, type, full, meta) {
@@ -197,6 +197,14 @@ class AuditLogs extends React.Component {
       return <span>{data.user.email}</span>;
     } else {
       return <span>No user associated</span>;
+    }
+  }
+
+  renderDate(data) {
+    if (data.created_at) {
+      return <span>{moment(data.created_at).format('MMM D, YYYY h:ma')}</span>;
+    } else {
+      return <span></span>;
     }
   }
 
