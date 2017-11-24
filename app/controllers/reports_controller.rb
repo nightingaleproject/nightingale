@@ -11,7 +11,7 @@ class ReportsController < ApplicationController
     page = params[:start].to_i == 0 ? 1 : (params[:start].to_i / length) + 1
     draw = params[:draw].to_i
     search = params[:search][:value] unless params[:search].nil?
-    audits = Audited::Audit.all
+    audits = Audited::Audit.order(:created_at)
     if search.present?
       # Use Postgres free text search to search for audited_changes, auditable_type and action
       filtered = audits.includes(:user).where("to_tsvector('english', audited_changes) || to_tsvector('english', auditable_type) || to_tsvector('english', action) || to_tsvector('english', user) @@ to_tsquery(?)", "%#{search.downcase}%")
