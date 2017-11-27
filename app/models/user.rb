@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  audited
+  audited except: [:encrypted_password, :reset_password_token]
   rolify
 
   devise :database_authenticatable, :registerable, :recoverable,

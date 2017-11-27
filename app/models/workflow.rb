@@ -1,5 +1,4 @@
 class Workflow < ApplicationRecord
-  audited
   has_many :step_flows
 
   # Return the Steps for this workflow.
