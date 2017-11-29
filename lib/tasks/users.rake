@@ -9,7 +9,6 @@ namespace :nightingale do
     task create: :environment do
       user = User.create!(email: ENV['EMAIL'], password: ENV['PASS'])
       if user
-        user.confirm
         puts 'The user was created successfully.'
       else
         puts 'The user was not created!'
