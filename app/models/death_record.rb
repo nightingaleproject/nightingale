@@ -31,7 +31,8 @@ class DeathRecord < ApplicationRecord
     step_contents_hash = {}
     nested_hash = Hash.to_nested_hash flat_hash
     self.steps.each do |step|
-      step_contents_hash[step.name] = nested_hash.slice(*get_params_for_step(step))
+      values = nested_hash.slice(*get_params_for_step(step))
+      step_contents_hash[step.name] = values unless values.empty?
     end
     step_contents_hash
   end
@@ -39,6 +40,74 @@ class DeathRecord < ApplicationRecord
   # Return the Steps (in order) that make up this Workflow.
   def steps
     step_flows.collect(&:current_step)
+  end
+
+  # Updates the current record values given a hash of LOINC codes to values. The record
+  # will be updated according to how the given codes align to how the current schema was
+  # defined when this record was created. For example:
+  #
+  # Given:
+  # {
+  #   '45392-8': 'John', # LOINC code for patient forename
+  #   '45394-4': 'Smith' # LOINC code for patient surname
+  # }
+  #
+  # The record will be updated to set the proper fields as defined in the schema. So the
+  # field where '45392-8' was defined (in the example workflows, this is in the
+  # identity step), the corresponding given value will be made that value.
+  #
+  # Note: existing values will be overwritten; values given that have no place in the
+  # schema will be ignored.
+  def update_from_loinc(values)
+    paths = loinc_paths(jsonschemas)
+    structured_values = {}
+    values.each do |key, value|
+      # Check if this LOINC value has a normative answer list, if so convert
+      structured_values[paths[key]['path']] = if paths[key]['values']
+                                        paths[key]['values'].key(value)
+                                      else
+                                        value
+                                      end
+    end
+    seperated = separate_step_contents(structured_values)
+    self.steps.each do |step|
+      if seperated[step.name]
+        StepContent.update_or_create_new(death_record: self,
+                                         step: step,
+                                         contents: seperated[step.name],
+                                         editor: self.owner) # TODO: This probably needs to change!
+      end
+    end
+  end
+
+  # Converts the record contents to a hash of LOINC codes to values. An example result
+  # might look like:
+  #
+  # {
+  #   '45392-8': 'John', # LOINC code for patient forename
+  #   '45394-4': 'Smith' # LOINC code for patient surname
+  # }
+  def to_loinc
+    flat_contents = build_contents
+    loinc_contents = {}
+    # Loop over each value in the record
+    flat_contents.each do |value_path, value|
+      current = {}
+      current['properties'] = jsonschemas
+      # Dive into the JSON Schema for this value to find the most nested portion
+      value_path.split('.').each do |path_step|
+        current = current['properties'][path_step]
+      end
+      # Set the corresponding LOINC code to equal the proper value representation
+      if current['loinc'] && current['loinc']['values']
+        # This LOINC code has normative answers
+        loinc_contents[current['loinc']['code']] = current['loinc']['values'][value]
+      elsif current['loinc']
+        # This LOINC code does NOT have normative answers
+        loinc_contents[current['loinc']['code']] = value
+      end
+    end
+    return loinc_contents.stringify_keys
   end
 
   # Returns a hash of all allowed params for this DeathRecord.
@@ -54,6 +123,30 @@ class DeathRecord < ApplicationRecord
   # Returns the next Step in this DeathRecords workflow.
   def next_step
     self.step_flow.next_step if can_increment_step
+  end
+
+  # Return the combination of this records step jsonschemas
+  def jsonschemas
+    schemas = {}
+    steps.collect(&:jsonschema).each do |s|
+      schemas.merge!(s['properties']) unless s.nil?
+    end
+    return schemas.stringify_keys
+  end
+
+  # Recursively builds a hash describing the paths (in dot notation) and their
+  # corresponding loinc codes. For example: {'45392-8': 'decedentName.firstName'}
+  def loinc_paths(schema, current_path='', paths={})
+    schema.keys.each do |k|
+      nested_schema = schema[k]
+      if nested_schema['loinc']
+        paths[nested_schema['loinc']['code']] = {path: (current_path + '.' + k).rchomp('.').chomp('.'), values: nested_schema['loinc']['values']}.stringify_keys
+      end
+      if nested_schema['properties']
+        loinc_paths(nested_schema['properties'], current_path + '.' + k, paths)
+      end
+    end
+    return paths.stringify_keys
   end
 
   # Move this DeathRecord one step forward in its Workflow.
@@ -226,10 +319,9 @@ class DeathRecord < ApplicationRecord
   def newest_certificate
     self.death_certificates.where('created_at is NOT NULL').order('created_at DESC').first
   end
-
 end
 
-# Adds a function to the Hash class.
+# Adds functions to the Hash class.
 class Hash
  # Function creates a flat hash structure by using "." in the keys to represent nesting.
  def self.to_dotted_hash(hash, recursive_key = "")
@@ -250,5 +342,12 @@ class Hash
       leaf = key_parts[0...-1].inject(all) { |h, k| h[k] ||= {} }
       leaf[key_parts.last] = value
     end
+  end
+end
+
+# Adds a function to the String class.
+class String
+  def rchomp(sep = $/)
+    self.start_with?(sep) ? self[sep.size..-1] : self
   end
 end

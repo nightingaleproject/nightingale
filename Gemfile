@@ -83,6 +83,9 @@ gem 'codez'
 gem 'StreetAddress'
 gem 'geokit'
 
+# FHIR
+gem 'fhir_models', git: 'https://github.com/fhir-crucible/fhir_models'
+
 group :development, :test, :ci do
   gem 'byebug', platform: :mri
   gem 'brakeman'

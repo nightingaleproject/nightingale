@@ -3,7 +3,7 @@ step_1:
   name: Identity
   abbrv: Id
   description: User enters identity information about the decedent; e.g. name
-  version: 206f86b09f18791bdb9ab4bb2088287787a2841c0510beee48e26f80c365aae65b8568587b5bf597d7885ec59452e09fe6326f1b75a14f3fd5c6678d6d5913f8
+  version: eb99c91797a387dbca3ec92302ede1f8b8dcc542e12da47478deca25962c9f15d689bcfcce658f04b31d3aee7039f7e373cb16494f6ec37bfbce91d0265bd069
   jsonschema:
     type: object
     properties:
@@ -15,15 +15,23 @@ step_1:
         required: true
         properties:
           firstName:
+            loinc:
+              code: 45392-8
             type: string
             title: First Name
           middleName:
+            loinc:
+              code: 45393-6
             type: string
             title: Middle Name
           lastName:
+            loinc:
+              code: 45394-4
             type: string
             title: Last Name
           suffix:
+            loinc:
+              code: 45395-1
             type: string
             title: Suffix
           akas:
@@ -42,6 +50,8 @@ step_1:
                 type: string
                 title: Suffix
       ssn:
+        loinc:
+          code: 45396-9
         title: Social Security Number
         type: object
         humanReadable: "{ssn1}-{ssn2}-{ssn3}"
@@ -88,7 +98,7 @@ step_2:
   abbrv: Dem
   description: User enters demographic information about the decedent; e.g. date of
     birth
-  version: 50d95cd8fd9133cf6c91d75d4384623917b6efe46c2f7cdb24689b4765161b26b5a74a798f430c93610fdcd2082e3373ce2de56c6c32f054fdfb24e37471e778
+  version: 54d6e94d0f0c00bc45e58ed6a019175f090fb6fd3b89250a501e6b635e7cd653e0052615129b4a1d9297ba934273961190a580ab814aac612cdcb92c5206f607
   jsonschema:
     type: object
     properties:
@@ -103,6 +113,12 @@ step_2:
             - Male
             - Female
             - Unknown
+            loinc:
+              code: 21840-4
+              values:
+                Male: '1'
+                Female: '2'
+                Unknown: '5'
       dateOfBirth:
         type: object
         title: Date of Birth
@@ -485,7 +501,7 @@ step_5:
   name: Medical
   abbrv: Med
   description: User enters medical information about the decedent; e.g. cause of death
-  version: fab1751fd79fa94876524334ef76b71197cd048428be0d09b54c481005cc6f6603b9dd51e6cd3ad279dc2d548468fe8efa4fe11bc54f57afa9d95b364744a167
+  version: 7c69a066a991ac7ad1b9fbf25c3ef36068855195f5351b7ffbaa192e447e228b1cb3508761d1f8b34dffc22eacf705fd285e05568a5df82656987f7304bb24e0
   jsonschema:
     type: object
     properties:

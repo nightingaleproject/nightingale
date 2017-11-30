@@ -1,11 +1,15 @@
 death_record_1:
   id: 1
   workflow_id: 1
-  owner_id:
+  owner_id: 1
   creator_id: 1
   step_flow_id: 8
-  name: Person, Example
+  name: Person, Example M.
   contents:
+    decedentName.firstName: Person
+    decedentName.middleName: Middle
+    decedentName.lastName: Example
+    sex.sex: Male
     fatherName.firstName: Father
     fatherName.middleName: ''
     fatherName.lastName: Example
