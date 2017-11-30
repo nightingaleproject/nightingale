@@ -69,15 +69,23 @@ Rails.application.routes.draw do
     end
   end
 
-  # Default route
-  authenticated :user do
-    root :to => 'death_records#index', :as => :authenticated_root
-  end
-  root :to => redirect('/users/sign_in')
-
+  # Simple POST create API
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :death_records
     end
   end
+
+  # FHIR API
+  namespace :fhir, defaults: { format: :json } do
+    namespace :v1 do
+      resources :death_records
+    end
+  end
+
+  # Default route
+  authenticated :user do
+    root :to => 'death_records#index', :as => :authenticated_root
+  end
+  root :to => redirect('/users/sign_in')
 end

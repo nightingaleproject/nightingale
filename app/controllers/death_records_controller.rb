@@ -28,11 +28,6 @@ class DeathRecordsController < ApplicationController
     @death_record.save
   end
 
-  # Update the DeathRecord.
-  def update
-    # TODO
-  end
-
   # Update a specific step's contents.
   def update_step
     step = @death_record.step_status.current_step

@@ -8,7 +8,11 @@
       "required": true,
       "properties": {
         "sex": {
-          "options": ["Male", "Female", "Unknown"]
+          "options": ["Male", "Female", "Unknown"],
+          "loinc": {
+            "code": "21840-4",
+            "values": {"Male": "1", "Female": "2", "Unknown": "5"} // These keys should correspond to the relevant plain text options as defined above
+          }
         }
       }
     },

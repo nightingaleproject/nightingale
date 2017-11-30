@@ -1,4 +1,14 @@
 GIT
+  remote: https://github.com/fhir-crucible/fhir_models
+  revision: 01e843da5441842622263115d440a294e0a23179
+  specs:
+    fhir_models (3.0.2)
+      bcp47 (>= 0.3)
+      date_time_precision (>= 0.8)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.6)
+
+GIT
   remote: https://github.com/nightingaleproject/ije
   revision: 1c9e24b5bb2b9d031d17a42790c5eb392ec16932
   specs:
@@ -77,6 +87,8 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
+    bcp47 (0.3.3)
+      i18n
     bcrypt (3.1.11)
     bindex (0.5.0)
     bootstrap (4.0.0.alpha6)
@@ -120,6 +132,7 @@ GEM
       deep_merge (~> 1.1.1)
     connection_pool (2.2.1)
     database_cleaner (1.6.1)
+    date_time_precision (0.8.1)
     deep_merge (1.1.1)
     devise (4.3.0)
       bcrypt (~> 3.0)
@@ -342,6 +355,7 @@ DEPENDENCIES
   database_cleaner
   devise
   doorkeeper
+  fhir_models!
   fixtures_dumper
   font-awesome-sass
   geokit
