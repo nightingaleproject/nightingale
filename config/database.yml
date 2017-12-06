@@ -1,6 +1,6 @@
 default: &default
   adapter: postgresql
-  host: db
+  host: localhost
 
 development:
   <<: *default
@@ -16,3 +16,4 @@ production:
   <<: *default
   database: nightingale_production
   username: postgres
+  host: db
