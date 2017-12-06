@@ -1,4 +1,4 @@
-##Containerized Deployment
+## Containerized Deployment
 
 To run nightingale in a containerized production environment:
 
