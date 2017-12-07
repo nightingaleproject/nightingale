@@ -32,6 +32,7 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
       # TODO: Add more info?
 
       format.json { render json: fhir_record.to_json }
+      format.xml { render xml: fhir_record.to_xml }
     end
   end
 

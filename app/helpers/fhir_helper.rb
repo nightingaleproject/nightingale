@@ -64,7 +64,7 @@ module FhirHelper
 
     # TODO: Additional info?
     patient_resource.name.first.suffix << death_record.contents['decedentName.suffix'] if death_record.contents['decedentName.suffix']
-      
+
     # Add basic info to record
     entry = FHIR::Bundle::Entry.new
     entry.fullUrl = "urn:uuid:#{resource_id}"
