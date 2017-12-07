@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    expose:
+      - "5432"
+  app:
+    build: .
+    volumes:
+      - /var/www/nightingale
+    expose:
+      - "3000"
+    depends_on:
+      - db
+    env_file: .env.production
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app

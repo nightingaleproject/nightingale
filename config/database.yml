@@ -5,11 +5,15 @@ default: &default
 development:
   <<: *default
   database: nightingale_development
+  username: postgres
 
 test:
   <<: *default
   database: nightingale_test
+  username: postgres
 
 production:
   <<: *default
   database: nightingale_production
+  username: postgres
+  host: db
