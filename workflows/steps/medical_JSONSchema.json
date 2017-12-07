@@ -61,7 +61,10 @@
       "required": true,
       "properties": {
         "datePronouncedDead": {
-          "type": "string"
+          "type": "string",
+          "loinc": {
+            "code": "80616-6"
+          }
         }
       }
     },
@@ -106,7 +109,10 @@
       "required": true,
       "properties": {
         "dateOfDeath": {
-          "type": "string"
+          "type": "string",
+          "loinc": {
+            "code": "81956-5"
+          }
         },
         "dateType": {
           "type": "string",
@@ -136,7 +142,10 @@
       "humanReadable": "{meOrCoronerContacted}",
       "properties": {
         "meOrCoronerContacted": {
-          "options": ["Yes", "No", "Unknown"]
+          "options": ["Yes", "No"],
+          "loinc": {
+            "code": "74497-9"
+          }
         }
       }
     },
@@ -146,7 +155,10 @@
       "humanReadable": "{autopsyPerformed}",
       "properties": {
         "autopsyPerformed": {
-          "options": ["Yes", "No"]
+          "options": ["Yes", "No"],
+          "loinc": {
+            "code": "85699-7"
+          }
         }
       }
     },
@@ -156,7 +168,10 @@
       "humanReadable": "{autopsyAvailableToCompleteCauseOfDeath}",
       "properties": {
         "autopsyAvailableToCompleteCauseOfDeath": {
-          "options": ["Yes", "No"]
+          "options": ["Yes", "No"],
+          "loinc": {
+            "code": "69436-4"
+          }
         }
       }
     },
@@ -167,28 +182,60 @@
       "required": true,
       "properties": {
         "immediate": {
-          "type": "string"
+          "type": "string",
+          "loinc": {
+            "code": "69453-9",
+            "index": 0
+          }
         },
         "immediateInt": {
-          "type": "string"
+          "type": "string",
+          "loinc": {
+            "code": "69440-6",
+            "index": 0
+          }
         },
         "under1": {
-          "type": "string"
+          "type": "string",
+          "loinc": {
+            "code": "69453-9",
+            "index": 1
+          }
         },
         "under1Int": {
-          "type": "string"
+          "type": "string",
+          "loinc": {
+            "code": "69440-6",
+            "index": 1
+          }
         },
         "under2": {
-          "type": "string"
+          "type": "string",
+          "loinc": {
+            "code": "69453-9",
+            "index": 2
+          }
         },
         "under2Int": {
-          "type": "string"
+          "type": "string",
+          "loinc": {
+            "code": "69440-6",
+            "index": 2
+          }
         },
         "under3": {
-          "type": "string"
+          "type": "string",
+          "loinc": {
+            "code": "69453-9",
+            "index": 3
+          }
         },
         "under3Int": {
-          "type": "string"
+          "type": "string",
+          "loinc": {
+            "code": "69440-6",
+            "index": 3
+          }
         }
       }
     },
@@ -208,7 +255,23 @@
       "humanReadable": "{didTobaccoUseContributeToDeath}",
       "properties": {
         "didTobaccoUseContributeToDeath": {
-          "options": ["Yes", "No", "Probably", "Unknown"]
+          "options": ["Yes", "No", "Probably", "Unknown"],
+          "loinc": {
+            "code": "69443-0"
+          }
+        }
+      }
+    },
+    "deathResultedFromInjuryAtWork": {
+      "type": "object",
+      "title": "Death Resulted From Injury At Work?",
+      "humanReadable": "{deathResultedFromInjuryAtWork}",
+      "properties": {
+        "deathResultedFromInjuryAtWork": {
+          "options": ["Yes", "No"],
+          "loinc": {
+            "code": "69444-8"
+          }
         }
       }
     },
@@ -218,7 +281,10 @@
       "humanReadable": "{pregnancyStatus}",
       "properties": {
         "pregnancyStatus": {
-          "options": ["Not pregnant in the past year", "Pregnant at the time of death", "Not pregnant, but pregnant within 42 days of death", "Not pregnant, but pregnant 43 days to 1 year before death", "Unknown if pregnant within the past year"]
+          "options": ["Not pregnant within past year", "Pregnant at time of death", "Not pregnant, but pregnant within 42 days of death", "Not pregnant, but pregnant 43 days to 1 year before death", "Unknown if pregnant within the past year"],
+          "loinc": {
+            "code": "69442-2"
+          }
         }
       }
     },
@@ -229,7 +295,10 @@
       "required": true,
       "properties": {
         "mannerOfDeath": {
-          "options": ["Natural", "Accident", "Suicide", "Homicide", "Pending investigation", "Could not be determined"]
+          "options": ["Natural", "Accident", "Suicide", "Homicide", "Pending Investigation", "Could not be determined"],
+          "loinc": {
+            "code": "69449-7"
+          }
         }
       }
     },

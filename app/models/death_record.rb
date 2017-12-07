@@ -102,6 +102,11 @@ class DeathRecord < ApplicationRecord
       if current['loinc'] && current['loinc']['values']
         # This LOINC code has normative answers
         loinc_contents[current['loinc']['code']] = current['loinc']['values'][value]
+      elsif current['loinc'] && current['loinc']['index']
+        # Multiple values for a single loinc code (probably cause of death and
+        # onset to death fields)
+        loinc_contents[current['loinc']['code']] = {} unless loinc_contents[current['loinc']['code']]
+        loinc_contents[current['loinc']['code']][current['loinc']['index']] = value
       elsif current['loinc']
         # This LOINC code does NOT have normative answers
         loinc_contents[current['loinc']['code']] = value

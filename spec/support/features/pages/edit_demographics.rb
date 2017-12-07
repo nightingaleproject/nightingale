@@ -16,7 +16,7 @@ module Pages
       feature.expect(self).to feature.have_content 'No'
       feature.expect(self).to feature.have_content 'Married'
       feature.expect(self).to feature.have_content 'Bachelor\'s degree'
-      feature.expect(self).to feature.have_content 'Known, White, Chinese, Other (specify): Example'
+      feature.expect(self).to feature.have_content 'Known, White'
       feature.expect(self).to feature.have_content 'Example1'
       feature.expect(self).to feature.have_content 'Example2'
     end
@@ -57,9 +57,6 @@ module Pages
       within('fieldset#racefield') do
         choose 'Known'
         check 'White'
-        check 'Chinese'
-        check 'Other (specify)'
-        fill_in 'Other (specify)', with: 'Example'
       end
       feature.expect(self).to feature.have_content 'Usual Occupation'
       within('fieldset#usualOccupationfield') do
