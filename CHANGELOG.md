@@ -1,5 +1,13 @@
 ## Change Log
 
+### v0.7.0 - 2017-12-07
+
+* Added Docker containerization configuration and instructions
+* Updated administration rake tasks to better reflect Devise configuration
+* Adjusted how the auditing tool does searching
+* Adjusted level of activity logging for auditing
+* Updated some project configurations and structure for production deployments
+
 ### v0.6.0 - 2017-11-01
 
 * Added unit tests
