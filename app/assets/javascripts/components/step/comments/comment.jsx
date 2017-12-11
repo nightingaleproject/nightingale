@@ -43,7 +43,7 @@ class Comment extends React.Component {
         <div className="card-header">
           <div>
             <div>
-              <b>{this.props.comment.author.name}</b> ({this.props.comment.author.rolePretty}), {timeago}
+              <b>{this.props.comment.author.email}</b> {this.props.comment.author.name} ({this.props.comment.author.rolePretty}), {timeago}
               {deleteButton}
             </div>
           </div>
