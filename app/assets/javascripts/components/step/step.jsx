@@ -101,7 +101,8 @@ class Step extends React.Component {
           }
           $.post(Routes.comments_path(), {
             content: comment,
-            death_record_id: self.state.deathRecord.id
+            death_record_id: self.state.deathRecord.id,
+            requested_edits: true
           });
           $.post(Routes.request_edits_death_record_path(self.state.deathRecord.id), {
             step: step.name,
