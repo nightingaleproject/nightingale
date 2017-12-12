@@ -4,6 +4,7 @@ class CreateComment < ActiveRecord::Migration[5.0]
       t.belongs_to :death_record
       t.belongs_to :user
       t.string :content
+      t.boolean :requested_edits, default: false
 
       t.timestamps
     end

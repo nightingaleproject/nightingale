@@ -113,7 +113,7 @@ class DeathRecordsController < ApplicationController
       end
       # Send notification email to new User
       if !@death_record.comments.nil? && @death_record.comments.any?
-        comment_contents = @death_record.comments.collect(&:content)
+        comment_contents = @death_record.comments.where(requested_edits: true).collect(&:content)
       else
         comment_contents = []
       end

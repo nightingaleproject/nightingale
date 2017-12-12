@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   def create
     # No new comments if the record has been registered.
     return unless @death_record.registration.nil?
-    @comment = Comment.create!(content: comment_params[:content], death_record: @death_record)
+    @comment = Comment.create!(content: comment_params[:content], death_record: @death_record, requested_edits: comment_params[:requested_edits] == 'true')
     current_user.comments << @comment
     @death_record.save
     render json: @comment
@@ -47,6 +47,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.permit(:content, :death_record_id)
+    params.permit(:content, :death_record_id, :requested_edits)
   end
 end
