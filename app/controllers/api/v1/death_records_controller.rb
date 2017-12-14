@@ -11,7 +11,7 @@ class Api::V1::DeathRecordsController < ActionController::Base
         msg = { status: 'failure', message: 'Bad physician email' }
       else
         physician = User.find_for_authentication(email: physician_email)
-        workflow = Workflow.where(initiator_role: physician.roles.first.name).order("created_at").last
+        workflow = Workflow.where(initiator_role: physician.roles.first.name).order('created_at').last
         step_flow = workflow.step_flows.first
         @death_record = DeathRecord.new(creator: physician,
                                         owner: physician,
@@ -20,9 +20,9 @@ class Api::V1::DeathRecordsController < ActionController::Base
 
         # Create and and set a StepStatus for this DeathRecord.
         step_status = StepStatus.create(death_record: @death_record,
-                                    current_step: step_flow.current_step,
-                                    next_step: step_flow.next_step,
-                                    previous_step: step_flow.previous_step)
+                                        current_step: step_flow.current_step,
+                                        next_step: step_flow.next_step,
+                                        previous_step: step_flow.previous_step)
         @death_record.step_status = step_status
         @death_record.save
 
