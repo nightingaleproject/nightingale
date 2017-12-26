@@ -218,7 +218,7 @@
       "humanReadable": "{pregnancyStatus}",
       "properties": {
         "pregnancyStatus": {
-          "options": ["Not pregnant in the past year", "Pregnant at the time of death", "Not pregnant, but pregnant within 42 days of death", "Not pregnant, but pregnant 43 days to 1 year before death", "Unknown if pregnant within the past year"]
+          "options": ["Not pregnant within the past year", "Pregnant at the time of death", "Not pregnant, but pregnant within 42 days of death", "Not pregnant, but pregnant 43 days to 1 year before death", "Unknown if pregnant within the past year"]
         }
       }
     },
@@ -229,7 +229,7 @@
       "required": true,
       "properties": {
         "mannerOfDeath": {
-          "options": ["Natural", "Accident", "Suicide", "Homicide", "Pending investigation", "Could not be determined"]
+          "options": ["Natural", "Accident", "Suicide", "Homicide", "Pending Investigation", "Could not be determined"]
         }
       }
     },
