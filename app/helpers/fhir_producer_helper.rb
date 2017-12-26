@@ -1,26 +1,32 @@
 # Helper module for exporting Nightingale death records as FHIR.
 module FhirProducerHelper
 
-  # Given a Nigthingale death record, return a FHIR Composition that covers:
-  # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Death-Record-Composition
-  #
-  # This composition contains the entire death record.
-  #
-  def self.death_record_composition(death_record)
-    composition = FHIR::Composition.new
-
-    # Add type (CodeableConcept)
-    composition.type = FHIR::CodeableConcept.new(
-      'coding' => {
-        'code' => '64297-5',
-        'display' => 'Death certificate',
-        'system' => 'http://loinc.org'
-      }
-    )
+  # Given a Nightingale death record, build an equal FHIR death record bundle.
+  def self.to_fhir(death_record)
 
 
 
 
+    # # https://nightingaleproject.github.io/fhir-death-record/#/volume2/Death-Record-Composition
+    # composition = FHIR::Composition.new
+
+
+    # comp_type = FHIR::CodeableConcept.new(
+    #   'coding' => {
+    #     'code' => '64297-5',
+    #     'display' => 'Death certificate',
+    #     'system' => 'http://loinc.org'
+    #   }
+    # )
+
+    # # Todo...
+
+    # # Package composition into entry and return
+    # entry = FHIR::Bundle::Entry.new
+    # resource_id = SecureRandom.uuid
+    # entry.fullUrl = "urn:uuid:#{resource_id}"
+    # entry.resource = composition
+    # entry
   end
 
 
