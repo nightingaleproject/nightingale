@@ -42,6 +42,9 @@
   "didTobaccoUseContributeToDeath": {
     "ui:field": "nightRadioSelect"
   },
+  "deathResultedFromInjuryAtWork": {
+    "ui:field": "nightRadioSelect"
+  },
   "pregnancyStatus": {
     "ui:field": "nightRadioSelect"
   },
