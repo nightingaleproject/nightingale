@@ -169,7 +169,10 @@ module FhirProducerHelper
     onset = onsets[cod_index] # It's reasonable that this could be nil
 
     # Set cause
-    condition.text = cause
+    narrative = FHIR::Narrative.new
+    narrative.status = 'additional' # Narrative may contain additional information not found in structured data
+    narrative.div = cause
+    condition.text = narrative
 
     # Set onset if it exists
     condition.onsetString = onset unless onset.blank?
