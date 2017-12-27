@@ -185,56 +185,56 @@
           "type": "string",
           "loinc": {
             "code": "69453-9",
-            "index": 1
+            "index": 0
           }
         },
         "immediateInt": {
           "type": "string",
           "loinc": {
             "code": "69440-6",
-            "index": 1
+            "index": 0
           }
         },
         "under1": {
           "type": "string",
           "loinc": {
             "code": "69453-9",
-            "index": 2
+            "index": 1
           }
         },
         "under1Int": {
           "type": "string",
           "loinc": {
             "code": "69440-6",
-            "index": 2
+            "index": 1
           }
         },
         "under2": {
           "type": "string",
           "loinc": {
             "code": "69453-9",
-            "index": 3
+            "index": 2
           }
         },
         "under2Int": {
           "type": "string",
           "loinc": {
             "code": "69440-6",
-            "index": 3
+            "index": 2
           }
         },
         "under3": {
           "type": "string",
           "loinc": {
             "code": "69453-9",
-            "index": 4
+            "index": 3
           }
         },
         "under3Int": {
           "type": "string",
           "loinc": {
             "code": "69440-6",
-            "index": 4
+            "index": 3
           }
         }
       }
