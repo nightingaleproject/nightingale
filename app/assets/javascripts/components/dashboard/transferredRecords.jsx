@@ -201,17 +201,21 @@ class TransferredRecords extends React.Component {
   // information is available.
   decedentName(deathRecord) {
     var metadata = deathRecord.metadata;
+    var suffix = metadata.suffix;
+    if (!suffix) {
+      suffix = '';
+    }
     // Format name
     if (metadata.firstName && metadata.lastName && metadata.middleName) {
-      return metadata.lastName + ', ' + metadata.firstName + ' ' + metadata.middleName[0] + '. ' + metadata.suffix;
+      return metadata.lastName + ', ' + metadata.firstName + ' ' + metadata.middleName[0] + '. ' + suffix;
     } else if (metadata.firstName && metadata.middleName) {
-      return metadata.firstName + ' ' + metadata.middleName[0] + '. ' + metadata.suffix;
+      return metadata.firstName + ' ' + metadata.middleName[0] + '. ' + suffix;
     } else if (metadata.firstName && metadata.lastName) {
-      return metadata.lastName + ', ' + metadata.firstName + ' ' + metadata.suffix;
+      return metadata.lastName + ', ' + metadata.firstName + ' ' + suffix;
     } else if (metadata.firstName) {
-      return metadata.firstName + ' ' + metadata.suffix;
+      return metadata.firstName + ' ' + suffix;
     } else if (metadata.lastName) {
-      return metadata.lastName + ' ' + metadata.suffix;
+      return metadata.lastName + ' ' + suffix;
     }
   }
 

@@ -41,7 +41,7 @@ module FhirProducerHelper
     )
 
     # Create and add the decedent (Patient)
-    subject = FhirProducerHelper.death_record_decedent(death_record)
+    subject = FhirProducerHelper.death_decedent(death_record)
     composition.subject = subject.fullUrl
     fhir_record.entry << subject
 
@@ -106,7 +106,7 @@ module FhirProducerHelper
   # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Death-Record-Decedent
   #
   # This entry contains a FHIR Patient describing Death-Record-Decedent.
-  def self.death_record_decedent(death_record)
+  def self.death_decedent(death_record)
     # Patient options
     options = {}
     # Decedent name
@@ -192,12 +192,12 @@ module FhirProducerHelper
 
     # See: https://phinvads.cdc.gov/vads/ViewValueSet.action?id=1A195A5D-F911-46C6-A58B-4146B722BAB0
     # OID: 2.16.840.1.114222.4.11.6001
-    nightingale_certifier_lookup = {
+    certifier_lookup = {
       'Certifying Physician': {concept: '434651000124107', system: 'http://snomed.info/sct', display: 'Certifying physician-To the best of my knowledge, death occurred due to the cause(s) and manner stated.'},
       'Pronouncing and Certifying Physician': {concept: '434641000124105', system: 'http://snomed.info/sct', display: 'Pronouncing & Certifying physician-To the best of my knowledge, death occurred at the time, date, and place, and due to the cause(s) and manner stated.'},
       'Medical Examiner/Coroner': {concept: '440051000124108', system: 'http://snomed.info/sct', display: 'Medical Examiner/Coroner-On the basis of examination, and/or investigation, in my opinion, death occurred at the time, date, and place, and due to the cause(s) and manner stated.'}
     }.stringify_keys
-    certifier_type = nightingale_certifier_lookup[death_record.contents['certifierType.certifierType']]
+    certifier_type = certifier_lookup[death_record.contents['certifierType.certifierType']]
     extension.valueCoding = FHIR::Coding.new(
       'code' => certifier_type[:concept],
       'display' => certifier_type[:display],
@@ -205,10 +205,9 @@ module FhirProducerHelper
     ) unless certifier_type.blank?
     practitioner.extension = extension
 
-
     # Certifier name
     name = {}
-    name['family'] = death_record.contents['personCompletingCauseOfDeathName.lastName'] unless death_record.contents['personCompletingCauseOfDeathName.lastName'].blank?
+    name['family'] = [death_record.contents['personCompletingCauseOfDeathName.lastName']] unless death_record.contents['personCompletingCauseOfDeathName.lastName'].blank?
     name['given'] = [death_record.contents['personCompletingCauseOfDeathName.firstName']] unless death_record.contents['personCompletingCauseOfDeathName.firstName'].blank?
     unless death_record.contents['personCompletingCauseOfDeathName.middleName'].blank?
       name['given'] = [] unless name['given']
@@ -346,13 +345,13 @@ module FhirProducerHelper
     }
 
     # Convert Nightingale input to the proper FHIR specific output
-    nightingale_lookup = {
+    lookup = {
       'Yes': true,
       'No': false,
     }.stringify_keys
     obs_value = {
       type: 'valueBoolean',
-      value: nightingale_lookup[value]
+      value: lookup[value]
     }
 
     # Construct and return this entry
@@ -381,13 +380,13 @@ module FhirProducerHelper
     }
 
     # Convert Nightingale input to the proper FHIR specific output
-    nightingale_lookup = {
+    lookup = {
       'Yes': true,
       'No': false,
     }.stringify_keys
     obs_value = {
       type: 'valueBoolean',
-      value: nightingale_lookup[value]
+      value: lookup[value]
     }
 
     # Construct and return this entry
@@ -447,13 +446,13 @@ module FhirProducerHelper
     }
 
     # Convert Nightingale input to the proper FHIR specific output
-    nightingale_lookup = {
+    lookup = {
       'Yes': true,
       'No': false
     }.stringify_keys
     obs_value = {
       type: 'valueBoolean',
-      value: nightingale_lookup[value]
+      value: lookup[value]
     }
 
     # Construct and return this entry
@@ -487,7 +486,7 @@ module FhirProducerHelper
     # Convert Nightingale input to the proper FHIR specific output
     # See: https://phinvads.cdc.gov/vads/ViewValueSet.action?id=F148DC82-63C3-40B1-A7D2-D7AD78416D4A
     # OID: 2.16.840.1.114222.4.11.6005
-    nightingale_lookup = {
+    lookup = {
       'Driver/Operator': {concept: '236320001', system: 'http://snomed.info/sct', display: 'Driver/Operator'},
       'Passenger': {concept: '257500003', system: 'http://snomed.info/sct', display: 'Passenger'},
       'Pedestrian': {concept: '257518000', system: 'http://snomed.info/sct', display: 'Pedestrian'},
@@ -495,9 +494,9 @@ module FhirProducerHelper
     }.stringify_keys
     obs_value = {
       type: 'valueCodeableConcept',
-      code: nightingale_lookup[value][:concept],
-      display: nightingale_lookup[value][:display],
-      system: nightingale_lookup[value][:system]
+      code: lookup[value][:concept],
+      display: lookup[value][:display],
+      system: lookup[value][:system]
     }
 
     # Construct and return this entry
@@ -528,7 +527,7 @@ module FhirProducerHelper
     # Convert Nightingale input to the proper FHIR specific output
     # See: https://phinvads.cdc.gov/vads/ViewValueSet.action?id=0D3864B7-5330-410D-BC91-40C1C704BBA4
     # OID: 2.16.840.1.114222.4.11.6002
-    nightingale_lookup = {
+    lookup = {
       'Natural': {concept: '38605008', system: 'http://snomed.info/sct', display: 'Natural'},
       'Accident': {concept: '7878000', system: 'http://snomed.info/sct', display: 'Accident'},
       'Suicide': {concept: '44301001', system: 'http://snomed.info/sct', display: 'Suicide'},
@@ -538,9 +537,9 @@ module FhirProducerHelper
     }.stringify_keys
     obs_value = {
       type: 'valueCodeableConcept',
-      code: nightingale_lookup[value][:concept],
-      display: nightingale_lookup[value][:display],
-      system: nightingale_lookup[value][:system]
+      code: lookup[value][:concept],
+      display: lookup[value][:display],
+      system: lookup[value][:system]
     }
 
     # Construct and return this entry
@@ -569,13 +568,13 @@ module FhirProducerHelper
     }
 
     # Convert Nightingale input to the proper FHIR specific output
-    nightingale_lookup = {
+    lookup = {
       'Yes': true,
       'No': false
     }.stringify_keys
     obs_value = {
       type: 'valueBoolean',
-      value: nightingale_lookup[value]
+      value: lookup[value]
     }
 
     # Construct and return this entry
@@ -606,19 +605,19 @@ module FhirProducerHelper
     # Convert Nightingale input to the proper FHIR specific output
     # See: https://phinvads.cdc.gov/vads/ViewValueSet.action?id=C763809B-A38D-4113-8E28-126620B76C2F
     # OID: 2.16.840.1.114222.4.11.6003
-    nightingale_lookup = {
+    lookup = {
       'Not pregnant within past year': {concept: 'PHC1260', system: 'PHIN VS (CDC Local Coding System)', display: 'Not pregnant within past year'},
       'Pregnant at time of death': {concept: 'PHC1261', system: 'PHIN VS (CDC Local Coding System)', display: 'Pregnant at time of death'},
       'Not pregnant, but pregnant within 42 days of death': {concept: 'PHC1262', system: 'PHIN VS (CDC Local Coding System)', display: 'Not pregnant, but pregnant within 42 days of death'},
       'Not pregnant, but pregnant 43 days to 1 year before death': {concept: 'PHC1263', system: 'PHIN VS (CDC Local Coding System)', display: 'Not pregnant, but pregnant 43 days to 1 year before death'},
       'Unknown if pregnant within the past year': {concept: 'PHC1264', system: 'PHIN VS (CDC Local Coding System)', display: 'Unknown if pregnant within the past year'},
     }.stringify_keys
-    debugger unless nightingale_lookup[value]
+    debugger unless lookup[value]
     obs_value = {
       type: 'valueCodeableConcept',
-      code: nightingale_lookup[value][:concept],
-      display: nightingale_lookup[value][:display],
-      system: nightingale_lookup[value][:system]
+      code: lookup[value][:concept],
+      display: lookup[value][:display],
+      system: lookup[value][:system]
     }
 
     # Construct and return this entry
@@ -649,7 +648,7 @@ module FhirProducerHelper
     # Convert Nightingale input to the proper FHIR specific output
     # See: https://phinvads.cdc.gov/vads/ViewValueSet.action?id=FF7F17AE-3D20-473D-9068-E77A08491242
     # OID: 2.16.840.1.114222.4.11.6004
-    nightingale_lookup = {
+    lookup = {
       'Yes': {concept: '373066001', system: 'http://snomed.info/sct', display: 'Yes'},
       'No': {concept: '373067005', system: 'http://snomed.info/sct', display: 'No'},
       'Probably': {concept: '2931005', system: 'http://snomed.info/sct', display: 'Probably'},
@@ -657,9 +656,9 @@ module FhirProducerHelper
     }.stringify_keys
     obs_value = {
       type: 'valueCodeableConcept',
-      code: nightingale_lookup[value][:concept],
-      display: nightingale_lookup[value][:display],
-      system: nightingale_lookup[value][:system]
+      code: lookup[value][:concept],
+      display: lookup[value][:display],
+      system: lookup[value][:system]
     }
 
     # Construct and return this entry

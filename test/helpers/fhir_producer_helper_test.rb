@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class Fhir::V1::DeathRecordsControllerTest < ActionDispatch::IntegrationTest
+class FhirProducerHelperTest < ActiveSupport::TestCase
   setup do
-    @dr = DeathRecord.find(1)
+    @dr = DeathRecord.find(1) # TODO: Use a better fixture for this
   end
 
   test 'validate FHIR output' do

@@ -16,16 +16,15 @@ class GuesteHelperTest < ActiveSupport::TestCase
   end
 
   test 'generating user token' do
-    user_token = GuestHelper.generate_user_token(@test_user, @death_record) 
+    user_token = GuestHelper.generate_user_token(@test_user, @death_record)
     assert_not_nil user_token
-    assert_not_equal '', user_token        
+    assert_not_equal '', user_token
   end
 
   test 'generate login link' do
-    user_token = GuestHelper.generate_user_token(@test_user, @death_record) 
+    user_token = GuestHelper.generate_user_token(@test_user, @death_record)
     login_link = GuestHelper.generate_login_link(user_token, 'test')
     assert_not_nil login_link
     assert_not_equal '', login_link
   end
-
 end
