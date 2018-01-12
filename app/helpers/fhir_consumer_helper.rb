@@ -86,7 +86,11 @@ module FhirConsumerHelper
       # All subsequent 'given' names will be combined and included as the 'middle name'
       decedent['decedentName.middleName'] = name.given.drop(1).join(' ') if name.given && name.given.drop(1).any? && !name.given.drop(1).join(' ').blank?
       # All 'family' names will be combined and included as the 'last name'
-      decedent['decedentName.lastName'] = name.family.join(' ') if name.family && name.family.any?
+      if name.family.is_a?(Array)
+        decedent['decedentName.lastName'] = name.family.join(' ') if name.family && name.family.any?
+      else
+        decedent['decedentName.lastName'] = name.family
+      end 
       certifier['decedentName.suffix'] = name.suffix.join(' ') if name.suffix && name.suffix.any? && !name.suffix.join(' ').blank?
     end
     # Handle date of birth
@@ -161,7 +165,11 @@ module FhirConsumerHelper
       # All subsequent 'given' names will be combined and included as the 'middle name'
       certifier['personCompletingCauseOfDeathName.middleName'] = name.given.drop(1).join(' ') if name.given && name.given.drop(1).any? && !name.given.drop(1).join(' ').blank?
       # All 'family' names will be combined and included as the 'last name'
-      certifier['personCompletingCauseOfDeathName.lastName'] = name.family.join(' ') if name.family && name.family.any?
+      if name.family.is_a?(Array)
+        certifier['personCompletingCauseOfDeathName.lastName'] = name.family.join(' ') if name.family && name.family.any?
+      else
+        certifier['personCompletingCauseOfDeathName.lastName'] = name.family
+      end 
       certifier['personCompletingCauseOfDeathName.suffix'] = name.suffix.join(' ') if name.suffix && name.suffix.any? && !name.suffix.join(' ').blank?
     end
     # Handle address
