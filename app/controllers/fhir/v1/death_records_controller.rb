@@ -4,8 +4,8 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
   # Create a new record using the given FHIR json.
   def create
     respond_to do |format|
-      # TODO: Looking for FHIR bundle in 'data' key, this probably will change...
-      input_json = params.permit(:contents)[:contents]
+      # TODO: Looking for FHIR bundle in 'fhir' key, this probably will change...
+      input_json = params.permit(:fhir)[:fhir]
 
       resource = FHIR::Json.from_json(input_json)
       errors = resource.validate

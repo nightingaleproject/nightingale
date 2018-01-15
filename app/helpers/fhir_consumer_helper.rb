@@ -111,10 +111,13 @@ module FhirConsumerHelper
     patient.extension.each do |extension|
       if extension.url == 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
         # Handle race
-        code = extension.valueCodeableConcept&.coding&.first&.code
-        if code && RACE_ETHNICITY_CODES.key(code)
+        codes = []
+        extension.valueCodeableConcept&.coding.each do |coding|
+          codes << RACE_ETHNICITY_CODES.key(coding.code) if RACE_ETHNICITY_CODES.key(coding.code)
+        end
+        unless codes.empty?
           decedent['race.race.option'] = 'Known'
-          decedent['race.race.specify'] = [RACE_ETHNICITY_CODES.key(code)].to_json
+          decedent['race.race.specify'] = codes.to_json
         end
       elsif extension.url == 'http://hl7.org/fhir/StructureDefinition/birthPlace'
         # Handle birth place
@@ -364,13 +367,13 @@ module FhirConsumerHelper
   #############################################################################
 
   MARITAL_STATUS = {
-    'Married' => 'M',
-    'Married but seperated' => 'M',
-    'Widowed' => 'W',
-    'Widowed (but not remarried)' => 'W',
-    'Divorced (but not remarried)' => 'D',
-    'Never married' => 'S',
-    'Unknown' => 'UNK',
+    'M' => 'Married',
+    'M' => 'Married but seperated',
+    'W' => 'Widowed',
+    'W' => 'Widowed (but not remarried)',
+    'D' => 'Divorced (but not remarried)',
+    'S' => 'Never married',
+    'U' => 'Unknown',
   }.stringify_keys
 
   RACE_ETHNICITY_CODES = {
