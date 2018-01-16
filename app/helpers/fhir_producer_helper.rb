@@ -135,7 +135,12 @@ module FhirProducerHelper
     address['postalCode'] = death_record.contents['decedentAddress.zip'] unless death_record.contents['decedentAddress.zip'].blank?
     options['address'] = address
     # Decedent's marital status
-    options['maritalStatus'] = MARITAL_STATUS[death_record.contents['maritalStatus.maritalStatus']] if MARITAL_STATUS[death_record.contents['maritalStatus.maritalStatus']]
+    options['maritalStatus'] = FHIR::CodeableConcept.new(
+      'coding' => {
+        'code' => MARITAL_STATUS[death_record.contents['maritalStatus.maritalStatus']],
+        'system' => 'http://hl7.org/fhir/ValueSet/marital-status'
+      }
+    ) if MARITAL_STATUS[death_record.contents['maritalStatus.maritalStatus']]
     options['extension'] = []
     # Decedent race, TODO: Need to support all chosen options
     options['extension'] << {

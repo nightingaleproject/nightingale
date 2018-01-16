@@ -1,6 +1,14 @@
 # Helper module for importing FHIR death records into Nightingale
 module FhirConsumerHelper
 
+  # Helper method to get the first and last name of the certifier. This
+  # will be used to find the doctor in the system that should own the record
+  # once it's been consumed.
+  def self.certifier_name(fhir_record)
+    consumer = FhirConsumerHelper.certifier(fhir_record.entry[2])
+    [consumer['personCompletingCauseOfDeathName.firstName'], consumer['personCompletingCauseOfDeathName.lastName']]
+  end
+
   # Given a FHIR death record, build and return an equivalent Nightingle contents
   # structure (that can be used to create/update the information in a
   # Nightingale death record).
@@ -90,7 +98,7 @@ module FhirConsumerHelper
         decedent['decedentName.lastName'] = name.family.join(' ') if name.family && name.family.any?
       else
         decedent['decedentName.lastName'] = name.family
-      end 
+      end
       certifier['decedentName.suffix'] = name.suffix.join(' ') if name.suffix && name.suffix.any? && !name.suffix.join(' ').blank?
     end
     # Handle date of birth
@@ -172,7 +180,7 @@ module FhirConsumerHelper
         certifier['personCompletingCauseOfDeathName.lastName'] = name.family.join(' ') if name.family && name.family.any?
       else
         certifier['personCompletingCauseOfDeathName.lastName'] = name.family
-      end 
+      end
       certifier['personCompletingCauseOfDeathName.suffix'] = name.suffix.join(' ') if name.suffix && name.suffix.any? && !name.suffix.join(' ').blank?
     end
     # Handle address

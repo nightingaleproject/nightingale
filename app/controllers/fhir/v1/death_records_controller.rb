@@ -4,22 +4,22 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
   # Create a new record using the given FHIR json.
   def create
     respond_to do |format|
-      # TODO: Looking for FHIR bundle in 'fhir' key, this probably will change...
-      input_json = params.permit(:fhir)[:fhir]
-
-      resource = FHIR::Json.from_json(input_json)
-      errors = resource.validate
-
-      unless errors.empty?
-         format.any { render :json => { :errors => errors }, :status => 422 }
+      # Handle given FHIR in either JSON or XML format
+      if request.content_type == 'application/json'
+        resource = FHIR::Json.from_json(JSON.parse(request.body.string))
+      elsif request.content_type == 'application/xml'
+        resource = FHIR::Xml.from_xml(request.body.string)
       end
+
+      # Make sure FHIR is valid
+      raise 'FHIR validation issues!' if resource.nil? || resource.validate.any?
+
+      # Grab the user that will own this record
+      user_first, user_last = FhirConsumerHelper.certifier_name(resource)
+      user = User.find_by(first_name: user_first, last_name: user_last)
 
       # Convert FHIR bundle to Nightingale style flat contents
       contents = FhirConsumerHelper.from_fhir(resource)
-
-      # Grab user account
-      email = params.permit(:email)[:email]
-      user = User.find_for_authentication(email: email)
 
       # Create new record
       workflow = Workflow.where(initiator_role: user.roles.first.name).order('created_at').last
@@ -45,8 +45,8 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
       end
       @death_record.save(validate: false)
 
-      format.json { render json: { status: 'ok', message: 'Created ID: ' + @death_record.id.to_s } }
-      format.xml { render xml: { status: 'ok', message: 'Created ID: ' + @death_record.id.to_s } }
+      format.json { render json: { status: :ok, message: 'Created ID: ' + @death_record.id.to_s } }
+      format.xml { render xml: { status: :ok, message: 'Created ID: ' + @death_record.id.to_s } }
     end
   end
 
