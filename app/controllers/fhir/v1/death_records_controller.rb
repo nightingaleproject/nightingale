@@ -1,12 +1,13 @@
 class Fhir::V1::DeathRecordsController < ActionController::Base
-  #before_action :doorkeeper_authorize! # TODO: Add back when done testing!
+  protect_from_forgery prepend: true, with: :exception
+  before_action :doorkeeper_authorize!
 
   # Create a new record using the given FHIR json.
   def create
     respond_to do |format|
       # Handle given FHIR in either JSON or XML format
       if request.content_type == 'application/json'
-        resource = FHIR::Json.from_json(JSON.parse(request.body.string))
+        resource = FHIR::Json.from_json(request.body.string)
       elsif request.content_type == 'application/xml'
         resource = FHIR::Xml.from_xml(request.body.string)
       end
@@ -15,8 +16,8 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
       raise 'FHIR validation issues!' if resource.nil? || resource.validate.any?
 
       # Grab the user that will own this record
-      user_first, user_last = FhirConsumerHelper.certifier_name(resource)
-      user = User.find_by(first_name: user_first, last_name: user_last)
+      #user_first, user_last = FhirConsumerHelper.certifier_name(resource)
+      user = User.find_by(first_name: 'Example', last_name: 'Certifier')
 
       # Convert FHIR bundle to Nightingale style flat contents
       contents = FhirConsumerHelper.from_fhir(resource)
@@ -53,8 +54,7 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
   # Update the record using the given FHIR json.
   def update
     respond_to do |format|
-      # TODO
-      format.json { render json: { status: 'ok', message: 'Not implemented!' } }
+      format.json { render json: { status: :not_implemented } }
     end
   end
 
@@ -62,7 +62,7 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
   def show
     respond_to do |format|
       # Fetch the requested record
-      death_record = DeathRecord.find(params[:id])
+      death_record = current_user.owned_death_records.find(params[:id])
 
       # Add basic info to the FHIR record
       fhir_record = FhirProducerHelper.to_fhir(death_record)

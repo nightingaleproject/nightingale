@@ -47,7 +47,7 @@ module IJEFormat
     if record_hash.key?(key)
       val = record_hash[key]
     end
-    if val.empty?
+    if val.nil? || val.empty?
       return ""
     end
     return val[0...[val.length, offset].min]

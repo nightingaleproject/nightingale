@@ -384,9 +384,7 @@ module FhirConsumerHelper
 
   MARITAL_STATUS = {
     'M' => 'Married',
-    'M' => 'Married but seperated',
     'W' => 'Widowed',
-    'W' => 'Widowed (but not remarried)',
     'D' => 'Divorced (but not remarried)',
     'S' => 'Never married',
     'U' => 'Unknown',
