@@ -4,7 +4,7 @@
     "decedentName": {
       "title": "Decedent's Legal Name",
       "type": "object",
-      "showAkas": false,
+      "showAkas": true,
       "humanReadable": "{lastName}, {firstName} {middleName} {suffix}",
       "required": true,
       "properties": {
