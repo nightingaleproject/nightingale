@@ -16,11 +16,10 @@ GIT
 
 GIT
   remote: https://github.com/nightingaleproject/views_connector
-  revision: c3377810ed88badf92bdd98036573dfa2084f4aa
-  branch: nokogiri_1_7_2
+  revision: c98d9e26ec7d96cb5da61419698a128425d7381f
   specs:
     views (0.1.0)
-      nokogiri (>= 1.6.8.1)
+      nokogiri (= 1.8.2)
       savon (~> 2.0)
 
 GIT
@@ -157,7 +156,7 @@ GEM
     gyoku (1.3.1)
       builder (>= 2.1.2)
     hashdiff (0.3.6)
-    httpi (2.4.2)
+    httpi (2.4.3)
       rack
       socksify
     i18n (0.8.6)
@@ -216,7 +215,7 @@ GEM
       ttfunk (~> 1.5)
     public_suffix (3.0.0)
     puma (3.10.0)
-    rack (2.0.3)
+    rack (2.0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.5)
@@ -286,12 +285,12 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    savon (2.11.2)
+    savon (2.12.0)
       akami (~> 1.2)
       builder (>= 2.1.2)
       gyoku (~> 1.2)
       httpi (~> 2.3)
-      nokogiri (>= 1.4.0)
+      nokogiri (>= 1.8.1)
       nori (~> 2.4)
       wasabi (~> 3.4)
     selenium-webdriver (3.6.0)
@@ -387,4 +386,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.15.4
+   1.16.1

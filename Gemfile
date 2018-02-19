@@ -72,7 +72,7 @@ gem 'config'
 gem 'kaminari'
 
 # VIEWS integration
-gem 'views', git: 'https://github.com/nightingaleproject/views_connector', branch: 'nokogiri_1_7_2'
+gem 'views', git: 'https://github.com/nightingaleproject/views_connector'
 
 # OAuth2
 gem 'doorkeeper'
