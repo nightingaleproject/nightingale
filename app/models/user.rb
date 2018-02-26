@@ -23,6 +23,10 @@ class User < ApplicationRecord
     has_role?(:registrar)
   end
 
+  def physician?
+    has_role?(:physician)
+  end
+
   def can_start_record?
     return false if is_guest_user
     roles.each do |role|

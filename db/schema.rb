@@ -60,8 +60,9 @@ ActiveRecord::Schema.define(version: 20170929014008) do
     t.integer  "death_record_id"
     t.integer  "user_id"
     t.string   "content"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "requested_edits", default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["death_record_id"], name: "index_comments_on_death_record_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end

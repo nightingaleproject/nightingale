@@ -9,18 +9,30 @@
       "required": true,
       "properties": {
         "firstName": {
+          "loinc": {
+            "code": "45392-8"
+          },
           "type": "string",
           "title": "First Name"
         },
         "middleName": {
+          "loinc": {
+            "code": "45393-6"
+          },
           "type": "string",
           "title": "Middle Name"
         },
         "lastName": {
+          "loinc": {
+            "code": "45394-4"
+          },
           "type": "string",
           "title": "Last Name"
         },
         "suffix": {
+          "loinc": {
+            "code": "45395-1"
+          },
           "type": "string",
           "title": "Suffix"
         },
@@ -48,6 +60,9 @@
       }
     },
     "ssn": {
+      "loinc": {
+        "code": "45396-9"
+      },
       "title": "Social Security Number",
       "type": "object",
       "humanReadable": "{ssn1}-{ssn2}-{ssn3}",

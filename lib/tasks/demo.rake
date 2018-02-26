@@ -24,7 +24,7 @@ namespace :nightingale do
       user.add_role 'funeral_director'
       user = User.create!(email: 'fd2@example.com', password: '123456', first_name: 'Example', last_name: 'FD', telephone: '000-000-0000')
       user.add_role 'funeral_director'
-      user = User.create!(email: 'doc1@example.com', password: '123456', first_name: 'Example', last_name: 'Physician', telephone: '000-000-0000')
+      user = User.create!(email: 'doc1@example.com', password: '123456', first_name: 'Example', last_name: 'Certifier', telephone: '000-000-0000')
       user.add_role 'physician'
       user = User.create!(email: 'doc2@example.com', password: '123456', first_name: 'Example', last_name: 'Physician', telephone: '000-000-0000')
       user.add_role 'physician'

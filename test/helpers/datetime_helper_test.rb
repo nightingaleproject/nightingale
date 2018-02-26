@@ -33,5 +33,4 @@ class DatetimeHelperTest < ActiveSupport::TestCase
   test 'generate pretty time' do
     assert_equal '10:19 AM', DatetimeHelper.pretty_time(@time)
   end
-
 end

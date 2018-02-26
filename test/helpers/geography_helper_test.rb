@@ -11,7 +11,7 @@ class GeographyHelperTest < ActiveSupport::TestCase
     assert_equal 51,  GeographyHelper.get_states.count
   end
 
-  test 'get counties' do 
+  test 'get counties' do
     assert_equal 14, GeographyHelper.get_counties(@state).count
   end
 
@@ -26,5 +26,4 @@ class GeographyHelperTest < ActiveSupport::TestCase
   test 'get zipcodes' do
     assert_equal 5, GeographyHelper.get_zipcodes(@state, @county, @city).count
   end
-
 end

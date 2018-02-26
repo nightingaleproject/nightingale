@@ -72,7 +72,7 @@ gem 'config'
 gem 'kaminari'
 
 # VIEWS integration
-gem 'views', git: 'https://github.com/nightingaleproject/views_connector', branch: 'nokogiri_1_7_2'
+gem 'views', git: 'https://github.com/nightingaleproject/views_connector'
 
 # OAuth2
 gem 'doorkeeper'
@@ -82,6 +82,9 @@ gem 'ije', git: 'https://github.com/nightingaleproject/ije'
 gem 'codez'
 gem 'StreetAddress'
 gem 'geokit'
+
+# FHIR
+gem 'fhir_models', git: 'https://github.com/fhir-crucible/fhir_models'
 
 group :development, :test, :ci do
   gem 'byebug', platform: :mri

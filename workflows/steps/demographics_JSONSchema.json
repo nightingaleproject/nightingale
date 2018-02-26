@@ -8,7 +8,11 @@
       "required": true,
       "properties": {
         "sex": {
-          "options": ["Male", "Female", "Unknown"]
+          "options": ["Male", "Female", "Unknown"],
+          "loinc": {
+            "code": "21840-4",
+            "values": {"Male": "1", "Female": "2", "Unknown": "5"}
+          }
         }
       }
     },
@@ -114,7 +118,7 @@
             }
           },
           "options": [{"text": "Known", "show": "specify1"}, "Refused", "Not Obtainable", "Unknown"],
-          "specifyOptions": {"specify1": ["White", "Black or African America", {"text": "American Indian or Alaskan Native (specify tribe)", "input": true}, "Asian Indian", "Chinese", "Filipino", "Japanese", "Korean", "Vietnamese", {"text": "Other Asian (specify)", "input": true}, "Native Hawaiian", "Guamanian or Chamorro", "Samoan", {"text": "Other Pacific Islander (specify)", "input": true}, {"text": "Other (specify)", "input": true}]}
+          "specifyOptions": {"specify1": ["White", "Black or African American", "American Indian or Alaskan Native", "Asian", "Asian Indian", "Chinese", "Filipino", "Japanese", "Korean", "Vietnamese", "Native Hawaiian", "Guamanian", "Chamorro", "Samoan", "Other Pacific Islander"]}
         }
       }
     },

@@ -95,12 +95,15 @@ class Step extends React.Component {
         // Check if user canceled
         if (input != false) {
           // Create comment if any input was given
+          var comment = self.state.currentUser.email + ' requested edits from ' + user.email + '.';
           if (input) {
-            $.post(Routes.comments_path(), {
-              content: input,
-              death_record_id: self.state.deathRecord.id
-            });
+            comment += ' Comment: ' + input;
           }
+          $.post(Routes.comments_path(), {
+            content: comment,
+            death_record_id: self.state.deathRecord.id,
+            requested_edits: true
+          });
           $.post(Routes.request_edits_death_record_path(self.state.deathRecord.id), {
             step: step.name,
             email: user.email

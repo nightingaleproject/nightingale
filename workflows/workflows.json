@@ -107,12 +107,8 @@
     {
       "name": "fd_starts",
       "version": "20170509-1",
-      "deathCertifcateTemplate": "///template201705-09.pdf",
       "description": "An example workflow where a funeral director starts a death record.",
       "initiator_role": "funeral_director",
-      "reactions": {
-
-      },
       "roles": [
         {
           "name": "funeral_director",
@@ -160,12 +156,8 @@
     {
       "name": "physician_starts",
       "version": "20170509-1",
-      "deathCertifcateTemplate": "///template201705-09.pdf",
       "description": "An example workflow where a physician starts a death record.",
       "initiator_role": "physician",
-      "reactions": {
-
-      },
       "roles": [
         {
           "name": "physician",

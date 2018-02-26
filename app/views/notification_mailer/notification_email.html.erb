@@ -6,9 +6,8 @@
   <body>
     <h1>Nightingale Notification, <%= @user.email %></h1>
     <p>
-      There is a new Nightingale notification!<br>
+      You have Death Records that require your attention!
     </p>
-    <p> You have a new Death Record to view: <%= link_to "Edit", edit_death_record_url(@death_record) %>. </p>
     <p>
       <% if @comments.any? %>
         Comments from previous user(s):
@@ -18,7 +17,7 @@
       <% end %>
     </p>
     <p>
-      To login to the site, just follow this link: <a href="<%= root_url %>">Log in</a>.
+      To log in to Nightingale, <a href="<%= root_url %>">click here</a>.
     </p>
   </body>
 </html>

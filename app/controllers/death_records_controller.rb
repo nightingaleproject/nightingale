@@ -28,11 +28,6 @@ class DeathRecordsController < ApplicationController
     @death_record.save
   end
 
-  # Update the DeathRecord.
-  def update
-    # TODO
-  end
-
   # Update a specific step's contents.
   def update_step
     step = @death_record.step_status.current_step
@@ -113,7 +108,7 @@ class DeathRecordsController < ApplicationController
       end
       # Send notification email to new User
       if !@death_record.comments.nil? && @death_record.comments.any?
-        comment_contents = @death_record.comments.collect(&:content)
+        comment_contents = @death_record.comments.where(requested_edits: true).collect(&:content)
       else
         comment_contents = []
       end
@@ -185,7 +180,7 @@ class DeathRecordsController < ApplicationController
 
   # Function that returns an attachment of all registered records in IJE format.
   def export_records_in_ije
-    registered_ids = Registration.all.map(&:death_record_id)
+    registered_ids = DeathRecord.all.map(&:id) # Temp grab all records for connectathon #Registration.all.map(&:death_record_id)
     ije_result = IJEFormat.process_data(DeathRecord.find(registered_ids).collect(&:contents))
     send_data ije_result, disposition: 'attachment', filename: Time.now.to_i.to_s + '_records.MOR'
   end
