@@ -1,5 +1,11 @@
 ## Change Log
 
+### v0.8.0 - 2018-03-01
+
+* Implemented FHIR Importing and Exporting
+* Made adjustments to the demo workflows to make them properly in line with the 2003 certificate of death
+* Updated Nokogiri to 1.8.2 to address vulnerability
+
 ### v0.7.0 - 2017-12-07
 
 * Added Docker containerization configuration and instructions
