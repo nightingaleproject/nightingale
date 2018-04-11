@@ -68,16 +68,17 @@ module FhirProducerHelper
 
     # Create the observations
     observations = []
-    observations << FhirProducerHelper.actual_or_presumed_date_of_death(death_record_loinc)
-    observations << FhirProducerHelper.autopsy_performed(death_record_loinc)
-    observations << FhirProducerHelper.autopsy_results_available(death_record_loinc)
-    observations << FhirProducerHelper.date_pronounced_dead(death_record_loinc)
-    observations << FhirProducerHelper.death_resulted_from_injury_at_work(death_record_loinc)
-    observations << FhirProducerHelper.injury_leading_to_death_associated_trans(death_record_loinc) # TODO: Nigthingale does not support this!
-    observations << FhirProducerHelper.manner_of_death(death_record_loinc)
-    observations << FhirProducerHelper.medical_examiner_or_coroner_contacted(death_record_loinc)
-    observations << FhirProducerHelper.timing_of_pregnancy_in_relation_to_death(death_record_loinc)
-    observations << FhirProducerHelper.tobacco_use_contributed_to_death(death_record_loinc)
+    observations << FhirProducerHelper.actual_or_presumed_date_of_death(death_record_loinc, subject)
+    observations << FhirProducerHelper.autopsy_performed(death_record_loinc, subject)
+    observations << FhirProducerHelper.autopsy_results_available(death_record_loinc, subject)
+    observations << FhirProducerHelper.date_pronounced_dead(death_record_loinc, subject)
+    observations << FhirProducerHelper.death_resulted_from_injury_at_work(death_record_loinc, subject)
+    observations << FhirProducerHelper.injury_leading_to_death_associated_trans(death_record_loinc, subject)
+    observations << FhirProducerHelper.details_of_injury(death_record_loinc, subject)
+    observations << FhirProducerHelper.manner_of_death(death_record_loinc, subject)
+    observations << FhirProducerHelper.medical_examiner_or_coroner_contacted(death_record_loinc, subject)
+    observations << FhirProducerHelper.timing_of_pregnancy_in_relation_to_death(death_record_loinc, subject)
+    observations << FhirProducerHelper.tobacco_use_contributed_to_death(death_record_loinc, subject)
     observations.compact!
 
     # Add the observation references to the compositon section
@@ -135,12 +136,12 @@ module FhirProducerHelper
     address['postalCode'] = death_record.contents['decedentAddress.zip'] unless death_record.contents['decedentAddress.zip'].blank?
     options['address'] = address
     # Decedent's marital status
-    options['maritalStatus'] = FHIR::CodeableConcept.new(
-      'coding' => {
-        'code' => MARITAL_STATUS[death_record.contents['maritalStatus.maritalStatus']],
-        'system' => 'http://hl7.org/fhir/ValueSet/marital-status'
-      }
-    ) if MARITAL_STATUS[death_record.contents['maritalStatus.maritalStatus']]
+    # options['maritalStatus'] = FHIR::CodeableConcept.new(
+    #   'coding' => {
+    #     'code' => MARITAL_STATUS[death_record.contents['maritalStatus.maritalStatus']],
+    #     'system' => 'http://hl7.org/fhir/ValueSet/marital-status'
+    #   }
+    # ) if MARITAL_STATUS[death_record.contents['maritalStatus.maritalStatus']]
     options['extension'] = []
     # Decedent race, TODO: Need to support all chosen options
     options['extension'] << {
@@ -168,6 +169,7 @@ module FhirProducerHelper
       'url' => 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex',
       'valueCode' => death_record.contents['sex.sex']&.chars&.first
     } if death_record.contents['sex.sex']
+
     patient = FHIR::Patient.new(options)
 
     # Package patient into entry and return
@@ -298,10 +300,10 @@ module FhirProducerHelper
   #############################################################################
 
   # Returns a FHIR entry that covers:
-  # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Actual-Or-Presumed-Date-Of-Death
+  # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-ActualOrPresumedDateOfDeath
   #
   # This entry contains a FHIR Observation describing Actual-Or-Presumed-Date-Of-Death.
-  def self.actual_or_presumed_date_of_death(death_record_loinc)
+  def self.actual_or_presumed_date_of_death(death_record_loinc, subject, status = 'final')
     # Coding informations for this observation (helps figure out which part of the record this is)
     obs_code = {
       code: '81956-5',
@@ -315,7 +317,7 @@ module FhirProducerHelper
 
     # Metadata information for this observation
     obs_meta = {
-      'profile' => 'https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Actual-Or-Presumed-Date-Of-Death'
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-ActualOrPresumedDateOfDeath'
     }
 
     # Convert Nightingale input to the proper FHIR specific output
@@ -325,14 +327,14 @@ module FhirProducerHelper
     }
 
     # Construct and return this entry
-    FhirProducerHelper.observation(obs_code, obs_value, obs_meta)
+    FhirProducerHelper.observation(obs_code, obs_value, obs_meta, subject, status)
   end
 
   # Returns a FHIR entry that covers:
-  # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Autopsy-Performed
+  # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-AutopsyPerformed
   #
   # This entry contains a FHIR Observation describing Autopsy-Performed.
-  def self.autopsy_performed(death_record_loinc)
+  def self.autopsy_performed(death_record_loinc, subject, status = 'final')
     # Coding informations for this observation (helps figure out which part of the record this is)
     obs_code = {
       code: '85699-7',
@@ -346,7 +348,7 @@ module FhirProducerHelper
 
     # Metadata information for this observation
     obs_meta = {
-      'profile' => 'https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Autopsy-Performed'
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-AutopsyPerformed'
     }
 
     # Convert Nightingale input to the proper FHIR specific output
@@ -360,14 +362,14 @@ module FhirProducerHelper
     }
 
     # Construct and return this entry
-    FhirProducerHelper.observation(obs_code, obs_value, obs_meta)
+    FhirProducerHelper.observation(obs_code, obs_value, obs_meta, subject, status)
   end
 
   # Returns a FHIR entry that covers:
-  # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Autopsy-Results-Available
+  # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-AutopsyResultsAvailable
   #
   # This entry contains a FHIR Observation describing Autopsy-Results-Available.
-  def self.autopsy_results_available(death_record_loinc)
+  def self.autopsy_results_available(death_record_loinc, subject, status = 'final')
     # Coding informations for this observation (helps figure out which part of the record this is)
     obs_code = {
       code: '69436-4',
@@ -381,7 +383,7 @@ module FhirProducerHelper
 
     # Metadata information for this observation
     obs_meta = {
-      'profile' => 'https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Autopsy-Results-Available'
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-AutopsyResultsAvailable'
     }
 
     # Convert Nightingale input to the proper FHIR specific output
@@ -395,14 +397,14 @@ module FhirProducerHelper
     }
 
     # Construct and return this entry
-    FhirProducerHelper.observation(obs_code, obs_value, obs_meta)
+    FhirProducerHelper.observation(obs_code, obs_value, obs_meta, subject, status)
   end
 
   # Returns a FHIR entry that covers:
-  # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Date-Pronounced-Dead
+  # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DatePronouncedDead
   #
   # This entry contains a FHIR Observation describing Date-Pronounced-Dead.
-  def self.date_pronounced_dead(death_record_loinc)
+  def self.date_pronounced_dead(death_record_loinc, subject, status = 'final')
     # Coding informations for this observation (helps figure out which part of the record this is)
     obs_code = {
       code: '80616-6',
@@ -416,7 +418,7 @@ module FhirProducerHelper
 
     # Metadata information for this observation
     obs_meta = {
-      'profile' => 'https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Date-Pronounced-Dead'
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DatePronouncedDead'
     }
 
     # Convert Nightingale input to the proper FHIR specific output
@@ -426,14 +428,14 @@ module FhirProducerHelper
     }
 
     # Construct and return this entry
-    FhirProducerHelper.observation(obs_code, obs_value, obs_meta)
+    FhirProducerHelper.observation(obs_code, obs_value, obs_meta, subject, status)
   end
 
   # Returns a FHIR entry that covers:
-  # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Death-Resulted-From-Injury-At-Work
+  # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DeathFromWorkInjury
   #
   # This entry contains a FHIR Observation describing Death-Resulted-From-Injury-At-Work.
-  def self.death_resulted_from_injury_at_work(death_record_loinc)
+  def self.death_resulted_from_injury_at_work(death_record_loinc, subject, status = 'final')
     # Coding informations for this observation (helps figure out which part of the record this is)
     obs_code = {
       code: '69444-8',
@@ -447,7 +449,7 @@ module FhirProducerHelper
 
     # Metadata information for this observation
     obs_meta = {
-      'profile' => 'https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Death-Resulted-From-Injury-At-Work'
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DeathFromWorkInjury'
     }
 
     # Convert Nightingale input to the proper FHIR specific output
@@ -461,17 +463,14 @@ module FhirProducerHelper
     }
 
     # Construct and return this entry
-    FhirProducerHelper.observation(obs_code, obs_value, obs_meta)
+    FhirProducerHelper.observation(obs_code, obs_value, obs_meta, subject, status)
   end
 
   # Returns a FHIR entry that covers:
-  # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Injury-Leading-To-Death-Associated-Trans
+  # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DeathFromTransportInjury
   #
   # This entry contains a FHIR Observation describing Injury-Leading-To-Death-Associated-Trans.
-  def self.injury_leading_to_death_associated_trans(death_record_loinc)
-    # TODO: Nightingale does not collect this at the moment! Defaulting to "Other"!
-    value = 'Other'
-
+  def self.injury_leading_to_death_associated_trans(death_record_loinc, subject, status = 'final')
     # Coding informations for this observation (helps figure out which part of the record this is)
     obs_code = {
       code: '69448-9',
@@ -485,7 +484,7 @@ module FhirProducerHelper
 
     # Metadata information for this observation
     obs_meta = {
-      'profile' => 'https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Injury-Leading-To-Death-Associated-Trans'
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DeathFromTransportInjury'
     }
 
     # Convert Nightingale input to the proper FHIR specific output
@@ -505,14 +504,44 @@ module FhirProducerHelper
     }
 
     # Construct and return this entry
-    FhirProducerHelper.observation(obs_code, obs_value, obs_meta)
+    FhirProducerHelper.observation(obs_code, obs_value, obs_meta, subject, status)
   end
 
   # Returns a FHIR entry that covers:
-  # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Manner-Of-Death
+  # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DetailsOfInjury
+  #
+  # This entry contains a FHIR Observation describing Details-Of-Injury.
+  def self.details_of_injury(death_record_loinc, subject, status = 'final')
+    # Coding informations for this observation (helps figure out which part of the record this is)
+    obs_code = {
+      code: '11374-6',
+      display: 'Injury incident description',
+      system: 'http://loinc.org'
+    }
+
+    # Grab death record value
+    value = death_record_loinc[obs_code[:code]]
+    return nil unless value # Don't construct observation if the record doesn't have this value
+
+    # Metadata information for this observation
+    obs_meta = {
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DetailsOfInjury'
+    }
+
+    obs_value = {
+      type: 'valueString',
+      value: value,
+    }
+
+    # Construct and return this entry
+    FhirProducerHelper.observation(obs_code, obs_value, obs_meta, subject, status)
+  end
+
+  # Returns a FHIR entry that covers:
+  # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-MannerOfDeath
   #
   # This entry contains a FHIR Observation describing Manner-Of-Death.
-  def self.manner_of_death(death_record_loinc)
+  def self.manner_of_death(death_record_loinc, subject, status = 'final')
     # Coding informations for this observation (helps figure out which part of the record this is)
     obs_code = {
       code: '69449-7',
@@ -526,7 +555,7 @@ module FhirProducerHelper
 
     # Metadata information for this observation
     obs_meta = {
-      'profile' => 'https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Manner-Of-Death'
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-MannerOfDeath'
     }
 
     # Convert Nightingale input to the proper FHIR specific output
@@ -548,14 +577,14 @@ module FhirProducerHelper
     }
 
     # Construct and return this entry
-    FhirProducerHelper.observation(obs_code, obs_value, obs_meta)
+    FhirProducerHelper.observation(obs_code, obs_value, obs_meta, subject, status)
   end
 
   # Returns a FHIR entry that covers:
-  # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Medical-Examiner-Or-Coroner-Contacted
+  # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-MedicalExaminerContacted
   #
   # This entry contains a FHIR Observation describing Medical-Examiner-Or-Coroner-Contacted.
-  def self.medical_examiner_or_coroner_contacted(death_record_loinc)
+  def self.medical_examiner_or_coroner_contacted(death_record_loinc, subject, status = 'final')
     # Coding informations for this observation (helps figure out which part of the record this is)
     obs_code = {
       code: '74497-9',
@@ -569,7 +598,7 @@ module FhirProducerHelper
 
     # Metadata information for this observation
     obs_meta = {
-      'profile' => 'https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Medical-Examiner-Or-Coroner-Contacted'
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-MedicalExaminerContacted'
     }
 
     # Convert Nightingale input to the proper FHIR specific output
@@ -583,14 +612,14 @@ module FhirProducerHelper
     }
 
     # Construct and return this entry
-    FhirProducerHelper.observation(obs_code, obs_value, obs_meta)
+    FhirProducerHelper.observation(obs_code, obs_value, obs_meta, subject, status)
   end
 
   # Returns a FHIR entry that covers:
-  # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Timing-Of-Pregnancy-In-Relation-To-Death
+  # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-TimingOfRecentPregnancyInRelationToDeath
   #
   # This entry contains a FHIR Observation describing Timing-Of-Pregnancy-In-Relation-To-Death.
-  def self.timing_of_pregnancy_in_relation_to_death(death_record_loinc)
+  def self.timing_of_pregnancy_in_relation_to_death(death_record_loinc, subject, status = 'final')
     # Coding informations for this observation (helps figure out which part of the record this is)
     obs_code = {
       code: '69442-2',
@@ -604,7 +633,7 @@ module FhirProducerHelper
 
     # Metadata information for this observation
     obs_meta = {
-      'profile' => 'https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Timing-Of-Pregnancy-In-Relation-To-Death'
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-TimingOfRecentPregnancyInRelationToDeath'
     }
 
     # Convert Nightingale input to the proper FHIR specific output
@@ -617,7 +646,6 @@ module FhirProducerHelper
       'Not pregnant, but pregnant 43 days to 1 year before death': {concept: 'PHC1263', system: 'PHIN VS (CDC Local Coding System)', display: 'Not pregnant, but pregnant 43 days to 1 year before death'},
       'Unknown if pregnant within the past year': {concept: 'PHC1264', system: 'PHIN VS (CDC Local Coding System)', display: 'Unknown if pregnant within the past year'},
     }.stringify_keys
-    debugger unless lookup[value]
     obs_value = {
       type: 'valueCodeableConcept',
       code: lookup[value][:concept],
@@ -626,14 +654,14 @@ module FhirProducerHelper
     }
 
     # Construct and return this entry
-    FhirProducerHelper.observation(obs_code, obs_value, obs_meta)
+    FhirProducerHelper.observation(obs_code, obs_value, obs_meta, subject, status)
   end
 
   # Returns a FHIR entry that covers:
-  # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Tobacco-Use-Contributed-To-Death
+  # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-TobaccoUseContributedToDeath
   #
   # This entry contains a FHIR Observation describing Tobacco-Use-Contributed-To-Death.
-  def self.tobacco_use_contributed_to_death(death_record_loinc)
+  def self.tobacco_use_contributed_to_death(death_record_loinc, subject, status = 'final')
     # Coding informations for this observation (helps figure out which part of the record this is)
     obs_code = {
       code: '69443-0',
@@ -647,7 +675,7 @@ module FhirProducerHelper
 
     # Metadata information for this observation
     obs_meta = {
-      'profile' => 'https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Tobacco-Use-Contributed-To-Death'
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-TobaccoUseContributedToDeath'
     }
 
     # Convert Nightingale input to the proper FHIR specific output
@@ -667,11 +695,11 @@ module FhirProducerHelper
     }
 
     # Construct and return this entry
-    FhirProducerHelper.observation(obs_code, obs_value, obs_meta)
+    FhirProducerHelper.observation(obs_code, obs_value, obs_meta, subject, status)
   end
 
   # FHIR Observation Entry builder
-  def self.observation(obs_code, obs_value, obs_meta)
+  def self.observation(obs_code, obs_value, obs_meta, obs_subject, obs_status)
     # New observation
     observation = FHIR::Observation.new
 
@@ -682,10 +710,18 @@ module FhirProducerHelper
         'display' => obs_code[:display],
         'system' => obs_code[:system]
       }
-    )
+    ) if obs_code
+
+    # Add status
+    observation.status = obs_status if obs_status
 
     # Add metadata
-    observation.meta = obs_meta
+    observation.meta = obs_meta if obs_meta
+
+    # Add subject
+    observation.subject = FHIR::Reference.new(
+      'reference': obs_subject.fullUrl
+    ) if obs_subject
 
     # Handle type of value
     if obs_value[:type] == 'valueCodeableConcept' # Add valueCodeableConcept (CodeableConcept)
@@ -706,6 +742,8 @@ module FhirProducerHelper
       date = Date.strptime(obs_value[:value], '%Y-%m-%d') rescue nil # Try date only
       date = Date.parse(obs_value[:value]) unless date # Try regular datetime
       observation.valueDateTime = date.to_datetime.to_s
+    elsif obs_value[:type] == 'valueString'
+      observation.valueString = obs_value[:value]
     end
 
     # Package obervation into entry and return

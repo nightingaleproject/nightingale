@@ -45,6 +45,12 @@
   "deathResultedFromInjuryAtWork": {
     "ui:field": "nightRadioSelect"
   },
+  "ifTransInjury": {
+    "ui:field": "nightRadioSelect"
+  },
+  "detailsOfInjury": {
+    "ui:field": "nightTextarea"
+  },
   "pregnancyStatus": {
     "ui:field": "nightRadioSelect"
   },

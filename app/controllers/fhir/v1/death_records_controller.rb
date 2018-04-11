@@ -1,6 +1,6 @@
 class Fhir::V1::DeathRecordsController < ActionController::Base
-  protect_from_forgery prepend: true, with: :exception
-  before_action :doorkeeper_authorize!
+  #protect_from_forgery prepend: true, with: :exception
+  #before_action :doorkeeper_authorize!
 
   # Create a new record using the given FHIR json.
   def create
@@ -62,7 +62,8 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
   def show
     respond_to do |format|
       # Fetch the requested record
-      death_record = current_user.owned_death_records.find(params[:id])
+      #death_record = current_user.owned_death_records.find(params[:id])
+      death_record = DeathRecord.find(params[:id])
 
       # Add basic info to the FHIR record
       fhir_record = FhirProducerHelper.to_fhir(death_record)

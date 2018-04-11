@@ -275,6 +275,32 @@
         }
       }
     },
+    "ifTransInjury": {
+      "type": "object",
+      "title": "If Transportation Injury, Specify:",
+      "humanReadable": "{ifTransInjury}",
+      "properties": {
+        "ifTransInjury": {
+          "options": ["Driver/Operator", "Passenger", "Pedestrian", "Other"],
+          "loinc": {
+            "code": "69448-9"
+          }
+        }
+      }
+    },
+    "detailsOfInjury": {
+      "type": "object",
+      "title": "Details of Injury",
+      "humanReadable": "{detailsOfInjury}",
+      "properties": {
+        "detailsOfInjury": {
+          "type": "string",
+          "loinc": {
+            "code": "11374-6"
+          }
+        }
+      }
+    },
     "pregnancyStatus": {
       "type": "object",
       "title": "Pregnancy Status",

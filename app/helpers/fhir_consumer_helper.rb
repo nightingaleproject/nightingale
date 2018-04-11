@@ -36,34 +36,37 @@ module FhirConsumerHelper
       entry = fhir_record.entry[o]
       case entry.resource.code.coding.first.code
       when '81956-5'
-        # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Actual-Or-Presumed-Date-Of-Death
+        # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-ActualOrPresumedDateOfDeath
         contents.merge! FhirConsumerHelper.actual_or_presumed_date_of_death(entry)
       when '85699-7'
-        # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Autopsy-Performed
+        # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-AutopsyPerformed
         contents.merge! FhirConsumerHelper.autopsy_performed(entry)
       when '69436-4'
-        # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Autopsy-Results-Available
+        # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-AutopsyResultsAvailable
         contents.merge! FhirConsumerHelper.autopsy_results_available(entry)
       when '80616-6'
-        # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Date-Pronounced-Dead
+        # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DatePronouncedDead
         contents.merge! FhirConsumerHelper.date_pronounced_dead(entry)
       when '69444-8'
-        # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Death-Resulted-From-Injury-At-Work
+        # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DeathFromWorkInjury
         contents.merge! FhirConsumerHelper.death_resulted_from_injury_at_work(entry)
       when '69448-9'
-        # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Injury-Leading-To-Death-Associated-Trans
+        # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DeathFromTransportInjury
         contents.merge! FhirConsumerHelper.injury_leading_to_death_associated_trans(entry)
+      when '11374-6'
+        # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DetailsOfInjury
+        contents.merge! FhirConsumerHelper.details_of_injury(entry)
       when '69449-7'
-        # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Manner-Of-Death
+        # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-MannerOfDeath
         contents.merge! FhirConsumerHelper.manner_of_death(entry)
       when '74497-9'
-        # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Medical-Examiner-Or-Coroner-Contacted
+        # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-MedicalExaminerContacted
         contents.merge! FhirConsumerHelper.medical_examiner_or_coroner_contacted(entry)
       when '69442-2'
-        # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Timing-Of-Pregnancy-In-Relation-To-Death
+        # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-TimingOfRecentPregnancyInRelationToDeath
         contents.merge! FhirConsumerHelper.timing_of_pregnancy_in_relation_to_death(entry)
       when '69443-0'
-        # https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/Tobacco-Use-Contributed-To-Death
+        # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-TobaccoUseContributedToDeath
         contents.merge! FhirConsumerHelper.tobacco_use_contributed_to_death(entry)
       end
     end
@@ -300,7 +303,25 @@ module FhirConsumerHelper
   # Consume FHIR death record Injury-Leading-To-Death-Associated-Trans.
   def self.injury_leading_to_death_associated_trans(entry)
     observation = {}
-    # TODO: Nightingale does not collect this at the moment!
+
+    # Convert Nightingale input to the proper FHIR specific output
+    # See: https://phinvads.cdc.gov/vads/ViewValueSet.action?id=F148DC82-63C3-40B1-A7D2-D7AD78416D4A
+    # OID: 2.16.840.1.114222.4.11.6005
+    lookup = {
+      'Driver/Operator': '236320001',
+      'Passenger': '257500003',
+      'Pedestrian': '257518000',
+      'Other': 'OTH'
+    }
+
+    observation['ifTransInjury.ifTransInjury'] = lookup[entry.resource.valueCodeableConcept.coding.first.code]
+    observation
+  end
+
+  # Consume FHIR death record Details-Of-Injury.
+  def self.details_of_injury(entry)
+    observation = {}
+    observation['detailsOfInjury.detailsOfInjury'] = entry.resource.valueString
     observation
   end
 
