@@ -120,11 +120,10 @@ module FhirConsumerHelper
       decedent['decedentAddress.state'] = address.state.strip if address.state.present?
       decedent['decedentAddress.zip'] = address.postalCode.strip if address.postalCode.present?
     end
-    # Handle marital status
-    decedent['maritalStatus.maritalStatus'] = MARITAL_STATUS.key(patient.maritalStatus) if MARITAL_STATUS.key(patient.maritalStatus)
     # The following are extensions
     patient.extension.each do |extension|
-      if extension.url == 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
+      case extension.url
+      when 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
         # Handle race
         codes = []
         extension.valueCodeableConcept&.coding.each do |coding|
@@ -134,7 +133,28 @@ module FhirConsumerHelper
           decedent['race.race.option'] = 'Known'
           decedent['race.race.specify'] = codes.to_json
         end
-      elsif extension.url == 'http://hl7.org/fhir/StructureDefinition/birthPlace'
+      when 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
+        # Handle ethnicity
+        ethnicity = extension.valueCodeableConcept&.coding.first.display
+        if ethnicity == 'Hispanic or Latino'
+          decedent['hispanicOrigin.hispanicOrigin.specify'] = 'Hispanic or Latino'
+          decedent['hispanicOrigin.hispanicOrigin'] = 'Yes'
+        else
+          decedent['hispanicOrigin.hispanicOrigin'] = 'No'
+        end
+      when 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+        # Handle sex
+        sex = if extension.valueCode == 'M'
+          'Male'
+        elsif extension.valueCode == 'F'
+          'Female'
+        elsif extension.valueCode == 'U'
+          'Unknown'
+        end
+        decedent['sex.sex'] = sex if sex.present?
+      when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Age-extension'
+        # TODO: Don't need?
+      when 'http://hl7.org/fhir/StructureDefinition/birthPlace'
         # Handle birth place
         address = extension.valueAddress
         if address
@@ -142,19 +162,64 @@ module FhirConsumerHelper
           decedent['placeOfBirth.city'] = address.city if address.city.present?
           decedent['placeOfBirth.state'] = address.state if address.state.present?
         end
-      elsif extension.url == 'http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName'
-        # Handle mother's maiden name
-        decedent['motherName.lastName'] = extension.valueString if extension.valueString.present?
-      elsif extension.url == 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
-        # Handle sex
-        sex = if extension.valueCode == 'M'
-                'Male'
-              elsif extension.valueCode == 'F'
-                'Female'
-              elsif extension.valueCode == 'U'
-                'Unknown'
+      when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-ServedInArmedForces-extension'
+        served = extension.valueBoolean ? 'Yes' : 'No'
+        decedent['armedForcesService.armedForcesService'] = served
+      when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-PlaceOfDeath-extension'
+        extension.extension.each do |sub_extension|
+          case sub_extension.url
+          when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/shr-core-Address-extension'
+            decedent['locationOfDeath.city'] = sub_extension.valueAddress.city.strip if sub_extension.valueAddress.city.present?
+            decedent['locationOfDeath.state'] = sub_extension.valueAddress.state.strip if sub_extension.valueAddress.state.present?
+            decedent['locationOfDeath.zip'] = sub_extension.valueAddress.postalCode.strip if sub_extension.valueAddress.postalCode.present?
+          when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-FacilityName-extension'
+            decedent['locationOfDeath.name'] = sub_extension.valueString
+          when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-PlaceOfDeathType-extension'
+            decedent['placeOfDeath.placeOfDeath'] = sub_extension.valueCodeableConcept&.coding.first.display
+          end
+        end
+      when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Disposition-extension'
+        extension.extension.each do |sub_extension|
+          case sub_extension.url
+          when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-DispositionType-extension'
+            decedent['methodOfDisposition.methodOfDisposition'] = sub_extension.valueCodeableConcept&.coding.first.display
+          when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-DispositionFacility-extension'
+            sub_extension.extension.each do |sub_sub_extension|
+              case sub_sub_extension.url
+              when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-FacilityName-extension'
+                decedent['placeOfDisposition.name'] = sub_sub_extension.valueString
+              when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/shr-core-Address-extension'
+                decedent['placeOfDisposition.city'] = sub_sub_extension.valueAddress.city.strip if sub_sub_extension.valueAddress.city.present?
+                decedent['placeOfDisposition.state'] = sub_sub_extension.valueAddress.state.strip if sub_sub_extension.valueAddress.state.present?
+                decedent['placeOfDisposition.zip'] = sub_sub_extension.valueAddress.postalCode.strip if sub_sub_extension.valueAddress.postalCode.present?
               end
-        decedent['sex.sex'] = sex if sex.present?
+            end
+          when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-FuneralFacility-extension'
+            sub_extension.extension.each do |sub_sub_extension|
+              case sub_sub_extension.url
+              when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-FacilityName-extension'
+                decedent['funeralFacility.name'] = sub_sub_extension.valueString
+              when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/shr-core-Address-extension'
+                decedent['funeralFacility.city'] = sub_sub_extension.valueAddress.city.strip if sub_sub_extension.valueAddress.city.present?
+                decedent['funeralFacility.state'] = sub_sub_extension.valueAddress.state.strip if sub_sub_extension.valueAddress.state.present?
+                decedent['funeralFacility.zip'] = sub_sub_extension.valueAddress.postalCode.strip if sub_sub_extension.valueAddress.postalCode.present?
+              end
+            end
+          end
+        end
+      when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Education-extension'
+        decedent['education.education'] = extension.valueCodeableConcept&.coding.first.code
+      when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Occupation-extension'
+        extension.extension.each do |sub_extension|
+          case sub_extension.url
+          when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Job-extension'
+            decedent['usualOccupation.usualOccupation'] = sub_extension.valueString
+          when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Industry-extension'
+            decedent['kindOfBusiness.kindOfBusiness'] = sub_extension.valueString
+          end
+        end
+      when 'http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName'
+        decedent['motherName.lastName'] = extension.valueString
       end
     end
 

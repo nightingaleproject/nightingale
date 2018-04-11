@@ -135,14 +135,12 @@ module FhirProducerHelper
     address['state'] = death_record.contents['decedentAddress.state'] unless death_record.contents['decedentAddress.state'].blank?
     address['postalCode'] = death_record.contents['decedentAddress.zip'] unless death_record.contents['decedentAddress.zip'].blank?
     options['address'] = address
-    # Decedent's marital status
-    # options['maritalStatus'] = FHIR::CodeableConcept.new(
-    #   'coding' => {
-    #     'code' => MARITAL_STATUS[death_record.contents['maritalStatus.maritalStatus']],
-    #     'system' => 'http://hl7.org/fhir/ValueSet/marital-status'
-    #   }
-    # ) if MARITAL_STATUS[death_record.contents['maritalStatus.maritalStatus']]
+    # Decedent's gender
+    options['gender'] = death_record.contents['sex.sex'].downcase
+
+    # Build extensions
     options['extension'] = []
+
     # Decedent race, TODO: Need to support all chosen options
     options['extension'] << {
       'url' => 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race',
@@ -154,21 +152,143 @@ module FhirProducerHelper
         }]
       }
     } if death_record.contents['race.race.specify']
-    # Decedent place of birth
+
+    # Decedent ethnicity
+    ethnicity = death_record.contents['hispanicOrigin.hispanicOrigin.specify']
+    ethnicity = ethnicity.blank? ? { code: '2186-5', display: 'Non Hispanic or Latino' } : { code: '2135-2', display: 'Hispanic or Latino'}
     options['extension'] << {
-      'url' => 'http://hl7.org/fhir/StructureDefinition/birthPlace',
-      'valueAddress' => FHIR::Address.new({postalCode: death_record.contents['placeOfBirth.zip'], city: death_record.contents['placeOfBirth.city'], state: death_record.contents['placeOfBirth.state']}).to_hash
-    } if death_record.contents['placeOfBirth.city'] || death_record.contents['placeOfBirth.state'] || death_record.contents['placeOfBirth.zip']
-    # Decedent's mother's maiden name
-    options['extension'] << {
-      'url' => 'http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName',
-      'valueString' => death_record.contents['motherName.lastName']
-    } if death_record.contents['motherName.lastName']
+      'url' => 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity',
+      'valueCodeableConcept' => {
+        'coding' => [{
+          'display' => ethnicity.symbolize_keys[:display],
+          'code' => ethnicity.symbolize_keys[:code],
+          'system' => 'http://hl7.org/fhir/v3/Ethnicity'
+        }]
+      }
+    } if ethnicity
+
     # Decedent's birth sex
     options['extension'] << {
       'url' => 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex',
       'valueCode' => death_record.contents['sex.sex']&.chars&.first
     } if death_record.contents['sex.sex']
+
+    # Decedent's age at death
+    options['extension'] << {
+      'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Age-extension',
+      'extension' => [{
+        'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-AgeInYears-extension',
+        'valueUnsignedInt' => FhirProducerHelper.years_between_dates(death_record.contents['dateOfBirth.dateOfBirth'], death_record.contents['dateOfDeath.dateOfDeath'])
+      }]
+    } if death_record.contents['dateOfBirth.dateOfBirth'] && death_record.contents['dateOfDeath.dateOfDeath']
+
+    # Decedent place of birth
+    options['extension'] << {
+      'url' => 'http://hl7.org/fhir/StructureDefinition/birthPlace',
+      'valueAddress' => FHIR::Address.new({postalCode: death_record.contents['placeOfBirth.zip'], city: death_record.contents['placeOfBirth.city'], state: death_record.contents['placeOfBirth.state']}).to_hash
+    } if death_record.contents['placeOfBirth.city'] || death_record.contents['placeOfBirth.state'] || death_record.contents['placeOfBirth.zip']
+
+    # Decedent served in armed forces
+    served = death_record.contents['armedForcesService.armedForcesService'] == 'Yes'
+    options['extension'] << {
+      'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-ServedInArmedForces-extension',
+      'valueBoolean' => served
+    } if death_record.contents['armedForcesService.armedForcesService'] && death_record.contents['armedForcesService.armedForcesService'] != 'Unknown'
+
+    # Decedent marriage status at death
+    options['extension'] << {
+      'url' => 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity',
+      'valueCodeableConcept' => {
+        'coding' => [{
+          'code' => MARITAL_STATUS[death_record.contents['maritalStatus.maritalStatus']],
+          'system' => 'http://hl7.org/fhir/ValueSet/marital-status'
+        }]
+      }
+    } if MARITAL_STATUS[death_record.contents['maritalStatus.maritalStatus']]
+
+    # Decedent place of death
+    place_of_death_loc = FHIR::Address.new({postalCode: death_record.contents['locationOfDeath.zip'], city: death_record.contents['locationOfDeath.city'], state: death_record.contents['locationOfDeath.state']}).to_hash
+    options['extension'] << {
+      'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-PlaceOfDeath-extension',
+      'extension' => [{
+        'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/shr-core-Address-extension',
+        'valueAddress' => place_of_death_loc
+      },
+      {
+        'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-FacilityName-extension',
+        'valueString' => death_record.contents['locationOfDeath.name']
+      },
+      {
+        'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-PlaceOfDeathType-extension',
+        'valueCodeableConcept' => {
+          'coding' => [{
+            'code' => death_record.contents['placeOfDeath.placeOfDeath']
+          }]
+        }
+      }]
+    }
+
+    # Decedent's disposition
+    options['extension'] << {
+      'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Disposition-extension',
+      'extension' => [{
+        'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-DispositionType-extension',
+        'valueCodeableConcept' => {
+          'coding' => [{
+            'code' => death_record.contents['methodOfDisposition.methodOfDisposition']
+          }]
+        }
+      },
+      {
+        'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-DispositionFacility-extension',
+        'extension' => [{
+          'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-FacilityName-extension',
+          'valueString' => death_record.contents['placeOfDisposition.name']
+        },{
+          'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/shr-core-Address-extension',
+          'valueAddress' => FHIR::Address.new({postalCode: death_record.contents['placeOfDisposition.zip'], city: death_record.contents['placeOfDisposition.city'], state: death_record.contents['placeOfDisposition.state']}).to_hash
+        }]
+      },
+      {
+        'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-FuneralFacility-extension',
+        'extension' => [{
+          'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-FacilityName-extension',
+          'valueString' => death_record.contents['funeralFacility.name']
+        },{
+          'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/shr-core-Address-extension',
+          'valueAddress' => FHIR::Address.new({postalCode: death_record.contents['funeralFacility.zip'], city: death_record.contents['funeralFacility.city'], state: death_record.contents['funeralFacility.state']}).to_hash
+        }]
+      }]
+    }
+
+    # Decedent's education
+    options['extension'] << {
+      'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Education-extension',
+      'valueCodeableConcept' => {
+        'coding' => [{
+          'code' => death_record.contents['education.education']
+        }]
+      }
+    }
+
+    # Decedent's occupation
+    options['extension'] << {
+      'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Occupation-extension',
+      'extension' => [{
+        'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Job-extension',
+        'valueString' => death_record.contents['usualOccupation.usualOccupation']
+      },
+      {
+        'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Industry-extension',
+        'valueString' => death_record.contents['kindOfBusiness.kindOfBusiness']
+      }]
+    }
+
+    # Decedent's mother's maiden name
+    options['extension'] << {
+      'url' => 'http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName',
+      'valueString' => death_record.contents['motherName.lastName']
+    } if death_record.contents['motherName.lastName']
 
     patient = FHIR::Patient.new(options)
 
@@ -195,7 +315,7 @@ module FhirProducerHelper
     practitioner = FHIR::Practitioner.new
 
     extension = FHIR::Extension.new
-    extension.url = 'https://github.com/nightingaleproject/fhir-death-record/StructureDefinition/certifier-type'
+    extension.url = 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-deathRecord-CertifierType-extension'
 
     # See: https://phinvads.cdc.gov/vads/ViewValueSet.action?id=1A195A5D-F911-46C6-A58B-4146B722BAB0
     # OID: 2.16.840.1.114222.4.11.6001
@@ -787,4 +907,9 @@ module FhirProducerHelper
     'Other Pacific Islander' => '2500-7'
   }.stringify_keys
 
+  def self.years_between_dates(date_from, date_to)
+    date_to = DateTime.strptime(date_to, '%F')
+    date_from = DateTime.strptime(date_from, '%F')
+    ((date_to.to_time - date_from.to_time) / 1.year.seconds).floor
+  end
 end
