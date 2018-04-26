@@ -15,6 +15,14 @@ GIT
     ije (0.0.1)
 
 GIT
+  remote: https://github.com/nightingaleproject/ruby-fhir-death-record.git
+  revision: f403dbbaf51ec5e5650eaa7cda74659b8f4d9b80
+  specs:
+    ruby-fhir-death-record (0.1.0)
+      activesupport
+      nokogiri
+
+GIT
   remote: https://github.com/nightingaleproject/views_connector
   revision: c98d9e26ec7d96cb5da61419698a128425d7381f
   specs:
@@ -130,7 +138,7 @@ GEM
       activesupport (>= 3.0)
       deep_merge (~> 1.1.1)
     connection_pool (2.2.1)
-    crass (1.0.3)
+    crass (1.0.4)
     database_cleaner (1.6.1)
     date_time_precision (0.8.1)
     deep_merge (1.1.1)
@@ -160,7 +168,8 @@ GEM
     httpi (2.4.3)
       rack
       socksify
-    i18n (0.8.6)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     io-like (0.3.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -189,7 +198,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     lodash-rails (4.17.4)
       railties (>= 3.1)
-    loofah (2.2.1)
+    loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.6)
@@ -200,7 +209,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_mime (0.1.4)
     mini_portile2 (2.3.0)
-    minitest (5.10.3)
+    minitest (5.11.3)
     momentjs-rails (2.17.1)
       railties (>= 3.1)
     multi_json (1.12.1)
@@ -235,8 +244,8 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.0.3)
-      loofah (~> 2.0)
+    rails-html-sanitizer (1.0.4)
+      loofah (~> 2.2, >= 2.2.2)
     railties (5.0.5)
       actionpack (= 5.0.5)
       activesupport (= 5.0.5)
@@ -315,7 +324,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.8)
     ttfunk (1.5.1)
-    tzinfo (1.2.3)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
@@ -378,6 +387,7 @@ DEPENDENCIES
   react-rails
   rolify
   rspec-rails
+  ruby-fhir-death-record!
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
