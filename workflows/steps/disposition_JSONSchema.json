@@ -20,7 +20,7 @@
               "type": "string"
             }
           },
-          "options": ["Burial", "Cremation", "Donation", "Entombment", "Removal from State", {"text": "Other (specify)", "input": true}]
+          "options": ["Burial", "Cremation", "Donation", "Entombment", "Removal from State", "Hospital Disposition", "Unknown", "Other"]
         }
       }
     },

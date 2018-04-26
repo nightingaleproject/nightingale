@@ -1,6 +1,7 @@
+require 'fhirdeathrecord'
 class Fhir::V1::DeathRecordsController < ActionController::Base
-  #protect_from_forgery prepend: true, with: :exception
-  #before_action :doorkeeper_authorize!
+  protect_from_forgery prepend: true, with: :exception
+  before_action :doorkeeper_authorize!
 
   # Create a new record using the given FHIR json.
   def create
@@ -16,11 +17,11 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
       raise 'FHIR validation issues!' if resource.nil? || resource.validate.any?
 
       # Grab the user that will own this record
-      #user_first, user_last = FhirConsumerHelper.certifier_name(resource)
+      #user_first, user_last = FhirDeathRecord::Consumer.certifier_name(resource)
       user = User.find_by(first_name: 'Example', last_name: 'Certifier')
 
       # Convert FHIR bundle to Nightingale style flat contents
-      contents = FhirConsumerHelper.from_fhir(resource)
+      contents = FhirDeathRecord::Consumer.from_fhir(resource)
 
       # Create new record
       workflow = Workflow.where(initiator_role: user.roles.first.name).order('created_at').last
@@ -62,11 +63,11 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
   def show
     respond_to do |format|
       # Fetch the requested record
-      #death_record = current_user.owned_death_records.find(params[:id])
-      death_record = DeathRecord.find(params[:id])
+      death_record = current_user.owned_death_records.find(params[:id])
+      #death_record = DeathRecord.find(params[:id])
 
       # Add basic info to the FHIR record
-      fhir_record = FhirProducerHelper.to_fhir(death_record)
+      fhir_record = FhirDeathRecord::Producer.to_fhir({'contents': death_record.contents, id: death_record.id})
 
       format.json { render json: fhir_record.to_json }
       format.xml { render xml: fhir_record.to_xml }

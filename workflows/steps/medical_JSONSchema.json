@@ -20,7 +20,7 @@
               "type": "string"
             }
           },
-          "options": ["Inpatient", "Outpatient/ER", "DOA", "Decedent's Home", "Hospice Facility", "Nursing Home/Long Term Care Facility", {"text": "Other (specify)", "input": true}]
+          "options": ["Dead on arrival at hospital", "Death in home", "Death in hospice", "Death in hospital", "Death in hospital-based emergency department or outpatient department", "Death in nursing home or long term care facility", "Unknown", "Other"]
         }
       }
     },
@@ -281,7 +281,7 @@
       "humanReadable": "{ifTransInjury}",
       "properties": {
         "ifTransInjury": {
-          "options": ["Driver/Operator", "Passenger", "Pedestrian", "Other"],
+          "options": ["Vehicle driver", "Passenger", "Pedestrian", "Other"],
           "loinc": {
             "code": "69448-9"
           }
@@ -298,6 +298,51 @@
           "loinc": {
             "code": "11374-6"
           }
+        }
+      }
+    },
+    "detailsOfInjuryDate": {
+      "type": "object",
+      "title": "Details of Injury - Date",
+      "humanReadable": "{detailsOfInjuryDate}",
+      "properties": {
+        "detailsOfInjuryDate": {
+          "type": "string"
+        }
+      }
+    },
+    "detailsOfInjuryTime": {
+      "type": "object",
+      "title": "Details of Injury - Time",
+      "humanReadable": "{detailsOfInjuryTime}",
+      "properties": {
+        "detailsOfInjuryTime": {
+          "type": "string"
+        }
+      }
+    },
+    "detailsOfInjuryLocation": {
+      "title": "Details of Injury - Location",
+      "type": "object",
+      "humanReadable": "{name}\\n{street} {apt}\\n{city}, {county}, {state}\\n{zip}",
+      "properties": {
+        "state": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "apt": {
+          "type": "string"
         }
       }
     },
@@ -397,7 +442,7 @@
       "required": true,
       "properties": {
         "certifierType": {
-          "options": ["Certifying Physician", "Pronouncing and Certifying Physician", "Medical Examiner/Coroner"]
+          "options": ["Physician (Certifier)", "Physician (Pronouncer and Certifier)", "Coroner", "Medical Examiner"]
         }
       }
     },

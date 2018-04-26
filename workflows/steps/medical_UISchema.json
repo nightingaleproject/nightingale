@@ -51,6 +51,15 @@
   "detailsOfInjury": {
     "ui:field": "nightTextarea"
   },
+  "detailsOfInjuryDate": {
+    "ui:field": "nightDate"
+  },
+  "detailsOfInjuryTime": {
+    "ui:field": "nightTime"
+  },
+  "detailsOfInjuryLocation": {
+    "ui:field": "nightFullAddress"
+  },
   "pregnancyStatus": {
     "ui:field": "nightRadioSelect"
   },
