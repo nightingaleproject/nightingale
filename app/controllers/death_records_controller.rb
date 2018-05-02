@@ -181,7 +181,7 @@ class DeathRecordsController < ApplicationController
   # Function that returns an attachment of all registered records in IJE format.
   def export_records_in_ije
     registered_ids = DeathRecord.all.map(&:id) # Temp grab all records for connectathon #Registration.all.map(&:death_record_id)
-    ije_result = IJEFormat.process_data(DeathRecord.find(registered_ids).collect(&:contents))
+    ije_result = IJEFormat.process_data(DeathRecord.find(registered_ids))
     send_data ije_result, disposition: 'attachment', filename: Time.now.to_i.to_s + '_records.MOR'
   end
 
