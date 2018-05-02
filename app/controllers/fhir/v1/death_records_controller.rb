@@ -16,7 +16,7 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
       # Make sure FHIR is valid
       raise 'FHIR validation issues!' if resource.nil? || resource.validate.any?
 
-      # Grab the user that will own this record
+      # Grab the certifier
       #user_first, user_last = FhirDeathRecord::Consumer.certifier_name(resource)
       user = User.find_by(first_name: 'Example', last_name: 'Certifier')
 
@@ -66,8 +66,13 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
       death_record = current_user.owned_death_records.find(params[:id])
       #death_record = DeathRecord.find(params[:id])
 
+      # Grab the certifier
+      #user_first, user_last = FhirDeathRecord::Consumer.certifier_name(resource)
+      user = User.find_by(first_name: 'Example', last_name: 'Certifier')
+      certifier_id = user.id
+
       # Add basic info to the FHIR record
-      fhir_record = FhirDeathRecord::Producer.to_fhir({'contents': death_record.contents, id: death_record.id})
+      fhir_record = FhirDeathRecord::Producer.to_fhir({'contents': death_record.contents, id: death_record.id, certifier_id: certifier_id})
 
       format.json { render json: fhir_record.to_json }
       format.xml { render xml: fhir_record.to_xml }

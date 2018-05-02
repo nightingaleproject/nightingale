@@ -87,6 +87,7 @@ gem 'geokit'
 gem 'fhir_models', git: 'https://github.com/fhir-crucible/fhir_models'
 
 gem 'ruby-fhir-death-record', git: 'https://github.com/nightingaleproject/ruby-fhir-death-record.git'
+#gem 'ruby-fhir-death-record', path: '../ruby-fhir-death-record'
 
 group :development, :test, :ci do
   gem 'byebug', platform: :mri
