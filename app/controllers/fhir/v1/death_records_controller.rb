@@ -45,6 +45,7 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
                                            editor: user)
         end
       end
+      @death_record.notify = true
       @death_record.save(validate: false)
 
       format.json { render json: { status: :ok, message: 'Created ID: ' + @death_record.id.to_s } }
