@@ -129,7 +129,7 @@ class DeathRecordsController < ApplicationController
     create_or_update_step_history(step, @death_record, current_user)
     @death_record.registration = Registration.new(registered: DateTime.now)
     @death_record.registration.save
-    @death_record.owner = nil
+    @death_record.owner = User.with_role(:admin).first # Give all registered records to the admin
     # At Register, create a death certificate
     @death_record.generate_certificate(current_user)
     @death_record.save
@@ -179,9 +179,10 @@ class DeathRecordsController < ApplicationController
   end
 
   # Function that returns an attachment of all registered records in IJE format.
+  # NOTE: This is called from the admin panel, so the current_user is an admin. The records
+  # returned by this were registered.
   def export_records_in_ije
-    registered_ids = DeathRecord.all.map(&:id) # Temp grab all records for connectathon #Registration.all.map(&:death_record_id)
-    ije_result = IJEFormat.process_data(DeathRecord.find(registered_ids))
+    ije_result = IJEFormat.process_data(current_user.owned_death_records.collect(&:contents))
     send_data ije_result, disposition: 'attachment', filename: Time.now.to_i.to_s + '_records.MOR'
   end
 
