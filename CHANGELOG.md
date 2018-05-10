@@ -1,5 +1,11 @@
 ## Change Log
 
+### v0.9.0 - 2018-05-10
+
+* Updated Demo workflow steps to better reflect 2003 certificate of death
+* Tweaked IJE exporting to reflect workflow changes
+* Updated Death on FHIR producing/consuming to support latest profiles
+
 ### v0.8.0 - 2018-03-01
 
 * Implemented FHIR Importing and Exporting
