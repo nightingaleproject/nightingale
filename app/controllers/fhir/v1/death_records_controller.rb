@@ -1,5 +1,6 @@
 require 'fhirdeathrecord'
-class Fhir::V1::DeathRecordsController < ActionController::Base
+class Fhir::V1::DeathRecordsController < ActionController::API
+  include ActionController::MimeResponds
   before_action :doorkeeper_authorize!
   before_action :cors_headers
 
