@@ -1,7 +1,7 @@
 require 'fhirdeathrecord'
 class Fhir::V1::DeathRecordsController < ActionController::Base
-  protect_from_forgery prepend: true, with: :exception
   before_action :doorkeeper_authorize!
+  before_action :cors_headers
 
   # Create a new record using the given FHIR json.
   def create
@@ -78,6 +78,20 @@ class Fhir::V1::DeathRecordsController < ActionController::Base
       format.json { render json: fhir_record.to_json }
       format.xml { render xml: fhir_record.to_xml }
     end
+  end
+
+  # Handle OPTIONS requests for CORS preflight
+  def options
+    render plain: ''
+  end
+
+  private
+
+  # Allow cross-origin requests
+  def cors_headers
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Headers'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
   end
 
 end

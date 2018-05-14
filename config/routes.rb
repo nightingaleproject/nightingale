@@ -82,6 +82,8 @@ Rails.application.routes.draw do
       resources :death_records
     end
   end
+  # Handle OPTIONS for CORS preflight
+  match '/fhir/v1/death_records' => 'fhir/v1/death_records#options', via: :options
 
   # Default route
   authenticated :user do
