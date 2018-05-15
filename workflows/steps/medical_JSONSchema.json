@@ -324,8 +324,12 @@
     "detailsOfInjuryLocation": {
       "title": "Details of Injury - Location",
       "type": "object",
+      "named": true,
       "humanReadable": "{name}\\n{street} {apt}\\n{city}, {county}, {state}\\n{zip}",
       "properties": {
+        "name": {
+          "type": "string"
+        },
         "state": {
           "type": "string"
         },
