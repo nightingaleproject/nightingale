@@ -75,7 +75,10 @@ gem 'kaminari'
 gem 'views', git: 'https://github.com/nightingaleproject/views_connector'
 
 # OAuth2
-gem 'doorkeeper'
+gem 'doorkeeper', '~> 4.4.0'
+
+# Sprockets version
+gem 'sprockets', '~> 3.7.1'
 
 # IJE exporting
 gem 'ije', git: 'https://github.com/nightingaleproject/ije'
