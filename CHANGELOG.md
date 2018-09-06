@@ -1,5 +1,11 @@
 ## Change Log
 
+### v0.10.0 - 2018-09-06
+
+* Added ability for admins to export (and download) individual records in IJE and FHIR (XML and JSON) format
+* Changed target Ruby version to 2.4.4
+* Various dependency updates
+
 ### v0.9.0 - 2018-05-10
 
 * Updated Demo workflow steps to better reflect 2003 certificate of death

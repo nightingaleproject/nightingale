@@ -99,7 +99,25 @@ class OwnedRecords extends React.Component {
 
   renderActionButtonsCol(data, type, full, meta) {
     if (this.props.currentUser.isAdmin) {
-      return '';
+      return ReactDOMServer.renderToStaticMarkup(
+        <div className="btn-group btn-block" role="group">
+          <button
+            id="btnGroupDrop1"
+            type="button"
+            className="btn btn-primary btn-block dropdown-toggle btn-sm"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i className="fa fa-download" />
+          </button>
+          <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a href={Routes.export_record_in_ije_path(data.id)} className="dropdown-item" role="button">IJE</a>
+            <a href={Routes.export_record_in_fhir_json_path(data.id)} className="dropdown-item" role="button">FHIR (JSON)</a>
+            <a href={Routes.export_record_in_fhir_xml_path(data.id)} className="dropdown-item" role="button">FHIR (XML)</a>
+          </div>
+        </div>
+      );
     }
     return ReactDOMServer.renderToStaticMarkup(
       <div className="btn-group btn-block" role="group">

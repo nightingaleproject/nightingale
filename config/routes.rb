@@ -30,6 +30,11 @@ Rails.application.routes.draw do
   # IJE exporting GET for exporting death records as IJE
   match 'export_records_in_ije' => 'death_records#export_records_in_ije', :via => :get
 
+  # IJE and FHIR exporting GETs for exporting single death records
+  match 'export_record_in_ije' => 'death_records#export_record_in_ije', :via => :get
+  match 'export_record_in_fhir_json' => 'death_records#export_record_in_fhir_json', :via => :get
+  match 'export_record_in_fhir_xml' => 'death_records#export_record_in_fhir_xml', :via => :get
+
   # Step related routes
   resources :step, only: [:update]
 
