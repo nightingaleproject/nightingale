@@ -16,9 +16,9 @@ GIT
 
 GIT
   remote: https://github.com/nightingaleproject/ruby-fhir-death-record.git
-  revision: 3d9b5660fc0d5818720c7a3596af3bb0ea3fd529
+  revision: de15a9c86bb5d4cfa5862a2eb4cb1176f4044f62
   specs:
-    ruby-fhir-death-record (0.1.0)
+    ruby-fhir-death-record (0.1.2)
       activesupport
       nokogiri
 
