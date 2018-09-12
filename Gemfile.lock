@@ -16,9 +16,9 @@ GIT
 
 GIT
   remote: https://github.com/nightingaleproject/ruby-fhir-death-record.git
-  revision: 3d9b5660fc0d5818720c7a3596af3bb0ea3fd529
+  revision: de15a9c86bb5d4cfa5862a2eb4cb1176f4044f62
   specs:
-    ruby-fhir-death-record (0.1.0)
+    ruby-fhir-death-record (0.1.2)
       activesupport
       nokogiri
 
@@ -153,7 +153,7 @@ GEM
       railties (>= 4.2)
     erubis (2.7.0)
     execjs (2.7.0)
-    ffi (1.9.18)
+    ffi (1.9.24)
     fixtures_dumper (0.0.1)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
@@ -284,7 +284,7 @@ GEM
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
     ruby-rc4 (0.1.5)
-    rubyzip (1.2.1)
+    rubyzip (1.2.2)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)

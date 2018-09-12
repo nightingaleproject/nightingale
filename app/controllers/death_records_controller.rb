@@ -178,12 +178,38 @@ class DeathRecordsController < ApplicationController
     render json: ViewsHelper.views_for_record_cod(validate_params)
   end
 
-  # Function that returns an attachment of all registered records in IJE format.
-  # NOTE: This is called from the admin panel, so the current_user is an admin. The records
-  # returned by this were registered.
+  # Sends an attachment of all registered records in IJE format.
   def export_records_in_ije
+    return unless current_user.admin?
     ije_result = IJEFormat.process_data(current_user.owned_death_records.collect(&:contents))
-    send_data ije_result, disposition: 'attachment', filename: Time.now.to_i.to_s + '_records.MOR'
+    send_data ije_result, disposition: 'attachment', filename: Time.now.to_i.to_s + '_nightingale_records.MOR'
+  end
+
+  # Sends an attachment of a single record in IJE format.
+  def export_record_in_ije
+    return unless current_user.admin?
+    ije_result = IJEFormat.process_data(DeathRecord.where(id: params[:format]))
+    send_data ije_result, disposition: 'attachment', filename: params[:format] + '_nightingale_record.MOR'
+  end
+
+  # Sends an attachment of a single record in FHIR (JSON) format.
+  def export_record_in_fhir_json
+    return unless current_user.admin?
+    user = User.find_by(first_name: 'Example', last_name: 'Certifier')
+    certifier_id = user.id
+    death_record = DeathRecord.find_by(id: params[:format])
+    fhir_result = FhirDeathRecord::Producer.to_fhir({'contents': death_record.contents, id: death_record.id, certifier_id: certifier_id}).to_json
+    send_data fhir_result, disposition: 'attachment', filename: params[:format] + '_nightingale_record.json'
+  end
+
+  # Sends an attachment of a single record in FHIR (XML) format.
+  def export_record_in_fhir_xml
+    return unless current_user.admin?
+    user = User.find_by(first_name: 'Example', last_name: 'Certifier')
+    certifier_id = user.id
+    death_record = DeathRecord.find_by(id: params[:format])
+    fhir_result = FhirDeathRecord::Producer.to_fhir({'contents': death_record.contents, id: death_record.id, certifier_id: certifier_id}).to_xml
+    send_data fhir_result, disposition: 'attachment', filename: params[:format] + '_nightingale_record.xml'
   end
 
   # Handles requesting edits from users.
