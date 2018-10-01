@@ -28,7 +28,7 @@ class Completion extends React.Component {
     }
     if (step.editable && !this.props.registration) {
       return (
-        <div key={'buttondiv' + step.name + user.id} className="pull-right">
+        <div key={'buttondiv' + step.name + user.id} className="float-right">
           <button
             key={'buttonbutton' + step.name + user.id}
             type="button"
@@ -41,7 +41,7 @@ class Completion extends React.Component {
       );
     } else if ((user.canRequestEdits || user.isAdmin) && step.contents.editor) {
       return (
-        <div key={'buttondiv' + step.name + user.id} className="pull-right">
+        <div key={'buttondiv' + step.name + user.id} className="float-right">
           <button
             key={'buttonbutton' + step.name + user.id}
             type="button"
@@ -109,7 +109,7 @@ class Completion extends React.Component {
             className={'collapse mb-3 ' + (this.props.registration && ' show')}
             aria-labelledby={step.name}
           >
-            <div className="card-block">
+            <div className="card-body">
               {this.renderStepContents(step)}
             </div>
           </div>
@@ -144,7 +144,7 @@ class Completion extends React.Component {
             className={'collapse mb-3 ' + (this.props.registration && ' show')}
             aria-labelledby={step.name}
           >
-            <div className="card-block">
+            <div className="card-body">
               {this.renderStepContents(step)}
             </div>
           </div>

@@ -16,7 +16,7 @@
 //= require react-server
 //= require react_ujs
 //= require components
-//= require tether
+//= require popper
 //= require bootstrap
 //= require js-routes
 //= require react-jsonschema-form

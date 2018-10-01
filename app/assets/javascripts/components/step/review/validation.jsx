@@ -25,7 +25,7 @@ class Validation extends React.Component {
   //   <div className="col-md-6 px-0 pt-2">
   //   </div>
   //   <div className="col-md-6 px-0">
-  //     <button className="btn btn-primary pull-right" onClick={this.validate}>Validate this Record</button>
+  //     <button className="btn btn-primary float-right" onClick={this.validate}>Validate this Record</button>
   //   </div>
   // </div>
 

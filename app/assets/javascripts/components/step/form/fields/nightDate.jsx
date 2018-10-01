@@ -24,24 +24,24 @@ class NightDate extends React.Component {
   renderDateType() {
     if (this.props.schema.showDateType) {
       return (
-        <div className="form-group">
-          {this.props.schema.properties.dateType.options.map(item =>
-            <label key={'label' + item} className="row mt-1 ml-1 form-check-label">
-              <input
-                key={'input' + item}
-                name="dateType"
-                type="radio"
-                className="form-check-input"
-                value={item}
-                onChange={this.onChange('dateType')}
-                checked={this.state.dateType == item}
-              />
-              <span className="ml-1" key={'span' + item}>
-                {item}
-              </span>
-            </label>
-          )}
-        </div>
+          <div className="form-check">
+            {this.props.schema.properties.dateType.options.map(item =>
+              <label key={'label' + item} className="row mt-1 ml-1 form-check-label">
+                <input
+                  key={'input' + item}
+                  name="dateType"
+                  type="radio"
+                  className="form-check-input"
+                  value={item}
+                  onChange={this.onChange('dateType')}
+                  checked={this.state.dateType == item}
+                />
+                <span className="ml-1" key={'span' + item}>
+                  {item}
+                </span>
+              </label>
+            )}
+          </div>
       );
     }
   }

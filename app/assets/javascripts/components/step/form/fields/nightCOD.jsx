@@ -195,7 +195,7 @@ class NightCOD extends React.Component {
         </div>
         <div className="row mt-1 mb-2">
           <div className="col-md-12">
-            <button className="btn btn-primary pull-right" type="button" onClick={this.validate}>
+            <button className="btn btn-primary float-right" type="button" onClick={this.validate}>
               Validate
             </button>
           </div>

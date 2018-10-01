@@ -78,7 +78,7 @@ class NightName extends React.Component {
             {this.state.akas.map((aka, index) =>
               <Name key={'aka' + index} onChange={e => this.onAkaChange(index, e)} formData={aka} index={index} />
             )}
-            <div className="row pull-right pr-3 pb-3 pt-2">
+            <div className="row float-right pr-3 pb-3 pt-2">
               <button
                 type="button"
                 className="btn btn-primary"

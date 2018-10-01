@@ -68,7 +68,7 @@ class Form extends React.Component {
             onChange={this.onChange}
             noValidate={true}
           >
-            <div className="pull-right mt-1">
+            <div className="float-right mt-1">
               <a href={Routes.death_records_path()} className="btn btn-secondary mr-2">
                 Cancel
               </a>

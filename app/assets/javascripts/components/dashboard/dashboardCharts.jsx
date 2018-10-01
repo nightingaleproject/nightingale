@@ -21,7 +21,7 @@ class DashboardCharts extends React.Component {
         <div className="col-md-6 pl-0">
           <div className="card text-center night-full-height">
             <div className="card-header">Age of Open Records</div>
-            <div className="card-block">
+            <div className="card-body">
               <div id="pie_death_record_ages_by_range" />
             </div>
           </div>
@@ -29,7 +29,7 @@ class DashboardCharts extends React.Component {
         <div className="col-md-6 pr-0">
           <div className="card text-center night-full-height">
             <div className="card-header">Average Step Completion Time</div>
-            <div className="card-block">
+            <div className="card-body">
               <div id="bar_average_completion" />
             </div>
           </div>

@@ -283,7 +283,7 @@ class SendTo extends React.Component {
               </div>
             </div>
 
-            <div className="pull-right mt-3">
+            <div className="float-right mt-3">
               <a href={Routes.death_records_path()} className="btn btn-secondary mr-2">
                 Cancel
               </a>

@@ -22,7 +22,7 @@ class NightTime extends React.Component {
   renderTimeType() {
     if (this.props.schema.showTimeType) {
       return (
-        <div className="form-group">
+        <div className="form-check">
           {this.props.schema.properties.timeType.options.map(item =>
             <label key={'label' + item} className="row mt-1 ml-1 form-check-label">
               <input
