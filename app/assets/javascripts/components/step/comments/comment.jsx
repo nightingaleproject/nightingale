@@ -25,7 +25,7 @@ class Comment extends React.Component {
     // Show delete button?
     if (this.props.currentUser.id === this.props.comment.author.id && !this.props.deathRecord.registration) {
       var deleteButton = (
-        <div className="pull-right">
+        <div className="float-right">
           <button
             type="button"
             onClick={this.deleteComment}
@@ -48,7 +48,7 @@ class Comment extends React.Component {
             </div>
           </div>
         </div>
-        <div className="card-block">
+        <div className="card-body">
           <p className="card-text">
             {this.props.comment.content}
           </p>

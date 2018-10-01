@@ -264,9 +264,9 @@ class OwnedRecords extends React.Component {
               </h3>}
           </div>
           <div className="col-8 pr-0">
-            <span className="ml-3 pull-right" />
+            <span className="ml-3 float-right" />
             {this.props.currentUser.canStartRecord &&
-              <span className="pull-right">
+              <span className="float-right">
                 <a role="button" href={Routes.new_death_record_path()} className="btn btn-primary">
                   <i className="fa fa-plus" />&nbsp;New Death Record
                 </a>

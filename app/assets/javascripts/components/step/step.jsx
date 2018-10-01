@@ -343,13 +343,13 @@ class Step extends React.Component {
               </span>
             </div>
             <div className="col pr-0">
-              <span className="pull-right">
+              <span className="float-right">
                 {this.state.currentUser.canRegisterRecord &&
                   !this.state.deathRecord.registration && (
                     <button
                       type="button"
                       onClick={this.register}
-                      className="btn btn-lg btn-primary pull-right"
+                      className="btn btn-lg btn-primary float-right"
                       id="registerBtn"
                     >
                       <span className="fa fa-thumbs-up" /> Register Record
@@ -378,7 +378,7 @@ class Step extends React.Component {
                     <button
                       type="button"
                       onClick={() => this.abandonRecord(this.state.deathRecord.id)}
-                      className="btn btn-lg btn-primary pull-right"
+                      className="btn btn-lg btn-primary float-right"
                       id="abandonBtn"
                     >
                       <span className="fa fa-trash" /> Abandon Record

@@ -19,9 +19,6 @@ class Breadcrumb extends React.Component {
               );
             }
           })}
-          <div className="pull-right">
-            Welcome, {this.props.currentUser.email} ({this.props.currentUser.rolePretty})
-          </div>
         </nav>
       </div>
     );

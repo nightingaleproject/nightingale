@@ -82,7 +82,7 @@ class Comments extends React.Component {
               type="button"
               onClick={this.saveComment}
               disabled={!this.state.inputValue}
-              className="btn btn-primary pull-right"
+              className="btn btn-primary float-right"
               id="submitComment"
             >
               Submit Comment
