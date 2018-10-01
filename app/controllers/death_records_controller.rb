@@ -1,3 +1,4 @@
+require 'fhirdeathrecord'
 class DeathRecordsController < ApplicationController
   before_action :new_death_record, only: [:new]
   before_action :set_death_record, only: [:show, :edit, :update_step, :update_active_step, :register, :request_edits, :abandon, :views_validate, :preview_certificate, :final_certificate]

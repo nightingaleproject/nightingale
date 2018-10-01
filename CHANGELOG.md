@@ -1,5 +1,9 @@
 ## Change Log
 
+### v0.11.0 - 2018-10-01
+
+* Upgraded Boostrap version
+
 ### v0.10.0 - 2018-09-06
 
 * Added ability for admins to export (and download) individual records in IJE and FHIR (XML and JSON) format
