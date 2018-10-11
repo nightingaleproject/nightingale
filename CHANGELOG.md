@@ -1,5 +1,9 @@
 ## Change Log
 
+### v0.12.0 - 2018-10-11
+
+* Updated Docker configuration
+
 ### v0.11.0 - 2018-10-01
 
 * Upgraded Boostrap version
