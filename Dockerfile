@@ -1,8 +1,13 @@
 # Base image:
-FROM ruby:2.4.1
+FROM ruby:2.4.4
 
 # Install dependencies
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+
+RUN apt-get update -yq \
+    && apt-get install curl gnupg -yq \
+    && curl -sL https://deb.nodesource.com/setup_8.x | bash \
+    && apt-get install nodejs -yq
 
 ENV RAILS_ENV production
 ENV RAILS_LOG_TO_STDOUT true
