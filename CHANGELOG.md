@@ -1,5 +1,10 @@
 ## Change Log
 
+### v0.13.0 - 2018-12-10
+
+* Updated /api/v1/death_records api functionality
+* Various dependency updates
+
 ### v0.12.0 - 2018-10-11
 
 * Updated Docker configuration
