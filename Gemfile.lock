@@ -226,7 +226,7 @@ GEM
       ttfunk (~> 1.5)
     public_suffix (3.0.0)
     puma (3.10.0)
-    rack (2.0.4)
+    rack (2.0.6)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.5)
