@@ -18,7 +18,6 @@ class Fhir::V1::DeathRecordsController < ActionController::API
       raise 'FHIR validation issues!' if resource.nil? || resource.validate.any?
 
       # Grab the certifier
-      #user_first, user_last = FhirDeathRecord::Consumer.certifier_name(resource)
       user = User.find_by(first_name: 'Example', last_name: 'Certifier')
 
       # Convert FHIR bundle to Nightingale style flat contents
