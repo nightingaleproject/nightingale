@@ -113,7 +113,7 @@ class DeathRecordsController < ApplicationController
       else
         comment_contents = []
       end
-      NotificationMailer.notification_email(user, @death_record, comment_contents).deliver_now unless user.is_guest_user
+      #NotificationMailer.notification_email(user, @death_record, comment_contents).deliver_now unless user.is_guest_user
       # Redirect to dashboard
       render js: "window.location.href='#{death_records_path}'"
       return

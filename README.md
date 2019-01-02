@@ -23,7 +23,7 @@ Nightingale is a prototype electronic death registration system (EDRS), built to
 
 Nightingale EDRS is a Ruby on Rails application that uses the PostgreSQL database for data storage.
 
-For information on how to deploy Nightingale as a Docker container, see `CONTAINERDELPOY.md`.
+For information on how to deploy Nightingale as a Docker container, see [CONTAINERDEPLOY.md](CONTAINERDEPLOY.md).
 
 #### Prerequisites
 

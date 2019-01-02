@@ -1,8 +1,6 @@
-# Base image:
 FROM ruby:2.4.4
 
-# Install dependencies
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 
 RUN apt-get update -yq \
     && apt-get install curl gnupg -yq \
@@ -10,28 +8,21 @@ RUN apt-get update -yq \
     && apt-get install nodejs -yq
 
 ENV RAILS_ENV production
-ENV RAILS_LOG_TO_STDOUT true
 
-# Set an environment variable where the Rails app is installed to inside of Docker image:
-ENV RAILS_ROOT /var/www/nightingale
-RUN mkdir -p $RAILS_ROOT
+RUN mkdir /nightingale
+WORKDIR /nightingale
+COPY Gemfile /nightingale/Gemfile
+COPY Gemfile.lock /nightingale/Gemfile.lock
 
-# Set working directory, where the commands will be ran:
-WORKDIR $RAILS_ROOT
+RUN bundle install --without development test
+COPY . /nightingale
 
-# Gems:
-COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
-RUN gem install bundler && bundle install --jobs 20 --retry 5 --without development test
-
-COPY config/puma.rb config/puma.rb
-
-# Copy the main application.
-COPY . .
-
-RUN bundle exec rake SECRET_KEY_BASE=dummytoken DATABASE_URL=postgresql:does_not_exist assets:precompile
-
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
-# The default command that gets ran will be to start the Puma server.
-CMD bundle exec puma -C config/puma.rb
+RUN bundle exec rake assets:precompile
+
+# Start the main process.
+CMD ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0"]

@@ -1,0 +1,13 @@
+<div class="mt-3 mb-3">
+  <%= react_component('Breadcrumb', {currentUser: current_user, crumbs: [{ name: 'Dashboard', url: death_records_path }, { name: 'Administration' }]}) %>
+</div>
+<div class="row mb-3">
+  <h3>Import Records</h3>
+  <hr/>
+</div>
+<div class="row">
+  <%= form_tag({action: :upload_fhir}, multipart: true) do |f| %>
+    <%= file_field_tag 'fhir' %>
+    <%= submit_tag "Upload", class: "btn btn-primary" %>
+  <% end %>
+</div>

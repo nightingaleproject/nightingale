@@ -1,0 +1,167 @@
+{
+  "resourceType": "Bundle",
+  "type": "document",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:1c5deaa2-3704-47b9-adf4-ac08973229ba",
+      "resource": {
+        "resourceType": "Composition",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "64297-5",
+              "display": "Death certificate"
+            }
+          ],
+          "text": "Death certificate"
+        },
+        "status": "final",
+        "date": "2019-01-10",
+        "title": "Record of Death",
+        "section": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "69453-9",
+                  "display": "Cause of death"
+                }
+              ],
+              "text": "Cause of death"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:b0c4e8b9-c432-43b1-a0ad-68fb8cc314ba"
+              },
+              {
+                "reference": "urn:uuid:608e41dc-dfb5-45ae-a653-d54bdf40c399"
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "profile": "http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-deathRecord-DeathRecordContents"
+        },
+        "subject": {
+          "reference": "urn:uuid:b222a145-d05f-4600-bc1a-112484acb64d"
+        },
+        "author": [
+          {
+            "reference": "urn:uuid:8834cd0a-3db1-4d53-af16-cdc62bee8c2d"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b222a145-d05f-4600-bc1a-112484acb64d",
+      "resource": {
+        "resourceType": "Patient",
+        "name": [
+          {
+            "given": [
+              "Nils374"
+            ],
+            "family": "Doyle303",
+            "use": "official"
+          }
+        ],
+        "birthDate": "1971-07-25",
+        "address": [
+          {
+            "type": "postal",
+            "line": [
+              "37700 Nannie Island"
+            ],
+            "city": "Wareham",
+            "state": "MA",
+            "postalCode": "02571"
+          }
+        ],
+        "gender": "female",
+        "meta": {
+          "profile": [
+            "http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Decedent",
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8834cd0a-3db1-4d53-af16-cdc62bee8c2d",
+      "resource": {
+        "resourceType": "Practitioner",
+        "extension": [
+          {
+            "url": "http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-deathRecord-CertifierType-extension",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "434651000124107",
+                  "display": "Physician (Pronouncer and Certifier)"
+                }
+              ],
+              "text": "Physician (Pronouncer and Certifier)"
+            }
+          }
+        ],
+        "qualification": {
+          "code": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/v2/0360/2.7",
+                "code": "MD",
+                "display": "Doctor of Medicine"
+              }
+            ],
+            "text": "Doctor of Medicine"
+          }
+        },
+        "meta": {
+          "profile": [
+            "http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-deathRecord-Certifier",
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b0c4e8b9-c432-43b1-a0ad-68fb8cc314ba",
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": "active",
+        "text": {
+          "status": "additional",
+          "div": "<div xmlns='http://www.w3.org/1999/xhtml'>Prediabetes</div>"
+        },
+        "onsetString": "5 years",
+        "subject": {
+          "reference": "urn:uuid:b222a145-d05f-4600-bc1a-112484acb64d"
+        },
+        "meta": {
+          "profile": "http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-CauseOfDeathCondition"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:608e41dc-dfb5-45ae-a653-d54bdf40c399",
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": "active",
+        "text": {
+          "status": "additional",
+          "div": "<div xmlns='http://www.w3.org/1999/xhtml'>Neuropathy due to type 2 diabetes mellitus (disorder)</div>"
+        },
+        "onsetString": "10 years",
+        "subject": {
+          "reference": "urn:uuid:b222a145-d05f-4600-bc1a-112484acb64d"
+        },
+        "meta": {
+          "profile": "http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-CauseOfDeathCondition"
+        }
+      }
+    }
+  ]
+}

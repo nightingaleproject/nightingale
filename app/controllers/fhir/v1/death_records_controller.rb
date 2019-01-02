@@ -1,7 +1,7 @@
 require 'fhirdeathrecord'
 class Fhir::V1::DeathRecordsController < ActionController::API
   include ActionController::MimeResponds
-  before_action :doorkeeper_authorize!
+  #before_action :doorkeeper_authorize!
   before_action :cors_headers
 
   # Create a new record using the given FHIR json.
