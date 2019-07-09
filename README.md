@@ -101,7 +101,7 @@ Once the prerequisites are available, Nightingale can be installed and demonstra
 
     `bundle exec rake nightingale:workflows:build`
 
-* Run tests
+* Run the tests
 
     `bundle exec rake db:drop db:create db:migrate RAILS_ENV=test` (creates test DB, needed first time only)
     `bundle exec rake test`
