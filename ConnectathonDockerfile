@@ -1,0 +1,41 @@
+FROM ruby:2.4.4
+
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+
+RUN apt-get update -yq \
+    && apt-get install curl gnupg -yq \
+    && curl -sL https://deb.nodesource.com/setup_8.x | bash \
+    && apt-get install nodejs -yq
+
+RUN wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN sudo dpkg -i packages-microsoft-prod.deb
+RUN sudo apt-get install apt-transport-https
+RUN sudo apt-get update
+RUN sudo apt-get install dotnet-sdk-2.2
+
+RUN sudo apt install postgresql postgresql-contrib
+
+ENV RAILS_ENV development
+
+RUN mkdir /nightingale
+WORKDIR /nightingale
+COPY Gemfile /nightingale/Gemfile
+COPY Gemfile.lock /nightingale/Gemfile.lock
+
+RUN bundle install
+COPY . /nightingale
+
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
+
+RUN bundle exec rake assets:precompile
+
+RUN bundle exec rake db:drop db:create db:migrate db:setup RAILS_ENV=development
+RUN bundle exec rake nightingale:demo:setup
+
+RUN git clone https://github.com/nightingaleproject/csharp-fhir-death-record.git
+
+# Start the main process.
+CMD ["dotnet", "run", "-p", "csharp-fhir-death-record/FhirDeathRecord.HTTP", "&&", "bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0"]
