@@ -14,8 +14,20 @@ WORKDIR /nightingale
 COPY Gemfile /nightingale/Gemfile
 COPY Gemfile.lock /nightingale/Gemfile.lock
 
-RUN bundle install --without development test
-COPY . /nightingale
+# Set working directory, where the commands will be ran:
+WORKDIR $RAILS_ROOT
+
+# Gems:
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+RUN gem install bundler -v 1.17.3 && bundle install --jobs 20 --retry 5 --without development test
+
+COPY config/puma.rb config/puma.rb
+
+# Copy the main application.
+COPY . .
+
+RUN bundle exec rake SECRET_KEY_BASE=dummytoken DATABASE_URL=postgresql:does_not_exist assets:precompile
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
