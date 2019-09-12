@@ -35,7 +35,21 @@ To work with the application, you will need to install some prerequisites:
 
 Once the prerequisites are available, Nightingale can be installed and demonstration data can be loaded.
 
-#### Setup
+#### Setup/Running
+
+##### Easy
+
+A [Dockerized](https://www.docker.com/get-started) version of Nightingale for experimental purposes has been published to Docker Hub, so running Nightingale is as easy as:
+
+```
+docker run --rm -p 3000:3000 adammitre/nightingale
+```
+
+This command will pull the latest version of Nightingale from Docker Hub, and run it. You can access it from a web browser at [http://localhost:3000](http://localhost:3000).
+
+##### Hard
+
+You can also build and deploy Nightingale from scratch:
 
 * Retrieve the application source code
 

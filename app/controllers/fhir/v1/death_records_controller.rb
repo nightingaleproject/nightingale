@@ -1,4 +1,5 @@
 require 'fhirdeathrecord'
+require 'json'
 class Fhir::V1::DeathRecordsController < ActionController::API
   include ActionController::MimeResponds
   #before_action :doorkeeper_authorize!
@@ -8,20 +9,16 @@ class Fhir::V1::DeathRecordsController < ActionController::API
   def create
     respond_to do |format|
       # Handle given FHIR in either JSON or XML format
-      if request.content_type == 'application/json'
-        resource = FHIR::Json.from_json(request.body.string)
-      elsif request.content_type == 'application/xml'
-        resource = FHIR::Xml.from_xml(request.body.string)
+      if request.content_type.include? 'json'
+        response = RestClient.post "http://localhost:8080/nightingale", request.body.string, {content_type: 'application/fhir+json'}
+        contents = JSON.parse(response.body)
+      elsif request.content_type.include? 'xml'
+        response = RestClient.post "http://localhost:8080/nightingale", request.body.string, {content_type: 'application/fhir+xml'}
+        contents = JSON.parse(response.body)
       end
-
-      # Make sure FHIR is valid
-      raise 'FHIR validation issues!' if resource.nil? || resource.validate.any?
 
       # Grab the certifier
       user = User.find_by(first_name: 'Example', last_name: 'Certifier')
-
-      # Convert FHIR bundle to Nightingale style flat contents
-      contents = FhirDeathRecord::Consumer.from_fhir(resource)
 
       # Create new record
       workflow = Workflow.where(initiator_role: user.roles.first.name).order('created_at').last
