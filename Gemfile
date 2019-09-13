@@ -97,7 +97,7 @@ group :development, :test, :ci do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
   gem 'database_cleaner'
 end
 

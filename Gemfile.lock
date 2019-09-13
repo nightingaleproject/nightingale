@@ -83,8 +83,6 @@ GEM
     akami (1.3.1)
       gyoku (>= 0.4.0)
       nokogiri
-    archive-zip (0.12.0)
-      io-like (~> 0.3.0)
     arel (7.1.4)
     audited (4.5.0)
       activerecord (>= 4.0, < 5.2)
@@ -117,9 +115,6 @@ GEM
     chartkick (2.2.4)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
-    chromedriver-helper (2.1.1)
-      archive-zip (~> 0.10)
-      nokogiri (~> 1.8)
     codez (0.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -172,7 +167,6 @@ GEM
       socksify
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
-    io-like (0.3.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -349,6 +343,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webdrivers (4.1.2)
+      nokogiri (~> 1.6)
+      rubyzip (~> 1.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -367,7 +365,6 @@ DEPENDENCIES
   byebug
   capybara
   chartkick
-  chromedriver-helper
   codez
   coffee-rails (~> 4.2)
   combine_pdf
@@ -407,6 +404,7 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   views!
   web-console (>= 3.3.0)
+  webdrivers
 
 BUNDLED WITH
    1.16.6
