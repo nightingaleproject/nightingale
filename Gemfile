@@ -89,14 +89,15 @@ gem 'fhir_models', git: 'https://github.com/fhir-crucible/fhir_models'
 gem 'ruby-fhir-death-record', git: 'https://github.com/nightingaleproject/ruby-fhir-death-record.git'
 #gem 'ruby-fhir-death-record', path: '../ruby-fhir-death-record'
 
+gem 'rest-client'
+
 group :development, :test, :ci do
   gem 'byebug', platform: :mri
   gem 'brakeman'
-  gem 'bundler-audit'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
   gem 'database_cleaner'
 end
 

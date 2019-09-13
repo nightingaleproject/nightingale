@@ -1,16 +1,16 @@
 default: &default
   adapter: postgresql
-  host: localhost
+  host: 0.0.0.0
+  username: postgres
+  password: password
 
 development:
   <<: *default
   database: nightingale_development
-  username: postgres
 
 test:
   <<: *default
   database: nightingale_test
-  username: postgres
 
 production:
   <<: *default

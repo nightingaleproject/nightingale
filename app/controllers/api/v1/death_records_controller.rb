@@ -1,6 +1,6 @@
 class Api::V1::DeathRecordsController < ActionController::API
   include ActionController::MimeResponds
-  before_action :doorkeeper_authorize!
+  #before_action :doorkeeper_authorize!
   before_action :cors_headers
 
   # POST death_record

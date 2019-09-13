@@ -1,0 +1,2 @@
+FROM nginx
+COPY smart-on-fhir /usr/share/nginx/html

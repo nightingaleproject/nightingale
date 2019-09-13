@@ -1,0 +1,41 @@
+FROM ruby:2.4.4
+
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+        && apt-get install -y nodejs
+
+RUN wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN dpkg -i packages-microsoft-prod.deb
+RUN apt-get -y install apt-transport-https
+RUN apt-get update
+RUN apt-get -y install dotnet-sdk-2.2 sudo
+
+RUN apt-get -y install postgresql postgresql-contrib
+
+RUN gem install bundler --version 2.0.1
+
+ENV RAILS_ENV development
+
+RUN mkdir /nightingale
+WORKDIR /nightingale
+COPY Gemfile /nightingale/Gemfile
+COPY Gemfile.lock /nightingale/Gemfile.lock
+
+RUN bundle -v
+RUN bundle install
+COPY . /nightingale
+
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000 8080
+
+RUN bundle exec rake assets:precompile
+
+RUN service postgresql start; sleep 5; service postgresql status; sudo -u postgres psql -U postgres -d postgres -c "alter user postgres with password 'password';"; service postgresql restart; bundle exec rake db:drop db:create db:migrate db:setup RAILS_ENV=development; bundle exec rake nightingale:demo:setup
+
+RUN git clone https://github.com/nightingaleproject/csharp-fhir-death-record.git
+
+# Start the main process.
+CMD ["sh", "-c", "service postgresql start && sleep 5 && dotnet run -p csharp-fhir-death-record/FhirDeathRecord.HTTP & bundle exec rails s -p 3000 -b 0.0.0.0"]

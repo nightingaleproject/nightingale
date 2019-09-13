@@ -55,7 +55,11 @@ class StepContent < ApplicationRecord
           multi_content = []
           # Grab the radio/checkbox selections
           option = content['option'].present? ? [content['option']] : []
-          specify = content['specify'].present? ? JSON.parse(content['specify']) : []
+          begin
+            specify = content['specify'].present? ? JSON.parse(content['specify']) : []
+          rescue
+            specify = []
+          end
           # Grab the (potential) text inputs for radio/checkbox selections
           specifyInputs = content['specifyInputs'].present? ? JSON.parse(content['specifyInputs']) : {}
           (option + specify).each do |selection|

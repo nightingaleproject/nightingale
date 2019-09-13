@@ -8,8 +8,8 @@ services:
     build: .
     volumes:
       - /var/www/nightingale
-    expose:
-      - "3000"
+    ports:
+      - "3000:3000"
     depends_on:
       - db
     env_file: .env.production
@@ -21,3 +21,9 @@ services:
       - "80:80"
     depends_on:
       - app
+  smart:
+    build:
+      context: .
+      dockerfile: Dockerfile-smart
+    ports:
+      - "8080:80"

@@ -56,6 +56,10 @@ Rails.application.routes.draw do
   resources :questions
   resources :users
 
+  resources :importing, only: [:index, :error]
+  match 'upload_fhir' => 'importing#upload_fhir', :via => :post
+  match 'importing_error' => 'importing#error', :via => :get
+
   # Reports related to Nightingale records routes
   resources :analysis
   match 'analyze_causes' => 'analysis#analyze_causes', :via => :post
