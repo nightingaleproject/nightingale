@@ -34,7 +34,7 @@ gem 'devise'
 gem 'react-rails'
 
 # Bootstrap 4
-gem 'bootstrap', '4.1.2'
+gem 'bootstrap', '4.3.1'
 
 # User roles
 gem 'rolify'
