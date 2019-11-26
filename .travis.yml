@@ -5,6 +5,6 @@ rvm:
   - 2.4.4
 services: postgresql
 before_script:
-  - gem update --system
+  - psql -c 'create database nightingale_test;' -U postgres
 script:
   - bundle exec rake test TESTOPTS="-v"
