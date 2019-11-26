@@ -1,16 +1,10 @@
 sudo: required
 dist: trusty
 language: ruby
-env: DISPLAY=':99.0'
-addons:
-  chrome: beta
 rvm:
   - 2.4.4
 services: postgresql
 before_script:
-  - dpkg -s google-chrome-stable
   - psql -c 'create database nightingale_test;' -U postgres
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3
 script:
   - bundle exec rake test TESTOPTS="-v"
