@@ -71,10 +71,10 @@ class Completion extends React.Component {
                 {step.name}
               </strong>
             </div>
-            <div key={'divmessage' + step.name + user.id} className="col-8 text-xs-left">
+            <div key={'divmessage' + step.name + user.id} className="col-6 text-xs-left">
               This step was never started!
             </div>
-            <div key={'divbutton' + step.name + user.id} className="col-1 text-xs-left">
+            <div key={'divbutton' + step.name + user.id} className="col-3 text-xs-left">
               {this.actionButton(step, user)}
             </div>
           </div>
@@ -97,10 +97,10 @@ class Completion extends React.Component {
                 {step.name}
               </strong>
             </div>
-            <div key={'divmessage' + step.name + user.id} className="col-8 text-xs-left">
+            <div key={'divmessage' + step.name + user.id} className="col-6 text-xs-left">
               All required fields are complete!
             </div>
-            <div key={'divbutton' + step.name + user.id} className="col-1 text-xs-left">
+            <div key={'divbutton' + step.name + user.id} className="col-3 text-xs-left">
               {this.actionButton(step, user)}
             </div>
           </div>
@@ -132,10 +132,10 @@ class Completion extends React.Component {
                 {step.name}
               </strong>
             </div>
-            <div key={'divmessage' + step.name + user.id} className="col-8 text-xs-left">
+            <div key={'divmessage' + step.name + user.id} className="col-6 text-xs-left">
               Some required fields are not complete!
             </div>
-            <div key={'divbutton' + step.name + user.id} className="col-1 text-xs-left">
+            <div key={'divbutton' + step.name + user.id} className="col-3 text-xs-left">
               {this.actionButton(step, user)}
             </div>
           </div>
