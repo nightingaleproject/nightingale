@@ -35,7 +35,7 @@ RUN bundle exec rake assets:precompile
 
 RUN service postgresql start; sleep 5; service postgresql status; sudo -u postgres psql -U postgres -d postgres -c "alter user postgres with password 'password';"; service postgresql restart; bundle exec rake db:drop db:create db:migrate db:setup RAILS_ENV=development; bundle exec rake nightingale:demo:setup
 
-RUN git clone https://github.com/nightingaleproject/csharp-fhir-death-record.git
+RUN git clone https://github.com/nightingaleproject/vrdr-dotnet.git
 
 # Start the main process.
 CMD ["sh", "-c", "service postgresql start && sleep 5 && dotnet run -p csharp-fhir-death-record/FhirDeathRecord.HTTP & bundle exec rails s -p 3000 -b 0.0.0.0"]
