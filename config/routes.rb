@@ -35,6 +35,9 @@ Rails.application.routes.draw do
   match 'export_record_in_fhir_json' => 'death_records#export_record_in_fhir_json', :via => :get
   match 'export_record_in_fhir_xml' => 'death_records#export_record_in_fhir_xml', :via => :get
 
+  # Demonstration of messaging for submission
+  match 'submit_records_demo' => 'death_records#submit_demo', :via => :get
+
   # Step related routes
   resources :step, only: [:update]
 

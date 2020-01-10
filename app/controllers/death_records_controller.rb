@@ -214,6 +214,45 @@ class DeathRecordsController < ApplicationController
     send_data response.body, disposition: 'attachment', filename: params[:format] + '_nightingale_record.xml'
   end
 
+  # Demonstrates submission of records via FHIR messaging
+  def submit_demo
+    return unless current_user.admin?
+    death_records = DeathRecord.all
+    death_records.each do |record|
+      # Convert to FHIR/JSON using microservice
+      # TODO: Temporary workaround remove a field that breaks the microservice
+      response = RestClient.post "http://localhost:8080/json", record.contents.except("decedentName.akas").to_json, {content_type: 'application/nightingale'}
+      fhir_record = JSON.parse(response.body)
+      # Package in FHIR message
+      record_id = fhir_record['id']
+      # TODO: Temporary workaround for missing certificate ID in microservice
+      fhir_record['entry'][0]['resource']['identifier'] ||= { value: record_id }
+      # TODO: We need to create a message ID; as a temporary solution, hash the message contents
+      message_id = Digest::SHA1.hexdigest(fhir_record.to_json)
+      bundle = {
+        resourceType: "Bundle",
+        type: "message",
+        id: message_id,
+        timestamp: DateTime.now.to_s,
+        entry: []
+      }
+      header = {
+        resourceType: "MessageHeader",
+        id: message_id,
+        timestamp: DateTime.now.to_s,
+        eventUri: "http://nchs.cdc.gov/vrdr_submission",
+        destination: [{ endpoint: "http://nchs.cdc.gov/vrdr_submission" }],
+        source: { endpoint: "https://example-jurisdiction.gov/vital_records" },
+        focus: [{ reference: "urn:uuid:#{record_id}" }]
+      }
+      bundle[:entry] << { resource: header }
+      bundle[:entry] << { resource: fhir_record }
+      # Submit to message API server
+      response = RestClient.post "http://localhost:4000/messages", bundle.to_json, {content_type: 'application/json'}
+    end
+    redirect_to :back
+  end
+
   # Handles requesting edits from users.
   def request_edits
     return unless current_user.can_request_edits?
