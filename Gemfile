@@ -93,6 +93,8 @@ gem "nokogiri", ">= 1.10.4"
 
 gem 'rest-client'
 
+gem 'creek'
+
 group :development, :test, :ci do
   gem 'byebug', platform: :mri
   gem 'brakeman'

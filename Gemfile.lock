@@ -131,6 +131,9 @@ GEM
       deep_merge (~> 1.1.1)
     connection_pool (2.2.1)
     crass (1.0.5)
+    creek (2.5.0)
+      nokogiri (>= 1.10.0)
+      rubyzip (>= 1.0.0)
     database_cleaner (1.6.1)
     date_time_precision (0.8.1)
     deep_merge (1.1.1)
@@ -377,6 +380,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   combine_pdf
   config
+  creek
   database_cleaner
   devise
   doorkeeper
@@ -416,4 +420,4 @@ DEPENDENCIES
   webdrivers
 
 BUNDLED WITH
-   1.16.6
+   1.17.3
