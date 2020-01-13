@@ -220,15 +220,13 @@ class DeathRecordsController < ApplicationController
     death_records = DeathRecord.all
     death_records.each do |record|
       # Convert to FHIR/JSON using microservice
-      # TODO: Temporary workaround remove a field that breaks the microservice
-      response = RestClient.post "http://localhost:8080/json", record.contents.except("decedentName.akas").to_json, {content_type: 'application/nightingale'}
+      # TODO: We temporarily use the record ID as the certificate number and remove a field that causes the service to fail
+      contents = record.contents.merge({ certificateNumber: record.id }).except("decedentName.akas")
+      response = RestClient.post "http://localhost:8080/json", contents.to_json, {content_type: 'application/nightingale'}
       fhir_record = JSON.parse(response.body)
       # Package in FHIR message
+      message_id = record.message_id
       record_id = fhir_record['id']
-      # TODO: Temporary workaround for missing certificate ID in microservice
-      fhir_record['entry'][0]['resource']['identifier'] ||= { value: record_id }
-      # TODO: We need to create a message ID; as a temporary solution, hash the message contents
-      message_id = Digest::SHA1.hexdigest(fhir_record.to_json)
       bundle = {
         resourceType: "Bundle",
         type: "message",

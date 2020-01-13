@@ -89,7 +89,7 @@ namespace :nightingale do
           "cod.under3" =>  lrow["Cause of Death - Line D"],
           "cod.under3Int" =>  lrow["Interval Time - Line D"],
 
-          # "othersignificantconditions" => lrow["Other Significant Conditions"],
+          "contributingCauses.contributingCauses" => lrow["Other Significant Conditions"],
 
           "dateOfDeath.dateOfDeath" => DateTime.strptime(srow["Date of Death"], '%m/%d/%Y').to_s,
           "dateCertified.dateCertified" => DateTime.strptime(srow["Date Received"], '%m/%d/%Y').to_s

@@ -12,6 +12,15 @@ class DeathRecord < ApplicationRecord
   has_one :registration
   has_many :death_certificates
 
+  # The message_id field lets us keep track of the message_id used when submitting this record; if the record
+  # has changed we need to create a new message_id to let the receiver know there's a new message
+  before_save :update_message_id
+  def update_message_id
+    if changed?
+      self.message_id = SecureRandom.uuid
+    end
+  end
+
   # Return the StepFlows (in order) that make up this Workflow.
   def step_flows
     self.workflow.step_flows
