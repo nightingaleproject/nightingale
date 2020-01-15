@@ -2,7 +2,7 @@ require 'fhirdeathrecord'
 require 'rest-client'
 class DeathRecordsController < ApplicationController
   before_action :new_death_record, only: [:new]
-  before_action :set_death_record, only: [:show, :edit, :update_step, :update_active_step, :register, :request_edits, :abandon, :views_validate, :preview_certificate, :final_certificate]
+  before_action :set_death_record, only: [:show, :edit, :update_step, :update_active_step, :register, :request_edits, :abandon, :void, :views_validate, :preview_certificate, :final_certificate]
   before_action :set_comments, only: [:show, :edit]
 
   # Render dashboard view.
@@ -175,6 +175,14 @@ class DeathRecordsController < ApplicationController
     return
   end
 
+  def void
+    return unless current_user.can_void_record(@death_record)
+    @death_record.voided = true
+    @death_record.save
+    render js: "window.location.href='#{death_records_path}'"
+    return
+  end
+
   # VIEWS validate the given COD information.
   def views_validate_cod
     render json: ViewsHelper.views_for_record_cod(validate_params)
@@ -234,19 +242,37 @@ class DeathRecordsController < ApplicationController
         timestamp: DateTime.now.to_s,
         entry: []
       }
+      event_uri = if record.voided
+                    "http://nchs.cdc.gov/vrdr_submission_void"
+                  elsif record.submitted
+                    "http://nchs.cdc.gov/vrdr_submission_update"
+                  else
+                    "http://nchs.cdc.gov/vrdr_submission"
+                  end
       header = {
         resourceType: "MessageHeader",
         id: message_id,
         timestamp: DateTime.now.to_s,
-        eventUri: "http://nchs.cdc.gov/vrdr_submission",
+        eventUri: event_uri,
         destination: [{ endpoint: "http://nchs.cdc.gov/vrdr_submission" }],
         source: { endpoint: "https://example-jurisdiction.gov/vital_records" },
         focus: [{ reference: "urn:uuid:#{record_id}" }]
       }
       bundle[:entry] << { resource: header }
-      bundle[:entry] << { resource: fhir_record }
+      if record.voided
+        void_record = {
+          resourceType: "Parameters",
+          parameter: [{ name: "cert_no", valueString: record.id },
+                      { name: "state_id", valueString: "WA" }]
+        }
+        bundle[:entry] << { resource: void_record }
+      else
+        bundle[:entry] << { resource: fhir_record }
+      end
       # Submit to message API server
       response = RestClient.post "http://localhost:4000/messages", bundle.to_json, {content_type: 'application/json'}
+      # TODO: The submitted field should eventually be updated based on a receipt message
+      record.update_columns(submitted: true) # Bypass callbacks so that message_id doesn't get updated
     end
     redirect_to :back
   end

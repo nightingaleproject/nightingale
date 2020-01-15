@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       post :register
       post :request_edits
       post :abandon
+      post :void
       post :views_validate
       get :preview_certificate
       get :final_certificate

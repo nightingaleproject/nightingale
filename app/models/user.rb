@@ -56,6 +56,11 @@ class User < ApplicationRecord
     self.id == death_record.creator.id
   end
 
+  def can_void_record(death_record)
+    return false if is_guest_user
+    self.id == death_record.creator.id
+  end
+
   def grant_admin
     return false if is_guest_user
     add_role :admin unless has_role?(:admin)

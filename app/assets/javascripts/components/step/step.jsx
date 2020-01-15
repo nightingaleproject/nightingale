@@ -14,6 +14,7 @@ class Step extends React.Component {
     this.onUnload = this.onUnload.bind(this);
     this.requestEdits = this.requestEdits.bind(this);
     this.abandonRecord = this.abandonRecord.bind(this);
+    this.voidRecord = this.voidRecord.bind(this);
   }
 
   componentDidMount() {
@@ -207,6 +208,26 @@ class Step extends React.Component {
     );
   }
 
+  voidRecord(deathRecordId) {
+    var self = this;
+    swal(
+      {
+        title: 'You are about to void this death record!',
+        text: 'Are you sure?',
+        type: 'error',
+        showCancelButton: true,
+        confirmButtonClass: 'btn-primary',
+        confirmButtonText: 'Void!',
+        closeOnConfirm: false,
+        showLoaderOnConfirm: true
+      },
+      function(isConfirm) {
+        if (!isConfirm) return;
+        $.post(Routes.void_death_record_path(deathRecordId));
+      }
+    );
+  }
+
   // Handles registering the entire death record.
   register() {
     var self = this;
@@ -382,6 +403,18 @@ class Step extends React.Component {
                       id="abandonBtn"
                     >
                       <span className="fa fa-trash" /> Abandon Record
+                    </button>
+                  )}
+                {!this.state.currentUser.canRegisterRecord &&
+                  !this.state.deathRecord.registration &&
+                  this.state.deathRecord.creator.id == this.state.currentUser.id && (
+                    <button
+                      type="button"
+                      onClick={() => this.voidRecord(this.state.deathRecord.id)}
+                      className="btn btn-lg btn-primary float-right mr-1"
+                      id="abandonBtn"
+                    >
+                      <span className="fa fa-trash" /> Void Record
                     </button>
                   )}
               </span>
