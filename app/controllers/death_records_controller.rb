@@ -302,9 +302,9 @@ class DeathRecordsController < ApplicationController
     draw = params[:draw].to_i
     search = params[:search][:value] unless params[:search].nil?
     if current_user.admin?
-      records = DeathRecord.all
+      records = DeathRecord.order('id DESC')
     else
-      records = current_user.owned_death_records.where(abandoned: false)
+      records = current_user.owned_death_records.where(abandoned: false).order('id DESC')
     end
     if search.present?
       filtered = records.where('lower(name) like ?', "%#{search.downcase}%")
