@@ -16,6 +16,7 @@ class DeathRecord < ApplicationRecord
   # has changed we need to create a new message_id to let the receiver know there's a new message
   before_save :update_message_id
   def update_message_id
+    # TODO: This is probably too agressive, we don't want to have to use update_column
     if changed?
       self.message_id = SecureRandom.uuid
     end

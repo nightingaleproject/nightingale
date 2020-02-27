@@ -95,6 +95,8 @@ gem 'rest-client'
 
 gem 'creek'
 
+gem 'jsonpath'
+
 group :development, :test, :ci do
   gem 'byebug', platform: :mri
   gem 'brakeman'

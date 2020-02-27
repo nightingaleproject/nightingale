@@ -180,6 +180,9 @@ GEM
     js-routes (1.4.0)
       railties (>= 3.2)
       sprockets-rails
+    jsonpath (1.0.5)
+      multi_json
+      to_regexp (~> 0.2.1)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.0.1)
@@ -336,6 +339,7 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    to_regexp (0.2.1)
     ttfunk (1.5.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
@@ -394,6 +398,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   js-routes
+  jsonpath
   kaminari
   listen (~> 3.0.5)
   lodash-rails

@@ -270,7 +270,7 @@ class DeathRecordsController < ApplicationController
         bundle[:entry] << { resource: fhir_record }
       end
       # Submit to message API server
-      response = RestClient.post "http://localhost:4000/messages", bundle.to_json, {content_type: 'application/json'}
+      response = RestClient.post "http://localhost:4000/messages", bundle.to_json, { content_type: 'application/json'}
       # TODO: The submitted field should eventually be updated based on a receipt message
       record.update_columns(submitted: true) # Bypass callbacks so that message_id doesn't get updated
     end

@@ -93,6 +93,8 @@ Rails.application.routes.draw do
   namespace :fhir, defaults: { format: :json } do
     namespace :v1 do
       resources :death_records
+      # Demonstration of messaging for acknowledgements and coded responses
+      resources :messages, only: [:create]
     end
   end
   # Handle OPTIONS for CORS preflight
