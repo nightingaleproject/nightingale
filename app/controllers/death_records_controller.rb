@@ -235,11 +235,14 @@ class DeathRecordsController < ApplicationController
 
   # Provides data for the dashboard, which polls this endpoint for updates
   def submit_records_status
+    # Load records, only the subset of data we need
+    records = DeathRecord.select(:id, :name, :message_id, :voided, :submitted, :acknowledgement_message_id, :coding_message_id, :underlying_cause_code).order(:id)
     response = {
       record_count: DeathRecord.count,
       submitted_record_count: DeathRecord.where(submitted: true).count,
       acknowledged_record_count: DeathRecord.where.not(acknowledgement_message_id: nil).count,
-      coded_record_count: DeathRecord.where.not(coding_message_id: nil).count
+      coded_record_count: DeathRecord.where.not(coding_message_id: nil).count,
+      records: records.map { |r| r.serializable_hash } # We don't want the default as_json serialization
     }
     render json: response
   end

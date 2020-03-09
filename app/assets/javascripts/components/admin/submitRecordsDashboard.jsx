@@ -15,12 +15,50 @@ class SubmitRecordsDashboard extends React.Component {
       return <div />;
     }
 
+    const showRecord = (record) => {
+      return (
+        <tr key={record.id}>
+          <td>{record.id}</td>
+          <td>{record.name}</td>
+          <td style={{textAlign: "center"}}>{record.voided ? <i className="fa fa-check"></i> : ''}</td>
+          <td style={{textAlign: "center"}}>{record.submitted ? <i className="fa fa-check"></i> : ''}</td>
+          <td style={{textAlign: "center"}}>{record.acknowledgement_message_id != null ? <i className="fa fa-check"></i> : ''}</td>
+          <td style={{textAlign: "center"}}>{record.coding_message_id != null ? <i className="fa fa-check"></i> : ''}</td>
+          <td>{record.underlying_cause_code}</td>
+        </tr>
+      );
+    };
+
+    const showRecords = (records) => {
+      return (
+          <table className="table table-striped table-hover table-sm">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Decedent Name</th>
+                <th style={{textAlign: "center"}}>Voided</th>
+                <th style={{textAlign: "center"}}>Submitted</th>
+                <th style={{textAlign: "center"}}>Acknowledged</th>
+                <th style={{textAlign: "center"}}>Coded</th>
+                <th>Underlying COD</th>
+              </tr>
+            </thead>
+            <tbody>
+              {records.map(showRecord)}
+            </tbody>
+          </table>
+      );
+    };
+
     return (
       <div>
-        <div>Records: {this.state.record_count || 0}</div>
-        <div>Submitted Records: {this.state.submitted_record_count || 0}</div>
-        <div>Acknowledged Records: {this.state.acknowledged_record_count || 0}</div>
-        <div>Coded Records: {this.state.coded_record_count || 0}</div>
+        <div className="h4 my-4">
+          <span className="mr-4">Records: {this.state.record_count || 0}</span>
+          <span className="mx-4">Submitted: {this.state.submitted_record_count || 0}</span>
+          <span className="mx-4">Acknowledged: {this.state.acknowledged_record_count || 0}</span>
+          <span className="mx-4">Coded: {this.state.coded_record_count || 0}</span>
+        </div>
+        {showRecords(this.state.records || [])}
       </div>
     );
   }

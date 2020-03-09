@@ -9,6 +9,8 @@ class Fhir::V1::MessagesController < ActionController::API
     event_uri = header['eventUri']
     record_message_id = header['response']['identifier']
 
+    raise "Cannot determine message id" unless record_message_id
+
     case event_uri
     when "http://nchs.cdc.gov/vrdr_acknowledgement"
       # Find the record for which this message is being acknowledged and record the acknowledgement
@@ -25,11 +27,20 @@ class Fhir::V1::MessagesController < ActionController::API
         # TODO: Abstract out the code to pull this apart
         coding_result = json['entry'].last['resource']
         # Use jsonpath to pull out values
+        underlying_cause_codes = JsonPath.new('$.parameter[?(@.name==underlying_cause_of_death)]..code').on(coding_result)
         record_cause_codes = JsonPath.new('$.parameter[?(@.name==record_cause_of_death)]..code').on(coding_result)
+        entity_cause_codes = JsonPath.new('$.parameter[?(@.name==entity_axis_code)]..code').on(coding_result)
         # TODO: Get the underlying and entity codes too
         # We use update_column so we don't trigger a new message_id generation
-        record.update_columns(coding_message_id: header['id'], record_cause_codes: record_cause_codes.join(' '))
+        record.update_columns(coding_message_id: header['id'],
+                              underlying_cause_code: underlying_cause_codes.first,
+                              record_cause_codes: record_cause_codes.join(' '),
+                              entity_cause_codes: entity_cause_codes.join(' '))
       end
+
+    else
+
+      raise "Unknown event URI #{event_uri} received"
 
     end
 
