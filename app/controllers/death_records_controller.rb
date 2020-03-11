@@ -238,7 +238,7 @@ class DeathRecordsController < ApplicationController
   # Provides data for the dashboard, which polls this endpoint for updates
   def submit_records_status
     # Load records, only the subset of data we need
-    records = DeathRecord.select(:id, :name, :message_id, :voided, :submitted, :acknowledgement_message_id, :coding_message_id, :underlying_cause_code).order(:id)
+    records = DeathRecord.select(:id, :name, :message_id, :voided, :submitted, :acknowledgement_message_id, :coding_message_id, :underlying_cause_code).order('id DESC')
     response = {
       record_count: DeathRecord.count,
       submitted_record_count: DeathRecord.where(submitted: true).count,
