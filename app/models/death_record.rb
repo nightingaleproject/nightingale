@@ -12,12 +12,18 @@ class DeathRecord < ApplicationRecord
   has_one :registration
   has_many :death_certificates
 
-  # The message_id field lets us keep track of the message_id used when submitting this record; if the record
-  # has changed we need to create a new message_id to let the receiver know there's a new message
-  before_save :update_message_id
-  def update_message_id
-    # TODO: This is probably too agressive, we don't want to have to use update_column
-    if changed?
+  # We keep track of a number of fields about the submission status, which we update when the record changes
+  before_save :update_submission_status
+  def update_submission_status
+    # We care about specific changes only
+    if (changed & ["name", "contents", "voided"]).any?
+      self.submitted = false
+      self.acknowledgement_message_id = nil
+      self.coding_message_id = nil
+      self.underlying_cause_code = nil
+      self.record_cause_codes = nil
+      self.entity_cause_codes = nil
+      # Create a new message_id to let the receiver know that this is not a resubmission
       self.message_id = SecureRandom.uuid
     end
   end

@@ -225,7 +225,9 @@ class DeathRecordsController < ApplicationController
   # Demonstrates submission of records via FHIR messaging
   def submit_records
     return unless current_user.admin?
-    SubmitRecordsJob.perform_later
+    DeathRecord.where(acknowledgement_message_id: nil).pluck(:id).each do |record_id|
+      SubmitRecordJob.perform_later(record_id)
+    end
     redirect_to submit_records_dashboard_path
   end
 
