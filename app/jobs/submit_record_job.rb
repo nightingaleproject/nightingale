@@ -3,6 +3,7 @@ class SubmitRecordJob < ApplicationJob
 
   def perform(record_id)
     record = DeathRecord.find(record_id)
+    return if record.coding_message_id # Don't resubmit coded messages, anything else is ok (since we may want to recode)
     # Convert to FHIR/JSON using microservice
     # TODO: We temporarily use the record ID as the certificate number and remove a field that causes the service to fail
     contents = record.contents.merge({ certificateNumber: record.id }).except("decedentName.akas")
@@ -46,7 +47,7 @@ class SubmitRecordJob < ApplicationJob
       bundle[:entry] << { resource: fhir_record }
     end
     # Submit to message API server
-    response = RestClient.post "http://localhost:4000/messages", bundle.to_json, { content_type: 'application/json'}
     record.update_attributes(submitted: true)
+    response = RestClient.post "http://localhost:4000/messages", bundle.to_json, { content_type: 'application/json'}
   end
 end

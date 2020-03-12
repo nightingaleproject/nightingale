@@ -233,10 +233,12 @@ class DeathRecordsController < ApplicationController
 
   # Renders a status dashboard that polls for information on the data submission
   def submit_records_dashboard
+    return unless current_user.admin?
   end
 
   # Provides data for the dashboard, which polls this endpoint for updates
   def submit_records_status
+    return unless current_user.admin?
     # Load records, only the subset of data we need
     records = DeathRecord.select(:id, :name, :message_id, :voided, :submitted, :acknowledgement_message_id, :coding_message_id, :underlying_cause_code).order('id DESC')
     response = {

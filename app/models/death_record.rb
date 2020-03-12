@@ -17,7 +17,7 @@ class DeathRecord < ApplicationRecord
   def update_submission_status
     # We care about specific changes only
     if (changed & ["name", "contents", "voided"]).any?
-      self.submitted = false
+      # We don't reset the "submitted" field since we want updates to be submitted as such
       self.acknowledgement_message_id = nil
       self.coding_message_id = nil
       self.underlying_cause_code = nil
