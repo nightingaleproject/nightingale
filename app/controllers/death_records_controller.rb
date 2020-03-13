@@ -372,6 +372,10 @@ class DeathRecordsController < ApplicationController
     if @death_record.nil?
       @death_record = all_transferred_death_records.select{ |record| record.id.to_s == params[:id].to_s }.first
     end
+    # Allow an admin to view all death records
+    if @death_record.nil? && current_user.admin?
+      @death_record = DeathRecord.find_by(id: params[:id])
+    end
   end
 
   # Retrieve all Comments for this DeathRecord

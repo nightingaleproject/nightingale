@@ -19,7 +19,7 @@ class SubmitRecordsDashboard extends React.Component {
       return (
         <tr key={record.id}>
           <td>{record.id}</td>
-          <td>{record.name}</td>
+          <td><a href={"/death_records/" + record.id}>{record.name}</a></td>
           <td style={{textAlign: "center"}}>{record.voided ? <i className="fa fa-check"></i> : ''}</td>
           <td style={{textAlign: "center"}}>{record.submitted ? <i className="fa fa-check"></i> : ''}</td>
           <td style={{textAlign: "center"}}>{record.acknowledgement_message_id != null ? <i className="fa fa-check"></i> : ''}</td>
