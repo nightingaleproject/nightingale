@@ -4,12 +4,16 @@ class Fhir::V1::MessagesController < ActionController::API
 
   def create
     # Handle the incoming message; this is just a quick demo, so super lightweight and informal
-    json = JSON.parse(request.body.read)
+    json_string = request.body.read
+    json = JSON.parse(json_string)
     header = json['entry'].first['resource']
     event_uri = header['eventUri']
     record_message_id = header['response']['identifier']
 
     raise "Cannot determine message id" unless record_message_id
+
+    # Save every message for display for demo purposes only
+    Message.create(message_id: header['id'], json: json_string)
 
     case event_uri
     when "http://nchs.cdc.gov/vrdr_acknowledgement"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200227023653) do
+ActiveRecord::Schema.define(version: 20200318034441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,14 @@ ActiveRecord::Schema.define(version: 20200227023653) do
     t.index ["owner_id"], name: "index_death_records_on_owner_id", using: :btree
     t.index ["step_flow_id"], name: "index_death_records_on_step_flow_id", using: :btree
     t.index ["workflow_id"], name: "index_death_records_on_workflow_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "message_id"
+    t.text     "json"
+    t.index ["message_id"], name: "index_messages_on_message_id", using: :btree
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|

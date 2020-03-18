@@ -251,6 +251,14 @@ class DeathRecordsController < ApplicationController
     render json: response
   end
 
+  # Here instead of in a messages controller to keep the messaging demo code in one place
+  def show_message
+    return unless current_user.admin?
+    if message = Message.find_by_message_id(params[:id])
+      @json = JSON.parse(message.json)
+    end
+  end
+
   # Handles requesting edits from users.
   def request_edits
     return unless current_user.can_request_edits?
