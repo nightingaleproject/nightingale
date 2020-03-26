@@ -69,7 +69,7 @@ You can also build and deploy Nightingale from scratch:
 
 * Create the database
 
-    `bundle exec rake db:drop db:create db:migrate db:setup RAILS_ENV=development`
+    `bundle exec rake db:setup`
 
 * Set up system with demonstration data
 

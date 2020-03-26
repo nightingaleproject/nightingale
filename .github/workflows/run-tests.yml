@@ -34,15 +34,11 @@ jobs:
 
       - name: Cache ruby gems
         uses: actions/cache@v1
-        env:
-          cache-name: cache-ruby-gems
         with:
           path: vendor/bundle
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/Gemfile.lock') }}
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            ${{ runner.os }}-gems-
       - name: Build and run tests
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/test
@@ -50,6 +46,7 @@ jobs:
         run: |
           sudo apt-get -yqq install libpq-dev
           gem install bundler
-          bundle install --retry 3 --path vendor/bundle
+          bundle config path vendor/bundle
+          bundle install --retry 3
           bundle exec rails db:create
           bundle exec rails test
