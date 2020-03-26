@@ -103,7 +103,7 @@ GEM
     bootstrap-datepicker-rails (1.6.4.1)
       railties (>= 3.0)
     brakeman (3.7.2)
-    builder (3.2.3)
+    builder (3.2.4)
     byebug (9.1.0)
     capybara (2.15.2)
       addressable
@@ -125,12 +125,12 @@ GEM
     coffee-script-source (1.12.2)
     combine_pdf (1.0.7)
       ruby-rc4 (>= 0.1.5)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.6)
     config (1.4.0)
       activesupport (>= 3.0)
       deep_merge (~> 1.1.1)
     connection_pool (2.2.1)
-    crass (1.0.5)
+    crass (1.0.6)
     database_cleaner (1.6.1)
     date_time_precision (0.8.1)
     deep_merge (1.1.1)
@@ -165,7 +165,7 @@ GEM
     httpi (2.4.3)
       rack
       socksify
-    i18n (1.7.0)
+    i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -194,7 +194,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     lodash-rails (4.17.4)
       railties (>= 3.1)
-    loofah (2.3.1)
+    loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.6)
@@ -205,7 +205,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_mime (0.1.4)
     mini_portile2 (2.4.0)
-    minitest (5.12.2)
+    minitest (5.14.0)
     momentjs-rails (2.17.1)
       railties (>= 3.1)
     multi_json (1.12.1)
@@ -334,7 +334,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.8)
     ttfunk (1.5.1)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
@@ -416,4 +416,4 @@ DEPENDENCIES
   webdrivers
 
 BUNDLED WITH
-   1.16.6
+   2.1.4

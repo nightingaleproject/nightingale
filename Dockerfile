@@ -1,28 +1,17 @@
-FROM ruby:2.4.4
+FROM ruby:2.6.5
 
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
-
-RUN apt-get update -yq \
-    && apt-get install curl gnupg -yq \
-    && curl -sL https://deb.nodesource.com/setup_8.x | bash \
-    && apt-get install nodejs -yq
 
 ENV RAILS_ENV production
 
 RUN mkdir /nightingale
 WORKDIR /nightingale
-COPY Gemfile /nightingale/Gemfile
-COPY Gemfile.lock /nightingale/Gemfile.lock
-
-# Set working directory, where the commands will be ran:
-WORKDIR $RAILS_ROOT
-
-# Gems:
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
-RUN gem install bundler -v 1.17.3 && bundle install --jobs 20 --retry 5 --without development test
 
-COPY config/puma.rb config/puma.rb
+RUN git config --global http.sslVerify "false"
+
+RUN gem install bundler -v 2.1.4 && bundle install --retry 5 --without development test
 
 # Copy the main application.
 COPY . .

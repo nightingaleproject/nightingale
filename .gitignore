@@ -23,4 +23,8 @@
 # Ignore OSX/macOS DS_Store files
 .DS_Store
 
+# Ignore environment files
+.env
+.env.production
+
 spec/examples.txt

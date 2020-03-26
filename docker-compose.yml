@@ -1,17 +1,25 @@
 version: '3'
 services:
   db:
-    image: postgres
+    image: postgres:12
+    restart: unless-stopped
+    volumes:
+      - nightingale_dbdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     expose:
       - "5432"
   app:
     build: .
+    restart: unless-stopped
     volumes:
       - /var/www/nightingale
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     depends_on:
       - db
+    environment:
+      DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@db/nightingale_production
     env_file: .env.production
   web:
     build:
@@ -27,3 +35,6 @@ services:
       dockerfile: Dockerfile-smart
     ports:
       - "8080:80"
+
+volumes:
+  nightingale_dbdata:

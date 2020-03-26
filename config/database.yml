@@ -1,8 +1,5 @@
 default: &default
   adapter: postgresql
-  host: 0.0.0.0
-  username: postgres
-  password: password
 
 development:
   <<: *default
@@ -15,5 +12,3 @@ test:
 production:
   <<: *default
   database: nightingale_production
-  username: postgres
-  host: db

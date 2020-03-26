@@ -59,6 +59,10 @@ You can also build and deploy Nightingale from scratch:
 
     `cd nightingale`
 
+* Install ruby using [rbenv](https://github.com/rbenv/rbenv) or [rvm](http://rvm.io/)
+
+    `rbenv install` or `rvm install $(cat .ruby-version)`
+
 * Install ruby gem dependencies
 
     `bundle install`
@@ -83,7 +87,7 @@ You can also build and deploy Nightingale from scratch:
       * A simple workflow where a physician initiates a record
     * U.S. geographical data, used for structured data input
 
-To support consuming and producing IJE and FHIR records using Nightingale, you must be running the vrdr-dotnet microservice  (this step is not necessary if you are using the Dockerized version of Nightingale). For instructions on setting up and running this, please see https://github.com/nightingaleproject/vrdr-dotnet#fhirdeathrecordhttp.
+To support consuming and producing IJE and FHIR records using Nightingale, you must be running the vrdr-dotnet microservice  (this step is not necessary if you are using the Dockerized version of Nightingale). For instructions on setting up and running this, please see https://github.com/nightingaleproject/vrdr-dotnet#vrdrhttp.
 
 #### Tasks
 
