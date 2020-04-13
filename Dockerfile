@@ -11,7 +11,7 @@ COPY Gemfile.lock Gemfile.lock
 
 RUN git config --global http.sslVerify "false"
 
-RUN gem install bundler -v 2.1.4 && bundle install --retry 5 --without development test
+RUN gem install bundler -v 2.1.4 && bundle config set without 'development test' && bundle install --retry 5
 
 # Copy the main application.
 COPY . .

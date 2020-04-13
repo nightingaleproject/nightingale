@@ -18,8 +18,10 @@ services:
       - "3000"
     depends_on:
       - db
+      - vrdr-microservice
     environment:
       DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@db/nightingale_production
+      VRDR_URL: "vrdr-microservice:8080"
     env_file: .env.production
   web:
     build:
@@ -29,12 +31,8 @@ services:
       - "80:80"
     depends_on:
       - app
-  smart:
-    build:
-      context: .
-      dockerfile: Dockerfile-smart
-    ports:
-      - "8080:80"
+  vrdr-microservice:
+    image: mitre/vrdr-microservice:latest
 
 volumes:
   nightingale_dbdata:
