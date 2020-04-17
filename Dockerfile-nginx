@@ -14,7 +14,7 @@ WORKDIR $RAILS_ROOT
 RUN mkdir log
 
 # copy over static assets
-COPY --from=nightingale_app:latest /nightingale/public public/
+COPY --from=mitre/nightingale:latest /nightingale/public public/
 
 # Copy Nginx config template
 COPY config/nginx.conf /etc/nginx/conf.d/default.conf

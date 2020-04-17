@@ -37,13 +37,7 @@ Once the prerequisites are available, Nightingale can be installed and demonstra
 
 ##### Easy
 
-A [Dockerized](https://www.docker.com/get-started) version of Nightingale for experimental purposes has been published to Docker Hub, so running Nightingale is as easy as:
-
-```
-docker run --rm -p 3000:3000 adammitre/nightingale
-```
-
-This command will pull the latest version of Nightingale from Docker Hub, and run it. You can access it from a web browser at [http://localhost:3000](http://localhost:3000).
+A [Dockerized](https://www.docker.com/get-started) version of Nightingale for experimental purposes has been published to Docker Hub. For instructions on how to run in Docker, please see [CONTAINERDEPLOY.md](CONTAINERDEPLOY.md).
 
 ##### Hard
 
