@@ -10,7 +10,7 @@ services:
     expose:
       - "5432"
   app:
-    build: .
+    image: mitre/nightingale:latest
     restart: unless-stopped
     volumes:
       - /var/www/nightingale
@@ -28,7 +28,7 @@ services:
       context: .
       dockerfile: Dockerfile-nginx
     ports:
-      - "80:80"
+      - "80:80" # Change the first "80" here if you need nightingale running on a different port.
     depends_on:
       - app
   vrdr-microservice:
