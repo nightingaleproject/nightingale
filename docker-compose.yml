@@ -21,7 +21,7 @@ services:
       - vrdr-microservice
     environment:
       DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@db/nightingale_production
-      VRDR_URL: "vrdr-microservice:8080"
+      VRDR_URL: "http://vrdr-microservice:8080"
     env_file: .env.production
   web:
     build:

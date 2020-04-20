@@ -30,9 +30,14 @@ If desired, run the demo environment setup:
 
 ```docker-compose run app rake nightingale:demo:setup```
 
-Whenever you update your version of nightingale, be sure to run:
+In order to upgrade to the latest version of the nightingle container, run:
 
-```docker-compose run app rake db:migrate```
+    # Get the latest version of the nightingale container
+    docker-compose pull
+    # Restart the docker containers
+    docker-compose up -d --build
+    # Migrate the nightingale database to the latest version
+    docker-compose run app rake db:migrate
 
 When you are done, to stop the containers run:
 

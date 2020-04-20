@@ -200,7 +200,7 @@ class DeathRecordsController < ApplicationController
     user = User.find_by(first_name: 'Example', last_name: 'Certifier')
     certifier_id = user.id
     death_record = DeathRecord.find_by(id: params[:format])
-    response = RestClient.post "http://#{VrdrHelper.get_host}/json", death_record.contents.to_json, {content_type: 'application/nightingale'}
+    response = RestClient.post "#{VrdrHelper.get_host}/json", death_record.contents.to_json, {content_type: 'application/nightingale'}
     send_data response.body, disposition: 'attachment', filename: params[:format] + '_nightingale_record.json'
   end
 
@@ -210,7 +210,7 @@ class DeathRecordsController < ApplicationController
     user = User.find_by(first_name: 'Example', last_name: 'Certifier')
     certifier_id = user.id
     death_record = DeathRecord.find_by(id: params[:format])
-    response = RestClient.post "http://#{VrdrHelper.get_host}/xml", death_record.contents.to_json, {content_type: 'application/nightingale'}
+    response = RestClient.post "#{VrdrHelper.get_host}/xml", death_record.contents.to_json, {content_type: 'application/nightingale'}
     send_data response.body, disposition: 'attachment', filename: params[:format] + '_nightingale_record.xml'
   end
 

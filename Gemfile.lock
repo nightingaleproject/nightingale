@@ -15,14 +15,6 @@ GIT
     ije (0.0.1)
 
 GIT
-  remote: https://github.com/nightingaleproject/ruby-fhir-death-record.git
-  revision: b6f3c6f433c70ff3c07fa5a4c239becb1d213f70
-  specs:
-    ruby-fhir-death-record (0.1.4)
-      activesupport
-      nokogiri
-
-GIT
   remote: https://github.com/nightingaleproject/views_connector
   revision: 9b1a6c935f3c16d800bb1af060041a18b146a0ec
   specs:
@@ -440,7 +432,6 @@ DEPENDENCIES
   rest-client
   rolify
   rspec-rails
-  ruby-fhir-death-record!
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
