@@ -24,13 +24,20 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+      vrdr-microservice:
+        image: mitre/vrdr-microservice:latest
+        ports:
+        - 8080:8080
+        options: >-
+          --health-cmd "curl 127.0.0.1:8080"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - uses: actions/checkout@v2
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6.6
 
       - name: Cache ruby gems
         uses: actions/cache@v1
