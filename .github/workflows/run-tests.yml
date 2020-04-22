@@ -58,3 +58,11 @@ jobs:
           bundle install --retry 3
           bundle exec rails db:create
           bundle exec rails test
+          bundle exec rails spec
+          bundle exec rails coverage:report
+      - name: Upload coverage results
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage

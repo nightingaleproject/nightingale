@@ -92,6 +92,7 @@ group :development, :test, :ci do
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'database_cleaner'
+  gem 'simplecov', require: false
 end
 
 group :development do

@@ -19,6 +19,11 @@
 
 # Ignore uploads
 public/uploads
+# Ignore compiled assets
+public/assets
+
+# Ignore simplecov output
+coverage/
 
 # Ignore Byebug command history file.
 .byebug_history
