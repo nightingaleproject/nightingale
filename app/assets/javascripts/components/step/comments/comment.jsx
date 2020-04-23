@@ -32,7 +32,7 @@ class Comment extends React.Component {
             className="btn btn-sm btn-danger"
             id={'deleteComment' + this.props.comment.id}
           >
-            <span className="fa fa-trash" /> Delete
+            <span className="fas fa-trash" /> Delete
           </button>
         </div>
       );

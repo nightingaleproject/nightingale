@@ -61,7 +61,7 @@ feature 'Complete demo workflow', js: true do
     assert dashboard_page.find_by_id('Demographicsprog')[:class].include? 'fa-check-circle'
     assert dashboard_page.find_by_id('Familyprog')[:class].include? 'fa-check-circle'
     assert dashboard_page.find_by_id('Dispositionprog')[:class].include? 'fa-check-circle'
-    assert dashboard_page.find_by_id('Medicalprog')[:class].include? 'fa-circle-o'
+    assert dashboard_page.find_by_id('Medicalprog')[:class].include? 'fa-circle'
     assert dashboard_page.open_count == 1
     dashboard_page.continue_record(1)
 

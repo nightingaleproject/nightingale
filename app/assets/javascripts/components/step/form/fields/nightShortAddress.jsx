@@ -154,7 +154,7 @@ class NightShortAddress extends React.Component {
     return (
       <fieldset className="mt-4 pb-4" id={this.props.name + 'field'}>
         <legend>
-          {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
+          {this.props.schema.required && <i className="fas fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
         </legend>
         {this.props.schema.named &&

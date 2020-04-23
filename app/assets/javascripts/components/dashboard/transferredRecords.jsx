@@ -31,7 +31,7 @@ class TransferredRecords extends React.Component {
           infoEmpty: '',
           infoFiltered: '',
           search: 'Search by Name:',
-          processing: "<span class='fa fa-spinner fa-spin fa-5x fa-fw'></span>"
+          processing: "<span class='fas fa-spinner fa-spin fa-5x fa-fw'></span>"
         },
         ordering: false,
         columnDefs: [
@@ -104,11 +104,11 @@ class TransferredRecords extends React.Component {
           aria-haspopup="true"
           aria-expanded="false"
         >
-          <i className="fa fa-cog" />
+          <i className="fas fa-cog" />
         </button>
         <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
           <a className="dropdown-item" href={Routes.death_record_path(data.id)} id={'view' + data.id}>
-            <i className="fa fa-search" />&nbsp;View
+            <i className="fas fa-search" />&nbsp;View
           </a>
         </div>
       </div>
@@ -145,7 +145,7 @@ class TransferredRecords extends React.Component {
           title={step.name}
           key={deathRecord.id + step.name}
         >
-          <i className="fa fa-check-circle text-success night-progress-icon" id={step.name + 'prog'} />
+          <i className="fas fa-check-circle text-success night-progress-icon" id={step.name + 'prog'} />
           &nbsp;
         </a>
       );
@@ -158,7 +158,7 @@ class TransferredRecords extends React.Component {
           title={step.name}
           key={deathRecord.id + step.name}
         >
-          <i className="fa fa-times-circle text-danger night-progress-icon" id={step.name + 'prog'} />
+          <i className="fas fa-times-circle text-danger night-progress-icon" id={step.name + 'prog'} />
           &nbsp;
         </a>
       );
@@ -171,7 +171,7 @@ class TransferredRecords extends React.Component {
           title={step.name}
           key={deathRecord.id + step.name}
         >
-          <i className="fa fa-circle-o text-muted night-progress-icon" id={step.name + 'prog'} />
+          <i className="far fa-circle text-muted night-progress-icon" id={step.name + 'prog'} />
           &nbsp;
         </a>
       );
@@ -226,11 +226,11 @@ class TransferredRecords extends React.Component {
           <div className="col pl-0">
             {!this.props.currentUser.canRegisterRecord &&
               <h3>
-                <span className="fa fa-folder" /> My Transferred Records
+                <span className="fas fa-folder" /> My Transferred Records
               </h3>}
             {this.props.currentUser.canRegisterRecord &&
               <h3>
-                <span className="fa fa-folder" /> Registered Records
+                <span className="fas fa-folder" /> Registered Records
               </h3>}
           </div>
         </div>

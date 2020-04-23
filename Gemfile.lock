@@ -415,7 +415,7 @@ DEPENDENCIES
   doorkeeper
   fhir_models!
   fixtures_dumper
-  font-awesome-sass
+  font-awesome-sass (~> 5.12)
   geokit
   groupdate
   hashdiff

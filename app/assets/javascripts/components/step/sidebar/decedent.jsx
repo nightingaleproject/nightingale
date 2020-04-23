@@ -77,7 +77,7 @@ class Decedent extends React.Component {
     return (
       <div className="card night-card text-center night-full-width night-decedent-padding pt-3 pb-2">
         <div className="fa-4x text-center night-center-block">
-          <i className="fa fa-2x fa-user-circle text-primary" />
+          <i className="fas fa-2x fa-user-circle text-primary" />
         </div>
         {this.decedentInfo()}
       </div>

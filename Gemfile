@@ -33,8 +33,8 @@ gem 'bootstrap', '4.3.1'
 # User roles
 gem 'rolify'
 
-# Icons
-gem 'font-awesome-sass'
+# Icons (major versions here normally break things, check for missing icons if you change this version)
+gem 'font-awesome-sass', '~> 5.12'
 
 # Creating local PDFs, useful unless a back-end service is used for generating certificates
 gem 'prawn'

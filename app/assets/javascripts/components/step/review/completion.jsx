@@ -35,7 +35,7 @@ class Completion extends React.Component {
             className="btn btn-sm btn-secondary no-collapsable"
             onClick={() => this.props.updateStep(step.name, false)}
           >
-            <span key={'buttonspan' + step.name + user.id} className="fa fa-pencil" /> Edit
+            <span key={'buttonspan' + step.name + user.id} className="fas fa-pencil-alt" /> Edit
           </button>
         </div>
       );
@@ -49,7 +49,7 @@ class Completion extends React.Component {
             onClick={() => this.requestEdits(step, step.contents.editor)}
             id={step.name + 'RequestEditsButton'}
           >
-            <span key={'buttonspan' + step.name + user.id} className="fa fa-send" /> Request Edit
+            <span key={'buttonspan' + step.name + user.id} className="fas fa-paper-plane" /> Request Edit
           </button>
         </div>
       );
@@ -172,8 +172,8 @@ class Completion extends React.Component {
                 (result.isRequired && !result.requiredSatisfied && ' alert-danger ')
               }
             >
-              {result.isRequired && result.requiredSatisfied && <i className="fa fa-fw fa-check">&nbsp;</i>}
-              {result.isRequired && !result.requiredSatisfied && <i className="fa fa-fw fa-times">&nbsp;</i>}
+              {result.isRequired && result.requiredSatisfied && <i className="fas fa-fw fa-check">&nbsp;</i>}
+              {result.isRequired && !result.requiredSatisfied && <i className="fas fa-fw fa-times">&nbsp;</i>}
               {result.humanReadable.split('\\n').map((item, key) => {
                 return (
                   <span key={key}>
