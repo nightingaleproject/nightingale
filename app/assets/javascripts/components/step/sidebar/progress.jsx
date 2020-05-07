@@ -10,10 +10,10 @@ class Progress extends React.Component {
   statusIcon(step) {
     if (step.contents.contents && step.contents.requiredSatisfied) {
       // All required have been satisfied
-      return <i className="fa fa-fw fa-check float-right text-success" id={step.name + 'status'} />;
+      return <i className="fas fa-fw fa-check float-right text-success" id={step.name + 'status'} />;
     } else if (step.contents.contents) {
       // Not all required have been satisfied
-      return <i className="fa fa-fw fa-times float-right text-danger" id={step.name + 'status'} />;
+      return <i className="fas fa-fw fa-times float-right text-danger" id={step.name + 'status'} />;
     }
     // If the step doesn't even have content, show nothing.
   }
@@ -30,7 +30,7 @@ class Progress extends React.Component {
             disabled={!step.editable}
             id={'progressButton' + index}
           >
-            <i className={('fa fa-fw ' + step.icon)} /> {step.name}
+            <i className={('fas fa-fw ' + step.icon)} /> {step.name}
             {this.statusIcon(step)}
           </button>
         )}

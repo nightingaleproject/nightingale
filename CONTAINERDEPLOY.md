@@ -2,20 +2,43 @@
 
 To run nightingale in a containerized production environment:
 
-Run:
+Run the following command to configure your environment (this only has to be run once):
 
-```bundle exec rake secret```
-
-Set SECRET_KEY_BASE in `.env.production` to the resulting value.
+```./setup-docker-secrets.sh```
 
 Then run:
 
-```docker-compose up```
+```docker-compose up -d --build```
 
-In another terminal or session, run:
+The application should be accessible at [http://localhost:80](http://localhost:80). If you need the application on a different port, you can update the following section in the `docker-compose.yml` file, replacing the section marked by `<NEW PORT>` below.
 
-```docker-compose run app rake db:create db:migrate```
+```yaml
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    ports:
+      - "<NEW PORT>:80"
+    depends_on:
+```
+
+To setup and load your database run:
+
+```docker-compose run app rake db:create db:schema:load```
 
 If desired, run the demo environment setup:
 
 ```docker-compose run app rake nightingale:demo:setup```
+
+In order to upgrade to the latest version of the nightingle container, run:
+
+    # Get the latest version of the nightingale container
+    docker-compose pull
+    # Restart the docker containers
+    docker-compose up -d --build
+    # Migrate the nightingale database to the latest version
+    docker-compose run app rake db:migrate
+
+When you are done, to stop the containers run:
+
+```docker-compose down```

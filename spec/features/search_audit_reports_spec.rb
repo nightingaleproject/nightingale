@@ -36,7 +36,12 @@ feature 'Search for a comment in audit logs', js: true do
     dashboard_page.admin
     admin_panel_page = Pages::AdminPanel.new
     expect(admin_panel_page).to have_content 'Administration Tools'
-    
+    expect(admin_panel_page).to have_css('.btn .fa-user')
+    expect(admin_panel_page).to have_css('.btn .fa-chart-bar')
+    expect(admin_panel_page).to have_css('.btn .fa-tachometer-alt')
+    expect(admin_panel_page).to have_css('.btn .fa-chart-pie')
+    expect(admin_panel_page).to have_css('.btn .fa-download')
+
     # Go to Audit log pages
     admin_panel_page.audit_log.click
     audit_log_page = Pages::AuditLog.new

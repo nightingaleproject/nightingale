@@ -1,29 +1,38 @@
 version: '3'
 services:
   db:
-    image: postgres
+    image: postgres:12
+    restart: unless-stopped
+    volumes:
+      - nightingale_dbdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     expose:
       - "5432"
   app:
-    build: .
+    image: mitre/nightingale:latest
+    restart: unless-stopped
     volumes:
       - /var/www/nightingale
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     depends_on:
       - db
+      - vrdr-microservice
+    environment:
+      DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@db/nightingale_production
+      VRDR_URL: "http://vrdr-microservice:8080"
     env_file: .env.production
   web:
     build:
       context: .
       dockerfile: Dockerfile-nginx
     ports:
-      - "80:80"
+      - "80:80" # Change the first "80" here if you need nightingale running on a different port.
     depends_on:
       - app
-  smart:
-    build:
-      context: .
-      dockerfile: Dockerfile-smart
-    ports:
-      - "8080:80"
+  vrdr-microservice:
+    image: mitre/vrdr-microservice:latest
+
+volumes:
+  nightingale_dbdata:

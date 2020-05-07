@@ -13,6 +13,12 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'simplecov_nightingale'
+
+SimpleCov.start 'nightingale' do
+  command_name 'spec' # This allows us to merge results with the outputs from `rake test`
+end
+
 RSpec.configure do |config|
 
   # Precompile assets before we begin testing.

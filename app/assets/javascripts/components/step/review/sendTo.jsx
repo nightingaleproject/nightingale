@@ -112,7 +112,7 @@ class SendTo extends React.Component {
     } else {
       $.LoadingOverlay('show', {
         image: '',
-        fontawesome: 'fa fa-spinner fa-spin'
+        fontawesome: 'fas fa-spinner fa-spin'
       });
       $.post(Routes.update_active_step_death_record_path(this.props.deathRecord.id), info);
     }

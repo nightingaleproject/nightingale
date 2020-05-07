@@ -23,7 +23,7 @@ class AuditLogs extends React.Component {
           infoEmpty: '',
           infoFiltered: '',
           search: 'Search:',
-          processing: "<span class='fa fa-spinner fa-spin fa-5x fa-fw'></span>"
+          processing: "<span class='fas fa-spinner fa-spin fa-5x fa-fw'></span>"
         },
         ordering: true,
         columnDefs: [
@@ -215,7 +215,7 @@ class AuditLogs extends React.Component {
           <div className="col-4 pl-0">
             {this.state.currentUser.isAdmin && (
               <h3>
-                <span className="fa fa-folder" /> Audit Logs
+                <span className="fas fa-folder" /> Audit Logs
               </h3>
             )}
           </div>

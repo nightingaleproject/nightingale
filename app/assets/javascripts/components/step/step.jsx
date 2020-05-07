@@ -34,7 +34,7 @@ class Step extends React.Component {
       if (!_.isEqual(step, this.state.deathRecord.stepStatus.currentStep.name)) {
         $.LoadingOverlay('show', {
           image: '',
-          fontawesome: 'fa fa-spinner fa-spin'
+          fontawesome: 'fas fa-spinner fa-spin'
         });
         $.ajax({
           url: Routes.update_active_step_death_record_path(this.state.deathRecord.id),
@@ -117,7 +117,7 @@ class Step extends React.Component {
   onSave(callback) {
     $.LoadingOverlay('show', {
       image: '',
-      fontawesome: 'fa fa-spinner fa-spin'
+      fontawesome: 'fas fa-spinner fa-spin'
     });
     $.ajax({
       url: Routes.update_step_death_record_path(this.state.deathRecord.id),
@@ -352,7 +352,7 @@ class Step extends React.Component {
                       className="btn btn-lg btn-primary float-right"
                       id="registerBtn"
                     >
-                      <span className="fa fa-thumbs-up" /> Register Record
+                      <span className="fas fa-thumbs-up" /> Register Record
                     </button>
                   )}
                 {this.state.deathRecord.registration && (
@@ -363,11 +363,11 @@ class Step extends React.Component {
                     <dd className="col-sm-7">{this.state.deathRecord.registration.id}</dd>
                     <dt className="col-sm-12">
                       <button type="button" onClick={this.printPreview} className="btn btn-primary">
-                        <span className="fa fa-eye" /> Print Preview
+                        <span className="far fa-eye" /> Print Preview
                       </button>
                       &nbsp;
                       <button type="button" onClick={this.printFinal} className="btn btn-danger">
-                        <span className="fa fa-print" /> Print Final
+                        <span className="fas fa-print" /> Print Final
                       </button>
                     </dt>
                   </dl>
@@ -381,7 +381,7 @@ class Step extends React.Component {
                       className="btn btn-lg btn-primary float-right"
                       id="abandonBtn"
                     >
-                      <span className="fa fa-trash" /> Abandon Record
+                      <span className="fas fa-trash" /> Abandon Record
                     </button>
                   )}
               </span>

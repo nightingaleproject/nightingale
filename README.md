@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/nightingaleproject/nightingale.svg?branch=master)](https://travis-ci.org/nightingaleproject/nightingale)
-
 ## Nightingale EDRS Prototype
 
 Nightingale is a prototype electronic death registration system (EDRS), built to both demonstrate basic EDRS capabilities and act as a foundation for exploring next generation EDRS concepts. This prototype represents a work-in-progress, and is expected to change and grow over time in response to feedback from subject matter experts and users. Nightingale ERDS currently supports the following functionality at various degrees of maturity:
@@ -39,13 +37,7 @@ Once the prerequisites are available, Nightingale can be installed and demonstra
 
 ##### Easy
 
-A [Dockerized](https://www.docker.com/get-started) version of Nightingale for experimental purposes has been published to Docker Hub, so running Nightingale is as easy as:
-
-```
-docker run --rm -p 3000:3000 adammitre/nightingale
-```
-
-This command will pull the latest version of Nightingale from Docker Hub, and run it. You can access it from a web browser at [http://localhost:3000](http://localhost:3000).
+A [Dockerized](https://www.docker.com/get-started) version of Nightingale for experimental purposes has been published to Docker Hub. For instructions on how to run in Docker, please see [CONTAINERDEPLOY.md](CONTAINERDEPLOY.md).
 
 ##### Hard
 
@@ -59,13 +51,17 @@ You can also build and deploy Nightingale from scratch:
 
     `cd nightingale`
 
+* Install ruby using [rbenv](https://github.com/rbenv/rbenv) or [rvm](http://rvm.io/)
+
+    `rbenv install` or `rvm install $(cat .ruby-version)`
+
 * Install ruby gem dependencies
 
     `bundle install`
 
 * Create the database
 
-    `bundle exec rake db:drop db:create db:migrate db:setup RAILS_ENV=development`
+    `bundle exec rake db:setup`
 
 * Set up system with demonstration data
 
@@ -83,7 +79,7 @@ You can also build and deploy Nightingale from scratch:
       * A simple workflow where a physician initiates a record
     * U.S. geographical data, used for structured data input
 
-To support consuming and producing IJE and FHIR records using Nightingale, you must be running the vrdr-dotnet microservice  (this step is not necessary if you are using the Dockerized version of Nightingale). For instructions on setting up and running this, please see https://github.com/nightingaleproject/vrdr-dotnet#fhirdeathrecordhttp.
+To support consuming and producing IJE and FHIR records using Nightingale, you must be running the vrdr-dotnet microservice  (this step is not necessary if you are using the Dockerized version of Nightingale). For instructions on setting up and running this, please see https://github.com/nightingaleproject/vrdr-dotnet#vrdrhttp.
 
 #### Tasks
 

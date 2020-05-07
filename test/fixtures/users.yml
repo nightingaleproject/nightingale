@@ -17,7 +17,7 @@ doc1:
   encrypted_password: "$2a$11$/Rkzj8CBw.3GUtUEf9ZuMeAa2f/stz/koNKWBClVZEz72CrHVjpTS"
   is_guest_user: false
   first_name: Example
-  last_name: Physician
+  last_name: Certifier
   telephone: 000-000-0000
 doc2:
   email: doc2@example.com

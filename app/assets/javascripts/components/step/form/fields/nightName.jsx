@@ -61,7 +61,7 @@ class NightName extends React.Component {
     return (
       <fieldset className="pt-1 pb-2" id={this.props.name + 'field'}>
         <legend>
-          {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
+          {this.props.schema.required && <i className="fas fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
         </legend>
         <div id="actual">
@@ -86,7 +86,7 @@ class NightName extends React.Component {
                 disabled={!this.state.addAkas}
                 id="add-aka"
               >
-                <i className="fa fa-plus" /> Add More
+                <i className="fas fa-plus" /> Add More
               </button>
             </div>
           </div>}

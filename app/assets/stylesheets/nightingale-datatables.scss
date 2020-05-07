@@ -1,5 +1,6 @@
 td.details-control:before {
-  font-family: FontAwesome;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   content: "\f055";
   display: inline-block;
   color: green;
@@ -11,7 +12,8 @@ td.details-control {
 }
 
 tr.shown td.details-control:before {
-  font-family: FontAwesome;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   content: "\f056";
   display: inline-block;
   color: red;

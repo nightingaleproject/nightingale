@@ -48,7 +48,7 @@ class NightTime extends React.Component {
     return (
       <fieldset className="pt-1 pb-2" id={this.props.name + 'field'}>
         <legend>
-          {this.props.schema.required && <i className="fa fa-asterisk night-required-icon pb-1 mr-1" />}
+          {this.props.schema.required && <i className="fas fa-asterisk night-required-icon pb-1 mr-1" />}
           {this.props.schema.title}
         </legend>
         <div className="form-group row">

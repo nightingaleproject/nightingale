@@ -1,11 +1,5 @@
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
-  "https://github.com/#{repo_name}.git"
-end
-
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use postgres as the database for Active Record
@@ -39,8 +33,8 @@ gem 'bootstrap', '4.3.1'
 # User roles
 gem 'rolify'
 
-# Icons
-gem 'font-awesome-sass'
+# Icons (major versions here normally break things, check for missing icons if you change this version)
+gem 'font-awesome-sass', '~> 5.12'
 
 # Creating local PDFs, useful unless a back-end service is used for generating certificates
 gem 'prawn'
@@ -86,9 +80,6 @@ gem 'geokit'
 # FHIR
 gem 'fhir_models', git: 'https://github.com/fhir-crucible/fhir_models'
 
-gem 'ruby-fhir-death-record', git: 'https://github.com/nightingaleproject/ruby-fhir-death-record.git'
-#gem 'ruby-fhir-death-record', path: '../ruby-fhir-death-record'
-
 gem "nokogiri", ">= 1.10.4"
 
 gem 'rest-client'
@@ -101,6 +92,7 @@ group :development, :test, :ci do
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'database_cleaner'
+  gem 'simplecov', require: false
 end
 
 group :development do

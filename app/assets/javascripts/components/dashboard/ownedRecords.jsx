@@ -31,7 +31,7 @@ class OwnedRecords extends React.Component {
           infoEmpty: '',
           infoFiltered: '',
           search: 'Search by Name:',
-          processing: "<span class='fa fa-spinner fa-spin fa-5x fa-fw'></span>"
+          processing: "<span class='fas fa-spinner fa-spin fa-5x fa-fw'></span>"
         },
         ordering: false,
         columnDefs: [
@@ -109,7 +109,7 @@ class OwnedRecords extends React.Component {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <i className="fa fa-download" />
+            <i className="fas fa-download" />
           </button>
           <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
             <a href={Routes.export_record_in_ije_path(data.id)} className="dropdown-item" role="button">IJE</a>
@@ -129,16 +129,16 @@ class OwnedRecords extends React.Component {
           aria-haspopup="true"
           aria-expanded="false"
         >
-          <i className="fa fa-cog" />
+          <i className="fas fa-cog" />
         </button>
         <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
           {!this.props.currentUser.canRegisterRecord &&
             !this.props.currentUser.isAdmin &&
             <a className="dropdown-item" href={Routes.edit_death_record_path(data.id)} id={'continue' + data.id}>
-              <i className="fa fa-play" />&nbsp;Continue
+              <i className="fas fa-play" />&nbsp;Continue
             </a>}
           <a className="dropdown-item" href={Routes.death_record_path(data.id)} id={'view' + data.id}>
-            <i className="fa fa-search" />&nbsp;View
+            <i className="fas fa-search" />&nbsp;View
           </a>
         </div>
       </div>
@@ -175,7 +175,7 @@ class OwnedRecords extends React.Component {
           title={step.name}
           key={deathRecord.id + step.name}
         >
-          <i className="fa fa-check-circle text-success night-progress-icon" id={step.name + 'prog'} />
+          <i className="fas fa-check-circle text-success night-progress-icon" id={step.name + 'prog'} />
           &nbsp;
         </a>
       );
@@ -188,7 +188,7 @@ class OwnedRecords extends React.Component {
           title={step.name}
           key={deathRecord.id + step.name}
         >
-          <i className="fa fa-times-circle text-danger night-progress-icon" id={step.name + 'prog'} />
+          <i className="fas fa-times-circle text-danger night-progress-icon" id={step.name + 'prog'} />
           &nbsp;
         </a>
       );
@@ -201,7 +201,7 @@ class OwnedRecords extends React.Component {
           title={step.name}
           key={deathRecord.id + step.name}
         >
-          <i className="fa fa-circle-o text-muted night-progress-icon" id={step.name + 'prog'} />
+          <i className="far fa-circle text-muted night-progress-icon" id={step.name + 'prog'} />
           &nbsp;
         </a>
       );
@@ -256,11 +256,11 @@ class OwnedRecords extends React.Component {
           <div className="col-4 pl-0">
             {this.state.currentUser.isAdmin &&
               <h3>
-                <span className="fa fa-folder" /> All Records
+                <span className="fas fa-folder" /> All Records
               </h3>}
             {!this.state.currentUser.isAdmin &&
               <h3>
-                <span className="fa fa-folder" /> My Open Records
+                <span className="fas fa-folder" /> My Open Records
               </h3>}
           </div>
           <div className="col-8 pr-0">
@@ -268,7 +268,7 @@ class OwnedRecords extends React.Component {
             {this.props.currentUser.canStartRecord &&
               <span className="float-right">
                 <a role="button" href={Routes.new_death_record_path()} className="btn btn-primary">
-                  <i className="fa fa-plus" />&nbsp;New Death Record
+                  <i className="fas fa-plus" />&nbsp;New Death Record
                 </a>
               </span>}
           </div>
