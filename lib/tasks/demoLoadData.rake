@@ -1,17 +1,30 @@
 require 'csv'
 require 'creek'
 
-# Rake tasks for setting up Nightingale for demo use.
+# Rake tasks for loading data sets to Nightingale for demo use.
+# Pre-requsites
+#   set up the database
+#     bundle exec rake db:setup
+#     bundle exec rake nightingale:demo:setup
+#   set 3 environment variables
+#     export LITERAL=./datasets/DeathLiteral2011.csv
+#     export STATISTICAL=./datasets/DeathStatistical2011.xlsx
+#     export COUNT=50
+#   Note the literal file must be .csv, while the statistical file must be xlsx
+#     COUNT is optional and defaults to 10
+#
+#   rake nightingale:demo:load_records
+
 namespace :nightingale do
   namespace :demo do
 
     # get the race of the deceased
     # return a [ string1, [ string2, string3 ] ]
-    #   where the string1 is either "Known" or "Unknown"
+    #   where string1 is either "Known" or "Unknown"
     #         and string2 is the CDC code
     #         and string3 is the CDC display string 
     def get_race_info(srow)
-      puts "   in get_race_info:  #{srow["State file number"]}"
+      # puts "   in get_race_info:  #{srow["State file number"]}"
 
         columnHeaderMapping = { # partial column headers mapped from statistical_records file to nightingale-defined constant (in vrdr-dotnet/VRDR/MortalityData.cs)
           #"CN1"=>"Hispanic No", "CO1"=>"Hispanic Mexican", "CP1"=>"Hispanic Puerto Rican", "CQ1"=>"Hispanic Cuban", "CR1"=>"Hispanic Other", 
@@ -118,7 +131,7 @@ namespace :nightingale do
         exit(2)
       end
       
-      
+
       # Iterate through the first <count> rows
       count.times do |index|
 
@@ -251,9 +264,9 @@ namespace :nightingale do
           death_record.save(validate: false)
 
           puts "Created record with ID #{death_record.id.to_s}"
-          record.each { | key, value |
-            puts "    #{key}: #{value}" unless value.nil?
-          }
+          # record.each { | key, value |
+          #   puts "    #{key}: #{value}" unless value.nil?
+          # }
 
         end
 
