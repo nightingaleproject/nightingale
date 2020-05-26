@@ -49,6 +49,6 @@ feature 'Search for a comment in audit logs', js: true do
 
     # Search for Comment
     audit_log_page.search 'Comment'
-    expect(audit_log_page).to have_selector(:xpath, '//*[@id="audits_table"]/tbody/tr', count: 2)
+    expect(audit_log_page).to have_selector(:xpath, '//*[@id="audits_table"]/tbody/tr', count: 1)
   end
 end

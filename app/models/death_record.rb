@@ -1,6 +1,6 @@
 class DeathRecord < ApplicationRecord
   audited
-  belongs_to :workflow, class_name: 'Workflow'
+  belongs_to :workflow
   belongs_to :owner, class_name: 'User'
   belongs_to :creator, class_name: 'User'
   belongs_to :step_flow

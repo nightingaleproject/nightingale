@@ -1,0 +1,7 @@
+registration_1:
+  death_record: death_record_1
+  registered: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-10-29 19:51:00.120844000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1

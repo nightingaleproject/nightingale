@@ -116,6 +116,7 @@ To support consuming and producing IJE and FHIR records using Nightingale, you m
 * Run the tests
 
     `bundle exec rake db:drop db:create db:migrate RAILS_ENV=test` (creates test DB, needed first time only)
+    `docker run -itp 8080:8080 mitre/vrdr-microservice:latest` (runs vrdr microservice required for tests to run)
     `bundle exec rake test`
 
 * Run the application server

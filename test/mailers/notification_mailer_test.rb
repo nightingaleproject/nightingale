@@ -2,8 +2,9 @@ require 'test_helper'
 
 class NotificationMailerTest < ActionMailer::TestCase
   setup do
-    @dr = DeathRecord.find(1)
-    @user = User.find_by(email: 'doc1@example.com')
+    @dr = death_records(:death_record_1)
+    @user = users(:doc1)
+    @registrar = users(:reg1)
   end
 
   test 'notification email' do
@@ -14,7 +15,7 @@ class NotificationMailerTest < ActionMailer::TestCase
   end
 
   test 'notification email with comment from requested edits' do
-    comment = Comment.create(content: 'requested edits', death_record: @dr, requested_edits: true)
+    comment = Comment.create(content: 'requested edits', death_record: @dr, user: @registrar, requested_edits: true)
     comment_contents = @dr.comments.where(requested_edits: true).collect(&:content)
     email = NotificationMailer.notification_email(@user, @dr, comment_contents).deliver_now
     assert_not ActionMailer::Base.deliveries.empty?
@@ -23,7 +24,7 @@ class NotificationMailerTest < ActionMailer::TestCase
   end
 
   test 'notification email with comment not from requested edits' do
-    comment = Comment.create(content: 'requested edits', death_record: @dr, requested_edits: false)
+    comment = Comment.create(content: 'requested edits', death_record: @dr, user: @registrar, requested_edits: false)
     comment_contents = @dr.comments.where(requested_edits: true).collect(&:content)
     email = NotificationMailer.notification_email(@user, @dr, comment_contents).deliver_now
     assert_not ActionMailer::Base.deliveries.empty?

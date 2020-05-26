@@ -1,0 +1,4 @@
+step_status_1:
+  death_record: death_record_1
+  current_step: step_1
+  next_step: step_2

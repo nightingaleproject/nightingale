@@ -1,9 +1,8 @@
 death_record_1:
-  id: 1
-  workflow_id: 1
-  owner_id: 1
-  creator_id: 1
-  step_flow_id: 8
+  workflow: workflow_1
+  owner: fd1
+  creator: fd1
+  step_flow: step_flow_8
   name: Person, Example M.
   contents:
     decedentName.firstName: Person

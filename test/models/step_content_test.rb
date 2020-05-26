@@ -2,8 +2,8 @@ require 'test_helper'
 
 class StepContentTest < ActiveSupport::TestCase
   setup do
-    @sc1 = StepContent.find(3)
-    @sc2 = StepContent.find(4)
+    @sc1 = step_contents(:step_content_3)
+    @sc2 = step_contents(:step_content_4)
   end
 
   test 'step contents render results and human readable properly' do

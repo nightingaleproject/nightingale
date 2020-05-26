@@ -1,8 +1,7 @@
 step_content_1:
-  id: 1
-  step_id: 1
-  death_record_id: 1
-  editor_id: 1
+  step: step_1
+  death_record: death_record_1
+  editor: fd1
   contents:
     decedentName:
       firstName: Person
@@ -10,18 +9,16 @@ step_content_1:
       lastName: Example
       suffix: ''
 step_content_2:
-  id: 2
-  step_id: 2
-  death_record_id: 1
-  editor_id: 1
+  step: step_2
+  death_record: death_record_1
+  editor: fd1
   contents:
     sex:
       sex: Male
 step_content_3:
-  id: 3
-  step_id: 3
-  death_record_id: 1
-  editor_id: 1
+  step: step_3
+  death_record: death_record_1
+  editor: fd1
   contents:
     fatherName:
       firstName: Father
@@ -34,10 +31,9 @@ step_content_3:
       lastName: Maiden
       suffix: ''
 step_content_4:
-  id: 4
-  step_id: 4
-  death_record_id: 1
-  editor_id: 1
+  step: step_4
+  death_record: death_record_1
+  editor: fd1
   contents:
     methodOfDisposition:
       methodOfDisposition:
