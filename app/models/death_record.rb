@@ -309,7 +309,7 @@ class DeathRecord < ApplicationRecord
   # Generate printable versions of a death certificate for this record and store locally
   def generate_certificate(user)
     # We want to generate a pdf with the death record data with formatting.
-    document = FormatPDF.generate_formatted_pdf(self.build_contents)
+    document = FormatPdf.generate_formatted_pdf(self.build_contents)
     template_pdf = CombinePDF.load(Rails.root + "2003-death-certificate.pdf")
     record_pdf = CombinePDF.parse(document)
     # Overlay the generated pdf with data over the template pdf.

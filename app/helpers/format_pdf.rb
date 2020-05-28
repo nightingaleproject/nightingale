@@ -1,5 +1,5 @@
-module FormatPDF
-    # Generates a list of objects that contain a string, and display 
+module FormatPdf
+    # Generates a list of objects that contain a string, and display
     # information to be used when overlaying onto the PDF
     def self.format_data_for_pdf(death_record_data)
       formatted_data = []
@@ -8,7 +8,7 @@ module FormatPDF
       decedent_name = decedent_name + ', ' + death_record_data['decedentName.middleName'] if death_record_data['decedentName.middleName']
       decedent_name = decedent_name + ', ' + death_record_data['decedentName.lastName'] if death_record_data['decedentName.lastName']
       formatted_data.push({name: decedent_name, size:8, x:30, y:930}) if decedent_name
-        
+
       # Box 2 - Sex
       formatted_data.push({name: death_record_data['sex.sex'], size:8, x:315, y:930}) if death_record_data['sex.sex']
 
@@ -43,13 +43,13 @@ module FormatPDF
       # Box 5 - Date of Birth
       birthdate = Time.parse(death_record_data['dateOfBirth.dateOfBirth']).strftime("%m/%d/%Y") if death_record_data['dateOfBirth.dateOfBirth']
       formatted_data.push({name: birthdate, size:8, x:250, y:905}) if birthdate
-        
+
       # Box 6 - Place of Birth
       # If country is United States, include City and State, otherwise just include country
       birthplace = ''
       if death_record_data['placeOfBirth.country'] == 'United States'
         birthplace = death_record_data['placeOfBirth.city'] + ', ' + death_record_data['placeOfBirth.state'] if death_record_data['placeOfBirth.city'] && death_record_data['placeOfBirth.state']
-      else 
+      else
         birthplace = death_record_data['placeOfBirth.country'] if death_record_data['placeOfBirth.country']
       end
       formatted_data.push({name: birthplace, size:8, x:330, y:905})
@@ -66,7 +66,7 @@ module FormatPDF
       formatted_data.push({name: death_record_data['decedentAddress.apt'], size:8, x:215, y:868}) if death_record_data['decedentAddress.apt']
       # Box 7f - Residence Zipcode
       formatted_data.push({name: death_record_data['decedentAddress.zip'], size:8, x:265, y:868}) if death_record_data['decedentAddress.zip']
-      
+
       # Box 8 - Armed Forces Service
       if death_record_data['armedForcesService.armedForcesService'] == 'Yes'
         formatted_data.push({name: 'x', size:12, x:34, y:855})
@@ -96,14 +96,14 @@ module FormatPDF
       spouse_name = spouse_name + ', ' + death_record_data['spouseName.lastName'] if death_record_data['spouseName.lastName'] && !death_record_data['spouseName.lastName'].empty?
       formatted_data.push({name: spouse_name, size:8, x:300, y:846})
 
-      # Box 11 - Father's Name 
+      # Box 11 - Father's Name
       father_name = ''
       father_name = death_record_data['fatherName.firstName'] if death_record_data['fatherName.firstName'] && !death_record_data['fatherName.firstName'].empty?
       father_name = father_name + ', ' + death_record_data['fatherName.middleName'] if death_record_data['fatherName.middleName'] && !death_record_data['fatherName.middleName'].empty?
       father_name = father_name + ', ' + death_record_data['fatherName.lastName'] if death_record_data['fatherName.lastName'] && !death_record_data['fatherName.lastName'].empty?
       formatted_data.push({name: father_name, size:8, x:30, y:823})
 
-      # Box 12 - Mother's Name 
+      # Box 12 - Mother's Name
       mother_name = ''
       mother_name = death_record_data['motherName.firstName'] if death_record_data['motherName.firstName'] && !death_record_data['motherName.firstName'].empty?
       mother_name = mother_name + ', ' + death_record_data['motherName.middleName'] if death_record_data['motherName.middleName'] && !death_record_data['motherName.middleName'].empty?
@@ -433,7 +433,7 @@ module FormatPDF
     def self.generate_formatted_pdf(death_record_data)
         pdf = Prawn::Document.new
         pdf.render_file "death_certificate.pdf"
-        pdf_data = FormatPDF.format_data_for_pdf(death_record_data)
+        pdf_data = format_data_for_pdf(death_record_data)
         pdf_data.each do |element|
           pdf.text_box(element[:name],
                :size  => element[:size],
