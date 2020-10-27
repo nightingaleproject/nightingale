@@ -36,3 +36,5 @@ coverage/
 .env.production
 
 spec/examples.txt
+
+/node_modules

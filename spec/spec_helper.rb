@@ -13,7 +13,7 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require 'simplecov_nightingale'
+require_relative '../lib/simplecov_nightingale'
 
 SimpleCov.start 'nightingale' do
   command_name 'spec' # This allows us to merge results with the outputs from `rake test`

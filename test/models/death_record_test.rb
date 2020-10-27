@@ -2,7 +2,7 @@ require 'test_helper'
 
 class DeathRecordTest < ActiveSupport::TestCase
   setup do
-    @dr = DeathRecord.find(1)
+    @dr = death_records(:death_record_1)
   end
 
   test 'death record steps are correct and in order' do

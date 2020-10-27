@@ -1,10 +1,10 @@
 class StepStatus < ApplicationRecord
   audited
   belongs_to :death_record
-  belongs_to :current_step, class_name: 'Step', foreign_key: 'current_step_id'
-  belongs_to :next_step, class_name: 'Step', foreign_key: 'next_step_id'
-  belongs_to :previous_step, class_name: 'Step', foreign_key: 'previous_step_id'
-  belongs_to :requestor, class_name: 'User', foreign_key: 'requestor_id'
+  belongs_to :current_step, class_name: 'Step'
+  belongs_to :next_step, class_name: 'Step', required: false
+  belongs_to :previous_step, class_name: 'Step', required: false
+  belongs_to :requestor, class_name: 'User', required: false
 
   # Update this StepStatus to mirror the given StepFlow.
   def mirror_step_flow(step_flow)

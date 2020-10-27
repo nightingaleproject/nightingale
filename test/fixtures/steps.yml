@@ -1,5 +1,4 @@
 step_1:
-  id: 1
   name: Identity
   abbrv: Id
   description: User enters identity information about the decedent; e.g. name
@@ -93,7 +92,6 @@ step_1:
   icon: fa-user
   step_type: form
 step_2:
-  id: 2
   name: Demographics
   abbrv: Dem
   description: User enters demographic information about the decedent; e.g. date of
@@ -292,7 +290,6 @@ step_2:
   icon: fa-briefcase
   step_type: form
 step_3:
-  id: 3
   name: Family
   abbrv: Fam
   description: User enters family information about the decedent; e.g. parents
@@ -367,7 +364,6 @@ step_3:
   icon: fa-users
   step_type: form
 step_4:
-  id: 4
   name: Disposition
   abbrv: Dis
   description: User enters disposition information about the decedent; e.g. burial
@@ -497,7 +493,6 @@ step_4:
   icon: fa-institution
   step_type: form
 step_5:
-  id: 5
   name: Medical
   abbrv: Med
   description: User enters medical information about the decedent; e.g. cause of death
@@ -818,7 +813,6 @@ step_5:
   icon: fa-user-md
   step_type: form
 step_6:
-  id: 6
   name: F.D. Review
   abbrv: Rev
   description: Funeral Director reviews and submits the death record to a physician.
@@ -828,7 +822,6 @@ step_6:
   icon: fa-search
   step_type: review
 step_7:
-  id: 7
   name: Physician Review
   abbrv: Rev
   description: Physician reviews and submits the death record to a registrar or medical
@@ -839,7 +832,6 @@ step_7:
   icon: fa-search
   step_type: review
 step_8:
-  id: 8
   name: Physician Re-review
   abbrv: Rev
   description: Physician reviews and submits the death record to a registrar
@@ -849,7 +841,6 @@ step_8:
   icon: fa-search
   step_type: review
 step_9:
-  id: 9
   name: M.E. Review
   abbrv: Rev
   description: Medical Examiner reviews and submits the death record to a registrar
@@ -859,7 +850,6 @@ step_9:
   icon: fa-search
   step_type: review
 step_10:
-  id: 10
   name: Registration
   abbrv: Rev
   description: Registrar registers a death record.

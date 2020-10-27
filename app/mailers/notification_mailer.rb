@@ -4,7 +4,6 @@ class NotificationMailer < ApplicationMailer
     @user = user
     @death_record = death_record
     @comments = comments
-
     mail subject: 'Nightingale Notification', to: @user.email
   end
 end
