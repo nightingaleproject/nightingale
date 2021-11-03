@@ -6,6 +6,8 @@ default: &default
 development:
   <<: *default
   database: nightingale_development
+  pool: 10
+  timeout: 15000
 
 test:
   <<: *default
