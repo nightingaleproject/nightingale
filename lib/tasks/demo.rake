@@ -62,6 +62,33 @@ namespace :nightingale do
       statistical_records = statistical_file.sheets[0]
       statistical_header = statistical_records.rows.first
 
+      # Mapping from possible yes/no values to the yes/no values that nightingale expects
+      yes_no_map = {
+        "yes" => "Yes",
+        "y" => "Yes",
+        "no" => "No",
+        "n" => "No"
+      }
+      # Other mappings
+      tobacco_map = {
+        "Y" => "Yes",
+        "N" => "No",
+        "P" => "Probably",
+        "U" => "Unknown"
+      }
+      certifier_type_map = {
+        1 => "Physician (Certifier)", # PHYSICIAN
+        2 => "Medical Examiner", # CORONER/ME
+        3 => "Physician (Certifier)", # DO
+        4 => "Other", # CHIROPRACTOR
+        5 => "Other", # SANIPRACTOR
+        6 => "Other", # PHYSICIAN ASSISTANT
+        7 => "Other", # ARNP
+        8 => "Other", # NOT APPLICABLE
+        9 => "Other" # UNKNOWN
+      }
+      certifier_type_map.default = "Other"
+
       # Iterate through the first <count> rows
       count.times do |index|
 
@@ -72,13 +99,24 @@ namespace :nightingale do
         raise "Could not find a matching statistical row for state file number #{row['State File Number']}" unless srow
         srow = Hash[statistical_header.values.zip(srow.values)]
 
-        # Build the Nightingale internal structure, inventing a name for the decedent
+        # Build the Nightingale internal structure, inventing a name for the decedent and setting death
+        # location jurisdiction to MA and SSN to a constant made up value
         record = {
+          "certificateNumber" => lrow["State File Number"][-6,6].to_i, # Just use the last 6 digits
+
+          "deathLocationJurisdiction" => "MA",
+
           "decedentName.firstName" => "Demo#{rand(10000)}",
           "decedentName.lastName" => "Example#{rand(10000)}",
 
           "sex.sex" => srow["Sex"] == "F" ? "Female" : "Male",
-          "dateOfBirth.dateOfBirth" => DateTime.strptime(srow["Date of Birth"], '%m/%d/%Y').to_s,
+
+          "armedForcesService.armedForcesService" => yes_no_map[srow["Armed Forces"].downcase],
+          "autopsyPerformed.autopsyPerformed" => yes_no_map[srow["Autopsy"].downcase],
+          "autopsyAvailableToCompleteCauseOfDeath.autopsyAvailableToCompleteCauseOfDeath" => yes_no_map[srow["Autopsy Available"].downcase],
+          "meOrCoronerContacted.meOrCoronerContacted" => yes_no_map[srow["ME Coroner Referred"].downcase],
+
+          "didTobaccoUseContributeToDeath.didTobaccoUseContributeToDeath" => tobacco_map[srow["Tobacco"]],
 
           "cod.immediate" => lrow["Cause of Death - Line A"],
           "cod.immediateInt" => lrow["Interval Time - Line A"],
@@ -91,8 +129,48 @@ namespace :nightingale do
 
           "contributingCauses.contributingCauses" => lrow["Other Significant Conditions"],
 
+          "certifierType.certifierType" => certifier_type_map[srow["Certifier Designation"].to_i],
+
+          "dateOfBirth.dateOfBirth" => DateTime.strptime(srow["Date of Birth"], '%m/%d/%Y').to_s,
           "dateOfDeath.dateOfDeath" => DateTime.strptime(srow["Date of Death"], '%m/%d/%Y').to_s,
-          "dateCertified.dateCertified" => DateTime.strptime(srow["Date Received"], '%m/%d/%Y').to_s
+          "dateCertified.dateCertified" => DateTime.strptime(srow["Date Received"], '%m/%d/%Y').to_s,
+
+          "decedentAddress.state" => srow["Residence state FIPS code"],
+          "decedentAddress.zip" => srow["Residence Zip"],
+
+          "detailsOfInjuryLocation.name" => srow["Injury Place"],
+          "detailsOfInjuryLocation.city" => srow["Injury City"],
+          "detailsOfInjuryLocation.state" => srow["Injury State"],
+          "detailsOfInjuryLocation.zip" => srow["Injury Zip code"],
+
+          "locationOfDeath.city" => srow["Death City"],
+          "locationOfDeath.state" => srow["Death State"],
+          "locationOfDeath.zip" => srow["Death Zip Code"],
+
+          "placeOfBirth.state" => srow["State of birth code"],
+          "placeOfBirth.country" => srow["Birthplace Country"],
+
+          "funeralFacility.name" => srow["Funeral Home Name"],
+          "placeOfDisposition.name" => srow["Disposition Place Name"],
+
+          "ssn.ssn1" => "555",
+          "ssn.ssn2" => "11",
+          "ssn.ssn3" => "1234"
+
+          # TODO: add these, and these also have to be mapped in the Nightingale => FHIR mapper
+          # "placeOfDeath" => "Place of Death type" (lookup) -> Dead on arrival at hospital", "Death in home", "Death in hospice", "Death in hospital", "Death in hospital-based emergency department or outpatient department", "Death in nursing home or long term care facility", "Unknown", "Other
+          # time of death: map hour and minute and approximate thingy
+          # deathResultedFromInjuryAtWork (yes or no)
+          # transportation (Vehicle driver, Passenger, Pedestrian, Other) from Injury Transportation field
+          # pregnancy status (Not pregnant within past year, Pregnant at time of death, Not pregnant, but pregnant within 42 days of death, Not pregnant, but pregnant 43 days to 1 year before death, Unknown if pregnant within the past year)
+          # manner of death
+          # marital status
+          # education
+          # usual occupation
+          # method of disposition (from disposition column)
+          # Add fake family info?
+
+          # TODO: Leave out race information until IG representation is solidified
         }
 
         # Pick a certifier
