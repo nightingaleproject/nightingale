@@ -88,6 +88,19 @@ namespace :nightingale do
         9 => "Other" # UNKNOWN
       }
       certifier_type_map.default = "Other"
+      place_of_death_map = {
+        0 => "Death in home", # HOME
+        1 => "Other", # OTHER PLACE
+        2 => "Dead on arrival at hospital", # IN TRANSPORT
+        3 => "Death in hospital-based emergency department or outpatient department", # EMERGENCY ROOM
+        4 => "Death in hospital", # HOSPITAL (INPATIENT)
+        5 => "Death in nursing home or long term care facility", # NURSING HOME/LONG TERM CARE
+        6 => "Death in hospital", # HOSPITAL
+        7 => "Death in hospice", # HOSPICE FACILITY
+        8 => "Other", # OTHER PERSON'S RESIDENCE
+        9 => "Unknown" # UNKNOWN
+      }
+      place_of_death_map.default = "Other"
 
       # Iterate through the first <count> rows
       count.times do |index|
@@ -109,11 +122,20 @@ namespace :nightingale do
           "decedentName.firstName" => "Demo#{rand(10000)}",
           "decedentName.lastName" => "Example#{rand(10000)}",
 
+          "spouseName.firstName" => "Spouse#{rand(10000)}",
+          "spouseName.lastName" => "Example#{rand(10000)}",
+          "fatherName.firstName" => "Father#{rand(10000)}",
+          "fatherName.lastName" => "Example#{rand(10000)}",
+          "motherName.firstName" => "Mother#{rand(10000)}",
+          "motherName.lastName" => "Example#{rand(10000)}",
+
           "sex.sex" => srow["Sex"] == "F" ? "Female" : "Male",
 
           "armedForcesService.armedForcesService" => yes_no_map[srow["Armed Forces"].downcase],
+
           "autopsyPerformed.autopsyPerformed" => yes_no_map[srow["Autopsy"].downcase],
           "autopsyAvailableToCompleteCauseOfDeath.autopsyAvailableToCompleteCauseOfDeath" => yes_no_map[srow["Autopsy Available"].downcase],
+
           "meOrCoronerContacted.meOrCoronerContacted" => yes_no_map[srow["ME Coroner Referred"].downcase],
 
           "didTobaccoUseContributeToDeath.didTobaccoUseContributeToDeath" => tobacco_map[srow["Tobacco"]],
@@ -155,20 +177,101 @@ namespace :nightingale do
 
           "ssn.ssn1" => "555",
           "ssn.ssn2" => "11",
-          "ssn.ssn3" => "1234"
+          "ssn.ssn3" => "1234",
 
-          # TODO: add these, and these also have to be mapped in the Nightingale => FHIR mapper
-          # "placeOfDeath" => "Place of Death type" (lookup) -> Dead on arrival at hospital", "Death in home", "Death in hospice", "Death in hospital", "Death in hospital-based emergency department or outpatient department", "Death in nursing home or long term care facility", "Unknown", "Other
-          # time of death: map hour and minute and approximate thingy
-          # deathResultedFromInjuryAtWork (yes or no)
-          # transportation (Vehicle driver, Passenger, Pedestrian, Other) from Injury Transportation field
-          # pregnancy status (Not pregnant within past year, Pregnant at time of death, Not pregnant, but pregnant within 42 days of death, Not pregnant, but pregnant 43 days to 1 year before death, Unknown if pregnant within the past year)
-          # manner of death
-          # marital status
-          # education
-          # usual occupation
-          # method of disposition (from disposition column)
-          # Add fake family info?
+          "placeOfDeath.placeOfDeath.option" => place_of_death_map[srow["Place of Death type"].to_i],
+
+          "usualOccupation.usualOccupation" => srow["Occupation"],
+
+          # TODO: Import "Time of Death hour", "Time of Death minute", and "Time of Death Modifier"
+          # Maps to: "timeOfDeath.timeOfDeath" and "timeOfDeath.timeType"
+          # TODO: Add to Nightingale->FHIR mapping
+
+          # TODO: Import "Injury at work"
+          # Y = Yes
+          # N = No
+          # U = Unknown
+          # Maps to: "deathResultedFromInjuryAtWork.deathResultedFromInjuryAtWork"
+          # Yes
+          # No
+          # Unknown
+          # TODO: Add to Nightingale->FHIR mapping
+
+          # TODO: Import "Injury Transportation" (DRIVER/OPERATOR, PASSENGER, PEDESTRIAN, OTHER)
+          # Maps to: "ifTransInjury.ifTransInjury" (Vehicle driver, Passenger, Pedestrian, Other)
+          # TODO: Add to Nightingale->FHIR mapping
+
+          # TODO: Import "Pregnancy"
+          # 1 = Not pregnant withint he past year
+          # 2 = Pregnant at the time of death
+          # 3 = Not pregnant, but pregnant within 42 days of death
+          # 4 = Not pregnant, but pregnant 43 days to 1 year before death
+          # 8 = No response
+          # 9 = Unknown if pregnant within the past year"
+          # Maps to: "pregnancyStatus.pregnancyStatus"
+          # Not pregnant within past year
+          # Pregnant at time of death
+          # Not pregnant, but pregnant within 42 days of death
+          # Not pregnant, but pregnant 43 days to 1 year before death
+          # Unknown if pregnant within the past year
+          # TODO: Add to Nightingale->FHIR mapping
+
+          # TODO: Import "Manner"
+          # N = Natural
+          # A = Accident
+          # S = Suicide
+          # H = Homicide
+          # C = Undetermined
+          # P = Pending"
+          # Maps to: "mannerOfDeath.mannerOfDeath"
+          # "Natural", "Accident", "Suicide", "Homicide", "Pending Investigation", "Could not be determined"
+          # TODO: Add to Nightingale->FHIR mapping
+
+          # TODO: Import "Marital"
+          # S = Never Married
+          # P = Domestic Partner
+          # M = Married
+          # D = Divorced
+          # W = Widowed
+          # A = Married but separated
+          # U = Unknown
+          # Maps to: "maritalStatus.maritalStatus"
+          # "Married", "Married but seperated", "Widowed", "Widowed (but not remarried)", "Divorced (but not remarried)", "Never married", "Unknown"
+          # TODO: Add to Nightingale->FHIR mapping
+
+          # TODO: Import "Education"
+          # 1 = 8th grade or less
+          # 2 = No Diploma 9th - 12th grade
+          # 3 = High School graduate or GED completed
+          # 4 = Some college credit but no degree
+          # 5 = Associate degree
+          # 6 = Bachelors degree
+          # 7 = Masters degree
+          # 8 = Doctorate or professional degree
+          # 9 = Unknown
+          # Maps to: "education.education"
+          # 8th grade or less
+          # 9th through 12th grade; no diploma
+          # High School Graduate or GED Completed
+          # Some college credit, but no degree
+          # Associate Degree
+          # Bachelor's Degree
+          # Master's Degree
+          # Doctorate Degree or Professional Degree
+          # Unknown
+          # TODO: Add to Nightingale->FHIR mapping
+
+          # TODO: Import "Disposition"
+          # B = Burial
+          # C = Cremation
+          # R = Removal from State
+          # D = Donation/Medical Research
+          # E = Entombment
+          # O = Other
+          # N = Body not recovered
+          # U = Unknown
+          # Maps to: "methodOfDisposition.methodOfDisposition.option"
+          # "Burial", "Cremation", "Donation", "Entombment", "Removal from State", "Hospital Disposition", "Unknown", "Other"
 
           # TODO: Leave out race information until IG representation is solidified
         }
