@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200318034441) do
+ActiveRecord::Schema.define(version: 20211207165439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,12 +100,13 @@ ActiveRecord::Schema.define(version: 20200318034441) do
     t.datetime "updated_at",                                 null: false
     t.string   "message_id"
     t.boolean  "voided"
-    t.boolean  "submitted"
+    t.boolean  "initially_submitted"
     t.string   "acknowledgement_message_id"
     t.string   "coding_message_id"
     t.string   "underlying_cause_code"
     t.string   "record_cause_codes"
     t.string   "entity_cause_codes"
+    t.boolean  "currently_submitted"
     t.index ["creator_id"], name: "index_death_records_on_creator_id", using: :btree
     t.index ["message_id"], name: "index_death_records_on_message_id", using: :btree
     t.index ["owner_id"], name: "index_death_records_on_owner_id", using: :btree

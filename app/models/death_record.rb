@@ -17,13 +17,15 @@ class DeathRecord < ApplicationRecord
   def update_submission_status
     # We care about specific changes only
     if (changed & ["name", "contents", "voided"]).any?
-      # We don't reset the "submitted" field since we want updates to be submitted as such
+      # We don't reset the "initially_submitted" field because that lets us track updates
+      self.currently_submitted = nil
       self.acknowledgement_message_id = nil
       self.coding_message_id = nil
       self.underlying_cause_code = nil
       self.record_cause_codes = nil
       self.entity_cause_codes = nil
-      # Create a new message_id to let the receiver know that this is not a resubmission
+      # Create a new message_id to let the receiver know that this is not a simple resend
+      # TODO: We may no longer need message_id if using the NVSS API Reference Client
       self.message_id = SecureRandom.uuid
     end
   end

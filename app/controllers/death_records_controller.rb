@@ -225,7 +225,8 @@ class DeathRecordsController < ApplicationController
   # Demonstrates submission of records via FHIR messaging
   def submit_records
     return unless current_user.admin?
-    DeathRecord.where(acknowledgement_message_id: nil).pluck(:id).each do |record_id|
+    # TODO: Add polling for responses to replace messages_controller.rb, which also needs to handle errors
+    DeathRecord.where(currently_submitted: false).pluck(:id).each do |record_id|
       SubmitRecordJob.perform_later(record_id)
     end
     redirect_to submit_records_dashboard_path
