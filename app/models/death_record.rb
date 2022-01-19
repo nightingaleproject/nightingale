@@ -18,7 +18,7 @@ class DeathRecord < ApplicationRecord
     # We care about specific changes only
     if (changed & ["name", "contents", "voided"]).any?
       # We don't reset the "initially_submitted" field because that lets us track updates
-      self.currently_submitted = nil
+      self.currently_submitted = false
       self.acknowledgement_message_id = nil
       self.coding_message_id = nil
       self.underlying_cause_code = nil

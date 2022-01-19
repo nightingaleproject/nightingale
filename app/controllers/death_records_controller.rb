@@ -241,10 +241,10 @@ class DeathRecordsController < ApplicationController
   def submit_records_status
     return unless current_user.admin?
     # Load records, only the subset of data we need
-    records = DeathRecord.select(:id, :name, :message_id, :voided, :submitted, :acknowledgement_message_id, :coding_message_id, :underlying_cause_code).order('id DESC')
+    records = DeathRecord.select(:id, :name, :message_id, :voided, :currently_submitted, :acknowledgement_message_id, :coding_message_id, :underlying_cause_code).order('id DESC')
     response = {
       record_count: DeathRecord.count,
-      submitted_record_count: DeathRecord.where(submitted: true).count,
+      submitted_record_count: DeathRecord.where(currently_submitted: true).count,
       acknowledged_record_count: DeathRecord.where.not(acknowledgement_message_id: nil).count,
       coded_record_count: DeathRecord.where.not(coding_message_id: nil).count,
       records: records.map { |r| r.serializable_hash } # We don't want the default as_json serialization
