@@ -1,6 +1,30 @@
 {
   "type": "object",
   "properties": {
+    "certificateNumber": {
+      "title": "Certificate Number",
+      "type": "object",
+      "humanReadable": "{certificateNumber}",
+      "required": true,
+      "properties": {
+        "certificateNumber": {
+          "type": "string",
+          "title": "Certificate Number"
+        }
+      }
+    },
+    "deathLocationJurisdiction": {
+      "title": "Jurisdiction of Death",
+      "type": "object",
+      "humanReadable": "{deathLocationJurisdiction}",
+      "required": true,
+      "properties": {
+        "deathLocationJurisdiction": {
+          "type": "string",
+          "title": "Jurisdiction of Death"
+        }
+      }
+    },
     "decedentName": {
       "title": "Decedent's Legal Name",
       "type": "object",

@@ -115,9 +115,11 @@ namespace :nightingale do
         # Build the Nightingale internal structure, inventing a name for the decedent and setting death
         # location jurisdiction to MA and SSN to a constant made up value
         record = {
-          "certificateNumber" => lrow["State File Number"][-6,6].to_i, # Just use the last 6 digits
 
-          "deathLocationJurisdiction" => "MA",
+          # TODO: Should we use the native way in which certificate numbers are managed in Nightingale?
+          # If so, remove these from workflows/steps/identity_JSONSchema.json
+          "certificateNumber.certificateNumber" => lrow["State File Number"][-6,6].to_i, # Just use the last 6 digits
+          "deathLocationJurisdiction.deathLocationJurisdiction" => "MA",
 
           "decedentName.firstName" => "Demo#{rand(10000)}",
           "decedentName.lastName" => "Example#{rand(10000)}",
@@ -225,7 +227,7 @@ namespace :nightingale do
           # P = Pending"
           # Maps to: "mannerOfDeath.mannerOfDeath"
           # "Natural", "Accident", "Suicide", "Homicide", "Pending Investigation", "Could not be determined"
-          # TODO: Add to Nightingale->FHIR mapping
+          # NOTE: Already in Nightingale->FHIR mapping
 
           # TODO: Import "Marital"
           # S = Never Married
@@ -237,7 +239,7 @@ namespace :nightingale do
           # U = Unknown
           # Maps to: "maritalStatus.maritalStatus"
           # "Married", "Married but seperated", "Widowed", "Widowed (but not remarried)", "Divorced (but not remarried)", "Never married", "Unknown"
-          # TODO: Add to Nightingale->FHIR mapping
+          # NOTE: Already in Nightingale->FHIR mapping
 
           # TODO: Import "Education"
           # 1 = 8th grade or less
@@ -259,7 +261,7 @@ namespace :nightingale do
           # Master's Degree
           # Doctorate Degree or Professional Degree
           # Unknown
-          # TODO: Add to Nightingale->FHIR mapping
+          # NOTE: Already in Nightingale->FHIR mapping
 
           # TODO: Import "Disposition"
           # B = Burial

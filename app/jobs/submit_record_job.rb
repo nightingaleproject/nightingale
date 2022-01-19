@@ -6,8 +6,7 @@ class SubmitRecordJob < ApplicationJob
     return if record.coding_message_id # Don't resubmit coded messages, anything else is ok (since we may want to recode)
     # Convert to FHIR/JSON using VRDR.HTTP microservice
     # TODO: Make service URL configurable
-    # TODO: We temporarily remove a field that causes the service to fail
-    contents = record.contents.except("decedentName.akas")
+    contents = record.contents
     puts "Converting record #{record.id} to FHIR"
     response = RestClient.post "http://localhost:8080/json", contents.to_json, {content_type: 'application/nightingale'}
     fhir_record = JSON.parse(response.body)
